@@ -1,0 +1,6 @@
+[submodule "auxiliar/tex"]
+	path = auxiliar/tex
+	url = git@github.com:glandfried/tex.git
+[submodule "auxiliar/biblio"]
+	path = auxiliar/biblio
+	url = git@github.com:glandfried/biblio.git
