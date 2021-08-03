@@ -4,6 +4,34 @@ using Plots
 delta_expected = 1.5*0.5+0.6*0.5 - 1 # <\Delta x>
 time_average = log(1.5)*0.5+log(0.6)*0.5 # <\Delta ln x>
 
+function timeAverageDeDesertorEnPoblacionInfinitaDeCooperadores(t=100000, pgg_growth=1.05)
+    res = [0.0]
+    pgg = 1.0
+    for i in 1:t
+        cara = rand([0,1]) == 0
+        if cara
+            push!(res, (res[i] + pgg)*1.5 )
+        else
+            push!(res, (res[i] + pgg)*0.6 )
+        end
+        pgg = pgg*pgg_growth
+    end
+    return res
+end
+
+function distribucionDelDesertorInvasor(;n=100, t=10000, pgg_growth=1.05)
+    res = []
+    for _ in 1:n
+        push!(res, log(timeAverageDeDesertorEnPoblacionInfinitaDeCooperadores(t,pgg_growth)[end]))
+    end
+    return res
+end
+
+t=10000
+wd = distribucionDelDesertorInvasor(n=1000,t=t,pgg_growth=1.0)
+histogram(wd)
+
+d_equilibrio = 1.0/(log(2.0)/log(1.05/0.94) - 1)
 
 n=100;d=1;t=1000; seed=1; costo = 0.0; reproduccion = 0.5; muerte = 0.4; evolutivo=true
 

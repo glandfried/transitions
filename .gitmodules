@@ -4,3 +4,6 @@
 [submodule "auxiliar/biblio"]
 	path = auxiliar/biblio
 	url = git@github.com:glandfried/biblio.git
+[submodule "auxiliar/images"]
+	path = auxiliar/images
+	url = git@github.com:glandfried/images.git
