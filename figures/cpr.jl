@@ -3,6 +3,68 @@ using Plots
 
 delta_expected = 1.5*0.5+0.6*0.5 - 1 # <\Delta x>
 time_average = log(1.5)*0.5+log(0.6)*0.5 # <\Delta ln x>
+ensamble_average = 1 + delta_expected
+
+
+ri = sqrt(1.5*0.6)
+d = 0.01 
+t = 100
+re = 1 + delta_expected
+
+function analyticTimeAverageCoopratorBiomass(T=t; desertor_proportion = d, ensamble_growth = re, initial_biomass = 1.0)
+    return t == 0 ? initial_biomass : ((1-desertor_proportion)*ensamble_growth)^T
+end
+
+plot([0:t],log.(analyticTimeAverageCoopratorBiomass.(0:t)),legend = false)
+plot!([0,t],log.([1.0,(1+delta_expected)^(t) ]), color="black")
+plot!([0,t],log.([1.0,(1+time_average)^(t)]), color="black")
+
+function analyticTimeAverageDefectorBiomass(T=t; desertor_proportion = d, individual_growth=ri, ensamble_growth = re, initial_biomass = 1.0 )
+    WD0 = initial_biomass
+    WCd = (1-desertor_proportion)*ensamble_growth
+    ri = individual_growth
+    return WD0*(ri^T) + sum([ (WCd^t)*(ri^(T-t)) for t in 1:(T-1)])
+end
+
+t=1000
+plot([0:t],log.(analyticTimeAverageCoopratorBiomass.(0:t)),legend = false)
+plot!([0:t],log.(analyticTimeAverageDefectorBiomass.(0:t)),legend = false)
+plot!([0,t],log.([1.0,(1+delta_expected)^(t) ]), color="black",legend = false)
+plot!([0,t],log.([1.0,(1+time_average)^(t)]), color="black",legend = false)
+
+t=100
+plot(analyticTimeAverageDefectorBiomass.(1:t+1)./analyticTimeAverageDefectorBiomass.(0:t))
+plot!([1,t],[(1-d)*ensamble_average,(1-d)*ensamble_average])
+
+d2 = 0.999
+analyticTimeAverageDefectorBiomass.(0:t, desertor_proportion=d2)
+
+WD = []
+WC = []
+dx = 1:10000
+t = 1000
+for i in dx#i=5000
+    di = i/(dx[end]+1)
+    WDd = analyticTimeAverageDefectorBiomass(t+1,desertor_proportion=di)/analyticTimeAverageDefectorBiomass(t,desertor_proportion=di)
+    push!(WD,WDd )
+    WCd = analyticTimeAverageCoopratorBiomass(2,desertor_proportion=di)/analyticTimeAverageCoopratorBiomass(1,desertor_proportion=di)
+    push!(WC,WCd )
+end
+
+plot(dx./10000, WD)
+plot!(dx./10000,WC)
+
+plot(WD[2:end].-WD[1:end-1])
+plot!(WC[2:end].-WC[1:end-1])
+
+
+WD[end]
+WD[900]
+
+plot(analyticTimeAverageDefectorBiomass.(1:t+1, desertor_proportion=d2)./analyticTimeAverageDefectorBiomass.(0:t, desertor_proportion=d2))
+plot!([1,t],[(1-d2)*ensamble_average,(1-d2)*ensamble_average])
+
+
 
 function timeAverageDeDesertorEnPoblacionInfinitaDeCooperadores(t=100000, pgg_growth=1.05)
     res = [0.0]
