@@ -27,17 +27,18 @@ function analyticTimeAverageDefectorBiomass(T=t; desertor_proportion = d, indivi
 end
 
 t=1000
-plot([0:t],log.(analyticTimeAverageCoopratorBiomass.(0:t)),legend = false)
+p = plot([0:t],log.(analyticTimeAverageCoopratorBiomass.(0:t)),legend = false)
 plot!([0:t],log.(analyticTimeAverageDefectorBiomass.(0:t)),legend = false)
 plot!([0,t],log.([1.0,(1+delta_expected)^(t) ]), color="black",legend = false)
 plot!([0,t],log.([1.0,(1+time_average)^(t)]), color="black",legend = false)
 
+savefig(p, "cpr_analyticTimeAverage_d0.01.pdf") 
+
 t=100
-plot(analyticTimeAverageDefectorBiomass.(1:t+1)./analyticTimeAverageDefectorBiomass.(0:t))
+p = plot(analyticTimeAverageDefectorBiomass.(1:t+1)./analyticTimeAverageDefectorBiomass.(0:t))
 plot!([1,t],[(1-d)*ensamble_average,(1-d)*ensamble_average])
 
-d2 = 0.999
-analyticTimeAverageDefectorBiomass.(0:t, desertor_proportion=d2)
+savefig(p, "cpr_analyticTimeAverage_convergence_d0.01.pdf") 
 
 WD = []
 WC = []
@@ -51,20 +52,15 @@ for i in dx#i=5000
     push!(WC,WCd )
 end
 
-plot(dx./10000, WD)
+p = plot(dx./10000, WD, ylab="fitness", xlab="Proportion of defectors", legend=false)
 plot!(dx./10000,WC)
 
-plot(WD[2:end].-WD[1:end-1])
-plot!(WC[2:end].-WC[1:end-1])
+savefig(p, "cpr_analyticTimeAverage_frequency-based-fitness.pdf") 
 
+p = plot((dx./10000)[1:end-1],WD[2:end].-WD[1:end-1], legend=false, ylab="Change in fitness", xlab="Proportion of defectors")
+plot!((dx./10000)[1:end-1],WC[2:end].-WC[1:end-1])
 
-WD[end]
-WD[900]
-
-plot(analyticTimeAverageDefectorBiomass.(1:t+1, desertor_proportion=d2)./analyticTimeAverageDefectorBiomass.(0:t, desertor_proportion=d2))
-plot!([1,t],[(1-d2)*ensamble_average,(1-d2)*ensamble_average])
-
-
+savefig(p, "cpr_analyticTimeAverage_frequency-based-fitness_change-fitness-transition.pdf") 
 
 function timeAverageDeDesertorEnPoblacionInfinitaDeCooperadores(t=100000, pgg_growth=1.05)
     res = [0.0]
@@ -95,7 +91,7 @@ histogram(wd)
 
 d_equilibrio = 1.0/(log(2.0)/log(1.05/0.94) - 1)
 
-n=100;d=1;t=1000; seed=1; costo = 0.0; reproduccion = 0.5; muerte = 0.4; evolutivo=true
+n=2;d=0;t=150; seed=1; costo = 0.0; reproduccion = 0.5; muerte = 0.4; evolutivo=true
 
 function game(n=100,d=1,t=1000, seed=1; costo = 0.0, reproduccion = 0.5, muerte = 0.4, evolutivo=false)#evolutivo=true
     Random.seed!(seed)
@@ -104,7 +100,7 @@ function game(n=100,d=1,t=1000, seed=1; costo = 0.0, reproduccion = 0.5, muerte 
     desertores = []
     proporcion = []
     i=2
-    while i < t+1
+    while i <= t+1
         if evolutivo & (d != n) & (d != 0) 
             p = sum((res[:,i-1]./sum(res[:,i-1]))[1:(n-d)])
             d = convert(Int64,round((1-p)*n))
@@ -125,7 +121,8 @@ function game(n=100,d=1,t=1000, seed=1; costo = 0.0, reproduccion = 0.5, muerte 
 end
 
 #plot(log.(transpose(game(10,0,100000,reproduccion=0.05,muerte=0.04))), legend=false)
-#plot!(log.(transpose(game(10,100,100000,reproduccion=0.05,muerte=0.04))), legend=false)
+#plot(log.(transpose(game(2,2,1000,reproduccion=0.5,muerte=0.4))), legend=false)
+
 
 ###################
 # Absolute 
@@ -185,6 +182,89 @@ plot!(log.(transpose(game(100,10,2000,costo=0.01))),legend = false, color="red")
 
 savefig(p, "cpr_absolute_cooperation_defection_costo.pdf") 
 savefig(p, "cpr_absolute_cooperation_defection_costo.png") 
+
+######################
+# Bayesian inference (multilevel biomass proportion)
+
+# Biomasa de cada individuo por grupo
+b_eg0 = game(2,0,250)
+b_eg1 = game(2,1,250)
+b_eg2 = game(2,2,250)
+
+# Biomasa por grupo
+b_g0 = [ sum(c) for c in eachcol(b_eg0)]
+b_g1 = [ sum(c) for c in eachcol(b_eg1)]
+b_g2 = [ sum(c) for c in eachcol(b_eg2)]
+b_g = [transpose(b_g0); transpose(b_g1); transpose(b_g2)]
+
+# Biomasa total
+B = [ sum(c) for c in eachcol(b_g)]
+
+# P(g|r)
+p = plot(b_g0./B, label=false)
+plot!(b_g1./B, label=false)
+plot!(b_g2./B, label=false)
+
+savefig(p, "cpr_bayesian_inference_multilevel_biomass_p(g|r).png") 
+savefig(p, "cpr_bayesian_inference_multilevel_biomass_p(g|r).pdf") 
+
+# P(e|g,r)
+p = plot(b_eg1[1,:]./b_g1, label=false)
+plot!(b_eg1[2,:]./b_g1, label=false)
+
+savefig(p, "cpr_bayesian_inference_multilevel_biomass_p(e|g,r).png") 
+savefig(p, "cpr_bayesian_inference_multilevel_biomass_p(e|g,r).pdf") 
+
+# Vuelvo a escribir la función game()
+# pero desde un perspectiva bayesiana
+
+function w(r)
+    return (1.5^(r))*0.6^(1-r)
+end
+N = 6
+T = 250
+
+function bayesian_inference_process()
+    R = zeros(Int64,(2,T)) 
+    R[1,:] = [ rand([0,1]) for _ in 1:T]
+    R[2,:] = [ rand([0,1]) for _ in 1:T]
+    e = zeros((N,T+1))
+    e[:,1] .= 1.0
+    g = zeros((3,T+1))
+    g[:,1] .= 1.0
+    for t in 1:(T)#t=1
+        # P(e|r) \propto
+        e[1,t] = e[1,t]*w(R[1,t])
+        e[2,t] = e[2,t]*w(R[2,t])
+        e[3,t] = e[3,t]*w(R[1,t])
+        e[4,t] = e[4,t]*w(R[2,t])
+        e[5,t] = e[5,t]*w(R[1,t])
+        e[6,t] = e[6,t]*w(R[2,t])
+        
+        # P(e|r) = [normalization]
+        e[:,t] = e[:,t]./sum(e[:,t])
+        
+        # P(et|r) COOP
+        e[1,t+1] = (e[1,t]+e[2,t])/2
+        e[2,t+1] = (e[1,t]+e[2,t])/2
+        # P(et|r) MIX
+        e[3,t+1] = e[3,t]/2
+        e[4,t+1] = e[3,t]/2 + e[4,t]
+        # P(et|r) DEFECT
+        e[5,t+1] = e[5,t]
+        e[6,t+1] = e[6,t]
+        
+        # p(g|e)
+        g[1,t] = e[1,t] + e[2,t]
+        g[2,t] = e[3,t] + e[4,t]
+        g[3,t] = e[5,t] + e[6,t]
+        
+    end
+    return e, g
+end
+e, g = bayesian_inference_process()   
+plot(transpose(e))
+plot(transpose(g))
 
 ###################
 # Relative Level 1 (interior del grupo)
