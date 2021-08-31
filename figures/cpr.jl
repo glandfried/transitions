@@ -93,7 +93,7 @@ d_equilibrio = 1.0/(log(2.0)/log(1.05/0.94) - 1)
 
 n=2;d=0;t=150; seed=1; costo = 0.0; reproduccion = 0.5; muerte = 0.4; evolutivo=true
 
-function game(n=100,d=1,t=1000, seed=1; costo = 0.0, reproduccion = 0.5, muerte = 0.4, evolutivo=false)#evolutivo=true
+function game(n=100,d=1,t=1000, seed=1; costo = 0.0, reproduccion = 0.5, muerte = 0.4, evolutivo=false, intercalar=false)#evolutivo=true
     Random.seed!(seed)
     res = zeros((n,t+1))
     res[:,1] .= 1.0
@@ -109,9 +109,10 @@ function game(n=100,d=1,t=1000, seed=1; costo = 0.0, reproduccion = 0.5, muerte 
         end
         cpr = (sum(res[1:(n-d),i-1].*(1-costo))/n)        
         for a in 1:n#a=1
-            if rand([0,1]) == 0
+            r = rand([0,1])
+            if (intercalar & (mod(a,2) == mod(i,2))) || (!intercalar & r == 0)
                 res[a,i] = a<=(n-d) ? cpr*(1+reproduccion) : (cpr+res[a,i-1])*(1+reproduccion)
-            else
+            elseif (intercalar & (mod(a,2) != mod(i,2)) ) || (!intercalar & r == 1)
                 res[a,i] = a<=(n-d) ? cpr*(1-muerte) : (cpr+res[a,i-1])*(1-muerte)
             end
         end
@@ -187,9 +188,9 @@ savefig(p, "cpr_absolute_cooperation_defection_costo.png")
 # Bayesian inference (multilevel biomass proportion)
 
 # Biomasa de cada individuo por grupo
-b_eg0 = game(2,0,250)
-b_eg1 = game(2,1,250)
-b_eg2 = game(2,2,250)
+b_eg0 = game(2,0,10)
+b_eg1 = game(2,1,10)
+b_eg2 = game(2,2,10)
 
 # Biomasa por grupo
 b_g0 = [ sum(c) for c in eachcol(b_eg0)]
@@ -221,38 +222,37 @@ savefig(p, "cpr_bayesian_inference_multilevel_biomass_p(e|g,r).pdf")
 function w(r)
     return (1.5^(r))*0.6^(1-r)
 end
-N = 6
-T = 250
 
-function bayesian_inference_process()
+function bayesian_inference_process(;N = 6, T = 250, intercalar = false)
     R = zeros(Int64,(2,T)) 
-    R[1,:] = [ rand([0,1]) for _ in 1:T]
-    R[2,:] = [ rand([0,1]) for _ in 1:T]
+    R[1,:] = intercalar ? [ mod(i,2) for i in 1:T] : [ rand([0,1]) for _ in 1:T]
+    R[2,:] = intercalar ? [ mod(i+1,2) for i in 1:T] : [ rand([0,1]) for _ in 1:T]
     e = zeros((N,T+1))
-    e[:,1] .= 1.0
-    g = zeros((3,T+1))
-    g[:,1] .= 1.0
-    for t in 1:(T)#t=1
+    e[:,1] .= 1/6
+    g = zeros((3,T))
+    g[:,1] .= 1/3
+    for t in 2:(T)#t=2
+        
+        # P(et|r) COOP
+        e[1,t] = (e[1,t-1]+e[2,t-1])/2
+        e[2,t] = (e[1,t-1]+e[2,t-1])/2
+        # P(et|r) MIX
+        e[3,t] = e[3,t-1]/2
+        e[4,t] = e[3,t-1]/2 + e[4,t-1]
+        # P(et|r) DEFECT
+        e[5,t] = e[5,t-1]
+        e[6,t] = e[6,t-1]
+        
         # P(e|r) \propto
-        e[1,t] = e[1,t]*w(R[1,t])
-        e[2,t] = e[2,t]*w(R[2,t])
-        e[3,t] = e[3,t]*w(R[1,t])
-        e[4,t] = e[4,t]*w(R[2,t])
-        e[5,t] = e[5,t]*w(R[1,t])
-        e[6,t] = e[6,t]*w(R[2,t])
+        e[1,t] = e[1,t]*w(R[1,t-1])
+        e[2,t] = e[2,t]*w(R[2,t-1])
+        e[3,t] = e[3,t]*w(R[1,t-1])
+        e[4,t] = e[4,t]*w(R[2,t-1])
+        e[5,t] = e[5,t]*w(R[1,t-1])
+        e[6,t] = e[6,t]*w(R[2,t-1])
         
         # P(e|r) = [normalization]
         e[:,t] = e[:,t]./sum(e[:,t])
-        
-        # P(et|r) COOP
-        e[1,t+1] = (e[1,t]+e[2,t])/2
-        e[2,t+1] = (e[1,t]+e[2,t])/2
-        # P(et|r) MIX
-        e[3,t+1] = e[3,t]/2
-        e[4,t+1] = e[3,t]/2 + e[4,t]
-        # P(et|r) DEFECT
-        e[5,t+1] = e[5,t]
-        e[6,t+1] = e[6,t]
         
         # p(g|e)
         g[1,t] = e[1,t] + e[2,t]
@@ -262,9 +262,10 @@ function bayesian_inference_process()
     end
     return e, g
 end
-e, g = bayesian_inference_process()   
+e, g = bayesian_inference_process(T=100,intercalar=true)   
 plot(transpose(e))
 plot(transpose(g))
+
 
 ###################
 # Relative Level 1 (interior del grupo)

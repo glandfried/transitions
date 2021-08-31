@@ -9,7 +9,7 @@
 \estrue
 
 %opening
-\title{Cooperación y ergodicidad}
+\title{Ventaja evolutiva a favor de la cooperación.}
 \author{Gustavo Landfried}
 
 \begin{document}
@@ -17,343 +17,33 @@
 \maketitle
 
 \begin{abstract}
+La complejidad actual de la vida es consecuencia de una serie de transiciones evolutivas en las que las entidades, que antes eran capaces de replicarse de forma independiente, luego de la transición sólo pueden replicarse como partes de una unidad mayor.
+Las entidades que cooperan ceden algo de valor a la otras para formar esta unidad de mayor nivel.
+Los enfoques clásicos presuponen la existencia de un dilema que modelas mediante una estructura de pagos que si bien tiene un óptimo en la mutua cooperación, ofrece incentivos individuales para desertar.
+Esta formulación del problema abrió una importante línea de investigación dedicada a descrubir las condiciones que requieren las estrategias cooperadoras para ser evolutivamente estable primero y para invadir después.
 
+En este artículo proponemos una solución simple que no requiere tales suposiciones.
+%basada en dos conceptos recientemente incorporados a la teoría de la evolución, que permite mostrar que existe una ventaja física en favor de la agregación cooperativa de las entidades individuales.
+La ventaja evolutiva en favor de la agregación cooperativa de las entidades se debe fundamentalente a que los procesos multiplicativos a los que está sujeto la vida, i.e. la secuencia de probabilidades de superviencia y reproducción, son no-ergódicos.
+Esto hace que las fluctuaciones tengan un efecto negativo en la tasa de crecimiento individual a largo plazo, pero no en la tasa de crecimiento del valor esperado.
+Al compartir recursos se reducen las fluctuaciones, aumentando la tasa de crecimiento a largo plazo de los cooperantes.
+Cualquier agente que evite compartir recursos reducirá su propia tasa de crecimiento a largo plazo debido al inmediato aumento de las fluctuaciones, haciendo que las estrategias incondicionalmente cooperadoras sean evolutivamente estables sin la necesidad de introducir castigos.
+Si bien las estrategias desertoras son también evolutivamente estables, los grupos cooperadores se ven favorecidos por la selección multinivel debido a su mayor tasa de crecimiento.
+Finalmente, en este trabajo traducimos el proceso multiplicativo como un modelo
 
-La complejidad actual de la vida es consecuencia de una serie de transiciones evolutivas~\cite{maynardSmith1995-majorTransitions} en las que las entidades, que antes eran capaces de replicarse de forma independiente, luego de la transición pasan a replicarse sólo como partes de una unidad mayor.
-Las entidades que cooperan deben ceder algo de valor a la otras para formar la meta unidad.
-Las explicaciones clásicas de la evolución de la cooperación considera que la cooperación requiere condiciones especiales para que sea evolutivamente estable frente a las estrategias parasitarias.
-Presupone la existencia de un dilema, en el que el estado óptimo es la cooperación
+Este resultado se verifica cuando analizamos la selec La evolución de una población jerárquica bajo selección multinivel es equivalente a la inferencia bayesiana en modelos jerárquicos bayesianos.
 
-
-Las modelos clásicos suponen que 
-requieren condiciones especiales para que la cooperación sea evolutivamente estable frente a las estrategias parasitarias.
-Es decir, se presupone la presencia de matrices de pagos isomorfas al dilema del prisionero, que se ven alteradas cuando existe cierta estructura poblacional, lo que permita primero la estabilidad de las estrategia cooperadoras al interior de ciertos grupos, sobre las que luego actúa algún tipo de selección multinivel.
 
 
 \end{abstract}
 
-\section{Las justificaciones evolutivas de la teoría de la probabilidad}
+En el último tercio de la historia del Universo, en algún momento hace aproximadamente 4500 millones de años, apareció en la tierra una forma de organización de la materia capaz de auto-replicarse.
+El crecimiento de estos linajes siguieron procesos multiplicativos y ruidosos: secuencias de probabilidades de supervivencia y reproducción.
+Las mutaciones producidas durante la replicación diversificaron las formas de organización de la materia, y las diferentes tazas de superviencia favorecieron a aquellas mejor adaptadas al ambiente.
 
-Los primeros debates sobre la teoría de la probabilidad estaban basados en el problema de la asignación "justa" de una apuestra (Pascal, Fermat).
+Las diversas formas que fue adquiriendo la vida representa información que es capaz de interectuar con el medio y sobrevivir.
 
-Bayes habla de valor justo
-
-
-
-De Finetti propone un concepto, que llama ``coherencia'', que se puede definir usando el concepto de Estrategia Evolutivamente Estable (ESS en inglés).
-
-\begin{quotation}
-En adoptant la définition [inter]subjective, ces règleslogiques découlent avec rigueur et facilité d’une seule condition très naturelle: celle de cohérence, qui nous oblige à prendre garde en évaluant les probabilités de ne pas donner la possibilité à un adversaire qui parie contre nous de gagner sûrement, par une \cancel{judicieuse} combinaison de ses mises sur les divers événements, quelle que soit l’éventualité qui se réalise.
-Les théorèmes fondamentaux (probabilités totales, probabilités composées) ne sont que des corollaires immédiats de cette condition fondamentale.
-\end{quotation}
-
-La estrategia a adoptar bajo incertidumbre se define en términos evolutivos: es la estrategia de asignación de probabilidades que resiste la invasión de otras estrategias de asignación.
-
-
-
-
-
-\section{Segunda reunión}
-
-
- 
-
-
-\section{Primera reunión}
-
-
-La complejidad actual de la vida es consecuencia de una serie de transiciones evolutivas~\cite{maynardSmith1995-majorTransitions} en las que las entidades, que antes eran capaces de replicarse de forma independiente, luego de la transición pasan a replicarse sólo como partes de una unidad mayor.
-Al menos hasta la revisión del 2015~\cite{szathmary2015-evolutionaryTransitions}, el co-autor de la teoría de las transiciones evolutivas (Eörs Szathmáry) considera que la cooperación que emerge en cada transición requiere condiciones especiales para que sea evolutivamente estable frente a las estrategias parasitarias.
-Es decir, se presupone la presencia de matrices de pagos isomorfas al dilema del prisionero, que se ven alteradas cuando existe cierta estructura poblacional, lo que permita primero la estabilidad de las estrategia cooperadoras al interior de ciertos grupos, sobre las que luego actúa algún tipo de selección multinivel.
-
-% \begin{equation}
-%     \bordermatrix{ & C & D \cr
-%       C & b-c & -c \cr
-%       D & b & 0  } \hspace{1cm}
-%       \bordermatrix{ & TFT & ALLD \cr
-%       TFT & \frac{b-c}{1-w} & -c \cr
-%       ALLD & b & 0  } 
-% \end{equation}
-
-Las matrices de pagos son resumenes que intentan representar los ``incentivos'' que cada una de las estrategias recibe en un proceso que en realidad es dinámico.
-El principal tipo de resumen usado, tanto en economía como en evolución, es el la llamada ``esperanza'', esto es el promedio de los incentivos pesados por la probabilidad de que ocurran.
-Formalicemos una dinámica y calculemos la matrices.
-Por ejemplo, el crecimiento de los linajes pueden ser vistos como secuencias de probabilidades de supervivencia y reproducción.
-Supongamos que tiramos una moneda: si sale cara la población crece 50\% y si sale seca disminuye 40\% (los números son muy grandes para ser ciertos, pero lo mismo ocurrirá si elegimos 5\% y 4\% respectivamente).
-
-\begin{equation}
-\Delta x =
-\begin{cases}
- +0.5x & \text{ \en{Head}\es{Cara} } \\
- -0.4x & \text{ \en{Tail}\es{Seca} }
-\end{cases}
-\end{equation}
-
-En primer lugar calculemos la esperanza de jugar individualmente.
-Si un agente empieza con $100$, luego del primer paso puede con misma probabilidad crecer a $150$ a reducirse a $60$.
-La esperanza dice que en promedio los agentes que participan este juego crecen un 5\% en cada paso, $105 = 100 \cdot 1.5 \cdot\frac{1}{2} + 100 \cdot 0.6 \cdot \frac{1}{2}$.
-Podemos hacer este mismo ejercicio para el segundo, tercer, o n-ésimo paso y obtendremos que se cumple la misma taza de crecimiento promedio.
-Sin embargo, si observamos qué ocurre con las trayectorias individuales veremos que a largo plazo todos pierden.
-
-\begin{figure}[ht!]
-    \centering
-    \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\linewidth]{figures/cpr_individual.pdf}
-    \end{subfigure}
-    \caption{}
-    \label{fig:cpr_individual}
-\end{figure}
-
-El resumen elegido aquí para representar el proceso dinámico, el promedio de los incentivos pesados por la probabilidad de que ocurran, no coincide con lo que los agentes individuales experimenta en el tiempo.
-Esto ocurre fundamentalmente porque los procesos multiplicativos a los que está sujeto la vida son irreversibles: los impactos de las pérdidas son más fuertes que los de las ganancias.
-Con que haya un cero en la secuencia de probabilidades de supervivencia y reproducción, cualquier linaje está queda extinto para siempre.
-
-% Parrafo
-
-Dado que la varianza realmente importa, una forma eficaz de reducirla es compartir los riesgos~\cite{yaari2010-cooperationEvolution, peters-cooperation}.
-Las curvas verdes de la figura \ref{fig:simple_gamble_incesto} representa a una población de 100 agentes que luego de cada iteración colocan su riqueza individual en un fondo común que es dividido en partes iguales.
-Cuando los agentes cooperan, todos se benefician a largo plazo.
-
-\begin{figure}[ht!]
-    \centering
-    \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\linewidth]{figures/cpr_cooperation.pdf}
-    \end{subfigure}
-    \caption{}
-    \label{fig:cpr_cooperation}
-\end{figure}
-
-La estrategia cooperativa le permite obtener a todos los agentes por igual lo que inicialmente esperábamos observar en cada paso para los agentes individuales, 5\% de ganancia por iteración.
-La coincidencia con el resumen inicial no es casual.
-Al compartir la riqueza, los agentes tienen ahora sí acceso a todos los ``universos paralelos'' con los que calculamos inicialmente el valor esperado.
-Por este motivo, los procesos evolutivos ofrecen una ventaja física a favor de los comportamientos cooperativos y diversificados.
-
-% Parrafo
-
-Lentamente estamos re-construyendo el dilema del prisionero, que se considera la esturucta de pagos típica de los bienes comunes.
-Por un lado, ya vimos que es mejor cooperar que desertar.
-Además el bien común puede ser explotado por agentes individualistas que desertan de aportar su riqueza al fondo común pero que siguen aprovechando de la distribución de la riqueza del resto.
-Para completar la dinámica, agregamos finalmente un costo adicional a la cooperación: en cada iteración los agentes cooperadores pagan un cierto porcentaje de su riqueza, por ejemplo 1\%, como costo de coordinación.
-
-% Parrafo
-
-Hemos creado una dinámica de bienes comunes con costo de cooperar basada en un proceso multiplicativo tipo de la vida (secuencia de probabilidades supervivencia y reproducción), y tenemos dos estrategias posibles, cooperar siempre (ALLC) y desertar siempre (ALLC).
-¿Que resultado esperaríamos ver?
-Ya sabemos, que según la matriz del dilema del prisionero, la población obtiene un óptimo cuando todos cooperan, que el primer agente desertor mejora su situación, y cuando la estrategia desertora invade todos terminan peor.
-
-% Parrafo
-
-En la siguiente figura podemos ver las trayectorias individuales de tres poblaciones de 10 agentes: la verde no contiene desertores; la azul contiene un único desertor; la roja contiene dos desetores.
-Los trayectorias cooperadoras están dentro de las curva de doble élice.
-Los trayectorias desertores están por arriba de las trayectorias cooperadoras.
-
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\linewidth]{figures/cpr_cooperation_defection_costo_zoom.pdf}
-    \end{subfigure}
-    \caption{}
-    \label{fig:cpr_cooperation_defection_costo_zoom}
-\end{figure}
-
-De acuerdo a lo esperado, indivualmente los desertores están por arriba de las estrategias cooperadoras, pero las poblaciones sufren el efecto negativo.
-Todo parece suguiereo que la conclusión estandar (selección multinivel) es necesaria para la evolución de la cooperación.
-
-% Parrafo
-
-Sin embargo, a largo plazo nada de esto no es cierto.
-En la siguiente figura podemos ver que, si bien los comportamientos desertores obtienen una ventaja relativa respecto de los miembros cooperadores de su propia población, desertar en una población enteramente cooperadora implica una reducción de la riqueza incluso para quien deserta.
-
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\linewidth]{figures/cpr_cooperation_defection_costo.pdf}
-    \end{subfigure}
-    \caption{}
-    \label{fig:cpr_cooperation_zoom}
-\end{figure}
-
-Los desertores, al afectar la riqueza de aquellos sobre los que se beneficia, se ven también perjudicados a largo plazo en términos absolutos.
-Los proceso multiplicativo caracterísitico de la vida, incluso bajo dinámicas de bienes comunes con costo de cooperar, ofrecen una ventaja física en favor de la agregación cooperativa de las entidades individuales en términos absolutos.
-
-% Parrafo
-
-Esto mismo puede ocurrir con los PGG basados en las matrices de pagos del dilema del prisonero.
-\begin{equation}
-    \bordermatrix{ & C & D \cr
-      C & b-c & -c \cr
-      D & b & 0  } 
-\end{equation}
-Cuando el costo es relativamente alto respecto de la ganancia (b=50, c=25), ahí sí ocurre que el fitness absoluto (pagos acumumados) aumenta para el desertor en términos absolutos (figura~\ref{}).
-Pero cuando el costo es relativamente bajo (b=50, c=1), ahí desertar le genera un perjuicio en términos absolutos también al desertor (figura~\ref{}), del mismo modo que ocurre en la figura de arriba.
-
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\linewidth]{figures/cpr_prisioner_dilema_highcost.pdf}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\linewidth]{figures/cpr_prisioner_dilema_lowcost.pdf}
-    \end{subfigure}
-    \caption{}
-    \label{fig:cpr_cooperation_zoom}
-\end{figure}
-
-%
-
-Cuando el costo es relativamente alto, en la primera figura, el dilema ocurre en términos absolutos.
-Agentes cambian de estrategia dependiendo del fitness absoluto, optarán por la estrategia paristaria, y a largo plazo, cuando todos sean paristarios, les irá peor de lo que les iba cuando cooperaban.
-
-% Parrafo
-
-Pero cuando el costo es relativamente bajo, no hay dilema en términos absolutos.
-En el proceso multiplicativo, sabemos que cuando todos cooperan alcanzan un crecimiento de $1.05$, y que cuando nadie coopera de $0.945$.
-Un desertor cambia la taza de crecimiento de los cooperadores a $1.035$, y el desertor mantiene la mismo taza de crecimiento, por lo cual desertar implica una reducción de la taza de crecimiento de $1.05$ a $1.035$ aproximadamente.
-Finalmente, cuando todos desertan salvo uno, la taza de crecimiento es cercana a $0$.
-
-\begin{equation}
-    \bordermatrix{ & C & D \cr
-      C & \approx 1.05 & \approx 0.01 \cr
-      D & \approx 1.035 & \approx 0.945  } 
-\end{equation}
-
-Si los agentes cambian de estrategia dependiendo del fitness absoluto, entonces un sistema cooperativo resiste la invación de estrategias desertoras porque a sí mismo no le conviene en términos absolutos.
-Quizás parte del desarrollo de software libre pueda ser explicado por este efecto.
-
-% Parrafo
-
-Pero si los agentes cambian de estrategia dependiendo del fitness relativo, como ocurre en los sistemas evolutivos, entonces sigue existiendo dilema: desertar siempre coloca al agente en mejor posición en un paso. 
-La siguiente figura muestra los fitness relativos en escala logrítimica.
-
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\linewidth]{figures/cpr_intra-relative_cooperation_defection_costo.pdf}
-    \end{subfigure}
-    \caption{}
-    \label{fig:intra-relative}
-\end{figure}
-
-Un agente siempre puede aumentar su fitness relativo (al menos momentaneamente) si decide desertar.
-Aunque la estrategia parasitaria reduce su fitness absoluto (pasa de verde a azul en la figura \ref{}), aumenta sin embaego su fitness relativo (son las líneas que aparecen arriba de su propia población en esta figura).
-
-% Parrafo
-
-En términos relativos, la aparición de una estrategia parasitaria puede invadir una población enteramente cooperadora, a costa de su propio fitness absoluto.
-Si actualizamos las estrategias de los agentes de forma proporcional a la reproducción generada por el proceso multiplicativo (o su fitness relativo), observaremos un único agente desertor es capaz de invadir rápidamente una población enteramente cooperadora (figura~\ref{}).
-Y al evolucionar hacia una población enteramente desertora, el resultado en términos absoluto es malo para todos los agentes (figura~\ref{}).
-
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\linewidth]{figures/cpr_reproduccion_proporcion_desertora.pdf}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\linewidth]{figures/cpr_reproduccion_absoluto.pdf}
-    \end{subfigure}
-    \caption{Iniciando con 99 agentes cooperadores y 1 agente desertor, sin costo para la cooperación.}
-    \label{fig:cpr_cooperation_zoom}
-\end{figure}
-
-% Parrafo
-
-Existen algunas estrategias cooperadoras, distintas a las incondionales, que pueden resisitir la invación de estrategias desertoras.
-Un ejemplo es la estrategia reciprocitaria Tit-for-tat, TFT.
-Si bien está estrategia resisitir una invación, no es capaz de invadir poblaciones enteramente desertoras.
-
-% Parrafo
-
-Para que las mutaciones cooperadoras puedan invadir, es necesario una cierta estabilidad de los vínculos.
-La misma vecindad en una espacio bidimensional es una estructura probada por la invasión de estas estrategias.
-
-
-
-Las soluciones a este problema siempre consiste en introducir estructura en la población de modo de permitir la aparaición de diversidad entre poblaciones.
-
-% 
-
-Y hay dos fitness relativos: el individual que determina la frecuencia de las estrategias al interior de la población; y el poblacional, que determina la selección multinivel. Hace falta el segundo proceso para que emerga la cooperación.
-
-% Parrafo
-
-Al final parece que es el problema clásico. Que era lo que esperaba encontrar al principio. Voy a verificar esto calculando ahora los fitness relativos.
-
-% Parrafo
-
- Si bien el proceso multiplicativo propuesto por Ole Peters puede interpretarse como secuencia de reproducci'on y superviviencia, el proceso de bienes comunes propuesto no considera la frecuencia relativa de las estrategias, sino la valor absoluto.
- En este ejemplo vamos a trabajar con una cantidad de tiradores de moneda (agentes) finita y constante (ej n=100): cada uno de los agentes comienzan una estrategia, por ejemplo 99% cooperadores y 1% desertor.
- En este ejemplo, luego de cada iteración, vamos a actualizar la estrategia de los agentes en función de la proporción que represeta cada clase de estrategias.
-
- % Parrafo
-
-
-In a sense, repetition, reputation and punishment do not solve the problem of the evolution of cooperation under the prisoner’s dilemma: they simply transform the underlying game into a stag hunt (Skyrms, 2004; Taylor \& Nowak, 2007). Cooperation under the stag hunt is however easier to achieve, as the problem of the stability of cooperation is now solved. The only problem now is the origin or initial viability of cooperation: given that cooperation is stable, how can it get a foothold in a population entirely comprised of defectors?
-
-\section{Cites}
-
-Mynard Smith sobre las aplicaciones de la teoría de juegos.
-\begin{quotation}
-    Game theory is more readily applied to biology than to the field of economic behaviour for which it was originally designed. (...).
-    In seeking the solution of a game, the concept of human rationality is replaced by that of evolutionary stability.
-    The advantage here is that there are good theoretical reasons to expect populations to evolve to stable states, whereas there are grounds for doubting whether human beings always behave rationally. \cite{maynardSmith1982-evolutionTheoryGames}
-    
-    A central assumption of classical game theory is that the players will behave rationally, and according to some criterion of self-interest.
-    Such an assumption would clearly be out of place in an evolutionary context.
-    Instead, the criterion of rationality is replaced by that of population dynamics and stability, and the criterion of self-interest by Darwinian fitness. (...).
-    They lead to a new type of 'solution' to a game, the 'evolutionarily stable strategy' or ESS.
-\end{quotation}
-
-
-
-\begin{quotation}
-    The central idea I am developing here is that an essential part of evolution deals with adaptation to changing environmental conditions~\cite{pigliucci2001-plasticity}.
-\end{quotation}
-
-Parafraseando a Den Boer: the chance of survival of a population depends on a reciprocity system for spreading of the risk within populations and between populations of different species.
-En sus palabras
-\begin{quotation}
-    Which are the factors governing the distribution of a population over a number of localities?
-    The daily contact with data from the field soon showed that change and variation predominate in the natural situation: populations do not fit
-    nicely to some definite habitat definable in terms of important ecological factors.
-    Heterogeneity and instability must not be considered as just a drawback of field data to be neglected.
-    On the contrary, heterogeneity and/or instability must be recognized as fundamental features of a natural situation.
-    The chance of survival of a population may even be increased, because the variation within the population makes it possible to cope with the variation in space and time of the habitat.
-    This possibility led me to formulate the concept ``spreading of risk''~\cite{denBoer1968-spreadingRisk}: 1. Spreading of risk by phenotypic variation; 2. Spreading of risk in time (e.g. age classes); 3. Spreading of risk in space (e.g. different microenvironments); 4. Spreading of risk and relations to other species (monophagous vs polyphagous).
-    The simultaneous occurrence of different kinds of heterogeneity can be expected to increase the spreading of risk.
-    Biocoenosis rich in species may be expected to be more stable (provided with more intricate spreading of the risk) than one with few species.
-    Hence, the ``balance of nature'' is not a balance but rather a relatively high degree of stability.
-
-    It is supposed that the stabilization of animal numbers in natural populations is established by spreading of the risk, incidentally supplem ented by some kind of density limitation.
-    The ``balance of nature'' must be the result of a complex and highly intricate system of spreading of the risk within populations and between populations of the same and especially of different species.
-\end{quotation}
-
-Ya Den Boer plantea como hipótesis un trade-off del ``spreading of the risk'', respecto de la densidad poblacional.
-Seger se pregunta
-\begin{quotation}
-    Is there am evolutionary trade-off between \emph{expected} fitness and the \emph{variance} of fitness?
-    Here, we show why there is only under certain circumstances~\cite{seger1987-betHedging}.
-
-    Dampster~\cite{dempster1955-geometricMean} showed that for temporal fluctations on a scale of generations, the relevant measure of fitness is its geometric mean.
-    Dampster result is the starting-point for all subsequent models of genetic evolution in temporally varying environments.
-
-    The geometric meman is the natural measure of long-term fitness under temporal variation beacause, like population growth itself, it is inherently multiplicative rather than additive.
-    It is therefore very sensitive to occasional small values.
-    If there is any variation, the geometric mean will be less than the arithmetic mean.
-
-    Although the genotype with the highest geometric-mean fitness is favoured (and certainly goes to fixation), the \emph{populations's} geometric-mean fitness is not necessarily maximized at equilibrium [same example as \cite{starrfelt2012-bet}].
-\end{quotation}
-Y muestra el mismo ejemplo que Kokko.
-
-\\
-
-Jorge Peña
-\begin{quotation}
-    Public goods games (PGGs) are paradigmatic among such non-decomposable multiplayer games.
-    PGGs are models of situations where individuals face the dilemma of providing and/or maintaining a public good: a common resource that is both non-excludable (no individual can be excluded from its consumption) and non-rivalrous (one individual’s use of the public good does not diminish its availability to another individual).
-    Are typical examples of public goods whose abusive exploitation by non-contributing individuals may lead to the so-called tragedy of the commons, a situation in which nobody contributes and therefore no public good is produced or maintained.
-    By far, the most well known PGG is the N-person prisoner’s dilemma (NPD). \cite{pena2012-phd}
-\end{quotation}
-
+A crucial preliminary condition is the alignment of interests: to undergo an evolutionary transition in individuality, organisms must exhibit cooperation, originating from genetic relatedness and/or synergistic fitness interactions [4].
 
 {\footnotesize
 \bibliographystyle{auxiliar/biblio/plos2015.bst}
