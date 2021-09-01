@@ -1,7 +1,7 @@
 \documentclass[a4paper,10pt]{article}
 \usepackage[utf8]{inputenc}
 \input{auxiliar/tex/encabezado.tex}
-
+\input{auxiliar/tex/tikzlibrarybayesnet.code.tex}
 \newif\ifen
 \newif\ifes
 \newcommand{\en}[1]{\ifen#1\fi}
@@ -9,7 +9,7 @@
 \estrue
 
 %opening
-\title{Ventaja evolutiva a favor de la cooperación.}
+\title{Fundamentos de la complejidad de la vida}
 \author{Gustavo Landfried}
 
 \begin{document}
@@ -17,33 +17,108 @@
 \maketitle
 
 \begin{abstract}
-La complejidad actual de la vida es consecuencia de una serie de transiciones evolutivas en las que las entidades, que antes eran capaces de replicarse de forma independiente, luego de la transición sólo pueden replicarse como partes de una unidad mayor.
-Las entidades que cooperan ceden algo de valor a la otras para formar esta unidad de mayor nivel.
-Los enfoques clásicos presuponen la existencia de un dilema que modelas mediante una estructura de pagos que si bien tiene un óptimo en la mutua cooperación, ofrece incentivos individuales para desertar.
-Esta formulación del problema abrió una importante línea de investigación dedicada a descrubir las condiciones que requieren las estrategias cooperadoras para ser evolutivamente estable primero y para invadir después.
-
-En este artículo proponemos una solución simple que no requiere tales suposiciones.
-%basada en dos conceptos recientemente incorporados a la teoría de la evolución, que permite mostrar que existe una ventaja física en favor de la agregación cooperativa de las entidades individuales.
-La ventaja evolutiva en favor de la agregación cooperativa de las entidades se debe fundamentalente a que los procesos multiplicativos a los que está sujeto la vida, i.e. la secuencia de probabilidades de superviencia y reproducción, son no-ergódicos.
-Esto hace que las fluctuaciones tengan un efecto negativo en la tasa de crecimiento individual a largo plazo, pero no en la tasa de crecimiento del valor esperado.
-Al compartir recursos se reducen las fluctuaciones, aumentando la tasa de crecimiento a largo plazo de los cooperantes.
-Cualquier agente que evite compartir recursos reducirá su propia tasa de crecimiento a largo plazo debido al inmediato aumento de las fluctuaciones, haciendo que las estrategias incondicionalmente cooperadoras sean evolutivamente estables sin la necesidad de introducir castigos.
-Si bien las estrategias desertoras son también evolutivamente estables, los grupos cooperadores se ven favorecidos por la selección multinivel debido a su mayor tasa de crecimiento.
-Finalmente, en este trabajo traducimos el proceso multiplicativo como un modelo
-
-Este resultado se verifica cuando analizamos la selec La evolución de una población jerárquica bajo selección multinivel es equivalente a la inferencia bayesiana en modelos jerárquicos bayesianos.
-
-
-
+La complejidad actual de la vida es consecuencia de una serie de transiciones evolutivas en las que entidades capaces de replicarse de forma independiente, cediendo algo de valor a las otras, pasan a formar unidades evolutivas de nivel superior.
+Una condición preliminar crucial es la alineación de intereses y su persistencia en el tiempo.
+En este artículo mostramos que estas condiciones se cumplen siempre debido a la no-ergodicidad de los procesos multiplicativos a los que está sujeto la vida: la secuencia de probabilidades de superviencia y reproducción.
+En los procesos no-ergódicos, las fluctuaciones tienen un efecto negativo en la tasa de crecimiento individual a largo plazo, pero no en la tasa de crecimiento del valor esperado.
+Al compartir recursos, las estrategias cooperadoras reducen sus fluctuaciones, aumentando sus tasas de crecimiento a largo plazo.
+Si bien las estrategias que evitan compartir recursos pueden invadir por selección natural poblaciones enteramente cooperadoras, tal comportamiento aumenta al mismo tiempo sus fluctuaciones, afectando su propia tasa de crecimiento a largo plazo sin necesidad de introducir castigos.
+Utilizando la equivalencia entre la evolución de una población jerárquica bajo selección multinivel y la inferencia en modelos jerárquicos bayesianos, mostramos que las estrategias incondicionalmente cooperadoras, sin ser estas evolutivamente estables al interior de los grupos, se ven favorecidas evolutivamente a través de la selección grupal.
+La sinergia inherente a toda dinámica de reproducción y superviviencia junto con la selección multinivel de poblaciones cooperadoras, son el fundamento que explica la complejidad actual de la vida.
 \end{abstract}
 
 En el último tercio de la historia del Universo, en algún momento hace aproximadamente 4500 millones de años, apareció en la tierra una forma de organización de la materia capaz de auto-replicarse.
 El crecimiento de estos linajes siguieron procesos multiplicativos y ruidosos: secuencias de probabilidades de supervivencia y reproducción.
-Las mutaciones producidas durante la replicación diversificaron las formas de organización de la materia, y las diferentes tazas de superviencia favorecieron a aquellas mejor adaptadas al ambiente.
+Los errores producidos durante la replicación diversificaron las formas de organización de la materia, y las diferentes tasas de crecimiento favorecieron a aquellas mejor adaptadas al medio.
+Desde aquel momento hasta entonces la vida adquirió una extraordinaria complejidad~\cite{barOn2018-biomass}, consecuencia de una serie de transiciones evolutivas~\cite{maynardSmith1995-majorTransitions} en las que las entidades capaces de replicarse de forma independiente, cediendo algo de valor a las otras, pasan a formar unidades evolutivas de nivel superior.
+¿Cómo se explica esta tendencia permanente en favor de la agregación cooperativa?
+Una condición preliminar crucial para el desarrollo de las transiciones evolutivas es la alineación de intereses y su persistencia en el tiempo.
+En este trabajo mostramos que el proceso multiplicativo al que está sujeto la vida, al ser no-ergódico, ofrece una ventaja física a favor de las estrategias cooperativas, las que se ven favorecidas evolutivamente a través de la selección multinivel.
 
-Las diversas formas que fue adquiriendo la vida representa información que es capaz de interectuar con el medio y sobrevivir.
+Decimos que un proceso es ergódico si la media de los estados temporales del sistema (o de una transformación $f$ de ellos) es igual a la media de todos los posibles estados,
+\begin{equation}
+ \underbrace{\lim_{T \mapsto \infty} \int_0^T f(\omega(t)) \diff t}_{\text{Media temporal}}  = \underbrace{\int_{\Omega} f(\omega)p(\omega) \diff\omega}_{\text{Media de estados}}
+\end{equation}
+donde $\omega \in \Omega$ representa los estados del sistema, $\omega(t)$ el estado del sistema obtenido aleatoriamente en el tiempo $t$ y $p(\cdot)$ la distribución de probabilidad de los estados.
+Cuando un proceso es ergódicos, las descripciones de su dinámica pueden remplazarse mediante resúmenes probabilístico sencillos, eliminado el tiempo de los modelos.
+Sin embargo, las condiciones para que un sistema cumpla con la hipótesis de ergodicidad son muy restrictivas, más aún en el caso de los sistemas vivos que, regidos por procesos multiplicativos de reproducción y supervivencia, están fuera del equilibrio.
+Esta distinción es importante porque cuando un sistema es no-ergódicos, lo que le ocurre a los agentes individuales en el tiempo no coincide con la esperado según los posibles estados del sistema~\cite{peters2019-ergodicityEconomics}.
 
-A crucial preliminary condition is the alignment of interests: to undergo an evolutionary transition in individuality, organisms must exhibit cooperation, originating from genetic relatedness and/or synergistic fitness interactions [4].
+Para discutir las consecuencia de los procesos multiplicativos, consideremos el siguiente ejemplo.
+La naturaleza lanza una moneda: si sale cara la población crece un 50\%, si sale seca se reduce un 40\%.
+\begin{equation}
+\Delta x =
+\begin{cases}
+ +0.5x & \text{ \en{Head}\es{Cara} } \\
+ -0.4x & \text{ \en{Tail}\es{Seca} }
+\end{cases}
+\end{equation}
+Según el promedio de estados, el crecimiento esperado es de $\langle \Delta x \rangle = 0.05$. 
+Sin embargo, lo que efectivamente le ocurre a los agentes en el tiempo es muy diferente: a largo plazo todos pierden a una tasa de cercana de $-0.05$.
+El reconocimiento de la diferencia entre el promedio temporal y promedio de estados aparece en la literatura de evolución bajo los conceptos de media aritmética y geométrica~\cite{dempster1955-geometricMean}.
+La media geométrica es una buena aproximación de lo que le ocurre a la agentes individuales en el tiempo porque, como el propio crecimiento de la población, es intrínsecamente multiplicativa en lugar de aditiva.
+Por lo tanto, es muy sensible a los valores pequeños ocasionales.
+Si hay alguna variación, la media geométrica será menor que la media aritmética.
+Parafraseando a Den Boer~\cite{denBoer1968-spreadingRisk}, la  supervivencia de una población depende de la distribución del riesgo dentro de la población y entre las poblaciones de diferentes especies.
+Dado que la varianza realmente importa, una forma eficaz de reducirla es compartir los riesgos~\cite{yaari2010-cooperationEvolution, peters2015-evolutionaryAdvantageOfCooperation}.
+
+Ole Peters considera las consecuencias de la distribución de riesgo que tiene una estrategia cooperativa sencilla: cada agente tira su propia moneda, actualiza sus propios recursos, ofrece sus recursos a un fondo común que se divide en partes iguales.
+
+\begin{figure}[H]
+\centering
+\tikz{
+
+    \node[latent, minimum size=2cm ] (x1_0) {$x_1(t)$} ;
+    \node[latent, below=of x1_0, minimum size=2cm ] (x2_0) {$x_2(t)$} ;
+
+    \node[latent, right=of x1_0, minimum size=3cm ] (x1_0g) {$x_1(t)+\Delta x_1(t)$} ;
+    \node[latent, right=of x2_0, minimum size=1.8cm, xshift=0.6cm , align=left] (x2_0g) {$x_2(t)+$\\$\Delta x_2(t)$} ;
+    
+    \node[latent, right=of x1_0g, minimum size=3.8cm, yshift=-1.33cm, align=right] (x_0) {$x_1(t)+\Delta x_1(t)$\\$+x_2(t)+\Delta x_2(t)$ } ;
+    
+    \node[const, above=of x_0] (nx_0) {$\overbrace{\text{Pool}\hspace{2.5cm}\text{Share}}^{\text{\normalsize Cooperaci\'on}}$} ;
+    
+    \node[latent, right=of x1_0g, minimum size=2.5cm,  xshift=4.5cm] (x1_1) {$x_1(t+1)$ } ;
+    \node[latent, below=of x1_1, minimum size=2.5cm, yshift=0.7cm] (x2_1) {$x_2(t+1)$ } ;
+    
+    \edge {x1_0} {x1_0g};
+    \edge {x2_0} {x2_0g};
+    \edge {x1_0g,x2_0g} {x_0};
+    \edge {x_0} {x1_1,x2_1};
+    
+}
+\caption{Estrategia cooperativa. Dos agentes comienzan con los mismos recursos iniciales. Luego crecen independientemente de acuerdo con la ecuaci\'on \ref{}. Luego cooperan poniendo sus recursos en un fondo común, que finalmente es dividio en partes iguales.}
+\label{fig:protocolo}
+\end{figure}
+
+Las poblaciones enteramente cooperadoras, mediante la distribución del riesgo, logran reducir sus fluctuaciones, lo que genera una aumento en la tasa de crecimiento de todos sus miembros.
+En la figura \ref{fig:cpr_individual} mostramos el resultado de las trayectorias individuales en el tiempo, y en la figura \ref{fig:cpr_cooperation} mostramos la trayectoria de un agente cooperador.
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\linewidth]{figures/cpr_individual.pdf}
+    \caption{}
+    \label{fig:cpr_individual}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\linewidth]{figures/cpr_cooperation.pdf}
+    \caption{}
+    \label{fig:cpr_cooperation}
+    \end{subfigure}
+    \caption{
+    Tamaño logarítimico de los recursos en el tiempo.
+    En la figura \ref{fig:cpr_individual} los agentes juegan individualmente.
+    En la figura \ref{fig:cpr_cooperation} todos los agentes comparten su riqueza en cada iteración.
+    La recta negra que baja representa el promedio temporal, y la que sube el promedio de estados.
+    }
+    \label{fig:gamble}
+\end{figure}
+
+Mediante la cooperación los agentes logran acceder a tasas de crecimiento equivalentes al promedio de estados del sistema, que en los sistemas no-ergódicos es siempre superior que el promedio  temporal.
+
+Las estrategias cooperadoras no son evolutivamente estables.
+
+
 
 {\footnotesize
 \bibliographystyle{auxiliar/biblio/plos2015.bst}
