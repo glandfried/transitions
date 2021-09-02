@@ -353,6 +353,64 @@ Jorge Peña
     By far, the most well known PGG is the N-person prisoner’s dilemma (NPD). \cite{pena2012-phd}
 \end{quotation}
 
+\\
+
+Hofbauer and Sigmund 2003:
+\begin{quotation} \cite{hofbauer2003-evolutionaryGameDynamics}:
+    This survey focuses on the mathematical core of evolutionary game theory and concentrates on deterministic evolutionary game dynamics, a dynamics which describes how the frequencies of strategies within a population change in time, according to the strategies' success.
+    (...)
+    The payoffs depend on the actions of the coplayers and hence on the frequencies of the strategies within the population. Since these frequencies change according to the payoffs, this yields a feedback loop.
+    (...)
+    There are many ``game dynamics'', which can be discrete or continuous, stochastic or deterministic.
+    (...)
+    The replicator equation, which was introduced in [Taylor: Evolutionarily stable strategies and game dynamics] and baptised in [Schuster, Sigmund: Replicator dynamics],
+\end{quotation}
+
+
+\\
+
+Taylor 1978 presenta el primer replicator dynamic.
+Es el primero que produce una versión dinámica que aplica al tipo de estudios que surgioeron a partir de la metodología de Mynard Smith, relacionando la noción de equilibrio estable de esas dinámicas con la noción de ESS. 
+\begin{quotation} \cite{taylor1978-replicatorDynamic}
+    
+    Our main theorem is that under a non-degeneracy condition, an ESS is always stable for the continuous dynamic.
+    This is not however true for the discrete dynamic, essentially because of an overshoot phenomenon.
+    Finally we give an example of a dynamically stable equilibrium point which is not an ESS. 
+    
+    --
+    
+    We attempt to model the dynamics of the game both in the continuous case, with a system of non-linear first-order differential equations, and in the discrete case, with a system of non-linear difference equations.
+    Using this model, we look at the notions of stability and asymptotic behavior.
+    Our notion of stable equilibrium for the continuous dynamic includes, but is somewhat more general than, the notion of ESS.
+    
+    --
+    
+    Suppose we have a population of individuals who are playing a game in competition with one another.
+    There are $n$ possible pure strategies available, numbered $1$ to $n$, and at each instant, every individual is using one of these strategies.
+    For each strategy $i$ let $s_i$ be the proportion of individuals who are, at that moment, using strategy $i$.
+    The probability vector $s=(s_1,s_2,\dots,s_n)$ is called the \emph{state vector} of the population.
+    We assume that the payoff per unit time to an individual using strategy $i$ is a function $F(i|s)$ of the state $s$ of the population.
+    We refer to $F(i|s)$ as the fitness of $i$ in state $s$.
+
+    The basic idea is this: the more fit a strategy is at any moment, the more likely it is to be employed in the future. 
+    The mechanism behind this is either that individuals tend to switch to strategies that are doing well, or that individuals bear offspring who tend to use the same strategies as their parents, and the fitter the individual, the more numerous his offspring.
+    In any case, as time goes on, the strategy mix $s$ may change.
+    A dynamic game theory will look at how the state vector $s$ moves with time, and will look for equilibrium states and examine their stability. 
+    
+    --
+    
+    In order to discuss stability, we must now define a dynamic for the game. 
+    There are undoubtedly many ways to do this, each related to certain hypotheses about the population.
+    We will assume a population of haploid individuals, each using the same pure strategy throughout its lifetime, and producing offspring using the parent’s strategy. 
+    Then the change in the population's strategy is determined by the rate at which the users of each strategy reproduce.
+    The simplest hypothesis is that of exponential growth or decay. 
+    So let us denote by $n_i$ the number of $i$-strategists in the population and by $N=\sum n_i$ the total number of individuals.
+    Then the state of the population is $s=(s_i,\dots,s_n)$ where $s_i = n_i/N$ is the proportion of $i$-strategists, and $ \overset{.}{n} = r_in_i$, where $r$, is the current growth rate of $n_i$. 
+    
+    \todo[inline]{Seguir pag. 149}
+    
+\end{quotation}
+
 
 {\footnotesize
 \bibliographystyle{auxiliar/biblio/plos2015.bst}
