@@ -266,7 +266,6 @@ e, g = bayesian_inference_process(T=100,intercalar=true)
 plot(transpose(e))
 plot(transpose(g))
 
-
 ###################
 # Relative Level 1 (interior del grupo)
 
@@ -362,64 +361,5 @@ plot!(transpose(dilema(10,2,c=25)[(end-1):end,:]),legend=false, color="red")
 savefig(p, "cpr_prisioner_dilema_highcost.pdf") 
 savefig(p, "cpr_prisioner_dilema_highcost.png") 
 
-
-
-
-#####################################
-# Simulacion pescadores
-
-function ontogeneticGrowth(t, m0=0.0, a=0.08, M = 1000.1)
-    return (1 - (1 - ( (m0/M)^(1/4) ))*exp(-(a*t)/(4*M^(1/4))))^4
-end
-
-function universalCurve(tau)
-    return 1-exp(-tau)
-end
-
-plot(universalCurve.(0.0:0.001:5.0))
-
-#plot(ontogeneticGrowth.(1:2000),legend=false)
-
-function sigmoidea(t; beta=0.1, alpha=50)
-    return 1/(1+exp(beta*(-t+alpha)))
-end
-
-function age(m0, M, beta=0.1, alpha=50.0 )
-    return alpha - log( (M/m0) - 1 )*10
-end
-
-poblaciones = []
-
-for explotacion in 1:100
-    poblacion = [1000.0,990.0]
-    tot = 1000.0
-    while (abs(poblacion[end]-poblacion[end-1]) > 0.01) 
-        pop = poblacion[end]-explotacion 
-        if pop >= 0.0
-            pop = sigmoidea(age(pop,tot)+1)*tot
-        else
-            pop = 0.0
-        end
-        push!(poblacion , pop)
-    end
-    push!(poblaciones,poblacion)
-end
-
-maximum([length(p) for p in poblaciones])
-sum([p[end] for p in poblaciones].>0.0)
-poblaciones[20]
-
-
-h=game(50,0,500,9)
-plot(sigmoidea.(h[1,:]))
-h=game(50,1,500,9)
-plot!(sigmoidea.(h[1,:]))
-h=game(50,2,500,9)
-plot!(sigmoidea.(h[1,:]))
-
-
-# Concluisones
-# Si son 5 y sacan 5 cada uno, sacan infinita cantidad de peces en el tiempo
-# Si uno empieza a sacar 6, sacan 277*6
 
 

@@ -48,45 +48,39 @@ La fuente de validez universal se fundamenta en la maximización de la incertidu
 ¿Se puede extender este principio para casos en los cuales tenemos información?
 
 Actualmente, la teoría de la probabilidad es el enfoque más utilizado para representar incertidumbre asociada al conocimiento empírico.
-Sus reglas han sido derivadas formalmente a partir de una gran cantidad de sistemas axiomáticos conceptualmente distintos e independientes entre sí, lo cual es ya un punto fuerte a su favor.
+Sus reglas han sido derivadas formalmente a partir de una gran cantidad de sistemas axiomáticos conceptualmente distintos e independientes entre sí, lo cual es uno de los punto fuertes a su favor.
 %La física estadística desarrolló una metodología para determinar las propiedades termodinámica de los sistemas que actúa maximizando la incertidumbre respetando las restricciones impuestas por la evidencia empírica (datos) o formal (modelos).
-En cualquier caso, la aplicación estricta de las reglas de la probabilidad grantiza maximizar la incertidumbre dentro de las restricciones impuestas por la información empírica (datos) y la información formal (modelos).
-El concepto de honestidad, definido como maximización de la incertidumbre dada la evidencia empírica y formal, es un principio de validez intercultural que permite alcanzar los acuerdos intersubjetivos que las esto proposiciones de las ciencias empíricas valgan para todas las personas.
+Quizás más importante sea que la aplicación estricta de las reglas de la probabilidad garantiza maximizar la incertidumbre dentro de las restricciones dadas por la información empírica (datos) y formal (modelos causales).
+El concepto de honestidad, definido como maximización de la incertidumbre dada la evidencia empírica y formal, es un principio de validez intercultural que permite alcanzar los acuerdos intersubjetivos para que las proposiciones de las ciencias empíricas valgan para todas las personas.
 El tiempo dirá si se pueden se pueden desarrollar enfoques superadores, que incorporen otras dimensiones importantes para la vida.
 
 \section{Evolución}
 
-En 1973 Mynard Smith y Price proponen el concepto de EES.
-Taylor 1978 introduce el replicator dynamic, una método para modelar la dinámica de juego continuos y discretos mediante sistemas de ecuaciones diferenciales de primer orden no lineales.
-Los equilibrios estables para la dinámica continua incluye, pero es algo más general que la noción de ESS.
+Existen numerosas descripciones matemáticas de la evolución, esto es dinámicas que describen cómo las frecuencias de las estrategias dentro de una población cambian en el tiempo en base al éxito de las estrategias \cite{hofbauer2003-evolutionaryGameDynamics}.
+Hay muchas ``dinámicas de juego'', que pueden ser discretas o continuas, estocásticas o deterministas.
+%Si bien los enfoques estocásticos que incluyen los efectos del tamaño de la población finita son siempre más realistas, se ha optado en general por análisis determinísticos continuos.
+Sin embargo, es posible mostrar que formulaciones aparentemente muy diferentes forman parte de un único modelo \cite{taylor1978-replicatorDynamic, schuster1983-replicatorDynamics}.
 
-Traducción realizada con la versión gratuita del traductor www.DeepL.com/Translator
+La idea básica es la siguiente: cuanto más apta es una estrategia en un momento dado, más probable es que se emplee en el futuro.
+El mecanismo que subyace es que los individuos tienden a cambiar a las estrategias que les van bien, o que los individuos tienen una descendencia que tiende a utilizar las mismas estrategias que sus padres, y cuanto más apto es el individuo, más numerosa es su descendencia.
 
+Supongamos una población de individuos haploides, cada uno de los cuales utiliza la misma estrategia pura a lo largo de su vida, y produce una descendencia que utiliza la estrategia de los padres, y sea $x_i$ la proporción de la estrategia $i$ en la población.
+Entonces, el cambio en la distribución de estraegias en la población $x = (x_1 , \dots , x_n)$ está determinado por el ritmo de reproducción de los individuos de cada estrategia.
 
+La hipótesis más sencilla es la del crecimiento exponencial.
+Supongamos que la aptitud $f_i(x)$ de una estrategia es una estimación de la tasa de crecimiento $r_i$.
+La proporción de la estrategia $i$ en la población en el siguiente paso es,    
+\begin{equation}
+x_i^\prime = \frac{x_i f_i(x)}{\overline{f}(x)}
+\end{equation}
+donde $\overline{f}(x)=\sum x_i f_i(x)$.
+Una teoría de juegos dinámica observará cómo se mueve el vector de estado $x$ con el tiempo, y buscará estados de equilibrio y examinará su estabilidad.
 
+\section{Estimación de la tasa de crecimiento}
 
-
-the replicator equation is a deterministic monotone non-linear and non-innovative game dynamic used in evolutionary game theory
-
-
-
-
-Since the replicator equation is non-linear, an exact solution is difficult to obtain (even in simple versions of the continuous form) so the equation is usually analyzed in terms of stability
-
-
-
-el cual se ha mostrado ser equivalente tanto a 
-
-the already
-known equivalence between univariate Bayesian update and single-level replicator dynamics [11,12]
-and (ii) a possible correspondence between properties of a hierarchical population composition and
-multivariate probability theory.
-
-
-
-
-Una condición preliminar crucial para el desarrollo de las transiciones evolutivas es la alineación de intereses y su persistencia en el tiempo.
-En este trabajo mostramos que el proceso multiplicativo al que está sujeto la vida, al ser no-ergódico, ofrece una ventaja física a favor de las estrategias cooperativas, las que se ven favorecidas evolutivamente a través de la selección multinivel.
+Quien propuso el replicator dynamic definió la aptitud $f_i(x)$ de una estrategia como la estimación de la tasa de crecimiento $r_i$.
+Una estimación de este tipo requiere considerar explícitamente el hecho la naturaleza del sistema que está analizando. 
+Los sistemas evolutivos, como los definidos a través del replicator dynamic, son proceso no-ergódicos.
 
 Decimos que un proceso es ergódico si la media de los estados temporales del sistema (o de una transformación $f$ de ellos) es igual a la media de todos los posibles estados,
 \begin{equation}
@@ -97,7 +91,7 @@ Cuando un proceso es ergódicos, las descripciones de su dinámica pueden rempla
 Sin embargo, las condiciones para que un sistema cumpla con la hipótesis de ergodicidad son muy restrictivas, más aún en el caso de los sistemas vivos que, regidos por procesos multiplicativos de reproducción y supervivencia, están fuera del equilibrio.
 Esta distinción es importante porque cuando un sistema es no-ergódicos, lo que le ocurre a los agentes individuales en el tiempo no coincide con la esperado según los posibles estados del sistema~\cite{peters2019-ergodicityEconomics}.
 
-Para discutir las consecuencia de los procesos multiplicativos, consideremos el siguiente ejemplo.
+Para discutir las consecuencia de los procesos multiplicativos sobre la estimación de la tasa de crecimiento, consideremos el siguiente ejemplo.
 La naturaleza lanza una moneda: si sale cara la población crece un 50\%, si sale seca se reduce un 40\%.
 \begin{equation}
 \Delta x =
@@ -106,16 +100,36 @@ La naturaleza lanza una moneda: si sale cara la población crece un 50\%, si sal
  -0.4x & \text{ \en{Tail}\es{Seca} }
 \end{cases}
 \end{equation}
+¿Cuál es la tasa de crecimiento estimada?
 Según el promedio de estados, el crecimiento esperado es de $\langle \Delta x \rangle = 0.05$. 
 Sin embargo, lo que efectivamente le ocurre a los agentes en el tiempo es muy diferente: a largo plazo todos pierden a una tasa de cercana de $-0.05$.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\linewidth]{figures/cpr_individual.pdf}
+    \end{subfigure}
+    \caption{
+    Tamaño logarítimico de los recursos individuales en el tiempo.
+    Se puede observar una tasa de crecimiento negativa.
+    La recta negra que baja representa el promedio temporal, y la que sube el promedio de estados.
+    }
+    \label{fig:cpr_individual}
+\end{figure}
+
 El reconocimiento de la diferencia entre el promedio temporal y promedio de estados aparece en la literatura de evolución bajo los conceptos de media aritmética y geométrica~\cite{dempster1955-geometricMean}.
 La media geométrica es una buena aproximación de lo que le ocurre a la agentes individuales en el tiempo porque, como el propio crecimiento de la población, es intrínsecamente multiplicativa en lugar de aditiva.
 Por lo tanto, es muy sensible a los valores pequeños ocasionales.
 Si hay alguna variación, la media geométrica será menor que la media aritmética.
-Parafraseando a Den Boer~\cite{denBoer1968-spreadingRisk}, la  supervivencia de una población depende de la distribución del riesgo dentro de la población y entre las poblaciones de diferentes especies.
-Dado que la varianza realmente importa, una forma eficaz de reducirla es compartir los riesgos~\cite{yaari2010-cooperationEvolution, peters2015-evolutionaryAdvantageOfCooperation}.
+En nuestro caso la media geométrica es $\sqrt{1.5 0.6} \approx 0.95$, lo que coincide con las tasas de crecimiento observadas en la figura \ref{fig:cpr_individual}
 
-Ole Peters considera las consecuencias de la distribución de riesgo que tiene una estrategia cooperativa sencilla: cada agente tira su propia moneda, actualiza sus propios recursos, ofrece sus recursos a un fondo común que se divide en partes iguales.
+\section{Cooperacion}
+
+En los procesos no-ergódicos, las fluctuaciones tienen un efecto negativo en la tasa de crecimiento individual a largo plazo, pero no en la tasa de crecimiento del valor esperado.
+Dado que la varianza realmente importa, una forma eficaz de reducirla es compartir los riesgos~\cite{yaari2010-cooperationEvolution, peters2015-evolutionaryAdvantageOfCooperation}.
+Parafraseando a Den Boer~\cite{denBoer1968-spreadingRisk}, la  supervivencia de una población depende de la distribución del riesgo dentro de la población y entre las poblaciones de diferentes especies.
+
+Ole Peters~\cite{peters2015-evolutionaryAdvantageOfCooperation} considera las consecuencias de la distribución de riesgo que tiene una estrategia cooperativa sencilla: cada agente tira su propia moneda, actualiza sus propios recursos, ofrece sus recursos a un fondo común que se divide en partes iguales.
 
 \begin{figure}[H]
 \centering
@@ -149,28 +163,46 @@ En la figura \ref{fig:cpr_individual} mostramos el resultado de las trayectorias
 \begin{figure}[ht!]
     \centering
     \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\linewidth]{figures/cpr_individual.pdf}
-    \caption{}
-    \label{fig:cpr_individual}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.45\textwidth}
     \includegraphics[width=\linewidth]{figures/cpr_cooperation.pdf}
     \caption{}
     \label{fig:cpr_cooperation}
     \end{subfigure}
     \caption{
-    Tamaño logarítimico de los recursos en el tiempo.
-    En la figura \ref{fig:cpr_individual} los agentes juegan individualmente.
-    En la figura \ref{fig:cpr_cooperation} todos los agentes comparten su riqueza en cada iteración.
+    Tamaño logarítimico de los recursos de agentes que comparten su riqueza luego de cada iteración.
     La recta negra que baja representa el promedio temporal, y la que sube el promedio de estados.
     }
-    \label{fig:gamble}
+    \label{fig:cpr_cooperation}
 \end{figure}
 
 Mediante la cooperación los agentes logran acceder a tasas de crecimiento equivalentes al promedio de estados del sistema, que en los sistemas no-ergódicos es siempre superior que el promedio  temporal.
 
-Las estrategias cooperadoras no son evolutivamente estables.
+\section{Estabilidad}
 
+Ole Peters propone que la naturaleza no-ergódica de los procesos evolutivos sería la princnipal explicación de las trasiciones evolutivas observadas en la historia de la vida, pues en ellos existe una ventaja física a favor de las estrategias cooperativas.
+Por un lado, al compartir recursos, las estrategias cooperadoras reducen sus fluctuaciones, aumentando sus tasas de crecimiento a largo plazo.
+Además, las estrategias que evitan compartir recursos aumenta al mismo tiempo sus propias fluctuaciones, afectando su propia tasa de crecimiento a largo plazo sin necesidad de introducir castigos.
+
+Veamos cuales es las tasas de crecimiento de las estrategias cooperadora y desertora en una población de sólo dos miembros.
+
+\begin{equation}
+    \bordermatrix{ & C & D \cr
+      C & 0.999 & 0.47 \cr
+      D & 0.950 & 0 0.948 } 
+\end{equation}
+
+Las estrategias cooperadoras no son evolutivamente estables al interior de los grupos.
+
+\section{Selección multinivel}
+
+Las estrategias cooperadoras no son evolutivamente estables al interior de los grupos.
+
+las que se ven favorecidas evolutivamente a través de la selección multinivel.
+
+
+Una condición preliminar crucial para el desarrollo de las transiciones evolutivas es la alineación de intereses y su persistencia en el tiempo.
+El proceso multiplicativo al que está sujeto la vida, al ser no-ergódico, ofrece una ventaja física a favor de las estrategias cooperativas, las que se ven favorecidas evolutivamente a través de la selección multinivel.
+
+\section{Conclusiones}
 
 
 {\footnotesize

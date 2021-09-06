@@ -397,7 +397,7 @@ Es el primero que produce una versión dinámica que aplica al tipo de estudios 
     In any case, as time goes on, the strategy mix $s$ may change.
     A dynamic game theory will look at how the state vector $s$ moves with time, and will look for equilibrium states and examine their stability. 
     
-    --
+    Let us define $F(q|s) = \sum s_i F(i|s)$.
     
     In order to discuss stability, we must now define a dynamic for the game. 
     There are undoubtedly many ways to do this, each related to certain hypotheses about the population.
@@ -405,11 +405,133 @@ Es el primero que produce una versión dinámica que aplica al tipo de estudios 
     Then the change in the population's strategy is determined by the rate at which the users of each strategy reproduce.
     The simplest hypothesis is that of exponential growth or decay. 
     So let us denote by $n_i$ the number of $i$-strategists in the population and by $N=\sum n_i$ the total number of individuals.
-    Then the state of the population is $s=(s_i,\dots,s_n)$ where $s_i = n_i/N$ is the proportion of $i$-strategists, and $ \overset{.}{n} = r_in_i$, where $r$, is the current growth rate of $n_i$. 
+    Then the state of the population is $s=(s_i,\dots,s_n)$ where $s_i = n_i/N$ is the proportion of $i$-strategists, and $ \overset{.}{n} = r_i n_i$, where $r$, is the current growth rate of $n_i$. 
+    It follows that $ \overset{.}{N} = \overline{r}_i N$, where $\overline{r} = \sum s_i r_i$ is the average growth rate.
+    If we differentiatem $s_i = n_i/ N$, we get $s_i = s_i (r_i - \overline{r})$
     
-    \todo[inline]{Seguir pag. 149}
+    To put this into our game framework, let us suppose that the fitness $F(i|s)$ of a strategy is an estimate of the growth rate $r_i$.
+    In terms of our reproductive model, this means we must choose our fitnesses so that in time $\Delta t$ each individual gives rise to $F(i|s) \Delta t$ additional individuals.
+    Then our dynamic equation becomes
+    
+    \begin{equation}
+     \overset{.}{s_i} = s_i (F(i|s) - \overbrace{\sum s_i F(i|s)}^{F(s|s)} )
+    \end{equation}
+    
+    Letting $\hat{n}_i $ denote the new value of $n_i$, we have the difference equation $\hat{n}_i = n_i (r_i + 1)$.
+    
+    [Sin terminar, p 149]
+    
     
 \end{quotation}
+
+\\
+
+Sigmund junto a Schuster, publican en 1983
+\begin{quotation} \cite{schuster1983-replicatorDynamics}
+    Thus we see that essentially one type of equation models the evolution (1) of allele frequencies in a gene pool (2) of population densities in a habitat (3) of concentrations of polynucleotides in a flow reactor and (4) of probabilities of strategies for conflicts within one species.
+    Let us emphasize that this result has not been obtained through a mathematicians desire to apply a pretty equation to as many fields as possible: the modelling leading to equations (1)-(4) proceeded independently in genetics, ecology, prebiotic chemistry and sociobiology.
+    It is natural now to subsume the entities in the four models under a common heading: and Dawkins term of ``replicator'' seems just right.
+    
+    Let us subsume all these models under a common dynamics. We shall use the term ``replicator equation'' for differential equations of the type.
+    
+    \begin{equation}
+    \ovserset{.}{x_i} = x_i (F_i(x_1, \dots, x_n) - \fraq{\phi}{c})
+    \end{equation}
+    
+    where $c=\sum x_i$, the term $\phi = \sum x_i F_i$ ensures that $c$ is invariant (``state variables'' $(x_1, \dots, x_n)$ ).
+    If the ``interaction term'' $F_i$ are homogeneous there is no loss in generality in assuming $c = 1$.
+    If the $F_i$ are polynomials of degree $k$, we say that equation is a replicator equation of order k.
+    The order is a measure for the complexity of the interactions between replicators.
+    At order zero, the problem reduces to a simple optimization while higher orders yield frequency dependent selection taking kinetic, strategic or genetic features into account.
+    
+    Equation (5), then, is flexible enough to cover a great deal of evolution models, suggesting a unifying view of replicator selection from the primordial soup up to animal societies.
+    Additional features to selective reproduction, like mutation or recombination, require modifications of this general framework, of course.
+    
+\end{quotation}
+
+\\
+
+
+\begin{quotation} \cite{harper2009-replicatorAsInference}:
+    Let $x_i$ be the proportion of the population of the $i$-th type and denote the population distribution $x = (x_1 , \dots , x_n)$.
+    The discrete replicator dynamic is:
+    
+    \begin{equation}
+    x_i\prime = \fraq{x_i f_i(x)}{\overline{f}(x)}
+    \end{equation}
+    
+    [With $\sum x_i = 1$, $f_i(x)$ the fitness of type $i$, $f=(f_i, \dots, f_n)$ the fitness landscape, $\overline{f}(x)=\sum x_i f_i(x)$ the average fitness, and $x_i\prime$ the frequency of type $i$ in the next generation.]
+    
+    A population of a particular distribution obtains information about the environment from the fitness landscape.
+
+    Bayesian inference is a special case, formally, of the discrete replicator dynamic, since the fitness landscape in each coordinate may depend on the entire population distribution rather than only on the proportion of the i-type.
+    
+    A continuous version of the replicator equation is widely used and as a differential equation has more tractable tools for analysis.
+    
+    \begin{equation}
+     \ovserset{.}{x_i} = \lim_{h \rightarrow 0} \fraq{x_i(t+h) - x_i{t}}{h} \approx x_i\prime - x_i = x_i \fraq{f_i(x)}{\overline{f}(x) - x_i} = x_i \fraq{f_i(x) - \overline{f}(x)}{\overline{f}(x)}
+    \end{equation}
+    
+    is equivalent to the following equation after a change in velocity because $\overline{f}(x)$ can be assumed to be strictly positive:
+    
+    \begin{equation}
+    \ovserset{.}{x_i} = x_i (f_i(x) - \overline{f}(x))
+    \end{equation}
+    
+    This description, in light of the relationship to inference, identifies the replicator dynamic as a continuous inference process.
+    
+    A distribution $\hat{x}$ on the simplex is called an evolutionarily stable state of the replicator dynamic if $\hat{x} \cdot f(x) > x \cdot f(x)$ (in some neighborhood of $\hat{x}$).
+    
+    The concept of exponential families gives formal solutions
+    to the continuous replicator dynamic.
+    Natural selection acts to fit the available niches in a fitness landscape, arriving at the maximal entropy distribution allowed by the constraints of the landscape. In the absence of variation within the fitness landscape, the replicator dynamic is stable.
+    
+    The connections between inference and evolutionary game theory are not just formal coincidence. Information geometry explains the commonality.
+    In information geometry, the replicator equation is known as the \emph{natural gradient}.
+    The gradient flow of the Fisher information metric is the replicator equation.
+    The replicator equation can now be understood as modeling the informational dynamics of the population distribution, moving in the direction of maximal local increase of potential with respect to the Fisher information, and ultimately converging to a minimal potential information state if a stablizing state (ESS) exists in the interior of the state space.
+    
+\end{quotation}
+
+\\
+
+
+Nowak and Page:
+\begin{quotation}
+\cite{page2002-unifyingEvolutionaryDynamics}
+    There are numerous mathematical descriptions of the resulting evolutionary dynamics.
+    In this paper, we show that apparently very different formulations are part of a single unified framework.
+    We will now show that the replicator-dynamical is equivalent to the Price equation, while the replicator-mutator dynamic is equivalent to an expanded Price equation.
+    
+    \\
+    
+    We do not consider stochastic, spatial or individual-based approaches, which are mathematically more diverse and hence less amenable to any attempt of unification.
+    Obviously, stochastic approaches that include finite population size effects are always more realistic.
+    
+    \\
+    
+    The quasispecies equation (1) lacks frequency-dependent selection, while the replicator equation (2) lacks mutation.
+    Combining these two equations we obtain the ``replicator–mutator equation''
+    
+    \begin{equation}
+        \ovserset{.}{x}_i = \sum^n_{j=1} x_j f_j(x) q_ji - x_i \overline{f}  
+    \end{equation}
+    
+    Replication is error-prone; the probability that replication of sequence $i$ gives rise to sequence $j$ is given by $q_ij$.
+    These quantities describe the mutation matrix $Q$.
+    [With no mutation, this equation reduces to the replicator dynamic.]
+    
+    For continuous time, the Price equation is of the form (Price, 1972)
+    
+    \begin{equation}
+    \overset{.}{E}(p) = \text{Cov}(f,p) + E(\overset{.}{p})
+    \end{equation}
+    
+    The numerical value of an arbitrary trait of individual $i$ is given by $p_i$. The population average of this trait is given by $\overline{p} = E(p) = \sum p_i x_i$.
+    The covariance of trait $p$ and fitness $f$ is given by $\text{Cov}(f,p)=\sum x_i f_i p_i - \overline{f}\overline{p}$.
+    
+\end{quotation}
+
 
 
 {\footnotesize
