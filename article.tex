@@ -35,25 +35,6 @@ Algunos ejemplos paradigmáticos son la transición de las moléculas replicante
 Finalmente, la establidad de la biocenosis de los ecosistemas se sostiene por una red compleja de interdependencias entre especies.
 ¿Cómo se explica esta tendencia permanente de la vida en favor de la agregación cooperativa?
 
-\section{Conocimiento empírico}
-
-La ciencia es una institución humana que tiene pretención de verdad, esto es de formular proposiciones que valgan para todas las personas, tanto intercultural como intersubjetivamente.
-Las ciencias formales validan sus proposiciones mediante teoremas, resultados derivados de aplicar las reglas internas a un sistema axiomático cerrado.
-Las ciencias empíricas, en cambio, deben validar sus proposiciones dentro de sistemas abiertos, lo que introduce siempre un grado de incertidumbre asociada.
-¿Cuál es entonces la fuente de validez universal del conocimiento empírico?
-
-Existe un principio epistemológico con validez intercultural, conocido como el \emph{principio de indiferencia}, afirma que si ante un espacio de hipótesis común llegamos a un acuerdo respecto de que no tenemos información previa, entonces estaremos de acuerdo en distribuir la creencia (aka incertidumbre) en partes iguales.
-Esta distribución de creencias, que permite el acuerdo intersubjetivo, la vamos a llamar creencia honesta.
-La fuente de validez universal se fundamenta en la maximización de la incertidumbre.
-¿Se puede extender este principio para casos en los cuales tenemos información?
-
-Actualmente, la teoría de la probabilidad es el enfoque más utilizado para representar incertidumbre asociada al conocimiento empírico.
-Sus reglas han sido derivadas formalmente a partir de una gran cantidad de sistemas axiomáticos conceptualmente distintos e independientes entre sí, lo cual es uno de los punto fuertes a su favor.
-%La física estadística desarrolló una metodología para determinar las propiedades termodinámica de los sistemas que actúa maximizando la incertidumbre respetando las restricciones impuestas por la evidencia empírica (datos) o formal (modelos).
-Quizás más importante sea que la aplicación estricta de las reglas de la probabilidad garantiza maximizar la incertidumbre dentro de las restricciones dadas por la información empírica (datos) y formal (modelos causales).
-El concepto de honestidad, definido como maximización de la incertidumbre dada la evidencia empírica y formal, es un principio de validez intercultural que permite alcanzar los acuerdos intersubjetivos para que las proposiciones de las ciencias empíricas valgan para todas las personas.
-El tiempo dirá si se pueden se pueden desarrollar enfoques superadores, que incorporen otras dimensiones importantes para la vida.
-
 \section{Evolución}
 
 Existen numerosas descripciones matemáticas de la evolución, esto es dinámicas que describen cómo las frecuencias de las estrategias dentro de una población cambian en el tiempo en base al éxito de las estrategias \cite{hofbauer2003-evolutionaryGameDynamics}.
@@ -121,7 +102,7 @@ El reconocimiento de la diferencia entre el promedio temporal y promedio de esta
 La media geométrica es una buena aproximación de lo que le ocurre a la agentes individuales en el tiempo porque, como el propio crecimiento de la población, es intrínsecamente multiplicativa en lugar de aditiva.
 Por lo tanto, es muy sensible a los valores pequeños ocasionales.
 Si hay alguna variación, la media geométrica será menor que la media aritmética.
-En nuestro caso la media geométrica es $\sqrt{1.5 0.6} \approx 0.95$, lo que coincide con las tasas de crecimiento observadas en la figura \ref{fig:cpr_individual}
+En nuestro caso la media geométrica es $\sqrt{1.5 \cdot 0.6} \approx 0.95$, lo que coincide con las tasas de crecimiento observadas en la figura \ref{fig:cpr_individual}
 
 \section{Cooperacion}
 
@@ -168,43 +149,212 @@ En la figura \ref{fig:cpr_individual} mostramos el resultado de las trayectorias
     \label{fig:cpr_cooperation}
     \end{subfigure}
     \caption{
-    Tamaño logarítimico de los recursos de agentes que comparten su riqueza luego de cada iteración.
+    Tamaño logarítimico de los recursos de un individuo de una población con 33 agentes que comparten su riqueza luego de cada iteración.
     La recta negra que baja representa el promedio temporal, y la que sube el promedio de estados.
     }
     \label{fig:cpr_cooperation}
 \end{figure}
 
-Mediante la cooperación los agentes logran acceder a tasas de crecimiento equivalentes al promedio de estados del sistema, que en los sistemas no-ergódicos es siempre superior que el promedio  temporal.
+Mediante la cooperación, los agentes logran acceder a tasas de crecimiento equivalentes al promedio de estados del sistema, que en los sistemas no-ergódicos es siempre superior que el promedio  temporal.
 
 \section{Estabilidad}
 
-Ole Peters propone que la naturaleza no-ergódica de los procesos evolutivos sería la princnipal explicación de las trasiciones evolutivas observadas en la historia de la vida, pues en ellos existe una ventaja física a favor de las estrategias cooperativas.
-Por un lado, al compartir recursos, las estrategias cooperadoras reducen sus fluctuaciones, aumentando sus tasas de crecimiento a largo plazo.
-Además, las estrategias que evitan compartir recursos aumenta al mismo tiempo sus propias fluctuaciones, afectando su propia tasa de crecimiento a largo plazo sin necesidad de introducir castigos.
+Según Ole Peters, la naturaleza no-ergódica de los procesos evolutivos sería la principal explicación de las transiciones evolutivas observadas en la historia de la vida.
+Si bien Ole Peters muestra que al compartir recursos, las estrategias cooperadoras reducen sus fluctuaciones, aumentando sus tasas de crecimiento a largo plazo, no analiza el problema de los free-riders.
+Esto no es resuelto por Ole Peters, quien dice, ``Our cooperators are unable to break the cooperative pact''.
 
-Veamos cuales es las tasas de crecimiento de las estrategias cooperadora y desertora en una población de sólo dos miembros.
+Para discutir este punto en detalle, analizamos las tasas de crecimiento de las estrategias cooperadora y desertora cuando se encuentran de a pares.
+Las tasas de crecimiento temporal estimada son:
 
 \begin{equation}
-    \bordermatrix{ & C & D \cr
-      C & 0.999 & 0.47 \cr
-      D & 0.950 & 0 0.948 } 
+   r(\cdot,\cdot) = \bordermatrix{ & C & D \cr
+      C & \approx 1.0 & \approx 0.47 \cr
+      D & \approx 0.95 & \approx 0.95 } 
 \end{equation}
 
-Las estrategias cooperadoras no son evolutivamente estables al interior de los grupos.
+Las estrategias desertoras, al evitar compartir sus recursos generan un aumento en sus propias fluctuaciones, afectando su tasa de crecimiento a largo plazo sin necesidad de introducir castigos.
+Un agente que ``decide'' desertar unilateralmente va a ver reducida su tasa de crecimiento de $r(C,C) = 1.0$ a $ r(D,C) = 0.95$, lo cual apoyar la idea de Ole Peters de que la cooperación no es altruista sino que está impulsada por el interés personal.
+Sin embargo, los agentes evolutivos no deciden como los agentes económicos, su frecuencia cambia en base a tasa de diferencial de crecimiento.
+Por más que la mutua cooperación sea mejor en términos absolutos que la deserción unilateral ($r(C,C) = 1.0 > 0.95 = r(D,C)$), un mutante desertor invadirá evolutivamente la población debido a que su tasa de crecimiento es mayor a la de la tasa del cooperador ($r(D,C) = 0.95 > 0.47 = r(C,D)$).
+Esto quiere decir que las estrategias cooperadoras no son evolutivamentes estables al interior de las poblaciones  \footnote{La estructura de pagos coinicide con la matriz de pagos del Stag-Hunt. Los análisis sobre la estabilidad en este tipo de juego llegan en general a la conclusión de que tanto las poblaciones enteramente cooperadoras como las enteramente desertoras son estrategias evolutivamente estables. Esto conclusión que difiere con nuestro resultado es consecuencia de los supuesto utilizados, dinámicas aditivas y poblaciones infinitas, los cuales son rechazados en este trabajo por supuestos más simples basados en procesos multiplicativos ruidosos y poblaciones finitas.}.
+Ole Peters no provée entonces una respuesta que explique por qué las estrategias cooperadoras son favorecidas en términos evolutivos.
 
 \section{Selección multinivel}
 
-Las estrategias cooperadoras no son evolutivamente estables al interior de los grupos.
+Aquí mostramos, basándonos en resultados anteriores que conectan el replicator dynamic y la inferencia bayesiana \cite{}, que si bien las estrategias cooperadoras no son evolutivamente estables al interior de los grupos, estas se ven favorecidas evolutivamente a través de la selección multinivel.
 
-las que se ven favorecidas evolutivamente a través de la selección multinivel.
+Actualmente, la teoría de la probabilidad es el enfoque más utilizado para representar incertidumbre asociada al conocimiento empírico.
+Sus reglas han sido derivadas formalmente a partir de una gran cantidad de sistemas axiomáticos conceptualmente distintos e independientes entre sí~\cite{halpern2017-RAU2}, lo cual es uno de los punto fuertes a su favor.
+Pero quizás más importante sea que su aplicación estricta garantiza maximizar la incertidumbre dada la información empírica (datos) y formal (modelos causales)~\cite{jaynes2003}.
+Esta propiedad es la base del concepto de ``honestidad'', sobre el que se basa la validación intersubjetiva de las proposiciones de las ciencias empíricas~\cite{landfried2021-conocimientoEmpirico}.
 
+Según Szathm\'ary, co-autor del concepto de transiciones evolutivas \cite{szathmary1995-evolutionaryTransitions, szathmary2015-evolutionaryTransitions}, la evolución de una población jerárquica bajo selección multinivel es equivalente a la inferencia bayesiana en modelos jerárquicos bayesianos y las transiciones evolutivas en la individualidad, impulsadas por interacciones sinérgicas de aptitud, son equivalentes al aprendizaje de la estructura de los modelos jerárquicos a través de la comparación bayesiana de modelos~\cite{czegel2019-bayesianEvolution}.
+
+Con la idea de analizar los efetos de la selección multinivel, traduicimos el modelo de Ole Peters a una distirbución de probabilidad jerárquica, la cual describiremos en términos gráficos y analizaremos utilizando solamente las reglas de la probabilidad.
+
+Para introducir la idea comenzaremos con un primer escenario donde sólo consideramos estrategias individuales.
+
+\begin{figure}[H]
+\centering
+\tikz{
+    \node[latent] (e) {$e$};
+    \node[const, right=of e] (en) {\ $p(e)=\text{Beta}(\alpha,\beta)$};
+    \node[const, left=of e] (ne) {Estrategias: \ \ \ };
+    
+    
+    \node[latent, below=of e] (r) {$r$};
+    \node[const, right=of r] (rn) {$P(r|e) = \text{Binomial}(n,e)$};
+    \node[const, left=of r] (nr) {Aptitud: \ \ \ };
+    
+    \edge {e} {r};
+    }
+\caption{}
+\label{fig:modelo_beta_binomial}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\linewidth]{figures/coin1.pdf}
+    \caption{T = 0}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\linewidth]{figures/coin2.pdf}
+    \caption{T = 10}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\linewidth]{figures/coin3.pdf}
+    \caption{T = 10^7}
+    \end{subfigure}
+    \caption{}
+    \label{fig:estrategias_individuales}
+\end{figure}
+
+Si el ambiente no cambia, no hay ninguna ventaja a favor de la cooperación.
+Las estrategias individuales que se adaptaron al ambiente, como las grupos cooperativos, tienen misma tasa de crecimiento temporal.
+Si a eso le agregamos un costo por la coordinación cooperativa, entonces hay una ventaja a favor de las estrategias individuales.
+
+La cooperación se ve favorecida cuando el ambiente cambia bruscamente, a una velocidad que impide a las estrategias individuales adaptarse lentamente.
+En este caso las estrategias cooperativas muestran una ventaja frente a las estrategias individuales.
+
+Primero definimos la probabilidad de los grupos mediante un prior uniforme.
+Esto significa que no tenemos preferencia sobre ningún modelo.
+Los modelos compiten bajos mismas condiciones iniciales.
+Vamos a suponer la existencia de cuatro grupos.
+Un grupo de 2 cooperadores, un grupo de 1 cooperador y 1 desertor, un grupos de desertores.
+
+\begin{align}
+\centering
+P(g) = \begin{tabular}{|c|c|c|c|}
+        \hline
+        $g=1$ & $g=2$ & $g=3$  & $g=4$\\ \hline
+        $1/4$ & $1/4$ & $1/4$ & $1/4$ \\ \hline
+\end{tabular}
+\end{align}
+
+\begin{align}
+\centering
+P(e_0|g) = \begin{tabular}{|c|c|c|c|c|c|c|}
+        \hline
+        & $e_0=1$ & $e_0=2$ & $e_0=3$ &  $e_0=4$ & $e_0=5$ & $e_0=6$ \\ \hline
+       $g=1$ & $0.5$ & $0.5$ & $0$ &  $0$ & $0$ & $0$ \\ \hline
+       $g=2$ & $0$ & $0$ & $0.5$ & $0.5$ & $0$ & $0$ \\ \hline
+       $g=3$ & $0$ & $0$ & $0$ & $0$ & $1.0$ & $0$ \\ \hline
+       $g=4$ & $0$ & $0$ & $0$ & $0$ & $0$ & $1.0$ \\ \hline
+\end{tabular}
+\end{align}
+
+
+\begin{align}
+\centering
+P(e_{t}|e_{t-1}) = \begin{tabular}{|c|c|c|c|c|c|c|}
+        \hline
+        & $e_t=1$ & $e_t=2$ & $e_t=3$ &  $e_t=4$ & $e_t=5$ & $e_0=6$ \\ \hline
+       $e_{t-1}=1$ & $0.5$ & $0.5$ & $0$ &  $0$ & $0$ & $0$ \\ \hline
+       $e_{t-1}=2$ & $0.5$ & $0.5$ & $0$ & $0$ & $0$ & $0$ \\ \hline
+       $e_{t-1}=3$ & $0$ & $0$ & $0.5$ & $0.5$ & $0$ & $0$ \\ \hline
+       $e_{t-1}=4$ & $0$ & $0$ & $0$ & $1.0$ & $0$ & $0$ \\ \hline
+       $e_{t-1}=5$ & $0$ & $0$ & $0$ & $0$ & $1.0$ & $0$ \\ \hline
+       $e_{t-1}=6$ & $0$ & $0$ & $0$ & $0$ & $0$ & $1.0$ \\ \hline
+\end{tabular}
+\end{align}
+
+
+
+\begin{align}
+\centering
+P(r_{t}|e_{t}) \propto \begin{tabular}{|c|c|c|c|c|c|c|}
+        \hline
+        & $r_t=(0,0)$ & $r_t=(0,1)$ & $r_t=(1,0)$ &  $r_t=(1,1)$  \\ \hline
+       $e_{t}=1$ & $0.6$ & $1.5$ & $0.6$ & $1.5$ \\ \hline
+       $e_{t}=2$ & $0.6$ & $0.6$ & $1.5$ & $1.5$  \\ \hline
+       $e_{t}=3$ & $0.6$ & $1.5$ & $0.6$ & $1.5$  \\ \hline
+       $e_{t}=4$ & $0.6$ & $0.6$ & $1.5$ & $1.5$ \\ \hline
+       $e_{t}=5$ & $0.6$ & $1.5$ & $0.6$ & $1.5$ \\ \hline
+       $e_{t}=6$ & $0.6$ & $0.6$ & $1.5$ & $1.5$  \\ \hline
+\end{tabular}
+\end{align}
+
+
+
+
+
+\begin{figure}[H]
+\centering
+\tikz{
+    \node[latent] (m) {$G$};
+
+    \node[latent, right=of m] (e0) {$e_0$};
+    
+    \node[latent, right=of e0] (e1) {$e_1$};
+    \node[latent, below=of e1] (r1) {$r_1$};
+    
+    \node[latent, right=of e1] (e2) {$e_2$};
+    \node[latent, below=of e2] (r2) {$r_2$};
+    
+    \node[latent, right=of e2] (e3) {$e_3$};
+    
+    
+    \edge {m} {e0};
+    \edge {e0} {e1};
+    \edge {e1} {r1,e2};
+    \edge {e2} {r2,e3};
+}
+\caption{}
+\label{fig:modelo_grafico}
+\end{figure}
+
+
+
+
+
+\section{Conclusiones}
+
+En este trabajo, resolviendo dos problemas presentes en la literatura.
+Con la propuesta metodológia de \cite{czegel2019-bayesianEvolution} (la selección multinivel como inferencia bayesiana jerárquica) resolvimos la demostración que le faltaba al modelo de Ole Peters (procesos multiplicativos ruidosos) que verifica que la cooperación está favorecida por la evolución.
+Y a su vez, con el modelo de Peters proveímos el ejemplo concreto que le faltaba a la propuesta metodológica de \cite{czegel2019-bayesianEvolution}.
+Ambas soluciones combinadas ofrecen una solución nueva al problema de las transiciones evolutivas mayores, que es más sencilla que las anterios (procesos multiplicativos ruidosos), basada en principios matemáticos bien fundados (la aplicación estrica de las reglas de la probabilidad).
+
+Según \cite{czegel2019-bayesianEvolution} el isomorfismo entre los procesos evolutivos y la inferencia bayesiana multinivel,  ``support a learning theory-oriented narrative of evolutionary complexification: the complexity and depth of the hierarchical structure of individuality mirror the amount and complexity of data that have been integrated about the environment through the course of evolutionary history.''
+Esta especulación es rechazada por el modelo de Ole Peters, el cual muestra que un simple proceso multicativo ruidoso favorece la selección multinivel de grupos cooperativos por sobre grupos con desertores.
+
+Por otra parte, según \cite{peters} su modelo ``paints a picture of cooperation driven by self-interest, not altruism, with cooperators outgrowing similar non-cooperators''.
+Esta especulación es rechazada por la metodología de czegel \cite{czegel2019-bayesianEvolution}, la cual muestra que si bien las estrategias cooperativas no son evolutivamente estables al interior de los grupos, estos se ven favorecidos gracias a la selección multinivel.
 
 Una condición preliminar crucial para el desarrollo de las transiciones evolutivas es la alineación de intereses y su persistencia en el tiempo.
 El proceso multiplicativo al que está sujeto la vida, al ser no-ergódico, ofrece una ventaja física a favor de las estrategias cooperativas, las que se ven favorecidas evolutivamente a través de la selección multinivel.
 
-\section{Conclusiones}
 
-
+% La ciencia es una institución humana que tiene pretención de verdad, esto es de formular proposiciones que valgan para todas las personas, tanto intercultural como intersubjetivamente.
+% Las ciencias formales validan sus proposiciones mediante teoremas, resultados derivados de aplicar las reglas internas a un sistema axiomático cerrado.
+% Las ciencias empíricas, en cambio, deben validar sus proposiciones dentro de sistemas abiertos, lo que introduce siempre un grado de incertidumbre asociada.
+% ¿Cuál es entonces la fuente de validez universal del conocimiento empírico?
+% 
+% Existe un principio epistemológico con validez intercultural, conocido como el \emph{principio de indiferencia}, afirma que si ante un espacio de hipótesis común llegamos a un acuerdo respecto de que no tenemos información previa, entonces estaremos de acuerdo en distribuir la creencia (aka incertidumbre) en partes iguales.
+% Esta distribución de creencias, que permite el acuerdo intersubjetivo, la vamos a llamar creencia honesta.
+% La fuente de validez universal se fundamenta en la maximización de la incertidumbre.
+% ¿Se puede extender este principio para casos en los cuales tenemos información?
 {\footnotesize
 \bibliographystyle{auxiliar/biblio/plos2015.bst}
 \bibliography{auxiliar/biblio/biblio_notUrl.bib}
