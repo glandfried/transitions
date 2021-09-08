@@ -2,9 +2,9 @@ using Random
 using Plots
 
 delta_expected = 1.5*0.5+0.6*0.5 - 1 # <\Delta x>
-time_average = log(1.5)*0.5+log(0.6)*0.5 # <\Delta ln x>
+log_time_average = log(1.5)*0.5+log(0.6)*0.5 # <\Delta ln x>
+time_average = exp(log(1.5)*0.5+log(0.6)*0.5) - 1
 ensamble_average = 1 + delta_expected
-
 
 ri = sqrt(1.5*0.6)
 d = 0.01 
