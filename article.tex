@@ -102,6 +102,12 @@ El reconocimiento de la diferencia entre el promedio temporal y promedio de esta
 La media geométrica estima correctamente la tasa de crecimiento temporal.
 En nuestro caso la media geométrica es $\sqrt{1.5 \cdot 0.6} \approx 0.95$, lo que coincide con las tasas de crecimiento individual observada en la figura~\ref{fig:cpr_individual}.
 
+\subsection{Bet-hedging}
+
+The ideas of bet-hedging grew out of the appreciation of treating fitness as a random variable.
+
+Kokko
+
 \subsection{Cooperacion}
 
 En los procesos no-ergódicos, las fluctuaciones tienen un efecto negativo en la tasa de crecimiento individual a largo plazo, pero no en la tasa de crecimiento del valor esperado.
@@ -180,15 +186,22 @@ Ole Peters no logra dar una respuesta completa que explique por qué las estrate
 \subsection{Selección multinivel}
 
 Una condición preliminar crucial para el desarrollo de las transiciones evolutivas es la alineación de intereses y su persistencia en el tiempo.
-Sin embargo, la historia no termina aquí.
-En cualquier fase, el destino del organismo depende de fuerzas selectivas en múltiples niveles que pueden estar en conflicto entre sí.
-Incorporar los efectos de la selección multinivel es, por tanto, un elemento crucial para entender las transiciones evolutivas en la individualidad~\cite{okasha2005-multilevelTransitions}.
+Ole Peters explica por qué es ventajoso para las individualidades formar un cuerpo cooperativo mayor en base a un principio fundamental: la naturaleza multiplicativa de los procesos evolutivos.
+Para completar la explicación de las transiciones evolutivas, es necesario responder ¿Cómo pudo ser evolutivamente estable una organización de este tipo, una vez que evolucionó por primera vez?
+El reto consiste en entender estas transiciones en términos darwinianos.
 
-%El proceso multiplicativo al que está sujeto la vida, al ser no-ergódico, ofrece una ventaja física a favor de las estrategias cooperativas, las que se ven favorecidas evolutivamente a través de la selección multinivel.
+%, al ser no-ergódico, ofrece una ventaja física a favor de las estrategias cooperativas, las que se ven favorecidas evolutivamente a través de la selección multinivel.
 
+La idea general de que las grandes transiciones evolutivas involucra selección tanto a nivel individual como a nivel grupal, está ampliamente aceptada.
+
+La selección multinivel se clasifica de tipo 1 (MLS1), en el que los colectivos sontemporales, y de tipo 2 (MLS2) en la que los colectivos se reproducen indefinidamente siendo unidades evolutivas plenas.
+%Una vez definidos los colectivos, se determina la tasa de crecimiento de las diferentes estretgias individuales y grupales.
+En MLS1, la tasa de crecimiento grupal se interpreta como el tamaño de la población (i.e. tasa de crecimiento media de sus individuos).
+En MLS2, la tasa de crecimiento de los grupos evolutivamente plenos puede depender de otros factores específicos, pero en general cuando el número de partículas por colectivo es considera constante, la aptitud relativa de los colectivos en MLS1 y MLS2 es idéntica.
+Esto nos permitirá analizar al mismo tiempo lo que ocurre con ambos tipos de selección multinivel.
+Veremos que incorporar los efectos de la selección multinivel es resulta crucial para entender las transiciones evolutivas en estos casos en los cuales la tasa de replicación de las entidades del nivel inferior y superior no está totalmente alineada.
 
 \section{Metodología}
-
 
 \subsection{Isomorfismo entre la inferencia bayesiana el replicator dynamic.}
 
@@ -409,6 +422,9 @@ Esta especulación es rechazada por el modelo de Ole Peters, el cual muestra que
 
 Por otra parte, según \cite{peters} su modelo ``paints a picture of cooperation driven by self-interest, not altruism, with cooperators outgrowing similar non-cooperators''.
 Esta especulación es rechazada por la metodología de czegel \cite{czegel2019-bayesianEvolution}, la cual muestra que si bien las estrategias cooperativas no son evolutivamente estables al interior de los grupos, estos se ven favorecidos gracias a la selección multinivel.
+
+Además \cite{czegel2019-bayesianEvolution} dice que, ``This isomorphism allows for a natural interpretation of evolutionary transitions in individuality as \emph{learning the structure}''.
+En este trabajo mostramos que lo que se aprende no es la estructura, sino que \textbf{aprenden la dinámica}, en particular el efecto no-ergódico de los procesos multiplicativos.
 
 
 % La ciencia es una institución humana que tiene pretención de verdad, esto es de formular proposiciones que valgan para todas las personas, tanto intercultural como intersubjetivamente.

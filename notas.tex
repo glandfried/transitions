@@ -10,7 +10,7 @@
 
 %opening
 \title{Cooperación y ergodicidad}
-\author{Gustavo Landfried}
+\author{Gustavo Landfrierd}
 
 \begin{document}
 
@@ -345,6 +345,81 @@ Y muestra el mismo ejemplo que Kokko.
 
 \\
 
+Starrfelt y Kokko
+\begin{quotation} \cite{starrfelt2012-bet}
+    Our aim is to review the conceptual foundation of bet-hedging as a mechanism that influences short-and long-term evolutionary processes.
+    
+    To be able to survive and reproduce, individuals often need to exhibit adaptations that respond to the diversity of conditions of life that they may encounter.
+    Bet-hedging in evolutionary biology is usually defined as a strategy or allele that increases the probability of its fixation by lowering the variance of fitness.
+    A strict definition of bet-hedging states that the bet-hedger should have paid a cost of a reduced mean.
+    
+    Assume that the environment can be either wet or dry.
+    We consider four different genotypes: a drought-resistant genotype which forms the dry-year specialist ($A_{dry}$), a wet-year specialist ($A_{wet}$), a generalist ($A_{gen}$), also called a conservative bet-hedger), and finally a diversified genotype which gives rise to both wet year and dry year specialists ($A_div$, called a diversified bet-hedger).
+    
+    The highest geometric mean fitness will eventually prevail.
+    Even though genotype $A_{gen}$ has a lower arithmetic mean fitness, it will invade and replace both a population of $A_{dry}$ and a population of $A_{wet}$.
+    
+    The generalist $A_{gen}$ is often called a ‘conservative’ bet-hedger because its success is a result of giving up high success in any year and instead avoiding very poor success in any year.
+    In other words, it fulfils the definition of bet-hedging since a reduction in mean arithmetic fitness is accompanied by a reduction in the genotypic variance in fitness
+    
+    The last genotype ($A_{div}$) will invade and replace any population consisting of the other three genotypes. 
+    Depending on the circumstances, one or the other type will be highly productive, and there is never a year where the genotype does universally badly.
+    
+    -- 
+    
+    The two advantages of bet-hedging: 1) reduced individual fitness variance and 2) reduced fitness correlation between individuals.
+    
+    
+    The geometric mean of a series of n random variables (R 1,y ) can be written as
+    
+    \begin{equation}
+    Geometric mean = E[log(R)]
+    \end{equation}
+    
+    [Hacen una aproximación de la media geométrica en la que] It is now obvious that increasing the variance [(el producto de between-individual correlation ($\ro_i$) and the individual-level variance ($\sigma_i^2$)] in the absolute fitness values of a genotype will decrease the geometric mean.
+    
+    The geometric mean fitness of an allele can then be approximated by
+    
+    \begin{equation}
+    G_i \approx \mu_i - \fraq{\text{Var}(R_i)}{2\mu_i} = \mu_i - \fraq{\ro_i \sigma_i^2}{2\mu_i}
+    \end{equation}
+    
+    This is a recapitulation of the principle (Equation 10) that the success of a strategy depends on the mean arithmetic fitness, on the individual variance in reproductive success, and on the correlation between individuals.
+    
+    However, [this] Equation 17 itself is an approximation.
+    When the population sizes are finite (and particularly small), then it is not correct to state that the geometric mean predicts the fixation of an allele.
+    
+    To return to our initial example of eggs in flooding nests: in large, well-mixed populations it does not matter whether a mother lays her eggs in one or two nests.
+    Mathematically, the effect of variation in nest success becomes insignificant in this case because the number of individuals is very large.
+    
+    --
+    
+    Conservative versus diversified bet-hedging.
+    
+    In the case of the generalist strategy $A_{gen}$, the genotypic variance, $var(R_{gen})$, is reduced, as individuals always do reasonably well regardless of circumstances (small individual variance).
+    This is a clear case of of the ‘bird in the hand’ metaphor, which makes the term ‘conservative bet-hedging strategy’ appropriate.
+    
+    The $A_{div}$ allele achieves the reduction in the genotypic variance in a different way.
+    The majority of the reduction of genotypic variance of the A div allele is instead achieved by reducing the correlation (ρ div ) of reproductive success between individuals who share the same allele.
+    
+    
+    
+\end{quotation}
+
+
+\\
+
+Pigliucci 2001 \cite{pigliucci2001-plasticity} es un libro que trata exclusivamente sobre Phenotypic Plasticity
+
+\\
+
+Slatkin 1974 es un artículo muy corto, poco relevante. 
+\begin{quotation} \cite{slatkin1974-evolutionaryBets}:
+    Until the publication og Gillespie's article, selection resulting from differential variance in offspring number had been ignored.
+\end{quotation}
+
+\\
+
 Jorge Peña
 \begin{quotation}
     Change should be more precisely understood as Darwinian change, or differential replication.
@@ -549,6 +624,12 @@ Nowak and Page:
     At any phase, the fate of the organism depends on selective forces at multiple levels that might be in conflict with each other.
     Incorporating the effects of multilevel selection is, therefore, a crucial element of understanding evolutionary transitions in individuality
     
+    When the replication of particles (i.e. lower-level replicators) is not fully synchronized with the replication of the collective they belong to, or, in other words, when selective forces at different levels conflict, multilevel selection theory provides an effective description of the system
+    
+    A key ingredient of models of multilevel selection is the partitioning of fitness of particles to within-collective and between-collective components, once the collectives are defined.
+    
+    
+    
     
 \end{quotation}
 
@@ -570,20 +651,63 @@ Nowak and Page:
 \\
 
 Okasha 2005:
-\begin{quotation} \cite{okasha2005-multilevelTransitions}
+\begin{quotation} \cite{okasha2005-multilevelTransitions}   
     A number of recent biologists have used multilevel selection theory to help explain the major transitions in evolution.
     I argue that in doing so, they have shifted from a synchronic to a diachronic formulation of the levels of selection question.
     
+    Increasingly, biologists interested in explaining what Maynard-Smith and Szathmáry call the ‘major transitions in evolution’ have made use of ideas from multilevel selection theory (Buss 1987; Michod 1997, 1999; Maynard Smith and Szathmáry 1995; Michod and Roze 1999; Roze and Michod 2001; Frank 1998).
     
-    Damuth and Heisler (1988) offer a particularly clear discussion of the two meanings of multilevel selection, so I follow their treatment here.
+    The challenge is to understand these transitions in Darwinian terms.
+    Why was it advantageous for the lower-level units to sacrifice their individuality, cooperate with one another, and form themselves into a larger corporate body?
+    And how could such an arrangement, once first evolved, be evolutionarily stable?
+    
+    One possibility is that selection acted on the higher-level units themselves, leading them to evolve adaptations that minimize conflict and increase cooperation among their constituent parts.
+    the general idea that the major transitions involve an interaction between selection at different levels is very widely accepted
+    
+    Traditionally the question has been formulated roughly as follows: the biological world is hierarchically organized—genes are nested within chromosomes, chromosomes within cells, cells within organisms, organisms within groups etc. Furthermore, natural selection will operate on any entities that exhibit ‘heritable variation in fitness’.
+    
+    the diachronic formulation of the levels of selection question (‘how did the levels in the biological hierarchy evolve initially?’) differs substantially from the synchronic formulation (‘at which hierarchical levels does selection now act?’).
 
+    Damuth and Heisler (1988) offer a particularly clear discussion of the two meanings of multilevel selection, so I follow their treatment here.
+    
+    In MLS1, a collective’s fitness is defined as the average fitness [tamaño de la población] of the particles within the collective.
+    In MLS2 a collective’s fitness is defined as the expected number of offspring collectives contributed to the next generation [growth rate].
+    
+    Most of the literature on ‘group selection’ has been concerned with MLS1: the aim has been to understand the evolution of an individual phenotype, often altruism, in a population subdivided into groups.
+    By contrast, the macroevolutionary literature on species selection has been concerned with MLS2: the aim has been to understand the changing frequency of different types of species, not individuals, over geological time.
+    
+    In many circumstances the existence of one type of multilevel selection will imply the other.
+    The collective that contributes the most particles to the next generation, and so is fittest by the MLS1 criterion, will often contribute the most collectives to the next generation, and hence be fittest by the MLS2 criterion too.
+    (This will always be so if the number of particles per collective is constant.).
+    So ordering the collectives by their MLS1 fitness and by their MLS2 fitness will often give the same result
+    
+    MLS1 is relevant to the early transitional stages, where cooperation spreads among the particles.
+    This is essential if the collectives are to achieve the degree of cohesion necessary for collective fitness in the MLS2 sense to be a meaningful notion.
+    
+    Multilevel selection is conceptually characterized into two types, dubbed multilevel selection 1 (MLS1) and multilevel selection 2 (MLS2), both assuming that collectives form in a population of replicators, which themselves affect selection of lower-level units.
+    In the case of MLS1, only temporary collectives form that periodically disappear to revert to an unstructured population of lower-level units (transient compartmentation).
+    MLS2, on the other hand, involves collectives that last and reproduce indefinitely, hence being bona fide evolutionary units [29], see also [30]).
+    
 \end{quotation}
 
 \\
 
 \begin{quotation} \cite{damuth1988-multilevelSelection}
+    [There are] two distinct bodies of thought in evolutionary biology, the group selection and the species selection traditions.
+
 MLS1 y MLS2
 \end{quotation}
+
+ \\
+ 
+\begin{quotation} \cite{jaynes1978-maximumEntropy}
+ergodic
+\end{quotation}
+
+
+
+
+
 {\footnotesize
 \bibliographystyle{auxiliar/biblio/plos2015.bst}
 \bibliography{auxiliar/biblio/biblio_notUrl.bib}
