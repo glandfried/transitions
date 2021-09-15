@@ -441,4 +441,83 @@ En este trabajo mostramos que lo que se aprende no es la estructura, sino que \t
 \bibliography{auxiliar/biblio/biblio_notUrl.bib}
 }
 
+\section{Apéndice}
+
+\subsection{Tasa de crecimiento en poblaciones infinitas}
+
+Las estrtegias que en una población infinita representan una proporción mayor a $0$ son a su vez infinitas.
+Sea $a$ la probabilidad del ambiente.
+Sea $e$ la estrategia individual.
+\begin{equation}
+r(t) =
+\begin{cases}
+ e & \ \  1=B(a) \\
+ (1-e) & \ \  0=B(a)
+\end{cases}
+\end{equation}
+Sea $d$ la proporción de desertores y $1-d$ la proporción de cooperadores.
+La población cooperadora, al ser infinita, siempre crece como
+\begin{equation}
+\Delta w(C|e,d,a) = (1-d) \underbrace{(e\cdot a + (1-e)\cdot(1-a))}_{\text{Media de estados}}
+\end{equation}
+En cada paso las apuestas del conjunto de cooperadores crece como la media de estados, la cual se divide en partes iguales.
+Como el cambio en los recursos no depende de $t$, en t pasos la población tiene un tamaño de
+\begin{equation}
+w(C|e,d,a,t) = \Delta w(C|e,d,a)^t 
+\end{equation}
+
+¿Cuál es la tasa de crecimiento de los desertores?
+Supongamos que primero juega y después recibe la parte del fondo común.
+\begin{equation}
+w(D|e,d,a,t) =
+\begin{cases}
+ r(1) & \ \  t=1 \\
+ (w(D|e,d,a,t-1) + w(C|e,d,a,t-1)) r(t) & \ \  t>1
+\end{cases}
+\end{equation}
+En $t=1$ actualiza sus recursos con el pago recibido $r(1)$.
+En $t>1$ incorpora la recursos recibidos del fondo común generado en el tiempo anterior, $w(C|e,d,a,t-1)$, y finalmente actualiza sus recursos totales (la suma) con el pago $r(t)$.
+
+\\
+
+Veamos la forma que tiene el tamaño de la población en el tiempo
+\begin{align}
+w(D|t=2) & = r(2) (w(D|t=1) + w(C|t=1)) \\
+& = r(2)r(1) + r(2)\Delta w(C)
+\end{align}
+Para simplificar la notación, hacemos implicitos los valores de $e$, $d$ y $a$.
+Además, como el tamaño de los recursos del fondo común no dependen del tiempo
+
+\begin{align}
+w(D|t=3) & = r(3) (w(D|t=2)+w(C|t=2)) \\
+& = r(3) (r(2)r(1) + r(2)\Delta w(C) + \Delta w(C)^2 ) \\
+& = r(3)r(2)r(1) + r(3)r(2)\Delta w(C) + r(3)\Delta w(C)^2 )
+\end{align}
+
+Acá ya podemos ver un patrón a partir del cual proponemos la siguiente hipótesis inductiva (HI).
+\begin{equation} \label{eq:HI} \tag{HI} 
+w(D|t) = \prod^t_{i=1} r(i) + \sum^{t-1}_{j=1} \Delta w(C)^j
+\prod^t_{j<k} r(k)
+\end{equation}
+
+\paragraph{Caso Base.} Queremos ver que vale la \ref{eq:HI} en el tiempo $t=1$.
+\begin{equation} 
+w(D|t=1) \overset{\ref{eq:HI}}{=} \prod^1_{i=1} r(i) + \underbrace{\sum^{0}_{j=1} \Delta w(C)^j \prod^1_{j<k} r(k) }_{\text{vale $0$ por rango}} = r(1)
+\end{equation}
+Luego, vale el caso base.
+
+\paragraph{Paso inductivo.} Dado que vale $w(D|t)$ quiero ver que vale $w(D|t+1)$: $w(D|t) \Rightarrow w(D|t+1)$
+
+\begin{equation}
+\begin{split}
+w(D|t+1) &:= (w(D|t) + \Delta w(C)^t) r(t)  \\
+& \overset{\ref{eq:HI}}{=} \bigg( \big(\prod^t_{i=1} r(i) + \sum^{t-1}_{j=1} \Delta w(C)^j \prod^t_{j<k} r(k) \big)+ \Delta w(C)^t \bigg) r(t+1) \\
+& = r(t+1) \prod^t_{i=1} r(i) + \sum^{t-1}_{j=1} \Delta w(C)^j r(t+1) \prod^t_{j<k} r(k) + \Delta w(C)^t  r(t+1) \\ 
+& = \prod^{t+1}_{i=1} r(i) + \sum^{t-1}_{j=1} \Delta w(C)^j  \prod^{t+1}_{j<k} r(k) + \Delta w(C)^t  r(t+1)  \\
+& = \prod^{t+1}_{i=1} r(i) + \sum^t_{j=1} \Delta w(C)^j  \prod^{t+1}_{j<k} r(k) 
+\end{split}
+\end{equation}
+Luego, vale el paso inductivo. 
+
+
 \end{document}
