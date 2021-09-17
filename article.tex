@@ -64,57 +64,68 @@ La estimación de la tasa de crecimiento requiere considerar explícitamente la 
 Para resolver estos temas consideremos el siguiente ejemplo.
 La naturaleza lanza una moneda: si sale cara la población crece un 50\%, si sale seca se reduce un 40\%.
 \begin{equation}
-f(r|x) =
+f(r,x) =
 \begin{cases}
  1.5 & r = \text{ \en{Head}\es{Cara} } \\
  0.6 & r = \text{ \en{Tail}\es{Seca} }
 \end{cases}
 \end{equation}
-Donde $f(r|x)$ significa la aptitud cundo el ambiente es $r$ dada la distribución de estrategias $x$.
-En este ejemplo la distribución de estrategias $x$ no afecta el valor de la aptitud, por lo que $f(r) = f(r|x)$.
-Así definida, la la tasa de crecimiento es una variable aleatoria.
-¿Cuál es entonces la tasa de crecimiento estimada (determinista) que se utiliza generalmente en el replicator dynamic?
+Donde $f(r,x)$ significa la aptitud cundo el ambiente es $r$ dada la distribución de estrategias $x$.
+En este ejemplo la distribución de estrategias $x$ no afecta el valor de la aptitud, por lo que definimos $f(r) := f(r,x)$.
+Así definida, la tasa de crecimiento es una variable aleatoria.
+¿Cuál es entonces la tasa de crecimiento estimada (determinista) que deberíamos usar en el replicator dynamic?
 
-Buena parte de la literatura en evolución considera que el promedio de estados como la estimación de la tasa de crecimiento.
-Según el promedio de estados, el crecimiento esperado es de 5\%, $\langle f(x) \rangle = 1.05 = \sum_r f(r|x) p(r)$. 
-Sin embargo, lo que efectivamente le ocurre a los agentes en el tiempo es muy diferente: a largo plazo todos pierden a una tasa de cercana de 5\%.
+Buena parte de la literatura en evolución considera que el promedio de estados es la estimación correcta de la tasa de crecimiento.
+Sea $\omega \in \{f(\text{cara}), f(\text{seca})\}$ los estados del sistema, el crecimiento esperado según el promedio de estados es de 5\%, $\langle \omega \rangle = 1.05 = \sum_{\omega} \omega \cdot  P(\omega)$. 
+Sin embargo, lo que efectivamente le ocurre a los recursos de los agentes en el tiempo, $\omega(t) = \prod_i^t f(r_i)$, es muy diferente.
+A largo plazo todos pierden a una tasa cercana al 5\%.
 
 \begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\linewidth]{figures/cpr_individual.pdf}
+    \includegraphics[width=\linewidth]{figures/pdf/ergodicity_individual_trayectories.pdf}
     \end{subfigure}
     \caption{
-    Tamaño logarítimico de los recursos individuales en el tiempo.
-    Se puede observar una tasa de crecimiento negativa.
+    Tamaño logarítimico de los recursos individuales en el tiempo, $ \log(\omega(t))$.
     La recta negra que baja representa el promedio temporal, y la que sube el promedio de estados.
     }
     \label{fig:cpr_individual}
 \end{figure}
 
-Esto ocurre porque en los proceso multiplicativos propios de los sistemas evolutivos (definidos mediante el replicator dynamic)  los impactos físicos de las pérdidas suelen ser más fuertes que los de las ganancias.
-Esto se debe a que los sistemas son irreversibles.
+Esto ocurre porque en los proceso multiplicativos propios de los sistemas evolutivos (al que está sujeto el tamaño de los recursos $\omega(t)$ en un replicator dynamic con fitness estocático) los impactos físicos de las pérdidas suelen ser más fuertes que los de las ganancias, haciendo irreversibles trayectorias.
 En el extremo, un único cero en la secuencia tasas de reproducción y superviviencia, significa la extinción.
 
-La diferencia entre lo que le ocurre a los agentes en el tiempo respecto de la esperanza de los estados del sistema es un problema bien conocido en la mecánica estadística, llamado ``no-ergodicidad''.
-Sea $\omega(t) = \prod_i^t f(r_i)$ los recursos del agente en el tiempo $t$ y sea $\omega = f(r)$ los estados del sistema, decimos que un proceso es ergódico si se cumple que,
+La diferencia entre lo que le ocurre a los agentes en el tiempo respecto de la esperanza de los estados del sistema es un problema bien conocido en la mecánica estadística, llamado ``no-ergodicidad''~\cite{peters2019-ergodicityEconomics}.
+% Decimos que un proceso es ergódico si se cumple que,
 % \begin{equation}
-%  \underbrace{\lim_{T \mapsto \infty} \frac{1}{T}\int_0^T f(\omega(t)) dt}_{\text{Media temporal}}  = \underbrace{\int_{\Omega} f(\omega)p(\omega) d\omega}_{\text{Media de estados}}
+%  \underbrace{\lim_{T \mapsto \infty} \frac{1}{T} \sum_{t=1}^T \omega(t)}_{\text{Media temporal}}  = \underbrace{\sum_{\omega} \omega \cdot p(\omega)}_{\text{Media de estados}}
 % \end{equation}
+% 
+Cuando un proceso es ergódicos, las descripciones de su dinámica pueden remplazarse mediante el promedio de los estados del sistema, eliminado el tiempo de los modelos.
+Sin embargo, las condiciones para que un sistema cumpla con la hipótesis de ergodicidad son muy restrictivas, y en nuestro caso particular hemos visto que la media de estados no representa lo que lo le ocurre a los agentes en el tiempo.
+
 \begin{equation}
- \underbrace{\lim_{T \mapsto \infty} \frac{1}{T} \sum_t^T \omega(t)}_{\text{Media temporal}}  = \underbrace{\sum_{\omega} \omega \cdot p(\omega)}_{\text{Media de estados}}
+\omega(t) = \prod^t_{i=1} f(r_i) = f(\text{cara})^{n_1} f(\text{seca})^{n_2}
+\end{equation}
+donde $n_1$ y $n_2$ representa la cantidad de ocurrencias de $f(\text{cara})$ y $f(\text{seca})$, con $n_1 + n_2 = t$.
+Las trayectorias observadas en la figura \ref{fig:cpr_individual} son variables, pero cuanto más tiempo observemos el sistema más suave se vuelven esas líneas.
+En el límite $\T \roghtarrow \infty$ las líneas se verán completamente rectas con la misma pendiente para todas las trayectoria individuales.
+Denotamos por $\overline{f}$ el factor efectivo por el que se multiplica los recursos $\omega(t)$ en cada iteración.
+
+\begin{equation}
+\begin{split}
+\lim_{T \rightarrow \infty} \omega(T) & = \overline{f}^T \\
+\left( \lim_{T \rightarrow \infty} \omega(T) \right)^{1/T} & =  \overline{f} \\
+\lim_{T \rightarrow \infty} f(\text{cara})^{n_1/T} f(\text{seca})^{n_2/T} & 
+ \end{split}
+\end{equation}
+Donde las frecuencias $\frac{n_1}{T}$ y $\frac{n_2}{T}$ en el límite $T \rightarrow \infty$ son iguales a las probabilidades de ocurrencia de los estados del sistema.
+
+\begin{equation}
+\overline{f} = (1.5 \cdot 0.6)^{1/2} \approx 0.95
 \end{equation}
 
-donde $r$ representa los estados del sistema, $f(r)$ la variable aleatoria, $r(t)$ el estado del sistema obtenido aleatoriamente en el tiempo $t$ y $p(r)$ la probabilidad del estado $r$.
-
-Cuando un proceso es ergódicos, las descripciones de su dinámica pueden remplazarse mediante resúmenes probabilístico sencillos, eliminado el tiempo de los modelos.
-Sin embargo, las condiciones para que un sistema cumpla con la hipótesis de ergodicidad son muy restrictivas, más aún en el caso de los sistemas vivos que, regidos por procesos multiplicativos de reproducción y supervivencia, están fuera del equilibrio.
-Esta distinción es importante porque cuando un sistema es no-ergódicos, lo que le ocurre a los agentes individuales en el tiempo no coincide con la esperado según los posibles estados del sistema~\cite{peters2019-ergodicityEconomics}.
-
-
 El reconocimiento de la diferencia entre el promedio temporal y promedio de estados aparece en la literatura de evolución bajo los conceptos de media aritmética y geométrica~\cite{dempster1955-geometricMean}.
-La media geométrica estima correctamente la tasa de crecimiento temporal.
-En nuestro caso la media geométrica es $\sqrt{1.5 \cdot 0.6} \approx 0.95$, lo que coincide con las tasas de crecimiento individual observada en la figura~\ref{fig:cpr_individual}.
 
 \subsection{Bet-hedging}
 

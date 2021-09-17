@@ -28,3 +28,17 @@ plot!([1,2000],[0,T*log(ensamble_average )], color="black", label=false)
 plot!([1,2000],[0,T*log(time_average )], color="black", label=false)
 savefig(fig, "pdf/ergodicity_individual_trayectories.pdf")
 
+
+N = 1
+T = 1000000
+
+e = zeros((T,N))
+for i in 1:N
+    e[:,i] .= cumsum(log.([ f(r()) for i in 1:T]))
+end
+
+fig = plot([1,T],[0,T*log(ensamble_average )], color="black", label=false, thickness_scaling = 1.5, grid=false, xlab="Tiempo", ylab="log(Recursos) ")
+plot!([1,T],[0,T*log(time_average )], color="black", label=false)
+plot(e, label=false, color=1)
+savefig(fig, "pdf/ergodicity_individual_trayectories_longrun.pdf")
+
