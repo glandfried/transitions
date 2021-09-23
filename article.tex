@@ -30,26 +30,57 @@ La sinergia inherente a toda dinámica de reproducción y superviviencia junto c
 \section{Introducción}
 
 En el último tercio de la historia del Universo, en algún momento hace aproximadamente 4500 millones de años, apareció en la tierra una forma de organización de la materia capaz de auto-replicarse.
-El crecimiento de estos linajes siguieron procesos multiplicativos y ruidosos: secuencias de probabilidades de supervivencia y reproducción.
-Los errores producidos durante la replicación diversificaron las formas de organización de la materia, y las diferentes tasas de crecimiento favorecieron a aquellas mejor adaptadas al medio.
-Desde aquel momento hasta entonces la vida adquirió una extraordinaria complejidad~\cite{barOn2018-biomass}, consecuencia de una serie de transiciones evolutivas~\cite{maynardSmith1995-majorTransitions} en las que las entidades capaces de replicarse de forma independiente, cediendo algo de valor a las otras, pasan a formar unidades evolutivas de nivel superior.
+El crecimiento de estos linajes en el tiempo, $\omega(t)$, estuvo gobernado por procesos multiplicativos,
+%
+\begin{equation}
+\omega(t) = \prod_i^t f(r_i)
+\end{equation}
+%
+una secuencias estocástica de tasas de supervivencia y reproducción $f(\cdot)$ dependientes de un ambiente aleatorio $r$.
+Supongamos que la naturaleza lanza una moneda,
+%
+\begin{equation}
+f(r) =
+\begin{cases}
+ 1.5 & r = \text{ \en{Head}\es{Cara} } \\
+ 0.6 & r = \text{ \en{Tail}\es{Seca} }
+\end{cases}
+\end{equation}
+%
+si sale cara la población se reproduce un 50\% y si sale seca sobrevive el 60\%.
+
+% Parrafo
+
+Los errores producidos durante la replicación diversificaron las formas de vida, y las tasas de crecimiento de las diferentes estrategias favorecieron a aquellas mejor adaptadas al ambiente.
+Desde aquel momento hasta entonces la vida adquirió una extraordinaria complejidad.
+%
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.65\textwidth}
+    \includegraphics[width=\linewidth]{auxiliar/images/biomass.jpg}
+    \end{subfigure}
+    \caption{
+	Estimación de la distribución actual de la biomasa en la tierra realizada por Bar-On~\cite{barOn2018-biomass}.
+    }
+    \label{fig:cpr_individual}
+\end{figure}
+%
+Esta complejidad es consecuencia de una serie de transiciones evolutivas~\cite{maynardSmith1995-majorTransitions} en las que las entidades capaces de replicarse de forma independiente, cediendo algo de valor a las otras, pasan a formar unidades evolutivas de nivel superior.
 Algunos ejemplos paradigmáticos son la transición de las moléculas replicantes a las protocélulas, la endosimbiosis de las mitocondrias y los plastos por parte de las células eucariotas, la aparición de los organismos multicelulares, la eusocialidad.
-Finalmente, la establidad de la biocenosis de los ecosistemas se sostiene por una red compleja de interdependencias entre especies.
 ¿Cómo se explica esta tendencia permanente de la vida en favor de la agregación cooperativa?
 
-\subsection{Evolución}
+%la posibilidad de supervivencia y reproducción de una población depende no sólo del sistema de reciprocidad para la propagación del riesgo dentro de las poblaciones y entre las poblaciones de diferentes especies.
 
-Existen numerosas descripciones matemáticas de la evolución, dinámicas que describen cómo las frecuencias de las estrategias dentro de una población cambian en el tiempo en base al éxito de las estrategias \cite{hofbauer2003-evolutionaryGameDynamics}.
-%Hay muchas ``dinámicas de juego'', que pueden ser discretas o continuas, estocásticas o deterministas.
-%Si bien los enfoques estocásticos que incluyen los efectos del tamaño de la población finita son siempre más realistas, se ha optado en general por análisis determinísticos continuos.
-La idea básica es la siguiente: cuanto más apta es una estrategia en un momento dado, más probable es que se emplee en el futuro.
-Los individuos tienden a cambiar por estrategias que les van bien, o que los individuos tienen una descendencia que tiende a utilizar las mismas estrategias que sus padres, y cuanto más apto es el individuo, más numerosa es su descendencia.
 
-Es posible mostrar que formulaciones aparentemente diferentes entre sí son variantes de un modelo de crecimiento exponencial conocido como \emph{replicator dynamic} \cite{taylor1978-replicatorDynamic, schuster1983-replicatorDynamics}.
-%Supongamos una población de individuos haploides, cada uno de los cuales utiliza la misma estrategia a lo largo de su vida, y produce una descendencia que utiliza la estrategia de los padres, y
+
+Es posible mostrar que formulaciones aparentemente diferentes entre sí son variantes de un modelo de crecimiento exponencial conocido como \emph{replicator dynamic} \cite{taylor1978-replicatorDynamic, schuster1983-replicatorDynamics,hofbauer2003-evolutionaryGameDynamics}.
+
+
+
+
 Sea $x_i$ la proporción de la estrategia $i$ en la población.
 El cambio en la distribución de estrategias $x = (x_1 , \dots , x_n)$ está determinado por su tasa de crecimiento $r_i$.
-Sea $f_i(x)$ la estimación de la tasa de crecimiento $r_i$, la proporción de la estrategia $i$ en la población en el siguiente paso es,    
+Sea $\overline{f}_i(x)$ la estimación de la tasa de crecimiento $r_i$, la proporción de la estrategia $i$ en la población en el siguiente paso es,    
 \begin{equation} \label{eq:replicator_dynamic}
 x_i^\prime = \frac{x_i f_i(x)}{\overline{f}(x)}
 \end{equation}
@@ -61,57 +92,71 @@ La aptitud $f_i(x)$ sólo depende de las estrategias, y no del ambiente, porque 
 \subsection{El problema de la estimación de la tasa de crecimiento}
 
 La estimación de la tasa de crecimiento requiere considerar explícitamente la variablidad del ambiente y el tipo de proceso que genera esa variabilidad.
-Para resolver estos temas consideremos el siguiente ejemplo.
-La naturaleza lanza una moneda: si sale cara la población crece un 50\%, si sale seca se reduce un 40\%.
-\begin{equation}
-f(r,x) =
-\begin{cases}
- 1.5 & r = \text{ \en{Head}\es{Cara} } \\
- 0.6 & r = \text{ \en{Tail}\es{Seca} }
-\end{cases}
-\end{equation}
-Donde $f(r,x)$ significa la aptitud cundo el ambiente es $r$ dada la distribución de estrategias $x$.
-En este ejemplo la distribución de estrategias $x$ no afecta el valor de la aptitud, por lo que definimos $f(r) := f(r,x)$.
-Así definida, la tasa de crecimiento es una variable aleatoria.
-¿Cuál es entonces la tasa de crecimiento estimada (determinista) que deberíamos usar en el replicator dynamic?
 
-Buena parte de la literatura en evolución considera que el promedio de estados es la estimación correcta de la tasa de crecimiento.
-Sea $\omega \in \{f(\text{cara}), f(\text{seca})\}$ los estados del sistema, el crecimiento esperado según el promedio de estados es de 5\%, $\langle \omega \rangle = 1.05 = \sum_{\omega} \omega \cdot  P(\omega)$. 
-Sin embargo, lo que efectivamente le ocurre a los recursos de los agentes en el tiempo, $\omega(t) = \prod_i^t f(r_i)$, es muy diferente.
-A largo plazo todos pierden a una tasa cercana al 5\%.
+Buena parte de la literatura en evolución considera que la estimación correcta de la tasa de crecimiento es el valor esperado las posibles trayectorias individuales de los recursos en el tiempo, $\omega(t)$.
+Sea $\Omega_t$ el valor de todos los posibles trayectorias en el tiempo $t$, el valor esperado se obtiene pesando cada estado $\omega \in \Omega_t$ por la probabilidad de que ocurran $P(\omega)$
+\begin{equation}
+\langle \omega \rangle_t = \sum_{\omega \in \Omega_t} \omega \cdot  P(\omega)
+\end{equation}
+
+Los dos primeros pasos temporales es 
+\begin{equation}
+\begin{split}
+\langle \omega \rangle_1 & = 1.5 \cdot \frac{1}{2} + 0.6 \cdot  \frac{1}{2} = 1.05 \\ 
+\langle \omega \rangle_2 &=  1.5^2 \cdot \frac{1}{4} + 2 (0.6 \cdot 1.5 \cdot \frac{1}{4} ) + 0.6^2 \cdot \frac{1}{4}= 1.05^2
+\end{split}
+\end{equation}
+
+El valor esperado en cualquier tiempo $t$ se obtiene a través de una tasa de crecimiento de $5\%$ por cada paso temporal, $\langle \omega \rangle_t = 1.05^t$.
+Y efectivamente, en una muestra suficientemente grande de trayectoria individuales de los recursos en el tiempo, ese es el promedio observado.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\linewidth]{figures/pdf/ergodicity_expectedValue.pdf}
+    \end{subfigure}
+    \caption{
+    Promedio de los recursos individuales en el tiempo para diferentes tamaños de la población, en escala logarítimica.
+    A medida que aumentamos el tamaño de la población, el promedio se acerca al valor esperado $\langle \omega \rangle_t = 1.05^t$.
+    }
+    \label{fig:cpr_individual}
+\end{figure}
+
+Sin embargo, en el largo plazo todas las trayectorias individuales de los recursos pierden a una tasa cercana al 5\%.
 
 \begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.45\textwidth}
     \includegraphics[width=\linewidth]{figures/pdf/ergodicity_individual_trayectories.pdf}
+    \caption{}
+    \label{fig:ergodicity_individual_trayectories}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\linewidth]{figures/pdf/ergodicity_individual_trayectories_longrun.pdf}
+    \caption{}
+    \label{fig:ergodicity_individual_trayectories_longrun}
     \end{subfigure}
     \caption{
-    Tamaño logarítimico de los recursos individuales en el tiempo, $ \log(\omega(t))$.
-    La recta negra que baja representa el promedio temporal, y la que sube el promedio de estados.
+    La recta negra representan el valor esperado.
+    Figura \ref{fig:ergodicity_individual_trayectories}: tamaño de los recursos individuales en el tiempo, $ \log(\omega(t))$.
+    Figura \ref{fig:ergodicity_individual_trayectories_longrun}: con suficiente tiempo todas las trayectorias individuales pegan a la recta azul. 
     }
     \label{fig:cpr_individual}
 \end{figure}
 
-Esto ocurre porque en los proceso multiplicativos propios de los sistemas evolutivos (al que está sujeto el tamaño de los recursos $\omega(t)$ en un replicator dynamic con fitness estocático) los impactos físicos de las pérdidas suelen ser más fuertes que los de las ganancias, haciendo irreversibles trayectorias.
-En el extremo, un único cero en la secuencia tasas de reproducción y superviviencia, significa la extinción.
-
-La diferencia entre lo que le ocurre a los agentes en el tiempo respecto de la esperanza de los estados del sistema es un problema bien conocido en la mecánica estadística, llamado ``no-ergodicidad''~\cite{peters2019-ergodicityEconomics}.
-% Decimos que un proceso es ergódico si se cumple que,
-% \begin{equation}
-%  \underbrace{\lim_{T \mapsto \infty} \frac{1}{T} \sum_{t=1}^T \omega(t)}_{\text{Media temporal}}  = \underbrace{\sum_{\omega} \omega \cdot p(\omega)}_{\text{Media de estados}}
-% \end{equation}
-% 
-Cuando un proceso es ergódicos, las descripciones de su dinámica pueden remplazarse mediante el promedio de los estados del sistema, eliminado el tiempo de los modelos.
-Sin embargo, las condiciones para que un sistema cumpla con la hipótesis de ergodicidad son muy restrictivas, y en nuestro caso particular hemos visto que la media de estados no representa lo que lo le ocurre a los agentes en el tiempo.
-
+El valor esperado no representa lo que lo le ocurre a los agentes en el tiempo.
+Esta diferencia es un problema bien conocido en mecánica estadística, llamado ``no-ergodicidad''~\cite{peters2019-ergodicityEconomics}.
+Cuando un proceso es ergódico, las descripciones de su dinámica pueden remplazarse mediante el valor esperado, eliminado el tiempo de los modelos.
+Sin embargo, las condiciones para que un sistema cumpla con la hipótesis de ergodicidad son muy restrictivas.
+Ante la duda, siempre conviene analizar directamente la dinámica. 
+En nuestro caso, los recursos están gobernados por un procesos multiplicativos, que en un cierto tiempo $t$ puede expresarse como,
 \begin{equation}
 \omega(t) = \prod^t_{i=1} f(r_i) = f(\text{cara})^{n_1} f(\text{seca})^{n_2}
 \end{equation}
-donde $n_1$ y $n_2$ representa la cantidad de ocurrencias de $f(\text{cara})$ y $f(\text{seca})$, con $n_1 + n_2 = t$.
-Las trayectorias observadas en la figura \ref{fig:cpr_individual} son variables, pero cuanto más tiempo observemos el sistema más suave se vuelven esas líneas.
-En el límite $\T \roghtarrow \infty$ las líneas se verán completamente rectas con la misma pendiente para todas las trayectoria individuales.
-Denotamos por $\overline{f}$ el factor efectivo por el que se multiplica los recursos $\omega(t)$ en cada iteración.
 
+donde $n_1$ y $n_2$ representa la cantidad de ocurrencias de $f(\text{cara})$ y $f(\text{seca})$, con $n_1 + n_2 = t$.
+Las trayectorias observadas en la figura \ref{fig:ergodicity_individual_trayectories} son variables, pero cuanto más tiempo observemos el sistema más suave se vuelven esas líneas (figura \ref{fig:ergodicity_individual_trayectories_longrun}).
+En el límite, $T \rightarrow \infty$ todas las trayectoria individuales estarán gobernadas por el mismo factor efectivo $\overline{f}$ por el que se multiplica los recursos $\omega(t)$ en cada iteración.
 \begin{equation}
 \begin{split}
 \lim_{T \rightarrow \infty} \omega(T) & = \overline{f}^T \\
@@ -120,18 +165,21 @@ Denotamos por $\overline{f}$ el factor efectivo por el que se multiplica los rec
  \end{split}
 \end{equation}
 Donde las frecuencias $\frac{n_1}{T}$ y $\frac{n_2}{T}$ en el límite $T \rightarrow \infty$ son iguales a las probabilidades de ocurrencia de los estados del sistema.
-
+Por lo tanto, la mejor estimación de la tasa de crecimiento es,
 \begin{equation}
 \overline{f} = (1.5 \cdot 0.6)^{1/2} \approx 0.95
 \end{equation}
 
-El reconocimiento de la diferencia entre el promedio temporal y promedio de estados aparece en la literatura de evolución bajo los conceptos de media aritmética y geométrica~\cite{dempster1955-geometricMean}.
+Esta fórmula, que permite computar el promedio temporal de las trayectorias individuales en los procesos multiplicativos, se la conoce también como \emph{media geométrica} y ha sido usada 
+en la literatura de evolución~\cite{dempster1955-geometricMean}.
+El hecho de que el promedio temporal sea menor a promedio de estados tiene que ver con que en los procesos multiplicativos los impactos físicos de las pérdidas suelen ser más fuertes que los de las ganancias.
+En el extremo, un único cero en la productoria alcanza para generar su extinción.
 
-\subsection{Bet-hedging}
-
-The ideas of bet-hedging grew out of the appreciation of treating fitness as a random variable.
-
-Kokko
+% Decimos que un proceso es ergódico si se cumple que,
+% \begin{equation}
+%  \underbrace{\lim_{T \mapsto \infty} \frac{1}{T} \sum_{t=1}^T \omega(t)}_{\text{Media temporal}}  = \underbrace{\sum_{\omega} \omega \cdot p(\omega)}_{\text{Media de estados}}
+% \end{equation}
+% 
 
 \subsection{Cooperacion}
 
