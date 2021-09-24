@@ -8,15 +8,19 @@ function coin(p=0.71)
     rand(Binomial(1,p))
 end
 
-A = 0.71
-N = 10
-ns = [i for i in 1:N]
-e = [i for i in 0.0:0.0001:1.0]
+A = 0.71 # ambiente
+N = 10 # 
+ns = [i for i in 1:N] 
+e = [i for i in 0.0:0.0001:1.0] # estrategias
 
+# Promedio de betas
+plot(pdf.(Beta(2,2),e))
+plot!((1/2).*(pdf.(Beta(2,1),e).+pdf.(Beta(1,2),e)))
+
+# Analítico
 function coop_fitness(e,n,r)
     return ((n-r)/n)*(1-e)+(r/n)*e
 end
-
 function coop_temporal_average(n, e, ambiente=A)
     log_res = 0.0
     p_fitness = pdf(Binomial(n,ambiente))
@@ -25,8 +29,6 @@ function coop_temporal_average(n, e, ambiente=A)
     end
     return exp(log_res)
 end
-
-coop_temporal_average.(100,)
 
 eN = zeros(Float64,(N,length(e)))
 for i in 1:N

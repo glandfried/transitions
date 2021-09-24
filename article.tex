@@ -32,18 +32,18 @@ La sinergia inherente a toda dinámica de reproducción y superviviencia junto c
 En el último tercio de la historia del Universo, en algún momento hace aproximadamente 4500 millones de años, apareció en la tierra una forma de organización de la materia capaz de auto-replicarse.
 El crecimiento de estos linajes en el tiempo, $\omega(t)$, estuvo gobernado por procesos multiplicativos,
 %
-\begin{equation}
+\begin{equation} \label{eq:modelo_exponencial}
 \omega(t) = \prod_i^t f(r_i)
 \end{equation}
 %
-una secuencias estocástica de tasas de supervivencia y reproducción $f(\cdot)$ dependientes de un ambiente aleatorio $r$.
+una secuencias estocástica de tasas de supervivencia y reproducción $f(\cdot)$ dependientes de un ambiente aleatorio $a$.
 Supongamos que la naturaleza lanza una moneda,
 %
-\begin{equation}
-f(r) =
+\begin{equation} \label{eq:estrategia_base}
+f(a) =
 \begin{cases}
- 1.5 & r = \text{ \en{Head}\es{Cara} } \\
- 0.6 & r = \text{ \en{Tail}\es{Seca} }
+ 1.5 & a = \text{ \en{Head}\es{Cara} } \\
+ 0.6 & a = \text{ \en{Tail}\es{Seca} }
 \end{cases}
 \end{equation}
 %
@@ -66,40 +66,29 @@ Desde aquel momento hasta entonces la vida adquirió una extraordinaria compleji
 \end{figure}
 %
 Esta complejidad es consecuencia de una serie de transiciones evolutivas~\cite{maynardSmith1995-majorTransitions} en las que las entidades capaces de replicarse de forma independiente, cediendo algo de valor a las otras, pasan a formar unidades evolutivas de nivel superior.
-Algunos ejemplos paradigmáticos son la transición de las moléculas replicantes a las protocélulas, la endosimbiosis de las mitocondrias y los plastos por parte de las células eucariotas, la aparición de los organismos multicelulares, la eusocialidad.
+Algunos ejemplos paradigmáticos son la transición de las moléculas replicantes a las protocélulas, la endosimbiosis de las mitocondrias y los plastos por parte de las células eucariotas, la aparición de los organismos multicelulares.
 ¿Cómo se explica esta tendencia permanente de la vida en favor de la agregación cooperativa?
 
-%la posibilidad de supervivencia y reproducción de una población depende no sólo del sistema de reciprocidad para la propagación del riesgo dentro de las poblaciones y entre las poblaciones de diferentes especies.
-
-
-
-Es posible mostrar que formulaciones aparentemente diferentes entre sí son variantes de un modelo de crecimiento exponencial conocido como \emph{replicator dynamic} \cite{taylor1978-replicatorDynamic, schuster1983-replicatorDynamics,hofbauer2003-evolutionaryGameDynamics}.
-
-
-
-
-Sea $x_i$ la proporción de la estrategia $i$ en la población.
-El cambio en la distribución de estrategias $x = (x_1 , \dots , x_n)$ está determinado por su tasa de crecimiento $r_i$.
-Sea $\overline{f}_i(x)$ la estimación de la tasa de crecimiento $r_i$, la proporción de la estrategia $i$ en la población en el siguiente paso es,    
+Sea $x_e$ la proporción de la estrategia $e$ en la población.
+El modelo estándar en evolución, conocido como \emph{replicator dynamic} \cite{taylor1978-replicatorDynamic, schuster1983-replicatorDynamics, hofbauer2003-evolutionaryGameDynamics}, el cambio de la proporción está determinado por las tasas de crecimiento estimada $f_e$ de las estrategias,
 \begin{equation} \label{eq:replicator_dynamic}
-x_i^\prime = \frac{x_i f_i(x)}{\overline{f}(x)}
+x_e^\prime = \frac{x_e f_e}{X}
 \end{equation}
-donde $\overline{f}(x)=\sum x_i f_i(x)$ es el promedio pesado de todas las tasas de crecimiento, una constante que tiene el objetivo de mantener las proprociones de las estrategias normalizadas en 1.
-Una teoría de juegos dinámica observará cómo se mueve el vector de estado $x$ con el tiempo, y buscará estados de equilibrio y examinará su estabilidad.
-
-La aptitud $f_i(x)$ sólo depende de las estrategias, y no del ambiente, porque en general la aptitud se define como la estimación de la tasa de crecimiento $r_i$.
+donde $X=\sum_i x_i f_i$ es una constante de normalización.
+Una teoría de juegos dinámica observará cómo se mueve el vector de estado $x$ con el tiempo, y buscará los estados de equilibrio y examinará su estabilidad.
+%La aptitud $f_i(x)$ sólo depende de las estrategias, y no del ambiente, porque en general la aptitud se define como la estimación de la tasa de crecimiento $r_i$.
 
 \subsection{El problema de la estimación de la tasa de crecimiento}
 
 La estimación de la tasa de crecimiento requiere considerar explícitamente la variablidad del ambiente y el tipo de proceso que genera esa variabilidad.
 
-Buena parte de la literatura en evolución considera que la estimación correcta de la tasa de crecimiento es el valor esperado las posibles trayectorias individuales de los recursos en el tiempo, $\omega(t)$.
+Buena parte de la literatura en evolución considera que la estimación correcta de la tasa de crecimiento es el valor esperado de las posibles trayectorias individuales de los recursos en el tiempo, $\omega(t)$.
 Sea $\Omega_t$ el valor de todos los posibles trayectorias en el tiempo $t$, el valor esperado se obtiene pesando cada estado $\omega \in \Omega_t$ por la probabilidad de que ocurran $P(\omega)$
 \begin{equation}
 \langle \omega \rangle_t = \sum_{\omega \in \Omega_t} \omega \cdot  P(\omega)
 \end{equation}
 
-Los dos primeros pasos temporales es 
+El valor esperado de la estrategia considerada en la ecuación \ref{eq:estrategia_base} es en los dos primeros pasos temporales de, 
 \begin{equation}
 \begin{split}
 \langle \omega \rangle_1 & = 1.5 \cdot \frac{1}{2} + 0.6 \cdot  \frac{1}{2} = 1.05 \\ 
@@ -107,9 +96,8 @@ Los dos primeros pasos temporales es
 \end{split}
 \end{equation}
 
-El valor esperado en cualquier tiempo $t$ se obtiene a través de una tasa de crecimiento de $5\%$ por cada paso temporal, $\langle \omega \rangle_t = 1.05^t$.
-Y efectivamente, en una muestra suficientemente grande de trayectoria individuales de los recursos en el tiempo, ese es el promedio observado.
-
+Según el valor esperado, la tasa de crecimiento estimada es $5\%$ por cada paso temporal, $\langle \omega \rangle_t = 1.05^t$.
+Y efectivamente eso es lo que ocurre con el promedio de una muestra suficientemente grande de trayectoria individuales en el tiempo, $\omega(t)$, 
 \begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.45\textwidth}
@@ -122,8 +110,8 @@ Y efectivamente, en una muestra suficientemente grande de trayectoria individual
     \label{fig:cpr_individual}
 \end{figure}
 
-Sin embargo, en el largo plazo todas las trayectorias individuales de los recursos pierden a una tasa cercana al 5\%.
-
+Sin embargo, el valor esperado no representa lo que lo le ocurre a los agentes en el tiempo. 
+Individualmente, todas las trayectorias pierden a largo plazo a una tasa cercana al 5\%.
 \begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.45\textwidth}
@@ -144,19 +132,19 @@ Sin embargo, en el largo plazo todas las trayectorias individuales de los recurs
     \label{fig:cpr_individual}
 \end{figure}
 
-El valor esperado no representa lo que lo le ocurre a los agentes en el tiempo.
-Esta diferencia es un problema bien conocido en mecánica estadística, llamado ``no-ergodicidad''~\cite{peters2019-ergodicityEconomics}.
+La diferencia entre el valor esperado y lo que le ocurre a los agentes individuales en el tiempo es un problema bien conocido en mecánica estadística, llamado ``no-ergodicidad''~\cite{peters2019-ergodicityEconomics}.
 Cuando un proceso es ergódico, las descripciones de su dinámica pueden remplazarse mediante el valor esperado, eliminado el tiempo de los modelos.
-Sin embargo, las condiciones para que un sistema cumpla con la hipótesis de ergodicidad son muy restrictivas.
-Ante la duda, siempre conviene analizar directamente la dinámica. 
-En nuestro caso, los recursos están gobernados por un procesos multiplicativos, que en un cierto tiempo $t$ puede expresarse como,
+Sin embargo, las condiciones de para que un sistema cumpla con la hipótesis de ergodicidad son muy restrictivas.
+Cuando las hipótesis no se cumplen nos vemos obligados a analizar directamente su dinámica. 
+
+La dinámica evolutiva está gobernada por un procesos multiplicativos (eq.~\ref{eq:modelo_exponencial}), que en un cierto tiempo $t$ puede expresarse como,
 \begin{equation}
 \omega(t) = \prod^t_{i=1} f(r_i) = f(\text{cara})^{n_1} f(\text{seca})^{n_2}
 \end{equation}
 
 donde $n_1$ y $n_2$ representa la cantidad de ocurrencias de $f(\text{cara})$ y $f(\text{seca})$, con $n_1 + n_2 = t$.
 Las trayectorias observadas en la figura \ref{fig:ergodicity_individual_trayectories} son variables, pero cuanto más tiempo observemos el sistema más suave se vuelven esas líneas (figura \ref{fig:ergodicity_individual_trayectories_longrun}).
-En el límite, $T \rightarrow \infty$ todas las trayectoria individuales estarán gobernadas por el mismo factor efectivo $\overline{f}$ por el que se multiplica los recursos $\omega(t)$ en cada iteración.
+En el límite, $T \rightarrow \infty$ todas las trayectoria individuales estarán determinadas por el mismo factor efectivo $\overline{f}$ por el que se multiplica los recursos $\omega(t)$ en cada iteración.
 \begin{equation}
 \begin{split}
 \lim_{T \rightarrow \infty} \omega(T) & = \overline{f}^T \\
@@ -170,9 +158,9 @@ Por lo tanto, la mejor estimación de la tasa de crecimiento es,
 \overline{f} = (1.5 \cdot 0.6)^{1/2} \approx 0.95
 \end{equation}
 
-Esta fórmula, que permite computar el promedio temporal de las trayectorias individuales en los procesos multiplicativos, se la conoce también como \emph{media geométrica} y ha sido usada 
-en la literatura de evolución~\cite{dempster1955-geometricMean}.
-El hecho de que el promedio temporal sea menor a promedio de estados tiene que ver con que en los procesos multiplicativos los impactos físicos de las pérdidas suelen ser más fuertes que los de las ganancias.
+Esta fórmula, que permite computar la tasa de crecimiento caracterísitica a largo plazo de las trayectorias individuales, se la conoce también como \emph{media geométrica} y ha sido usada previamente en la literatura de evolución~\cite{dempster1955-geometricMean}.
+Una propiedad importante es que su valor siempre es menor que el promedio de estados.
+Esto se debe a que en los procesos multiplicativos los impactos físicos de las pérdidas suelen ser más fuertes que los de las ganancias.
 En el extremo, un único cero en la productoria alcanza para generar su extinción.
 
 % Decimos que un proceso es ergódico si se cumple que,
@@ -185,26 +173,28 @@ En el extremo, un único cero en la productoria alcanza para generar su extinci�
 
 En los procesos no-ergódicos, las fluctuaciones tienen un efecto negativo en la tasa de crecimiento individual a largo plazo, pero no en la tasa de crecimiento del valor esperado.
 Dado que la varianza realmente importa, una forma eficaz de reducirla es compartir los riesgos~\cite{yaari2010-cooperationEvolution, peters2015-evolutionaryAdvantageOfCooperation}.
-Parafraseando a Den Boer~\cite{denBoer1968-spreadingRisk}, la  supervivencia de una población depende de la distribución del riesgo dentro de la población y entre las poblaciones de diferentes especies.
+%Parafraseando a Den Boer~\cite{denBoer1968-spreadingRisk}, la  supervivencia de una población depende de la distribución del riesgo dentro de la población y entre las poblaciones de diferentes especies.
 Ole Peters~\cite{peters2015-evolutionaryAdvantageOfCooperation} considera las consecuencias que la distribución del riesgo de una estrategia cooperativa sencilla tiene sobre la tasa de crecimiento de los agentes.
+
 Los agentes cooperadores simplemente reparten sus recursos en partes iguales luego de cada iteración.
 
 \begin{figure}[H]
 \centering
+\scalebox{0.75}{
 \tikz{
 
-    \node[latent, minimum size=2cm ] (x1_0) {$x_1(t)$} ;
-    \node[latent, below=of x1_0, minimum size=2cm ] (x2_0) {$x_2(t)$} ;
+    \node[latent, minimum size=2cm ] (x1_0) {$\omega_1(t)$} ;
+    \node[latent, below=of x1_0, minimum size=2cm ] (x2_0) {$\omega_2(t)$} ;
 
-    \node[latent, right=of x1_0, minimum size=3cm ] (x1_0g) {$x_1(t)+\Delta x_1(t)$} ;
-    \node[latent, right=of x2_0, minimum size=1.8cm, xshift=0.6cm , align=left] (x2_0g) {$x_2(t)+$\\$\Delta x_2(t)$} ;
+    \node[latent, right=of x1_0, minimum size=3cm ] (x1_0g) {$ \omega_1(t)\cdot f(r_1(t))$} ;
+    \node[latent, right=of x2_0, minimum size=1.8cm, xshift=0.6cm , align=left] (x2_0g) {$\omega_2(t)\cdot$\\$f(r_2(t))$} ;
     
-    \node[latent, right=of x1_0g, minimum size=3.8cm, yshift=-1.33cm, align=right] (x_0) {$x_1(t)+\Delta x_1(t)$\\$+x_2(t)+\Delta x_2(t)$ } ;
+    \node[latent, right=of x1_0g, minimum size=3.8cm, yshift=-1.33cm, align=right] (x_0) {$\omega_1(t)\cdot f(r_1(t))$\\$+\omega_2(t)\cdot f(r_2(t))$ } ;
     
     \node[const, above=of x_0] (nx_0) {$\overbrace{\text{Pool}\hspace{2.5cm}\text{Share}}^{\text{\normalsize Cooperaci\'on}}$} ;
     
-    \node[latent, right=of x1_0g, minimum size=2.5cm,  xshift=4.5cm] (x1_1) {$x_1(t+1)$ } ;
-    \node[latent, below=of x1_1, minimum size=2.5cm, yshift=0.7cm] (x2_1) {$x_2(t+1)$ } ;
+    \node[latent, right=of x1_0g, minimum size=2.5cm,  xshift=4.5cm] (x1_1) {$\omega_1(t+1)$ } ;
+    \node[latent, below=of x1_1, minimum size=2.5cm, yshift=0.7cm] (x2_1) {$\omega_2(t+1)$ } ;
     
     \edge {x1_0} {x1_0g};
     \edge {x2_0} {x2_0g};
@@ -212,11 +202,12 @@ Los agentes cooperadores simplemente reparten sus recursos en partes iguales lue
     \edge {x_0} {x1_1,x2_1};
     
 }
+}
 \caption{Estrategia cooperativa. Los agentes comienzan con los mismos recursos iniciales. Luego crecen independientemente de acuerdo con la ecuaci\'on \ref{}. Luego cooperan poniendo sus recursos en un fondo común, que finalmente es dividio en partes iguales.}
 \label{fig:protocolo}
 \end{figure}
 
-Las poblaciones enteramente cooperadoras ven reducidas sus fluctuaciones, lo que genera una aumento en la tasa de crecimiento de todos sus miembros.
+Las poblaciones enteramente cooperadoras reducen sus fluctuaciones, lo que genera una aumento en la tasa de crecimiento de todos sus miembros.
 En la figura \ref{fig:cpr_cooperation} mostramos la trayectoria de uno de los agentes cooperadores.
 \begin{figure}[H]
     \centering
@@ -232,11 +223,11 @@ En la figura \ref{fig:cpr_cooperation} mostramos la trayectoria de uno de los ag
 
 Mediante la cooperación, las poblaciones de agentes logran acceder a tasas de crecimiento individuales equivalentes al promedio de estados del sistema, que en los sistemas no-ergódicos es siempre superior que el promedio temporal.
 
-\subsection{Estabilidad}
+Ole Peters considera que este aumento de la tasa de crecimiento es demuestra la ventaja evolutiva de la cooperación, lo que propone como principal explicación de las transiciones evolutivas.
+Sin embargo Ole Peters no analiza el problema de la deserción, quien dice ``our cooperators are unable to break the cooperative pact''.
+No parece ser un problema menor, teniendo en cuenta la tentación que podría significar dejar de aportar al fondo común mientras se siguen recibiendo los beneficios de este.
 
-Ole Peters considera que el aumento en la tasa de crecimiento temporal de las poblaciones de estrategias es explicación suficiente de la ventaja evolutiva de la cooperación, lo que propone como principal explicación de las transiciones evolutivas observadas en la historia de la vida.
-Sin embargo Ole Peters no analiza el problema de la deserción, quien dice, ``our cooperators are unable to break the cooperative pact''.
-No parece ser un problema menor, teniendo en cuenta la tentación que podría signnificar dejar de aportar al fondo común mientras se siguen recibiendo los beneficios de este.
+\subsection{Estabilidad}
 
 Para discutir este punto en detalle, analizamos las tasas de crecimiento de las estrategias cooperadora y desertora en un caso concreto.
 La población más chica posible consiste de dos agentes.
@@ -540,6 +531,8 @@ Esta especulación es rechazada por la metodología de czegel \cite{czegel2019-b
 Además \cite{czegel2019-bayesianEvolution} dice que, ``This isomorphism allows for a natural interpretation of evolutionary transitions in individuality as \emph{learning the structure}''.
 En este trabajo mostramos que lo que se aprende no es la estructura, sino que \textbf{aprenden la dinámica}, en particular el efecto no-ergódico de los procesos multiplicativos.
 
+%La posibilidad de supervivencia y reproducción de una población depende no sólo del sistema de reciprocidad para la propagación del riesgo dentro de las poblaciones y entre las poblaciones de diferentes especies.
+
 
 % La ciencia es una institución humana que tiene pretención de verdad, esto es de formular proposiciones que valgan para todas las personas, tanto intercultural como intersubjetivamente.
 % Las ciencias formales validan sus proposiciones mediante teoremas, resultados derivados de aplicar las reglas internas a un sistema axiomático cerrado.
@@ -572,12 +565,104 @@ r(t) =
 \end{equation}
 
 
-
 \subsection{Tasa de crecimiento en poblaciones cooperadoras}
 
+En el modelo multinivel bayesiano vemos que ocurre con diferentes  poblaciones (Coop-Coop, Coop-Des, Des-Des) de una estrategia, $e = 0.71$, en un ambiente, $a = 0.5$.
+
+Sería interesante extender ese modelo para que considere al mismo tiempo todas las posibes estrategias.
+
+Cuando hacemos el análisis individual, la proproción de las estretgias la representamos con una distribución Beta y el fitness con una likelihood binomial.
+
+Arrancamos con un Beta a priori uniforme
+
+\begin{equation}
+p(e_0) = \text{Beta}(1,1) \propto e^1 (1-e)^1 
+\end{equation}
+
+En el primer paso, cada individuo tira la moneda, y recibe un likelihood-fitness aleatorio.
+
+\begin{equation}
+p(e_1) \propto 
+\begin{cases}
+e^1 (1-e)^2 & \text{ si } r = 0 \\
+e^2 (1-e)^1 & \text{ si } r = 1
+\end{cases}
+\end{equation}
+
+Supongamos que tenemos una población de dos cooperadores, $N=3$, que comparten sus recursos.
+
+\begin{equation}
+p(e_1|r) \propto 
+\begin{cases}
+e^1 (1-e)^2 & \text{ si } r = (0,0,0) \\
+\frac{1}{3} e^1 (1-e)^2 + \frac{2}{3} e^2 (1-e)^1  & \text{ si } r = (0,0,1) \\
+ \dots \\
+\frac{2}{3} e^2 (1-e)^1 + \frac{1}{3} e^1 (1-e)^2    & \text{ si } r = (0,1,1) \\
+\dots \\
+e^2 (1-e)^1 & \text{ si } r = (1,1,1)
+\end{cases}
+\end{equation}
+
+Cuando ambos sacan el mismo resultado, la distribución Beta aumenta en un sólo punto, pues recibe como producto $(1-e)$ y $e$ respectivamente.
+En el caso $r = (0,0,1)$ recibe como producto $(\frac{1}{3} + \frac{1}{3}e )$, y en el caso $r = (0,1,1)$ recibe como producto $(\frac{2}{3} - \frac{1}{3}e )$.
+Veamos el primero,
+
+\begin{equation}
+\begin{split}
+p(e_1) & \propto \frac{1}{3} e^1 (1-e)^2 + \frac{2}{3} e^2 (1-e)^1  \\
+& =  e^1 (1-e)^1 ( \frac{1}{3} (1-e) +  \frac{2}{3} e)  \\
+& =  e^1 (1-e)^1 (\frac{1}{3} + \frac{1}{3}e )
+\end{split}
+\end{equation}
+
+Es decir, el primer posterior simplemente es el producto del prior por una de esas pendientes.
+Y esa pendiente es compartida por todos los cooperadores.
+Por lo que el segundo posterior va a ser nuevamente agregar como producto una de esas pendientes.
+Es decir, en cada paso se van acumulando las pendietes.
+Los posibles fitness de los cooperadores son entonces las pendientes, distribuidas como una Binomial. 
 
 
-\subsection{Tasa de crecimiento en poblaciones mixtas}
+\begin{equation}
+p(e_t) \propto \prod_i^t \text{pendiente}_i \propto (1-e)^{n_0} (\frac{1}{3} + \frac{1}{3}e )^{n_1} (\frac{2}{3} - \frac{1}{3}e )^{n_2} e^{n_3}
+\end{equation}
+
+Donde $n_i$ representa la cantidad de veces que el conjunto de cooperadores recibieron como pago cada una de las pendientes, con $\sum n_i = t$.
+En el límite todas las trayectorias individuales estarán gobernadas por el mismo factor $\overline{f}$.
+
+\begin{equation}
+\begin{split}
+\lim_{T \rightarrow \infty} p(e_T) & \propto \overline{f}^T \\
+(\lim_{T \rightarrow \infty} p(e_T) )^{1/T} & \propto \overline{f} \\
+(1-e)^{p(r=0)} (\frac{1}{3} + \frac{1}{3}e )^{p(r=1)} (\frac{2}{3} - \frac{1}{3}e )^{p(r=2)} (e)^{p(r=3)} & 
+\end{split}
+\end{equation}
+
+
+\vspace{0.3cm}
+
+\paragraph{Hipótesis inductiva} Generalización del fitness de los cooperadores sin desertores.
+Sea $n$ el tamaño de la población, $r$ la cantidad de éxitos y $n-r$ la cantidad de fracasos, el fitness de los cooperadores es
+\begin{equation}
+f_c(r|n) = \frac{r}{n} e + \frac{n-r}{n}(1-e)
+\end{equation}
+
+La distribución de probabilidad del fitness de los cooperadores es
+\begin{equation}
+p(f_c(r|n)) = \text{Binomial}(r,n)
+\end{equation}
+
+y la probabilidad de las estrategias es
+\begin{equation}
+\overlie{f_c}(n) = \prod_{r=1}^n \left( \frac{r}{n} e + \frac{n-r}{n}(1-e) \right)^{p(f_c(r|n))}
+\end{equation}
+
+
+
+\subsection{Tasa de crecimiento poblaciones mixtas}
+
+\todo[inline]{Generalizar intuición que ya tengo en papel}
+
+\subsection{Tasa de crecimiento en poblaciones mixtas infinitas}
 
 Las estrtegias que en una población infinita representan una proporción mayor a $0$ son a su vez infinitas.
 Sea $d$ la proporción de desertores y $1-d$ la proporción de cooperadores.
