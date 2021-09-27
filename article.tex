@@ -380,16 +380,14 @@ x^{\prime} \propto \frac{x^{\prime}}{1.5+0.6} \approx
 
 El proceso evolutivo selecciona las estrategias individuales que están mejor adaptadas al ambiente.
 Si ambientes generan los estados con una probabilidad de $p=1.5/2.1\approx 0.71$ y $1-p$, entonces la estrategia individual mejor adaptada es la que en cada ronda apuesta $0.71$ de sus recursos al estado $A$ y $0.29$ de sus recursos al estado $B$.
-Si el ambiente no cambia, la diversidad la evolución selecciona s
 
-
-Si el ambiente no cambia, no hay ninguna ventaja a favor de la cooperación.
-Las estrategias individuales que se adaptaron al ambiente, como las grupos cooperativos, tienen misma tasa de crecimiento temporal.
-Si a eso le agregamos un costo por la coordinación cooperativa, entonces hay una ventaja a favor de las estrategias individuales.
-
-La cooperación se ve favorecida cuando el ambiente cambia bruscamente, a una velocidad que impide a las estrategias individuales adaptarse lentamente.
-En este caso las estrategias cooperativas muestran una ventaja frente a las estrategias individuales.
-
+% Si el ambiente no cambia, no hay ninguna ventaja a favor de la cooperación.
+% Las estrategias individuales que se adaptaron al ambiente, como las grupos cooperativos, tienen misma tasa de crecimiento temporal.
+% Si a eso le agregamos un costo por la coordinación cooperativa, entonces hay una ventaja a favor de las estrategias individuales.
+% 
+% La cooperación se ve favorecida cuando el ambiente cambia bruscamente, a una velocidad que impide a las estrategias individuales adaptarse lentamente.
+% En este caso las estrategias cooperativas muestran una ventaja frente a las estrategias individuales.
+% 
 
 \subsection{Selección multinivel}
 
@@ -401,6 +399,275 @@ Según Szathm\'ary, co-autor del concepto de transiciones evolutivas \cite{szath
 Aquí mostramos, basándonos en resultados anteriores que conectan el replicator dynamic y la inferencia bayesiana \cite{}, que si bien las estrategias cooperadoras no son evolutivamente estables al interior de los grupos, estas se ven favorecidas evolutivamente a través de la selección multinivel.
 
 Con la idea de analizar los efetos de la selección multinivel, traduicimos el modelo de Ole Peters a una distirbución de probabilidad jerárquica, la cual describiremos en términos gráficos y analizaremos utilizando solamente las reglas de la probabilidad.
+
+
+Lo que discutimos hasta ahora es el punto y la flecha de la siguiente figura \ref{}, correspondientes a la selección de la estrtegia individual (sección \ref{}) y la selección multinivel 
+
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.66\textwidth}
+    \includegraphics[width=\linewidth]{figures/pdf/tasa-temporal-0.pdf}
+    \end{subfigure}
+    \caption{}
+    \label{fig:fitness_temporal}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.66\textwidth}
+    \includegraphics[width=\linewidth]{figures/pdf/tasa-temporal-1.pdf}
+    \end{subfigure}
+    \caption{
+    Tasa de superviencia temporal de la estrategia especialista ($e=0.99$) en función del ambiente, para diferentes tamaños de población cooperativa (de 1 a 5).
+    La línea punteada represeta la tasa de crecimiento de una población cooperativa inifinitamente grande.
+    }
+    \label{fig:multilevel-selection-1}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.66\textwidth}
+    \includegraphics[width=\linewidth]{figures/pdf/tasa-temporal-2.pdf}
+    \end{subfigure}
+    \caption{
+    La tasa de crecimiento temporal de las estretgias para diferentes tamaño de población enteramente cooperativa (de 1 a 5) en un ambiente $a=0.71$.
+    }
+    \label{fig:multilevel-selection-1}
+\end{figure}
+
+
+
+
+\section{Conclusiones}
+
+En este trabajo, resolviendo dos problemas presentes en la literatura.
+Con la propuesta metodológia de \cite{czegel2019-bayesianEvolution} (la selección multinivel como inferencia bayesiana jerárquica) resolvimos la demostración que le faltaba al modelo de Ole Peters (procesos multiplicativos ruidosos) que verifica que la cooperación está favorecida por la evolución.
+Y a su vez, con el modelo de Peters proveímos el ejemplo concreto que le faltaba a la propuesta metodológica de \cite{czegel2019-bayesianEvolution}.
+Ambas soluciones combinadas ofrecen una solución nueva al problema de las transiciones evolutivas mayores, que es más sencilla que las anterios (procesos multiplicativos ruidosos), basada en principios matemáticos bien fundados (la aplicación estrica de las reglas de la probabilidad).
+
+Según \cite{czegel2019-bayesianEvolution} el isomorfismo entre los procesos evolutivos y la inferencia bayesiana multinivel,  ``support a learning theory-oriented narrative of evolutionary complexification: the complexity and depth of the hierarchical structure of individuality mirror the amount and complexity of data that have been integrated about the environment through the course of evolutionary history.''
+Esta especulación es rechazada por el modelo de Ole Peters, el cual muestra que un simple proceso multicativo ruidoso favorece la selección multinivel de grupos cooperativos por sobre grupos con desertores.
+
+Por otra parte, según \cite{peters} su modelo ``paints a picture of cooperation driven by self-interest, not altruism, with cooperators outgrowing similar non-cooperators''.
+Esta especulación es rechazada por la metodología de czegel \cite{czegel2019-bayesianEvolution}, la cual muestra que si bien las estrategias cooperativas no son evolutivamente estables al interior de los grupos, estos se ven favorecidos gracias a la selección multinivel.
+
+Además \cite{czegel2019-bayesianEvolution} dice que, ``This isomorphism allows for a natural interpretation of evolutionary transitions in individuality as \emph{learning the structure}''.
+En este trabajo mostramos que lo que se aprende no es la estructura, sino que \textbf{aprenden la dinámica}, en particular el efecto no-ergódico de los procesos multiplicativos.
+
+%La posibilidad de supervivencia y reproducción de una población depende no sólo del sistema de reciprocidad para la propagación del riesgo dentro de las poblaciones y entre las poblaciones de diferentes especies.
+
+
+% La ciencia es una institución humana que tiene pretención de verdad, esto es de formular proposiciones que valgan para todas las personas, tanto intercultural como intersubjetivamente.
+% Las ciencias formales validan sus proposiciones mediante teoremas, resultados derivados de aplicar las reglas internas a un sistema axiomático cerrado.
+% Las ciencias empíricas, en cambio, deben validar sus proposiciones dentro de sistemas abiertos, lo que introduce siempre un grado de incertidumbre asociada.
+% ¿Cuál es entonces la fuente de validez universal del conocimiento empírico?
+% 
+% Existe un principio epistemológico con validez intercultural, conocido como el \emph{principio de indiferencia}, afirma que si ante un espacio de hipótesis común llegamos a un acuerdo respecto de que no tenemos información previa, entonces estaremos de acuerdo en distribuir la creencia (aka incertidumbre) en partes iguales.
+% Esta distribución de creencias, que permite el acuerdo intersubjetivo, la vamos a llamar creencia honesta.
+% La fuente de validez universal se fundamenta en la maximización de la incertidumbre.
+% ¿Se puede extender este principio para casos en los cuales tenemos información?
+{\footnotesize
+\bibliographystyle{auxiliar/biblio/plos2015.bst}
+\bibliography{auxiliar/biblio/biblio_notUrl.bib}
+}
+
+\section{Apéndice}
+
+
+
+\subsection{Tasa de crecimiento en poblaciones desertoras}
+
+Sea $r$ el resultado generado por el ambiente, y sea $e$ la estrategia individual, luego el fitness individual es
+\begin{equation}
+f(r|e) \propto 
+\begin{cases}
+(1-e) & \text{ si } r = 0 \\
+e & \text{ si } r = 1
+\end{cases}
+\end{equation}
+
+
+
+\subsection{Tasa de crecimiento en poblaciones cooperadoras}
+
+En el modelo multinivel bayesiano vemos que ocurre con diferentes  poblaciones (Coop-Coop, Coop-Des, Des-Des) de una estrategia, $e = 0.71$, en un ambiente, $a = 0.5$.
+
+Sería interesante extender ese modelo para que considere al mismo tiempo todas las posibes estrategias.
+
+Cuando hacemos el análisis individual, la proproción de las estretgias la representamos con una distribución Beta y el fitness con una likelihood binomial.
+
+Arrancamos con un Beta a priori uniforme
+
+\begin{equation}
+p(e_0) = \text{Beta}(1,1) \propto e^1 (1-e)^1 
+\end{equation}
+
+En el primer paso, cada individuo tira la moneda, y recibe un likelihood-fitness aleatorio.
+Supongamos que tenemos una población de tres cooperadores, $N=3$, que comparten sus recursos.
+En el primer paso, compartir sus recursos significa hacer una promedio de su distribuciones a priori Beta$(1,1)$ luego de obtener el primer resultado.
+
+\begin{equation}
+p(e|r) \propto 
+\begin{cases}
+e^1 (1-e)^2 & \text{ si } r = 0 \\
+\frac{1}{3} e^1 (1-e)^2 + \frac{2}{3} e^2 (1-e)^1  & \text{ si } r = 1 \\
+\frac{2}{3} e^2 (1-e)^1 + \frac{1}{3} e^1 (1-e)^2    & \text{ si } r = 2 \\
+e^2 (1-e)^1 & \text{ si } r = 3
+\end{cases}
+\end{equation}
+
+Cuando ambos sacan el mismo resultado, la distribución Beta aumenta en un sólo punto, pues recibe como producto $(1-e)$ y $e$ respectivamente.
+En el caso $r = (0,0,1)$ recibe como producto $(\frac{1}{3} + \frac{1}{3}e )$, y en el caso $r = (0,1,1)$ recibe como producto $(\frac{2}{3} - \frac{1}{3}e )$.
+Veamos el primero,
+
+\begin{equation}
+\begin{split}
+p(e_1) & \propto \frac{1}{3} e^1 (1-e)^2 + \frac{2}{3} e^2 (1-e)^1  \\
+& =  e^1 (1-e)^1 ( \frac{1}{3} (1-e) +  \frac{2}{3} e)  \\
+& =  \underbrace{e^1 (1-e)^1}_{\text{prior}} \underbrace{(1/3 + (1/3)e )}_{\text{fitness}}
+\end{split}
+\end{equation}
+
+Es decir, el primer posterior simplemente es el producto del prior por una de esas pendientes.
+Y esa pendiente es compartida por todos los cooperadores.
+Por lo que el segundo posterior va a ser nuevamente agregar como producto una de esas pendientes.
+Es decir, en cada paso se van acumulando las pendietes.
+Los posibles fitness de los cooperadores son entonces las pendientes, distribuidas como una Binomial. 
+
+
+\begin{equation}
+p(e_t) \propto \prod_i^t \text{pendiente}_i \propto (1-e)^{n_0} (\frac{1}{3} + \frac{1}{3}e )^{n_1} (\frac{2}{3} - \frac{1}{3}e )^{n_2} e^{n_3}
+\end{equation}
+
+Donde $n_i$ representa la cantidad de veces que el conjunto de cooperadores recibieron como pago cada una de las pendientes, con $\sum n_i = t$.
+En el límite todas las trayectorias individuales estarán gobernadas por el mismo factor $\overline{f}$.
+
+\begin{equation}
+\begin{split}
+\lim_{T \rightarrow \infty} p(e_T) & \propto \overline{f}^T \\
+(\lim_{T \rightarrow \infty} p(e_T) )^{1/T} & \propto \overline{f} \\
+(1-e)^{p(r=0)} (\frac{1}{3} + \frac{1}{3}e )^{p(r=1)} (\frac{2}{3} - \frac{1}{3}e )^{p(r=2)} (e)^{p(r=3)} & 
+\end{split}
+\end{equation}
+
+
+\vspace{0.3cm}
+
+\paragraph{Hipótesis inductiva} Generalización del fitness de los cooperadores sin desertores.
+Sea $n$ el tamaño de la población, $r$ la cantidad de éxitos y $n-r$ la cantidad de fracasos, el fitness de los cooperadores es
+\begin{equation}
+f_c(r|e,n) = \frac{r}{n} e + \frac{n-r}{n}(1-e)
+\end{equation}
+
+La distribución de probabilidad del fitness de los cooperadores es
+\begin{equation}
+p(f_c(r|e,n)) = \text{Binomial}(r,n)
+\end{equation}
+
+y la probabilidad de las estrategias es
+\begin{equation}
+\overline{f_c}(e,n) = \prod_{r=1}^n \left( \frac{r}{n} e + \frac{n-r}{n}(1-e) \right)^{p(f_c(r|e,n))}
+\end{equation}
+
+
+
+\subsection{Tasa de crecimiento poblaciones mixtas}
+
+Generalización del fitness de los cooperadores cuando existen desertores.
+
+\paragraph{Hipótesis inductiva} Sea $N$ el tamaño de la población, sea $n$ la cantidad de cooperadores y $N-n$ la cantidad de desertores, sea  $r$ la cantidad de éxitos obtenidos por la población cooperadora.
+
+\begin{equation}
+f_c(r|e,n,N) =  \frac{r}{N} e + \frac{n-r}{N}(1-e) = \frac{n}{N} \left( \frac{r}{n} e + \frac{n-r}{n}(1-e) \right)
+\end{equation}
+
+La distribución de probabilidad del fitness de los cooperadores es
+\begin{equation}
+p(f_c(r|e,n,N)) = \text{Binomial}(r,n)
+\end{equation}
+
+y la probabilidad de las estrategias es
+\begin{equation}
+\overline{f_c}(e,n,N) = \prod_{r=1}^n \left( \frac{r}{N} e + \frac{n-r}{N}(1-e) \right)^{p(f_c(r|e,n,N))}
+\end{equation}
+
+
+¿Cuál es la tasa de crecimiento de los desertores?
+Supongamos que primero juega y después recibe la parte del fondo común.
+\begin{equation}
+w(D|e,d,a,t) =
+\begin{cases}
+ f_d(1) & \ \  t=1 \\
+ (w(D|e,d,a,t-1) + w(C|e,d,a,t-1)) r(t) & \ \  t>1
+\end{cases}
+\end{equation}
+En $t=1$ actualiza sus recursos con el pago recibido $r(1)$.
+En $t>1$ incorpora la recursos recibidos del fondo común generado en el tiempo anterior, $w(C|e,d,a,t-1)$, y finalmente actualiza sus recursos totales (la suma) con el pago $r(t)$.
+
+\\
+
+Veamos la forma que tiene el tamaño de la población en el tiempo
+\begin{align}
+w(D|t=2) & = r(2) (w(D|t=1) + w(C|t=1)) \\
+& = r(2)r(1) + r(2)w(C|t=1))
+\end{align}
+Para simplificar la notación, hacemos implicitos los valores de $e$, $d$ y $a$.
+Además, como el tamaño de los recursos del fondo común no dependen del tiempo
+
+\begin{align}
+w(D|t=3) & = r(3) (w(D|t=2)+w(C|t=2)) \\
+& = r(3) (r(2)r(1) + r(2)w(C|t=1) + w(C|t=1) ) \\
+& = r(3)r(2)r(1) + r(3)r(2)w(C|t=1) + r(3)w(C|t=2) 
+\end{align}
+
+Acá ya podemos ver un patrón a partir del cual proponemos la siguiente hipótesis inductiva (HI).
+\begin{equation} \label{eq:HI} \tag{HI} 
+w(D|t) = \prod^t_{i=1} r(i) + \sum^{t-1}_{j=1} w(C|t=j)
+\prod^t_{j<k} r(k)
+\end{equation}
+
+\paragraph{Caso Base.} Queremos ver que vale la \ref{eq:HI} en el tiempo $t=1$.
+\begin{equation} 
+w(D|t=1) \overset{\ref{eq:HI}}{=} \prod^1_{i=1} r(i) + \underbrace{\sum^{0}_{j=1} \Delta w(C)^j \prod^1_{j<k} r(k) }_{\text{vale $0$ por rango}} = r(1)
+\end{equation}
+Luego, vale el caso base.
+
+\paragraph{Paso inductivo.} Dado que vale $w(D|t)$ quiero ver que vale $w(D|t+1)$: $w(D|t) \Rightarrow w(D|t+1)$
+
+\begin{equation}
+\begin{split}
+w(D|t+1) &:= (w(D|t) + w(C|t)) r(t)  \\
+& \overset{\ref{eq:HI}}{=} \bigg( \big(\prod^t_{i=1} r(i) + \sum^{t-1}_{j=1} w(C|t) \prod^t_{j<k} r(k) \big)+ w(C|t) \bigg) r(t+1) \\
+& = r(t+1) \prod^t_{i=1} r(i) + \sum^{t-1}_{j=1} \Delta w(C)^j r(t+1) \prod^t_{j<k} r(k) + w(C|t)  r(t+1) \\ 
+& = \prod^{t+1}_{i=1} r(i) + \sum^{t-1}_{j=1} \Delta w(C)^j  \prod^{t+1}_{j<k} r(k) + w(C|t)  r(t+1)  \\
+& = \prod^{t+1}_{i=1} r(i) + \sum^t_{j=1} \Delta w(C)^j  \prod^{t+1}_{j<k} r(k) 
+\end{split}
+\end{equation}
+Luego, vale el paso inductivo. 
+
+
+
+
+\subsection{Tasa de crecimiento en poblaciones mixtas infinitas}
+
+Las estrtegias que en una población infinita representan una proporción mayor a $0$ son a su vez infinitas.
+Sea $d$ la proporción de desertores y $1-d$ la proporción de cooperadores.
+
+\\
+
+La población cooperadora, al ser infinita, siempre crece como
+\begin{equation}
+\Delta w(C|e,d,a) = (1-d) \underbrace{(e\cdot a + (1-e)\cdot(1-a))}_{\text{Media de estados}}
+\end{equation}
+En cada paso las apuestas del conjunto de cooperadores crece como la media de estados, la cual se divide en partes iguales.
+Como el cambio en los recursos no depende de $t$, en t pasos la población tiene un tamaño de
+\begin{equation}
+w(C|e,d,a,t) = \Delta w(C|e,d,a)^t 
+\end{equation}
+
 
 \subsection{Selección multinivel}
 
@@ -496,241 +763,6 @@ P(e_0|g) = \begin{tabular}{|c|c|c|c|c|c|c|}
 \end{figure}
 
 
-
-
-\subsection{Toda la imagen}
-
-Lo que discutimos hasta ahora es el punto y la flecha de la siguiente figura \ref{}, correspondientes a la selección de la estrtegia individual (sección \ref{}) y la selección multinivel 
-
-
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[b]{0.66\textwidth}
-    \includegraphics[width=\linewidth]{figures/coin4.pdf}
-    \end{subfigure}
-    \caption{}
-    \label{fig:fitness_temporal}
-\end{figure}
-
-
-
-
-\section{Conclusiones}
-
-En este trabajo, resolviendo dos problemas presentes en la literatura.
-Con la propuesta metodológia de \cite{czegel2019-bayesianEvolution} (la selección multinivel como inferencia bayesiana jerárquica) resolvimos la demostración que le faltaba al modelo de Ole Peters (procesos multiplicativos ruidosos) que verifica que la cooperación está favorecida por la evolución.
-Y a su vez, con el modelo de Peters proveímos el ejemplo concreto que le faltaba a la propuesta metodológica de \cite{czegel2019-bayesianEvolution}.
-Ambas soluciones combinadas ofrecen una solución nueva al problema de las transiciones evolutivas mayores, que es más sencilla que las anterios (procesos multiplicativos ruidosos), basada en principios matemáticos bien fundados (la aplicación estrica de las reglas de la probabilidad).
-
-Según \cite{czegel2019-bayesianEvolution} el isomorfismo entre los procesos evolutivos y la inferencia bayesiana multinivel,  ``support a learning theory-oriented narrative of evolutionary complexification: the complexity and depth of the hierarchical structure of individuality mirror the amount and complexity of data that have been integrated about the environment through the course of evolutionary history.''
-Esta especulación es rechazada por el modelo de Ole Peters, el cual muestra que un simple proceso multicativo ruidoso favorece la selección multinivel de grupos cooperativos por sobre grupos con desertores.
-
-Por otra parte, según \cite{peters} su modelo ``paints a picture of cooperation driven by self-interest, not altruism, with cooperators outgrowing similar non-cooperators''.
-Esta especulación es rechazada por la metodología de czegel \cite{czegel2019-bayesianEvolution}, la cual muestra que si bien las estrategias cooperativas no son evolutivamente estables al interior de los grupos, estos se ven favorecidos gracias a la selección multinivel.
-
-Además \cite{czegel2019-bayesianEvolution} dice que, ``This isomorphism allows for a natural interpretation of evolutionary transitions in individuality as \emph{learning the structure}''.
-En este trabajo mostramos que lo que se aprende no es la estructura, sino que \textbf{aprenden la dinámica}, en particular el efecto no-ergódico de los procesos multiplicativos.
-
-%La posibilidad de supervivencia y reproducción de una población depende no sólo del sistema de reciprocidad para la propagación del riesgo dentro de las poblaciones y entre las poblaciones de diferentes especies.
-
-
-% La ciencia es una institución humana que tiene pretención de verdad, esto es de formular proposiciones que valgan para todas las personas, tanto intercultural como intersubjetivamente.
-% Las ciencias formales validan sus proposiciones mediante teoremas, resultados derivados de aplicar las reglas internas a un sistema axiomático cerrado.
-% Las ciencias empíricas, en cambio, deben validar sus proposiciones dentro de sistemas abiertos, lo que introduce siempre un grado de incertidumbre asociada.
-% ¿Cuál es entonces la fuente de validez universal del conocimiento empírico?
-% 
-% Existe un principio epistemológico con validez intercultural, conocido como el \emph{principio de indiferencia}, afirma que si ante un espacio de hipótesis común llegamos a un acuerdo respecto de que no tenemos información previa, entonces estaremos de acuerdo en distribuir la creencia (aka incertidumbre) en partes iguales.
-% Esta distribución de creencias, que permite el acuerdo intersubjetivo, la vamos a llamar creencia honesta.
-% La fuente de validez universal se fundamenta en la maximización de la incertidumbre.
-% ¿Se puede extender este principio para casos en los cuales tenemos información?
-{\footnotesize
-\bibliographystyle{auxiliar/biblio/plos2015.bst}
-\bibliography{auxiliar/biblio/biblio_notUrl.bib}
-}
-
-\section{Apéndice}
-
-
-
-\subsection{Tasa de crecimiento en poblaciones desertoras}
-
-Sea $a$ la probabilidad del ambiente.
-Sea $e$ la estrategia individual.
-\begin{equation}
-r(t) =
-\begin{cases}
- e & \ \  1=B(a) \\
- (1-e) & \ \  0=B(a)
-\end{cases}
-\end{equation}
-
-
-\subsection{Tasa de crecimiento en poblaciones cooperadoras}
-
-En el modelo multinivel bayesiano vemos que ocurre con diferentes  poblaciones (Coop-Coop, Coop-Des, Des-Des) de una estrategia, $e = 0.71$, en un ambiente, $a = 0.5$.
-
-Sería interesante extender ese modelo para que considere al mismo tiempo todas las posibes estrategias.
-
-Cuando hacemos el análisis individual, la proproción de las estretgias la representamos con una distribución Beta y el fitness con una likelihood binomial.
-
-Arrancamos con un Beta a priori uniforme
-
-\begin{equation}
-p(e_0) = \text{Beta}(1,1) \propto e^1 (1-e)^1 
-\end{equation}
-
-En el primer paso, cada individuo tira la moneda, y recibe un likelihood-fitness aleatorio.
-
-\begin{equation}
-p(e_1) \propto 
-\begin{cases}
-e^1 (1-e)^2 & \text{ si } r = 0 \\
-e^2 (1-e)^1 & \text{ si } r = 1
-\end{cases}
-\end{equation}
-
-Supongamos que tenemos una población de dos cooperadores, $N=3$, que comparten sus recursos.
-
-\begin{equation}
-p(e_1|r) \propto 
-\begin{cases}
-e^1 (1-e)^2 & \text{ si } r = (0,0,0) \\
-\frac{1}{3} e^1 (1-e)^2 + \frac{2}{3} e^2 (1-e)^1  & \text{ si } r = (0,0,1) \\
- \dots \\
-\frac{2}{3} e^2 (1-e)^1 + \frac{1}{3} e^1 (1-e)^2    & \text{ si } r = (0,1,1) \\
-\dots \\
-e^2 (1-e)^1 & \text{ si } r = (1,1,1)
-\end{cases}
-\end{equation}
-
-Cuando ambos sacan el mismo resultado, la distribución Beta aumenta en un sólo punto, pues recibe como producto $(1-e)$ y $e$ respectivamente.
-En el caso $r = (0,0,1)$ recibe como producto $(\frac{1}{3} + \frac{1}{3}e )$, y en el caso $r = (0,1,1)$ recibe como producto $(\frac{2}{3} - \frac{1}{3}e )$.
-Veamos el primero,
-
-\begin{equation}
-\begin{split}
-p(e_1) & \propto \frac{1}{3} e^1 (1-e)^2 + \frac{2}{3} e^2 (1-e)^1  \\
-& =  e^1 (1-e)^1 ( \frac{1}{3} (1-e) +  \frac{2}{3} e)  \\
-& =  e^1 (1-e)^1 (\frac{1}{3} + \frac{1}{3}e )
-\end{split}
-\end{equation}
-
-Es decir, el primer posterior simplemente es el producto del prior por una de esas pendientes.
-Y esa pendiente es compartida por todos los cooperadores.
-Por lo que el segundo posterior va a ser nuevamente agregar como producto una de esas pendientes.
-Es decir, en cada paso se van acumulando las pendietes.
-Los posibles fitness de los cooperadores son entonces las pendientes, distribuidas como una Binomial. 
-
-
-\begin{equation}
-p(e_t) \propto \prod_i^t \text{pendiente}_i \propto (1-e)^{n_0} (\frac{1}{3} + \frac{1}{3}e )^{n_1} (\frac{2}{3} - \frac{1}{3}e )^{n_2} e^{n_3}
-\end{equation}
-
-Donde $n_i$ representa la cantidad de veces que el conjunto de cooperadores recibieron como pago cada una de las pendientes, con $\sum n_i = t$.
-En el límite todas las trayectorias individuales estarán gobernadas por el mismo factor $\overline{f}$.
-
-\begin{equation}
-\begin{split}
-\lim_{T \rightarrow \infty} p(e_T) & \propto \overline{f}^T \\
-(\lim_{T \rightarrow \infty} p(e_T) )^{1/T} & \propto \overline{f} \\
-(1-e)^{p(r=0)} (\frac{1}{3} + \frac{1}{3}e )^{p(r=1)} (\frac{2}{3} - \frac{1}{3}e )^{p(r=2)} (e)^{p(r=3)} & 
-\end{split}
-\end{equation}
-
-
-\vspace{0.3cm}
-
-\paragraph{Hipótesis inductiva} Generalización del fitness de los cooperadores sin desertores.
-Sea $n$ el tamaño de la población, $r$ la cantidad de éxitos y $n-r$ la cantidad de fracasos, el fitness de los cooperadores es
-\begin{equation}
-f_c(r|n) = \frac{r}{n} e + \frac{n-r}{n}(1-e)
-\end{equation}
-
-La distribución de probabilidad del fitness de los cooperadores es
-\begin{equation}
-p(f_c(r|n)) = \text{Binomial}(r,n)
-\end{equation}
-
-y la probabilidad de las estrategias es
-\begin{equation}
-\overlie{f_c}(n) = \prod_{r=1}^n \left( \frac{r}{n} e + \frac{n-r}{n}(1-e) \right)^{p(f_c(r|n))}
-\end{equation}
-
-
-
-\subsection{Tasa de crecimiento poblaciones mixtas}
-
-\todo[inline]{Generalizar intuición que ya tengo en papel}
-
-\subsection{Tasa de crecimiento en poblaciones mixtas infinitas}
-
-Las estrtegias que en una población infinita representan una proporción mayor a $0$ son a su vez infinitas.
-Sea $d$ la proporción de desertores y $1-d$ la proporción de cooperadores.
-
-\\
-
-La población cooperadora, al ser infinita, siempre crece como
-\begin{equation}
-\Delta w(C|e,d,a) = (1-d) \underbrace{(e\cdot a + (1-e)\cdot(1-a))}_{\text{Media de estados}}
-\end{equation}
-En cada paso las apuestas del conjunto de cooperadores crece como la media de estados, la cual se divide en partes iguales.
-Como el cambio en los recursos no depende de $t$, en t pasos la población tiene un tamaño de
-\begin{equation}
-w(C|e,d,a,t) = \Delta w(C|e,d,a)^t 
-\end{equation}
-
-¿Cuál es la tasa de crecimiento de los desertores?
-Supongamos que primero juega y después recibe la parte del fondo común.
-\begin{equation}
-w(D|e,d,a,t) =
-\begin{cases}
- r(1) & \ \  t=1 \\
- (w(D|e,d,a,t-1) + w(C|e,d,a,t-1)) r(t) & \ \  t>1
-\end{cases}
-\end{equation}
-En $t=1$ actualiza sus recursos con el pago recibido $r(1)$.
-En $t>1$ incorpora la recursos recibidos del fondo común generado en el tiempo anterior, $w(C|e,d,a,t-1)$, y finalmente actualiza sus recursos totales (la suma) con el pago $r(t)$.
-
-\\
-
-Veamos la forma que tiene el tamaño de la población en el tiempo
-\begin{align}
-w(D|t=2) & = r(2) (w(D|t=1) + w(C|t=1)) \\
-& = r(2)r(1) + r(2)w(C|t=1))
-\end{align}
-Para simplificar la notación, hacemos implicitos los valores de $e$, $d$ y $a$.
-Además, como el tamaño de los recursos del fondo común no dependen del tiempo
-
-\begin{align}
-w(D|t=3) & = r(3) (w(D|t=2)+w(C|t=2)) \\
-& = r(3) (r(2)r(1) + r(2)w(C|t=1) + w(C|t=1) ) \\
-& = r(3)r(2)r(1) + r(3)r(2)w(C|t=1) + r(3)w(C|t=2) 
-\end{align}
-
-Acá ya podemos ver un patrón a partir del cual proponemos la siguiente hipótesis inductiva (HI).
-\begin{equation} \label{eq:HI} \tag{HI} 
-w(D|t) = \prod^t_{i=1} r(i) + \sum^{t-1}_{j=1} w(C|t=j)
-\prod^t_{j<k} r(k)
-\end{equation}
-
-\paragraph{Caso Base.} Queremos ver que vale la \ref{eq:HI} en el tiempo $t=1$.
-\begin{equation} 
-w(D|t=1) \overset{\ref{eq:HI}}{=} \prod^1_{i=1} r(i) + \underbrace{\sum^{0}_{j=1} \Delta w(C)^j \prod^1_{j<k} r(k) }_{\text{vale $0$ por rango}} = r(1)
-\end{equation}
-Luego, vale el caso base.
-
-\paragraph{Paso inductivo.} Dado que vale $w(D|t)$ quiero ver que vale $w(D|t+1)$: $w(D|t) \Rightarrow w(D|t+1)$
-
-\begin{equation}
-\begin{split}
-w(D|t+1) &:= (w(D|t) + w(C|t)) r(t)  \\
-& \overset{\ref{eq:HI}}{=} \bigg( \big(\prod^t_{i=1} r(i) + \sum^{t-1}_{j=1} w(C|t) \prod^t_{j<k} r(k) \big)+ w(C|t) \bigg) r(t+1) \\
-& = r(t+1) \prod^t_{i=1} r(i) + \sum^{t-1}_{j=1} \Delta w(C)^j r(t+1) \prod^t_{j<k} r(k) + w(C|t)  r(t+1) \\ 
-& = \prod^{t+1}_{i=1} r(i) + \sum^{t-1}_{j=1} \Delta w(C)^j  \prod^{t+1}_{j<k} r(k) + w(C|t)  r(t+1)  \\
-& = \prod^{t+1}_{i=1} r(i) + \sum^t_{j=1} \Delta w(C)^j  \prod^{t+1}_{j<k} r(k) 
-\end{split}
-\end{equation}
-Luego, vale el paso inductivo. 
 
 
 

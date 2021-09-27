@@ -4,73 +4,73 @@ using Statistics
 using Distributions
 using LinearAlgebra
 
-function coin(p=0.71)
-    rand(Binomial(1,p))
+function coin(p=0.71, n=1)
+    rand(Binomial(n,p))
 end
 
 A = 0.71 # ambiente
 N = 10 # 
 ns = [i for i in 1:N] 
-e = [i for i in 0.0:0.0001:1.0] # estrategias
+de = 0.0001 # delta e (estrategia)
+e = [i for i in 0.0:de:1.0] # estrategias (a veces ambiente)
 
-# Promedio de betas
-plot(pdf.(Beta(2,2),e))
-plot!((1/2).*(pdf.(Beta(2,1),e).+pdf.(Beta(1,2),e)))
-
-# Analítico
-function coop_fitness(e,n,r)
-    return ((n-r)/n)*(1-e)+(r/n)*e
+function coop_fitness(e,c,r,N)
+    return ((c-r)/N)*(1-e)+(r/N)*e
 end
-function coop_temporal_average(n, e, ambiente=A)
-    log_res = 0.0
+function coop_temporal_average(n, e, ambiente, N)
+    res = 1.0
     p_fitness = pdf(Binomial(n,ambiente))
     for r in 0:n#r=0
-        log_res += log(coop_fitness(e,n,r))*p_fitness[r+1]
+        res *= coop_fitness(e,n,r,N)^p_fitness[r+1]
     end
-    return exp(log_res)
+    return res
 end
 
-eN = zeros(Float64,(N,length(e)))
-for i in 1:N
-    eN[i,:] .= coop_temporal_average.(i,e)
+
+# Posteriors cooperadores
+
+coin(0.71,10)
+c=10
+r=7
+N=10
+function posterior_coop(e, a, c, N, prior)
+    r = coin(a,c)
+    return coop_fitness.(e,c,r,N).*prior
 end
-plot(e,eN[1,:])
-plot!(e,eN[2,:])
-plot!(e,eN[3,:])
-plot!(e,eN[4,:])
-plot!(e,eN[5,:])
-plot!(e,eN[6,:])
-plot!(e,eN[10,:])
+
+priors = [(1.0.-e).+e]
+for i in 1:20
+    posterior = posterior_coop(e,A,10,10, priors[end])
+    push!(priors, posterior./sum(posterior*de) )
+end
+plot(e,priors[1])
+plot!(e,priors[3])
+plot!(e,priors[5])
+plot!(e,priors[7])
+plot!(e,priors[9])
 
 
-aN71 = zeros(Float64,(N,length(e)))
-for i in ns
-    aN71[i,:] .= coop_temporal_average.(i,0.71,e)
+# Resultado analítico, el mismo que cpr 
+function omega_desertor(f_c, f_d, t)
+    return sum([ f_c^i*f_d^(t-i) for i in 1:t])
 end
-plot(e,aN71[1,:])
-plot!(e,aN71[2,:])
-plot!(e,aN71[3,:])
-plot!(e,aN71[4,:])
-plot!(e,aN71[5,:])
-plot!(e,aN71[6,:])
-plot!(e,aN71[7,:])
-plot!(e,aN71[10,:])
-plot!(e, 0.71.*e.+0.29*(1.0.-e), label=false, line=:dot, color=2)
 
-aN = zeros(Float64,(length(n),length(estrategias)))
-for i in 1:N
-    aN[i,:] .= coop_temporal_average.(i,0.99,e)
+f_c = 1.05
+f_d = 1.5^0.5*0.6^0.5
+T = 1000
+diff = []
+omega_d = []
+omega_c = []
+for t in 1:T 
+    push!(omega_d,log(omega_desertor(f_c, f_d, t)))
+    push!(omega_c, log(f_c^t))
+    push!(diff,omega_d[end] - omega_c[end])
 end
-plot(e,aN[1,:], legend=(0.15,0.9))
-plot!(e,aN[2,:])
-plot!(e,aN[3,:])
-plot!(e,aN[4,:])
-plot!(e,aN[5,:])
-plot!(e,aN[6,:])
-plot!(e,aN[7,:])
-plot!(e,aN[8,:])
-plot!(e,aN[9,:])
-plot!(e,aN[10,:])
-plot!(e, 0.99.*e.+0.01*(1.0.-e), label=false, line=:dot, color=2)
+plot(diff)
+plot!(log.(analyticTimeAverageDefectorBiomass.(0:t)) .- log.(analyticTimeAverageCoopratorBiomass.(0:t)))
+
+plot(omega_c)
+plot!(omega_d)
+
 
 
