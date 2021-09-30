@@ -14,6 +14,7 @@ ns = [i for i in 1:N]
 de = 0.0001 # delta e (estrategia)
 e = [i for i in 0.0:de:1.0] # estrategias (a veces ambiente)
 
+@doc "e: estrategia, c: cantidad de cooperadores, r: exitos, N: poblacion total"
 function coop_fitness(e,c,r,N)
     return ((c-r)/N)*(1-e)+(r/N)*e
 end
@@ -27,28 +28,84 @@ function coop_temporal_average(n, e, ambiente, N)
 end
 
 
-# Posteriors cooperadores
 
+# Posteriors cooperadores
 coin(0.71,10)
 c=10
 r=7
 N=10
-function posterior_coop(e, a, c, N, prior)
+function posterior_C(e, a, c, N, prior)
     r = coin(a,c)
     return coop_fitness.(e,c,r,N).*prior
 end
-
-priors = [(1.0.-e).+e]
-for i in 1:20
-    posterior = posterior_coop(e,A,10,10, priors[end])
-    push!(priors, posterior./sum(posterior*de) )
+function posterior_D(e, a, priorD, priorC)
+    r = coin(a)
+    return (priorC .+ priorD).*coop_fitness.(e,1,r,1)
 end
-plot(e,priors[1])
-plot!(e,priors[3])
-plot!(e,priors[5])
-plot!(e,priors[7])
-plot!(e,priors[9])
+function priorsCD(e,c,N)
+    if c == 0
+        priorsC = [(1.0.-e).+e].*0.0;
+        priorsD = [(1.0.-e).+e]
+    elseif (c > 0) & (c != N)
+        priorsC = [(1.0.-e).+e] ./2
+        priorsD = [(1.0.-e).+e] ./2
+    elseif c == N
+        priorsC = [(1.0.-e).+e]
+        priorsD = [(1.0.-e).+e].*0.0
+    end
+    return (priorsC, priorsD)
+end
+function posterior_evidence_level_1(e,c,N,T=1000)
+    # e: estrategias
+    # c: cantidad de cooperadores
+    # N: población total
+    # T: tiempo total
+    priorsC, priorsD = priorsCD(e,c,N)
+    evidence = []
+    for i in 1:T
+        posteriorC = posterior_C(e,A,c,N, priorsC[end])
+        posteriorD = posterior_D(e,A,priorsD[end], priorsC[end])
+        push!(evidence,sum(posteriorC*de) + sum(posteriorD*de))
+        push!(priorsC, posteriorC./evidence[end] )
+        push!(priorsD, posteriorD./evidence[end] )
+    end
+    return (priorsC,priorsD,evidence)
+end
+function posterior_level_2(e,NN = 10,T=100)
+    # NN: hasta que tamaño de porblación
+    posteriorsM = []
+    for N in 2:NN
+        push!(posteriorsM, []) 
+        for c in 0:N
+            priorsC, priorsD, evidence = posterior_evidence_level_1(e,c,N,T)
+            push!(posteriorsM[end] , prod(evidence) )
+        end
+    end
+    return posteriorsM
+end
 
+postC, postD, predictions = posterior_evidence_level_1(e,4,5)
+plot([e;e.+1.0],[postC[end];postD[end]])
+plot([e;e.+1.0],[postC[10];postD[10]])
+plot( predictions )
+
+postL2 = posterior_level_2(e,10,250)
+pData = sum([sum(ps) for ps in postL2])
+pCoop = sum([ps[end] for ps in postL2])
+pCoop/pData
+
+function posterior_level_2_slide_coop(e, NN = 16,T=1000)
+    # NN: hasta que tamaño de porblación
+    posteriorsM = []
+    for N in 1:NN
+        priorsC, priorsD, evidence = posterior_evidence_level_1(e,N,N,T)
+        push!(posteriorsM , prod(evidence) )
+    end
+    return posteriorsM./sum(posteriorsM)
+end
+
+postL2slide = log.(posterior_level_2_slide_coop(e,24))
+plot(postL2slide ,label=false)
 
 # Resultado analítico, el mismo que cpr 
 function omega_desertor(f_c, f_d, t)

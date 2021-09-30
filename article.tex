@@ -601,10 +601,10 @@ Supongamos que primero juega y después recibe la parte del fondo común.
 w(D|e,d,a,t) =
 \begin{cases}
  f_d(1) & \ \  t=1 \\
- (w(D|e,d,a,t-1) + w(C|e,d,a,t-1)) r(t) & \ \  t>1
+ (w(D|e,d,a,t-1) + w(C|e,d,a,t-1)) f_d(t) & \ \  t>1
 \end{cases}
 \end{equation}
-En $t=1$ actualiza sus recursos con el pago recibido $r(1)$.
+En $t=1$ actualiza sus recursos con el pago recibido $f_d(1)$.
 En $t>1$ incorpora la recursos recibidos del fondo común generado en el tiempo anterior, $w(C|e,d,a,t-1)$, y finalmente actualiza sus recursos totales (la suma) con el pago $r(t)$.
 
 \\
