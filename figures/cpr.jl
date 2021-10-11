@@ -32,6 +32,7 @@ plot!([0:t],log.(analyticTimeAverageDefectorBiomass.(0:t)),legend = false)
 plot!([0,t],log.([1.0,(1+delta_expected)^(t) ]), color="black",legend = false)
 plot!([0,t],log.([1.0,(1+time_average)^(t)]), color="black",legend = false)
 
+
 savefig(p, "cpr_analyticTimeAverage_d0.01.pdf") 
 
 t=100
@@ -55,7 +56,7 @@ end
 p = plot(dx./10000, WD, ylab="fitness", xlab="Proportion of defectors", legend=false)
 plot!(dx./10000,WC)
 
-savefig(p, "cpr_analyticTimeAverage_frequency-based-fitness.pdf") 
+savefig(p, "pdf/cpr_analyticTimeAverage_frequency-based-fitness.pdf") 
 
 p = plot((dx./10000)[1:end-1],WD[2:end].-WD[1:end-1], legend=false, ylab="Change in fitness", xlab="Proportion of defectors")
 plot!((dx./10000)[1:end-1],WC[2:end].-WC[1:end-1])
@@ -121,7 +122,7 @@ function game(n=100,d=1,t=1000, seed=1; costo = 0.0, reproduccion = 0.5, muerte 
     return evolutivo ? (res, desertores, proporcion) : res
 end
 
-#plot(log.(transpose(game(10,0,100000,reproduccion=0.05,muerte=0.04))), legend=false)
+#plot(log.(transpose(game())), legend=false)
 #plot(log.(transpose(game(2,2,1000,reproduccion=0.5,muerte=0.4))), legend=false)
 
 
