@@ -38,9 +38,9 @@ scatter!([0.71],[0.71^0.71*0.29^0.29], color=2,label=false)
 savefig(fig, "pdf/tasa-temporal-0.pdf")
 savefig(fig, "png/tasa-temporal-0.png")
 
-
 fig = plot(e, (0.5.^e).*(0.5.^(1.0.-e)),label=false, xlab="Ambiente", ylab="Tasa de supervivencia", legend=(0.15,0.9), thickness_scaling = 1.5, grid=false, foreground_color_legend = nothing, color="gray", alpha=0.5)
 plot!(e, (0.71.^e).*(0.29.^(1.0.-e)),label=false, color="gray", alpha=0.5)
+scatter!([0.71],[0.71^0.71*0.29^0.29], color="gray",label=false)
 plot!(e, (0.99.^e).*(0.01.^(1.0.-e)),label=false, color="gray", alpha=0.5)
  # <\Delta x>
 plot!(e, 0.71.*e.+0.29*(1.0.-e), label=false, line=:dot, color="gray", alpha=0.5)

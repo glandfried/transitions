@@ -22,19 +22,21 @@
 \maketitle
 
 \begin{abstract}
-La complejidad actual de la vida es consecuencia de una serie de transiciones evolutivas en las que entidades capaces de replicarse de forma independiente, cediendo algo de valor a las otras, pasan a formar unidades evolutivas de nivel superior.
-Una condición preliminar crucial es la alineación de intereses y su persistencia en el tiempo.
-En este artículo mostramos que estas condiciones se cumplen siempre debido a la no-ergodicidad de los procesos multiplicativos a los que está sujeto la vida: la secuencia de probabilidades de superviencia y reproducción.
-En los procesos no-ergódicos, las fluctuaciones tienen un efecto negativo en la tasa de crecimiento individual a largo plazo, pero no en la tasa de crecimiento del valor esperado.
-Al compartir recursos, las estrategias cooperadoras reducen sus fluctuaciones, aumentando sus tasas de crecimiento a largo plazo.
-Si bien las estrategias que evitan compartir recursos pueden invadir por selección natural poblaciones enteramente cooperadoras, tal comportamiento aumenta al mismo tiempo sus fluctuaciones, afectando su propia tasa de crecimiento a largo plazo sin necesidad de introducir castigos.
-Utilizando la equivalencia entre la evolución de una población jerárquica bajo selección multinivel y la inferencia en modelos jerárquicos bayesianos, mostramos que las estrategias incondicionalmente cooperadoras, sin ser estas evolutivamente estables al interior de los grupos, se ven favorecidas evolutivamente a través de la selección grupal.
-La sinergia inherente a toda dinámica de reproducción y superviviencia junto con la selección multinivel de poblaciones cooperadoras, son el fundamento que explica la complejidad actual de la vida.
+
+La ventaja evolutiva de la cooperación es consecuencia de la no-ergodicidad de los procesos multiplicativos a los que está sujeto la vida: la secuencia de probabilidades de superviencia y reproducción.
+En ellos, las fluctuaciones tienen un efecto negativo en la tasa de crecimiento individual.
+Compartir recursos permite reducir las fluctuaciones, aumentando la tasas de crecimiento a largo plazo de todos los indiviudos (hasta alcanzar el valor esperado).
+% Ole Peters considera que este aumento es suficiente para explicar la ventaja evolutiva de la cooperación.
+% Sin embargo no analiza el problema de la deserción, quien dice ``our cooperators are unable to break the cooperative pact''.
+% No parece ser un problema menor, teniendo en cuenta la tentación que podría significar dejar de aportar al fondo común mientras se siguen recibiendo los beneficios de este.
+Si bien las estrategias que evitan compartir recursos pueden invadir por selección natural poblaciones enteramente cooperadoras, tal comportamiento aumenta al mismo tiempo sus propias fluctuaciones, afectando su propia tasa de crecimiento a largo plazo sin necesidad de introducir castigos.
+Utilizando la equivalencia entre la evolución de una población jerárquica bajo selección multinivel y la inferencia en modelos jerárquicos bayesianos, mostramos que las estrategias incondicionalmente cooperadoras, sin ser evolutivamente estables al interior de los grupos, se ven favorecidas evolutivamente a través de la selección grupal.
+La sinergia inherente a toda dinámica de reproducción y superviviencia junto con la selección multinivel de poblaciones cooperadoras, son el fundamento que explica no sólo la complejidad actual de la vida, sino también su tendencia a la especialización.
 \end{abstract}
 
 \section{Introducción}
 
-En el último tercio de la historia del Universo, en algún momento hace aproximadamente 4500 millones de años, apareció en la tierra una forma de organización de la materia capaz de auto-replicarse.
+En el último tercio de la historia del Universo, en algún momento hace aproximadamente 4000 millones de años, apareció en la tierra una forma de organización de la materia capaz de auto-replicarse.
 El crecimiento de estos linajes siguieron procesos multiplicativos y ruidosos: secuencias de probabilidades de supervivencia y reproducción.
 Los errores producidos durante la replicación diversificaron las formas de vida, y las tasas de crecimiento de las diferentes estrategias favorecieron a aquellas mejor adaptadas al ambiente.
 Desde aquel momento hasta ahora la vida adquirió una extraordinaria complejidad.
@@ -45,7 +47,7 @@ Desde aquel momento hasta ahora la vida adquirió una extraordinaria complejidad
     \includegraphics[width=\linewidth]{auxiliar/images/biomass.jpg}
     \end{subfigure}
     \caption{
-	Estimación de la distribución actual de la biomasa en la tierra realizada por Bar-On~\cite{barOn2018-biomass}.
+	Distribución actual de la biomasa en la tierra estimada por Bar-On et al.~\cite{barOn2018-biomass}.
     }
     \label{fig:cpr_individual}
 \end{figure}
@@ -61,7 +63,7 @@ En evolución, el crecimiento de una estrategia $e$ en el tiempo, $\omega_e(t)$,
 \end{equation}
 %
 donde $a(t)$ representa el estado del ambiente en el tiempo $t$.
-Por ejemplo, supongamos que la naturaleza lanza una moneda,
+Por ejemplo, supongamos que la naturaleza lanza una moneda, si sale cara la población se reproduce 50\% y si sale seca sobrevive 60\%.
 \begin{equation} \label{eq:estrategia_base}
 f_e(a) =
 \begin{cases}
@@ -69,11 +71,7 @@ f_e(a) =
  0.6 & a = \text{ Seca }
 \end{cases}
 \end{equation}
-si sale cara la población se reproduce 50\% y si sale seca sobrevive 60\%.
-
-% Parrafo
-
-Según el modelo estándar de evolución, conocido como \emph{replicator dynamic} \cite{taylor1978-replicatorDynamic, schuster1983-replicatorDynamics, hofbauer2003-evolutionaryGameDynamics}, el cambio de la proporción de una estrategia $e$ en la población, $x_e$, está determinado por su tasa de crecimiento caracterísitica $f_e$,
+Según el modelo estándar de evolución, conocido como \emph{replicator dynamic} \cite{taylor1978-replicatorDynamic, schuster1983-replicatorDynamics, hofbauer2003-evolutionaryGameDynamics}, el cambio de la proporción de una estrategia en la población, $x_e$, está determinado por su tasa de crecimiento caracterísitica $f_e$,
 \begin{equation} \label{eq:replicator_dynamic}  \tag{Replicator dynamic}
 x_e^\prime = \frac{x_e f_e}{X}
 \end{equation}
@@ -91,7 +89,7 @@ Sea $\Omega_t$ el valor de todas las posibles trayectorias en el tiempo $t$, el 
 
 % Parrafo
 
-El valor esperado en los dos primeros pasos temporales es, 
+En el ejemplo de la moneda, el valor esperado en los dos primeros pasos temporales es, 
 %
 \begin{equation}
 \begin{split}
@@ -133,19 +131,16 @@ Individualmente, todas las trayectorias pierden a largo plazo a una tasa cercana
     \caption{
     La recta negra representan el valor esperado.
     Figura \ref{fig:ergodicity_individual_trayectories}: tamaño de los recursos individuales en el tiempo, $ \log(\omega(t))$.
-    Figura \ref{fig:ergodicity_individual_trayectories_longrun}: con suficiente tiempo todas las trayectorias individuales pegan a la recta azul. 
+    Figura \ref{fig:ergodicity_individual_trayectories_longrun}: con suficiente tiempo todas las trayectorias individuales se pegan a la recta azul. 
     }
     \label{fig:cpr_individual}
 \end{figure}
 %
-La diferencia entre el valor esperado y lo que le ocurre a los agentes individuales en el tiempo es un problema bien conocido en mecánica estadística, llamado ``no-ergodicidad''~\cite{peters2019-ergodicityEconomics}.
-Cuando un proceso es ergódico, las descripciones de su dinámica pueden remplazarse mediante el valor esperado, eliminado el tiempo de los modelos.
-Sin embargo, las condiciones para que un sistema cumpla con la hipótesis de ergodicidad son muy restrictivas.
-Cuando las hipótesis no se cumplen nos vemos obligados a analizar directamente su dinámica. 
-
-% Parrafo
-
-La dinámica evolutiva está gobernada por un procesos multiplicativos (eq.~\ref{eq:modelo_exponencial}), que en un cierto tiempo $t$ puede expresarse como,
+%La relación entre el valor esperado y lo que le ocurre a los agentes individuales en el tiempo es un problema bien conocido en mecánica estadística.
+Cuando lo que le ocurre a los agentes individuales en el tiempo puede describirse mediante el valor esperado de los estados del sistema se dice que el proceso es ergódico~\cite{peters2019-ergodicityEconomics}.
+Sin embargo, las condiciones para que esto se cumple son muy restrictivas.
+En particular, la dinámica evolutiva está gobernada por un procesos multiplicativos (eq.~\ref{eq:modelo_exponencial}).
+En el ejemplo de la moneda puede expresarse como,
 %
 \begin{equation}
 \omega_e(T) = \prod^T_{t=1} f_e(a(t)) = f_e(\text{cara})^{n_1} f_e(\text{seca})^{n_2}
@@ -153,25 +148,22 @@ La dinámica evolutiva está gobernada por un procesos multiplicativos (eq.~\ref
 %
 donde $n_1$ y $n_2$ representa la cantidad de ocurrencias de $f_e(\text{cara})$ y $f_e(\text{seca})$, con $n_1 + n_2 = T$.
 Las trayectorias observadas en la figura \ref{fig:ergodicity_individual_trayectories} son variables, pero cuanto más tiempo observemos el sistema más suave se vuelven esas líneas (figura \ref{fig:ergodicity_individual_trayectories_longrun}).
-En el límite, $T \rightarrow \infty$ todas las trayectorias individuales estarán determinadas por la misma tasa de crecimiento $\overline{f_e}$ por el que se multiplica los recursos $\omega_e(t)$ en cada iteración.
+En el límite, $T \rightarrow \infty$ todas las trayectorias individuales estarán determinadas por la misma tasa de crecimiento caracterísitica ${f_e}$, por el que se multiplican los recursos $\omega_e(t)$ en cada iteración.
 \begin{equation} \label{eq:geometric_mean}
 \begin{split}
-\lim_{T \rightarrow \infty} \omega_e(T) & = \overline{f_e}^T \\
-\left( \lim_{T \rightarrow \infty} \omega_e(T) \right)^{1/T} & =  \overline{f_e} \\
+\lim_{T \rightarrow \infty} \omega_e(T) & = {f_e}^T \\
+\left( \lim_{T \rightarrow \infty} \omega_e(T) \right)^{1/T} & =  {f_e} \\
 \lim_{T \rightarrow \infty} f_e(\text{cara})^{n_1/T} f_e(\text{seca})^{n_2/T} & 
  \end{split}
 \end{equation}
 Donde las frecuencias $\frac{n_1}{T}$ y $\frac{n_2}{T}$ en el límite $T \rightarrow \infty$ son iguales a las probabilidades de ocurrencia de los estados del sistema.
 Por lo tanto, la mejor estimación de la tasa de crecimiento es,
 \begin{equation}
-\overline{f} = (1.5 \cdot 0.6)^{1/2} \approx 0.95
+{f_e} = (1.5 \cdot 0.6)^{1/2} \approx 0.95
 \end{equation}
 %
 Esta fórmula, que permite computar la tasa de crecimiento a largo plazo de las trayectorias individuales, ha sido usada previamente en la literatura de evolución bajo el nombre de \emph{media geométrica}~\cite{dempster1955-geometricMean}.
-
-% Parrafo
-
-Una propiedad importante de la media geométrica es que su valor siempre es menor al valor esperado.
+Una propiedad importante de la media geométrica es que su valor siempre es menor al valor esperado (o media aritmética).
 Esto se debe a que en los procesos multiplicativos los impactos físicos de las pérdidas suelen ser más fuertes que los de las ganancias.
 En el extremo, un único cero en la productoria alcanza para generar su extinción.
 
@@ -183,8 +175,8 @@ En el extremo, un único cero en la productoria alcanza para generar su extinci�
 
 \subsection{Cooperacion}
 
-En los procesos no-ergódicos, las fluctuaciones tienen un efecto negativo en la tasa de crecimiento individual a largo plazo, pero no en la tasa de crecimiento del valor esperado.
-Dado que la varianza realmente importa, una forma eficaz de reducirla es compartir los riesgos~\cite{yaari2010-cooperationEvolution, peters2015-evolutionaryAdvantageOfCooperation}.
+%En los procesos no-ergódicos, las fluctuaciones tienen un efecto negativo en la tasa de crecimiento individual a largo plazo, pero no en la tasa de crecimiento del valor esperado.
+Dado que en los procesos multiplicativos la varianza realmente importa, una forma eficaz de reducirla es compartir los riesgos~\cite{yaari2010-cooperationEvolution, peters2015-evolutionaryAdvantageOfCooperation}.
 %Parafraseando a Den Boer~\cite{denBoer1968-spreadingRisk}, la  supervivencia de una población depende de la distribución del riesgo dentro de la población y entre las poblaciones de diferentes especies.
 Ole Peters~\cite{peters2015-evolutionaryAdvantageOfCooperation} considera las consecuencias que la distribución del riesgo de una estrategia cooperativa sencilla tiene sobre la tasa de crecimiento de los agentes.
 Los agentes cooperadores simplemente reparten sus recursos en partes iguales luego de cada iteración.
@@ -219,30 +211,32 @@ Los agentes cooperadores simplemente reparten sus recursos en partes iguales lue
 \end{figure}
 
 Las poblaciones enteramente cooperadoras reducen sus fluctuaciones, lo que genera una aumento en la tasa de crecimiento de todos sus miembros.
-En la figura \ref{fig:cpr_cooperation} mostramos la trayectoria de uno de los agentes cooperadores.
+En la figura \ref{fig:ergodicity_cooperation} mostramos la trayectoria de un agente cooperador en una población de tamaño 33.
 \begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\linewidth]{figures/cpr_cooperation.pdf}
+    \includegraphics[width=\linewidth]{figures/pdf/ergodicity_cooperation.pdf}
     \end{subfigure}
     \caption{
-    Tamaño logarítimico de los recursos de un individuo de una población con 33 agentes que comparten su riqueza luego de cada iteración.
-    La recta negra que baja representa el promedio temporal, y la que sube el promedio de estados.
+    Los recursos de un individuo de una población con 33 agentes que comparten su riqueza luego de cada iteración (recta verde), se pega al valor esperado (recta negra).
+    Dejamos la tasa de crecimiento temporal individual caracterísitico (recta azul) como referencia visual.
     }
-    \label{fig:cpr_cooperation}
+    \label{fig:ergodicity_cooperation}
 \end{figure}
+%
+\paragraph{Conclusión Ole Peters} (La ventaja de la cooperación)\textbf{.} Mediante la cooperación total, todos los individuos logran acceder a tasas de crecimiento equivalentes al promedio de estados del sistema, que en los sistemas no-ergódicos es siempre superior que el promedio temporal que obtienen las estrategias individuales. \\
 
-Mediante la cooperación, las poblaciones de agentes logran acceder a tasas de crecimiento individuales equivalentes al promedio de estados del sistema, que en los sistemas no-ergódicos es siempre superior que el promedio temporal.
+% Parrafo
 
-Ole Peters considera que este aumento de la tasa de crecimiento demuestra la ventaja evolutiva de la cooperación, lo que propone como principal explicación de las transiciones evolutivas.
-Sin embargo Ole Peters no analiza el problema de la deserción, quien dice ``our cooperators are unable to break the cooperative pact''.
+Ole Peters considera que este aumento es suficiente para demostrar la ventaja evolutiva de la cooperación, lo que propone como principal explicación de las transiciones evolutivas.
+Sin embargo no considera el problema de la deserción, quien dice ``our cooperators are unable to break the cooperative pact''.
 No parece ser un problema menor, teniendo en cuenta la tentación que podría significar dejar de aportar al fondo común mientras se siguen recibiendo los beneficios de este.
 
 \subsection{Estabilidad evolutiva}
 
-Para discutir la estabilidad y la ventaja de las estrategias cooperadores, analicemos las tasas de crecimiento de las estrategias cooperadora y desertora en poblaciones mixtas.
+Para ejemplificar el problema de la estabilidad evolutiva de la cooperación en este sistema, analicemos las tasas de crecimiento de las estrategias cooperadora y desertora en poblaciones mixtas.
 La población más chica posible consiste de dos agentes.
-En este caso las tasas de crecimiento temporal para las diferentes estrategias son (demostraciones en el Anexo):
+En este caso las tasas de crecimiento temporal caracterísitica para las diferentes estrategias son (demostraciones en el Anexo):
 %
 \begin{equation}
    f(\cdot,\cdot) = \bordermatrix{ & C & D \cr
@@ -262,54 +256,31 @@ Por más que la mutua cooperación ofrezca una tasa de crecimiento mayor que la 
 \begin{conclution}[Estabilidad evolutiva nivel 1]
 Esto quiere decir que las estrategias cooperadoras no son evolutivamentes estables al interior de las poblaciones como proponía Ole Peters \footnote{La estructura de pagos coinicide con la matriz de pagos del Stag-Hunt. Los análisis que llegan a la conclusión de que las poblaciones enteramente cooperadoras son estrategias evolutivamente estables utilizan tasas de crecimiento de dinámicas aditivas en poblaciones infinitas, apartándose del modelo estandar de crecimiento exponencial.}.
 \end{conclution}
-\begin{framed}
+
+\subsection{Objetivos}
+
 Ole Peters no logra dar una respuesta completa que explique por qué las estrategias cooperadoras están favorecidas evolutivamente.
-\end{framed}
-
-% Parrafo
-
-\paragraph{Selección multinivel} La idea general de que las grandes transiciones evolutivas involucra selección tanto a nivel individual como a nivel grupal, está ampliamente aceptada.
+La idea general de que las grandes transiciones evolutivas involucra selección tanto a nivel individual como a nivel grupal, está ampliamente aceptada.
 Para verificar si efectivamente las estrategias cooperativas se ven favorecidas por la evolución, como propone Ole Peters, será necesario entonces hacer un análisis multinivel.
-% Una condición preliminar crucial para el desarrollo de las transiciones evolutivas es la alineación de intereses y su persistencia en el tiempo.
-% Ole Peters explica por qué es ventajoso para las individualidades formar un cuerpo cooperativo mayor en base a un principio fundamental: la naturaleza multiplicativa de los procesos evolutivos.
-% Para completar la explicación de las transiciones evolutivas, es necesario responder ¿Cómo pudo ser evolutivamente estable una organización de este tipo, una vez que evolucionó por primera vez?
 
-% \subsubsection{Selección multinivel}
-% 
-% 
-% %, al ser no-ergódico, ofrece una ventaja física a favor de las estrategias cooperativas, las que se ven favorecidas evolutivamente a través de la selección multinivel.
-% 
-% La selección multinivel se clasifica de tipo 1 (MLS1), en el que los colectivos son temporales, y de tipo 2 (MLS2) en la que los colectivos se reproducen indefinidamente siendo unidades evolutivas plenas.
-% %Una vez definidos los colectivos, se determina la tasa de crecimiento de las diferentes estretgias individuales y grupales.
-% En MLS1, la tasa de crecimiento grupal se interpreta como el tamaño de la población (i.e. tasa de crecimiento media de sus individuos).
-% En MLS2, la tasa de crecimiento de los grupos evolutivamente plenos puede depender de otros factores específicos, pero en general cuando el número de partículas por colectivo es considera constante, la aptitud relativa de los colectivos en MLS1 y MLS2 es idéntica.
-% Esto nos permitirá analizar al mismo tiempo lo que ocurre con ambos tipos de selección multinivel.
-% Veremos que incorporar los efectos de la selección multinivel es resulta crucial para entender las transiciones evolutivas en estos casos en los cuales la tasa de replicación de las entidades del nivel inferior y superior no está totalmente alineada.
+A su vez, el co-autor del concepto de transiciones evolutivas \cite{szathmary1995-evolutionaryTransitions, szathmary2015-evolutionaryTransitions}, recientemente propuso analizar la evolución de las poblaciones sujetas a selección multinivel mediante modelos jerárquicos bayesianos~\cite{czegel2019-bayesianEvolution}.
+Más allá de la popuesta, Czegel, Zachar y Szathmary~\cite{czegel2019-bayesianEvolution} no logran ofrecer un modelo jerarquico bayesiano que represente selección multinivel, sus ejemplos son sólo pictóricos.
+
+La utilización de inferencia Bayesiana para resolver la pregunta acerca de la estabilidad evolutiva de las estrategias cooperadoras bajo selección multinivel está justificada en tanto existe un isomorfimos entre la teoría de la probabilidad (teormea de Bayes) y la teoría de la evolución (replicator dynamic)~\cite{harper2009-replicatorAsInference,shalizi2009-replicatorAsInference}.
+
+\paragraph{Objetivos:}
+(1) Demostrar la estabilidad evolutiva de la cooperación bajo procesos multiplicativos y ruidosos (2) mediante un modelo jerárquico bayesiano que represente la evolución de las poblaciones y las estrategias bajo selección multinivel.
 
 \section{Metodología}
 
-La utilización de inferencia Bayesiana para resolver la pregunta acerca de la estabilidad evolutiva de las estrategias cooperadoras bajo selección multinivel está justificada en tanto existe un isomorfimos entre la teoría de la probabilidad (teormea de Bayes) y la teoría de la evolución (replicator dynamic)~\cite{harper2009-replicatorAsInference,shalizi2009-replicatorAsInference}.
-A su vez, el co-autor del concepto de transiciones evolutivas \cite{szathmary1995-evolutionaryTransitions, szathmary2015-evolutionaryTransitions}, recientemente propuso analizar la evolución de las poblaciones sujetas a selección multinivel mediante modelos jerárquicos bayesianos~\cite{czegel2019-bayesianEvolution}.
-
-\begin{framed}
-Más allá de la popuesta, Czegel, Zachar y Szathmary~\cite{czegel2019-bayesianEvolution} no logran ofrecer un modelo jerarquico bayesiano que represente selección multinivel, sus ejemplos son sólo pictóricos.
-\end{framed}
-
-\begin{objective}
-(1) Demostrar la estabilidad evolutiva de la cooperación bajo procesos multiplicativos y ruidosos (2) mediante un modelo jerárquico bayesiano que represente la evolución de las poblaciones y estrategias bajo selección multinivel.
-\end{objective}
-
 En esta sección presentamos el ismorfismo entre la teoría de la probabilidad y la evolución.
 En la sección resultados utilizamos modelos bayesianos para resolver los problemas evolutivos.
-\textbf{Hasta donde sabemos, nuestro trabajo sería el primero que desarrolla un modelo jerárquico bayesiano para resolver un problema de evolución bajo selección multinivel.}
-
 
 \subsection{Teoría de la probabilidad}
 
 La teoría de la probabilidad es el enfoque más utilizado en la actualidad para tratar la incertidumbre.
 Sus reglas han sido derivadas formalmente a partir de sistemas axiomáticos conceptualmente distintos e independientes entre sí~\cite{halpern2017-RAU2}, lo cual es uno de los punto fuertes a su favor.
-Pero quizás más importante sea que su aplicación estricta garantiza maximizar la incertidumbre dada la información empírica (datos) y formal (modelos causales)~\cite{jaynes2003}.
-Esta propiedad es la base del concepto de ``honestidad'', sobre el que se basa la validación intersubjetiva de las proposiciones de las ciencias empíricas~\cite{landfried2021-conocimientoEmpirico}.
+Pero quizás más importante sea que su aplicación estricta maximiza la incertidumbre dada la información empírica (datos) y formal (modelos causales)~\cite{jaynes2003-bookProbabilityTheory}, fuente de validación de las proposiciones de las ciencias empíricas.
 
 Toda la teoría de la probabilidad puede resumirse en dos reglas: la~\ref{eq:sum_rule} y la~\ref{eq:product_rule}.
 La \ref{eq:sum_rule} afirma que cualquier distribuci\'on marginal se puede obtener integrando o sumando la distribuci\'on conjunta.
@@ -325,7 +296,7 @@ Por su parte, la \ref{eq:product_rule} se\~nala que cualquier distribuci\'on con
 \end{equation}
 De la regla del producto obtenemos inmediatamente el~\ref{eq:bayes_theorem},
 \begin{equation}\label{eq:bayes_theorem}
-\tag{\en{Bayes' theorem}\es{Teorema de bayes}}
+\tag{\en{Bayes' theorem}\es{teorema de Bayes}}
  p(y|x) = \frac{p(x|y)p(y)}{p(x)}
 \end{equation}
 La creencia a posteriori no es más que la creencia a priori que continúa siendo compatible con los datos.
@@ -333,13 +304,15 @@ La creencia a posteriori no es más que la creencia a priori que continúa siend
 
 \subsection{Isomorfismo entre las teorías de la evolución y la probabilidad.}
 
-Existe un isomorfismo entre la teoría de la evolución (replicator dynamic) y la teoría de la probabilidad (teorema de bayes) que nos permite que traduzcamos los conceptos de una en términos de la otra.
-Sea $e$ la estrategia, $a$ el resultado observable, 
+Existe un isomorfismo entre las ecuaciones fundamentales de la teoría de la evolución (replicator dynamic) y la teoría de la probabilidad (teorema de bayes),
 
 \begin{equation} 
  p(e|a) = \frac{p(a|e)\,p(e)}{p(a)}   \ \ \ \ \ \ \ \   x_e^\prime = \frac{f_e(a)\,x_e}{X}  
 \end{equation}
-
+%
+donde $e$ es la estrategia, $a$ el resultado observable. 
+El isomorfimo ente la inferecia bayesiana y la evolución nos permite traducir un problema en términos del otro.
+%
 \begin{align*}
 \centering
  \begin{tabular}{l|l}
@@ -351,34 +324,33 @@ Sea $e$ la estrategia, $a$ el resultado observable,
  \end{tabular}
 \end{align*}
 
-El isomorfimo ente la inferecia Bayesiana y la evolución nos permite traducir un problema en términos del otro.
 Para traducir el fitness en términos de probabilidades necesitamos normalizar su valor para que sume 1.
 Luego, la estrategia original propuesta por Ole Peters tiene el siguiente likelihood,
 %
 \begin{equation}
-p(a|e) = \begin{cases}
- \frac{1.5}{1.5+0.6} & a = \text{ \en{Head}\es{Cara} } \\
- \frac{0.6}{1.5+0.6} & a = \text{ \en{Tail}\es{Seca} }
+f_e(a) \propto  P(a|e) = \begin{cases}
+ \frac{1.5}{1.5+0.6} & a = 1 \\
+ \frac{0.6}{1.5+0.6} & a = 0
   \end{cases}
   \approx
 \begin{cases}
- 0.71 & a= \text{ \en{Head}\es{Cara} } \\
- 0.29 & a= \text{ \en{Tail}\es{Seca} }
+ 0.71 & a= 1 \\
+ 0.29 & a= 0
 \end{cases}
 \end{equation}
 %
-Otras estretgias tendrán otras distribuciones de probabilidad.
+Otras estretgias se podrán descrbir mediante otras distribuciones de probabilidad.
 Una forma general de representar todo el espacio de estrategias es mediane la distribución Bernoulli.
 %
 \begin{equation}
-p(a|e) = \text{B}(a,e) = (1-e)^{(1-a)} \cdot e^a 
+P(a|e) = \text{B}(a,e) = (1-e)^{(1-a)} \cdot e^a 
 \end{equation}
 %
 con $a \in \{0,1\}$.
-La distribución Binomial, por su parte, permite representar de forma compacta una secuencia de observaciones, donde $a$ representa ahora la cantidad total de caras obtenidas en $n$ eventos, $a \in \{0, \dots, n\}$.
-Para determinar cuál de todas las estrategia se ve favorecida por la evolución debemos definir la proproción inicial de las estrategias mediante una distribución de probabilidad a priori. 
+La distribución Binomial, por su parte, permite representar de forma compacta una secuencia de observaciones, donde $a$ representa ahora la cantidad total de éxitos obtenidas en $n$ eventos, $a \in \{0, \dots, n\}$.
+%Para determinar cuál de todas las estrategia se ve favorecida por la evolución debemos definir la proproción inicial de las estrategias mediante una distribución de probabilidad a priori. 
 Si comenzamos con un prior uniforme, el posterior tiene solución analítica (pertenecerá a la distribución Beta).
-De esta forma definimos el modelo evolutivo propuesto por Ole Peters en términos de inferencia Bayesiana.
+De esta forma extendemos el ejemplo propuesto por Ole Peters mediante el siguiente modelo bayesiano.
 
 \begin{figure}[H]
 \centering
@@ -398,7 +370,8 @@ De esta forma definimos el modelo evolutivo propuesto por Ole Peters en término
 \label{fig:modelo_beta_binomial}
 \end{figure}
 %
-A modo de ilustración, supongamos que la moneda está sesgada de modo que el $0.71$ de las veces sale cara y el $0.29$ sale seca.
+Este modelo nos permitirá analizar la estabilidad evolutiva del espacio de estrategias desertoras. 
+Supongamos que la moneda está sesgada de modo que el $0.71$ de las veces sale cara y el $0.29$ sale seca.
 En las siguientes figuras mostramos cómo cambia la proporción de las estrategias a medida que agregamos observaciones al modelo.
 %
 \begin{figure}[H]
@@ -420,15 +393,15 @@ En las siguientes figuras mostramos cómo cambia la proporción de las estrategi
 \end{figure}
 
 El proceso evolutivo selecciona las estrategias individuales que mejor adaptadas están al ambiente.
-Cuando el ambientes genera los estados con una probabilidad de $p=0.71$ y $1-p$, entonces la estrategia individual mejor adaptada es la que en cada ronda apuesta $0.71$ de sus recursos al ambiente $a=1$, y $0.29$ de sus recursos al ambiente $a=0$.
+Cuando el ambientes genera los estados con una probabilidad de $p*=0.71$, entonces la estrategia individual mejor adaptada es la que en cada ronda apuesta $0.71$ de sus recursos al ambiente $a=1$, y $0.29$ de sus recursos al ambiente $a=0$.
 
 % Parrafo
 
 El ejemplo de Ole Peters supone que la moneda no está sesgada.
 En este contexto, la estrategia utilizada por él para mostrar la ventaja de la cooperación no es la que está mejor adaptada en términos individuales.
-¿Será que si la probabilidad del ambiente no cambia, no hay ninguna ventaja a favor de la cooperación?
 ¿Las estrategias individuales que mejor se adaptaron al ambiente tienen la misma tasa de crecimiento temporal que la de los grupos cooperativos?
 ¿Que ocurre cuando la probabilidad del ambiente estocástico varía? 
+¿Será que si la probabilidad del ambiente no cambia, no hay ninguna ventaja a favor de la cooperación?
 Responderemos estas y otras preguntas en la siguiente sección.
 %Si ese fuera el caso, un pequeño costo asociado a la coordinación haría generaría una ventaja a favor de las estrategias individuales.
 %Al menos en ambientes estocásticos estables, que mantinen 
@@ -450,13 +423,12 @@ La tasa de crecimiento característica de los agentes desertores la podemos calc
 
 Supongamos que tenemos una población de tres cooperadores, $n=3$, que comparten sus recursos.
 Compartir sus recursos significa hacer una promedio de su distribuciones luego de tirar la moneda.
-Al iniciar comenzamos con una prior uniforme, representado por Beta$(1,1)=e^1 (1-e)^1$.
 Sea $a_i$ el resultado obtenido por el agente $i$.
-Luego del primer paso, el posterior de todos los agentes cooperadores es,
+En cada paso temporal, el posterior de todos los agentes cooperadores es,
 \begin{equation}
 \begin{split}
-p(e|a(t)) &\propto \frac{1}{3} \text{Prior}  \overbrace{p(a_1|e)}^{\hfrac{\text{Likelohood}}{\text{individual 1}}} + \frac{1}{3} \text{Prior}  \overbrace{p(a_2|e)}^{\hfrac{\text{Likelohood}}{\text{individual 2}}}  + \frac{1}{3} \text{Prior}  \overbrace{p(a_3|e)}^{\hfrac{\text{Likelohood}}{\text{individual 3}}}  \\
-&= \text{Prior} \underbrace{(\frac{1}{3} p(a_1|e) + \frac{1}{3} p(a_2|e) + \frac{1}{3} p(a_3|e))}_{\text{likelihood cooperativo}}
+P(e|a) &\propto \frac{1}{3} \text{Prior}  \overbrace{P(a_1|e)}^{\hfrac{\text{Likelohood}}{\text{individual 1}}} + \frac{1}{3} \text{Prior}  \overbrace{P(a_2|e)}^{\hfrac{\text{Likelohood}}{\text{individual 2}}}  + \frac{1}{3} \text{Prior}  \overbrace{P(a_3|e)}^{\hfrac{\text{Likelohood}}{\text{individual 3}}}  \\
+&= \text{Prior} \underbrace{(\frac{1}{3} P(a_1|e) + \frac{1}{3} P(a_2|e) + \frac{1}{3} P(a_3|e))}_{\text{likelihood cooperativo}}
 \end{split}
 \end{equation}
 %
@@ -464,7 +436,7 @@ Es decir, el likelihood cooperativo es el promedio artimético de los likelihood
 Los posibles likelihoods cooperativos para la población de tamaño 3 son,
 %
 \begin{equation}
-p(a|e,C) \propto 
+P_c(a|e) \propto 
 \begin{cases}
 (1-e) & \text{ si } a(t) = 0 \\
 \frac{1}{3} e + \frac{2}{3} (1-e)  & \text{ si } a(t) = 1 \\
@@ -475,33 +447,53 @@ e & \text{ si } a(t) = 3
 %
 Y en general, sea $n$ el tamaño de la población, $a$ la cantidad de éxitos, el likelihood cooperativo es
 \begin{equation}
-p(a|e,n,C) = \frac{a}{n} e + \frac{n-a}{n}(1-e)
+P_c(a|e,n) = \frac{a}{n} e + \frac{n-a}{n}(1-e)
 \end{equation}
 %
-Y la distribución de probabilidad del fitness de los cooperadores es
+El likelihood conjunto, luego de observar $T$ estados del ambiente, es
+%
 \begin{equation}
-p(f_c(r|e,n)) = \text{Binomial}(r,n)
+P_c(a(1)\dots a(T)|e,n) = \prod^T_t P_c(a(t)|e,n)
 \end{equation}
-
-y la probabilidad de las estrategias es
+%
+Del mismo modo que calculamos la tasa de crecimiento caracterísitica en la ecuación~\ref{eq:geometric_mean}, cuando la frecuencia de observaciones de los estados del ambiente tiende a la probabilidad real de generación de los estados $p^*$, el likelihood temporal caracterísitico es
+%
 \begin{equation}
-\overline{f_c}(e,n) = \prod_{r=1}^n \left( \frac{r}{n} e + \frac{n-r}{n}(1-e) \right)^{p(f_c(r|e,n))}
+\overline{f_c}(e,n) = \prod_{a=0}^n P_c(a|e,n)^{P(a|n,p^*)}
 \end{equation}
-
-
-
+%
+donde $P(a|n,p^*)$ es la verdadera binomial que genera los estados $a$.
+Cuando la población es muy grande, $n\rightarrow \infty$, en cada ronda habrá invariantemente una proproción $p*$ que obtuvo éxito, por lo que el likelihood caracterísitico se reduce a,
+%
+\begin{equation}
+\lim_{n\rightarrow \infty} \overline{f_c}(e) = p^* e + (1-p^*)(1-e)
+\end{equation}
+%
+El likelihood temporal caracterísitico de una estrategia $e$ en una población cooperativa infinita es la media aritmética, la cual es lineal respecto de la verdadera probabilidad de generación de los estados del ambiente.
+En la siguiente figura graficamos el likelihood característico individual (líneas continuas) y cooperativos (líneas punteadas) de tres estrategias ($e \in \{0.5, 0.75, 0.99\}$) para diferentes probabilidades de generación del ambiente.
+%
 \begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.66\textwidth}
     \includegraphics[width=\linewidth]{figures/pdf/tasa-temporal-0.pdf}
     \end{subfigure}
-    \caption{}
+    \caption{Likelihood característico bajo regímenes individuales (líneas continuas) y cooperativos infinitos (líneas punteadas) de tres estrategias ($e \in \{0.5, 0.75, 0.99\}$) en diferentes tipos de ambiente $p^*$.}
     \label{fig:fitness_temporal}
 \end{figure}
+%
+La flecha representa la conclusión a la que llegamos en la introducción, que en un ambiente que genera los estados con una probabilidad de $0.5$, la estretgia $0.71$ aumenta la tasa de crecimiento caracterísitica de su media geométrica a su media aritmética.
+El punto rojo representa la conclusión que sacamos en la sección metodología, que en un ambiente con $p^*=0.71$ la estrategia individual mejor adaptada es $e=0.71$.
+Con esta imagen podemos sacar algunas conclusiones nuevas.
+Arriba del punto rojo se encuentra el likelihood caracterísitica de la población cooperativa de la estrategia especialista $e=0.99$.
 
-Lo que discutimos hasta ahora es el punto y la flecha de la siguiente figura \ref{}, correspondientes a la selección de la estrtegia individual (sección \ref{}) y la selección multinivel 
+\begin{conclution}[La ventaja de la especialización]
+La cooperación ofrece una ventaja a favor de las estrategias especialistas. Estrategias que individualmente están mal adaptadas al ambiente, cooperando superan incluso a la posblación cooperativa que individualmemte está bien adaptada.
+\end{conclution}
 
-
+Esta conclusión la hemos obtenido a partir de tasa de crecimiento caracterísitica de una población cooperativa infinita.
+Para que sea una conclusión interesante este comportamiento debería ocurrir en poblaciones finitas, pparticularmente pequeñas.
+En la siguiente figura graficamos las tasas de crecimiento caracterísitica de la estrategia especialista $e=0.99$ para poblaciones cooperativas de tamaño 1 a 5.
+%
 \begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.66\textwidth}
@@ -509,22 +501,42 @@ Lo que discutimos hasta ahora es el punto y la flecha de la siguiente figura \re
     \end{subfigure}
     \caption{
     Tasa de superviencia temporal de la estrategia especialista ($e=0.99$) en función del ambiente, para diferentes tamaños de población cooperativa (de 1 a 5).
-    La línea punteada represeta la tasa de crecimiento de una población cooperativa inifinitamente grande.
+    La línea punteada negra represeta la tasa de crecimiento de una población cooperativa inifinitamente grande.
+    Las rectas grises sse dejan como referecia visual de las estrtegias $e \in \{0.5, 0.71\}$ analizadas en la figura anterior.
     }
     \label{fig:multilevel-selection-1}
 \end{figure}
+%
+Un población de tres agentes es suficiente para que la estrategia especialista mal adaptada individualmente, logre cooperativamente superar a la población cooperativa compuesta de estrategia individualmente bien adapatadas!
+Es realmente extraordinario que un sistema tan simple como el que estamos analizando tenga conclusiones tan fudamentales para entender la complejidad de la vida.
+El proceso multiplicativo al cuál está sujeto la vida favorece tanto la cooperación como la especialización.
 
+% Parrafo
 
+El nivel especialización depende del tamaño de la población.
+Para analizarlo, fijamos el ambiente en $p^* = 0.71$ y analizamos como varía la tasa de crecimiento caracterísitica cooperativa para todo el rango de estrategias para diferentes tamaños de población (de 1 a 5).
+%
 \begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.66\textwidth}
     \includegraphics[width=\linewidth]{figures/pdf/tasa-temporal-2.pdf}
     \end{subfigure}
     \caption{
-    La tasa de crecimiento temporal de las estretgias para diferentes tamaño de población enteramente cooperativa (de 1 a 5) en un ambiente $a=0.71$.
+    La tasa de crecimiento temporal de las estretgias para diferentes tamaño de población enteramente cooperativa (de 1 a 5) en un ambiente $p^*=0.71$.
     }
     \label{fig:multilevel-selection-1}
 \end{figure}
+%
+Ele eje x representa las diferentes estrategias.
+Cada una de las curvas representa un tamaño de población cooperativa.
+Los puntos indican la estretgia óptima para el tamaño de la población.
+Cuando la población tiene tamaño 1, la estrategia mejor adaptada es la que apuesta con la misma probjabilidad que el ambiente.
+Pero rapidamente, a medida que aumentamos el tamaño de la población, la cooperación favorece a las estrategias especialistas.
+
+% 
+
+Para que estas conclusiones impacten de lleno en la teoría de la evolución hace falta demostrar que la cooperación, no sólo puede resisitir la invasión de la desertores, sino que puede invadir población de desertores 
+
 
 
 \begin{figure}[H]
@@ -564,6 +576,11 @@ Lo que discutimos hasta ahora es el punto y la flecha de la siguiente figura \re
 
 \section{Conclusiones}
 
+Es realmente extraordinario que un sistema tan simple como el que estamos analizando tenga conclusiones tan fudamentales para entender la complejidad de la vida.
+El proceso multiplicativo al cuál está sujeto la vida favorece tanto la cooperación como la especialización.
+
+
+\textbf{Hasta donde sabemos, nuestro trabajo sería el primero que desarrolla un modelo jerárquico bayesiano para resolver un problema de evolución bajo selección multinivel.}
 
 %Aquí mostramos, basándonos en resultados anteriores que conectan el replicator dynamic y la inferencia bayesiana \cite{}, que si bien las estrategias cooperadoras no son evolutivamente estables al interior de los grupos, estas se ven favorecidas evolutivamente a través de la selección multinivel.
 
@@ -910,8 +927,6 @@ P(e_0|g) = \begin{tabular}{|c|c|c|c|c|c|c|}
 \caption{}
 \label{fig:modelo_grafico}
 \end{figure}
-
-
 
 
 
