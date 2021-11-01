@@ -8,12 +8,31 @@ function coin(p=0.71, n=1)
     rand(Binomial(n,p))
 end
 
+
+function game(n=100,d=1,t=1000, seed=1; costo = 0.0, reproduccion = 0.5, muerte = 0.4)#evolutivo=true
+    Random.seed!(seed)
+    res = zeros((n,t+1))
+    res[:,1] .= 1.0
+    i=2
+    while i <= t+1
+        cpr = (sum(res[1:(n-d),i-1].*(1-costo))/n)        
+        for a in 1:n#a=1
+            r = rand([0,1])
+            rate = r==0 ? (1+reproduccion) : (1-muerte)
+            res[a,i] = a<=(n-d) ? cpr*rate : (cpr+res[a,i-1])*rate
+        end
+        i = i +1 
+    end
+    return res
+end
+
+
 A = 0.71 # ambiente
 N = 10 # 
 ns = [i for i in 1:N] 
 de = 0.0001 # delta e (estrategia)
 e = [i for i in 0.0:de:1.0] # estrategias (a veces ambiente)
-@doc "e: estrategia, c: cantidad de cooperadores, r: exitos, N: poblacion total"
+"e: estrategia, c: cantidad de cooperadores, r: exitos, N: poblacion total"
 function coop_fitness(e,c,r,N)
     # e: estrategia
     # c: cantidad de cooperadores
@@ -84,24 +103,25 @@ function posterior_level_2(e,NN = 10,T=100)
 end
 
 postC, postD, joint_log_evidence = posterior_evidence_level_1(e,9,9,10000)
-fig = plot(e,postC, thickness_scaling = 1.5, grid=false, label="Cooperation", legend=:best,foreground_color_legend = nothing, ylab="Density", xlab="Estrategy")
-plot!(-1.0.*reverse(e),reverse(postD), label="Desertion")
+fig = plot(e,postC, thickness_scaling = 2, grid=false, label="Cooperation", legend=:best,foreground_color_legend = nothing, ylab="Density", xlab="Estrategy", color=3, linewidth=2)
+plot!(-1.0.*reverse(e),reverse(postD), label="Desertion", color=1, linewidth=2)
 savefig(fig, "pdf/multilevel-selection-1.pdf")
 savefig(fig, "png/multilevel-selection-1.png")
+run(`pdfcrop --margins '0 0 0 0' pdf/multilevel-selection-1.pdf pdf/multilevel-selection-1.pdf`) 
 
 postC, postD, joint_log_evidence = posterior_evidence_level_1(e,8,9,10000)
-fig = plot(e,postC, thickness_scaling = 1.5, grid=false, label="Cooperation", legend=:best,foreground_color_legend = nothing, ylab="Density", xlab="Estrategy")
-plot!(-1.0.*reverse(e),reverse(postD), label="Desertion")
+fig = plot(e,postC, thickness_scaling = 2, grid=false, label="Cooperation", legend=:best,foreground_color_legend = nothing, ylab="Density", xlab="Estrategy", color=3, linewidth=2)
+plot!(-1.0.*reverse(e),reverse(postD), label="Desertion", color=1, linewidth=2)
 savefig(fig, "pdf/multilevel-selection-2.pdf")
 savefig(fig, "png/multilevel-selection-2.png")
+run(`pdfcrop --margins '0 0 0 0' pdf/multilevel-selection-2.pdf pdf/multilevel-selection-2.pdf`) 
 
 postC, postD, joint_log_evidence = posterior_evidence_level_1(e,7,9,10000)
-fig = plot(e,postC, thickness_scaling = 1.5, grid=false, label="Cooperation", legend=:best,foreground_color_legend = nothing, ylab="Density", xlab="Estrategy")
-plot!(-1.0.*reverse(e),reverse(postD), label="Desertion")
+fig = plot(e,postC, thickness_scaling = 2, grid=false, label="Cooperation", legend=:best,foreground_color_legend = nothing, ylab="Density", xlab="Estrategy", color=3, linewidth=2)
+plot!(-1.0.*reverse(e),reverse(postD), label="Desertion", color=1, linewidth=2)
 savefig(fig, "pdf/multilevel-selection-3.pdf")
 savefig(fig, "png/multilevel-selection-3.png")
-
-
+run(`pdfcrop --margins '0 0 0 0' pdf/multilevel-selection-3.pdf pdf/multilevel-selection-3.pdf`) 
 # P(poblaciones que contengan desertores) 
 postL2 = posterior_level_2(e,10,100)
 pData = sum([sum(exp.(le)) for le in postL2])
@@ -131,35 +151,6 @@ function omega_desertor(f_c, f_d, t)
     return sum([ (f_c^i)*(f_d^(t-i)) for i in 1:t])
 end
 
-function game(n=100,d=1,t=1000, seed=1; costo = 0.0, reproduccion = 0.5, muerte = 0.4, evolutivo=false, intercalar=false)#evolutivo=true
-    Random.seed!(seed)
-    res = zeros((n,t+1))
-    res[:,1] .= 1.0
-    desertores = []
-    proporcion = []
-    i=2
-    while i <= t+1
-        if evolutivo & (d != n) & (d != 0) 
-            p = sum((res[:,i-1]./sum(res[:,i-1]))[1:(n-d)])
-            d = convert(Int64,round((1-p)*n))
-            push!(desertores,d)
-            push!(proporcion,p)
-        end
-        cpr = (sum(res[1:(n-d),i-1].*(1-costo))/n)        
-        for a in 1:n#a=1
-            r = rand([0,1])
-            if (intercalar & (mod(a,2) == mod(i,2))) || (!intercalar & r == 0)
-                res[a,i] = a<=(n-d) ? cpr*(1+reproduccion) : (cpr+res[a,i-1])*(1+reproduccion)
-            elseif (intercalar & (mod(a,2) != mod(i,2)) ) || (!intercalar & r == 1)
-                res[a,i] = a<=(n-d) ? cpr*(1-muerte) : (cpr+res[a,i-1])*(1-muerte)
-            end
-        end
-        i = i +1 
-    end
-    return evolutivo ? (res, desertores, proporcion) : res
-end
-
-
 f_c = coop_temporal_average(99, 0.71, 0.5, 100)*2.1
 f_d = 1.5^0.5*0.6^0.5
 T = 1000
@@ -168,5 +159,31 @@ plot!(log.(omega_desertor.(f_c, f_d, 0:T)), label=false)
 plot!( log.(f_c.^[i for i in 0:T]), label=false, color="black")
 savefig(fig, "pdf/multilevel-selection-5.pdf")
 savefig(fig, "png/multilevel-selection-5.png")
+
+######################
+# Bayesian inference (multilevel biomass proportion)
+
+# Biomasa de cada individuo por grupo
+b_eg0 = game(2,0,150,1).*1/4
+b_eg1 = game(2,1,150,1).*1/2
+b_eg2 = game(2,2,150,1).*1/4
+
+# Biomasa por grupo
+b_g0 = [ sum(c) for c in eachcol(b_eg0)]
+b_g1 = [ sum(c) for c in eachcol(b_eg1)]
+b_g2 = [ sum(c) for c in eachcol(b_eg2)]
+b_g = [transpose(b_g0); transpose(b_g1); transpose(b_g2)]
+
+# Biomasa total
+B = [ sum(c) for c in eachcol(b_g)]
+
+# P(g|r)
+p = plot(b_g0./B, label="CC", thickness_scaling = 1.5, grid=false, xlab="Tiempo", ylab="P(g|a)", color = 3, foreground_color_legend = nothing)
+plot!(b_g1./B, label="CD", color=2)
+plot!(b_g2./B, label="DD", color=1)
+
+savefig(p, "png/multilevel-selection-6.png") 
+savefig(p, "pdf/multilevel-selection-6.pdf") 
+
 
 

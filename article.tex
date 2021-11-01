@@ -236,7 +236,7 @@ No parece ser un problema menor, teniendo en cuenta la tentación que podría si
 
 Para ejemplificar el problema de la estabilidad evolutiva de la cooperación en este sistema, analicemos las tasas de crecimiento de las estrategias cooperadora y desertora en poblaciones mixtas.
 La población más chica posible consiste de dos agentes.
-En este caso las tasas de crecimiento temporal caracterísitica para las diferentes estrategias son (demostraciones en el Anexo):
+En este caso las tasas de crecimiento temporal caracterísitica para las diferentes estrategias son (demostraciones en la sección Resultados):
 %
 \begin{equation}
    f(\cdot,\cdot) = \bordermatrix{ & C & D \cr
@@ -310,7 +310,7 @@ Existe un isomorfismo entre las ecuaciones fundamentales de la teoría de la evo
  p(e|a) = \frac{p(a|e)\,p(e)}{p(a)}   \ \ \ \ \ \ \ \   x_e^\prime = \frac{f_e(a)\,x_e}{X}  
 \end{equation}
 %
-donde $e$ es la estrategia, $a$ el resultado observable. 
+donde $e$ es la estrategia, $a$ el comportamiento exitoso. 
 El isomorfimo ente la inferecia bayesiana y la evolución nos permite traducir un problema en términos del otro.
 %
 \begin{align*}
@@ -351,7 +351,7 @@ La distribución Binomial, por su parte, permite representar de forma compacta u
 %Para determinar cuál de todas las estrategia se ve favorecida por la evolución debemos definir la proproción inicial de las estrategias mediante una distribución de probabilidad a priori. 
 Si comenzamos con un prior uniforme, el posterior tiene solución analítica (pertenecerá a la distribución Beta).
 De esta forma extendemos el ejemplo propuesto por Ole Peters mediante el siguiente modelo bayesiano.
-
+%
 \begin{figure}[H]
 \centering
 \tikz{
@@ -419,7 +419,7 @@ Para empezar, analicemos lo que ocurre con las poblaciones enteramente desertora
 La tasa de crecimiento característica de los agentes desertores la podemos calcular utilizando la media geomética (ecuación \ref{eq:geometric_mean}).
 ¿Cuál es la tasa de crecimiento caracterísitica de las estrategias cooperadoras?
 
-% Parrafo
+\subsection{Tasa de crecimiento caracterísitica de las estrategias cooperadoras}
 
 Supongamos que tenemos una población de tres cooperadores, $n=3$, que comparten sus recursos.
 Compartir sus recursos significa hacer una promedio de su distribuciones luego de tirar la moneda.
@@ -470,6 +470,10 @@ Cuando la población es muy grande, $n\rightarrow \infty$, en cada ronda habrá 
 \end{equation}
 %
 El likelihood temporal caracterísitico de una estrategia $e$ en una población cooperativa infinita es la media aritmética, la cual es lineal respecto de la verdadera probabilidad de generación de los estados del ambiente.
+
+\subsection{La ventaja de la especialización}
+
+Conociendo al tasa de crecimiento caracterísitica de la población cooperadora y desertora, podemos analizar qué ocurre con las diferentes estrategias en diferentes ambientes.
 En la siguiente figura graficamos el likelihood característico individual (líneas continuas) y cooperativos (líneas punteadas) de tres estrategias ($e \in \{0.5, 0.75, 0.99\}$) para diferentes probabilidades de generación del ambiente.
 %
 \begin{figure}[H]
@@ -481,8 +485,11 @@ En la siguiente figura graficamos el likelihood característico individual (lín
     \label{fig:fitness_temporal}
 \end{figure}
 %
-La flecha representa la conclusión a la que llegamos en la introducción, que en un ambiente que genera los estados con una probabilidad de $0.5$, la estretgia $0.71$ aumenta la tasa de crecimiento caracterísitica de su media geométrica a su media aritmética.
+La flecha representa la conclusión de Ole Peters que presentamos en la introducción, donde mostramos experimentalmente que en un ambiente que genera los estados con una probabilidad de $p^* = 0.5$, la estretgia $e=0.71$ pasa de una tasa de crecimiento individual equivalente a la media geométrica a una tasa de crecimiento cooperativa equialente a su media aritmética.
 El punto rojo representa la conclusión que sacamos en la sección metodología, que en un ambiente con $p^*=0.71$ la estrategia individual mejor adaptada es $e=0.71$.
+
+% Parrafo
+
 Con esta imagen podemos sacar algunas conclusiones nuevas.
 Arriba del punto rojo se encuentra el likelihood caracterísitica de la población cooperativa de la estrategia especialista $e=0.99$.
 
@@ -491,7 +498,7 @@ La cooperación ofrece una ventaja a favor de las estrategias especialistas. Est
 \end{conclution}
 
 Esta conclusión la hemos obtenido a partir de tasa de crecimiento caracterísitica de una población cooperativa infinita.
-Para que sea una conclusión interesante este comportamiento debería ocurrir en poblaciones finitas, pparticularmente pequeñas.
+Para que sea una conclusión interesante este comportamiento debería ocurrir en poblaciones finitas, particularmente pequeñas.
 En la siguiente figura graficamos las tasas de crecimiento caracterísitica de la estrategia especialista $e=0.99$ para poblaciones cooperativas de tamaño 1 a 5.
 %
 \begin{figure}[H]
@@ -502,7 +509,7 @@ En la siguiente figura graficamos las tasas de crecimiento caracterísitica de l
     \caption{
     Tasa de superviencia temporal de la estrategia especialista ($e=0.99$) en función del ambiente, para diferentes tamaños de población cooperativa (de 1 a 5).
     La línea punteada negra represeta la tasa de crecimiento de una población cooperativa inifinitamente grande.
-    Las rectas grises sse dejan como referecia visual de las estrtegias $e \in \{0.5, 0.71\}$ analizadas en la figura anterior.
+    Las rectas grises se dejan como referencia visual de las estrtegias $e \in \{0.5, 0.71\}$ analizadas en la figura anterior.
     }
     \label{fig:multilevel-selection-1}
 \end{figure}
@@ -513,7 +520,7 @@ El proceso multiplicativo al cuál está sujeto la vida favorece tanto la cooper
 
 % Parrafo
 
-El nivel especialización depende del tamaño de la población.
+El nivel de especialización depende del tamaño de la población.
 Para analizarlo, fijamos el ambiente en $p^* = 0.71$ y analizamos como varía la tasa de crecimiento caracterísitica cooperativa para todo el rango de estrategias para diferentes tamaños de población (de 1 a 5).
 %
 \begin{figure}[H]
@@ -531,14 +538,143 @@ Ele eje x representa las diferentes estrategias.
 Cada una de las curvas representa un tamaño de población cooperativa.
 Los puntos indican la estretgia óptima para el tamaño de la población.
 Cuando la población tiene tamaño 1, la estrategia mejor adaptada es la que apuesta con la misma probjabilidad que el ambiente.
-Pero rapidamente, a medida que aumentamos el tamaño de la población, la cooperación favorece a las estrategias especialistas.
+Pero rápidamente, a medida que aumentamos el tamaño de la población, la cooperación favorece a las estrategias especialistas hasta que en poblaciones de tamaño inifinto el nivel se alcanza un nivel de especialización total que logra la tasa de crecimiento máxima, que es equivalente a la probabilidad de generación de las aptitudes $p^*$.
+
+\subsection{Selección multinivel}
+
+Para concluir que existe una ventaja evolutiva a favor de la cooperación y la especialización hace falta demostrar que la cooperación, no sólo puede resisitir la invasión de mutantes desertores, sino que ella misma invadirá poblaciones de desertores una vez que aparece.
+Para empezar, veamos qué ocurre en poblaciones de tamaño 2.
 
 % 
 
-Para que estas conclusiones impacten de lleno en la teoría de la evolución hace falta demostrar que la cooperación, no sólo puede resisitir la invasión de la desertores, sino que puede invadir población de desertores 
+En la introducción hemos visto que, si bien la deserción unilateral produce pérdidas en términos absolutos para el mismo agente desertor sin necesidad de introducir castigos, los mutantes desertores invadirán evolutivamente la población debido a que su tasa de crecimiento será mayor que la del agente cooperador.
+¿Pero qué ocurre con las diferentes tipos de poblaciones?
+Una vez que surge una población enteramente cooperadora, ¿ésta es capaz de invadir el resto de poblaciones no cooperadoras?.
 
+% Parrafo
 
+Para responder esta pregunta extenderemos el modelo bayesiano, incluyendo un nuevo nivel superior: el tipo de grupo.
+En una población de tamaño 2 tenemos 4 configuraciones posibles: CC, CD, DC, DD.
+Definiendo un prior uniforme sobre estas 4 configuraciones estaremos expresando que no tenemos preferencia sobre ninguna de ellas, las configuraciones compiten bajos mismas condiciones iniciales.
+Esta distribución la podemos expresar de forma compacta mediante una variable $g$ que representa la cantidad de desertores que hay en el grupo,
+%
+\begin{align}
+\centering
+P(g) = \begin{tabular}{|c|c|c|c|}
+        \hline
+        $g=0$ & $g=1$ & $g=2$ \\ \hline
+        $1/4$ & $1/2$ & $1/4$ \\ \hline
+\end{tabular}
+\end{align}
+%
+La variable de grupo $g$ determina la composición inicial de las estrategias $e_0$ al interior del grupo.
+En el grupo $g=0$ está compuesto por dos estrategias cooperadoras, $e_0=1$ y $e_0=2$, el grupo $g=1$ está compuesto por una estrategia cooperadora y una desertora, $e_0=3$ y $e_0=4$, y el grupo $g=2$ enteramente desertor lo resumimos mediante un único agente desertor $e_0=5$.
+%
+\begin{align}
+\centering
+P(e_0|g) = \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+        & $e_0=1$ & $e_0=2$ & $e_0=3$ &  $e_0=4$ & $e_0=5$ \\ \hline
+       $g=0$ & $0.5$ & $0.5$ & $0$ &  $0$ & $0$  \\ \hline
+       $g=1$ & $0$ & $0$ & $0.5$ & $0.5$ & $0$ \\ \hline
+       $g=2$ & $0$ & $0$ & $0$ & $0$ & $1.0$ \\ \hline
+\end{tabular}
+\end{align}
+%
+En cada paso temporal, las estrategias cooperadoras ceden la mitad de los recursos a su compañero de grupo, y las estrategias desertoras mantienen para si todos los recursos.
+%
+\begin{align}
+\centering
+P(e_{t}|e_{t-1}) = \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+        & $e_t=1$ & $e_t=2$ & $e_t=3$ &  $e_t=4$ & $e_t=5$ \\ \hline
+       $e_{t-1}=1$ & $0.5$ & $0.5$ & $0$ &  $0$ & $0$  \\ \hline
+       $e_{t-1}=2$ & $0.5$ & $0.5$ & $0$ & $0$ & $0$  \\ \hline \hline
+       $e_{t-1}=3$ & $0$ & $0$ & $0.5$ & $0.5$ & $0$  \\ \hline
+       $e_{t-1}=4$ & $0$ & $0$ & $0$ & $1.0$ & $0$  \\ \hline \hline
+       $e_{t-1}=5$ & $0$ & $0$ & $0$ & $0$ & $1.0$  \\ \hline
+\end{tabular}
+\end{align}
+%
+En cada tiempo $t$ cada agentes $i$ actualiza sus recursos en función del tipo de comportamiento que le resultó apto en ese tiempo, $a_i$.
+Para simplificar, en vez de observar en cada vuelta 5 valores, observamos solamente $a_t=(a_1, a_2)$, uno por cada miembro del grupo: el primer elemento es el valor que reciben los agentes impares, y el segundo los agentes pares. 
+%
+\begin{align}
+\centering
+P(a_{t}|e_{t}) \propto \begin{tabular}{|c|c|c|c|c|c|c|}
+        \hline
+        & $a_t=(0,0)$ & $a_t=(1,0)$ & $a_t=(0,1)$ &  $a_t=(1,1)$  \\ \hline
+       $e_{t}=1$ & $0.6$ & $1.5$ & $0.6$ & $1.5$ \\ \hline
+       $e_{t}=2$ & $0.6$ & $0.6$ & $1.5$ & $1.5$  \\ \hline
+       $e_{t}=3$ & $0.6$ & $1.5$ & $0.6$ & $1.5$  \\ \hline
+       $e_{t}=4$ & $0.6$ & $0.6$ & $1.5$ & $1.5$ \\ \hline
+       $e_{t}=5$ & $0.6$ & $1.5$ & $0.6$ & $1.5$ \\ \hline
+\end{tabular}
+\end{align}
+Notar que la probabilidad está definida en términos proporcionales por lo que en este primer caso estamos analizamos agentes basados en la estrategia original propuesta por Ole Peters, $e=0.71$.
 
+% Parrafo
+
+Todas estas distribuciones de probabilidad condicional definen las probabilidad conjunta, que puede ser expresada en términos gráficos del siguiente modo,
+%
+\begin{figure}[H]
+\centering
+\tikz{
+    \node[latent] (m) {$g$};
+
+    \node[latent, right=of m] (e0) {$e_0$};
+    
+    \node[latent, right=of e0] (e1) {$e_1$};
+    \node[latent, below=of e1] (r1) {$a_1$};
+    
+    \node[latent, right=of e1] (e2) {$e_2$};
+    \node[latent, below=of e2] (r2) {$a_2$};
+    
+    \node[latent, right=of e2] (e3) {$e_3$};
+    
+    
+    \edge {m} {e0};
+    \edge {e0} {e1};
+    \edge {e1} {r1,e2};
+    \edge {e2} {r2,e3};
+}
+\caption{
+Modelo bayesiano jerarquico para analizar la selección multinivel en procesos evolutivos.
+}
+\label{fig:modelo_grafico}
+\end{figure}
+%
+Veamos cómo evoluciona el posterior de estos 3 grupos.
+%
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.66\textwidth}
+    \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-6.pdf}
+    \end{subfigure}
+    \caption{
+    Evolución del posterior de los grupos a medida que avanza en el tiempo.
+    }
+    \label{fig:multilevel-selection-6}
+\end{figure}
+%
+La aparición de una relación de mutua cooperación inmediatamente es suficiente para invadir poblaciones compuesta enteramente por grupos desertores y mixtos.
+%
+\begin{conclution}[La ventaja evolutiva de la cooperación]
+La selección multinivel favorece a las estrategias cooperativas incluso con grupos de tamaño mínimo (dos).
+La aparición de una relación de mutua cooperación invade poblaciones compuesta enteramente por grupos desertores y mixtos.
+\end{conclution}
+%
+La ventaja evolutiva de la cooperación se extiende inmediatamente a poblaciones de tamaño mayor.
+Si existe ventaja evolutiva en poblaciones de tamaño 2, más aun en poblaciones de mayor tamaño.
+Si embargo, exisite un límite debido a que luego de un cierto tamaño, agregar miembros al grupo no aumenta prácticamente 
+la tasa de crecimiento pero agrega inestabilidad interna en tanto poblaciones de mayor tamaño tienen asociaciada una mayor tasa de mutación\todo{Hacer este análisis}.
+
+% Parrafo
+
+En el modelo anterior vimos qué ocurre con una estrategia en particular, $e = 0.71$, en un ambiente $p^* = 0.5$.
+Sería interesante extender ese modelo para que considere simultaneamente todas el espacio de estrategias, en todo el rango $e\in[0,1]$, tanto cooperativa como desertora.
+En la siguiente figura mostramos qué estrategias se seleccionan al interior de los grupos para una población de tamaño 9 enteramente cooperativa (figura~\ref{fig:multilevel-selection-1}), con un agente desertor (figura~\ref{fig:multilevel-selection-2})y con dos agentes desertores (figura~\ref{fig:multilevel-selection-3}).
+%
 \begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.32\textwidth}
@@ -558,21 +694,16 @@ Para que estas conclusiones impacten de lleno en la teoría de la evolución hac
     \end{subfigure}
     \caption{
     Posterior de las estrategias individuales para una población de 9 agentes con 0, 1 y 2 desertores (\ref{fig:multilevel-selection-1}, \ref{fig:multilevel-selection-2} y \ref{fig:multilevel-selection-3} respectivamente).
-    Se observa un cambio de fase en la selección de los desertores: en la figura \ref{fig:multilevel-selection-2} se seleccion
+    Los valores negativo del eje x representa todo el rango de estrategias desertoras, y los valores positivos representan todo el rango de las estrategias cooperadoras.
     }
     \label{fig:multilevel-selection-1}
 \end{figure}
+%
+Cuando la población es enteramente cooperadora, la estrategia predominante es especialista.
+Cuando la población tiene más de una desertor, la estrategia predominante es des
 
-
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[b]{0.66\textwidth}
-    \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-4.pdf}
-    \end{subfigure}
-    \caption{
-    }
-    \label{fig:multilevel-selection-4}
-\end{figure}
+Se observa un cambio de fase en la selección de los desertores: en la figura \ref{fig:multilevel-selection-2} se seleccion
+    
 
 \section{Conclusiones}
 
@@ -635,10 +766,6 @@ e & \text{ si } r = 1
 
 
 \subsection{Tasa de crecimiento en poblaciones cooperadoras}
-
-En el modelo multinivel bayesiano vemos que ocurre con diferentes  poblaciones (Coop-Coop, Coop-Des, Des-Des) de una estrategia, $e = 0.71$, en un ambiente, $a = 0.5$.
-
-Sería interesante extender ese modelo para que considere al mismo tiempo todas las posibes estrategias.
 
 Cuando hacemos el análisis individual, la proproción de las estretgias la representamos con una distribución Beta y el fitness con una likelihood binomial.
 
@@ -832,103 +959,15 @@ w(C|e,d,a,t) = \Delta w(C|e,d,a)^t
     \label{fig:multilevel-selection-5}
 \end{figure}
 
-
-
-
-\subsection{Selección multinivel}
-
-Primero definimos la probabilidad de los grupos mediante un prior uniforme.
-Esto significa que no tenemos preferencia sobre ningún modelo.
-Los modelos compiten bajos mismas condiciones iniciales.
-Vamos a suponer la existencia de cuatro grupos.
-Un grupo de 2 cooperadores, un grupo de 1 cooperador y 1 desertor, un grupos de desertores, y un grupo adicional con estrategias individuales bien adaptadas.
-
-\begin{align}
-\centering
-P(r_{t}|e_{t}) \propto \begin{tabular}{|c|c|c|c|c|c|c|}
-        \hline
-        & $r_t=(0,0)$ & $r_t=(0,1)$ & $r_t=(1,0)$ &  $r_t=(1,1)$  \\ \hline
-       $e_{t}=1$ & $0.6$ & $1.5$ & $0.6$ & $1.5$ \\ \hline
-       $e_{t}=2$ & $0.6$ & $0.6$ & $1.5$ & $1.5$  \\ \hline
-       $e_{t}=3$ & $0.6$ & $1.5$ & $0.6$ & $1.5$  \\ \hline
-       $e_{t}=4$ & $0.6$ & $0.6$ & $1.5$ & $1.5$ \\ \hline
-       $e_{t}=5$ & $0.6$ & $1.5$ & $0.6$ & $1.5$ \\ \hline
-       $e_{t}=6$ & $1.05$ & $1.05$ & $1.05$ & $1.05$  \\ \hline
-\end{tabular}
-\end{align}
-
-
-
-
-
-\begin{align}
-\centering
-P(e_{t}|e_{t-1}) = \begin{tabular}{|c|c|c|c|c|c|c|}
-        \hline
-        & $e_t=1$ & $e_t=2$ & $e_t=3$ &  $e_t=4$ & $e_t=5$ & $e_0=6$ \\ \hline
-       $e_{t-1}=1$ & $0.5$ & $0.5$ & $0$ &  $0$ & $0$ & $0$ \\ \hline
-       $e_{t-1}=2$ & $0.5$ & $0.5$ & $0$ & $0$ & $0$ & $0$ \\ \hline \hline
-       $e_{t-1}=3$ & $0$ & $0$ & $0.5$ & $0.5$ & $0$ & $0$ \\ \hline
-       $e_{t-1}=4$ & $0$ & $0$ & $0$ & $1.0$ & $0$ & $0$ \\ \hline \hline
-       $e_{t-1}=5$ & $0$ & $0$ & $0$ & $0$ & $1.0$ & $0$ \\ \hline \hline
-       $e_{t-1}=6$ & $0$ & $0$ & $0$ & $0$ & $0$ & $1.0$ \\ \hline
-\end{tabular}
-\end{align}
-
-
-
-
-\begin{align}
-\centering
-P(g) = \begin{tabular}{|c|c|c|c|}
-        \hline
-        $g=1$ & $g=2$ & $g=3$  & $g=4$\\ \hline
-        $1/4$ & $1/4$ & $1/4$ & $1/4$ \\ \hline
-\end{tabular}
-\end{align}
-
-\begin{align}
-\centering
-P(e_0|g) = \begin{tabular}{|c|c|c|c|c|c|c|}
-        \hline
-        & $e_0=1$ & $e_0=2$ & $e_0=3$ &  $e_0=4$ & $e_0=5$ & $e_0=6$ \\ \hline
-       $g=1$ & $0.5$ & $0.5$ & $0$ &  $0$ & $0$ & $0$ \\ \hline
-       $g=2$ & $0$ & $0$ & $0.5$ & $0.5$ & $0$ & $0$ \\ \hline
-       $g=3$ & $0$ & $0$ & $0$ & $0$ & $1.0$ & $0$ \\ \hline
-       $g=4$ & $0$ & $0$ & $0$ & $0$ & $0$ & $1.0$ \\ \hline
-\end{tabular}
-\end{align}
-
-
-
-
-
 \begin{figure}[H]
-\centering
-\tikz{
-    \node[latent] (m) {$G$};
-
-    \node[latent, right=of m] (e0) {$e_0$};
-    
-    \node[latent, right=of e0] (e1) {$e_1$};
-    \node[latent, below=of e1] (r1) {$r_1$};
-    
-    \node[latent, right=of e1] (e2) {$e_2$};
-    \node[latent, below=of e2] (r2) {$r_2$};
-    
-    \node[latent, right=of e2] (e3) {$e_3$};
-    
-    
-    \edge {m} {e0};
-    \edge {e0} {e1};
-    \edge {e1} {r1,e2};
-    \edge {e2} {r2,e3};
-}
-\caption{}
-\label{fig:modelo_grafico}
+    \centering
+    \begin{subfigure}[b]{0.66\textwidth}
+    \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-4.pdf}
+    \end{subfigure}
+    \caption{
+    }
+    \label{fig:multilevel-selection-4}
 \end{figure}
-
-
 
 
 \end{document}
