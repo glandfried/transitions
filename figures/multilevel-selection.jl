@@ -56,13 +56,16 @@ function posterior_D(e, a, priorD, priorC)
     r = coin(a)
     return (priorC .+ priorD).*coop_fitness.(e,1,r,1)
 end
+function priorG(N)
+    pdf(Binomial(N,0.5))
+end
 function priorsCD(e,c,N)
     if c == 0
         priorsC = [(1.0.-e).+e].*0.0;
         priorsD = [(1.0.-e).+e]
     elseif (c > 0) & (c != N)
-        priorsC = [(1.0.-e).+e] ./2
-        priorsD = [(1.0.-e).+e] ./2
+        priorsC = [(1.0.-e).+e] .* (c/N)
+        priorsD = [(1.0.-e).+e] .* (1-c/N)
     elseif c == N
         priorsC = [(1.0.-e).+e]
         priorsD = [(1.0.-e).+e].*0.0
@@ -77,7 +80,6 @@ function posterior_evidence_level_1(e,c,N,T=100, a = A)#c=9;N=9;T=100
     pC, pD = priorsCD(e,c,N)
     priorsC = pC[1]
     priorsD = pD[1]
-    evidence = 1.0
     joint_log_evidence = 0.0
     for _ in 1:T
         posteriorC = (c==0) ? pC[1] : posterior_C(e,a,c,N, priorsC)
@@ -98,6 +100,7 @@ function posterior_level_2(e,NN = 10,T=100)
             priorsC, priorsD, log_evidence = posterior_evidence_level_1(e,c,N,T)
             push!(posteriorsM[end] , log_evidence )
         end
+        posteriorsM[end].+log.(priorG(N))
     end
     return posteriorsM
 end
@@ -109,6 +112,7 @@ savefig(fig, "pdf/multilevel-selection-1.pdf")
 savefig(fig, "png/multilevel-selection-1.png")
 run(`pdfcrop --margins '0 0 0 0' pdf/multilevel-selection-1.pdf pdf/multilevel-selection-1.pdf`) 
 
+Random.seed!(2)
 postC, postD, joint_log_evidence = posterior_evidence_level_1(e,8,9,10000)
 fig = plot(e,postC, thickness_scaling = 2, grid=false, label="Cooperation", legend=:best,foreground_color_legend = nothing, ylab="Density", xlab="Estrategy", color=3, linewidth=2)
 plot!(-1.0.*reverse(e),reverse(postD), label="Desertion", color=1, linewidth=2)
@@ -129,7 +133,7 @@ pCoop = sum([exp(le[end]) for le in postL2])
 pCoop/pData
 
 function posterior_level_2_slide_coop(e, NN = 16,T=1000)
-    # NN: hasta que tamaño de porblación
+    # NN: hasta que tamaño de población
     log_posteriorsM = []
     for N in 1:NN
         _, _, log_evidence = posterior_evidence_level_1(e,N,N,T)
@@ -148,17 +152,21 @@ savefig(fig, "png/multilevel-selection-4.png")
 ######################
 
 function omega_desertor(f_c, f_d, t)
-    return sum([ (f_c^i)*(f_d^(t-i)) for i in 1:t])
+    return f_d^t + sum([ (f_c^i)*(f_d^(t-i)) for i in 1:t])
 end
 
-f_c = coop_temporal_average(99, 0.71, 0.5, 100)*2.1
-f_d = 1.5^0.5*0.6^0.5
+f_c = coop_temporal_average(99, 1.5/2.1, 0.5, 100)*2.1
+f_d = coop_temporal_average(1, 1.5/2.1, 0.5, 1)*2.1
 T = 1000
-fig= plot(log.(transpose(game())), label=false)
-plot!(log.(omega_desertor.(f_c, f_d, 0:T)), label=false)
+trayectorias = log.(transpose(game(100,1,T)))
+fig= plot(trayectorias[:,1], label=false, color=3,legend=:best,foreground_color_legend = nothing, ylab="log recursos", xlab="Tiempo", linewidth=1.5, grid=false,thickness_scaling = 1.5)
+plot!(trayectorias[:,end], label=false, color=1, linewidth=1.5)
+plot!(log.(omega_desertor.(f_c, f_d, 0:T)), label=false,color="black")
 plot!( log.(f_c.^[i for i in 0:T]), label=false, color="black")
 savefig(fig, "pdf/multilevel-selection-5.pdf")
 savefig(fig, "png/multilevel-selection-5.png")
+run(`pdfcrop --margins '0 0 0 0' pdf/multilevel-selection-5.pdf pdf/multilevel-selection-5.pdf`) 
+
 
 ######################
 # Bayesian inference (multilevel biomass proportion)
@@ -185,5 +193,26 @@ plot!(b_g2./B, label="DD", color=1)
 savefig(p, "png/multilevel-selection-6.png") 
 savefig(p, "pdf/multilevel-selection-6.pdf") 
 
+#######################
+
+
+fD = []
+fC = []
+N= 1000
+nx = 1:N
+t = 1000
+f_d = coop_temporal_average(1, 1.5/2.1, 0.5, 1)
+for n in nx#n=950
+    push!(fC,coop_temporal_average(n, 1.5/2.1, 0.5, N))
+    wD101 = omega_desertor(fC[end],f_d,101)
+    wD100 = omega_desertor(fC[end],f_d,100)
+    push!(fD,wD101/wD100)
+end
+
+fig=plot(nx/N, reverse(fC),label="Cooperador", color=3, legend=(0.2,0.3),foreground_color_legend = nothing, ylab="Fitness", xlab="Proporción desertores", linewidth=1.5, grid=false,thickness_scaling = 1.5)
+plot!(nx/N,reverse(fD), label="Desertor", color=1)
+savefig(fig, "pdf/multilevel-selection-7.pdf")
+savefig(fig, "png/multilevel-selection-7.png")
+run(`pdfcrop --margins '0 0 0 0' pdf/multilevel-selection-7.pdf pdf/multilevel-selection-7.pdf`) 
 
 

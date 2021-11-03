@@ -49,7 +49,7 @@ Desde aquel momento hasta ahora la vida adquirió una extraordinaria complejidad
     \caption{
 	Distribución actual de la biomasa en la tierra estimada por Bar-On et al.~\cite{barOn2018-biomass}.
     }
-    \label{fig:cpr_individual}
+    \label{fig:biomass}
 \end{figure}
 %
 Esta complejidad es consecuencia de una serie de transiciones evolutivas~\cite{maynardSmith1995-majorTransitions} en las que las entidades capaces de replicarse de forma independiente, cediendo algo de valor a las otras, pasan a formar unidades evolutivas de nivel superior.
@@ -176,9 +176,9 @@ En el extremo, un único cero en la productoria alcanza para generar su extinci�
 \subsection{Cooperacion}
 
 %En los procesos no-ergódicos, las fluctuaciones tienen un efecto negativo en la tasa de crecimiento individual a largo plazo, pero no en la tasa de crecimiento del valor esperado.
-Dado que en los procesos multiplicativos la varianza realmente importa, una forma eficaz de reducirla es compartir los riesgos~\cite{yaari2010-cooperationEvolution, peters2015-evolutionaryAdvantageOfCooperation}.
+Dado que en los procesos multiplicativos la varianza realmente importa, una forma eficaz de reducirla es compartir los riesgos~\cite{yaari2010-cooperationEvolution, peters-cooperation2019.03.04}.
 %Parafraseando a Den Boer~\cite{denBoer1968-spreadingRisk}, la  supervivencia de una población depende de la distribución del riesgo dentro de la población y entre las poblaciones de diferentes especies.
-Ole Peters~\cite{peters2015-evolutionaryAdvantageOfCooperation} considera las consecuencias que la distribución del riesgo de una estrategia cooperativa sencilla tiene sobre la tasa de crecimiento de los agentes.
+Ole Peters~\cite{peters-cooperation2019.03.04} considera las consecuencias que la distribución del riesgo de una estrategia cooperativa sencilla tiene sobre la tasa de crecimiento de los agentes.
 Los agentes cooperadores simplemente reparten sus recursos en partes iguales luego de cada iteración.
 
 \begin{figure}[H]
@@ -343,7 +343,7 @@ Otras estretgias se podrán descrbir mediante otras distribuciones de probabilid
 Una forma general de representar todo el espacio de estrategias es mediane la distribución Bernoulli.
 %
 \begin{equation}
-P(a|e) = \text{B}(a,e) = (1-e)^{(1-a)} \cdot e^a 
+P(a|e) = \text{B}(a|e) = (1-e)^{(1-a)} \cdot e^a 
 \end{equation}
 %
 con $a \in \{0,1\}$.
@@ -361,7 +361,7 @@ De esta forma extendemos el ejemplo propuesto por Ole Peters mediante el siguien
     
     
     \node[latent, below=of e] (r) {$a$};
-    \node[const, right=of r] (rn) {$P(a|e) = \text{Binomial}(a,e)$};
+    \node[const, right=of r] (rn) {$P(a|e,T) = \text{Binomial}(a|T,e)$};
     \node[const, left=of r] (nr) {Aptitud: \ \ \ };
     
     \edge {e} {r};
@@ -410,66 +410,134 @@ Responderemos estas y otras preguntas en la siguiente sección.
 
 En esta sección analizaremos si efectivamente existe alguna ventaja evolutiva de la cooperación.
 Esta pregunta permanece abierta por dos motivos.
-Por un lado, hemos visto en la sección Introducción que las estrategias cooperativas propuesta por Ole Peters no son evolutivamente estable al interior de los grupos.
-Por otro lado, hemos visto en la sección Metodología que Ole Peters sólo ha mostrado la conveniencia de la cooperación para una estrategia individual mal adaptada al ambiente.
+Por un lado, hemos adelantado en la sección Introducción que el comportamiento cooperativo no es evolutivamente estable al interior de los grupos.
+Por otro lado, hemos visto en la sección Metodología una extensión del modelo de Ole Peters que incluye todas las posibles estrategias $e$, y hemos visto que la estrategia analizada por Ole Peters está individualmente mal adaptada al ambiente.
+
+\subsection{Fitness de los comportamientos cooperadores y desertores}
+
+Para empezar, analicemos lo que ocurre a los comportamientos desertores $c=0$ y cooperadores $c=1$ en poblaciones enteramente desertoras y enteramente cooperadoras.
+La tasa de crecimiento característica de los agentes desertores la podemos calcular utilizando la media geomética (ecuación \ref{eq:geometric_mean}).
+%
+\begin{equation}\label{eq:des_temporal_average}
+P(a(1\dots T)|e, c_0) = \prod_t^T P(a(t)|e,c_0) \approx  P(a=1|e,c_0)^{p^*} P(a=0|e,c_0)^{1-p^*} = \overline{f}(e,c_0)
+\end{equation}
+%
+Con $p^*$ la probabilidad real de generación de éxitos.
+La aproximación es una igualdad en el límite $\lim T \rightarrow \infty$.
 
 % Parrafo
 
-Para empezar, analicemos lo que ocurre con las poblaciones enteramente desertoras y enteramente cooperadoras (tamaño infinito).
-La tasa de crecimiento característica de los agentes desertores la podemos calcular utilizando la media geomética (ecuación \ref{eq:geometric_mean}).
 ¿Cuál es la tasa de crecimiento caracterísitica de las estrategias cooperadoras?
+En una población enteramente cooperativa la aptitud de los agentes depende del tamaño de la población $n$.
+Supongamos que tenemos $n$ sujetos caracterizadas por el vector de estrategias $e = \{e_1, \dots, e_n\}$.
+Cooperar significa que los sujetos, luego de tirar la moneda, dividen en partes iguales sus recursos con los miembros del grupo.
+%
+\begin{figure}[H]
+\centering
+\tikz{
+    
+    \node[latent, minimum size=0.9cm] (e1) {$e_i^{t}$};
+    \node[latent, right=of e1] (e2) {$e_j^{t+1}$};
+    \node[const, right=of e2] (e2n) {$P(e_j^{t+1}|e^{t}) = \frac{1}{|e^t|}$};
+    \node[const, right=of e2, yshift=-1cm] (e2n) {$P(e_i^{t}) = \text{Prior}^t$};
+    \node[const, right=of e2, yshift=-2cm] (e2n) {$P(a_i^t|e_i^{t}) = \text{Bernoulli}(a_i^t|e_i^t)$};
+    
+    \node[det, below=of e1] (a) {$a_i^{t}$};
+    \plate {cooperacion} {(e1)(a)} {$ 1 \leq i \leq n$}; 
+    \edge {e1} {a,e2};
+    }
+\caption{Extensión del Modelo de Ole Peters para el comportamiento cooperador en una población enteramente cooperadora.}
+\label{fig:modelo_cooperativo}
+\end{figure}
+%
+%Donde $\mathbb{I}(s_j^{t+1}\in s^{t})$ es la función indicadora que vale 1 cuando el sujeto $s_j$ forma parte del grupo y 0 cuando no forma parte del grupo.
 
-\subsection{Tasa de crecimiento caracterísitica de las estrategias cooperadoras}
 
 Supongamos que tenemos una población de tres cooperadores, $n=3$, que comparten sus recursos.
-Compartir sus recursos significa hacer una promedio de su distribuciones luego de tirar la moneda.
-Sea $a_i$ el resultado obtenido por el agente $i$.
-En cada paso temporal, el posterior de todos los agentes cooperadores es,
+Sea $a_i^t$ el resultado obtenido por el agente $i$ en el tiempo $t$.
+En cada paso temporal, el posterior de los agentes cooperadores es,
 \begin{equation}
 \begin{split}
-P(e|a) &\propto \frac{1}{3} \text{Prior}  \overbrace{P(a_1|e)}^{\hfrac{\text{Likelohood}}{\text{individual 1}}} + \frac{1}{3} \text{Prior}  \overbrace{P(a_2|e)}^{\hfrac{\text{Likelohood}}{\text{individual 2}}}  + \frac{1}{3} \text{Prior}  \overbrace{P(a_3|e)}^{\hfrac{\text{Likelohood}}{\text{individual 3}}}  \\
-&= \text{Prior} \underbrace{(\frac{1}{3} P(a_1|e) + \frac{1}{3} P(a_2|e) + \frac{1}{3} P(a_3|e))}_{\text{likelihood cooperativo}}
+P(e_j^{t+1}|a^t) &\propto \frac{1}{3} \text{Prior}^t  \overbrace{P(a_1^t|e_1^t)}^{\hfrac{\text{Likelohood}}{\text{individual 1}}} + \frac{1}{3} \text{Prior}^t  \overbrace{P(a_2^t|e_2^t)}^{\hfrac{\text{Likelohood}}{\text{individual 2}}}  + \frac{1}{3} \text{Prior}^t  \overbrace{P(a_3^t|e_3^t)}^{\hfrac{\text{Likelohood}}{\text{individual 3}}}  \\
+&= \text{Prior}^t \underbrace{(\frac{1}{3} P(a_1^t|e_1^t) + \frac{1}{3} P(a_2^t|e_2^t) + \frac{1}{3} P(a_3^t|e_3^t))}_{f(a|e,c=1)\text{ fitness cooperativo}} = \text{Prior}^{t+1}
 \end{split}
 \end{equation}
 %
-Es decir, el likelihood cooperativo es el promedio artimético de los likelihood individuales.
-Los posibles likelihoods cooperativos para la población de tamaño 3 son,
+Es decir, el likelihood cooperativo es el promedio artimético de los likelihood individuales y es el mismo para todos los miembros del grupo.
+En cada paso temporal el posterior se genera como el producto del prior y el likelihood.
+Más aún, el prior del tiempo $t+1$ va a ser el mismo para todos.
+Esto significa que existe una independecia temporal entre eventos, que nos permite resumir el modelo probabilístico de la siguiente manera.
+% %
+% \begin{figure}[H]
+% \centering
+% \tikz{
+%     
+%     \node[det, xshift=1cm] (c) {$c$};
+%     \node[const, right=of c] (cn) {$P(c) = 0.5$};
+%     \node[const, right=of c, yshift=0.45cm] (nc) {Comportamiento: \ \ \ };
+%     
+%     \node[latent, xshift=-1cm] (e) {$e$};
+%     \node[const, left=of e] (en) {$P(e) = \text{Beta}(1,1)$};
+%     \node[const, left=of e, yshift=0.45cm] (ne) {Estrtategia: \ \ \ };
+%     
+%     \node[det, yshift=-1.5cm] (a) {$a^t$};
+%     \node[const, right=of a] (an) {$P(a^t|e,n,c)$};
+%     \node[const, left=of a] (na) {Aptitud: \ };
+%     
+%     \plate {eventos} {(an)(na)(a)} {$ 1 \leq t \leq T$}; 
+%     \edge {c,e} {a};
+%     }
+% \caption{Extensión del Modelo de Ole Peters incluyendo todo el espacio de estrategias $e$, el comportamiento $c$ cooperativo o desertivo de la población, compactado las variables temporales $T$ y de tamaño $n$.}
+% \label{fig:modelo_extendido_2}
+% \end{figure}
+% %
+% Este modelo nos permite incluir al mismo el comportamiento $c$ cooperativo o desertivo de la población, todo el espacio de estrategias $e$, compactado las variables temporales $T$ y de tamaño $n$ de la población.
+% El likelihood de la población desertora ya lo hemos derivado.
+% Terminemos de ver el likelihood de la población cooperadora.
+
+% Parrafo
+
+Los posibles fitness cooperativos para la población de tamaño 3 son,
 %
 \begin{equation}
-P_c(a|e) \propto 
+f(a|e,n=3,c=1) =
 \begin{cases}
-(1-e) & \text{ si } a(t) = 0 \\
-\frac{1}{3} e + \frac{2}{3} (1-e)  & \text{ si } a(t) = 1 \\
-\frac{2}{3} e + \frac{1}{3} (1-e)    & \text{ si } a(t) = 2 \\
-e & \text{ si } a(t) = 3
+(1-e) & \text{ si } a = 0 \\
+\frac{1}{3} e + \frac{2}{3} (1-e)  & \text{ si } a = 1 \\
+\frac{2}{3} e + \frac{1}{3} (1-e)    & \text{ si } a = 2 \\
+e & \text{ si } a = 3
 \end{cases}
 \end{equation}
 %
-Y en general, sea $n$ el tamaño de la población, $a$ la cantidad de éxitos, el likelihood cooperativo es
-\begin{equation}
-P_c(a|e,n) = \frac{a}{n} e + \frac{n-a}{n}(1-e)
+Y en general, sea $n$ el tamaño de la población, $a$ la cantidad de éxitos, el fitness cooperativo es
+\begin{equation}\label{eq:fitness_cooperador}
+f(a|e,n,c=1) = \frac{a}{n} e + \frac{n-a}{n}(1-e)
 \end{equation}
 %
-El likelihood conjunto, luego de observar $T$ estados del ambiente, es
+El fitness conjunto, luego de observar $T$ estados del ambiente, es
 %
 \begin{equation}
-P_c(a(1)\dots a(T)|e,n) = \prod^T_t P_c(a(t)|e,n)
+f(\bm{a}|e,n,c=1) = \prod^T_t f(a^t|e,n,c=1)
 \end{equation}
 %
-Del mismo modo que calculamos la tasa de crecimiento caracterísitica en la ecuación~\ref{eq:geometric_mean}, cuando la frecuencia de observaciones de los estados del ambiente tiende a la probabilidad real de generación de los estados $p^*$, el likelihood temporal caracterísitico es
+Donde $\bm{a}$ es el vector de tamaño $T$ con la cantidad de éxitos obtenidos en cada caso.
+La tasa de crecimiento característica de los agentes cooperadores la podemos calcular utilizando la media geomética~\ref{eq:geometric_mean},
 %
 \begin{equation}
-\overline{f_c}(e,n) = \prod_{a=0}^n P_c(a|e,n)^{P(a|n,p^*)}
+\overline{f}(e,n,c=1) = \prod_{a=0}^n f(a|e,n,c=1)^{\text{Binomial}(a|n,p^*)}
 \end{equation}
 %
-donde $P(a|n,p^*)$ es la verdadera binomial que genera los estados $a$.
+donde $p^*$ es la verdadera probabilidad de generación de los estados $a$.
 Cuando la población es muy grande, $n\rightarrow \infty$, en cada ronda habrá invariantemente una proproción $p*$ que obtuvo éxito, por lo que el likelihood caracterísitico se reduce a,
 %
 \begin{equation}
-\lim_{n\rightarrow \infty} \overline{f_c}(e) = p^* e + (1-p^*)(1-e)
+\lim_{n\rightarrow \infty} \overline{f}(e,c=1) = p^* e + (1-p^*)(1-e)
 \end{equation}
 %
-El likelihood temporal caracterísitico de una estrategia $e$ en una población cooperativa infinita es la media aritmética, la cual es lineal respecto de la verdadera probabilidad de generación de los estados del ambiente.
+El likelihood temporal caracterísitico de una estrategia $e$ en una población cooperativa infinita es la esperanza, la cual es lineal respecto de la verdadera probabilidad de generación de los estados del ambiente.
+
+%En el siguiente modelo hacemos explícito el tipo de comportamiento $c\in\{0,1\}$ del agente.
+%La extensión del modelo de Ole Peters que realizamos en la sección Metodología (figura~\ref{fig:modelo_beta_binomial}) sólo analizamos el comportamiento desertor individual.
 
 \subsection{La ventaja de la especialización}
 
@@ -567,14 +635,15 @@ P(g) = \begin{tabular}{|c|c|c|c|}
 \end{tabular}
 \end{align}
 %
-La variable de grupo $g$ determina la composición inicial de las estrategias $e_0$ al interior del grupo.
-En el grupo $g=0$ está compuesto por dos estrategias cooperadoras, $e_0=1$ y $e_0=2$, el grupo $g=1$ está compuesto por una estrategia cooperadora y una desertora, $e_0=3$ y $e_0=4$, y el grupo $g=2$ enteramente desertor lo resumimos mediante un único agente desertor $e_0=5$.
+La variable de grupo $g$ determina la composición inicial de las estrategias coperativa al interior del grupo.
+Los sujetos están caracterizados por su estrategia $e$, su comportamiento $c$ y su identidad $i$, $s_i=(e,c,i)$.
+En el grupo $g=0$ está compuesto por dos estrategias cooperadoras, $s_1=(e,c=1,1)$ y $s_2=(e,c=1,2)$, el grupo $g=1$ está compuesto por una estrategia cooperadora y una desertora, $s_3=(e,c=1,3)$ y $s_4=(e,c=0,4)$, y el grupo $g=2$ enteramente desertor lo resumimos mediante un único agente desertor $s_5=(e,c=0,5)$
 %
 \begin{align}
 \centering
-P(e_0|g) = \begin{tabular}{|c|c|c|c|c|c|}
+P(s^0|g) = \begin{tabular}{|c|c|c|c|c|c|}
         \hline
-        & $e_0=1$ & $e_0=2$ & $e_0=3$ &  $e_0=4$ & $e_0=5$ \\ \hline
+        & $s^0_1$ & $s^0_2$ & $s^0_3$ &  $s^0_4$ & $s^0_5$ \\ \hline
        $g=0$ & $0.5$ & $0.5$ & $0$ &  $0$ & $0$  \\ \hline
        $g=1$ & $0$ & $0$ & $0.5$ & $0.5$ & $0$ \\ \hline
        $g=2$ & $0$ & $0$ & $0$ & $0$ & $1.0$ \\ \hline
@@ -585,30 +654,30 @@ En cada paso temporal, las estrategias cooperadoras ceden la mitad de los recurs
 %
 \begin{align}
 \centering
-P(e_{t}|e_{t-1}) = \begin{tabular}{|c|c|c|c|c|c|}
+P(s^{t}|s^{t-1}) = \begin{tabular}{|c|c|c|c|c|c|}
         \hline
-        & $e_t=1$ & $e_t=2$ & $e_t=3$ &  $e_t=4$ & $e_t=5$ \\ \hline
-       $e_{t-1}=1$ & $0.5$ & $0.5$ & $0$ &  $0$ & $0$  \\ \hline
-       $e_{t-1}=2$ & $0.5$ & $0.5$ & $0$ & $0$ & $0$  \\ \hline \hline
-       $e_{t-1}=3$ & $0$ & $0$ & $0.5$ & $0.5$ & $0$  \\ \hline
-       $e_{t-1}=4$ & $0$ & $0$ & $0$ & $1.0$ & $0$  \\ \hline \hline
-       $e_{t-1}=5$ & $0$ & $0$ & $0$ & $0$ & $1.0$  \\ \hline
+        & $s^t_1$ & $s^t_2$ & $s^t_3$ & $s^t_4$ & $s^t_5$ \\ \hline
+       $e^{t-1}_1$ & $0.5$ & $0.5$ & $0$ &  $0$ & $0$  \\ \hline
+       $e^{t-1}_2$ & $0.5$ & $0.5$ & $0$ & $0$ & $0$  \\ \hline \hline
+       $e^{t-1}_3$ & $0$ & $0$ & $0.5$ & $0.5$ & $0$  \\ \hline
+       $e^{t-1}_4$ & $0$ & $0$ & $0$ & $1.0$ & $0$  \\ \hline \hline
+       $e^{t-1}_5$ & $0$ & $0$ & $0$ & $0$ & $1.0$  \\ \hline
 \end{tabular}
 \end{align}
 %
-En cada tiempo $t$ cada agentes $i$ actualiza sus recursos en función del tipo de comportamiento que le resultó apto en ese tiempo, $a_i$.
-Para simplificar, en vez de observar en cada vuelta 5 valores, observamos solamente $a_t=(a_1, a_2)$, uno por cada miembro del grupo: el primer elemento es el valor que reciben los agentes impares, y el segundo los agentes pares. 
+En cada tiempo $t$ cada sujeto $i$ actualiza sus recursos en función del tipo del estado $a_i$.
+Para simplificar, en vez de observar 5 valores, observamos solamente $a^t=(a^t_1, a^t_2)$, uno por cada miembro del grupo: el primer elemento es el valor que reciben los agentes impares, y el segundo los agentes pares. 
 %
 \begin{align}
 \centering
-P(a_{t}|e_{t}) \propto \begin{tabular}{|c|c|c|c|c|c|c|}
+P(a^{t}|s^{t}) \propto \begin{tabular}{|c|c|c|c|c|c|c|}
         \hline
-        & $a_t=(0,0)$ & $a_t=(1,0)$ & $a_t=(0,1)$ &  $a_t=(1,1)$  \\ \hline
-       $e_{t}=1$ & $0.6$ & $1.5$ & $0.6$ & $1.5$ \\ \hline
-       $e_{t}=2$ & $0.6$ & $0.6$ & $1.5$ & $1.5$  \\ \hline
-       $e_{t}=3$ & $0.6$ & $1.5$ & $0.6$ & $1.5$  \\ \hline
-       $e_{t}=4$ & $0.6$ & $0.6$ & $1.5$ & $1.5$ \\ \hline
-       $e_{t}=5$ & $0.6$ & $1.5$ & $0.6$ & $1.5$ \\ \hline
+        & $a^t=(0,0)$ & $a^t=(1,0)$ & $a^t=(0,1)$ &  $a^t=(1,1)$  \\ \hline
+       $s^{t}_1$ & $0.6$ & $1.5$ & $0.6$ & $1.5$ \\ \hline
+       $s^{t}_2$ & $0.6$ & $0.6$ & $1.5$ & $1.5$  \\ \hline
+       $s^{t}_3$ & $0.6$ & $1.5$ & $0.6$ & $1.5$  \\ \hline
+       $s^{t}_4$ & $0.6$ & $0.6$ & $1.5$ & $1.5$ \\ \hline
+       $s^{t}_5$ & $0.6$ & $1.5$ & $0.6$ & $1.5$ \\ \hline
 \end{tabular}
 \end{align}
 Notar que la probabilidad está definida en términos proporcionales por lo que en este primer caso estamos analizamos agentes basados en la estrategia original propuesta por Ole Peters, $e=0.71$.
@@ -657,7 +726,7 @@ Veamos cómo evoluciona el posterior de estos 3 grupos.
     \label{fig:multilevel-selection-6}
 \end{figure}
 %
-La aparición de una relación de mutua cooperación inmediatamente es suficiente para invadir poblaciones compuesta enteramente por grupos desertores y mixtos.
+La aparición de un grupo cooperador es suficiente para invadir poblaciones compuesta enteramente por grupos desertores y mixtos.
 %
 \begin{conclution}[La ventaja evolutiva de la cooperación]
 La selección multinivel favorece a las estrategias cooperativas incluso con grupos de tamaño mínimo (dos).
@@ -666,44 +735,7 @@ La aparición de una relación de mutua cooperación invade poblaciones compuest
 %
 La ventaja evolutiva de la cooperación se extiende inmediatamente a poblaciones de tamaño mayor.
 Si existe ventaja evolutiva en poblaciones de tamaño 2, más aun en poblaciones de mayor tamaño.
-Si embargo, exisite un límite debido a que luego de un cierto tamaño, agregar miembros al grupo no aumenta prácticamente 
-la tasa de crecimiento pero agrega inestabilidad interna en tanto poblaciones de mayor tamaño tienen asociaciada una mayor tasa de mutación\todo{Hacer este análisis}.
-
-% Parrafo
-
-En el modelo anterior vimos qué ocurre con una estrategia en particular, $e = 0.71$, en un ambiente $p^* = 0.5$.
-Sería interesante extender ese modelo para que considere simultaneamente todas el espacio de estrategias, en todo el rango $e\in[0,1]$, tanto cooperativa como desertora.
-En la siguiente figura mostramos qué estrategias se seleccionan al interior de los grupos para una población de tamaño 9 enteramente cooperativa (figura~\ref{fig:multilevel-selection-1}), con un agente desertor (figura~\ref{fig:multilevel-selection-2})y con dos agentes desertores (figura~\ref{fig:multilevel-selection-3}).
-%
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[b]{0.32\textwidth}
-    \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-1.pdf}
-    \caption{9/9}
-    \label{fig:multilevel-selection-1}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.32\textwidth}
-    \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-2.pdf}
-    \caption{8/9}
-    \label{fig:multilevel-selection-2}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.32\textwidth}
-    \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-3.pdf}
-    \caption{7/9}
-    \label{fig:multilevel-selection-3}
-    \end{subfigure}
-    \caption{
-    Posterior de las estrategias individuales para una población de 9 agentes con 0, 1 y 2 desertores (\ref{fig:multilevel-selection-1}, \ref{fig:multilevel-selection-2} y \ref{fig:multilevel-selection-3} respectivamente).
-    Los valores negativo del eje x representa todo el rango de estrategias desertoras, y los valores positivos representan todo el rango de las estrategias cooperadoras.
-    }
-    \label{fig:multilevel-selection-1}
-\end{figure}
-%
-Cuando la población es enteramente cooperadora, la estrategia predominante es especialista.
-Cuando la población tiene más de una desertor, la estrategia predominante es des
-
-Se observa un cambio de fase en la selección de los desertores: en la figura \ref{fig:multilevel-selection-2} se seleccion
-    
+En el anexo hacemos una extensión de este modelo.
 
 \section{Conclusiones}
 
@@ -725,7 +757,7 @@ Ambas soluciones combinadas ofrecen una solución nueva al problema de las trans
 Según \cite{czegel2019-bayesianEvolution} el isomorfismo entre los procesos evolutivos y la inferencia bayesiana multinivel,  ``support a learning theory-oriented narrative of evolutionary complexification: the complexity and depth of the hierarchical structure of individuality mirror the amount and complexity of data that have been integrated about the environment through the course of evolutionary history.''
 Esta especulación es rechazada por el modelo de Ole Peters, el cual muestra que un simple proceso multicativo ruidoso favorece la selección multinivel de grupos cooperativos por sobre grupos con desertores.
 
-Por otra parte, según \cite{peters} su modelo ``paints a picture of cooperation driven by self-interest, not altruism, with cooperators outgrowing similar non-cooperators''.
+Por otra parte, según \cite{peters-cooperation2019.03.04} su modelo ``paints a picture of cooperation driven by self-interest, not altruism, with cooperators outgrowing similar non-cooperators''.
 Esta especulación es rechazada por la metodología de czegel \cite{czegel2019-bayesianEvolution}, la cual muestra que si bien las estrategias cooperativas no son evolutivamente estables al interior de los grupos, estos se ven favorecidos gracias a la selección multinivel.
 
 Además \cite{czegel2019-bayesianEvolution} dice que, ``This isomorphism allows for a natural interpretation of evolutionary transitions in individuality as \emph{learning the structure}''.
@@ -750,205 +782,144 @@ En este trabajo mostramos que lo que se aprende no es la estructura, sino que \t
 
 \section{Apéndice}
 
+\subsection{Tasa de crecimiento en poblaciones mixtas-homogeneas}
 
+%En el modelo anterior vimos qué ocurre con la selección de grupos (nivel 2) $g \in \{CC, CD, DD\}$ en una población caracterizada por una estrategia individual $e = 0.71$ en un ambiente $p^* = 0.5$.
+%Sería interesante ver qué ocurre considerando simultaneamente todas las posibles poblaciones el espacio de estrategias, en todo el rango $e\in[0,1]$, tanto cooperativa como desertora
+Vamos a generalizar el fitness para grupos mixtos.
+% Las estrategias $e$ tiene un priori uniforme, $P(e) = \text{Beta}(1,1)$.
+% Los grupos se caracterizan por la proporción de desertores $d$.
+% Definimos un priori de los grupos en base a la cantidad de combinaciones, lo que puede ser calculado mediante la distribución $P(d) = \text{Binomial}(d|n,0.5)$.
+% La probabilidad de encontrar al interior de un grupo un comportamiento desertor o cooperativo, $c\in \{0,1\}$ respectivamente, depende del tipo de grupo que estamos evaluando $P(c|d)=d^{(1-c)} (1-d)^{c}$.
+Sea $N$ el tamaño de la población, y $n$ la cantidad de cooperadores en el grupo.
+En cada tiempo $t$ definimos una única variable aptitud que será representada como un vector $\bm{a} \in (a_0, a_1)$, donde $a_0$ representa éxito o fracaso del jugador desertor, y $a_1$ representa la suma total de éxitos en la población de cooperadores de tamaño $n$.
+% %
+% \begin{figure}[H]
+% \centering
+% \tikz{
+%     
+%     \node[latent, xshift=1cm] (c) {$c$};
+%     \node[const, right=of c] (cn) {$P(c|n,N) = \frac{n}{N}^{(1-c)} (1-d)^{c} \frac{n}{N} $};
+%     \node[const, right=of c, yshift=0.45cm] (nc) {Comportamiento: \ \ \ };
+%     
+%     \node[latent, xshift=-1cm] (e) {$e$};
+%     \node[const, left=of e] (en) {$P(e) = \text{Beta}(1,1)$};
+%     \node[const, left=of e, yshift=0.45cm] (ne) {Estrtategia: \ \ \ };
+%     
+%     \node[latent, yshift=-1.5cm] (a) {$\bm{a}^t$};
+%     \node[const, right=of a] (an) {$P(\bm{a}^t|c,e,n,N)$};
+%     \node[const, left=of a] (na) {Aptitud: \ };
+%     
+%     \plate {aptitud_mixta} {(an)(na)(a)} {$ 1 \leq t \leq T$}; 
+%     
+%     \edge {c,e} {a};
+%     }
+% \caption{Modelo extendido}
+% \label{fig:modelo_extendido}
+% \end{figure}
+% %
+% 
 
-\subsection{Tasa de crecimiento en poblaciones desertoras}
+% Parrafo
 
-Sea $r$ el resultado generado por el ambiente, y sea $e$ la estrategia individual, luego el fitness individual es
+El tamaño de la población (o el posterior proporcional) para las estrategias cooperadoras en una población mixta es, 
+%
 \begin{equation}
-f(r|e) \propto 
-\begin{cases}
-(1-e) & \text{ si } r = 0 \\
-e & \text{ si } r = 1
-\end{cases}
+P(\bm{a},e|n,N,c=1) = \frac{a_1}{N} e + \frac{n-a_1}{N}(1-e) = \frac{n}{N} f(a_1|e,n,c=1)
+\end{equation}
+%adora en poblaciones enteramente cooperado
+donde $f(a|e,n,c=1)$ es el fitness cooperativos de la estrategia cooperadora en poblaciones enteramente cooperadora (ecuación~\ref{eq:fitness_cooperador}).
+El tamaño de la población (o el posterior proporcional) luego de observar $T$ estados del ambiente, es
+%
+\begin{equation}
+P(\bm{a}(1 \dots T),e|n,N,c=1) = \prod^T_t P(a_1(t),e|n,N,c=1)
+\end{equation}
+%
+Cuando $T$ tiende a infinito, $T \rightarrow \infty$,
+\begin{equation}
+\lim_{T \rightarrow \infty}P(\bm{a}(1 \dots T),e|n,N,c=1) = \overline{f}(e,n,N,c=1)^T
+\end{equation}
+Por lo tanto, la tasa de crecimiento $\overline{f}$ es
+\begin{equation} \label{eq:coop_temporal_average}
+\overline{f}(e,n,N,c=1) = \prod_{a=0}^n P(a|e,n,N,c=1)^{\text{Binomial}(a|n,p^*)}
 \end{equation}
 
+%
+donde $p^*$ es la verdadera probabilidad de generación de los estados $a$.
+% 
+% Como el cambio de los recursos no depende de $t$, en t pasos la población tiene un posterior caracterísitico
+% \begin{equation}
+% \overline{p}(e|n,N,c=1,\bm{a}(1\dots t))\propto \overline{f}(e,n,N,c=1)^t
+% \end{equation}
+% %
+% donde el prior $p(e)$ podemos evitar ponerlo debido a que comenzamos con un distribución uniforme que no afecta la proporcionalidad.
 
+% Parrafo
 
-\subsection{Tasa de crecimiento en poblaciones cooperadoras}
-
-Cuando hacemos el análisis individual, la proproción de las estretgias la representamos con una distribución Beta y el fitness con una likelihood binomial.
-
-Arrancamos con un Beta a priori uniforme
-
-\begin{equation}
-p(e_0) = \text{Beta}(1,1) \propto e^1 (1-e)^1 
-\end{equation}
-
-En el primer paso, cada individuo tira la moneda, y recibe un likelihood-fitness aleatorio.
-Supongamos que tenemos una población de tres cooperadores, $N=3$, que comparten sus recursos.
-En el primer paso, compartir sus recursos significa hacer una promedio de su distribuciones a priori Beta$(1,1)$ luego de obtener el primer resultado.
-
-\begin{equation}
-p(e|r) \propto 
-\begin{cases}
-e^1 (1-e)^2 & \text{ si } r = 0 \\
-\frac{1}{3} e^1 (1-e)^2 + \frac{2}{3} e^2 (1-e)^1  & \text{ si } r = 1 \\
-\frac{2}{3} e^2 (1-e)^1 + \frac{1}{3} e^1 (1-e)^2    & \text{ si } r = 2 \\
-e^2 (1-e)^1 & \text{ si } r = 3
-\end{cases}
-\end{equation}
-
-Cuando ambos sacan el mismo resultado, la distribución Beta aumenta en un sólo punto, pues recibe como producto $(1-e)$ y $e$ respectivamente.
-En el caso $r = (0,0,1)$ recibe como producto $(\frac{1}{3} + \frac{1}{3}e )$, y en el caso $r = (0,1,1)$ recibe como producto $(\frac{2}{3} - \frac{1}{3}e )$.
-Veamos el primero,
-
-\begin{equation}
-\begin{split}
-p(e_1) & \propto \frac{1}{3} e^1 (1-e)^2 + \frac{2}{3} e^2 (1-e)^1  \\
-& =  e^1 (1-e)^1 ( \frac{1}{3} (1-e) +  \frac{2}{3} e)  \\
-& =  \underbrace{e^1 (1-e)^1}_{\text{prior}} \underbrace{(1/3 + (1/3)e )}_{\text{fitness}}
-\end{split}
-\end{equation}
-
-Es decir, el primer posterior simplemente es el producto del prior por una de esas pendientes.
-Y esa pendiente es compartida por todos los cooperadores.
-Por lo que el segundo posterior va a ser nuevamente agregar como producto una de esas pendientes.
-Es decir, en cada paso se van acumulando las pendietes.
-Los posibles fitness de los cooperadores son entonces las pendientes, distribuidas como una Binomial. 
-
-
-\begin{equation}
-p(e_t) \propto \prod_i^t \text{pendiente}_i \propto (1-e)^{n_0} (\frac{1}{3} + \frac{1}{3}e )^{n_1} (\frac{2}{3} - \frac{1}{3}e )^{n_2} e^{n_3}
-\end{equation}
-
-Donde $n_i$ representa la cantidad de veces que el conjunto de cooperadores recibieron como pago cada una de las pendientes, con $\sum n_i = t$.
-En el límite todas las trayectorias individuales estarán gobernadas por el mismo factor $\overline{f}$.
-
-\begin{equation}
-\begin{split}
-\lim_{T \rightarrow \infty} p(e_T) & \propto \overline{f}^T \\
-(\lim_{T \rightarrow \infty} p(e_T) )^{1/T} & \propto \overline{f} \\
-(1-e)^{p(r=0)} (\frac{1}{3} + \frac{1}{3}e )^{p(r=1)} (\frac{2}{3} - \frac{1}{3}e )^{p(r=2)} (e)^{p(r=3)} & 
-\end{split}
-\end{equation}
-
-
-\vspace{0.3cm}
-
-\paragraph{Hipótesis inductiva} Generalización del fitness de los cooperadores sin desertores.
-Sea $n$ el tamaño de la población, $r$ la cantidad de éxitos y $n-r$ la cantidad de fracasos, el fitness de los cooperadores es
-\begin{equation}
-f_c(r|e,n) = \frac{r}{n} e + \frac{n-r}{n}(1-e)
-\end{equation}
-
-La distribución de probabilidad del fitness de los cooperadores es
-\begin{equation}
-p(f_c(r|e,n)) = \text{Binomial}(r,n)
-\end{equation}
-
-y la probabilidad de las estrategias es
-\begin{equation}
-\overline{f_c}(e,n) = \prod_{r=1}^n \left( \frac{r}{n} e + \frac{n-r}{n}(1-e) \right)^{p(f_c(r|e,n))}
-\end{equation}
-
-
-
-\subsection{Tasa de crecimiento poblaciones mixtas}
-
-Generalización del fitness de los cooperadores cuando existen desertores.
-
-\paragraph{Hipótesis inductiva} Sea $N$ el tamaño de la población, sea $n$ la cantidad de cooperadores y $N-n$ la cantidad de desertores, sea  $r$ la cantidad de éxitos obtenidos por la población cooperadora.
-
-\begin{equation}
-f_c(r|e,n,N) =  \frac{r}{N} e + \frac{n-r}{N}(1-e) = \frac{n}{N} \left( \frac{r}{n} e + \frac{n-r}{n}(1-e) \right)
-\end{equation}
-
-La distribución de probabilidad del fitness de los cooperadores es
-\begin{equation}
-p(f_c(r|e,n,N)) = \text{Binomial}(r,n)
-\end{equation}
-
-y la probabilidad de las estrategias es
-\begin{equation}
-\overline{f_c}(e,n,N) = \prod_{r=1}^n \left( \frac{r}{N} e + \frac{n-r}{N}(1-e) \right)^{p(f_c(r|e,n,N))}
-\end{equation}
-
-
-¿Cuál es la tasa de crecimiento de los desertores?
+¿Cuál es el likelihood-fitness de los desertores?
 Supongamos que primero juega y después recibe la parte del fondo común.
 \begin{equation}
-w(D|e,d,a,t) =
+P(\bm{a}^t,e|n,N, c_0) =
 \begin{cases}
- f_d(1) & \ \  t=1 \\
- (w(D|e,d,a,t-1) + w(C|e,d,a,t-1)) f_d(t) & \ \  t>1
+ P(a_0(t)|e) & \ \  t=1 \\
+ (P(\bm{a}^{t-1},e|n,N,c_0) + P(\bm{a}^{t-1}, e|n,N,c_1)) p(a_0^t|e) & \ \  t>1
 \end{cases}
 \end{equation}
-En $t=1$ actualiza sus recursos con el pago recibido $f_d(1)$.
-En $t>1$ incorpora la recursos recibidos del fondo común generado en el tiempo anterior, $w(C|e,d,a,t-1)$, y finalmente actualiza sus recursos totales (la suma) con el pago $r(t)$.
+En $t=1$ actualiza sus recursos con el pago recibido $P(a_0^t|e)$.
+En $t>1$ incorpora la recursos recibidos del fondo común generado en el tiempo anterior, $ P(\bm{a}^{t-1}, e|n,N,c_1)$, y finalmente actualiza sus recursos totales (la suma) con el pago $P(a_0^t|e)$.
 
 
-Veamos la forma que tiene el tamaño de la población en el tiempo
+Para simplificar la notación, hagamos los siguiemtes renombres, $\omega_D(t) = P(\bm{a}^T,e|n,N, c_0)$ y $\omega_C(t) = P(\bm{a}^T,e|n,N, c_1)$, los tamaños de las poblaciones en el tiempo $t$ o equivalentemente los posteriors proprcionales, y llamemos $r(t) =p(a_0^t|e) $ al resultado obtenido en el tiempo $t$.
+Veamos la forma que tiene el tamaño de la población en el tiempo 2,
 \begin{align}
-w(D|t=2) & = r(2) (w(D|t=1) + w(C|t=1)) \\
-& = r(2)r(1) + r(2)w(C|t=1))
+\omega_D(2) & = r(2) ( \omega_D(1) + \omega_C(1) ) \\
+& = r(2)r(1) + r(2)\omega_C(1)
 \end{align}
-Para simplificar la notación, hacemos implicitos los valores de $e$, $d$ y $a$.
-Además, como el tamaño de los recursos del fondo común no dependen del tiempo
-
+Y la forma que tiene el tamaño de la población en el tiempo $t=3$
 \begin{align}
-w(D|t=3) & = r(3) (w(D|t=2)+w(C|t=2)) \\
-& = r(3) (r(2)r(1) + r(2)w(C|t=1) + w(C|t=1) ) \\
-& = r(3)r(2)r(1) + r(3)r(2)w(C|t=1) + r(3)w(C|t=2) 
+\omega_D(3) & = r(3) (\omega_D(2)+\omega_C(2)) \\
+& = r(3) (r(2)r(1) + r(2)\omega_C(1) + \omega_C(2) ) \\
+& = r(3)r(2)r(1) + r(3)r(2)\omega_C(1) + r(3)\omega_C(2) 
 \end{align}
 
 Acá ya podemos ver un patrón a partir del cual proponemos la siguiente hipótesis inductiva (HI).
 \begin{equation} \label{eq:HI} \tag{HI} 
-w(D|t) = \prod^t_{i=1} r(i) + \sum^{t-1}_{j=1} w(C|t=j)
+\omega_D(t) = \prod^t_{i=1} r(i) + \sum^{t-1}_{j=1} \omega_C(j)
 \prod^t_{j<k} r(k)
 \end{equation}
 
 \paragraph{Caso Base.} Queremos ver que vale la \ref{eq:HI} en el tiempo $t=1$.
 \begin{equation} 
-w(D|t=1) \overset{\ref{eq:HI}}{=} \prod^1_{i=1} r(i) + \underbrace{\sum^{0}_{j=1} \Delta w(C)^j \prod^1_{j<k} r(k) }_{\text{vale $0$ por rango}} = r(1)
+\omega_D(1) \overset{\ref{eq:HI}}{=} \prod^1_{i=1} r(i) + \underbrace{\sum^{0}_{j=1} \omega_C(j) \prod^1_{j<k} r(k) }_{\text{vale $0$ por rango}} = r(1)
 \end{equation}
 Luego, vale el caso base.
 
-\paragraph{Paso inductivo.} Dado que vale $w(D|t)$ quiero ver que vale $w(D|t+1)$: $w(D|t) \Rightarrow w(D|t+1)$
+\paragraph{Paso inductivo.} Dado que vale $\omega_D(t)$ quiero ver que vale $\omega_D(t+1)$: $\omega_D(t) \Rightarrow \omega_D(t+1)$
 
 \begin{equation}
 \begin{split}
-w(D|t+1) &:= (w(D|t) + w(C|t)) r(t)  \\
-& \overset{\ref{eq:HI}}{=} \bigg( \big(\prod^t_{i=1} r(i) + \sum^{t-1}_{j=1} w(C|t) \prod^t_{j<k} r(k) \big)+ w(C|t) \bigg) r(t+1) \\
-& = r(t+1) \prod^t_{i=1} r(i) + \sum^{t-1}_{j=1} \Delta w(C)^j r(t+1) \prod^t_{j<k} r(k) + w(C|t)  r(t+1) \\ 
-& = \prod^{t+1}_{i=1} r(i) + \sum^{t-1}_{j=1} \Delta w(C)^j  \prod^{t+1}_{j<k} r(k) + w(C|t)  r(t+1)  \\
-& = \prod^{t+1}_{i=1} r(i) + \sum^t_{j=1} \Delta w(C)^j  \prod^{t+1}_{j<k} r(k) 
+\omega_D(t+1) &:= (\omega_D(t) + \omega_C(t)) r(t+1)  \\
+& \overset{\ref{eq:HI}}{=} \bigg( \prod^t_{i=1} r(i) + \sum^{t-1}_{j=1} \omega_C(j) \prod^t_{j<k} r(k) + \omega_C(t) \bigg) r(t+1) \\
+& = \bigg( \prod^t_{i=1} r(i) + \sum^{t}_{j=1} \omega_C(j) \prod^t_{j<k} r(k)\bigg) r(t+1) \\
+& = r(t+1) \prod^t_{i=1} r(i) + r(t+1) \sum^{t}_{j=1}  \omega_C(j) \prod^t_{j<k} r(k) \\ 
+& = \prod^{t+1}_{i=1} r(i) + \sum^{t}_{j=1}  \omega_C(j) \prod^{t+1}_{j<k} r(k) \\
 \end{split}
 \end{equation}
-Luego, vale el paso inductivo. 
+Luego, vale el paso inductivo. \\
 
+% Parrafo 
 
-
-
-\subsection{Tasa de crecimiento en poblaciones mixtas infinitas}
-
-Las estrtegias que en una población infinita representan una proporción mayor a $0$ son a su vez infinitas.
-Sea $d$ la proporción de desertores y $1-d$ la proporción de cooperadores.
-
-% 
-
-La población cooperadora, al ser infinita, siempre crece como
+Para determinar la tasa de crecimiento de las estrategia desertora en la población mixta, calculamos el cambio en el tamaño de la población luego de un paso temporal usando las tasas de crecimiento caracterísiticas 
 \begin{equation}
-\Delta w(C|e,d,a) = (1-d) \underbrace{(e\cdot a + (1-e)\cdot(1-a))}_{\text{Media de estados}}
+\lim_{T \rightarrow \infty} \omega_C(T) = \overline{f}_c^T \ \ \ \  \ \ \lim_{T \rightarrow \infty} \prod^T_{t=1} r(t) = \overline{f}_d^T
 \end{equation}
-En cada paso las apuestas del conjunto de cooperadores crece como la media de estados, la cual se divide en partes iguales.
-Como el cambio en los recursos no depende de $t$, en t pasos la población tiene un tamaño de
+donde $\overline{f}_c$ y $\overline{f}_d$ están definidas en las ecuaciones \ref{eq:coop_temporal_average} y \ref{eq:des_temporal_average} respectivamente.
+Luego, el tamaño de la población desertora lo podemos aproximar como 
 \begin{equation}
-w(C|e,d,a,t) = \Delta w(C|e,d,a)^t 
+\omega_D(t) = \overline{f}(e,c=0)^t + \sum^{t-1}_{j=1} \overline{f}(e,n,N,c=1)^j \overline{f}(e,c=0)^{t-j}
 \end{equation}
-
-
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[b]{0.66\textwidth}
-    \includegraphics[width=\linewidth]{figures/pdf/cpr_analyticTimeAverage_frequency-based-fitness.pdf}
-    \end{subfigure}
-    \caption{
-    }
-    \label{fig:cpr_analyticTimeAverage_frequency-based-fitness}
-\end{figure}
-
-
+Si reescalamos las tasas de crecimiento por un factor de $2.1$, recuperamos el juego propuesto por Ole Peters.
+En la siguiente figura mostramos los recursos de los agentes desertor (azul) y cooperador (verde) en una población de tamaño 100 con un único desertor obtenida a partir del juego original propuesto por Ole Peters, y las curvas negras son las estimaciones temporales obtenidas con las tasas de crecimiento caracterísitica $\overline{f}_c$ y $\overline{f}_d$, de la estrategia $e=1.5/2.1$ reescladas por el factor $2.1$.
 \begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.66\textwidth}
@@ -958,16 +929,94 @@ w(C|e,d,a,t) = \Delta w(C|e,d,a)^t
     }
     \label{fig:multilevel-selection-5}
 \end{figure}
-
+Es interesante que la tasa de crecimiento del agente desertor es la misma que la tasa de crecimiento de los agentes cooperadores.
+La tasa de crecimiento de los desertores se mantiene igual hasta que la tasa de crecimiento de la población cooperdora cae por debajo de la tasa de crecimiento de los desertores.
+%
 \begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.66\textwidth}
-    \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-4.pdf}
+    \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-7.pdf}
     \end{subfigure}
     \caption{
     }
-    \label{fig:multilevel-selection-4}
+    \label{fig:multilevel-selection-7}
 \end{figure}
+%
+
+% Parrafo
+
+Finalmente, en la siguiente figura mostramos qué estrategias se seleccionan para una población de tamaño 9 enteramente cooperativa (figura~\ref{fig:multilevel-selection-1}), con un agente desertor (figura~\ref{fig:multilevel-selection-2})y con dos agentes desertores (figura~\ref{fig:multilevel-selection-3}).
+%
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-1.pdf}
+    \caption{9/9}
+    \label{fig:multilevel-selection-1}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-2.pdf}
+    \caption{8/9}
+    \label{fig:multilevel-selection-2}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-3.pdf}
+    \caption{7/9}
+    \label{fig:multilevel-selection-3}
+    \end{subfigure}
+    \caption{
+    Posterior de las estrategias individuales para una población de 9 agentes con 0, 1 y 2 desertores (\ref{fig:multilevel-selection-1}, \ref{fig:multilevel-selection-2} y \ref{fig:multilevel-selection-3} respectivamente).
+    Los valores negativo del eje x representa todo el rango de estrategias desertoras, y los valores positivos representan todo el rango de las estrategias cooperadoras.
+    }
+    \label{fig:multilevel-selection-123}
+\end{figure}
+%
+Cuando la población es enteramente cooperadora, la estrategia predominante es especialista.
+Cuando la población tiene más de una desertor, la estrategia predominante generalista.
+
+% Parrafo
+
+\paragraph{Posibles extensiones del modelo multinivel} Existen varias posibles extensiones al modelo probabilístico de selección multinivel.
+\begin{itemize}
+\item Agregar un prior con decaimiento exponencial al tamaño de la población para ver en que momento deja de convenir seguir agrandando la población.
+\item 
+\end{itemize}
+
+Si embargo, exisite un límite debido a que luego de un cierto tamaño, agregar miembros al grupo no aumenta prácticamente 
+la tasa de crecimiento pero agrega inestabilidad interna en tanto poblaciones de mayor tamaño tienen asociaciada una mayor tasa de mutación\todo{Hacer este análisis}.
+
+
+
+% 
+% 
+% \subsection{Tasa de crecimiento en poblaciones mixtas infinitas}
+% 
+% Las estrtegias que en una población infinita representan una proporción mayor a $0$ son a su vez infinitas.
+% Sea $d$ la proporción de desertores y $1-d$ la proporción de cooperadores.
+% 
+% % 
+% 
+% La población cooperadora, al ser infinita, siempre crece como
+% \begin{equation}
+% \Delta w(C|e,d,a) = (1-d) \underbrace{(e\cdot a + (1-e)\cdot(1-a))}_{\text{Media de estados}}
+% \end{equation}
+% En cada paso las apuestas del conjunto de cooperadores crece como la media de estados, la cual se divide en partes iguales.
+% Como el cambio en los recursos no depende de $t$, en t pasos la población tiene un tamaño de
+% \begin{equation}
+% w(C|e,d,a,t) = \Delta w(C|e,d,a)^t 
+% \end{equation}
+% 
+% 
+% 
+% \begin{figure}[H]
+%     \centering
+%     \begin{subfigure}[b]{0.66\textwidth}
+%     \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-4.pdf}
+%     \end{subfigure}
+%     \caption{
+%     }
+%     \label{fig:multilevel-selection-4}
+% \end{figure}
 
 
 \end{document}
