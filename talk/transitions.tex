@@ -341,41 +341,228 @@ f_{e^*}(a) \propto  P(a|e^*) = \begin{cases}
 P(a|e) = \text{B}(a|e) = (1-e)^{(1-a)} \cdot e^a 
 \end{equation*}
 
-\pause
-\vspace{0.5cm}
-
 \end{frame}
 
 \begin{frame}[plain]
 \begin{textblock}{160}(0,4)
  \centering \LARGE
-\en{Base model}\es{Modelo base}
+\en{Base model}\es{Modelo base} $M_0$
 \end{textblock}
-\vspace{1cm}
+\vspace{1.3cm}
 
 
 \centering
 \tikz{
     \node[latent] (e) {$e$};
-    \node[const, right=of e] (en) {\ $p(e)=\text{Beta}(1,1)$};
-    \node[const, left=of e] (ne) {Estrategias: \ \ \ };
+    \node[const, right=of e, xshift=0.2cm] (en) {\ $p(e)=\text{Beta}(1,1)$};
+    \node[const, left=of e, xshift=-0.4cm] (ne) {Estrategias: \ \ \ };
 
-    \node[latent, below=of e] (r) {$a$};
-    \node[const, right=of r] (rn) {$P(a|e,T) = \text{Binomial}(a|T,e)$};
-    \node[const, left=of r] (nr) {Aptitud: \ \ \ };
+    \node[latent, below=of e] (r) {$a^t$};
+    \node[const, right=of r, xshift=0.2cm] (rn) {$P(a|e) = \text{Bernoulli}(a|e)$};
+    \node[const, left=of r, xshift=-0.4cm] (nr) {Aptitud: \ \ \ };
+    
+    \plate {observaciones} {(r)} {$ 1 \leq t \leq T$}; 
     
     \edge {e} {r};
     }
 
-\vspace{0.6cm}
+\vspace{0.2cm}
 \pause
 
 \includegraphics[width=0.32\textwidth]{../figures/coin1.pdf}
 \includegraphics[width=0.32\textwidth]{../figures/coin2.pdf}   
 \includegraphics[width=0.32\textwidth]{../figures/coin3.pdf}
     
+\vspace{-0.7cm}
+\pause    
+    
+    
+\begin{equation*}
+P(a(1\dots T), e | M_0) = \prod_t^T P(a(t)|e) \approx  P(a=1|e)^{p^*} P(a=0|e)^{1-p^*}
+\end{equation*}
 
 \end{frame}
+
+\begin{frame}[plain]
+\begin{textblock}{160}(0,4)
+ \centering \LARGE
+\en{General model}\es{Modelo general} $M_{e,n}$
+\end{textblock}
+\vspace{1.5cm} \centering
+
+\tikz{
+    
+    \node[latent, minimum size=0.9cm] (e1) {$s^{t}$};
+    \node[latent, right=of e1, minimum size=0.9cm] (e2) {$s^{t+1}$};
+    \node[const, right=of e2] (e2n) {$P(s^{t+1}|s^{t}) = \frac{1}{n}$};
+    \node[const, right=of e2, yshift=-1cm] (e2n) {$P(s^{0}) = \text{Prior}$};
+    \node[const, right=of e2, yshift=-2cm] (e2n) {$P(a_s^t|e) = \text{Bernoulli}(a_s^t|e)$};
+    
+    \node[latent, below=of e1, minimum size=0.9cm] (a) {$a^{t}$};
+    \edge {e1} {a,e2};
+    }
+
+    
+\begin{equation*}
+\begin{split}
+\onslide<2->{P(s^{t+1}, a^t | M_{n,e} ) &=\frac{1}{3} \text{Prior}^t  \overbrace{P(a_1^t|e)}^{\hfrac{\text{Likelohood}}{\text{individual 1}}} + \frac{1}{3} \text{Prior}^t  \overbrace{P(a_2^t|e)}^{\hfrac{\text{Likelohood}}{\text{individual 2}}}  + \frac{1}{3} \text{Prior}^t  \overbrace{P(a_3^t|e)}^{\hfrac{\text{Likelohood}}{\text{individual 3}}}}  \\
+\onslide<3->{&= \text{Prior}^t \underbrace{(\frac{1}{3} P(a_1^t|e) + \frac{1}{3} P(a_2^t|e) + \frac{1}{3} P(a_3^t|e))}_{f(a|e,n=3)\text{ fitness cooperativo}} = \text{Prior}^{t+1}}
+\end{split}
+\end{equation*}
+
+\end{frame}
+
+
+
+\begin{frame}[plain]
+\begin{textblock}{160}(0,4)
+ \centering \LARGE
+\en{General model}\es{Modelo general} $M_{e,n}$
+\end{textblock}
+\vspace{1cm} \centering
+
+%
+\only<1>{
+\vspace{0.5cm}
+\begin{equation*}
+f(a|e,n=3) =
+\begin{cases}
+(1-e) & \text{ si } \texttt{sum}(a) = 0 \\
+\frac{1}{3} e + \frac{2}{3} (1-e)  & \text{ si } \texttt{sum}(a) = 1 \\
+\frac{2}{3} e + \frac{1}{3} (1-e)    & \text{ si } \texttt{sum}(a) = 2 \\
+e & \text{ si } \texttt{sum}(a) = 3
+\end{cases}
+\end{equation*}
+%
+}
+
+
+\onslide<2->{
+\begin{equation*}\label{eq:fitness_cooperador}
+f(a|e,n) = \frac{x}{n} e + \frac{n-x}{n}(1-e) \ \ \ \ \ \ \ \ \text{ con } x = \texttt{sum}(a)
+\end{equation*}
+}
+
+\vspace{-0.8cm}
+
+\onslide<3->{
+\begin{equation*}
+P(s^{T+1}, \bm{a}|e,n) = \text{Prior}^0 \prod^T_{t=1} f(a^t|e,n) \onslide<4->{\approx \overline{f}_{e,n}^T}
+\end{equation*}
+}
+
+\vspace{-0.8cm}
+
+
+\onslide<5->{
+\begin{equation*}
+\overline{f}_{e,n} = \prod_{a=0}^n f(a|e,n)^{\text{Binomial}(x|n,p^*)}
+\end{equation*}
+}
+
+
+\vspace{-0.8cm}
+
+\onslide<6->{
+\begin{equation*}
+\lim_{n \rightarrow \infty} \overline{f}_{e,n} =  p^* \, e + (1 - p^*) \, (1-e)
+\end{equation*}
+}
+
+
+\end{frame}
+
+\begin{frame}[plain]
+\begin{textblock}{160}(0,4)
+ \centering \LARGE
+\en{General model}\es{Modelo general} $M_{e,n}$
+\end{textblock}
+\vspace{1.5cm} \centering
+
+
+\includegraphics[width=0.66\textwidth]{../figures/pdf/tasa-temporal-0.pdf} \hspace{1cm}
+    
+
+\end{frame}
+
+
+\begin{frame}[plain]
+\begin{textblock}{160}(0,4)
+ \centering \LARGE
+\en{General model}\es{Modelo general} $M_{e,n}$
+\end{textblock}
+\vspace{1.5cm} \centering
+
+
+\includegraphics[width=0.66\textwidth]{../figures/pdf/tasa-temporal-1.pdf} \hspace{1cm}
+    
+
+\end{frame}
+
+
+
+\begin{frame}[plain]
+\begin{textblock}{160}(0,4)
+ \centering \LARGE
+\en{General model}\es{Modelo general} $M_{e,n}$
+\end{textblock}
+\vspace{1.5cm} \centering
+
+
+\includegraphics[width=0.66\textwidth]{../figures/pdf/tasa-temporal-2.pdf} \hspace{1cm}
+    
+
+\end{frame}
+
+
+
+\begin{frame}[plain]
+\begin{textblock}{160}(0,4)
+ \centering \LARGE
+\en{General mixed model}\es{Modelo general mixto} $M_{e,n,N}$
+\end{textblock}
+\vspace{1.3cm} \centering
+
+
+\tikz{    
+    \node[latent, minimum size=0.9cm] (e1) {$s^{t}$};
+    \node[latent, right=of e1, minimum size=0.9cm] (e2) {$s^{t+1}$};
+    \node[const, right=of e2] (e2n) {$P(s^{t+1}|s^{t}) = \begin{cases}\frac{1}{N}  & s^t \leq n \\ \mathbb{I}(s^{t+1}=s^t) & s^t > n\end{cases}$};
+    \node[const, right=of e2, yshift=-1cm] (e2n) {$P(s^{0}) = \text{Prior}$};
+    \node[const, right=of e2, yshift=-2cm] (e2n) {$P(a_s^t|e) = \text{Bernoulli}(a_s^t|e)$};
+    
+    \node[latent, below=of e1, minimum size=0.9cm] (a) {$a^{t}$};
+    \edge {e1} {a,e2};
+}
+
+\pause
+\vspace{0.4cm}
+
+
+\begin{align*}
+\centering
+P(M|e=0.71,N=2) = \begin{tabular}{|c|c|c|c|}
+        \hline
+        $n=0$ & $n=1$ & $n=2$ \\ \hline
+        $1/4$ & $1/2$ & $1/4$ \\ \hline
+\end{tabular}
+\end{align*}
+
+\end{frame}
+
+
+\begin{frame}[plain]
+\begin{textblock}{160}(0,4)
+ \centering \LARGE
+\en{Model selection}\es{Selección de modelo} $M_{e,n,N}$
+\end{textblock}
+\vspace{1.5cm} \centering
+
+\includegraphics[width=0.66\textwidth]{../figures/pdf/multilevel-selection-6.pdf}\hspace{1cm}
+    
+
+\end{frame}
+
 
 \begin{frame}[plain]
 
@@ -385,6 +572,86 @@ P(a|e) = \text{B}(a|e) = (1-e)^{(1-a)} \cdot e^a
 
 
 
+\begin{frame}[plain]
+\begin{textblock}{160}(0,4)
+ \centering \LARGE
+\en{Growth rate for mixed populations}\es{Tasa de crecimiento para poblaciones mixtas} $M_{e,n,N}$
+\end{textblock}
+\vspace{1.3cm} \centering
+
+\begin{equation*}
+P(s=1,a|e,n,N) = \frac{x}{N} e + \frac{n-x}{N}(1-e) = \frac{n}{N} f(a|e,n)
+\end{equation*}
+
+\vspace{0.5cm}
+
+\begin{equation*}
+P(s=N, \bm{a}^{:t}|e,n,N) =
+\begin{cases}
+ P(a_s^1|e) & \ \  t=1 \\
+ (P(\bm{a}^{:t-1},s=N|e,n,N) + P(\bm{a}^{:t-1}, s=1|e,n,N)) p(a_s^t|e) & \ \  t>1
+\end{cases}
+\end{equation*}
+
+
+\end{frame}
+
+
+
+\begin{frame}[plain]
+\begin{textblock}{160}(0,4)
+ \centering \LARGE
+\en{Growth rate for mixed populations}\es{Tasa de crecimiento para poblaciones mixtas} $M_{e,n,N}$
+\end{textblock}
+\vspace{1.3cm} \centering
+
+\includegraphics[width=0.66\textwidth]{../figures/pdf/multilevel-selection-5.pdf}
+    
+
+\end{frame}
+
+
+\begin{frame}[plain]
+\begin{textblock}{160}(0,4)
+ \centering \LARGE
+\en{Fitness for mixed populations}\es{Fitness para poblaciones mixtas} $M_{e,n,N}$
+\end{textblock}
+\vspace{1.3cm} \centering
+
+\includegraphics[width=0.66\textwidth]{../figures/pdf/multilevel-selection-7.pdf}
+
+\end{frame}
+
+
+\begin{frame}[plain]
+\begin{textblock}{160}(0,4)
+ \centering \LARGE
+\en{Fitness for mixed populations}\es{Fitness para poblaciones mixtas} $M_{e,n,N}$
+\end{textblock}
+\vspace{1.3cm} \centering
+
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\linewidth]{../figures/pdf/multilevel-selection-1.pdf}
+    \caption{9/9}
+    \label{fig:multilevel-selection-1}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\linewidth]{../figures/pdf/multilevel-selection-2.pdf}
+    \caption{8/9}
+    \label{fig:multilevel-selection-2}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\linewidth]{../figures/pdf/multilevel-selection-3.pdf}
+    \caption{7/9}
+    \label{fig:multilevel-selection-3}
+    \end{subfigure}
+\end{figure}
+%
+
+\end{frame}
 
 
 \end{document}
