@@ -6,7 +6,7 @@
 \newif\ifes
 \newcommand{\en}[1]{\ifen#1\fi}
 \newcommand{\es}[1]{\ifes#1\fi}
-\estrue
+\entrue
 
 \newtheorem{conclution}{\en{Conclution}\es{Conclusión}}%[section]
 \newtheorem{objective}{\en{Objective}\es{Objetivo}}%[section]
@@ -22,21 +22,77 @@
 \maketitle
 
 \begin{abstract}
-El crecimiento de la vida depende de secuencias multiplicativas de probabilidades de superviencia y reproducción.
-Como consecuencia de la no-ergodicidad de este proceso, las fluctuaciones tienen un efecto negativo en la tasa de crecimiento individual: un único cero en la secuencia es suficiente para generar una extinción irreversible.
-Compartir recursos permite reducir las fluctuaciones, lo que produce un aumento de la tasas de crecimiento a largo plazo de todos los individuos.
-En este trabajo mostramos que, si bien las estrategias que evitan compartir recursos pueden invadir por selección natural poblaciones enteramente cooperadoras, tal comportamiento aumenta al mismo tiempo sus propias fluctuaciones, reduciendo su propia tasa de crecimiento a largo plazo sin necesidad de introducir castigos.
-Utilizando la equivalencia entre la selección multinivel y la inferencia en modelos jerárquicos bayesianos, mostramos que las estrategias incondicionalmente cooperadoras, sin ser evolutivamente estables al interior de los grupos, se ven favorecidas evolutivamente a través de la selección grupal.
-A su vez, mostramos que las estrategias individualmente mal adaptadas al ambiente (especialistas) gracias a la cooperación en pequeña escala consigen superar tanto a las estrategias bien adaptas individualmemte (generalistas), como a sus grupos cooperativos de tammaño infinito.
-La ventaja evolutiva de la cooperación y la especialización es consecuencia de la no-ergodicidad de los procesos multiplicativos a los que está sujeto la vida, por lo que ésta debe ser considerada la primera causa de las transiciones evolutivas mayores.
+\en{In the last third of the universe's history, a simple self-replicating organization of matter emerged on earth. }%
+\es{En el último tercio de la historia del universo surgió en la tierra una organización de la materia simple capaz de autoreplicarse. }%
+%
+\en{The growth of these lineages followed multiplicative and noisy processes: sequences of survival and reproduction rates. }%
+\es{El crecimiento de estos linajes siguieron procesos multiplicativos y ruidosos: secuencias de tasas de supervivencia y reproducción. }%
+%
+\en{The current complexity of life is the consequence of a series of evolutionary transitions in which entities capable of self-replication after the transition become part of higher level cooperative units. }%
+\es{La complejidad actual de la vida es consecuencia de una serie de transiciones evolutivas en las que entidades capaces de autoreplicación luego de la transición pasan a formar parte de unidades cooperativas de nivel superior. }%
+%
+\en{How to explain this permanent tendency of life in favor of cooperative aggregation and specialization? }%
+\es{¿Cómo se explica esta tendencia permanente de la vida en favor de la agregación cooperativa y la especialización? }%
+
+% Parrafo
+
+\en{Recently Ole Peters has shown that, as a consequence of the non-ergodicity of multiplicative processes, fluctuations have a negative effect on individual growth rates, which can be reduced through mutual cooperation, leading to an increase in the long-term growth rates of all individuals. }%
+\es{Recientemente Ole Peters ha mostrado que, como consecuencia de la no-ergodicidad de los procesos multiplicativos, las fluctuaciones tienen un efecto negativo en las tasas de crecimiento individuales, las cuales pueden ser reducidas a través de la mutua cooperación, produciendo un aumento de la tasas de crecimiento a largo plazo de todos los individuos. }%
+%
+\en{Ole Peters believs that the increase in the growth rate is sufficient argument to demonstrate the evolutionary advantage of cooperation, which he proposes as the main explanation for evolutionary transitions. }%
+\es{Ole Peters considera que el aumento de la tasa de crecimiento es argumento suficiente para demostrar la ventaja evolutiva de la cooperación, lo que propone como principal explicación de las transiciones evolutivas. }%
+%
+\en{However, he does not consider the problem of defection, who says ``our cooperators are unable to break the cooperative pact''. }%
+\es{Sin embargo no considera el problema de la deserción, quien dice ``our cooperators are unable to break the cooperative pact''. }%
+
+% Parrafo
+
+\en{To explain evolutionary transitions, it is necessary to demonstrate the evolutionary advantage of cooperation in the presence of defection, but also the advantage of specialization. }%
+\es{Para explicar las transiciones evolutivas es necesario demostrar la ventaja evolutiva de la cooperación en presencia de deserción, pero también la ventaja de la especiliazación. }%
+%
+\en{For this purpose it is necessary to consider selection at both the individual and group level. }%
+\es{Para este propósito es necesario considerar selección tanto a nivel individual como a nivel grupal. }%
+%
+\en{The co-author of the concept of evolutionary transitions (Szathmary) recently proposed to analyze the evolution of populations subject to multilevel selection by means of Bayesian hierarchical models, making use of the isomorphism between evolutionary theory and Bayesian inference. }%
+\es{El co-autor del concepto de transiciones evolutivas (Szathmary) propuso recientemente analizar la evolución de las poblaciones sujetas a selección multinivel mediante modelos jerárquicos bayesianos, haciendo uso del isomorfismo entre las teoría de la evolución y la inferencia bayesiana. }%
+%
+\en{However, beyond the proposal, the authors of this article (Czegel et al) fail to offer a model that represents multilevel selection, their examples are only pictorial. }%
+\es{Sin embargo, más allá de la propuesta, los autores de este artículo (Czegel et al) no logran ofrecer un modelo que represente selección multinivel, sus ejemplos son sólo pictóricos. }%
+
+% Parrafo
+
+\en{In this paper we include the problem of defection, and show that while resource-avoidance strategies can invade entirely cooperative groups by natural selection, such behavior at the same time increases their own individual fluctuations, reducing their own long-term growth rate without the need to introduce penalties. }%
+\es{En este trabajo incluimos el problema de la deserción, y mostramos que, si bien las estrategias que evitan compartir recursos pueden invadir por selección natural grupos enteramente cooperadores, tal comportamiento aumenta al mismo tiempo sus propias fluctuaciones individuales, reduciendo su propia tasa de crecimiento a largo plazo sin necesidad de introducir castigos. }%
+%
+\en{That is, contrary to the belief established since the mid-20th century in economics, we show that the dynamics of common goods under multiplicative processes cannot be represented by a prisoner's dilemma payoff matrix. }%
+\es{Es decir, en contra de la creencia establecida que en economía se tiene desde mediados del siglo 20, mostramos que los dinámicas de bienes comunes bajo procesos multiplicativos no puede representarse mediante una matriz de pagos del dilema del prisionero. }%
+%
+\en{Using the equivalence between multilevel selection and inference in Bayesian hierarchical models, we show that unconditionally cooperative strategies, without being evolutionarily stable within groups, are evolutionarily favored through group selection. }%
+\es{Utilizando la equivalencia entre la selección multinivel y la inferencia en modelos jerárquicos bayesianos, mostramos que las estrategias incondicionalmente cooperadoras, sin ser evolutivamente estables al interior de los grupos, se ven favorecidas evolutivamente a través de la selección grupal. }%
+%
+\en{And we also show that strategies that are individually poorly adapted to the environment (specialists), once cooperation emerges, manage to outperform both individually well-adapted strategies (generalists), as well as their cooperative groups of infinite size. }%
+\es{Y mostramos además que, una vez que la cooperación emerge, las estrategias individualmente mal adaptadas al ambiente (especialistas) consigen superar tanto a las estrategias bien adaptas individualmemte (generalistas), como a sus grupos cooperativos de tamaño infinito. }%
+
+% Parrafo
+
+\en{Extending the argument proposed by Ole Peters by means of the methodology proposed by the co-author of the concept of evolutionary transitions, we show that the evolutionary advantage of cooperation and specialization is a consequence of the non-ergodicity of the multiplicative processes that govern the growth of life, so that this must be considered the first cause of major evolutionary transitions. }%
+\es{Extendiendo el argumento propuesto por Ole Peters mediante la metodología propuesta por el co-autor del concepto de transiciones evolutivas, demostramos que la ventaja evolutiva de la cooperación y de la especialización es consecuencia de la no-ergodicidad de los procesos multiplicativos que gobiernan el crecimiento de la vida, por lo que ésta debe ser considerada la primera causa de las transiciones evolutivas mayores. }%
 \end{abstract}
+
 
 \section{Introducción}
 
-En el último tercio de la historia del Universo, en algún momento hace aproximadamente 4000 millones de años, apareció en la tierra una forma de organización de la materia capaz de auto-replicarse.
-El crecimiento de estos linajes siguieron procesos multiplicativos y ruidosos: secuencias de probabilidades de supervivencia y reproducción.
-Los errores producidos durante la replicación diversificaron las formas de vida, y las tasas de crecimiento de las diferentes estrategias favorecieron a aquellas mejor adaptadas al ambiente.
-Desde aquel momento hasta ahora la vida adquirió una extraordinaria complejidad.
+\en{In the last third of the history of the Universe, sometime around 4 billion years ago, a simple form of matter organization capable of self-replication appeared on Earth. }%
+\es{En el último tercio de la historia del Universo, en algún momento hace aproximadamente 4000 millones de años, apareció en la tierra una forma de organización de la materia capaz de auto-replicarse. }%
+%
+\en{The growth of these lineages followed multiplicative and noisy processes: sequences of survival and reproduction rates. }%
+\es{El crecimiento de estos linajes siguieron procesos multiplicativos y ruidosos: secuencias de probabilidades de supervivencia y reproducción. }%
+%
+\en{The errors produced during replication diversified the life forms, and the growth rates of the different strategies favored those better adapted to the environment. }%
+\es{Los errores producidos durante la replicación diversificaron las formas de vida, y las tasas de crecimiento de las diferentes estrategias favorecieron a aquellas mejor adaptadas al ambiente. }%
+%
+\en{From that moment until now, life has acquired an extraordinary complexity. }%
+\es{Desde aquel momento hasta ahora la vida adquirió una extraordinaria complejidad. }%
 %
 \begin{figure}[H]
     \centering
@@ -44,49 +100,76 @@ Desde aquel momento hasta ahora la vida adquirió una extraordinaria complejidad
     \includegraphics[width=\linewidth]{auxiliar/images/biomass.jpg}
     \end{subfigure}
     \caption{
-	Distribución actual de la biomasa en la tierra estimada por Bar-On et al.~\cite{barOn2018-biomass}.
+    \en{Current distribution of biomass on Earth estimated by Bar-On et al..~\cite{barOn2018-biomass}. }
+	\es{Distribución actual de la biomasa en la Tierra estimada por Bar-On et al.~\cite{barOn2018-biomass}. }%
     }
     \label{fig:biomass}
 \end{figure}
 %
-Esta complejidad es consecuencia de una serie de transiciones evolutivas~\cite{maynardSmith1995-majorTransitions} en las que las entidades capaces de replicarse de forma independiente, cediendo algo de valor a las otras, pasan a formar unidades evolutivas de nivel superior.
-Algunos ejemplos paradigmáticos son la transición de las moléculas replicantes a las protocélulas, la endosimbiosis de las mitocondrias y los plastos por parte de las células eucariotas, la aparición de los organismos multicelulares.
-¿Cómo se explica esta tendencia permanente de la vida en favor de la agregación cooperativa y la especialización?
+\en{The current complexity of life is the consequence of a series of evolutionary transitions in which entities capable of self-replication after the transition become part of higher level cooperative units~\cite{maynardSmith1995-majorTransitions, szathmary1995-evolutionaryTransitions, szathmary2015-evolutionaryTransitions}. }%
+\es{La complejidad actual de la vida es consecuencia de una serie de transiciones evolutivas en las que entidades capaces de autoreplicación luego de la transición pasan a formar parte de unidades cooperativas de nivel superior~\cite{maynardSmith1995-majorTransitions, szathmary1995-evolutionaryTransitions, szathmary2015-evolutionaryTransitions}. }%
+%
+\en{Some of the paradigmatic transitions are: from replicating molecules to protocells; from prokaryotic to eukaryotic cells; and from protists to animals, plants and fungi (cell differentiation). }%
+\es{Algunas de las transiciones paradigmáticas son: de las moléculas replicantes a las protocélulas; de las celulas procariotas a las eucariotas; y de los protistas a los animales, plantas y hongos (diferenciación celular). }%
+%
+\en{How to explain this permanent tendency of life in favor of cooperative aggregation and specialization? }%
+\es{¿Cómo se explica esta tendencia permanente de la vida en favor de la agregación cooperativa y la especialización? }%
+%``The transition must be explained in terms of inmmediate selection advantage to individual replicators'' szathmary1995-evolutionaryTransitions
 
-En evolución, el crecimiento de una estrategia $e$ en el tiempo, $\omega_e(t)$, esta gobernado por una secuencias estocástica de tasas de supervivencia y reproducción $f_e(\cdot)$ dependientes de un ambiente aleatorio $a$,
+% Parrafo
+
+\en{In evolution, the growth of a lineage over time, $\omega(t)$, is governed by a stochastic sequence of survival and reproduction rates $f(\cdot)$ dependent on a random environment $a$, }
+\es{En evolución, el crecimiento de un linaje en el tiempo, $\omega(t)$, esta gobernado por una secuencias estocástica de tasas de supervivencia y reproducción $f(\cdot)$ dependientes de un ambiente aleatorio $a$, }%
 %
 \begin{equation} \label{eq:modelo_exponencial}
-\omega_e(T) = \prod_t^T f_e(a(t))
+\omega(T) = \prod_t^T f(a(t)) \approx g^T
 \end{equation}
 %
-donde $a(t)$ representa el estado del ambiente en el tiempo $t$.
-Por ejemplo, supongamos que la naturaleza lanza una moneda, si sale cara la población se reproduce 50\% y si sale seca sobrevive 60\%.
+\en{where $a(t)$ represents the state of the environment at time $t$ and $g$ represents the characteristic growth rate when $T$ is sufficiently large. }%
+\es{donde $a(t)$ representa el estado del ambiente en el tiempo $t$ y $g$ representa la tasa de crecimiento caracterísitica cuando $T$ es suficientemente grande. }%
+%
+\en{For example, suppose nature flips a coin, if it comes up heads the population reproduces 50\% and if it comes up tails it survives 60\%. }%
+\es{Por ejemplo, supongamos que la naturaleza lanza una moneda, si sale cara la población se reproduce 50\% y si sale seca sobrevive 60\%. }%
 \begin{equation} \label{eq:estrategia_base}
-f_e(a) =
+f(a) =
 \begin{cases}
- 1.5 & a = \text{ Cara } \\
- 0.6 & a = \text{ Seca }
+ 1.5 & a = \text{ \en{Head}\es{Cara} } \\
+ 0.6 & a = \text{ \en{Tail}\es{Sello} }
 \end{cases}
 \end{equation}
-Según el modelo estándar de evolución, conocido como \emph{replicator dynamic} \cite{taylor1978-replicatorDynamic, schuster1983-replicatorDynamics, hofbauer2003-evolutionaryGameDynamics}, el cambio de la proporción de una estrategia en la población, $x_e$, está determinado por su tasa de crecimiento caracterísitica $f_e$,
+%
+\en{A similar example was proposed by Lewontin and Cohen (1969)~\cite{lewontin1969-randomlyVaryingEnvironment}. }%
+\es{Un ejemplo similar fue propuesto por Lewontin y Cohen (1969)~\cite{lewontin1969-randomlyVaryingEnvironment}. }%
+%
+\en{Other strategies $e$ will have other functions $f_e(a)$. }%
+\es{Otras estrategias $e$ tendrán otras funciones $f_e(a)$. }%
+%
+\en{According to the standard model of evolution, known as \emph{replicator dynamic} \cite{taylor1978-replicatorDynamic}, the change in the proportion of a strategy in the population, $x_e$, is determined by its characteristic growth rate $g_e$, }%
+\es{Según el modelo estándar de evolución, conocido como \emph{replicator dynamic} \cite{taylor1978-replicatorDynamic}, el cambio de la proporción de una estrategia en la población, $x_e$, está determinado por su tasa de crecimiento caracterísitica $g_e$, }%
+% schuster1983-replicatorDynamics, hofbauer2003-evolutionaryGameDynamics
+%
 \begin{equation} \label{eq:replicator_dynamic}  \tag{Replicator dynamic}
-x_e^\prime = \frac{x_e f_e}{X}
+\hspace{3cm} x_e^\prime = \frac{x_e g_e}{\sum_i x_i g_i}
 \end{equation}
-donde $X=\sum_i x_i f_i$, el tamaño total de la población, actúa como constante de normalización.
-¿Pero cuál es la tasa de crecimiento característica, $f_e$?
-Su estimación requiere considerar explícitamente la variablidad del ambiente, $a$, y el tipo de proceso que genera esa variabilidad.
-
-% Parrafo
-
-Buena parte de la literatura en evolución considera que la estimación correcta se obtiene mediante el valor esperado de los recursos en el tiempo, $\langle \omega_e(t) \rangle$.
-Sea $\Omega_t$ el conjunto de todas las posibles trayectorias de los recursos en el tiempo $t$, el valor esperado se obtiene promediando los estados $\omega \in \Omega_t$ por la probabilidad de que ocurran $P(\omega)$
+%
+\en{where the denominator acts as a normalization constant. }%
+\es{donde el denominador actúa como constante de normalización. }%
+%
+\en{But, what is the characteristic growth rate $g$? }%
+\es{¿Cuál es la tasa de crecimiento característica $g$? }%
+%
+\en{Much of the evolutionary literature bases its analysis on populations of infinite size and considers that the correct estimate is obtained by the expected value of the resources over time, $g^t = \langle \omega \rangle_t$. }%
+\es{Buena parte de la literatura en evolución basa su análisis en poblaciones de tamaño infinito y considera que la estimación correcta se obtiene mediante el valor esperado de los recursos en el tiempo, $g^t = \langle \omega \rangle_t$. }%
+%
 \begin{equation}
-\langle \omega_e \rangle_t = \sum_{\omega \in \Omega_t} \omega \cdot  P(\omega)
+\langle \omega \rangle_t = \sum_{\omega \in \Omega_t} \omega \cdot  P(\omega)
 \end{equation}
-
-% Parrafo
-
-En el ejemplo de la moneda, el valor esperado en los dos primeros pasos temporales es, 
+%
+\en{Where $\Omega_t$ is the set of all possible resource trajectories at time $t$, and $P(\omega)$ is the probability that the $\omega$ resource state occurs. }%
+\es{Donde $\Omega_t$ es el conjunto de todas las posibles trayectorias de los recursos en el tiempo $t$, y $P(\omega)$ es la la probabilidad de que ocurra el estado de los recursos $\omega$. }%
+% 
+\en{In the coin example, the expected value in the first two time steps is, }%
+\es{En el ejemplo de la moneda, el valor esperado en los dos primeros pasos temporales es, }%
 %
 \begin{equation}
 \begin{split}
@@ -95,8 +178,11 @@ En el ejemplo de la moneda, el valor esperado en los dos primeros pasos temporal
 \end{split}
 \end{equation}
 %
-Es decir, la tasa de crecimiento estimada según el valor esperado es de $5\%$ por cada paso temporal, $\langle \omega \rangle_t = 1.05^t$.
-Y efectivamente eso es lo que ocurre con el promedio de las trayectoria individuales, $\omega_e(t)$, cuando la población es suficientemente grande,
+\en{That is, the estimated growth rate according to the expected value is $5\%$ for each time step, $\langle \omega \rangle_t = 1.05^t$. }%
+\es{Es decir, la tasa de crecimiento estimada según el valor esperado es de $5\%$ por cada paso temporal, $\langle \omega \rangle_t = 1.05^t$. }%
+%
+\en{And indeed that is what happens with the average of the individual trajectories, $\omega(t)$, when the population is sufficiently large, }%
+\es{Y efectivamente eso es lo que ocurre con el promedio de las trayectoria individuales, $\omega(t)$, cuando la población es suficientemente grande, }%
 %
 \begin{figure}[H]
     \centering
@@ -104,14 +190,23 @@ Y efectivamente eso es lo que ocurre con el promedio de las trayectoria individu
     \includegraphics[width=\linewidth]{figures/pdf/ergodicity_expectedValue.pdf}
     \end{subfigure}
     \caption{
-    Promedio de los recursos individuales en el tiempo para diferentes tamaños de la población, en escala logarítimica.
-    A medida que aumentamos el tamaño de la población, el promedio se acerca al valor esperado $\langle \omega \rangle_t = 1.05^t$.
+    \en{Average of individual resources over time for different population sizes, in logarithmic scale. }%
+    \es{Promedio de los recursos individuales en el tiempo para diferentes tamaños de la población, en escala logarítimica. }%
+    %
+    \en{As we increase the size of the population, the average approaches the expected value of $1.05^t$. }%
+    \es{A medida que aumentamos el tamaño de la población, el promedio se acerca al valor esperado $\langle \omega \rangle_t = 1.05^t$. }%
     }
     \label{fig:cpr_individual}
 \end{figure}
 %
-Sin embargo, el valor esperado no representa lo que lo le ocurre a los agentes en el tiempo. 
-Individualmente, todas las trayectorias pierden a largo plazo a una tasa cercana al 5\%.
+\en{However, the expected value does not represent what happens to the agents over time. }%
+\es{Sin embargo, el valor esperado no representa lo que le ocurre a los agentes en el tiempo. }%
+%
+\en{Individually, all the trajectories lose in the long term at a rate close to 5\%. }%
+\es{Individualmente, todas las trayectorias pierden a largo plazo a una tasa cercana al 5\%. }%
+%
+\en{The trajectories observed in figure \ref{fig:ergodicity_individual_trayectories} are variable, but the longer we observe the system the smoother these lines become (figure \ref{fig:ergodicity_individual_trayectories_longrun}). }%
+\es{Las trayectorias observadas en la figura \ref{fig:ergodicity_individual_trayectories} son variables, pero cuanto más tiempo observemos el sistema más suave se vuelven esas líneas (figura \ref{fig:ergodicity_individual_trayectories_longrun}). }%
 %
 \begin{figure}[H]
     \centering
@@ -126,43 +221,66 @@ Individualmente, todas las trayectorias pierden a largo plazo a una tasa cercana
     \label{fig:ergodicity_individual_trayectories_longrun}
     \end{subfigure}
     \caption{
-    La recta negra representan el valor esperado.
-    Figura \ref{fig:ergodicity_individual_trayectories}: tamaño de los recursos individuales en el tiempo, $ \log(\omega(t))$.
-    Figura \ref{fig:ergodicity_individual_trayectories_longrun}: con suficiente tiempo todas las trayectorias individuales se pegan a la recta azul. 
+    \en{The black line represents the expected value. }%
+    \es{La recta negra representan el valor esperado. }%
+    %
+    \en{Figure \ref{fig:ergodicity_individual_trayectories}: size of individual resources over time, $ \log(\omega(t))$. }%
+    \es{Figura \ref{fig:ergodicity_individual_trayectories}: tamaño de los recursos individuales en el tiempo, $ \log(\omega(t))$. }%
+    %
+    \en{Figure \ref{fig:ergodicity_individual_trayectories_longrun}: given enough time, all individual trajectories stick to the blue line. }% 
+    \es{Figura \ref{fig:ergodicity_individual_trayectories_longrun}: con suficiente tiempo todas las trayectorias individuales se pegan a la recta azul. }% 
     }
     \label{fig:cpr_individual}
 \end{figure}
-%
 %La relación entre el valor esperado y lo que le ocurre a los agentes individuales en el tiempo es un problema bien conocido en mecánica estadística.
-Cuando lo que le ocurre a los agentes individuales en el tiempo puede describirse mediante el valor esperado de los estados del sistema se dice que el proceso es ergódico~\cite{peters2019-ergodicityEconomics}.
-Sin embargo, las condiciones para que esto se cumple son muy restrictivas.
-En particular, la dinámica evolutiva está gobernada por un procesos multiplicativos (eq.~\ref{eq:modelo_exponencial}).
-En el ejemplo de la moneda puede expresarse como,
+\en{When the individual trajectories can be described by the expected value of the system states, then the process is said to be ergodic~\cite{peters2019-ergodicityEconomics}. }%
+\es{Cuando lo que le ocurre a los agentes individuales en el tiempo puede describirse mediante el valor esperado de los estados del sistema, luego se dice que el proceso es ergódico~\cite{peters2019-ergodicityEconomics}. }%
+%
+\en{However, the conditions are very restrictive, and are not fulfilled in the case of multiplicative processes. }%
+\es{Sin embargo, las condiciones para que esto se cumpla son muy restrictivas y no se satisfacen para el caso de los procesos multiplicativos. }%
+%
+\en{To calculate the characteristic growth rate $g$, we first express the product as follows, }%
+\es{Para calcular la tasa de crecimiento caracterísitica $g$, primero expresaramos la productoria de la siguiente manera, }%
 %
 \begin{equation}
-\omega_e(T) = \prod^T_{t=1} f_e(a(t)) = f_e(\text{cara})^{n_1} f_e(\text{seca})^{n_2}
+\omega(T) = \prod^T_{t=1} f(a(t)) = f(\text{\en{head}\es{cara}})^{n_1} f(\text{\en{tail}\es{sello}})^{n_2}
 \end{equation}
 %
-donde $n_1$ y $n_2$ representa la cantidad de ocurrencias de $f_e(\text{cara})$ y $f_e(\text{seca})$, con $n_1 + n_2 = T$.
-Las trayectorias observadas en la figura \ref{fig:ergodicity_individual_trayectories} son variables, pero cuanto más tiempo observemos el sistema más suave se vuelven esas líneas (figura \ref{fig:ergodicity_individual_trayectories_longrun}).
-En el límite, $T \rightarrow \infty$ todas las trayectorias individuales estarán determinadas por la misma tasa de crecimiento caracterísitica ${f_e}$, por el que se multiplican los recursos $\omega_e(t)$ en cada iteración.
+\en{where $n_1$ and $n_2$ represents the number of occurrences of $f(\text{\en{head}\es{cara}})$ and $f(\text{\en{tail}\es{sello}})$, with $n_1 + n_2 = T$. }%
+\es{donde $n_1$ y $n_2$ representa la cantidad de ocurrencias de $f_e(\text{cara})$ y $f_e(\text{seca})$, con $n_1 + n_2 = T$. }%
+%
+\en{In the limit, $T \rightarrow \infty$ all individual trajectories will be determined by the same characteristic growth rate $g$. }%
+\es{En el límite, $T \rightarrow \infty$ todas las trayectorias individuales estarán determinadas por la misma tasa de crecimiento caracterísitica $g$. }%
+%
 \begin{equation} \label{eq:geometric_mean}
 \begin{split}
-\lim_{T \rightarrow \infty} \omega_e(T) & = {f_e}^T \\
-\left( \lim_{T \rightarrow \infty} \omega_e(T) \right)^{1/T} & =  {f_e} \\
+\lim_{T \rightarrow \infty} \omega_e(T) & = {g}^T \\
+\left( \lim_{T \rightarrow \infty} \omega_e(T) \right)^{1/T} & =  {g} \\
 \lim_{T \rightarrow \infty} f_e(\text{cara})^{n_1/T} f_e(\text{seca})^{n_2/T} & 
  \end{split}
 \end{equation}
-Donde las frecuencias $\frac{n_1}{T}$ y $\frac{n_2}{T}$ en el límite $T \rightarrow \infty$ son iguales a las probabilidades de ocurrencia de los estados del sistema.
-Por lo tanto, la mejor estimación de la tasa de crecimiento es,
+%
+\en{Where the frequencies $\frac{n_1}{T}$ and $\frac{n_2}{T}$ in the limit $T \rightarrow \infty$ are equal to the probabilities of occurrence of the system states. }%
+\es{Donde las frecuencias $\frac{n_1}{T}$ y $\frac{n_2}{T}$ en el límite $T \rightarrow \infty$ son iguales a las probabilidades de ocurrencia de los estados del sistema. }%
+%
+\en{Therefore, the growth rate is, }%
+\es{Por lo tanto, la tasa de crecimiento es, }%
+%
 \begin{equation}
 {f_e} = (1.5 \cdot 0.6)^{1/2} \approx 0.95
 \end{equation}
 %
-Esta fórmula, que permite computar la tasa de crecimiento a largo plazo de las trayectorias individuales, ha sido usada previamente en la literatura de evolución bajo el nombre de \emph{media geométrica}~\cite{dempster1955-geometricMean}.
-Una propiedad importante de la media geométrica es que su valor siempre es menor al valor esperado (o media aritmética).
-Esto se debe a que en los procesos multiplicativos los impactos físicos de las pérdidas suelen ser más fuertes que los de las ganancias.
-En el extremo, un único cero en la productoria alcanza para generar su extinción.
+\en{This formula, which allows computing the long-term growth rate of individual trajectories, has previously been used in the evolution literature under the name \emph{geometric mean}. }%
+\es{Esta fórmula, que permite computar la tasa de crecimiento a largo plazo de las trayectorias individuales, ha sido usada previamente en la literatura de evolución bajo el nombre de \emph{media geométrica}~\cite{dempster1955-geometricMean}. }%
+%
+\en{An important property of the geometric mean is that its value is always less than the expected value (or arithmetic mean). }%
+\es{Una propiedad importante de la media geométrica es que su valor siempre es menor al valor esperado (o media aritmética). }%
+%
+\en{This is because in multiplicative processes the physical impacts of losses are usually stronger than those of gains. }%
+\es{Esto se debe a que en los procesos multiplicativos los impactos físicos de las pérdidas suelen ser más fuertes que los de las ganancias. }%
+%
+\en{In an extreme case, a single zero in the product is enough to generate an extinction. }%
+\es{En un caso extremo, un único cero en la productoria alcanza para generar su extinción. }%
 
 % Decimos que un proceso es ergódico si se cumple que,
 % \begin{equation}
@@ -172,10 +290,12 @@ En el extremo, un único cero en la productoria alcanza para generar su extinci�
 
 \subsection{Cooperacion}
 
-%En los procesos no-ergódicos, las fluctuaciones tienen un efecto negativo en la tasa de crecimiento individual a largo plazo, pero no en la tasa de crecimiento del valor esperado.
-Dado que en los procesos multiplicativos la varianza realmente importa, una forma eficaz de reducirla es compartir los riesgos~\cite{yaari2010-cooperationEvolution, peters-cooperation2019.03.04}.
+\en{As a consequence of the non-ergodicity of multiplicative processes, fluctuations have a negative effect on individual growth rates, which can be reduced through mutual cooperation~\cite{yaari2010-cooperationEvolution, peters-cooperation2019.03.04}. }%
+\es{Como consecuencia de la no-ergodicidad de los procesos multiplicativos, las fluctuaciones tienen un efecto negativo en las tasas de crecimiento individuales, las cuales pueden ser reducidas a través de la mutua cooperación~\cite{yaari2010-cooperationEvolution, peters-cooperation2019.03.04}. }%
+%
 %Parafraseando a Den Boer~\cite{denBoer1968-spreadingRisk}, la  supervivencia de una población depende de la distribución del riesgo dentro de la población y entre las poblaciones de diferentes especies.
-Ole Peters~\cite{peters-cooperation2019.03.04} considera una estrategia cooperativa sencilla, repartir los recursos en partes iguales luego de cada iteración, y analiza la consecuencias que tiene sobre la tasa de crecimiento de los agentes.
+\en{Ole Peters~\cite{peters-cooperation2019.03.04} considers the following cooperative strategy and analyzes the consequences it has on the growth rate of the agents. }%
+\es{Ole Peters~\cite{peters-cooperation2019.03.04} considera la siguiente estrategia cooperativa y analiza la consecuencias que tiene sobre la tasa de crecimiento de los agentes. }%
 %
 \begin{figure}[H]
 \centering
@@ -202,32 +322,48 @@ Ole Peters~\cite{peters-cooperation2019.03.04} considera una estrategia cooperat
     
 }
 }
-\caption{Estrategia cooperativa. Los agentes comienzan con los mismos recursos iniciales. Luego crecen independientemente de acuerdo con la ecuaci\'on \ref{eq:estrategia_base}. Luego cooperan poniendo sus recursos en un fondo común, que finalmente es dividio en partes iguales.}
+\caption{
+\en{Agents start with the same initial resources. They then grow independently according to the equation \ref{eq:base_strategy}. They then cooperate by pooling and sharing their resources. }%
+\es{Los agentes comienzan con los mismos recursos iniciales. Luego crecen independientemente de acuerdo con la ecuaci\'on \ref{eq:estrategia_base}. Luego cooperan poniendo sus recursos en un fondo común que dividen en partes iguales. }%
+}
 \label{fig:protocolo}
 \end{figure}
-
-Las poblaciones enteramente cooperadoras reducen sus fluctuaciones, lo que genera una aumento en la tasa de crecimiento de todos sus miembros.
-En la figura \ref{fig:ergodicity_cooperation} mostramos la trayectoria de un agente cooperador en una población de tamaño 33.
+%
+\en{Fully cooperative populations reduce their fluctuations, which generates an increase in the growth rate of all their members. }%
+\es{Las poblaciones enteramente cooperadoras reducen sus fluctuaciones, lo que genera una aumento en la tasa de crecimiento de todos sus miembros. }%
+%
+\en{In Figure \ref{fig:ergodicity_cooperation} we show the trajectory of an agent in a cooperating population of size 33. }%
+\es{En la figura \ref{fig:ergodicity_cooperation} mostramos la trayectoria de un agente en una población cooperadora de tamaño 33. }%
+%
 \begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.45\textwidth}
     \includegraphics[width=\linewidth]{figures/pdf/ergodicity_cooperation.pdf}
     \end{subfigure}
     \caption{
-    Los recursos de un individuo de una población con 33 agentes que comparten su riqueza luego de cada iteración (recta verde), se pega al valor esperado (recta negra).
-    Como referencia visual, dejamos la tasa de crecimiento temporal individual caracterísitica (recta azul).
+    \en{The resources of an individual from a population of 33 agents who share their wealth after each iteration (green line), approaches the expected value (black line). As a visual reference, we show the characteristic growth rate of the individuals (blue line). }%
+    \es{Los recursos de un individuo de una población de 33 agentes que comparten su riqueza luego de cada iteración (recta verde), se pega al valor esperado (recta negra).
+    Como referencia visual, dejamos la tasa de crecimiento caracterísitica de los individuos (recta azul). }%
     }
     \label{fig:ergodicity_cooperation}
 \end{figure}
 %
-\paragraph{Conclusión Ole Peters} (La ventaja de la cooperación)\textbf{.} Mediante la cooperación total, todos los individuos logran acceder a tasas de crecimiento equivalentes al promedio de estados del sistema, que en los sistemas no-ergódicos es siempre superior que el promedio temporal que obtienen las estrategias individuales. \\
+% \paragraph{Conclusión Ole Peters} (La ventaja de la cooperación)\textbf{.}
+\en{Individuals in fully cooperative populations achieve growth rates equivalent to the average of system states, which in non-ergodic systems is always higher than individual growth rates. }%
+\es{Los individuos de las poblaciones enteramente cooperadoras logran acceder a tasas de crecimiento equivalentes al promedio de estados del sistema, que en los sistemas no-ergódicos es siempre superior que la tasas de crecimiento individual. }%
+%
+\en{Ole Peters believs that the increase in the growth rate is sufficient argument to demonstrate the evolutionary advantage of cooperation, which he proposes as the main explanation for evolutionary transitions. }%
+\es{Ole Peters considera que el aumento de la tasa de crecimiento es argumento suficiente para demostrar la ventaja evolutiva de la cooperación, lo que propone como principal explicación de las transiciones evolutivas. }%
+%
+\en{However, he does not consider the problem of defection, who says ``our cooperators are unable to break the cooperative pact''. }%
+\es{Sin embargo no considera el problema de la deserción, quien dice ``our cooperators are unable to break the cooperative pact''. }%
+%
+\en{This does not seem to be a minor problem, considering the temptation to stop contributing to the common fund while continuing to receive its benefits. }%
+\es{No parece ser un problema menor, teniendo en cuenta la tentación de dejar de aportar al fondo común mientras se siguen recibiendo sus beneficios. }%
 
-% Parrafo
+\todo[inline]{SEGUIR ACÁ}
 
-Ole Peters considera que el aumento en la tasa de crecimiento es argumento suficiente para demostrar la ventaja evolutiva de la cooperación, lo que propone como principal explicación de las transiciones evolutivas.
-Sin embargo no considera el problema de la deserción, quien dice ``our cooperators are unable to break the cooperative pact''.
-No parece ser un problema menor, teniendo en cuenta la tentación que podría significar dejar de aportar al fondo común mientras se siguen recibiendo los beneficios de este.
-Además, tampoco analiza las consecuencias que la cooperación tiene sobre la especiliazión, un elemento fundamental para explicar las transiciones evolutivas.
+%Además, tampoco analiza las consecuencias que la cooperación tiene sobre la especiliazión, un elemento fundamental para explicar las transiciones evolutivas.
 
 \subsection{Estabilidad evolutiva}
 
