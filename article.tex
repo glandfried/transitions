@@ -361,93 +361,132 @@ f(a) =
 \en{This does not seem to be a minor problem, considering the temptation to stop contributing to the common fund while continuing to receive its benefits. }%
 \es{No parece ser un problema menor, teniendo en cuenta la tentación de dejar de aportar al fondo común mientras se siguen recibiendo sus beneficios. }%
 
-\todo[inline]{SEGUIR ACÁ}
+\subsection{Multilevel selection}
 
-%Además, tampoco analiza las consecuencias que la cooperación tiene sobre la especiliazión, un elemento fundamental para explicar las transiciones evolutivas.
-
-\subsection{Estabilidad evolutiva}
-
-Para ejemplificar el problema de la estabilidad evolutiva de la cooperación en este sistema, analicemos las tasas de crecimiento de las estrategias cooperadora y desertora en poblaciones mixtas.
-La población más chica posible está compuesta por dos agentes.
-En este caso las tasas de crecimiento temporal caracterísitica para las diferentes estrategias son (demostraciones en la sección Resultados):
+\en{To demonstrate the evolutionary advantage of cooperation in the presence of defection it is necessary to consider selection at both the individual and group level. }%
+\es{Para demostrar la ventaja evolutiva de la cooperción en presencia de desertores es necesario considerar selección tanto a nivel individual como a nivel grupal. }%
 %
-\begin{equation}
-   f(\cdot,\cdot) = \bordermatrix{ & C & D \cr
-      C & \approx 1.0 & \approx 0.47 \cr
-      D & \approx 0.95 & \approx 0.95 } 
-\end{equation}
+\en{The co-author of the concept of evolutionary transitions (Szathmary~\cite{szathmary1995-evolutionaryTransitions, szathmary2015-evolutionaryTransitions}) recently proposed to analyze the evolution of populations subject to multilevel selection by means of Bayesian hierarchical models~\cite{czegel2019-bayesianEvolution}, making use of the isomorphism between evolutionary theory and Bayesian inference~\cite{harper2009-replicatorAsInference,shalizi2009-replicatorAsInference}. }%
+\es{El co-autor del concepto de transiciones evolutivas (Szathmary~\cite{szathmary1995-evolutionaryTransitions, szathmary2015-evolutionaryTransitions}) propuso recientemente analizar la evolución de las poblaciones sujetas a selección multinivel mediante modelos jerárquicos bayesianos~\cite{czegel2019-bayesianEvolution}, haciendo uso del isomorfismo entre las teoría de la evolución y la inferencia bayesiana~\cite{harper2009-replicatorAsInference,shalizi2009-replicatorAsInference}. }%
 %
-El primer agente que ``decida'' desertar unilateralmente va a ver reducida su tasa de crecimiento de $f(C,C) = 1.0$ a $ f(D,C) = 0.95$.
-% 
-\begin{conclution}[La no necesidad de castigos]
-Sin necesidad de introducir castigos, las estrategias desertoras afectan negativamente su tasa de crecimiento a largo plazo a causa de su propio comportamiento, pues al evitar compartir sus recursos generan un aumento de sus fluctuaciones.
-\end{conclution}
+\en{However, beyond the proposal, the authors of this article (Czegel et al~\cite{czegel2019-bayesianEvolution}) fail to offer a model that represents multilevel selection, their examples are only pictorial. }%
+\es{Sin embargo, más allá de la propuesta, los autores de este artículo (Czegel et al~\cite{czegel2019-bayesianEvolution}) no logran ofrecer un modelo que represente selección multinivel, sus ejemplos son sólo pictóricos. }%
 
-Esto parecería apoyar la idea de Ole Peters de que la cooperación no es altruista sino que está impulsada por el interés personal\footnote{
-La estructura de pagos coinicide con la matriz de pagos del Stag-Hunt. Sin embargo, los análisis que llegan a la conclusión de que las poblaciones enteramente cooperadoras son evolutivamente estables se basan en dinámicas aditivas en poblaciones infinitas, apartándose del modelo estandar de crecimiento exponencial.}.
-Sin embargo para la teoría de la evolución la frecuencia de los estrategias en la población depende, no del valor absoluto de la tasa de crecimiento, sino de la diferencia respecto de las tasas de crecimiento de las otras estrategias en la población.
-Por más que la mutua cooperación ofrezca una tasa de crecimiento mayor que la deserción unilateral ($f(C,C) = 1.00 > 0.95 = f(D,C)$), un mutante desertor invadirá evolutivamente la población debido a que su tasa de crecimiento será mayor a la del agente cooperador ($f(D,C) = 0.95 > 0.47 = f(C,D)$). 
+% Parrafo
 
-\begin{conclution}[Estabilidad evolutiva nivel 1]
-Esto quiere decir que las estrategias cooperadoras no son evolutivamentes estables al interior de las poblaciones.
-\end{conclution}
+\en{In this paper we demonstrate the evolutionary advantage of cooperation in the presence of defection using a Bayesian hierarchical model representing evolution under multilevel selection. }%
+\es{En este trabajo demostramos la ventaja evolutiva de la cooperación en presencia de deserción mediante un modelo jerárquico bayesiano que represente evolución bajo selección multinivel. }%
+%
+\en{To the best of our knowledge, our work would be the first to develop a Bayesian hierarchical model to solve an evolution problem under multilevel selection. }%
+\es{Hasta donde sabemos, nuestro trabajo sería el primero en desarrollar un modelo jerárquico bayesiano para resolver un problema de evolución bajo selección multinivel. }%
+%
+\en{With this model we demonstrate, as Ole Peters intended, that the advantage of cooperation (now in the presence of defection) is a consequence of the most basic and fundamental assumption of evolutionary theory: that evolutionary processes are multiplicative and noisy. }%
+\es{Con este modelo demostramos, como pretendía Ole Peters, de que la ventaja de la cooperación (ahora en presencia de deserción) es consecuencia del supuesto más básico y fundamental de la teoría de la evolución: que los procesos evolutivos son multiplicativos y ruidosos. }%
 
-\subsection{Objetivos}
+\subsection{Especialización}
 
-Ole Peters pretende dar una explicación fundamental de las transiciones evolutivas, sin explicar por qué las estrategias cooperadoras están favorecidas evolutivamente, sin ofrecer una explicación de la especialización. 
-En este trabajo pretendemos dar respuesta a ambos puntos, de modo de aportar apoyar el argumento original de Ole Peters.
+\en{According to Ole Peters, an important evolutionary phenomenon on which his analysis can shed new light is the transition to multicellularity. }%
+\es{Según Ole Peters, un importante fenómeno evolutivo sobre el que su análisis puede arrojar nueva luz es la transición a la multicelularidad. }%
+%
+\en{The evolutionary transition from unicellularity to multicellularity involves the specialization of cells: from protists to plants, fungi and animals. }%
+\es{La transición evolutiva de la unicelularidad a la multiclelularidad involucra una especialización de las células: de los los protistas a las plantas, hongos y animales. }%
+%
+\en{Then, to explain evolutionary transitions, it is necessary to demonstrate the evolutionary advantage of cooperation in the presence of defection, but also the advantage of specialization. }%
+\es{Luego, para explicar las transiciones evolutivas es necesario demostrar la ventaja evolutiva de la cooperación en presencia de deserción, pero también la ventaja de la especiliazación. }%
 
-La idea general de que las grandes transiciones evolutivas involucra selección tanto a nivel individual como a nivel grupal, está ampliamente aceptada.
-Para verificar si efectivamente las estrategias cooperativas se ven favorecidas por la evolución, como propone Ole Peters, será necesario entonces hacer un análisis multinivel.
+% Parrafo
 
-A su vez, el co-autor del concepto de transiciones evolutivas \cite{szathmary1995-evolutionaryTransitions, szathmary2015-evolutionaryTransitions}, recientemente propuso analizar la evolución de las poblaciones sujetas a selección multinivel mediante modelos jerárquicos bayesianos~\cite{czegel2019-bayesianEvolution}.
-Más allá de la popuesta, Czegel, Zachar y Szathmary~\cite{czegel2019-bayesianEvolution} no logran ofrecer un modelo jerarquico bayesiano que represente selección multinivel, sus ejemplos son sólo pictóricos.
+\en{However, Ole Peters believes that the cause of the cooperation advantage (the assumption of non-ergodicity of noisy multiplicative processes) does not allow explaining the specialization advantage. }%
+\es{Sin embargo, Ole Peters cree que la causa de la ventaja de la cooperación (el supuesto de la no-ergodicidad de los procesos multiplicativos ruidosos) no permite explicar la ventaja de la especialización. }%
+%
+\en{Ole Peters believes that specialization is a too complex property to produce a benefit in simple aggregations of, for example, two agents. }
+\es{Ole Peters considera a la especialización como una caracterísitica demasiado compleja para que produzca un beneficio en agregaciones simples de por ejemplo dos agentes. }%
+%
+\en{He says the ``[advantage of cooperation] it may explain the transition from single cells to bicellular organisms, too small and simple to benefit from new function or specialization.'' }
+\es{Dice que la ventaja de la cooperación: ``it may explain the transition from single cells to bicellular organisms, too small and simple to benefit from new function or specialization.'' }%
+%
+\en{He believes that other explanations of evolutionary transitions, such as the emergence of specialization, are implausible. }%
+\es{El cree que otras explicaciones de las transiciones evolutivas, como la emergencia de la especialización, son implausibles. }%
 
-La utilización de inferencia Bayesiana para resolver la pregunta acerca de la estabilidad evolutiva de las estrategias cooperadoras bajo selección multinivel está justificada en tanto existe un isomorfimos entre la teoría de la probabilidad (teormea de Bayes) y la teoría de la evolución (replicator dynamic)~\cite{harper2009-replicatorAsInference,shalizi2009-replicatorAsInference}.
+% Parrafo
 
-\paragraph{Objetivos:}
-(1) Demostrar la ventaja evolutiva de la cooperación bajo procesos multiplicativos y ruidosos (2) mediante un modelo jerárquico bayesiano que represente la evolución de las poblaciones y las estrategias bajo selección multinivel (3) incorporando el efecto de la especialización.
+\en{In this paper we show that the same minimal assumptions used by Ole Peters to explain the evolutionary advantage of cooperation also allow us to explain the evolutionary advantage of specialization, even for the simplest aggregations of two agents. }%
+\es{En este trabajo demostramos que los mismos supuestos mínimos que utiliza Ole Peters para explicar la ventaja evolutiva de la cooperación, permiten también explicar la ventaja evolutiva de especialización, incluso para las agregaciones más simples de dos agentes. }%
+%
+\en{We show that, once cooperation emerges, individually maladapted strategies (specialists) manage to outperform, even organized in small groups, both individually well-adapted strategies (generalists) and their cooperative groups of infinite size. }%
+\es{Mostramos que, una vez que la cooperación emerge, las estrategias individualmente mal adaptadas (especialistas) consigen superar, incluso organizadas en grupos pequeños, tanto a las estrategias bien adaptas individualmemte (generalistas) como a sus grupos cooperativos de tamaño infinito. }%
+
+%
+\en{It is extraordinary that such a simple assumption has such fundamental conclusions for understanding the complexity of life. }%
+\es{Es extraordinario que un supuesto tan simple tenga conclusiones tan fudamentales para entender la complejidad de la vida. }%
+%
+\en{Because the evolutionary advantage of cooperation and specialization is a direct consequence of the non-ergodicity of the multiplicative processes to which life is subject, we support Ole Peters' idea of considering it the first cause of major evolutionary transitions. }%
+\es{Debido a que la ventaja evolutiva de la cooperación y la especialización es consecuencia directa de la no-ergodicidad de los procesos multiplicativos a los que está sujeto la vida, apoyamos la idea de Ole Peters de consideradala la primera causa de las transiciones evolutivas mayores. }%
 
 \section{Metodología}
 
-En esta sección presentamos el ismorfismo entre la teoría de la probabilidad y la evolución.
-En la sección resultados utilizamos modelos bayesianos para resolver los problemas evolutivos.
+\en{In this section we present the ismorphism between probability theory and evolutionary theory.}
+\es{En esta sección presentamos el ismorfismo entre la teoría de la probabilidad y la teoría de la evolución. }%
+%
+\en{In the Results section we will demonstrate the evolutionary advantage of cooperation and specialization using a Bayesian hierarchical model representing evolution under multilevel selection. }%
+\es{En la sección Reseultados demostraremos la ventaja evolutiva de la cooperación en presencia de deserción mediante un modelo jerárquico bayesiano que represente evolución bajo selección multinivel. }%
+%
 
 \subsection{Teoría de la probabilidad}
 
-La teoría de la probabilidad es el enfoque más utilizado en la actualidad para tratar la incertidumbre.
-Sus reglas han sido derivadas formalmente a partir de sistemas axiomáticos conceptualmente distintos e independientes entre sí~\cite{halpern2017-RAU2}, lo cual es uno de los punto fuertes a su favor.
-Pero quizás más importante sea que su aplicación estricta maximiza la incertidumbre dada la información empírica (datos) y formal (modelos causales)~\cite{jaynes2003-bookProbabilityTheory}, fuente de validación de las proposiciones de las ciencias empíricas.
+\en{Probability theory is currently the most widely used approach to computing uncertainty. }%
+\es{La teoría de la probabilidad es el enfoque más utilizado en la actualidad para computar la incertidumbre. }%
+%
+\en{Its rules have been formally derived from conceptually distinct and mutually independent axiomatic systems~\cite{halpern2017-RAU2}, which is one of the strong points in its favor. }%
+\es{Sus reglas han sido derivadas formalmente a partir de sistemas axiomáticos conceptualmente distintos e independientes entre sí~\cite{halpern2017-RAU2}, lo cual es uno de los punto fuertes a su favor. }%
+%
+\en{But perhaps more importantly, its strict application maximizes uncertainty given empirical and formal information (data and causal models)~\cite{jaynes2003-bookProbabilityTheory}, the source of validation for empirical sciences. }
+\es{Pero quizás más importante sea que su aplicación estricta maximiza la incertidumbre dada la información empírica y formal (datos y modelos causales)~\cite{jaynes2003-bookProbabilityTheory}, fuente de validación de las ciencias empíricas. }%
 
-Toda la teoría de la probabilidad puede resumirse en dos reglas: la~\ref{eq:sum_rule} y la~\ref{eq:product_rule}.
-La \ref{eq:sum_rule} afirma que cualquier distribuci\'on marginal se puede obtener integrando o sumando la distribuci\'on conjunta.
+% Parrafo
+
+\en{The whole theory of probability can be summarized in two rules: the \ref{eq:sum_rule} and the ~\ref{eq:product_rule}. }%
+\es{Toda la teoría de la probabilidad puede resumirse en dos reglas: la~\ref{eq:sum_rule} y la~\ref{eq:product_rule}. }%
+%
+\en{The \ref{eq:sum_rule} states that any marginal distribution can be obtained by integrating or summing the joint distribution. }
+\es{La \ref{eq:sum_rule} afirma que cualquier distribución marginal se puede obtener integrando o sumando la distribución conjunta. }%
+%
 \begin{equation} \label{eq:sum_rule}
  \tag{\en{sum rule}\es{regla de la suma}}
  P(x) = \sum_{y} P(x,y) \ \ \ \ \ \text{or} \ \ \ \ \ p(x) = \int p(x,y) \, dy
 \end{equation}
-Donde $P(\cdot)$ y $p(\cdot)$ representan distribuciones de probabilidad discretas y continuas respectivamente.
-Por su parte, la \ref{eq:product_rule} se\~nala que cualquier distribuci\'on conjunta puede ser expresada como el producto de distribuciones condicionales uni-dimensionles.
+%
+\en{Where $P(\cdot)$ and $p(\cdot)$ represent discrete and continuous probability distributions respectively. }%
+\es{Donde $P(\cdot)$ y $p(\cdot)$ representan distribuciones de probabilidad discretas y continuas respectivamente. }%
+%
+\en{On the other hand, the \ref{eq:product_rule} states that any joint distribution can be expressed as the product of one-dimensional conditional distributions. }%
+\es{Por su parte, la \ref{eq:product_rule} se\~nala que cualquier distribuci\'on conjunta puede ser expresada como el producto de distribuciones condicionales uni-dimensionles. }%
+%
 \begin{equation}\label{eq:product_rule}
 \tag{\en{product rule}\es{regla del producto}}
  p(x,y) = p(x|y) p(y)
 \end{equation}
-De la regla del producto obtenemos inmediatamente el~\ref{eq:bayes_theorem},
+%
+\en{From the product rule, we immediately obtain the Bayes' theorem, with which we can compute the uncertainty about the hidden hypothesis space given the data and the model: }%
+\es{De la regla del producto obtenemos inmediatamente el teorema de Bayes con el que podemos computrar la incertidumbre sobre el espacio de hipótesis ocultas dados los datos y el modelo: }%
+%
 \begin{equation}\label{eq:bayes_theorem}
-\tag{\en{Bayes' theorem}\es{teorema de Bayes}}
- p(y|x) = \frac{p(x|y)p(y)}{p(x)}
+ \underbrace{p(\overbrace{\text{\en{Hypothesis}\es{Hipótesis}$_i$}}^{\text{\en{Hidden}\es{Oculta}}}|\overbrace{\text{Dat\en{a}\es{os}}}^{\text{Observ\en{ed}\es{ado}}}, \text{Model\es{o}})}_{\text{Posterior}} = \frac{\overbrace{P(\,\text{Dat\en{a}\es{os}}\,|\,\text{\en{Hypothesis}\es{Hipótesis}$_i$}\,,\text{Model\es{o}})}^{\text{\en{Likelihood}\es{Verosimilitud}}}\overbrace{p(\text{\en{Hypothesis}\es{Hipótesis}$_i$})}^{\text{Prior}}}{\underbrace{P(\text{Dat\en{a}\es{os}}\,|\,\text{Model\es{o}})}_{\text{Evidenc\en{e}\es{ia} o\en{r}\es{ predicci\'on a} prior \en{prediction}}}}
 \end{equation}
-La creencia a posteriori no es más que la creencia a priori que continúa siendo compatible con los datos.
-%El \ref{eq:bayes_theorem} actualiza las creencia maximizando la incertidumbre luego de haber incorporado la información provista por el modelo y los datos.
+%
+\en{A posterior belief is nothing more than the prior belief that continues to be compatible with the data. }
+\es{La creencia a posteriori no es más que la creencia a priori que continúa siendo compatible con los datos. }
 
 \subsection{Isomorfismo entre las teorías de la evolución y la probabilidad.}
 
-Existe un isomorfismo entre las ecuaciones fundamentales de la teoría de la evolución (replicator dynamic) y la teoría de la probabilidad (teorema de bayes),
-
+\en{There is an isomorphism between the fundamental equations of evolutionary theory (replicator dynamic) and probability theory(Bayes theorem),  }%
+\es{Existe un isomorfismo entre las ecuaciones fundamentales de la teoría de la evolución (replicator dynamic) y la teoría de la probabilidad (teorema de bayes), }%
+%
+Sean las estrategia $e$, y el dato el estado del ambiente $a$. 
 \begin{equation} 
  p(e|a) = \frac{p(a|e)\,p(e)}{p(a)}   \ \ \ \ \ \ \ \   x_e^\prime = \frac{f_e(a)\,x_e}{X}  
 \end{equation}
 %
-donde $e$ es la estrategia, $a$ el comportamiento exitoso. 
 El isomorfimo ente la inferecia bayesiana y la evolución nos permite traducir un problema en términos del otro.
 %
 \begin{align*}
@@ -544,6 +583,35 @@ Responderemos estas y otras preguntas en la siguiente sección.
 %Al menos en ambientes estocásticos estables, que mantinen 
 
 \section{Resultados}
+
+
+% \subsection{Estabilidad evolutiva}
+% 
+% Para ejemplificar el problema de la estabilidad evolutiva de la cooperación en este sistema, analicemos las tasas de crecimiento de las estrategias cooperadora y desertora en poblaciones mixtas.
+% La población más chica posible está compuesta por dos agentes.
+% En este caso las tasas de crecimiento temporal caracterísitica para las diferentes estrategias son (demostraciones en la sección Resultados):
+% %
+% \begin{equation}
+%    f(\cdot,\cdot) = \bordermatrix{ & C & D \cr
+%       C & \approx 1.0 & \approx 0.47 \cr
+%       D & \approx 0.95 & \approx 0.95 } 
+% \end{equation}
+% %
+% El primer agente que ``decida'' desertar unilateralmente va a ver reducida su tasa de crecimiento de $f(C,C) = 1.0$ a $ f(D,C) = 0.95$.
+% % 
+% \begin{conclution}[La no necesidad de castigos]
+% Sin necesidad de introducir castigos, las estrategias desertoras afectan negativamente su tasa de crecimiento a largo plazo a causa de su propio comportamiento, pues al evitar compartir sus recursos generan un aumento de sus fluctuaciones.
+% \end{conclution}
+% 
+% Esto parecería apoyar la idea de Ole Peters de que la cooperación no es altruista sino que está impulsada por el interés personal\footnote{
+% La estructura de pagos coinicide con la matriz de pagos del Stag-Hunt. Sin embargo, los análisis que llegan a la conclusión de que las poblaciones enteramente cooperadoras son evolutivamente estables se basan en dinámicas aditivas en poblaciones infinitas, apartándose del modelo estandar de crecimiento exponencial.}.
+% Sin embargo para la teoría de la evolución la frecuencia de los estrategias en la población depende, no del valor absoluto de la tasa de crecimiento, sino de la diferencia respecto de las tasas de crecimiento de las otras estrategias en la población.
+% Por más que la mutua cooperación ofrezca una tasa de crecimiento mayor que la deserción unilateral ($f(C,C) = 1.00 > 0.95 = f(D,C)$), un mutante desertor invadirá evolutivamente la población debido a que su tasa de crecimiento será mayor a la del agente cooperador ($f(D,C) = 0.95 > 0.47 = f(C,D)$). 
+% 
+% \begin{conclution}[Estabilidad evolutiva nivel 1]
+% Esto quiere decir que las estrategias cooperadoras no son evolutivamentes estables al interior de las poblaciones.
+% \end{conclution}
+
 
 En esta sección analizaremos si efectivamente existe alguna ventaja evolutiva de la cooperación.
 Esta pregunta permanece abierta por dos motivos.
