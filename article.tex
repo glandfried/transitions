@@ -14,7 +14,7 @@
 
 
 %opening
-\title{Multilevel selection in nonergodic systems: the evolutionary advantage of cooperation and especialization.}
+\title{Multilevel selection in causal nonergodic process: the evolutionary advantage of cooperation and especialization.}
 \author{Gustavo Landfried}
 
 \begin{document}
@@ -464,8 +464,41 @@ f(a) =
 %
 \begin{equation}\label{eq:product_rule}
 \tag{\en{product rule}\es{regla del producto}}
- p(x,y) = p(x|y) p(y)
+ P(x,y,z) = P(x|y,z) P(y|z) P(z)
 \end{equation}
+%
+\en{This expression can be simplified when we eliminate from the conditional the variables that do not have any effect on the function. }%
+\es{Esta expresión se puede simplificar cuando eliminamos del condicional las variables que no afectan a la función. }%
+%
+\en{The minimum set of variables that appear on the right side of the conditional are said to be the ``parents'' of the variable that appears on the left side of the conditional. }%
+\es{Al conjunto mínimo de variables que aparecen del lado derecho del condicional decimos que son los ``padres'' de la variable que aparece del lado izquierdo del condicional. }%
+%
+\en{}%
+\es{Otra forma de definir distribuciones conjuntas es mediante el uso de modelos gráficos, en los que hay un nodo por cada variable, y una flecha por cada par ``padre-hijo''. }% 
+%
+\en{Graphical models are a well-established tool in probability because they: 1. provide an intuitive language to unambiguously express all hypotheses; 2. are a low-dimensional representation of the joint probability distribution; 3. and allow efficient inference through the sum-product algorithm~\cite{kschischang2001-factorGraphsAndTheSumProductAlgorithm}.}
+\es{Los modelos gráficos son una herramienta bien establecida en probabilidad debido a que permiten: 1. ofrecen un lenguaje intuitivo para expresar sin ambiguedad todas las hipótesis; 2. es una representación de baja dimensionalidad de la distribución de probabilidad conjunta; 3. y permite realizar inferencia de forma eficiente a través del algoritmos suma-producto~\cite{ kschischang2001-factorGraphsAndTheSumProductAlgorithm}. }%
+
+% Parrafo
+
+Para utilizar los modelos gráficos no se requiere una interpretación causal, de hecho las probabilidades condicionales pueden expresar en cualquier orden.
+%
+Sin embargo, son varias las ventajas de definir las probabilidades condicionales en base a interpretaciones causales~\cite{pearl2009-causality}.
+%
+La ciencia elabora sus teorías en base a historias causales, mecanismos físicos estables y autónomos, los cuales inducen probabilidades condicionales entre las causas y sus efectos.
+%
+En este sentido, justificar las probabilidades condicionales en base a una historia causal es una forma más natural de expresar lo que sabemos o creemos sobre el mundo.
+%
+Además de facilitar la intuición en el proceso de investigación, la interpretación causal permite modularizar las probabilidades condicionales.
+%
+Eventuales cambios en alguno de los mecanismos causales afecta solo localmente la topología de la red bayesiana, permitiendo predecir el efecto de las intervenciones externas con un mínimo de información adicional.
+%
+Por estos motivos, en este trabajo expresaremos los modelos gráficos en términos de relaciones causales. 
+
+
+
+\subsection{Isomorfismo entre las teorías de la evolución y la probabilidad.}
+
 %
 \en{From the product rule, we immediately obtain the Bayes' theorem, with which we can compute the uncertainty about the hidden hypothesis space given the data and the model: }%
 \es{De la regla del producto obtenemos inmediatamente el teorema de Bayes con el que podemos computrar la incertidumbre sobre el espacio de hipótesis ocultas dados los datos y el modelo: }%
@@ -477,28 +510,49 @@ f(a) =
 \en{A posterior belief is nothing more than the prior belief that continues to be compatible with the data. }
 \es{La creencia a posteriori no es más que la creencia a priori que continúa siendo compatible con los datos. }
 
-\subsection{Isomorfismo entre las teorías de la evolución y la probabilidad.}
 
-\en{There is an isomorphism between the fundamental equations of evolutionary theory (replicator dynamic) and probability theory(Bayes theorem),  }%
-\es{Existe un isomorfismo entre las ecuaciones fundamentales de la teoría de la evolución (replicator dynamic) y la teoría de la probabilidad (teorema de bayes), }%
-%
-Sean las estrategia $e$, y el dato el estado del ambiente $a$. 
-\begin{equation} 
- p(e|a) = \frac{p(a|e)\,p(e)}{p(a)}   \ \ \ \ \ \ \ \   x_e^\prime = \frac{f_e(a)\,x_e}{X}  
-\end{equation}
-%
-El isomorfimo ente la inferecia bayesiana y la evolución nos permite traducir un problema en términos del otro.
+Existe un isomorfismo entre las ecuaciones fundamentales de la teoría de la evolución (replicator dynamic) y la teoría de la probabilidad (teorema de bayes)~\cite{shalizi2009-replicatorAsInference,harper2009-replicatorAsInference},
 %
 \begin{align*}
 \centering
  \begin{tabular}{l|l}
   Teorema de Bayes & Replicator dynamic  \\ \hline
-  Prior $p(e)$ & Proporción previa $x_e$ \\ \hline
-  Verosimilitud $p(a|e)$ & Fitness $f_e(a)$ \\ \hline
-  Evidencia $p(a)$ & Población total $X$ \\ \hline
-  Posterior $p(e|a)$ & Proproción posterior $x_e^\prime$ \\ \hline
+  Prior $p(H)$ & Proporción previa $x_e$ \\ \hline
+  Verosimilitud $p(D|H)$ & Fitness $f_e(a)$ \\ \hline
+  Evidencia $p(D)$ & Población total $\sum x_e f_e(a) $ \\ \hline
+  Posterior $p(H|D)$ & Proproción posterior $x_e^\prime$ \\ \hline
  \end{tabular}
 \end{align*}
+%
+En base a este isomorfismo, Czégel, Zachar y Szathmáry (este último co-autor del concepto de trasiciones evolutivas mayores) propusieron recientemente analizar la evolución de una población sujeta a selección multinivel a través de modelo bayesianos jerárquicos.
+%that (i) evolution of a hierarchical population under multilevel selection is equivalent to Bayesian inference in hierarchical Bayesian models and (ii) evolutionary transitions in individuality, driven by synergistic fitness interactions, is equivalent to learning the structure of hierarchical models via Bayesian model comparison
+%
+\en{However, beyond the proposal, the authors of this article (Czegel et al) fail to offer a model that represents multilevel selection, their examples are only pictorial. }%
+\es{Sin embargo, más allá de la propuesta, los autores de este artículo (Czegel et al) no logran ofrecer un modelo que represente selección multinivel, sus ejemplos son sólo pictóricos. }%
+%
+Los modelos gráficos 
+
+En ese trabajo interpretaron  
+
+
+\begin{figure}[H]
+\centering
+\tikz{
+    \node[latent] (e) {$e$};
+    \node[const, right=of e] (en) {\ $p(e)=\text{Beta}(\alpha,\beta)$};
+    \node[const, left=of e] (ne) {Estrategias: \ \ \ };
+    
+    
+    \node[latent, below=of e] (r) {$a$};
+    \node[const, right=of r] (rn) {$P(a|e,T) = \text{Binomial}(a|T,e)$};
+    \node[const, left=of r] (nr) {Aptitud: \ \ \ };
+    
+    \edge {e} {r};
+    }
+\caption{}
+\label{fig:modelo_beta_binomial}
+\end{figure}
+
 
 Para traducir el fitness en términos de probabilidades necesitamos normalizar su valor para que sume 1.
 Luego, la estrategia original propuesta por Ole Peters tiene el siguiente likelihood,
