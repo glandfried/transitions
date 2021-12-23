@@ -425,14 +425,14 @@ f(a) =
 
 \section{Metodología}
 
-\en{In this section we present the ismorphism between probability theory and evolutionary theory.}
+\en{In this section we present the ismorphism between probability theory and evolutionary theory. }%
 \es{En esta sección presentamos el ismorfismo entre la teoría de la probabilidad y la teoría de la evolución. }%
 %
 \en{In the Results section we will demonstrate the evolutionary advantage of cooperation and specialization using a Bayesian hierarchical model representing evolution under multilevel selection. }%
 \es{En la sección Reseultados demostraremos la ventaja evolutiva de la cooperación en presencia de deserción mediante un modelo jerárquico bayesiano que represente evolución bajo selección multinivel. }%
 %
 
-\subsection{Teoría de la probabilidad}
+\subsection{Teoría de la probabilidad y los modelos causales}
 
 \en{Probability theory is currently the most widely used approach to computing uncertainty. }%
 \es{La teoría de la probabilidad es el enfoque más utilizado en la actualidad para computar la incertidumbre. }%
@@ -440,7 +440,7 @@ f(a) =
 \en{Its rules have been formally derived from conceptually distinct and mutually independent axiomatic systems~\cite{halpern2017-RAU2}, which is one of the strong points in its favor. }%
 \es{Sus reglas han sido derivadas formalmente a partir de sistemas axiomáticos conceptualmente distintos e independientes entre sí~\cite{halpern2017-RAU2}, lo cual es uno de los punto fuertes a su favor. }%
 %
-\en{But perhaps more importantly, its strict application maximizes uncertainty given empirical and formal information (data and causal models)~\cite{jaynes2003-bookProbabilityTheory}, the source of validation for empirical sciences. }
+\en{But perhaps more importantly, its strict application maximizes uncertainty given empirical and formal information (data and causal models)~\cite{jaynes2003-bookProbabilityTheory}, the source of validation for empirical sciences. }%
 \es{Pero quizás más importante sea que su aplicación estricta maximiza la incertidumbre dada la información empírica y formal (datos y modelos causales)~\cite{jaynes2003-bookProbabilityTheory}, fuente de validación de las ciencias empíricas. }%
 
 % Parrafo
@@ -448,7 +448,7 @@ f(a) =
 \en{The whole theory of probability can be summarized in two rules: the \ref{eq:sum_rule} and the ~\ref{eq:product_rule}. }%
 \es{Toda la teoría de la probabilidad puede resumirse en dos reglas: la~\ref{eq:sum_rule} y la~\ref{eq:product_rule}. }%
 %
-\en{The \ref{eq:sum_rule} states that any marginal distribution can be obtained by integrating or summing the joint distribution. }
+\en{The \ref{eq:sum_rule} states that any marginal distribution can be obtained by integrating or summing the joint distribution. }%
 \es{La \ref{eq:sum_rule} afirma que cualquier distribución marginal se puede obtener integrando o sumando la distribución conjunta. }%
 %
 \begin{equation} \label{eq:sum_rule}
@@ -472,30 +472,36 @@ f(a) =
 %
 \en{The minimum set of variables that appear on the right side of the conditional are said to be the ``parents'' of the variable that appears on the left side of the conditional. }%
 \es{Al conjunto mínimo de variables que aparecen del lado derecho del condicional decimos que son los ``padres'' de la variable que aparece del lado izquierdo del condicional. }%
-%
-\en{}%
-\es{Otra forma de definir distribuciones conjuntas es mediante el uso de modelos gráficos, en los que hay un nodo por cada variable, y una flecha por cada par ``padre-hijo''. }% 
-%
-\en{Graphical models are a well-established tool in probability because they: 1. provide an intuitive language to unambiguously express all hypotheses; 2. are a low-dimensional representation of the joint probability distribution; 3. and allow efficient inference through the sum-product algorithm~\cite{kschischang2001-factorGraphsAndTheSumProductAlgorithm}.}
-\es{Los modelos gráficos son una herramienta bien establecida en probabilidad debido a que permiten: 1. ofrecen un lenguaje intuitivo para expresar sin ambiguedad todas las hipótesis; 2. es una representación de baja dimensionalidad de la distribución de probabilidad conjunta; 3. y permite realizar inferencia de forma eficiente a través del algoritmos suma-producto~\cite{ kschischang2001-factorGraphsAndTheSumProductAlgorithm}. }%
 
 % Parrafo
 
-Para utilizar los modelos gráficos no se requiere una interpretación causal, de hecho las probabilidades condicionales pueden expresar en cualquier orden.
+\en{Another way to define joint distributions is by using graphical models, in which there is a node for each variable, and an arrow for each ``parent$\rightarrow$child'' pair. }%
+\es{Otra forma de definir distribuciones conjuntas es mediante el uso de modelos gráficos, en los que hay un nodo por cada variable, y una flecha por cada par ``padre$\rightarrow$hijo''. }% 
 %
-Sin embargo, son varias las ventajas de definir las probabilidades condicionales en base a interpretaciones causales~\cite{pearl2009-causality}.
-%
-La ciencia elabora sus teorías en base a historias causales, mecanismos físicos estables y autónomos, los cuales inducen probabilidades condicionales entre las causas y sus efectos.
-%
-En este sentido, justificar las probabilidades condicionales en base a una historia causal es una forma más natural de expresar lo que sabemos o creemos sobre el mundo.
-%
-Además de facilitar la intuición en el proceso de investigación, la interpretación causal permite modularizar las probabilidades condicionales.
-%
-Eventuales cambios en alguno de los mecanismos causales afecta solo localmente la topología de la red bayesiana, permitiendo predecir el efecto de las intervenciones externas con un mínimo de información adicional.
-%
-Por estos motivos, en este trabajo expresaremos los modelos gráficos en términos de relaciones causales. 
+\en{Graphical models are a well-established tool in probability because they allow to: 1. provide an intuitive language to unambiguously express all hypotheses, 2. reduce the dimensionality of the joint probability distribution, 3. and perform inference efficiently through the sum-product algorithm~\cite{kschischang2001-factorGraphsAndTheSumProductAlgorithm}. }%
+\es{Los modelos gráficos son una herramienta bien establecida en probabilidad debido a que permiten: 1s. ofrecen un lenguaje intuitivo para expresar sin ambiguedad todas las hipótesis; 2. reducir la dimensionalidad de la distribución de probabilidad conjunta; 3. y realizar inferencia de forma eficiente a través del algoritmos suma-producto~\cite{kschischang2001-factorGraphsAndTheSumProductAlgorithm}. }%
+\en{To use the graphical models no causal interpretation is required, in fact the conditional probabilities can be expressed in any order. }%
+\es{Para utilizar los modelos gráficos no se requiere una interpretación causal, de hecho las probabilidades condicionales pueden expresar en cualquier orden. }%
+ 
+% Parrafo
 
-
+\en{There are several advantages when conditional probabilities are defined on the basis of causal interpretations~\cite{pearl2009-causality}. }%
+\es{Son varias las ventajas que se consiguen al definir las probabilidades condicionales en base a interpretaciones causales~\cite{pearl2009-causality}. }%
+%
+\en{Science elaborates its theories on the basis of causal stories: stable and autonomous mechanisms that induce conditional probabilities between causes and effects. }%
+\es{La ciencia elabora sus teorías en base a historias causales: mecanismos estables y autónomos que inducen probabilidades condicionales entre causas y efectos. }%
+%
+\en{In this sense, justifying conditional probabilities on the basis of a causal story is a more natural way of expressing what we know or believe about the world. }%
+\es{En este sentido, justificar las probabilidades condicionales en base a una historia causal es una forma más natural de expresar lo que sabemos o creemos sobre el mundo. }%
+%
+\en{In addition to facilitating intuition in the research process, causal interpretation also modularizes conditional probabilities. }%
+\es{Además de facilitar la intuición en el proceso de investigación, la interpretación causal también modulariza las probabilidades condicionales. }%
+%
+\en{Eventual changes in any of the causal mechanisms locally affect the topology of the Bayesian network, allowing the effect of external interventions to be predicted with a minimum of additional information. }%
+\es{Eventuales cambios en alguno de los mecanismos causales afectan localmente la topología de la red bayesiana, permitiendo predecir el efecto de las intervenciones externas con un mínimo de información adicional. }%
+%
+\en{For these reasons, in this paper we will express the graphical models in terms of causal relationships. }%
+\es{Por estos motivos, en este trabajo expresaremos los modelos gráficos en términos de relaciones causales. }%
 
 \subsection{Isomorfismo entre las teorías de la evolución y la probabilidad.}
 
@@ -504,23 +510,44 @@ Por estos motivos, en este trabajo expresaremos los modelos gráficos en términ
 \es{De la regla del producto obtenemos inmediatamente el teorema de Bayes con el que podemos computrar la incertidumbre sobre el espacio de hipótesis ocultas dados los datos y el modelo: }%
 %
 \begin{equation}\label{eq:bayes_theorem}
- \underbrace{p(\overbrace{\text{\en{Hypothesis}\es{Hipótesis}$_i$}}^{\text{\en{Hidden}\es{Oculta}}}|\overbrace{\text{Dat\en{a}\es{os}}}^{\text{Observ\en{ed}\es{ado}}}, \text{Model\es{o}})}_{\text{Posterior}} = \frac{\overbrace{P(\,\text{Dat\en{a}\es{os}}\,|\,\text{\en{Hypothesis}\es{Hipótesis}$_i$}\,,\text{Model\es{o}})}^{\text{\en{Likelihood}\es{Verosimilitud}}}\overbrace{p(\text{\en{Hypothesis}\es{Hipótesis}$_i$})}^{\text{Prior}}}{\underbrace{P(\text{Dat\en{a}\es{os}}\,|\,\text{Model\es{o}})}_{\text{Evidenc\en{e}\es{ia} o\en{r}\es{ predicci\'on a} prior \en{prediction}}}}
+ \underbrace{P(\overbrace{\text{\en{Hypothesis}\es{Hipótesis}$_i$}}^{\text{\en{Hidden}\es{Oculta}}}|\overbrace{\text{Dat\en{a}\es{os}}}^{\text{Observ\en{ed}\es{ado}}})}_{\text{Posterior}} = \frac{\overbrace{P(\,\text{Dat\en{a}\es{os}}\,|\,\text{\en{Hypothesis}\es{Hipótesis}$_i$})}^{\text{\en{Likelihood}\es{Verosimilitud}}}\overbrace{P(\text{\en{Hypothesis}\es{Hipótesis}$_i$})}^{\text{Prior}}}{\underbrace{P(\text{Dat\en{a}\es{os}})}_{\text{Evidenc\en{e}\es{ia} o\en{r}\es{ predicci\'on a} prior \en{prediction}}}}
 \end{equation}
 %
-\en{A posterior belief is nothing more than the prior belief that continues to be compatible with the data. }
-\es{La creencia a posteriori no es más que la creencia a priori que continúa siendo compatible con los datos. }
+\en{where the only free variable is the skill hypothesis $i$, the data and the model are fixed. }%
+\es{Donde la \'unica variable libre es la hip\'otesis $i$, los datos y el modelo están fijos. }%
+%
+\en{The likelihood and the evidence are both probabilities of the data , so they can be seen as predictions. }%
+\es{La verosimilitud y la evidencia son ambas probabilidades de los datos, por lo que pueden ser vistas como predicciones. }%
+%
+\en{When the data is a discrete variable, predictions always take values between $0$ and $1$. }%
+\es{Cuando el dato es una variable discreta, las predicciones siempre toman valores entre $0$ y $1$. }%
+%
+\en{Unlike the likelihood, which makes a different prediction for each hypothesis, the evidence averages all the predictions, weighted by the prior probability of the hypotheses, }%
+\es{A diferencia de la verosimilitud, que realiza una predicción distinta por cada hipótesis, la evidencia realiza un promedio de todas las prediciones, pesado por la probabilidad a priori de las hipótesis, }%
+%
+\begin{equation}
+P(\text{Dat\en{a}\es{os}}) = \sum_i P(\,\text{Dat\en{a}\es{os}}\,|\,\text{\en{Hypothesis}\es{Hipótesis}$_i$}) P(\text{\en{Hypothesis}\es{Hipótesis}$_i$})
+\end{equation}
+%
+\en{The evidence then functions as a normalization constant. }%
+\es{La evidencia funciona entonces como una constante de normalización. }%
+%
+\en{Therefore, the likelihood is the only factor that updates the probability distribution of the hypothesis: the posterior is just the prior probability that is not filtered by the likelihood. }%
+\es{Luego, la verosimilitud es lo único que actualiza la distribuión de probabilidad de la hipótesis: el posterior no es más que la probabilidad del prior no filtrada por la verosimilitud. }%
 
+% Parrafo
 
-Existe un isomorfismo entre las ecuaciones fundamentales de la teoría de la evolución (replicator dynamic) y la teoría de la probabilidad (teorema de bayes)~\cite{shalizi2009-replicatorAsInference,harper2009-replicatorAsInference},
+\en{The isomorphism between the fundamental equations of the evolutionary theory (replicator dynamic) and the probability theory (Bayes theorem) is immediate when we identify that the probability distribution of the hypotheses is the distribution of the strategies, and the fitness is the likelihood~\cite{shalizi2009-replicatorAsInference,harper2009-replicatorAsInference}, }%
+\es{El isomorfismo entre las ecuaciones fundamentales de la teoría de la evolución (replicator dynamic) y la teoría de la probabilidad (teorema de bayes) es inmediato cuando identificamos que la distribución probabilidad de las hipótesis es la distribución de las estrategias, y la aptitud es la verosimilitud~\cite{shalizi2009-replicatorAsInference,harper2009-replicatorAsInference}, }%
 %
 \begin{align*}
 \centering
  \begin{tabular}{l|l}
   Teorema de Bayes & Replicator dynamic  \\ \hline
-  Prior $p(H)$ & Proporción previa $x_e$ \\ \hline
+  Prior $p(H)$ & \en{Distribution of strategies}\es{Distribución de estrategias}$x_e$ \\ \hline
   Verosimilitud $p(D|H)$ & Fitness $f_e(a)$ \\ \hline
-  Evidencia $p(D)$ & Población total $\sum x_e f_e(a) $ \\ \hline
   Posterior $p(H|D)$ & Proproción posterior $x_e^\prime$ \\ \hline
+  Evidencia $p(D)$ & Population mean fitness $\sum x_e f_e(a) $ \\ \hline
  \end{tabular}
 \end{align*}
 %
