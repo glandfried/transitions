@@ -537,30 +537,97 @@ P(\text{Dat\en{a}\es{os}}) = \sum_i P(\,\text{Dat\en{a}\es{os}}\,|\,\text{\en{Hy
 
 % Parrafo
 
-\en{The isomorphism between the fundamental equations of the evolutionary theory (replicator dynamic) and the probability theory (Bayes theorem) is immediate when we identify that the probability distribution of the hypotheses is the distribution of the strategies, and the fitness is the likelihood~\cite{shalizi2009-replicatorAsInference,harper2009-replicatorAsInference}, }%
+\en{There is a immediate isomorphism between the fundamental equations of evolutionary theory (replicator dynamic) and probability theory (Bayes theorem) when we identify that the probability distribution of the hypotheses as the distribution of the strategies, and the fitness as the likelihood~\cite{shalizi2009-replicatorAsInference,harper2009-replicatorAsInference}, }%
 \es{El isomorfismo entre las ecuaciones fundamentales de la teoría de la evolución (replicator dynamic) y la teoría de la probabilidad (teorema de bayes) es inmediato cuando identificamos que la distribución probabilidad de las hipótesis es la distribución de las estrategias, y la aptitud es la verosimilitud~\cite{shalizi2009-replicatorAsInference,harper2009-replicatorAsInference}, }%
 %
 \begin{align*}
 \centering
  \begin{tabular}{l|l}
-  Teorema de Bayes & Replicator dynamic  \\ \hline
-  Prior $p(H)$ & \en{Distribution of strategies}\es{Distribución de estrategias}$x_e$ \\ \hline
-  Verosimilitud $p(D|H)$ & Fitness $f_e(a)$ \\ \hline
-  Posterior $p(H|D)$ & Proproción posterior $x_e^\prime$ \\ \hline
-  Evidencia $p(D)$ & Population mean fitness $\sum x_e f_e(a) $ \\ \hline
+  \en{Bayes theorem}\es{Teorema de Bayes} & Replicator dynamic  \\ \hline
+  Prior $P(H)$ & \en{Old distribution of strategies}\es{Distribución de estrategias} $x_e$ \\ \hline
+  \en{Likelihood}\es{Verosimilitud} $P(D|H)$ & \en{Fitness}\es{Aptitud} $f_e(a)$ \\ \hline
+  Posterior $P(H|D)$ & \en{New distribution of strategies}\es{Nueva distribución de estrategias} $x_e^\prime$ \\ \hline
+  Evidenc\en{e}\es{ia} $P(D)$ & \en{Population mean fitness}\es{Aptitud media de la población} $\sum x_e f_e(a) $ \\ \hline
  \end{tabular}
 \end{align*}
 %
-En base a este isomorfismo, Czégel, Zachar y Szathmáry (este último co-autor del concepto de trasiciones evolutivas mayores) propusieron recientemente analizar la evolución de una población sujeta a selección multinivel a través de modelo bayesianos jerárquicos.
-%that (i) evolution of a hierarchical population under multilevel selection is equivalent to Bayesian inference in hierarchical Bayesian models and (ii) evolutionary transitions in individuality, driven by synergistic fitness interactions, is equivalent to learning the structure of hierarchical models via Bayesian model comparison
+\en{Based on this isomorphism, Czégel, Zachar and Szathmáry recently proposed to analyze the evolution of a population subject to multilevel selection through hierarchical Bayesian modeling~\cite{czegel2019-bayesianEvolution}. }
+\es{En base a este isomorfismo, Czégel, Zachar y Szathmáry propusieron recientemente analizar la evolución de una población sujeta a selección multinivel a través de modelo bayesianos jerárquicos~\cite{czegel2019-bayesianEvolution}. }%
 %
-\en{However, beyond the proposal, the authors of this article (Czegel et al) fail to offer a model that represents multilevel selection, their examples are only pictorial. }%
-\es{Sin embargo, más allá de la propuesta, los autores de este artículo (Czegel et al) no logran ofrecer un modelo que represente selección multinivel, sus ejemplos son sólo pictóricos. }%
+Para ello exhiben una serie de modelos gráficos sin especificar las probabilidades condicionales.
 %
-Los modelos gráficos 
+\begin{figure}[H]
+\centering
+\tikz{
+    \node[latent] (c2) {$C^2$};
+    \node[const, above=of c2, yshift=0.1cm] (pc2) {$P(C^2)$};
+    \node[const, above=of pc2, yshift=0.1cm] (nc2) {Col\en{l}ectiv\en{e}\es{o} 2};
+    \node[const, above=of nc2] (fc2) {\includegraphics[width=0.06\linewidth]{static/collective2A.png} \ \includegraphics[width=0.045\linewidth]{static/collective2B.png}};
+    
+    
+    \node[latent, right=of c2, xshift=1cm] (c1) {$C^1$};
+    \node[const, above=of c1, yshift=0.1cm] (pc1) {$P(C^1|C^2)$};
+    \node[const, above=of pc1, yshift=0.1cm] (nc1) {Col\en{l}ectiv\en{e}\es{o} 1};
+    \node[const, above=of nc1] (fc1) {\includegraphics[width=0.04\linewidth]{static/collective1A.png} \ \includegraphics[width=0.04\linewidth]{static/collective1B.png}};
+    
+    \node[latent, right=of c1, xshift=1cm] (i) {$I$};
+    \node[const, above=of i, yshift=0.1cm] (pi) {$P(I|C^1,C^2)$};
+    \node[const, above=of pi, yshift=0.1cm] (ni) {Individu\en{al}\es{o}:};
+    \node[const, above=of ni] (fi) {\includegraphics[width=0.09\linewidth]{static/individual.png}\ };
+    
+    \node[latent, right=of i, xshift=1cm] (a) {\en{$e$}\es{$a$}};
+    \node[const, above=of a, yshift=0.1cm] (pa) {$P(\en{e}\es{a}|I,C^1,C^2)$};
+    \node[const, above=of pa, yshift=0.1cm] (na) {\en{Environment}\es{Ambiente}};
+    \node[const, above=of na] (fa) {\includegraphics[width=0.03\linewidth]{static/water.png}\includegraphics[width=0.04\linewidth]{static/wind.png}\includegraphics[width=0.025\linewidth]{static/fire.png} \ };
+    
+    \edge {c2} {c1};
+    \edge {c1} {i};
+    \edge {i} {a};
+    \path[draw, ->, fill=black,sloped] (c2) edge[bend right,draw=black] node[midway,above,color=black] {} (i);
+    \path[draw, ->, fill=black,sloped] (c2) edge[bend right,draw=black] node[midway,above,color=black] {} (a);
+    \path[draw, ->, fill=black,sloped] (c1) edge[bend right,draw=black] node[midway,above,color=black] {} (a);
+    
+    \plate {aa} {(a)} {}; 
+    }
+\caption{
+\en{Model proposed by Czégel, Zachar and Szathmáry~\cite{czegel2019-bayesianEvolution} to represent multilevel selection. }%
+\es{Modelo propuesto por Czégel, Zachar y Szathmáry~\cite{czegel2019-bayesianEvolution} para representar selección multinivel. }%
+}
+\label{fig:modelo_beta_binomial}
+\end{figure}
+%
+Si bien este modelo es válido, en tanto la descomposición$P(e,I,C^1,C^2)= P(e|I,C^1,C^2)P(I|C^1,C^2)P(C^1|C^2)P(C^2)$ vale por la regla del producto, el modelo no fue desarrollado con una interpretación causal.
+%
+Esto se constata en todas las distribuciones de probabilidad condicional.
+%
+En un extremo, la colectividad de nivel 2, que está compuesta tanto por la colectividad de nivel 1 y por individuos, aparece en el modelo como una variable independiente.
+%
+En el otro extremo, el ambiente que suele considerarse en los modelos causales como una variable aleatoria independiente, aparece en el modelo como dependiente de los individuos y colectividades.
+%
+Y a la invversa, todas las colectividades e individuos aparecen independientes del ambiente.
+%
+Esto quizás explique porque en el artículo evitaron especificar las ditribuciones de probabilidad condicional, y ofrecieron en cambio un ejemplo pictórico de la distribución de probabilidad conjunta.
 
-En ese trabajo interpretaron  
+%
 
+
+Veamos qué ocurre cuando intentamos traducir el modelo propuesto por Ole Peters en un modelo de estas caracterísiticas.
+
+Para traducir el fitness en términos de probabilidades necesitamos normalizar su valor para que sume 1.
+Luego, la estrategia original propuesta por Ole Peters tiene el siguiente likelihood,
+%
+\begin{equation}
+f_e(a) \propto  P(a|e) = \begin{cases}
+ \frac{1.5}{1.5+0.6} & a = 1 \\
+ \frac{0.6}{1.5+0.6} & a = 0
+  \end{cases}
+  \approx
+\begin{cases}
+ 0.71 & a= 1 \\
+ 0.29 & a= 0
+\end{cases}
+\end{equation}
+%
 
 \begin{figure}[H]
 \centering
@@ -581,21 +648,6 @@ En ese trabajo interpretaron
 \end{figure}
 
 
-Para traducir el fitness en términos de probabilidades necesitamos normalizar su valor para que sume 1.
-Luego, la estrategia original propuesta por Ole Peters tiene el siguiente likelihood,
-%
-\begin{equation}
-f_e(a) \propto  P(a|e) = \begin{cases}
- \frac{1.5}{1.5+0.6} & a = 1 \\
- \frac{0.6}{1.5+0.6} & a = 0
-  \end{cases}
-  \approx
-\begin{cases}
- 0.71 & a= 1 \\
- 0.29 & a= 0
-\end{cases}
-\end{equation}
-%
 Esta es solo una estrategia particular.
 Una forma general de representar todo el espacio de estrategias es mediane la distribución Bernoulli.
 %
