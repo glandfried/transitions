@@ -8,6 +8,13 @@
 \newcommand{\es}[1]{\ifes#1\fi}
 \entrue
 
+\newcommand{\E}{\en{S}\es{E}}
+\newcommand{\A}{\en{E}\es{A}}
+\newcommand{\Ee}{\en{s}\es{e}}
+\newcommand{\Aa}{\en{e}\es{a}}
+
+
+
 \newtheorem{conclution}{\en{Conclution}\es{Conclusión}}%[section]
 \newtheorem{objective}{\en{Objective}\es{Objetivo}}%[section]
 
@@ -196,7 +203,7 @@ f(a) =
     \en{As we increase the size of the population, the average approaches the expected value of $1.05^t$. }%
     \es{A medida que aumentamos el tamaño de la población, el promedio se acerca al valor esperado $\langle \omega \rangle_t = 1.05^t$. }%
     }
-    \label{fig:cpr_individual}
+    \label{fig:ergodicity_expectedValue}
 \end{figure}
 %
 \en{However, the expected value does not represent what happens to the agents over time. }%
@@ -323,7 +330,7 @@ f(a) =
 }
 }
 \caption{
-\en{Agents start with the same initial resources. They then grow independently according to the equation \ref{eq:base_strategy}. They then cooperate by pooling and sharing their resources. }%
+\en{Agents start with the same initial resources. They then grow independently according to the equation \ref{eq:estrategia_base}. They then cooperate by pooling and sharing their resources. }%
 \es{Los agentes comienzan con los mismos recursos iniciales. Luego crecen independientemente de acuerdo con la ecuaci\'on \ref{eq:estrategia_base}. Luego cooperan poniendo sus recursos en un fondo común que dividen en partes iguales. }%
 }
 \label{fig:protocolo}
@@ -512,7 +519,7 @@ f(a) =
 \begin{equation}\label{eq:bayes_theorem}
  \underbrace{P(\overbrace{\text{\en{Hypothesis}\es{Hipótesis}$_i$}}^{\text{\en{Hidden}\es{Oculta}}}|\overbrace{\text{Dat\en{a}\es{os}}}^{\text{Observ\en{ed}\es{ado}}})}_{\text{Posterior}} = \frac{\overbrace{P(\,\text{Dat\en{a}\es{os}}\,|\,\text{\en{Hypothesis}\es{Hipótesis}$_i$})}^{\text{\en{Likelihood}\es{Verosimilitud}}}\overbrace{P(\text{\en{Hypothesis}\es{Hipótesis}$_i$})}^{\text{Prior}}}{\underbrace{P(\text{Dat\en{a}\es{os}})}_{\text{Evidenc\en{e}\es{ia} o\en{r}\es{ predicci\'on a} prior \en{prediction}}}}
 \end{equation}
-%
+
 \en{where the only free variable is the skill hypothesis $i$, the data and the model are fixed. }%
 \es{Donde la \'unica variable libre es la hip\'otesis $i$, los datos y el modelo están fijos. }%
 %
@@ -589,95 +596,234 @@ Para ello exhiben una serie de modelos gráficos sin especificar las probabilida
     
     \plate {aa} {(a)} {}; 
     }
-\caption{
-\en{Model proposed by Czégel, Zachar and Szathmáry~\cite{czegel2019-bayesianEvolution} to represent multilevel selection. }%
-\es{Modelo propuesto por Czégel, Zachar y Szathmáry~\cite{czegel2019-bayesianEvolution} para representar selección multinivel. }%
+\caption{% \en{Model proposed by Czégel, Zachar and Szathmáry~\cite{czegel2019-bayesianEvolution} to represent multilevel selection. }%% \es{Modelo propuesto por Czégel, Zachar y Szathmáry~\cite{czegel2019-bayesianEvolution} para representar selección multinivel. }%
 }
-\label{fig:modelo_beta_binomial}
+
+\label{fig:czegel_et_el}
 \end{figure}
 %
-Si bien este modelo es válido, en tanto la descomposición$P(e,I,C^1,C^2)= P(e|I,C^1,C^2)P(I|C^1,C^2)P(C^1|C^2)P(C^2)$ vale por la regla del producto, el modelo no fue desarrollado con una interpretación causal.
+La validez de este modelo es trivial en tanto la regla del producto siempre permite la descomposición,
+%
+\begin{equation}
+P(e,I,C^1,C^2)= P(e|I,C^1,C^2)P(I|C^1,C^2)P(C^1|C^2)P(C^2)
+\end{equation}
+%
+Sin embargo el modelo no expresa una interpretación causal.
 %
 Esto se constata en todas las distribuciones de probabilidad condicional.
 %
 En un extremo, la colectividad de nivel 2, que está compuesta tanto por la colectividad de nivel 1 y por individuos, aparece en el modelo como una variable independiente.
 %
-En el otro extremo, el ambiente que suele considerarse en los modelos causales como una variable aleatoria independiente, aparece en el modelo como dependiente de los individuos y colectividades.
+En el otro extremo, el ambiente, que suele considerarse en los modelos causales como una variable aleatoria independiente, aparece en el modelo como dependiente de los individuos y colectividades.
 %
-Y a la invversa, todas las colectividades e individuos aparecen independientes del ambiente.
+Y a la inversa, todas las colectividades e individuos aparecen independientes del ambiente.
 %
 Esto quizás explique porque en el artículo evitaron especificar las ditribuciones de probabilidad condicional, y ofrecieron en cambio un ejemplo pictórico de la distribución de probabilidad conjunta.
 
+% Parrafo
+
+Interpretemos el modelo de Ole Peters en términos causales para definir las distribuciones de probabilidad condicional.
 %
-
-
-Veamos qué ocurre cuando intentamos traducir el modelo propuesto por Ole Peters en un modelo de estas caracterísiticas.
-
-Para traducir el fitness en términos de probabilidades necesitamos normalizar su valor para que sume 1.
-Luego, la estrategia original propuesta por Ole Peters tiene el siguiente likelihood,
+La probabilidad del ambiente, en este caso depende de un parámetro $p$ que determina cuan sesgada está la moneda.
 %
 \begin{equation}
-f_e(a) \propto  P(a|e) = \begin{cases}
- \frac{1.5}{1.5+0.6} & a = 1 \\
- \frac{0.6}{1.5+0.6} & a = 0
+P(\en{e}\es{a}) = p^{\en{e}\es{a}} (1-p)^{(1-\en{e}\es{a})}
+\end{equation}
+%
+Para definir la probabilidad de las estrategia dado el ambiente, $P(e|a)$, necesitamos que para cada ambiente la probabilidad de todas las estrategias sume 1.
+%
+Digamos, por ahora, que la probabilidad de la estrategia es proporcional a su aptitud, 
+%
+\begin{equation}
+P(\E | \A) \propto  f_{\E}(\A)
+\end{equation}
+%
+Con esto podemos definir parcialmente un modelo gráfico con una interpretación causal.
+%
+\begin{figure}[H]
+\centering
+\tikz{
+    \node[latent] (e) {$\en{e}\es{a}_t$};
+    \node[const, right=of e] (en) {\ $P(\en{e}\es{a}) = p^{\en{e}\es{a}} (1-p)^{(1-\en{e}\es{a})}$};
+    \node[const, left=of e] (ne) {\en{Environment}\es{Ambiente}: \ \ \ };
+    
+    
+    \node[latent, below=of e] (r) {$\en{s}\es{a}$};
+    \node[const, right=of r] (rn) {$P(\en{s}\es{a}|\en{e}\es{a}) \propto f_e(a)$};
+    \node[const, left=of r] (nr) {\en{Strategy}\es{Estrategia}: \ \ \ };
+    
+    \edge {e} {r};
+    \plate {ee} {(e)} {$t$}; 
+    }
+\caption{Modelo causal Lewontin-Peters}
+\label{fig:model-lewontin-peters}
+\end{figure}
+%
+¿Cómo podemos calcular la probabilidad de $P(\E|\A)$?
+
+\subsection{Sum-product algorithm}
+
+\en{The \emph{sum-product algorithm} takes advantage of the factoriztion of the joint probability distribution, induced by the causal model, to efficiently apply the rules of probability. }%
+\es{El \emph{sum-product algorithm} aprovecha la factorización de la distribuci\'on de probabilidad conjunta, inducida por el modelo causal, para aplicar eficientemente las reglas de la probabilidad. }%
+%
+\en{It is a way of computing the rules of probability (the sum and product rule) by message passing between probability distributions and their variables. }%
+\es{Es una forma de computar las reglas de la probabilidad (la regla de la suma y el producto) mediante pasaje de mensajes entre las distribuciones de probabilidad y sus variables. }%
+%
+\en{For this purpose, it is convenient to represent the graphical model with a \emph{factor graph}, a bipartite graph with variable nodes (white circles) and function nodes (black squares). }%
+\es{Para ello es conveniente representar el modelo mediante un \emph{factor graph}, un gráfos con nodos variables (círculos blancos), y nodos funciones (cuadrados negros). }%
+%
+\en{The edge between node variables and node functions represents the mathematical relationship ``the variable $v$ is an argument of the function $f$''. }%
+\es{Los ejes entre nodos variables y nodos funciones representan la relaci\'on matem\'atica ``la variable $v$ es argumento de la funci\'on $f$''. }%
+%
+El siguiente factor graph representa el modelo de la figura \ref{fig:model-lewontin-peters}.
+%
+\begin{figure}[H]
+\centering
+\tikz{
+
+    \node[factor] (fa) {};
+    \node[const, above=of fa] (nfa) {$P(\A)$};
+    
+    \node[latent, right=of fa] (a) {$\A$};
+    
+    \node[factor, right=of a] (fe) {};
+    \node[const, above=of fe] (nfe) {$P(\E|\A) \propto f_{\E}(\A)$};
+    
+    \node[latent, right=of fe, xshift=0.3cm] (e) {$\E$};
+    
+
+     \plate {hola} {(fa)(nfa)(a)(fe)(nfe)} {}; 
+
+    \edge[-] {fa} {a};
+    \edge[-] {a} {fe};
+    \edge[-] {fe} {e};
+    }
+\caption{
+ \en{Graphical way of representing the factorization of joint distribution induced by the basic causal model (Fig.~\ref{fig:model-lewontin-peters}). }%
+ \es{Forma gráfica de representar la factorizaci\'on de la distribución conjunta inducida por el modelo causal básico (figura~\ref{fig:model-lewontin-peters}). }%
+ }
+\label{fig:factor_graph}
+\end{figure}
+%
+\en{There are two types of messages: those sent by variable-type nodes to their function-type neighbors ($m_{v \rightarrow f}(v)$) and the ones that function-type nodes send to their variable-type neighbors ($m_{f \rightarrow v}(v)$). }%
+\es{Hay dos tipos de mensajes: los mensajes que envian los nodos variables a sus funciones vecinas ($m_{v \rightarrow f}(v)$); y los mensajes que env\'ian los nodos funciones a sus variables vecinas ($m_{f \rightarrow v}(v)$). }%
+%
+\en{The former partially performs the product rule. }%
+\es{El primero codifica una porci\'on de la regla del producto. }%
+%
+\begin{equation*}\label{eq:m_v_f} \tag{\text{\en{product step}\es{paso del producto}}}
+m_{v \rightarrow f}(v) = \prod_{h}^{n(v) \setminus \{f\} } m_{h \rightarrow v}(v)
+\end{equation*}
+%
+\en{where $n(v) \setminus \{f\}$ represents the set of neighbor nodes to $v$ except $f$. }%
+\es{donde $n(v) \setminus \{f\}$ representa el conjunto de vecinos del nodo $v$ salvo $f$. }%
+%
+\en{In a brief, the messages sent by the variable-type node $v$ are simply the product of the messages that $v$ receives from the rest of their neighbors $h \in n(v)$ except $f$. }%
+\es{En pocas palabras, los mensajes que env\'ia una variables $v$ es simplemente la multiplicaci\'on de los mensajes que recibi\'o del resto de sus vecinos $h \in n(v)$ salvo $f$. }%
+%
+\en{The messages sent by the function-type nodes encode a portion of the sum rule. }%
+\es{Los mensajes que env\'ian los nodos funciones codifican una parte de la regla de la suma. }%
+%
+\begin{equation*}\label{eq:m_f_v}  \tag{\text{\en{sum step}\es{paso de la suma}}}
+m_{f \rightarrow v}(v) = \sum_{\bm{u}} \Big( f(\bm{u},v) \prod_{u}^{\bm{u}} m_{u \rightarrow f}(u) \Big)
+\end{equation*}
+%
+\en{where $\bm{u} = n(f)\setminus \{v\}$ is the set of all neighbors to $f$ except $v$, and $f(\bm{h},v)$ represents the function $f$, evaluated in all its arguments. }%
+\es{donde $\bm{u} = n(f)\setminus \{v\}$ es el conjunto de todos los vecinos de $f$ salvo $v$, y $f(\bm{h},v)$ representa la funci\'on $f$, evaluada en todos sus argumentos. }%
+%
+\en{The messages sent by the function-type node $f$ to a neighboring variable-type node $v$ is simply the integration (or sum) over $\bm{h}$ of the product of itself and all the messages that $f$ receives from the rest of its neighbors $\bm{h}$ except $v$. }%
+\es{En pocas palabras, los mensajes que envía una funci\'on $f$ a una variable vecina $v$ es simplemente la integraci\'on (o suma) sobre $\bm{h}$ del producto de sí mismo con todos los mensajes que $f$ recibe del resto de sus vecinos $\bm{h}$ salvo $v$. }%
+%
+\en{Finally, the marginal probability distribution of a variable $v$ is simply the product of the messages that $v$ receives from all its neighbors. }%
+\es{Finalmente, la distribuci\'on de probabilidad marginal de una variable $v$ es simplemente la multiplicaci\'on de los mensajes que $v$ recibe de todos sus vecinos. }%
+%
+\begin{equation*}\label{eq:marginal}  \tag{\text{\en{marginal probability}\es{probabilidad marginal}}}
+P(v) = \prod_{h \in n(v)} m_{h \rightarrow v}(v)
+\end{equation*}
+%
+Cuando alguno de las variables $u$ es observable, se la elimina de la suma $\bm{u}\setminus u$ y se obtiene la marginal de dos variables, $P(v,u)$.
+%
+\en{This algorithm encodes the minimum number of steps required to calculate any marginal probability distribution. }%
+\es{Este algoritmo codifica la m\'inima cantidad de pasos que se requieren para calcular cualquier distribuci\'on de probabilidad marginal. }%
+
+% Parrafo
+
+Nosotros queremos calcular $P(\E|\A)$ y para eso necesitamos calcular marginales $P(\E,\A)/P(\A)$. 
+%
+Como en nuestro modelo una de las distribuciones de probabilidad está definida de forma proporcional, las marginales $P(\E,\A)$ y $P(\A)$ también serán proporcionales.
+%
+Para calcular la marginal $P(\E,\A)$, consideraremos que $\A^*$ es observable.
+%
+El mensaje del factor del ambiente $f_{\A}$ a la variable ambiente $\A$ es,
+\begin{equation}
+m_{f_{\A}\rightarrow \A }(\A^*) = P(\A^*) = m_{f_{\A} \rightarrow f_{\E} }(\A^*)
+\end{equation}
+%
+Que es el mismo mensaje que envía la variable $\A$ al factor de estrategias $f_{\E}$.
+%
+Luego, el mensaje que envía el factor de estategias $f_{\E}$ a la variable estrategias es,
+%
+\begin{equation}
+m_{f_{\E} \rightarrow \E } \propto P(\A^*)f_{\E}(\A)
+\end{equation}
+%
+Notar que no integramos en los valores del ambiente porque consideramos que la variable $\A$ es observable.
+%
+Luego, la marginal de un vector de observaciones del ambiente $\bm{\A}$ es,
+%
+\begin{equation}
+P(\E,\bm{\A}) \propto \prod_{\A^*}^{\bm{\A}} P(\A^*)f_{\E}(\A^*)
+\end{equation}
+%
+Integrando sobre las estrtategia $\E$ obtenemos la marginal de las observaciones,
+%
+\begin{align}
+P(\bm{\A}) & \propto \sum_{\E} \prod_{\A^*}^{\bm{\A}} P(\A^*)f_{\E}(\A^*) \\
+& = \prod_{\A^*}^{\bm{\A}} P(\A^*)  \sum_{\E} \prod_{\A^*}^{\bm{\A}}f_{\E}(\A^*)
+\end{align}
+%
+Luego, la probabilidad de la estrategia dado el ambiente es
+%
+\begin{equation}\label{eq:replicator_dynamic_posterior}
+P(\E|\bm{\A}) = \frac{ \prod_{\A^*}^{\bm{\A}}f_{\E}(\A^*)}{\sum_{\E} \prod_{\A^*}^{\bm{\A}}f_{\E}(\A^*)}
+\end{equation}
+%
+La probabilidad condicional de la estrategia dado el ambiente resultó ser el replicator dynamic!
+%
+Es decir, el replicator dynamic surgió de considerar el modelo causal en el que el ambiente causa las estretgias y en el que las el tamaño de las estrategias depende de la adaptabilidad de esa estrategia al ambiente.
+
+% Parrafo
+
+El ejemplo Lewontin-Peters considera una única estrategia.
+%
+Nuestro modelo permite elegir el conjunto de estrategias que queramos.
+%
+Si bien podemos proponer cualquier tipo de estrategia, vamos a limitarnos a aquellas que tienen un recurso $R$ para repartir entre cara y sello.
+%
+\begin{equation}
+f_{\E}(\A) = \begin{cases}
+ \E & \A = 1 \\
+ R-\E & \A = 0
   \end{cases}
-  \approx
-\begin{cases}
- 0.71 & a= 1 \\
- 0.29 & a= 0
-\end{cases}
 \end{equation}
 %
-
-\begin{figure}[H]
-\centering
-\tikz{
-    \node[latent] (e) {$e$};
-    \node[const, right=of e] (en) {\ $p(e)=\text{Beta}(\alpha,\beta)$};
-    \node[const, left=of e] (ne) {Estrategias: \ \ \ };
-    
-    
-    \node[latent, below=of e] (r) {$a$};
-    \node[const, right=of r] (rn) {$P(a|e,T) = \text{Binomial}(a|T,e)$};
-    \node[const, left=of r] (nr) {Aptitud: \ \ \ };
-    
-    \edge {e} {r};
-    }
-\caption{}
-\label{fig:modelo_beta_binomial}
-\end{figure}
-
-
-Esta es solo una estrategia particular.
-Una forma general de representar todo el espacio de estrategias es mediane la distribución Bernoulli.
+con $ 0 \leq \E \leq R$.
+%
+Esta familia de funciones de apritud son proporcionales a la distribución de probabilidad Bernoulli.
 %
 \begin{equation}
-P(a|e) = \text{B}(a|e) = (1-e)^{(1-a)} \cdot e^a 
+\text{P}(\E|\A) = \E^\A \cdot (1-\E)^{(1-\A)} = \text{Bernoulli}(\E|\A)
 \end{equation}
 %
-con $a \in \{0,1\}$.
-La distribución Binomial, por su parte, permite representar de forma compacta una secuencia de observaciones, donde $a$ representa ahora la cantidad total de éxitos obtenidas en $n$ eventos, $a \in \{0, \dots, n\}$.
-%Para determinar cuál de todas las estrategia se ve favorecida por la evolución debemos definir la proproción inicial de las estrategias mediante una distribución de probabilidad a priori. 
-Si comenzamos con un prior uniforme, el posterior tiene solución analítica (pertenecerá a la distribución Beta).
-De esta forma extendemos el ejemplo propuesto por Ole Peters mediante el siguiente modelo bayesiano.
+con $ 0 \leq \E \leq 1$.
 %
-\begin{figure}[H]
-\centering
-\tikz{
-    \node[latent] (e) {$e$};
-    \node[const, right=of e] (en) {\ $p(e)=\text{Beta}(\alpha,\beta)$};
-    \node[const, left=of e] (ne) {Estrategias: \ \ \ };
-    
-    
-    \node[latent, below=of e] (r) {$a$};
-    \node[const, right=of r] (rn) {$P(a|e,T) = \text{Binomial}(a|T,e)$};
-    \node[const, left=of r] (nr) {Aptitud: \ \ \ };
-    
-    \edge {e} {r};
-    }
-\caption{Representación bayesiana de un sistema evolutivo compuesto únicamente por estrategias desertoras, basado en el juego propuesto por Ole Peters.}
-\label{fig:modelo_beta_binomial}
-\end{figure}
+La estrategia $\E \approx 0.71$ es la propuesta por Ole Peters, y la la estraetgia $\E \approx 0.77$ es la propuesta por Lewontin y Cohen.
+%
+Cuando consideramos las ifnitias estraetgias que tienen un recurso $R$ fijo, el posterior de la estretgia $\E$ dado un vector de observaciones del ambiente $\bm{a}$ tiene solución analítica y pertenecerá a la distribución Beta (notar que el denominador de la ecuación \ref{eq:replicator_dynamic_posterior} es la función Beta o la integral de Euler).
+%
+\begin{equation}
+P(\E|\bm{\A}) = \text{Beta}(\texttt{sum}(\bm{\A}), \, \texttt{length}(\bm{\A}) - \texttt{sum}(\bm{\A}))
+\end{equation}
 %
 Este modelo nos permitirá analizar la estabilidad evolutiva del espacio de estrategias desertoras. 
 Supongamos que la moneda está sesgada de modo que el $0.71$ de las veces sale cara y el $0.29$ sale seca.
@@ -687,7 +833,7 @@ En las siguientes figuras mostramos cómo cambia la proporción de las estrategi
     \centering
     \begin{subfigure}[b]{0.32\textwidth}
     \includegraphics[width=\linewidth]{figures/coin1.pdf}
-    \caption{$T = 0$}
+    \caption{$T = 1$}
     \end{subfigure}
     \begin{subfigure}[b]{0.32\textwidth}
     \includegraphics[width=\linewidth]{figures/coin2.pdf}
@@ -695,13 +841,13 @@ En las siguientes figuras mostramos cómo cambia la proporción de las estrategi
     \end{subfigure}
     \begin{subfigure}[b]{0.32\textwidth}
     \includegraphics[width=\linewidth]{figures/coin3.pdf}
-    \caption{$T = 10^7$}
+    \caption{$T = 10^5$}
     \end{subfigure}
-    \caption{Densidad (eje y) de las diferentes estrategias desertoras (eje x) a medida que avanza el juego ($T=0, \, T=10, \, T=10^7$).}
+    \caption{Densidad (eje y) de las diferentes estrategias desertoras (eje x) a medida que avanza el juego ($T=1, \, T=10, \, T=10^5$).}
     \label{fig:estrategias_individuales}
 \end{figure}
-
-El proceso evolutivo selecciona las estrategias individuales que mejor adaptadas están al ambiente.
+%
+El proceso evolutivo selecciona las estrategias individuales que reparten los recursos en la misma proporción que se generan los estados del ambiente.
 Cuando el ambientes genera los estados con una probabilidad de $p*=0.71$, entonces la estrategia individual mejor adaptada es la que en cada ronda apuesta $0.71$ de sus recursos al ambiente $a=1$, y $0.29$ de sus recursos al ambiente $a=0$.
 
 % Parrafo
@@ -718,82 +864,130 @@ Responderemos estas y otras preguntas en la siguiente sección.
 \section{Resultados}
 
 
-% \subsection{Estabilidad evolutiva}
-% 
-% Para ejemplificar el problema de la estabilidad evolutiva de la cooperación en este sistema, analicemos las tasas de crecimiento de las estrategias cooperadora y desertora en poblaciones mixtas.
-% La población más chica posible está compuesta por dos agentes.
-% En este caso las tasas de crecimiento temporal caracterísitica para las diferentes estrategias son (demostraciones en la sección Resultados):
-% %
-% \begin{equation}
-%    f(\cdot,\cdot) = \bordermatrix{ & C & D \cr
-%       C & \approx 1.0 & \approx 0.47 \cr
-%       D & \approx 0.95 & \approx 0.95 } 
-% \end{equation}
-% %
-% El primer agente que ``decida'' desertar unilateralmente va a ver reducida su tasa de crecimiento de $f(C,C) = 1.0$ a $ f(D,C) = 0.95$.
-% % 
-% \begin{conclution}[La no necesidad de castigos]
-% Sin necesidad de introducir castigos, las estrategias desertoras afectan negativamente su tasa de crecimiento a largo plazo a causa de su propio comportamiento, pues al evitar compartir sus recursos generan un aumento de sus fluctuaciones.
-% \end{conclution}
-% 
-% Esto parecería apoyar la idea de Ole Peters de que la cooperación no es altruista sino que está impulsada por el interés personal\footnote{
-% La estructura de pagos coinicide con la matriz de pagos del Stag-Hunt. Sin embargo, los análisis que llegan a la conclusión de que las poblaciones enteramente cooperadoras son evolutivamente estables se basan en dinámicas aditivas en poblaciones infinitas, apartándose del modelo estandar de crecimiento exponencial.}.
-% Sin embargo para la teoría de la evolución la frecuencia de los estrategias en la población depende, no del valor absoluto de la tasa de crecimiento, sino de la diferencia respecto de las tasas de crecimiento de las otras estrategias en la población.
-% Por más que la mutua cooperación ofrezca una tasa de crecimiento mayor que la deserción unilateral ($f(C,C) = 1.00 > 0.95 = f(D,C)$), un mutante desertor invadirá evolutivamente la población debido a que su tasa de crecimiento será mayor a la del agente cooperador ($f(D,C) = 0.95 > 0.47 = f(C,D)$). 
-% 
-% \begin{conclution}[Estabilidad evolutiva nivel 1]
-% Esto quiere decir que las estrategias cooperadoras no son evolutivamentes estables al interior de las poblaciones.
-% \end{conclution}
+En esta sección analizaremos si efectivamente existe alguna ventaja evolutiva de la cooperación y la especialización en presencia de deserción.
+Para ello analizaremos la selección multinivel medainte modelos causales probabilísiticos.
 
 
-En esta sección analizaremos si efectivamente existe alguna ventaja evolutiva de la cooperación.
-Esta pregunta permanece abierta por dos motivos.
-Por un lado, hemos adelantado en la sección Introducción que el comportamiento cooperativo no es evolutivamente estable al interior de los grupos.
-Por otro lado, hemos visto en la sección Metodología una extensión del modelo de Ole Peters que incluye todas las posibles estrategias $e$, y hemos visto que la estrategia analizada por Ole Peters está individualmente mal adaptada al ambiente.
+\subsection{Modelo multinivel}
 
-\subsection{Fitness de los comportamientos cooperadores y desertores}
-
-Para empezar, analicemos lo que ocurre a los comportamientos desertores $c=0$ y cooperadores $c=1$ en poblaciones enteramente desertoras y enteramente cooperadoras.
-La tasa de crecimiento característica de los agentes desertores la podemos calcular utilizando la media geomética (ecuación \ref{eq:geometric_mean}).
+Supongamos que tenemos grupos de $N$ individuos en el que $n$ son cooperadores y $N-n$ desertores.
 %
-\begin{equation}\label{eq:des_temporal_average}
-P(a(1\dots T), e | c_0) = \prod_t^T P(a(t)|e,c_0) \approx  P(a=1|e,c_0)^{p^*} P(a=0|e,c_0)^{1-p^*} = \overline{f}(e,c_0)^T
+Con $N$ individuos, hay $N+1$ tipos de grupos posibles, desde $n=0$ (todos desertores) hasta $n=N$ (todos cooperadores).
+%
+Luego, si cada individuo pertenece a un único grupo necesitamos $M = N(N+1)$ individuos totales, $i \in \{1, \dots, M\}$.
+%
+Los individuos están caracterizados por tres atributos: el vector de estrategias $\bm{\Ee} = (\Ee_1, \dots, \Ee_M)$, que es un parámetro del modelo (en el caso más simple, todos los individuos tienen la misma estrategia); por el grupo al que pertenecen, $P(g|i) = \mathbb{I}(i \texttt{ div } N = g)$, si la división entera por $N$ es igual al valor del grupo entonces pertenece a ese grupo con probabilidad $1$, sino con probabilidad $0$; y por el comportamiento social, los primeros $n$ individuos del grupo son cooperadores y el resto desertores.
+%
+Como antes, el ambiente $\A$ es una variable independiente que con probabilidad $p$ sale cara y con probabilidad $1-p$ sale sello, $P(\Aa) = p^\Aa (1-p)^{1-\Aa}$, pero ahora necesitamos un vector $\bm{\Aa}$, los agentes están influenciados por el $i-$ésimo elemento del vector ambiente, $P(i|\bm{\Aa}) = \bm{\Ee}_i^{\bm{\Aa}_i} (1-\bm{\Ee}_i)^{\bm{\Aa}_i$.
+%
+Ahora sin embargo, los agentes también están influenciados por los recursos del los otros agentes en el tiempo anterior, 
+%
+\begin{equation}
+P(i^{t+1}|i^t) = 
+\begin{cases}
+1/N & \texttt{esCooperador}(i^t) \text{ y } \texttt{mismoGrupo}(i^{t+1},i^{t}) \\
+0 & \texttt{esCooperador}(i^t) \text{ y } \neg \texttt{mismoGrupo}(i^{t+1},i^{t}) \\
+1 & \neg \texttt{esCooperador}(i^t)
+\end{cases}
 \end{equation}
 %
-Con $p^*$ la probabilidad real de generación de éxitos.
+Los individuos cooperadores dividen la riqueza en partes iguales con los miembros de su grupo, y los individuos desertores se quedan con toda su riqueza.
+%
+\begin{figure}[H]
+\centering
+ \begin{subfigure}[c]{0.48\textwidth}    
+ \centering
+ \tikz{
+    
+    \node[latent] (a1) {$\vec{\A}^{\,1}$};
+    \node[latent, right=of a1] (a2) {$\vec{\A}^{\,2}$};
+    
+    \node[latent, below=of a1 ] (i1) {$I^1$};
+    \node[latent, below=of a2 ] (i2) {$I^2$};
+    \node[latent, right=of i2 ] (i3) {$I^3$};
+
+    \node[latent, below=of i1 ] (c1) {$G^1$};
+    \node[latent, below=of i2 ] (c2) {$G^2$};
+    \node[latent , below=of i3 ] (c3) {$G^3$};
+    
+    \edge {a1} {i1};
+    \edge {a2} {i2};
+    \edge {i1} {i2,c1};
+    \edge {i2} {i3,c2};
+    \edge {i3} {c3};
+    
+    }
+ \end{subfigure}
+\begin{subfigure}[c]{0.48\textwidth}    
+ \centering
+ \tikz{
+    
+    \node[factor] (fa1) {};
+    \node[latent, yshift=0.5cm, below=of fa1] (a1) {$\vec{\A}^{\,1}$};
+    
+    \node[factor, yshift=0.5cm, below=of a1] (fia1) {};
+    
+    \node[latent, yshift=0.5cm, below=of fia1 ] (i1) {$I^1$};
+    
+    \node[factor, xshift=-0.3cm, right=of i1] (fii1) {};
+    \node[factor, yshift=0.5cm, below=of i1] (fg1) {};
+    \node[latent, yshift=0.5cm, below=of fg1 ] (g1) {$G^1$};
+    
+    \node[latent, xshift=-0.3cm, right=of fii1 ] (i2) {$I^2$};
+    
+    \node[factor, yshift=-0.5cm, above=of i2] (fia2) {};
+    \node[latent, yshift=-0.5cm, above=of fia2] (a2) {$\vec{\A}^{\,1}$};
+    \node[factor, yshift=-0.5cm, above=of a2] (fa2) {};
+    \node[factor, yshift=0.5cm, below=of i2] (fg2) {};
+    \node[latent, yshift=0.5cm, below=of fg2 ] (g2) {$G^2$};
+    
+    \node[factor, xshift=-0.3cm, right=of i2] (fii2) {};
+    
+    \node[latent, xshift=-0.3cm, right=of fii2 ] (i3) {$I^3$};
+    \node[factor, yshift=0.5cm, below=of i3] (fg3) {};
+    \node[latent, yshift=0.5cm, below=of fg3 ] (g3) {$G^2$};
+    
+     \node[const, left=of fa1] (pa) {$P(\bm{\Aa})$};
+     \node[const, left=of fia1] (pea) {$P(i|\bm{\Aa})$};
+     \node[const, left=of fg1] (pg) {$P(g|i)$};
+     \node[const, above=of fii2] (pee) {$P(i^{t+1}|i^t)$};
+     
+    \edge[-] {a1} {fa1, fia1};
+    \edge[-] {a2} {fa2, fia2};
+    \edge[-] {i1} {fii1,fg1,fia1};
+    \edge[-] {i2} {fii1, fii2,fg2,fia2};
+    \edge[-] {i3} {fii2, fg3};
+    \edge[-] {g1} {fg1};
+    \edge[-] {g2} {fg2};
+    \edge[-] {g3} {fg3};
+    }
+ \end{subfigure}
+\caption{Multilevel model}
+\label{fig:multilevel_model}
+\end{figure}
+%
+%Donde $\mathbb{I}(s_j^{t+1}\in s^{t})$ es la función indicadora que vale 1 cuando el sujeto $s_j$ forma parte del grupo y 0 cuando no forma parte del grupo.
+%
+Para empezar, analicemos lo que ocurre en grupos enteramente desertores y cooperadores.
+La probabilidad marginal de los individuos y el ambiente en grupos desertores, 
+%
+\begin{equation}\label{eq:des_temporal_average}
+\begin{split}
+P(i, \bm{\Aa}^1, \dots, \bm{\Aa}^T| g_0) &= \prod_t^T P(\bm{\Aa}) P(i|\bm{\Aa}^t_i) \\
+& \propto  \prod_t^T P(i|\bm{\Aa}^t_i) \approx  P(i|\bm{\Aa}^t_i=1)^{p} P(i|\bm{\Aa}^t_i=0)^{1-p}
+\end{split}
+\end{equation}
+%
+Con $p$ la probabilidad real de generación de éxitos.
+%
 La aproximación es una igualdad en el límite $\lim T \rightarrow \infty$.
 
 % Parrafo
 
 ¿Cuál es la tasa de crecimiento caracterísitica de las estrategias cooperadoras?
-En una población enteramente cooperativa la aptitud de los agentes depende del tamaño de la población $n$.
-Supongamos que tenemos $n$ sujetos caracterizadas por el vector de estrategias $e = \{e_1, \dots, e_n\}$.
-Cooperar significa que los sujetos, luego de tirar la moneda, dividen en partes iguales sus recursos con los miembros del grupo.
-%
-\begin{figure}[H]
-\centering
-\tikz{
-    
-    \node[latent, minimum size=0.9cm] (e1) {$e_i^{t}$};
-    \node[latent, right=of e1] (e2) {$e_j^{t+1}$};
-    \node[const, right=of e2] (e2n) {$P(e_j^{t+1}|e^{t}) = \frac{1}{|e^t|}$};
-    \node[const, right=of e2, yshift=-1cm] (e2n) {$P(e_i^{t}) = \text{Prior}^t$};
-    \node[const, right=of e2, yshift=-2cm] (e2n) {$P(a_i^t|e_i^{t}) = \text{Bernoulli}(a_i^t|e_i^t)$};
-    
-    \node[det, below=of e1] (a) {$a_i^{t}$};
-    \plate {cooperacion} {(e1)(a)} {$ 1 \leq i \leq n$}; 
-    \edge {e1} {a,e2};
-    }
-\caption{Extensión del Modelo de Ole Peters para el comportamiento cooperador en una población enteramente cooperadora.}
-\label{fig:modelo_cooperativo}
-\end{figure}
-%
-%Donde $\mathbb{I}(s_j^{t+1}\in s^{t})$ es la función indicadora que vale 1 cuando el sujeto $s_j$ forma parte del grupo y 0 cuando no forma parte del grupo.
-
-
-Supongamos que tenemos una población de tres cooperadores, $n=3$, que comparten sus recursos.
-Sea $a_i^t$ el resultado obtenido por el agente $i$ en el tiempo $t$.
-En cada paso temporal, el tamaño de la población (o el posterior proporcional) de cooperadores es,
+En una grupos enteramente cooperadores la aptitud de los agentes depende del tamaño $N$ del grupo.
+Par ejemplificar, supongamos que tenemos grupos de tamaño $N=3$.
+En cada paso temporal, la probabilidad marginal de los cooperadores es,
 \begin{equation}
 \begin{split}
 P(e_j^{t+1}, a^t) &=\frac{1}{3} \text{Prior}^t  \overbrace{P(a_1^t|e_1^t)}^{\hfrac{\text{Likelohood}}{\text{individual 1}}} + \frac{1}{3} \text{Prior}^t  \overbrace{P(a_2^t|e_2^t)}^{\hfrac{\text{Likelohood}}{\text{individual 2}}}  + \frac{1}{3} \text{Prior}^t  \overbrace{P(a_3^t|e_3^t)}^{\hfrac{\text{Likelohood}}{\text{individual 3}}}  \\
@@ -1074,6 +1268,35 @@ La aparición de una relación de mutua cooperación invade poblaciones compuest
 La ventaja evolutiva de la cooperación se extiende inmediatamente a poblaciones de tamaño mayor.
 Si existe ventaja evolutiva en poblaciones de tamaño 2, más aun en poblaciones de mayor tamaño.
 En el anexo hacemos una extensión de este modelo.
+
+
+% \subsection{Estabilidad evolutiva}
+%
+% Para ejemplificar el problema de la estabilidad evolutiva de la cooperación en este sistema, analicemos las tasas de crecimiento de las estrategias cooperadora y desertora en poblaciones mixtas.
+% La población más chica posible está compuesta por dos agentes.
+% En este caso las tasas de crecimiento temporal caracterísitica para las diferentes estrategias son (demostraciones en la sección Resultados):
+% %
+% \begin{equation}
+%    f(\cdot,\cdot) = \bordermatrix{ & C & D \cr
+%       C & \approx 1.0 & \approx 0.47 \cr
+%       D & \approx 0.95 & \approx 0.95 } 
+% \end{equation}
+% %
+% El primer agente que ``decida'' desertar unilateralmente va a ver reducida su tasa de crecimiento de $f(C,C) = 1.0$ a $ f(D,C) = 0.95$.
+% % 
+% \begin{conclution}[La no necesidad de castigos]
+% Sin necesidad de introducir castigos, las estrategias desertoras afectan negativamente su tasa de crecimiento a largo plazo a causa de su propio comportamiento, pues al evitar compartir sus recursos generan un aumento de sus fluctuaciones.
+% \end{conclution}
+% 
+% Esto parecería apoyar la idea de Ole Peters de que la cooperación no es altruista sino que está impulsada por el interés personal\footnote{
+% La estructura de pagos coinicide con la matriz de pagos del Stag-Hunt. Sin embargo, los análisis que llegan a la conclusión de que las poblaciones enteramente cooperadoras son evolutivamente estables se basan en dinámicas aditivas en poblaciones infinitas, apartándose del modelo estandar de crecimiento exponencial.}.
+% Sin embargo para la teoría de la evolución la frecuencia de los estrategias en la población depende, no del valor absoluto de la tasa de crecimiento, sino de la diferencia respecto de las tasas de crecimiento de las otras estrategias en la población.
+% Por más que la mutua cooperación ofrezca una tasa de crecimiento mayor que la deserción unilateral ($f(C,C) = 1.00 > 0.95 = f(D,C)$), un mutante desertor invadirá evolutivamente la población debido a que su tasa de crecimiento será mayor a la del agente cooperador ($f(D,C) = 0.95 > 0.47 = f(C,D)$). 
+% 
+% \begin{conclution}[Estabilidad evolutiva nivel 1]
+% Esto quiere decir que las estrategias cooperadoras no son evolutivamentes estables al interior de las poblaciones.
+% \end{conclution}
+
 
 \section{Discusiones}
 
