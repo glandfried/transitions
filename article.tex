@@ -634,7 +634,7 @@ Para definir la probabilidad de las estrategia dado el ambiente, $P(e|a)$, neces
 %
 Digamos, por ahora, que la probabilidad de la estrategia es proporcional a su aptitud, 
 %
-\begin{equation}
+\begin{equation}\label{eq:probabilidad_propro_aptitud}
 P(\E | \A) \propto  f_{\E}(\A)
 \end{equation}
 %
@@ -876,31 +876,33 @@ Con $N$ individuos, hay $N+1$ tipos de grupos posibles, desde $n=0$ (todos deser
 %
 Luego, si cada individuo pertenece a un único grupo necesitamos $M = N(N+1)$ individuos totales, $i \in \{1, \dots, M\}$.
 %
-Los individuos están caracterizados por tres atributos: el vector de estrategias $\bm{\Ee} = (\Ee_1, \dots, \Ee_M)$, que es un parámetro del modelo (en el caso más simple, todos los individuos tienen la misma estrategia); por el grupo al que pertenecen, $P(g|i) = \mathbb{I}(i \texttt{ div } N = g)$, si la división entera por $N$ es igual al valor del grupo entonces pertenece a ese grupo con probabilidad $1$, sino con probabilidad $0$; y por el comportamiento social, los primeros $n$ individuos del grupo son cooperadores y el resto desertores.
+Los individuos están caracterizados por tres atributos: el vector de estrategias $\bm{\Ee} = (\Ee_1, \dots, \Ee_M)$, que es un parámetro del modelo (en el caso más simple, todos los individuos tienen la misma estrategia); el grupo al que pertenecen, $\texttt{grupo}(i) = i \ \texttt{div} \ N$, definido como la división entera por $N$; y el comportamiento social, $\texttt{coop}(i) = i \ \texttt{mod} \ N < \texttt{grupo}(i)$, los primeros $n$ individuos del grupo son cooperadores y el resto desertores.
 %
-Como antes, el ambiente $\A$ es una variable independiente que con probabilidad $p$ sale cara y con probabilidad $1-p$ sale sello, $P(\Aa) = p^\Aa (1-p)^{1-\Aa}$, pero ahora necesitamos un vector $\bm{\Aa}$, los agentes están influenciados por el $i-$ésimo elemento del vector ambiente, $P(i|\bm{\Aa}) = \bm{\Ee}_i^{\bm{\Aa}_i} (1-\bm{\Ee}_i)^{\bm{\Aa}_i$.
+Como antes, el ambiente $\A$ es una variable independiente que con probabilidad $p$ sale cara y con probabilidad $1-p$ sale sello, $P(\Aa) = p^\Aa (1-p)^{1-\Aa}$, pero ahora en cada tiempo $t$ tenemos un vector $\bm{\Aa}$, en el que cada elemento influencia al $i-$ésimo agente, $P(i|\bm{\Aa}) = \bm{\Ee}_i^{\bm{\Aa}_i} (1-\bm{\Ee}_i)^{\bm{\Aa}_i$.
 %
 Ahora sin embargo, los agentes también están influenciados por los recursos del los otros agentes en el tiempo anterior, 
 %
 \begin{equation}
 P(i^{t+1}|i^t) = 
 \begin{cases}
-1/N & \texttt{esCooperador}(i^t) \text{ y } \texttt{mismoGrupo}(i^{t+1},i^{t}) \\
-0 & \texttt{esCooperador}(i^t) \text{ y } \neg \texttt{mismoGrupo}(i^{t+1},i^{t}) \\
-1 & \neg \texttt{esCooperador}(i^t)
+1/N & \texttt{coop}(i^t) \text{ y } (\texttt{grupo}(i^{t+1}) = \texttt{grupo}(i^{t})) \\
+1 & \neg \texttt{coop}(i^t) \text{ y } i^{t+1} = i^t \\
+0 & \texttt{else} \\
 \end{cases}
 \end{equation}
 %
 Los individuos cooperadores dividen la riqueza en partes iguales con los miembros de su grupo, y los individuos desertores se quedan con toda su riqueza.
 %
+Finalmente, los grupos dependen de los individuos que los integran $P(g|i)=\mathbb{I}(\texttt{grupo}(i) = g)$, la función indiciadora que vale $1$ para los individuos que forman parte del grupo $g$ y $0$ para el resto.
+%
 \begin{figure}[H]
 \centering
- \begin{subfigure}[c]{0.48\textwidth}    
+ \begin{subfigure}[b]{0.4\textwidth}    
  \centering
  \tikz{
     
-    \node[latent] (a1) {$\vec{\A}^{\,1}$};
-    \node[latent, right=of a1] (a2) {$\vec{\A}^{\,2}$};
+    \node[obs] (a1) {$\vec{\A}^{\,1}$};
+    \node[obs, right=of a1] (a2) {$\vec{\A}^{\,2}$};
     
     \node[latent, below=of a1 ] (i1) {$I^1$};
     \node[latent, below=of a2 ] (i2) {$I^2$};
@@ -910,6 +912,9 @@ Los individuos cooperadores dividen la riqueza en partes iguales con los miembro
     \node[latent, below=of i2 ] (c2) {$G^2$};
     \node[latent , below=of i3 ] (c3) {$G^3$};
     
+    \node[invisible, below=of c2, yshift=-0.5cm] (inv) {};
+    
+    
     \edge {a1} {i1};
     \edge {a2} {i2};
     \edge {i1} {i2,c1};
@@ -917,13 +922,15 @@ Los individuos cooperadores dividen la riqueza en partes iguales con los miembro
     \edge {i3} {c3};
     
     }
+ \caption{Red bayesiana}
+ \label{fig:red_bayesiana_multinivel}
  \end{subfigure}
-\begin{subfigure}[c]{0.48\textwidth}    
+\begin{subfigure}[b]{0.58\textwidth}    
  \centering
  \tikz{
     
     \node[factor] (fa1) {};
-    \node[latent, yshift=0.5cm, below=of fa1] (a1) {$\vec{\A}^{\,1}$};
+    \node[obs, yshift=0.5cm, below=of fa1] (a1) {$\vec{\A}^{\,1}$};
     
     \node[factor, yshift=0.5cm, below=of a1] (fia1) {};
     
@@ -936,7 +943,7 @@ Los individuos cooperadores dividen la riqueza en partes iguales con los miembro
     \node[latent, xshift=-0.3cm, right=of fii1 ] (i2) {$I^2$};
     
     \node[factor, yshift=-0.5cm, above=of i2] (fia2) {};
-    \node[latent, yshift=-0.5cm, above=of fia2] (a2) {$\vec{\A}^{\,1}$};
+    \node[obs, yshift=-0.5cm, above=of fia2] (a2) {$\vec{\A}^{\,1}$};
     \node[factor, yshift=-0.5cm, above=of a2] (fa2) {};
     \node[factor, yshift=0.5cm, below=of i2] (fg2) {};
     \node[latent, yshift=0.5cm, below=of fg2 ] (g2) {$G^2$};
@@ -945,7 +952,7 @@ Los individuos cooperadores dividen la riqueza en partes iguales con los miembro
     
     \node[latent, xshift=-0.3cm, right=of fii2 ] (i3) {$I^3$};
     \node[factor, yshift=0.5cm, below=of i3] (fg3) {};
-    \node[latent, yshift=0.5cm, below=of fg3 ] (g3) {$G^2$};
+    \node[latent, yshift=0.5cm, below=of fg3 ] (g3) {$G^3$};
     
      \node[const, left=of fa1] (pa) {$P(\bm{\Aa})$};
      \node[const, left=of fia1] (pea) {$P(i|\bm{\Aa})$};
@@ -961,36 +968,214 @@ Los individuos cooperadores dividen la riqueza en partes iguales con los miembro
     \edge[-] {g2} {fg2};
     \edge[-] {g3} {fg3};
     }
+ \caption{Factor graph}
+ \label{fig:factor_graph_multinivel}
  \end{subfigure}
-\caption{Multilevel model}
+\caption{Modelo multinivel. Figura~\ref{fig:red_bayesiana_multinivel}: la red de dependencias probabilísiticas que surge del modelo causal multinivel. Figura~\ref{fig:factor_graph_multinivel}: el grafo de factores inducido por la red bayesiana, que será utilizado para aplicar el algoritmo suma-producto. Las variables pintadas de gris se consideran observables. }
 \label{fig:multilevel_model}
 \end{figure}
 %
-%Donde $\mathbb{I}(s_j^{t+1}\in s^{t})$ es la función indicadora que vale 1 cuando el sujeto $s_j$ forma parte del grupo y 0 cuando no forma parte del grupo.
+En resumen, en cada tiempo $t$ el ambiente influencia a los individuos, y los individuos influencian a los grupos de su propio tiempo y a los individuos del tiempo $t+1$.
 %
-Para empezar, analicemos lo que ocurre en grupos enteramente desertores y cooperadores.
-La probabilidad marginal de los individuos y el ambiente en grupos desertores, 
+Este modelo tiene $3$ hiperparámetros: el vector de estrategias $\bm{\Ee}$, la probabilidad del ambiente $p$, y el tamaño de los grupos $N$.
 %
-\begin{equation}\label{eq:des_temporal_average}
-\begin{split}
-P(i, \bm{\Aa}^1, \dots, \bm{\Aa}^T| g_0) &= \prod_t^T P(\bm{\Aa}) P(i|\bm{\Aa}^t_i) \\
-& \propto  \prod_t^T P(i|\bm{\Aa}^t_i) \approx  P(i|\bm{\Aa}^t_i=1)^{p} P(i|\bm{\Aa}^t_i=0)^{1-p}
-\end{split}
-\end{equation}
-%
-Con $p$ la probabilidad real de generación de éxitos.
-%
-La aproximación es una igualdad en el límite $\lim T \rightarrow \infty$.
+Este modelo se puede simplificar levemente, usando una única variable de grupo que dependa de la última variable individuo, gracias a que la margnial de los grupos es la misma en cualquier tiempo $t$.
 
 % Parrafo
 
-¿Cuál es la tasa de crecimiento caracterísitica de las estrategias cooperadoras?
-En una grupos enteramente cooperadores la aptitud de los agentes depende del tamaño $N$ del grupo.
-Par ejemplificar, supongamos que tenemos grupos de tamaño $N=3$.
-En cada paso temporal, la probabilidad marginal de los cooperadores es,
+En el problema evolutivo nos va a interesar la selección de los individuos cooperadores dado el ambiente dentro de cada grupo (nivel 1), $P(\texttt{coop}(i^T)|\bm{\Aa}^1, \dots, \bm{\Aa}^{T-1}, g)$, la selección de los grupos dado el ambiente (nivel 2), $P(g^T|\bm{\Aa}^1, \dots, \bm{\Aa}^{T-1})$, y la selección de los individuos cooperadores dado el ambiente integrando todos los grupos (multinivel), $P(\texttt{coop}(i^T)|\bm{\Aa}^1, \dots, \bm{\Aa}^{T-1})$.
+%
+% \begin{table}[H]
+% \centering
+% \begin{tabular}{ccc}
+%         Selección de nivel 1 & Selección de nivel 2 & Selección multinivel\\ 
+%         $P(\texttt{coop}(i^T)|\bm{\Aa}^1, \dots, \bm{\Aa}^{T-1}, g)$ & $P(g^T|\bm{\Aa}^1, \dots, \bm{\Aa}^{T-1})$ & $P(\texttt{coop}(i^T)|\bm{\Aa}^1, \dots, \bm{\Aa}^{T-1})$ \\ 
+% \end{tabular}
+% \end{table}
+%
+La selección multinivel se obtiene integrando el producto de las selecciones de nivel 1 y 2, 
+%
+\begin{equation}\label{eq:posterior_multinivel}
+\underbrace{P(\texttt{coop}(i^T)|\bm{\Aa}^1, \dots, \bm{\Aa}^{T-1})}_{\text{Selección multinivel}} = \sum_{g=0}^N \underbrace{P(\texttt{coop}(i^T)|\bm{\Aa}^1, \dots, \bm{\Aa}^{T-1}, g)}_{\text{Selección de nivel 1}} \cdot \underbrace{P(g^T|\bm{\Aa}^1, \dots, \bm{\Aa}^{T-1})}_{\text{Selección de nivel 2}}
+\end{equation}
+%
+donde el posterior de la selección de nivel 1 se obtiene integrando la probabilidad de todos los individuos cooperadores que forman parte del grupo $g$,
+%
+\begin{equation}\label{eq:posterior_nivel_1}
+\begin{split}
+P(\texttt{coop}(i^T)|\bm{\Aa}^1, \dots, \bm{\Aa}^{T-1}, g) &= \sum_{j=1}^M P(I^T=j|\bm{\Aa}^1, \dots, \bm{\Aa}^{T-1}, g)\mathbb{I}(\texttt{coop}(j) \text{ y } \texttt{grupo}(j)=g)
+\end{split}
+\end{equation}
+
+% Parrafo
+
+Para calcular los posteriors va a ser suficiente con calcular las probabilidades marginales, pues ambas expresiones son proporcionales.
+%
+Las probabilidades marginales se pueden obtener mediante el sum-product algorithm en un modelo como el de la figura~\ref{fig:multilevel_model} pero que tiene como observables las variables que en el posterior aparecen en el condicional.
+%
+La probabilidad marginal de una variable $v$ es el producto de los mensajes que recibe de los nodos vecinos del factor graph.
+%
+Las variables observables no deben integrarse cuando se aplica el sum-product algorithm.
+%
+Esta marginal será la probabilidad conjunta de la variable $v$ y todas las variables observables del modelo.
+%
+La probabilidad marginal de los individuos en el tiempo $T$ cuando tenemos como observable todos los ambientes $\bm{\Aa}^{t}$ y el grupo $g$ es, 
+%
+\begin{equation}\label{eq:posterior_individuos_dado_grupo}
+P(i^{T},\bm{\Aa}^1, \dots, \bm{\Aa}^{T-1}, g) = m_{P(i^{T}|i^{T-1}) \rightarrow i^T}(i^T) \cdot m_{P(g^{T}|i^{T}) \rightarrow i^T}(i^T) 
+\end{equation}
+%
+el producto de los mensaje que la variable $i^T$ recibe del factor social $P(i^{T}|i^{T-1})$ y del factor de grupo $P(g^{T}|i^{T})$, en el modelo que tiene al conjunto $\{ \bm{\Aa}^1, \dots, \bm{\Aa}^{T-1}, g\}$ como variables observables.
+%
+La probabilidad marginal de los grupos en el tiempo $T$, cuando tenemos como observable todos los ambientes $\bm{\Aa}^{t}$ es, 
+%
+\begin{equation}\label{eq:posterior_nivel_2}
+P(g^{T},\bm{\Aa}^1, \dots, \bm{\Aa}^{T-1}) = m_{P(g^{T}|i^{T}) \rightarrow g^T}(g^T)
+\end{equation}
+%
+el mensaje que la variable $g^T$ recibe del factor de grupo $P(g^{T}|i^{T})$, en el modelo que tiene a $\{ \bm{\Aa}^1, \dots, \bm{\Aa}^{T-1}\}$ como observables.
+%
+Una forma alternativa de calcular la marginal de los selección multinivel (Eq.~\ref{eq:posterior_multinivel}) es integrando la probabilidad de los individuos cooperadores dado los ambientes
+\begin{equation}\label{eq:posterior_multinivel_alternativa}
+\begin{split}
+P(\texttt{coop}(i^T)|\bm{\Aa}^1, \dots, \bm{\Aa}^{T-1}) &= \sum_{j=1}^M P(I^T=j|\bm{\Aa}^1, \dots, \bm{\Aa}^{T-1})\mathbb{I}(\texttt{coop}(j))
+\end{split}
+\end{equation}
+%
+donde la probabilidad de los individuos cuando tenemos como observable todos los ambientes $\bm{\Aa}^{t}$,
+%
+\begin{equation}
+P(i^{T},\bm{\Aa}^1, \dots, \bm{\Aa}^{T-1}) = \sum_{n=1}^N P(i^{T},\bm{\Aa}^1, \dots, \bm{\Aa}^{T-1}, g=n) = m_{P(i^{T}|i^{T-1}) \rightarrow i^T}(i^T)
+\end{equation}
+%
+se reduce el mensaje que la variable $i^T$ recibe del factor de social$P(i^{T}|i^{T-1})$, en el modelo que tiene a $\{ \bm{\Aa}^1, \dots, \bm{\Aa}^{T-1}\}$ como observables.
+
+% Parrafo
+
+En resumen, necesitamos calcular solamente tres mensajes.
+%
+Cuando la variable de grupo es observable, el mensaje que el factor de grupo envía a la variable individuo es, 
+\begin{equation}
+ m_{P(g^{T}|i^{T}) \rightarrow i^T}(i^T) = P(g|i) = \mathbb{I}(\texttt{grupo}(i) = g)
+\end{equation}
+%
+la función indiciadora que vale $1$ para los individuos que forman parte del grupo $g$ y $0$ para el resto.
+%
+El mensaje del factor grupo a la variable grupo es,
+%
+\begin{equation}
+ m_{P(g^{T}|i^{T}) \rightarrow g^T}(g^T) = \sum_i P(g|i) m_{P(i^{T}|i^{T-1}) \rightarrow i^T}(i^T) 
+\end{equation}
+%
+Por lo que sólo resta calcular el mensaje del factor social a la variable individuo, $m_{P(i^{T}|i^{T-1}) \rightarrow i^T}(i^T)$.
+%
+Para calcular este mensaje, lo resolveremos por casos: primero para el grupo enteramente desertor, luego para el grupo enteramente cooperador, y finalmente para grupos mixtos.  
+%
+Salvo la diferencia que ocurre en el factor social, el resto de los mensajes que lo componen son compartidos en todos los casos.
+%
+Entre ellos están los mensajes que el factor ambiente envía a la variable ambiente,
+%
+\begin{equation}
+m_{P(\vec{\Aa}^{\,t})\rightarrow \vec{\Aa}^{\,t}}(\vec{\Aa}^{\,t}) = P(\vec{\Aa}^{\,t}) = m_{\vec{\Aa}^{\,t} \rightarrow P(i^t|\vec{\Aa}^{\,t})} (\vec{\Aa}^{\,t})
+\end{equation}
+%
+que es el mismo mensaje que la variable ambiente envía al factor individuo.
+%
+Luego, el mensaje que envía el factor individuo a la variable individuo es, 
+%
+\begin{equation}
+m_{P(i^t|\vec{\Aa}^{\,t}) \rightarrow i^t}(i^t) = P(\vec{\Aa}^{\,t}) \, P(i^t|\vec{\Aa}^{\,t})
+\end{equation}
+%
+Como la variable ambiente es observable, no realizamos su integración que se suele hacer cuando se los factores envían mensajes a las variables.
+%
+Y por último, el mensaje que la variable individuo envía al factor social,
+%
 \begin{equation}
 \begin{split}
-P(e_j^{t+1}, a^t) &=\frac{1}{3} \text{Prior}^t  \overbrace{P(a_1^t|e_1^t)}^{\hfrac{\text{Likelohood}}{\text{individual 1}}} + \frac{1}{3} \text{Prior}^t  \overbrace{P(a_2^t|e_2^t)}^{\hfrac{\text{Likelohood}}{\text{individual 2}}}  + \frac{1}{3} \text{Prior}^t  \overbrace{P(a_3^t|e_3^t)}^{\hfrac{\text{Likelohood}}{\text{individual 3}}}  \\
+m_{i^t \rightarrow P(i^{t+1}|i^t)}(i^t) =m_{P(i^t|\vec{\Aa}^{\,t}) \rightarrow i^t}(i^t) m_{P(i^t|i^{t-1}) \rightarrow i^t }(i^t) & = P(\vec{\Aa}^{\,t}) \, P(i^t|\vec{\Aa}^{\,t}) \text{Prior}(i^t) \\
+& \propto P(i^t|\vec{\Aa}^{\,t}) \text{Prior}(i^t)
+\end{split}
+\end{equation}
+%
+donde $\text{Prior}(i^t) = m_{P(i^t|i^{t-1}) \rightarrow i^t }(i^t)$ es el mensaje que la variable individuo recibe del factor social pasado.
+%
+No incluimos en la multiplicación el mensaje que envía el factor de grupo a la variable individuo porque al no ser observable se canela automáticamente, $m_{P(g^t|i^{t}) \rightarrow i^t}(i^t) = \sum_g P(g|i^t) = 1$.
+%
+Notar que este mensaje, que envía la variable individuo envía al factor social, es proprocional a los recursos del individuo $i$ en el tiempo $t$, el mismo proceso multiplicativo estudiado por Ole Peters, donde los recursos previos se actualizan en función del resultado obtenido por el ambiente, expresado como probabilidad o como aptitud $f(\Aa)$.
+%
+\begin{equation}
+\begin{split}
+m_{i^t \rightarrow P(i^{t+1}|i^t)}(i^t) & \propto P(i^t|\vec{\Aa}^{\,t}) \text{Prior}(i^t) \propto f_{\Ee_i}(\Aa_{i}^{t}) \text{Prior}(i^t)
+\end{split}
+\end{equation}
+%
+donde el segundo proporcional vale por construcción de la distribución de probabilidad (ver ecuación~\ref{eq:probabilidad_propro_aptitud}).
+%
+Usando la notación de Ole Peters, y considrando que el $\text{Prior}(i^t)$ son los recursos previos $\omega_i(t)$, el mensaje que envían los individuos al factor social es proporcional a los segundos nodos de la figura \ref{fig:protocolo}.
+%
+\begin{equation}
+m_{i^t \rightarrow P(i^{t+1}|i^t)}(i^t) \propto  f_{\Ee_i}(\Aa_{i}^{t}) \omega_i(t) 
+\end{equation}
+%
+El mensaje objetivo que necesitamos calcular para computar el posterior de la selección multinivel, el que envía el factor social a la variable individuo del siguiente tiempo, introduce el efecto social sobre los recursos individuales.
+%
+\begin{equation}
+\begin{split}
+m_{P(i^{t+1}|i^{t}) \rightarrow i^{t+1} }(i^{t+1}) & = \sum_{i^t} P(i^{t+1}|i^t) \, P(\vec{\Aa}^{\,t}) \, P(i^t|\vec{\Aa}^{\,t}) \,  m_{P(i^t|i^{t-1}) \rightarrow i^t }(i^t) 
+\end{split}
+\end{equation}
+%
+Este mensaje debemos resolver la siguiente recursión, que será diferente según la población sea enteramente desertora, enteramente cooperadora o mixta.
+%
+\begin{equation}
+\begin{split}
+m_{P(i^{t+1}|i^{t}) \rightarrow i^{t+1} }(i^{t+1}) & \propto \sum_{i^t} P(i^{t+1}|i^t) \, P(i^t|\vec{\Aa}^{\,t}) \,  \text{Prior}(i^t) \\
+& \propto \sum_{i^t} P(i^{t+1}|i^t) \, f_{\Ee_i}(\Aa_{i}^{t}) \omega_i(t)  = \omega_i(t+1)
+\end{split}
+\end{equation}
+%
+Este mensaje generaliza el tercer nodo de la figura~\ref{fig:protocolo}.
+
+\paragraph{Grupos enteramente desertores}
+
+Los individuos de los grupos enteramente desertores no se ven afectados por el factor social $P(i^{t}|i^{t-1})$. 
+%
+El mensaje que envía el factor social 
+
+
+La probabilidad marginal de los individuos en el tiempo $T$ y el ambiente de todos los tiempos en grupos desertores es,
+%
+\begin{equation}\label{eq:des_temporal_average}
+\begin{split}
+P(i^T, \bm{\Aa}^1, \dots, \bm{\Aa}^T, g=0) &= \mathbb{I}(\texttt{grupo}(i) = 0) \prod_t^T P(\bm{\Aa}) P(i|\bm{\Aa}^t_i) \\[-0.1cm]
+& \propto  \mathbb{I}(\texttt{grupo}(i) = 0) \prod_t^T P(i|\bm{\Aa}^t_i)  \\[0.2cm] 
+& \approx \mathbb{I}(\texttt{grupo}(i) = 0)  P(i|\bm{\Aa}^t_i=1)^{p} P(i|\bm{\Aa}^t_i=0)^{1-p}
+\end{split}
+\end{equation}
+%
+Con $p$ la probabilidad real del ambiente.
+%
+La aproximación es una igualdad en el límite $T \rightarrow \infty$.
+%
+La función indicadora vale $1$ para los individuos del grupo $g=0$ y vale $0$ para el resto.
+%
+Esta probabilidad marginal es proporcional al posterior $P(i| \bm{\Aa}^1, \dots, \bm{\Aa}^T, g=0)$.
+%
+Luego, el crecimiento de los recursos de los individuos desertores en poblaciones enteramente desertoras puede estimarse mediate la media geométrica de la variable aleatoria.
+
+% Parrafo
+
+\paragraph{Grupos enteramente cooperadores}
+%
+El mensaje que envian los factores $P(i^{t+1}|i^t)$ a la variable $i^t$ en cada paso temporal depende de: 1. el mensaje que reciben del tiempo anterior, que vamos a llamar $m_{i^t\rightarrow P(i^{t+1}|i^t)}(i^t) = \text{Prior}^t$, pues en el grupo enteramente cooperador es la misma para todos los individuos; del 
+
+Par ejemplificar, supongamos que el grupo tiene tamaño $N=2$.
+%
+
+\begin{equation}
+\begin{split}
+P(i^{t+1},\bm{\Aa}^1, \dots, \bm{\Aa}^T, g=N) &= \mathbb{I}(\texttt{grupo}(i) = N) \Big( \frac{1}{2} \text{Prior}^t  \overbrace{P(a_1^t|e_1^t)}^{\hfrac{\text{Likelohood}}{\text{individual 1}}} + \frac{1}{2} \text{Prior}^t  \overbrace{P(a_2^t|e_2^t)}^{\hfrac{\text{Likelohood}}{\text{individual 2}}} \Big)  \\
 &= \text{Prior}^t \underbrace{(\frac{1}{3} P(a_1^t|e_1^t) + \frac{1}{3} P(a_2^t|e_2^t) + \frac{1}{3} P(a_3^t|e_3^t))}_{f(a|e,c=1)\text{ fitness cooperativo}} = \text{Prior}^{t+1}
 \end{split}
 \end{equation}
