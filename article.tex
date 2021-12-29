@@ -1195,25 +1195,15 @@ m_{P(i^{T+1}|i^{T}) \rightarrow i^{T+1} }(i^{T+1}) & \overset{\hfrac{eq}{\ref{eq
 %
 Luego, la marginal objetivo en el caso de la población enteramente cooperadora es,
 %
-\begin{equation}\label{eq:des_temporal_average}
+\begin{equation}\label{eq:posterior_multinivel_desertor}
 \begin{split}
-P(i^{T+1}, \bm{\Aa}^1, \dots, \bm{\Aa}^{T}) & \overset{\hfrac{\text{caso}}{1}}{=} \prod_{t=1}^{T} P(\vec{\Aa}^{\,t}) P(i^{T+1}|\vec{\Aa}^{\,t}) \propto \prod_{t=1}^{T} f_{\Ee_i}(\Aa_{i}^{t})
+P(i^{T+1} | \bm{\Aa}^1, \dots, \bm{\Aa}^{T}) \overset{\hfrac{\text{caso}}{1}}{=} \prod_{t=1}^{T} P(i^{T+1}|\vec{\Aa}^{\,t}) & \propto \prod_{t=1}^{T} f_{\Ee_i}(\Aa_{i}^{t})
 \end{split}
 \end{equation}
 %
 con $i = i^{T+1}$.
-% 
-% Con $p$ la probabilidad real del ambiente.
-% %
-% La aproximación es una igualdad en el límite $T \rightarrow \infty$.
-% %
-% La función indicadora vale $1$ para los individuos del grupo $g=0$ y vale $0$ para el resto.
-% %
-% Esta probabilidad marginal es proporcional al posterior $P(i| \bm{\Aa}^1, \dots, \bm{\Aa}^T, g=0)$.
-% %
-% Luego, el crecimiento de los recursos de los individuos desertores en poblaciones enteramente desertoras puede estimarse mediate la media geométrica de la variable aleatoria.
 
-% Parrafo
+\todo[inline]{calcular la tasa de superviviencia del ejemplo de Ole eters }
 
 \paragraph{Grupos enteramente cooperadores}
 
@@ -1227,7 +1217,7 @@ Teniendo en cuenta que $m_{P(i^1|i^0) \rightarrow i^1 }(i^1}) = 1$, y que $P(i^{
 %
 donde $\texttt{G}(i^{T+1})$ es el conjunto de todos los miembros del grupo al que pertenece $i^{T+1}$.
 %
-Esta hipótesis vale en el caso $T=1$, pues $m_{P(i^1|i^0) \rightarrow i^1 }(i^1}) = 1$, y $P(i^{t+1}|i^t) = \frac{1}{N}\mathbb{I}(\texttt{grupo}(i^{t+1}) = \texttt{grupo}(i^t))$.
+Esta hipótesis vale en el caso $T=1$.
 %
 \begin{equation}
 \begin{split}
@@ -1235,73 +1225,47 @@ m_{P(i^{2}|i^{1}) \rightarrow i^{2} }(i^{2}) & \overset{\hfrac{eq}{\ref{eq:m_pii
 &= P(\vec{\Aa}^{\,1}) \sum_j^{\texttt{G}(i^2)} \frac{1}{N} \, P(j|\vec{\Aa}^{\,1})
 \end{split}
 \end{equation}
-
-
-
-
-
-
-El mensaje que envian los factores $P(i^{t+1}|i^t)$ a la variable $i^t$ en cada paso temporal depende de: 1. el mensaje que reciben del tiempo anterior, que vamos a llamar $m_{i^t\rightarrow P(i^{t+1}|i^t)}(i^t) = \text{Prior}^t$, pues en el grupo enteramente cooperador es la misma para todos los individuos; del 
-
-Par ejemplificar, supongamos que el grupo tiene tamaño $N=2$.
 %
-
+pues $m_{P(i^1|i^0) \rightarrow i^1 }(i^1}) = 1$, y $P(i^{t+1}|i^t) = \frac{1}{N}\mathbb{I}(\texttt{grupo}(i^{t+1}) = \texttt{grupo}(i^t))$
+%
+Y dado que vale la hipótesis inductiva para el tiempo $T$, $\text{HI}_c(T)$, también vale para el tiempo $T+1$, pues
+%
 \begin{equation}
 \begin{split}
-P(i^{t+1},\bm{\Aa}^1, \dots, \bm{\Aa}^T, g=N) &= \mathbb{I}(\texttt{grupo}(i) = N) \Big( \frac{1}{2} \text{Prior}^t  \overbrace{P(a_1^t|e_1^t)}^{\hfrac{\text{Likelohood}}{\text{individual 1}}} + \frac{1}{2} \text{Prior}^t  \overbrace{P(a_2^t|e_2^t)}^{\hfrac{\text{Likelohood}}{\text{individual 2}}} \Big)  \\
-&= \text{Prior}^t \underbrace{(\frac{1}{3} P(a_1^t|e_1^t) + \frac{1}{3} P(a_2^t|e_2^t) + \frac{1}{3} P(a_3^t|e_3^t))}_{f(a|e,c=1)\text{ fitness cooperativo}} = \text{Prior}^{t+1}
+m_{P(i^{T+1}|i^{T}) \rightarrow i^{T+1} }(i^{T+1}) & \overset{\hfrac{eq}{\ref{eq:m_pii_i}}}{=}  \sum_{i^T} P(i^{T+1}|i^T) \, P(\vec{\Aa}^{\,T}) \, P(i^T|\vec{\Aa}^{\,T}) \,  m_{P(i^T|i^{T-1}) \rightarrow i^T }(i^T) \\
+&\overset{\hfrac{}{\text{caso}}}{=} \sum_j^{\texttt{G}(i^{T+1})} P(\vec{\Aa}^{\,T}) \frac{1}{N} \, P(j|\vec{\Aa}^{\,T})m_{P(i^T|i^{T-1}) \rightarrow i^T }(j) \\
+&\overset{\hfrac{*}{\text{caso}}}{=} \Big(\sum_j^{\texttt{G}(i^{T+1})} P(\vec{\Aa}^{\,T}) \frac{1}{N} \, P(j|\vec{\Aa}^{\,T}) \Big) \Big(m_{P(i^T|i^{T-1}) \rightarrow i^T }(i^{T+1}) \Big) \\
+& \overset{\text{HI}_c}{=} \Big(\sum_j^{\texttt{G}(i^{T+1})} P(\vec{\Aa}^{\,T}) \frac{1}{N} \, P(j|\vec{\Aa}^{\,T}) \Big) \Big( \prod_{t=1}^{T-1}  \sum_j^{\texttt{G}(i^{T+1})} P(\vec{\Aa}^{\,t}) \frac{1}{N} P(j|\vec{\Aa}^{\,t})  \Big) \\
+& = \prod_{t=1}^{T}  P(\vec{\Aa}^{\,t})  \sum_j^{\texttt{G}(i^{T+1})} \frac{1}{N} P(j|\vec{\Aa}^{\,t})
 \end{split}
 \end{equation}
 %
-Es decir, el likelihood cooperativo es el promedio artimético de los likelihood individuales y es el mismo para todos los miembros del grupo.
-En cada paso temporal el posterior se genera como el producto del prior y el likelihood.
-Más aún, el prior del tiempo $t+1$ va a ser el mismo para todos.
-Esto significa que existe una independecia temporal entre eventos, que nos permite resumir el modelo probabilístico de la siguiente manera.
-% %
-% \begin{figure}[H]
-% \centering
-% \tikz{
-%     
-%     \node[det, xshift=1cm] (c) {$c$};
-%     \node[const, right=of c] (cn) {$P(c) = 0.5$};
-%     \node[const, right=of c, yshift=0.45cm] (nc) {Comportamiento: \ \ \ };
-%     
-%     \node[latent, xshift=-1cm] (e) {$e$};
-%     \node[const, left=of e] (en) {$P(e) = \text{Beta}(1,1)$};
-%     \node[const, left=of e, yshift=0.45cm] (ne) {Estrtategia: \ \ \ };
-%     
-%     \node[det, yshift=-1.5cm] (a) {$a^t$};
-%     \node[const, right=of a] (an) {$P(a^t|e,n,c)$};
-%     \node[const, left=of a] (na) {Aptitud: \ };
-%     
-%     \plate {eventos} {(an)(na)(a)} {$ 1 \leq t \leq T$}; 
-%     \edge {c,e} {a};
-%     }
-% \caption{Extensión del Modelo de Ole Peters incluyendo todo el espacio de estrategias $e$, el comportamiento $c$ cooperativo o desertivo de la población, compactado las variables temporales $T$ y de tamaño $n$.}
-% \label{fig:modelo_extendido_2}
-% \end{figure}
-% %
-% Este modelo nos permite incluir al mismo el comportamiento $c$ cooperativo o desertivo de la población, todo el espacio de estrategias $e$, compactado las variables temporales $T$ y de tamaño $n$ de la población.
-% El likelihood de la población desertora ya lo hemos derivado.
-% Terminemos de ver el likelihood de la población cooperadora.
-
-% Parrafo
-
+donde la igualdad $\overset{\hfrac{*}{\text{caso}}}{=}$ vale porque en los grupos enteramente cooperadores, los mensajes $m_{P(i^T|i^{T-1}) \rightarrow i^T }(j)$ son el mismo para todos los miembros del grupo $j$, lo que nos permite remplazar el índice $j$ por la variable $i^{T+1}$.
+%
+Luego, la marginal objetivo en el caso de la población enteramente cooperadora es 
+\begin{equation}\label{eq:marginal_multinivel_cooperador}
+P(i^{T+1}|\vec{\Aa}^{\,1},\dots,\vec{\Aa}^{\,T}) \overset{\hfrac{}{\text{caso}}}{=} \prod_{t=1}^{T} \underbrace{\sum_j^{\texttt{G}(i^{T+1})} \frac{1}{N} P(j|\vec{\Aa}^{\,t})}_{s_C(\vec{\Aa}\,)} \propto \prod_{t=1}^{T} \sum_j^{\texttt{G}(i^{T+1})} \frac{1}{N} f_{\Ee_j}(\Aa_{j}^{t})
+\end{equation}
+%
+Notar la diferencia entre esta ecuación, y la de ecuación~\ref{eq:marginal_multinivel_desertor}.
+%
+Los individuos de los grupos enteramente cooperadores juegan con una variable aleatoria, $s_C(\vec{\Aa}\,)$, distinta a la variable aleatoria de la que dependen los individuos de los grupos enteramente desertores.
+%
 Los posibles fitness cooperativos para la población de tamaño 3 son,
 %
 \begin{equation}
-f(a|e,n=3,c=1) =
+s_C(\vec{\Aa}\,) =
 \begin{cases}
-(1-e) & \text{ si } a = 0 \\
-\frac{1}{3} e + \frac{2}{3} (1-e)  & \text{ si } a = 1 \\
-\frac{2}{3} e + \frac{1}{3} (1-e)    & \text{ si } a = 2 \\
-e & \text{ si } a = 3
+(1-\Ee) & \text{ si } \texttt{sum}(\vec{\Aa}\,) = 0 \\
+\frac{1}{3} \Ee + \frac{2}{3} (1-\Ee)  & \text{ si } \texttt{sum}(\vec{\Aa}\,) = 1 \\
+\frac{2}{3} \Ee + \frac{1}{3} (1-\Ee)    & \text{ si } \texttt{sum}(\vec{\Aa}\,) = 2 \\
+\Ee & \text{ si } \texttt{sum}(\vec{\Aa}\,) = 3
 \end{cases}
 \end{equation}
 %
-Y en general, sea $n$ el tamaño de la población, $a$ la cantidad de éxitos, el fitness cooperativo es
+Y en general, 
 \begin{equation}\label{eq:fitness_cooperador}
-f(a|e,n,c=1) = \frac{a}{n} e + \frac{n-a}{n}(1-e)
+s_C(\vec{\Aa}\,) = \frac{a}{n} e + \frac{n-a}{n}(1-e)
 \end{equation}
 %
 El fitness conjunto, luego de observar $T$ estados del ambiente, es
