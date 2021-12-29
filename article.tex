@@ -1013,11 +1013,9 @@ Para calcular los posteriors va a ser suficiente con calcular las probabilidades
 %
 Las probabilidades marginales se pueden obtener mediante el sum-product algorithm en un modelo como el de la figura~\ref{fig:multilevel_model} pero que tiene como observables las variables que en el posterior aparecen en el condicional.
 %
-La probabilidad marginal de una variable $v$ es el producto de los mensajes que recibe de los nodos vecinos del factor graph.
+Ya hemos visto en la sección metodología que la probabilidad marginal de una variable $v$ es el producto de los mensajes que recibe de los nodos vecinos del factor graph.
 %
-Las variables observables no deben integrarse cuando se aplica el sum-product algorithm.
-%
-Esta marginal será la probabilidad conjunta de la variable $v$ y todas las variables observables del modelo.
+Las variables observables no deben integrarse cuando se aplica el sum-product algorithm, por lo que la marginal de $v$ será la probabilidad conjunta de $v$ y todas las variables observables del modelo.
 %
 La probabilidad marginal de los individuos en el tiempo $T$ cuando tenemos como observable todos los ambientes $\bm{\Aa}^{t}$ y el grupo $g$ es, 
 %
@@ -1042,36 +1040,42 @@ P(\texttt{coop}(i^T)|\bm{\Aa}^1, \dots, \bm{\Aa}^{T-1}) &= \sum_{j=1}^M P(I^T=j|
 \end{split}
 \end{equation}
 %
-donde la probabilidad de los individuos cuando tenemos como observable todos los ambientes $\bm{\Aa}^{t}$,
+donde la probabilidad de los individuos cuando tenemos como observable todos los ambientes $\bm{\Aa}^{t}$ es,
 %
 \begin{equation}
-P(i^{T},\bm{\Aa}^1, \dots, \bm{\Aa}^{T-1}) = \sum_{n=1}^N P(i^{T},\bm{\Aa}^1, \dots, \bm{\Aa}^{T-1}, g=n) = m_{P(i^{T}|i^{T-1}) \rightarrow i^T}(i^T)
+P(i^{T},\bm{\Aa}^1, \dots, \bm{\Aa}^{T-1}) = m_{P(i^{T}|i^{T-1}) \rightarrow i^T}(i^T)
 \end{equation}
 %
-se reduce el mensaje que la variable $i^T$ recibe del factor de social$P(i^{T}|i^{T-1})$, en el modelo que tiene a $\{ \bm{\Aa}^1, \dots, \bm{\Aa}^{T-1}\}$ como observables.
-
-% Parrafo
-
+el mensaje que la variable $i^T$ recibe del factor de social $P(i^{T}|i^{T-1})$ en el modelo que tiene a $\{ \bm{\Aa}^1, \dots, \bm{\Aa}^{T-1}\}$ como observables.
+%
 En resumen, necesitamos calcular solamente tres mensajes.
 %
-Cuando la variable de grupo es observable, el mensaje que el factor de grupo envía a la variable individuo es, 
+\begin{table}[H]
+\centering
+\begin{tabular}{cccc}
+ Mensajes & $m_{P(g^{T}|i^{T}) \rightarrow i^T}(i^T)$ & $m_{P(g^{T}|i^{T}) \rightarrow g^T}(g^T)$ & $m_{P(i^{T}|i^{T-1}) \rightarrow i^T}(i^T)$ \\[0.1cm]
+ Observables & $\{g\}$ &  $\{ \bm{\Aa}^1, \dots, \bm{\Aa}^{T-1}\}$ &   $\{ \bm{\Aa}^1, \dots, \bm{\Aa}^{T-1}\}$\\ 
+ & & & 
+\end{tabular}
+\caption{Los mensajes que componen las marginales de la selección de nivel 1, 2 y multinivel.}
+\end{table}
+%
+El primer mensaje, que envía el factor de grupo a la variable individuo cuando la variable de grupo es observable, es
 \begin{equation}
  m_{P(g^{T}|i^{T}) \rightarrow i^T}(i^T) = P(g|i) = \mathbb{I}(\texttt{grupo}(i) = g)
 \end{equation}
 %
 la función indiciadora que vale $1$ para los individuos que forman parte del grupo $g$ y $0$ para el resto.
 %
-El mensaje del factor grupo a la variable grupo es,
+El segundo mensaje, que el factor grupo envía a la variable grupo, es
 %
 \begin{equation}
  m_{P(g^{T}|i^{T}) \rightarrow g^T}(g^T) = \sum_i P(g|i) m_{P(i^{T}|i^{T-1}) \rightarrow i^T}(i^T) 
 \end{equation}
 %
-Por lo que sólo resta calcular el mensaje del factor social a la variable individuo, $m_{P(i^{T}|i^{T-1}) \rightarrow i^T}(i^T)$.
+el cual está compuesto por el tercer mensaje, que el factor social envía a la variable individuo.
 %
-Para calcular este mensaje, lo resolveremos por casos: primero para el grupo enteramente desertor, luego para el grupo enteramente cooperador, y finalmente para grupos mixtos.  
-%
-Salvo la diferencia que ocurre en el factor social, el resto de los mensajes que lo componen son compartidos en todos los casos.
+Para computar este tercer y último mensaje debemos calcular los mensajes precedentes que lo componen.
 %
 Entre ellos están los mensajes que el factor ambiente envía a la variable ambiente,
 %
@@ -1081,52 +1085,49 @@ m_{P(\vec{\Aa}^{\,t})\rightarrow \vec{\Aa}^{\,t}}(\vec{\Aa}^{\,t}) = P(\vec{\Aa}
 %
 que es el mismo mensaje que la variable ambiente envía al factor individuo.
 %
-Luego, el mensaje que envía el factor individuo a la variable individuo es, 
+Luego podemos generar el mensaje que envía el factor individuo a la variable individuo, 
 %
 \begin{equation}
 m_{P(i^t|\vec{\Aa}^{\,t}) \rightarrow i^t}(i^t) = P(\vec{\Aa}^{\,t}) \, P(i^t|\vec{\Aa}^{\,t})
 \end{equation}
 %
-Como la variable ambiente es observable, no realizamos su integración que se suele hacer cuando se los factores envían mensajes a las variables.
+que como la variable ambiente es observable, no incluye la integración que suelen hacer los mensajes que envían los factores.
 %
 Y por último, el mensaje que la variable individuo envía al factor social,
 %
-\begin{equation}
+\begin{equation}\label{eq:m_i_pii}
 \begin{split}
-m_{i^t \rightarrow P(i^{t+1}|i^t)}(i^t) =m_{P(i^t|\vec{\Aa}^{\,t}) \rightarrow i^t}(i^t) m_{P(i^t|i^{t-1}) \rightarrow i^t }(i^t) & = P(\vec{\Aa}^{\,t}) \, P(i^t|\vec{\Aa}^{\,t}) \text{Prior}(i^t) \\
-& \propto P(i^t|\vec{\Aa}^{\,t}) \text{Prior}(i^t)
+m_{i^t \rightarrow P(i^{t+1}|i^t)}(i^t) =m_{P(i^t|\vec{\Aa}^{\,t}) \rightarrow i^t}(i^t) m_{P(i^t|i^{t-1}) \rightarrow i^t }(i^t) & = P(\vec{\Aa}^{\,t}) \, P(i^t|\vec{\Aa}^{\,t}) \text{Prior}(i^t)
 \end{split}
 \end{equation}
 %
 donde $\text{Prior}(i^t) = m_{P(i^t|i^{t-1}) \rightarrow i^t }(i^t)$ es el mensaje que la variable individuo recibe del factor social pasado.
 %
-No incluimos en la multiplicación el mensaje que envía el factor de grupo a la variable individuo porque al no ser observable se canela automáticamente, $m_{P(g^t|i^{t}) \rightarrow i^t}(i^t) = \sum_g P(g|i^t) = 1$.
+No incluimos en la multiplicación el mensaje que el factor de grupo envía a la variable individuo porque al no ser observable se cancela automáticamente, $m_{P(g^t|i^{t}) \rightarrow i^t}(i^t) = \sum_g P(g|i^t) = 1$.
 %
-Notar que este mensaje, que envía la variable individuo envía al factor social, es proprocional a los recursos del individuo $i$ en el tiempo $t$, el mismo proceso multiplicativo estudiado por Ole Peters, donde los recursos previos se actualizan en función del resultado obtenido por el ambiente, expresado como probabilidad o como aptitud $f(\Aa)$.
+Notar que la ecuación~\ref{eq:m_i_pii} es proprocional al proceso multiplicativo estudiado por Ole Peters (segundos nodos de la figura \ref{fig:protocolo}), en el que los recursos previos $\omega_i(t)$ se actualizan en función de la aptitud al ambiente $f(\Aa)$.
 %
 \begin{equation}
 \begin{split}
-m_{i^t \rightarrow P(i^{t+1}|i^t)}(i^t) & \propto P(i^t|\vec{\Aa}^{\,t}) \text{Prior}(i^t) \propto f_{\Ee_i}(\Aa_{i}^{t}) \text{Prior}(i^t)
+m_{i^t \rightarrow P(i^{t+1}|i^t)}(i^t) & \propto P(i^t|\vec{\Aa}^{\,t}) \text{Prior}(i^t) \propto f_{\Ee_i}(\Aa_{i}^{t}) \text{Prior}(i^t) = f_{\Ee_i}(\Aa_{i}^{t}) \omega_i(t) 
 \end{split}
 \end{equation}
 %
-donde el segundo proporcional vale por construcción de la distribución de probabilidad (ver ecuación~\ref{eq:probabilidad_propro_aptitud}).
+donde el segundo proporcional vale por construcción de la distribución de probabilidad $ P(i^t|\vec{\Aa}^{\,t})$ (ver ecuación~\ref{eq:probabilidad_propro_aptitud}), y donde la igualdad final vale por renombre $\text{Prior}(i^t) = \omega_i(t)$.
 %
-Usando la notación de Ole Peters, y considrando que el $\text{Prior}(i^t)$ son los recursos previos $\omega_i(t)$, el mensaje que envían los individuos al factor social es proporcional a los segundos nodos de la figura \ref{fig:protocolo}.
+Finalmente, el tercer mensaje objetivo (que codifica la selección multinivel) introduce el factor social sobre los recursos individuales.
 %
-\begin{equation}
-m_{i^t \rightarrow P(i^{t+1}|i^t)}(i^t) \propto  f_{\Ee_i}(\Aa_{i}^{t}) \omega_i(t) 
-\end{equation}
-%
-El mensaje objetivo que necesitamos calcular para computar el posterior de la selección multinivel, el que envía el factor social a la variable individuo del siguiente tiempo, introduce el efecto social sobre los recursos individuales.
-%
-\begin{equation}
+\begin{equation}\label{eq:m_pii_i}
 \begin{split}
 m_{P(i^{t+1}|i^{t}) \rightarrow i^{t+1} }(i^{t+1}) & = \sum_{i^t} P(i^{t+1}|i^t) \, P(\vec{\Aa}^{\,t}) \, P(i^t|\vec{\Aa}^{\,t}) \,  m_{P(i^t|i^{t-1}) \rightarrow i^t }(i^t) 
 \end{split}
 \end{equation}
 %
-Este mensaje debemos resolver la siguiente recursión, que será diferente según la población sea enteramente desertora, enteramente cooperadora o mixta.
+Este mensaje está definido recursivamente.
+%
+Para calcularlo lo resolveremos por casos debido a que el factor social es diferente según la población sea enteramente desertora, enteramente cooperadora o mixta.
+%
+Notar que la ecuación~\ref{eq:m_pii_i} es proprocional a los recursos individuales luego de la redistribución del fondo común,
 %
 \begin{equation}
 \begin{split}
@@ -1135,39 +1136,111 @@ m_{P(i^{t+1}|i^{t}) \rightarrow i^{t+1} }(i^{t+1}) & \propto \sum_{i^t} P(i^{t+1
 \end{split}
 \end{equation}
 %
-Este mensaje generaliza el tercer nodo de la figura~\ref{fig:protocolo}.
+Este mensaje generaliza el último nodo de la figura~\ref{fig:protocolo}.
 
-\paragraph{Grupos enteramente desertores}
+% Parrafo
 
-Los individuos de los grupos enteramente desertores no se ven afectados por el factor social $P(i^{t}|i^{t-1})$. 
+En la introducción hemos derivado la tasa de crecimiento de esta marginal para los grupos enteramente desertoras y solo hemos presentado un resultado numérico para el grupo enteramente cooperador.
 %
-El mensaje que envía el factor social 
-
-
-La probabilidad marginal de los individuos en el tiempo $T$ y el ambiente de todos los tiempos en grupos desertores es,
+En la siguiente sección resolveremos analíticamente la marginal para grupos enteramente cooperadoras y mixtos, y verificaremos la hipótesis de Ole Peters de la ventaja evolutiva de la cooperación.
 %
-\begin{equation}\label{eq:des_temporal_average}
+Y la sección \ref{sec:especialization}, haremos uso de los resultado análitico para demostrar la ventaja evolutiva de la especilización, rechazando la hipótesis de Ole Peters de que la especialización es un mecanismo implausible para poblaciones chicas. 
+
+\subsection{Selección de nivel 1, nivel 2 y multinivel}
+
+En esta sección resolveremos por casos la marginal que necesitamos para computar el psterior de la la selección de nivel 1, de nivel 2 y multinivel,
+%
+\begin{equation}
 \begin{split}
-P(i^T, \bm{\Aa}^1, \dots, \bm{\Aa}^T, g=0) &= \mathbb{I}(\texttt{grupo}(i) = 0) \prod_t^T P(\bm{\Aa}) P(i|\bm{\Aa}^t_i) \\[-0.1cm]
-& \propto  \mathbb{I}(\texttt{grupo}(i) = 0) \prod_t^T P(i|\bm{\Aa}^t_i)  \\[0.2cm] 
-& \approx \mathbb{I}(\texttt{grupo}(i) = 0)  P(i|\bm{\Aa}^t_i=1)^{p} P(i|\bm{\Aa}^t_i=0)^{1-p}
+P(i^T, \bm{\Aa}^1, \dots, \bm{\Aa}^T) & = m_{P(i^{t+1}|i^{t}) \rightarrow i^{t+1} }(i^{t+1})
 \end{split}
 \end{equation}
 %
-Con $p$ la probabilidad real del ambiente.
+donde el mensaje está definido en la ecuación~\ref{eq:m_pii_i}.
 %
-La aproximación es una igualdad en el límite $T \rightarrow \infty$.
+Debido a que ese mensaje está definido de forma recursiva, realizaremos demostraciones por inducción, separada por casos: primero para los grupos enteramente desertores, luego para los grupos enteramente cooperadores, y finalmente para los grupos mixtos.
+
+\paragraph{Grupos enteramente desertores}
+
+Ya hemos visto en la introducción que la tasa de crecimiento de los individuos aislados, o de individuos en grupos enteramente desesertores, se puede calcular como la media geométrica.
 %
-La función indicadora vale $1$ para los individuos del grupo $g=0$ y vale $0$ para el resto.
+Proponemos la siguiente hipótesis inductiva para la población desertora ($\text{HI}_d(T)$)
 %
-Esta probabilidad marginal es proporcional al posterior $P(i| \bm{\Aa}^1, \dots, \bm{\Aa}^T, g=0)$.
+\begin{equation}
+ m_{P(i^{T+1}|i^{T}) \rightarrow i^{T+1} }(i^{T+1}) = \prod_{t=1}^{T} P(\vec{\Aa}^{\,t}) \, P(i^{T+1}|\vec{\Aa}^{\,t})
+\end{equation}
 %
-Luego, el crecimiento de los recursos de los individuos desertores en poblaciones enteramente desertoras puede estimarse mediate la media geométrica de la variable aleatoria.
+Esta hipótesis vale en el caso base $T=1$ 
+pues $m_{P(i^1|i^0) \rightarrow i^1 }(i^1}) = 1$, y $P(i^{t+1}|i^t) = \mathbb{I}(i^{t+1} = i^t)$,
+%
+\begin{equation}
+\begin{split}
+m_{P(i^{2}|i^{1}) \rightarrow i^{2} }(i^{2}) & \overset{\hfrac{eq}{\ref{eq:m_pii_i}}}{=}  \sum_{i^1} P(i^{2}|i^1) \, P(\vec{\Aa}^{\,1}) \, P(i^1|\vec{\Aa}^{\,1}) \,  m_{P(i^1|i^{0}) \rightarrow i^1 }(i^1) \\
+&= P(\vec{\Aa}^{\,1}) \, P(i^{2}|\vec{\Aa}^{\,1})
+\end{split}
+\end{equation}
+%
+Notar que se produjo un cambio de variable debido a que el único elemento de la sumatoria que sobrevive es el que $i^1 = i^2$. 
+%
+Y dado que vale la hipótesis inductiva para el tiempo $T$, $\text{HI}_d(T)$, también vale para el tiempo $T+1$, pues
+%
+\begin{equation}
+\begin{split}
+m_{P(i^{T+1}|i^{T}) \rightarrow i^{T+1} }(i^{T+1}) & \overset{\hfrac{eq}{\ref{eq:m_pii_i}}}{=}  \sum_{i^T} P(i^{T+1}|i^T) \, P(\vec{\Aa}^{\,T}) \, P(i^T|\vec{\Aa}^{\,T}) \,  m_{P(i^T|i^{T-1}) \rightarrow i^T }(i^T) \\
+&\overset{\hfrac{}{\text{caso}}}{=} P(\vec{\Aa}^{\,T}) \, P(i^{T+1}|\vec{\Aa}^{\,T}) \,  m_{P(i^T|i^{T-1}) \rightarrow i^T }(i^{T+1}) \\
+&\overset{\text{HI}_d}{=} P(\vec{\Aa}^{\,T}) \, P(i^{T+1}|\vec{\Aa}^{\,T}) \, \prod_{t=1}^{T-1} P(\vec{\Aa}^{\,t}) \, P(i^{T+1}|\vec{\Aa}^{\,t}) \\[-0.3cm]
+& = \prod_{t=1}^{T} P(\vec{\Aa}^{\,t}) \, P(i^{T+1}|\vec{\Aa}^{\,t})
+\end{split}
+\end{equation}
+%
+Luego, la marginal objetivo en el caso de la población enteramente cooperadora es,
+%
+\begin{equation}\label{eq:des_temporal_average}
+\begin{split}
+P(i^{T+1}, \bm{\Aa}^1, \dots, \bm{\Aa}^{T}) & \overset{\hfrac{\text{caso}}{1}}{=} \prod_{t=1}^{T} P(\vec{\Aa}^{\,t}) P(i^{T+1}|\vec{\Aa}^{\,t}) \propto \prod_{t=1}^{T} f_{\Ee_i}(\Aa_{i}^{t})
+\end{split}
+\end{equation}
+%
+con $i = i^{T+1}$.
+% 
+% Con $p$ la probabilidad real del ambiente.
+% %
+% La aproximación es una igualdad en el límite $T \rightarrow \infty$.
+% %
+% La función indicadora vale $1$ para los individuos del grupo $g=0$ y vale $0$ para el resto.
+% %
+% Esta probabilidad marginal es proporcional al posterior $P(i| \bm{\Aa}^1, \dots, \bm{\Aa}^T, g=0)$.
+% %
+% Luego, el crecimiento de los recursos de los individuos desertores en poblaciones enteramente desertoras puede estimarse mediate la media geométrica de la variable aleatoria.
 
 % Parrafo
 
 \paragraph{Grupos enteramente cooperadores}
+
+Ya hemos visto en la introducción que las poblaciones cooperadoras dividen los recursos en partes iguales luego de cada paso. 
 %
+Teniendo en cuenta que $m_{P(i^1|i^0) \rightarrow i^1 }(i^1}) = 1$, y que $P(i^{t+1}|i^t) = \mathbb{I}(\texttt{grupo}(i^{t+1}) = \texttt{grupo}(i^t))\frac{1}{N}$, proponemos la siguiente hipótesis inductiva para el grupo enteramente cooperador ($\text{HI}_c(T)$)
+%
+\begin{equation}
+ m_{P(i^{T+1}|i^{T}) \rightarrow i^{T+1} }(i^{T+1}) = \prod_{t=1}^{T}  P(\vec{\Aa}^{\,t})  \sum_j^{\texttt{G}(i^{T+1})} \frac{1}{N} P(j|\vec{\Aa}^{\,t}) 
+\end{equation}
+%
+donde $\texttt{G}(i^{T+1})$ es el conjunto de todos los miembros del grupo al que pertenece $i^{T+1}$.
+%
+Esta hipótesis vale en el caso $T=1$, pues $m_{P(i^1|i^0) \rightarrow i^1 }(i^1}) = 1$, y $P(i^{t+1}|i^t) = \frac{1}{N}\mathbb{I}(\texttt{grupo}(i^{t+1}) = \texttt{grupo}(i^t))$.
+%
+\begin{equation}
+\begin{split}
+m_{P(i^{2}|i^{1}) \rightarrow i^{2} }(i^{2}) & \overset{\hfrac{eq}{\ref{eq:m_pii_i}}}{=}  \sum_{i^1} P(i^{2}|i^1) \, P(\vec{\Aa}^{\,1}) \, P(i^1|\vec{\Aa}^{\,1}) \,  m_{P(i^1|i^{0}) \rightarrow i^1 }(i^1) \\[-0.3cm]
+&= P(\vec{\Aa}^{\,1}) \sum_j^{\texttt{G}(i^2)} \frac{1}{N} \, P(j|\vec{\Aa}^{\,1})
+\end{split}
+\end{equation}
+
+
+
+
+
+
 El mensaje que envian los factores $P(i^{t+1}|i^t)$ a la variable $i^t$ en cada paso temporal depende de: 1. el mensaje que reciben del tiempo anterior, que vamos a llamar $m_{i^t\rightarrow P(i^{t+1}|i^t)}(i^t) = \text{Prior}^t$, pues en el grupo enteramente cooperador es la misma para todos los individuos; del 
 
 Par ejemplificar, supongamos que el grupo tiene tamaño $N=2$.
