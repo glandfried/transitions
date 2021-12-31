@@ -87,6 +87,9 @@
 \end{abstract}
 
 
+\todo[inline]{En los mensajes usar las variables en Mayúsculas}
+\todo[inline]{Cambiar el nombre del atributo \texttt{grupo} de los individuos por \texttt{región} en la que se encuentran, para que no se confuda con la variable grupo del modelo}
+
 \section{Introducción}
 
 \en{In the last third of the history of the Universe, sometime around 4 billion years ago, a simple form of matter organization capable of self-replication appeared on Earth. }%
@@ -1144,109 +1147,79 @@ En la introducción hemos derivado la tasa de crecimiento de esta marginal para 
 %
 En la siguiente sección resolveremos analíticamente la marginal para grupos enteramente cooperadoras y mixtos, y verificaremos la hipótesis de Ole Peters de la ventaja evolutiva de la cooperación.
 %
-Y la sección \ref{sec:especialization}, haremos uso de los resultado análitico para demostrar la ventaja evolutiva de la especilización, rechazando la hipótesis de Ole Peters de que la especialización es un mecanismo implausible para poblaciones chicas. 
+Y la sección \ref{sec:especialization}, haremos uso de los resultado análitico para demostrar la ventaja evolutiva de la especilización, rechazando la hipótesis de Ole Peters de que la especialización es un mecanismo implausible para poblaciones chicas.
+
 
 \subsection{Selección de nivel 1, nivel 2 y multinivel}
 
-En esta sección resolveremos por casos la marginal que necesitamos para computar el psterior de la la selección de nivel 1, de nivel 2 y multinivel,
+En esta subsección resolveremos la marginal que necesitamos para computar el posterior de la la selección de nivel 1, de nivel 2 y multinivel,
 %
 \begin{equation}
 \begin{split}
-P(i^T, \bm{\Aa}^1, \dots, \bm{\Aa}^T) & = m_{P(i^{t+1}|i^{t}) \rightarrow i^{t+1} }(i^{t+1})
+P(i^{T+1}, \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T}) & = m_{P(i^{T+1}|i^{T}) \rightarrow i^{T+1} }(i^{T+1})
 \end{split}
 \end{equation}
 %
-donde el mensaje está definido en la ecuación~\ref{eq:m_pii_i}.
+donde el mensaje está definido recursivamente en la ecuación~\ref{eq:m_pii_i}.
 %
-Debido a que ese mensaje está definido de forma recursiva, realizaremos demostraciones por inducción, separada por casos: primero para los grupos enteramente desertores, luego para los grupos enteramente cooperadores, y finalmente para los grupos mixtos.
+En el anexo lo resolvemos por casos mediante inducción matemática: primero para los individuos del grupo enteramente desertores, luego para los del grupos enteramente cooperadores, y finalmente para los del grupos mixtos.
+%
+\begin{equation}
+P(i^{T+1}, \bm{\Aa}^1, \dots, \bm{\Aa}^T) = 
+\begin{cases}
+\prod_{t=1}^{T}  P(\vec{\Aa}^{\,t}) P(i^{T+1}|\vec{\Aa}^{\,t}) & \texttt{grupo}(i^{T+1})=0
+\prod_{t=1}^{T}  P(\vec{\Aa}^{\,t})  \sum_j^{\texttt{G}(i^{T+1})} \frac{1}{N} P(j|\vec{\Aa}^{\,t}) & \texttt{grupo}(i^{T+1}) = N  \\
+ & \texttt{coop}(i^{T+1}) \text{ y } \texttt{grupo}(i^{T+1}) \neq 0 \text{ y } \texttt{grupo}(i^{T+1}) \neq N
+\end{cases}
+\end{equation}
 
-\paragraph{Grupos enteramente desertores}
 
-Ya hemos visto en la introducción que la tasa de crecimiento de los individuos aislados, o de individuos en grupos enteramente desesertores, se puede calcular como la media geométrica.
-%
-Proponemos la siguiente hipótesis inductiva para la población desertora ($\text{HI}_d(T)$)
-%
-\begin{equation}
- m_{P(i^{T+1}|i^{T}) \rightarrow i^{T+1} }(i^{T+1}) = \prod_{t=1}^{T} P(\vec{\Aa}^{\,t}) \, P(i^{T+1}|\vec{\Aa}^{\,t})
-\end{equation}
-%
-Esta hipótesis vale en el caso base $T=1$ 
-pues $m_{P(i^1|i^0) \rightarrow i^1 }(i^1}) = 1$, y $P(i^{t+1}|i^t) = \mathbb{I}(i^{t+1} = i^t)$,
-%
-\begin{equation}
-\begin{split}
-m_{P(i^{2}|i^{1}) \rightarrow i^{2} }(i^{2}) & \overset{\hfrac{eq}{\ref{eq:m_pii_i}}}{=}  \sum_{i^1} P(i^{2}|i^1) \, P(\vec{\Aa}^{\,1}) \, P(i^1|\vec{\Aa}^{\,1}) \,  m_{P(i^1|i^{0}) \rightarrow i^1 }(i^1) \\
-&= P(\vec{\Aa}^{\,1}) \, P(i^{2}|\vec{\Aa}^{\,1})
-\end{split}
-\end{equation}
-%
-Notar que se produjo un cambio de variable debido a que el único elemento de la sumatoria que sobrevive es el que $i^1 = i^2$. 
-%
-Y dado que vale la hipótesis inductiva para el tiempo $T$, $\text{HI}_d(T)$, también vale para el tiempo $T+1$, pues
-%
-\begin{equation}
-\begin{split}
-m_{P(i^{T+1}|i^{T}) \rightarrow i^{T+1} }(i^{T+1}) & \overset{\hfrac{eq}{\ref{eq:m_pii_i}}}{=}  \sum_{i^T} P(i^{T+1}|i^T) \, P(\vec{\Aa}^{\,T}) \, P(i^T|\vec{\Aa}^{\,T}) \,  m_{P(i^T|i^{T-1}) \rightarrow i^T }(i^T) \\
-&\overset{\hfrac{}{\text{caso}}}{=} P(\vec{\Aa}^{\,T}) \, P(i^{T+1}|\vec{\Aa}^{\,T}) \,  m_{P(i^T|i^{T-1}) \rightarrow i^T }(i^{T+1}) \\
-&\overset{\text{HI}_d}{=} P(\vec{\Aa}^{\,T}) \, P(i^{T+1}|\vec{\Aa}^{\,T}) \, \prod_{t=1}^{T-1} P(\vec{\Aa}^{\,t}) \, P(i^{T+1}|\vec{\Aa}^{\,t}) \\[-0.3cm]
-& = \prod_{t=1}^{T} P(\vec{\Aa}^{\,t}) \, P(i^{T+1}|\vec{\Aa}^{\,t})
-\end{split}
-\end{equation}
-%
-Luego, la marginal objetivo en el caso de la población enteramente cooperadora es,
-%
-\begin{equation}\label{eq:posterior_multinivel_desertor}
-\begin{split}
-P(i^{T+1} | \bm{\Aa}^1, \dots, \bm{\Aa}^{T}) \overset{\hfrac{\text{caso}}{1}}{=} \prod_{t=1}^{T} P(i^{T+1}|\vec{\Aa}^{\,t}) & \propto \prod_{t=1}^{T} f_{\Ee_i}(\Aa_{i}^{t})
-\end{split}
-\end{equation}
-%
-con $i = i^{T+1}$.
 
-\todo[inline]{calcular la tasa de superviviencia del ejemplo de Ole eters }
 
-\paragraph{Grupos enteramente cooperadores}
 
-Ya hemos visto en la introducción que las poblaciones cooperadoras dividen los recursos en partes iguales luego de cada paso. 
-%
-Teniendo en cuenta que $m_{P(i^1|i^0) \rightarrow i^1 }(i^1}) = 1$, y que $P(i^{t+1}|i^t) = \mathbb{I}(\texttt{grupo}(i^{t+1}) = \texttt{grupo}(i^t))\frac{1}{N}$, proponemos la siguiente hipótesis inductiva para el grupo enteramente cooperador ($\text{HI}_c(T)$)
-%
-\begin{equation}
- m_{P(i^{T+1}|i^{T}) \rightarrow i^{T+1} }(i^{T+1}) = \prod_{t=1}^{T}  P(\vec{\Aa}^{\,t})  \sum_j^{\texttt{G}(i^{T+1})} \frac{1}{N} P(j|\vec{\Aa}^{\,t}) 
-\end{equation}
-%
-donde $\texttt{G}(i^{T+1})$ es el conjunto de todos los miembros del grupo al que pertenece $i^{T+1}$.
-%
-Esta hipótesis vale en el caso $T=1$.
-%
-\begin{equation}
-\begin{split}
-m_{P(i^{2}|i^{1}) \rightarrow i^{2} }(i^{2}) & \overset{\hfrac{eq}{\ref{eq:m_pii_i}}}{=}  \sum_{i^1} P(i^{2}|i^1) \, P(\vec{\Aa}^{\,1}) \, P(i^1|\vec{\Aa}^{\,1}) \,  m_{P(i^1|i^{0}) \rightarrow i^1 }(i^1) \\[-0.3cm]
-&= P(\vec{\Aa}^{\,1}) \sum_j^{\texttt{G}(i^2)} \frac{1}{N} \, P(j|\vec{\Aa}^{\,1})
-\end{split}
-\end{equation}
-%
-pues $m_{P(i^1|i^0) \rightarrow i^1 }(i^1}) = 1$, y $P(i^{t+1}|i^t) = \frac{1}{N}\mathbb{I}(\texttt{grupo}(i^{t+1}) = \texttt{grupo}(i^t))$
-%
-Y dado que vale la hipótesis inductiva para el tiempo $T$, $\text{HI}_c(T)$, también vale para el tiempo $T+1$, pues
-%
-\begin{equation}
-\begin{split}
-m_{P(i^{T+1}|i^{T}) \rightarrow i^{T+1} }(i^{T+1}) & \overset{\hfrac{eq}{\ref{eq:m_pii_i}}}{=}  \sum_{i^T} P(i^{T+1}|i^T) \, P(\vec{\Aa}^{\,T}) \, P(i^T|\vec{\Aa}^{\,T}) \,  m_{P(i^T|i^{T-1}) \rightarrow i^T }(i^T) \\
-&\overset{\hfrac{}{\text{caso}}}{=} \sum_j^{\texttt{G}(i^{T+1})} P(\vec{\Aa}^{\,T}) \frac{1}{N} \, P(j|\vec{\Aa}^{\,T})m_{P(i^T|i^{T-1}) \rightarrow i^T }(j) \\
-&\overset{\hfrac{*}{\text{caso}}}{=} \Big(\sum_j^{\texttt{G}(i^{T+1})} P(\vec{\Aa}^{\,T}) \frac{1}{N} \, P(j|\vec{\Aa}^{\,T}) \Big) \Big(m_{P(i^T|i^{T-1}) \rightarrow i^T }(i^{T+1}) \Big) \\
-& \overset{\text{HI}_c}{=} \Big(\sum_j^{\texttt{G}(i^{T+1})} P(\vec{\Aa}^{\,T}) \frac{1}{N} \, P(j|\vec{\Aa}^{\,T}) \Big) \Big( \prod_{t=1}^{T-1}  \sum_j^{\texttt{G}(i^{T+1})} P(\vec{\Aa}^{\,t}) \frac{1}{N} P(j|\vec{\Aa}^{\,t})  \Big) \\
-& = \prod_{t=1}^{T}  P(\vec{\Aa}^{\,t})  \sum_j^{\texttt{G}(i^{T+1})} \frac{1}{N} P(j|\vec{\Aa}^{\,t})
-\end{split}
-\end{equation}
-%
-donde la igualdad $\overset{\hfrac{*}{\text{caso}}}{=}$ vale porque en los grupos enteramente cooperadores, los mensajes $m_{P(i^T|i^{T-1}) \rightarrow i^T }(j)$ son el mismo para todos los miembros del grupo $j$, lo que nos permite remplazar el índice $j$ por la variable $i^{T+1}$.
-%
-Luego, la marginal objetivo en el caso de la población enteramente cooperadora es 
-\begin{equation}\label{eq:marginal_multinivel_cooperador}
-P(i^{T+1}|\vec{\Aa}^{\,1},\dots,\vec{\Aa}^{\,T}) \overset{\hfrac{}{\text{caso}}}{=} \prod_{t=1}^{T} \underbrace{\sum_j^{\texttt{G}(i^{T+1})} \frac{1}{N} P(j|\vec{\Aa}^{\,t})}_{s_C(\vec{\Aa}\,)} \propto \prod_{t=1}^{T} \sum_j^{\texttt{G}(i^{T+1})} \frac{1}{N} f_{\Ee_j}(\Aa_{j}^{t})
-\end{equation}
-%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+
+
+\subsection{Ventaja evolutiva de la cooperación}
+
 Notar la diferencia entre esta ecuación, y la de ecuación~\ref{eq:marginal_multinivel_desertor}.
 %
 Los individuos de los grupos enteramente cooperadores juegan con una variable aleatoria, $s_C(\vec{\Aa}\,)$, distinta a la variable aleatoria de la que dependen los individuos de los grupos enteramente desertores.
@@ -1555,82 +1528,176 @@ Hasta donde sabemos, nuestro trabajo sería el primero que desarrolla un modelo 
 
 \section{Apéndice}
 
-\subsection{Tasa de crecimiento en poblaciones mixtas-homogeneas}
 
-%En el modelo anterior vimos qué ocurre con la selección de grupos (nivel 2) $g \in \{CC, CD, DD\}$ en una población caracterizada por una estrategia individual $e = 0.71$ en un ambiente $p^* = 0.5$.
-%Sería interesante ver qué ocurre considerando simultaneamente todas las posibles poblaciones el espacio de estrategias, en todo el rango $e\in[0,1]$, tanto cooperativa como desertora
-Vamos a generalizar el fitness para grupos mixtos.
-% Las estrategias $e$ tiene un priori uniforme, $P(e) = \text{Beta}(1,1)$.
-% Los grupos se caracterizan por la proporción de desertores $d$.
-% Definimos un priori de los grupos en base a la cantidad de combinaciones, lo que puede ser calculado mediante la distribución $P(d) = \text{Binomial}(d|n,0.5)$.
-% La probabilidad de encontrar al interior de un grupo un comportamiento desertor o cooperativo, $c\in \{0,1\}$ respectivamente, depende del tipo de grupo que estamos evaluando $P(c|d)=d^{(1-c)} (1-d)^{c}$.
-Sea $N$ el tamaño de la población, y $n$ la cantidad de cooperadores en el grupo.
-En cada tiempo $t$ definimos una única variable aptitud que será representada como un vector $\bm{a} \in (a_0, a_1)$, donde $a_0$ representa éxito o fracaso del jugador desertor, y $a_1$ representa la suma total de éxitos en la población de cooperadores de tamaño $n$.
-% %
-% \begin{figure}[H]
-% \centering
-% \tikz{
-%     
-%     \node[latent, xshift=1cm] (c) {$c$};
-%     \node[const, right=of c] (cn) {$P(c|n,N) = \frac{n}{N}^{(1-c)} (1-d)^{c} \frac{n}{N} $};
-%     \node[const, right=of c, yshift=0.45cm] (nc) {Comportamiento: \ \ \ };
-%     
-%     \node[latent, xshift=-1cm] (e) {$e$};
-%     \node[const, left=of e] (en) {$P(e) = \text{Beta}(1,1)$};
-%     \node[const, left=of e, yshift=0.45cm] (ne) {Estrtategia: \ \ \ };
-%     
-%     \node[latent, yshift=-1.5cm] (a) {$\bm{a}^t$};
-%     \node[const, right=of a] (an) {$P(\bm{a}^t|c,e,n,N)$};
-%     \node[const, left=of a] (na) {Aptitud: \ };
-%     
-%     \plate {aptitud_mixta} {(an)(na)(a)} {$ 1 \leq t \leq T$}; 
-%     
-%     \edge {c,e} {a};
-%     }
-% \caption{Modelo extendido}
-% \label{fig:modelo_extendido}
-% \end{figure}
-% %
-% 
 
-% Parrafo
+\subsection{Selección de nivel 1, nivel 2 y multinivel}
 
-El tamaño de la población (o el posterior proporcional) para las estrategias cooperadoras en una población mixta es, 
+En esta sección resolveremos por casos la marginal que necesitamos para computar el psterior de la la selección de nivel 1, de nivel 2 y multinivel,
 %
 \begin{equation}
-P(\bm{a},e|n,N,c=1) = \frac{a_1}{N} e + \frac{n-a_1}{N}(1-e) = \frac{n}{N} f(a_1|e,n,c=1)
+\begin{split}
+P(i^T, \bm{\Aa}^1, \dots, \bm{\Aa}^T) & = m_{P(i^{t+1}|i^{t}) \rightarrow i^{t+1} }(i^{t+1})
+\end{split}
 \end{equation}
-%adora en poblaciones enteramente cooperado
-donde $f(a|e,n,c=1)$ es el fitness cooperativos de la estrategia cooperadora en poblaciones enteramente cooperadora (ecuación~\ref{eq:fitness_cooperador}).
-El tamaño de la población (o el posterior proporcional) luego de observar $T$ estados del ambiente, es
+%
+donde el mensaje está definido en la ecuación~\ref{eq:m_pii_i}.
+%
+Debido a que ese mensaje está definido de forma recursiva, realizaremos demostraciones por inducción, separada por casos: primero para los grupos enteramente desertores, luego para los grupos enteramente cooperadores, y finalmente para los grupos mixtos.
+
+\paragraph{Regiones enteramente desertoras}
+
+Ya hemos visto en la introducción que la tasa de crecimiento de los individuos aislados, o de individuos en grupos enteramente desesertores, se puede calcular como la media geométrica.
+%
+Proponemos la siguiente hipótesis inductiva para la población desertora ($\text{HI}_d(T)$)
 %
 \begin{equation}
-P(\bm{a}(1 \dots T),e|n,N,c=1) = \prod^T_t P(a_1(t),e|n,N,c=1)
+ m_{P(i^{T+1}|i^{T}) \rightarrow i^{T+1} }(i^{T+1}) = \prod_{t=1}^{T} P(\vec{\Aa}^{\,t}) \, P(i^{T+1}|\vec{\Aa}^{\,t})
 \end{equation}
 %
-Cuando $T$ tiende a infinito, $T \rightarrow \infty$,
+Esta hipótesis vale en el caso base $T=1$ 
+pues $m_{P(i^1|i^0) \rightarrow i^1 }(i^1}) = 1$, y $P(i^{t+1}|i^t) = \mathbb{I}(i^{t+1} = i^t)$,
+%
 \begin{equation}
-\lim_{T \rightarrow \infty}P(\bm{a}(1 \dots T),e|n,N,c=1) = \overline{f}(e,n,N,c=1)^T
+\begin{split}
+m_{P(i^{2}|i^{1}) \rightarrow i^{2} }(i^{2}) & \overset{\hfrac{eq}{\ref{eq:m_pii_i}}}{=}  \sum_{i^1} P(i^{2}|i^1) \, P(\vec{\Aa}^{\,1}) \, P(i^1|\vec{\Aa}^{\,1}) \,  m_{P(i^1|i^{0}) \rightarrow i^1 }(i^1) \\
+&= P(\vec{\Aa}^{\,1}) \, P(i^{2}|\vec{\Aa}^{\,1})
+\end{split}
 \end{equation}
-Por lo tanto, la tasa de crecimiento $\overline{f}$ es
-\begin{equation} \label{eq:coop_temporal_average}
-\overline{f}(e,n,N,c=1) = \prod_{a=0}^n P(a|e,n,N,c=1)^{\text{Binomial}(a|n,p^*)}
-\end{equation}
-
 %
-donde $p^*$ es la verdadera probabilidad de generación de los estados $a$.
-% 
-% Como el cambio de los recursos no depende de $t$, en t pasos la población tiene un posterior caracterísitico
-% \begin{equation}
-% \overline{p}(e|n,N,c=1,\bm{a}(1\dots t))\propto \overline{f}(e,n,N,c=1)^t
-% \end{equation}
-% %
-% donde el prior $p(e)$ podemos evitar ponerlo debido a que comenzamos con un distribución uniforme que no afecta la proporcionalidad.
+Notar que se produjo un cambio de variable debido a que el único elemento de la sumatoria que sobrevive es el que $i^1 = i^2$. 
+%
+Y dado que vale la hipótesis inductiva para el tiempo $T$, $\text{HI}_d(T)$, también vale para el tiempo $T+1$, pues
+%
+\begin{equation}
+\begin{split}
+m_{P(i^{T+1}|i^{T}) \rightarrow i^{T+1} }(i^{T+1}) & \overset{\hfrac{eq}{\ref{eq:m_pii_i}}}{=}  \sum_{i^T} P(i^{T+1}|i^T) \, P(\vec{\Aa}^{\,T}) \, P(i^T|\vec{\Aa}^{\,T}) \,  m_{P(i^T|i^{T-1}) \rightarrow i^T }(i^T) \\
+&\overset{\hfrac{}{\text{caso}}}{=} P(\vec{\Aa}^{\,T}) \, P(i^{T+1}|\vec{\Aa}^{\,T}) \,  m_{P(i^T|i^{T-1}) \rightarrow i^T }(i^{T+1}) \\
+&\overset{\text{HI}_d}{=} P(\vec{\Aa}^{\,T}) \, P(i^{T+1}|\vec{\Aa}^{\,T}) \, \prod_{t=1}^{T-1} P(\vec{\Aa}^{\,t}) \, P(i^{T+1}|\vec{\Aa}^{\,t}) \\[-0.3cm]
+& = \prod_{t=1}^{T} P(\vec{\Aa}^{\,t}) \, P(i^{T+1}|\vec{\Aa}^{\,t})
+\end{split}
+\end{equation}
+%
+Luego, la marginal objetivo en el caso de la población enteramente cooperadora es,
+%
+\begin{equation}\label{eq:posterior_multinivel_desertor}
+\begin{split}
+P(i^{T+1} | \bm{\Aa}^1, \dots, \bm{\Aa}^{T}) \overset{\hfrac{\text{caso}}{1}}{=} \prod_{t=1}^{T} P(i^{T+1}|\vec{\Aa}^{\,t}) & \propto \prod_{t=1}^{T} f_{\Ee_i}(\Aa_{i}^{t})
+\end{split}
+\end{equation}
+%
+con $i = i^{T+1}$.
 
-% Parrafo
+\paragraph{Regiones enteramente cooperadoras}
 
-¿Cuál es el likelihood-fitness de los desertores?
-Supongamos que primero juega y después recibe la parte del fondo común.
+Ya hemos visto en la introducción que los individuos cooperadores dividen los recursos en partes iguales luego de cada paso. 
+%
+Teniendo en cuenta que $m_{P(i^1|i^0) \rightarrow i^1 }(i^1}) = 1$, y que $P(i^{t+1}|i^t) = \mathbb{I}(\texttt{grupo}(i^{t+1}) = \texttt{grupo}(i^t))\frac{1}{N}$, proponemos la siguiente hipótesis inductiva para el grupo enteramente cooperador ($\text{HI}_c(T)$)
+%
+\begin{equation}
+ m_{P(i^{T+1}|i^{T}) \rightarrow i^{T+1} }(i^{T+1}) = \prod_{t=1}^{T}  P(\vec{\Aa}^{\,t})  \sum_j^{\texttt{G}(i^{T+1})} \frac{1}{N} P(j|\vec{\Aa}^{\,t}) 
+\end{equation}
+%
+donde $\texttt{G}(i^{T+1})$ es el conjunto de todos los miembros del grupo al que pertenece $i^{T+1}$.
+%
+Esta hipótesis vale en el caso $T=1$.
+%
+\begin{equation}
+\begin{split}
+m_{P(i^{2}|i^{1}) \rightarrow i^{2} }(i^{2}) & \overset{\hfrac{eq}{\ref{eq:m_pii_i}}}{=}  \sum_{i^1} P(i^{2}|i^1) \, P(\vec{\Aa}^{\,1}) \, P(i^1|\vec{\Aa}^{\,1}) \,  m_{P(i^1|i^{0}) \rightarrow i^1 }(i^1) \\[-0.3cm]
+&= P(\vec{\Aa}^{\,1}) \sum_j^{\texttt{G}(i^2)} \frac{1}{N} \, P(j|\vec{\Aa}^{\,1})
+\end{split}
+\end{equation}
+%
+pues $m_{P(i^1|i^0) \rightarrow i^1 }(i^1}) = 1$, y $P(i^{t+1}|i^t) = \frac{1}{N}\mathbb{I}(\texttt{grupo}(i^{t+1}) = \texttt{grupo}(i^t))$
+%
+Y dado que vale la hipótesis inductiva para el tiempo $T$, $\text{HI}_c(T)$, también vale para el tiempo $T+1$, pues
+%
+\begin{equation}
+\begin{split}
+m_{P(i^{T+1}|i^{T}) \rightarrow i^{T+1} }(i^{T+1}) & \overset{\hfrac{eq}{\ref{eq:m_pii_i}}}{=}  \sum_{i^T} P(i^{T+1}|i^T) \, P(\vec{\Aa}^{\,T}) \, P(i^T|\vec{\Aa}^{\,T}) \,  m_{P(i^T|i^{T-1}) \rightarrow i^T }(i^T) \\
+&\overset{\hfrac{}{\text{caso}}}{=} \sum_j^{\texttt{G}(i^{T+1})} P(\vec{\Aa}^{\,T}) \frac{1}{N} \, P(j|\vec{\Aa}^{\,T})m_{P(i^T|i^{T-1}) \rightarrow i^T }(j) \\
+&\overset{\hfrac{*}{\text{caso}}}{=} \Big(\sum_j^{\texttt{G}(i^{T+1})} P(\vec{\Aa}^{\,T}) \frac{1}{N} \, P(j|\vec{\Aa}^{\,T}) \Big) \Big(m_{P(i^T|i^{T-1}) \rightarrow i^T }(i^{T+1}) \Big) \\
+& \overset{\text{HI}_c}{=} \Big(\sum_j^{\texttt{G}(i^{T+1})} P(\vec{\Aa}^{\,T}) \frac{1}{N} \, P(j|\vec{\Aa}^{\,T}) \Big) \Big( \prod_{t=1}^{T-1}  \sum_j^{\texttt{G}(i^{T+1})} P(\vec{\Aa}^{\,t}) \frac{1}{N} P(j|\vec{\Aa}^{\,t})  \Big) \\
+& = \prod_{t=1}^{T}  P(\vec{\Aa}^{\,t})  \sum_j^{\texttt{G}(i^{T+1})} \frac{1}{N} P(j|\vec{\Aa}^{\,t})
+\end{split}
+\end{equation}
+%
+donde la igualdad $\overset{\hfrac{*}{\text{caso}}}{=}$ vale porque en los grupos enteramente cooperadores, los mensajes $m_{P(i^T|i^{T-1}) \rightarrow i^T }(j)$ son el mismo para todos los miembros del grupo $j$, lo que nos permite remplazar el índice $j$ por la variable $i^{T+1}$.
+%
+Luego, la marginal objetivo en el caso de la población enteramente cooperadora es 
+\begin{equation}\label{eq:marginal_multinivel_cooperador}
+P(i^{T+1}|\vec{\Aa}^{\,1},\dots,\vec{\Aa}^{\,T}) \overset{\hfrac{}{\text{caso}}}{=} \prod_{t=1}^{T} \underbrace{\sum_j^{\texttt{G}(i^{T+1})} \frac{1}{N} P(j|\vec{\Aa}^{\,t})}_{s_C(\vec{\Aa}\,)} \propto \prod_{t=1}^{T} \sum_j^{\texttt{socios}(i^{T+1})} \frac{1}{N} f_{\Ee_j}(\Aa_{j}^{t})
+\end{equation}
+%
+
+\paragraph{Regiones mixtas, individuos cooperadores}
+
+Los bienes comunes son generados por el conjunto de individuos cooperadores de la región $r$, \texttt{socios}($r$).
+%
+El tamaño de este conjunto depende de la cantidad de cooperadores que están en la misma región.
+%
+Sin embargo, la división del bien común se sigue dividiendo en partes iguales entre todos los miembros de la región $\frac{1}{2}$.
+%
+\begin{equation}
+ P(i^{T+1}|\vec{\Aa}^{\,1},\dots,\vec{\Aa}^{\,T}) = \prod_{t=1}^{T}  P(\vec{\Aa}^{\,t}) \frac{1}{N} \sum_j^{\texttt{socios}(i^{T+1})} P(j|\vec{\Aa}^{\,t}) 
+\end{equation}
+%
+donde la demostración es equivalente al caso anterior. 
+
+\paragraph{Regiones mixtas, individuos desertores}
+
+Antes de proponer una hipótesis inductiva, veamos qué con los primero mensajes pasos de modo de ganar intuición.
+%
+Por definición, 
+%
+\begin{equation}
+m_{P(I^{2}|I^{1}) \rightarrow I^{2} }(k) = \sum_{i^1} P(k|i^1)  P(\vec{\Aa}^{\,1})P(i^1|\vec{\Aa}^{\,1})
+\end{equation}
+%
+En el caso de regiones mixtas, el factor social vale $1$ cuando $k=i^1$ y vale $1/N$ cuando $i^1 \in \texttt{socios}(r)$.
+%
+\begin{equation}
+\begin{split}
+m_{P(I^{2}|I^{1}) \rightarrow I^{2} }(k) = P(\vec{\Aa}^{\,1}) \Big( \underbrace{P(k|\vec{\Aa}^{\,1})\phantom{\Bigg|_j} }_{s_D(1)} + \underbrace{\sum_j^{\texttt{socios}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,1})}_{s_C(1)} \Big) 
+\end{split}
+\end{equation}
+%
+Donde $s_D(t)$ y $s_C(t)$ son las variables aleatorias que reciben los individuos en regiones enteramente desertoras y cooperadoras en el tiempo $t$.  
+%
+Por definición, el siguiente mensaje 
+%
+\begin{equation}
+\begin{split}
+m_{P(I^{3}|I^{2}) \rightarrow I^{3} }(k) &= \sum_{i^2} P(k|i^2)  P(\vec{\Aa}^{\,2}) P(i^2|\vec{\Aa}^{\,2}) m_{P(I^{2}|I^{1}) \rightarrow I^{2} }(k) \\[-0.25cm]
+&= \sum_{i^2} P(i^3|i^2) P(\vec{\Aa}^{\,2})P(i^2|\vec{\Aa}^{\,2}) \Bigg(P(\vec{\Aa}^{\,1}) \Big( P(k|\vec{\Aa}^{\,1}) + \sum_j^{\texttt{socios}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,1}) \Big) \Bigg) \\
+&= P(\vec{\Aa}^{\,2})P(\vec{\Aa}^{\,1}) (s_D(1) + s_C(1)) \sum_{i^2} P(i^3|i^2) P(i^2|\vec{\Aa}^{\,2}) \\[-0.25cm]
+&= P(\vec{\Aa}^{\,2})P(\vec{\Aa}^{\,1}) (s_D(1) + s_C(1)) \Big(P(k|\vec{\Aa}^{\,2}) + \sum_j^{\texttt{socios}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,2}) \Big) \\
+&= P(\vec{\Aa}^{\,2})P(\vec{\Aa}^{\,1}) (s_D(1) + s_C(1)) (s_D(2) + s_C(2))  \\
+\end{split}
+\end{equation}
+%
+Luego, la hipótesis inductiva $\text{HI}_M(T)$ para individuos desertores $k$ de regiones $r$ mixtas es,
+\begin{equation}
+m_{P(I^{T+1}|I^{T}) \rightarrow I^{T+1} }(k) = \Bigg(\prod_{t=1}^{T} P(\vec{\Aa}^{\,2}) \Bigg) \Bigg(\prod_{t=1}^{T} s_D(t) + s_C(t) \Bigg) 
+\end{equation}
+%
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+
+
+
+que primero juega y después recibe la parte del fondo común.
 \begin{equation}
 P(\bm{a}^{:t},e|n,N, c_0) =
 \begin{cases}
