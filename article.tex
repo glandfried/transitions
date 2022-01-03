@@ -1178,6 +1178,21 @@ P(i^{T+1}, \bm{\Aa}^1, \dots, \bm{\Aa}^T) =
 
 
 
+Posteriors.
+
+
+
+\begin{equation}
+ P(k|\vec{\Aa}^{\,1},\dots,\vec{\Aa}^{\,T}) = \prod_{t=1}^{T}   \frac{1}{N} \sum_j^{\texttt{socios}(r)} P(j|\vec{\Aa}^{\,t}) 
+\end{equation}
+
+
+\begin{equation}
+P(k|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T}) = \Big(\prod_{t=1}^{T} P(k|\vec{\Aa}^{\,t}) \Big) + \Big(\sum_{t=1}^{T} P(c|\wedge_{q=1}^t\vec{\Aa}^{\,q})  \prod_{q=t+1}^T P(k|\vec{\Aa}^{\,q}) \Big)
+\end{equation}
+
+
+
 
 
 
@@ -1536,7 +1551,7 @@ En esta sección resolveremos por casos la marginal que necesitamos para computa
 %
 \begin{equation}
 \begin{split}
-P(i^T, \bm{\Aa}^1, \dots, \bm{\Aa}^T) & = m_{P(i^{t+1}|i^{t}) \rightarrow i^{t+1} }(i^{t+1})
+P(i^{T+1}, \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T}) & = m_{P(I^{T+1}|I^{T}) \rightarrow I^{T+1} }(i^{T+1})
 \end{split}
 \end{equation}
 %
@@ -1544,7 +1559,7 @@ donde el mensaje está definido en la ecuación~\ref{eq:m_pii_i}.
 %
 Debido a que ese mensaje está definido de forma recursiva, realizaremos demostraciones por inducción, separada por casos: primero para los grupos enteramente desertores, luego para los grupos enteramente cooperadores, y finalmente para los grupos mixtos.
 
-\paragraph{Regiones enteramente desertoras}
+\subsubsection{Regiones enteramente desertoras}
 
 Ya hemos visto en la introducción que la tasa de crecimiento de los individuos aislados, o de individuos en grupos enteramente desesertores, se puede calcular como la media geométrica.
 %
@@ -1587,7 +1602,7 @@ P(i^{T+1} | \bm{\Aa}^1, \dots, \bm{\Aa}^{T}) \overset{\hfrac{\text{caso}}{1}}{=}
 %
 con $i = i^{T+1}$.
 
-\paragraph{Regiones enteramente cooperadoras}
+\subsubsection{Regiones enteramente cooperadoras}
 
 Ya hemos visto en la introducción que los individuos cooperadores dividen los recursos en partes iguales luego de cada paso. 
 %
@@ -1630,7 +1645,7 @@ P(i^{T+1}|\vec{\Aa}^{\,1},\dots,\vec{\Aa}^{\,T}) \overset{\hfrac{}{\text{caso}}}
 \end{equation}
 %
 
-\paragraph{Regiones mixtas, individuos cooperadores}
+\subsubsection{Regiones mixtas, individuos cooperadores}
 
 Los bienes comunes son generados por el conjunto de individuos cooperadores de la región $r$, \texttt{socios}($r$).
 %
@@ -1644,9 +1659,9 @@ Sin embargo, la división del bien común se sigue dividiendo en partes iguales 
 %
 donde la demostración es equivalente al caso anterior. 
 
-\paragraph{Regiones mixtas, individuos desertores}
+\subsubsection{Regiones mixtas, individuos desertores}
 
-Antes de proponer una hipótesis inductiva, veamos qué con los primero mensajes pasos de modo de ganar intuición.
+Antes de proponer una hipótesis inductiva, veamos qué ocurre con los primero mensajes de la recursión de modo de ganar intuición.
 %
 Por definición, 
 %
@@ -1658,97 +1673,66 @@ En el caso de regiones mixtas, el factor social vale $1$ cuando $k=i^1$ y vale $
 %
 \begin{equation}
 \begin{split}
-m_{P(I^{2}|I^{1}) \rightarrow I^{2} }(k) = P(\vec{\Aa}^{\,1}) \Big( \underbrace{P(k|\vec{\Aa}^{\,1})\phantom{\Bigg|_j} }_{s_D(1)} + \underbrace{\sum_j^{\texttt{socios}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,1})}_{s_C(1)} \Big) 
+m_{P(I^{2}|I^{1}) \rightarrow I^{2} }(k) = P(\vec{\Aa}^{\,1}) \Big( P(k|\vec{\Aa}^{\,1})\phantom{\Bigg|_j} + \underbrace{\sum_j^{\texttt{socios}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,1})}_{P(c|\vec{\Aa}^{\,1})} \Big) 
 \end{split}
 \end{equation}
 %
-Donde $s_D(t)$ y $s_C(t)$ son las variables aleatorias que reciben los individuos en regiones enteramente desertoras y cooperadoras en el tiempo $t$.  
+donde $P(c|\vec{\Aa}^{\,1})$ es el posteriors de los individuos cooperadoras.
 %
 Por definición, el siguiente mensaje 
 %
 \begin{equation}
 \begin{split}
-m_{P(I^{3}|I^{2}) \rightarrow I^{3} }(k) &= \sum_{i^2} P(k|i^2)  P(\vec{\Aa}^{\,2}) P(i^2|\vec{\Aa}^{\,2}) m_{P(I^{2}|I^{1}) \rightarrow I^{2} }(k) \\[-0.25cm]
-&= \sum_{i^2} P(i^3|i^2) P(\vec{\Aa}^{\,2})P(i^2|\vec{\Aa}^{\,2}) \Bigg(P(\vec{\Aa}^{\,1}) \Big( P(k|\vec{\Aa}^{\,1}) + \sum_j^{\texttt{socios}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,1}) \Big) \Bigg) \\
-&= P(\vec{\Aa}^{\,2})P(\vec{\Aa}^{\,1}) (s_D(1) + s_C(1)) \sum_{i^2} P(i^3|i^2) P(i^2|\vec{\Aa}^{\,2}) \\[-0.25cm]
-&= P(\vec{\Aa}^{\,2})P(\vec{\Aa}^{\,1}) (s_D(1) + s_C(1)) \Big(P(k|\vec{\Aa}^{\,2}) + \sum_j^{\texttt{socios}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,2}) \Big) \\
-&= P(\vec{\Aa}^{\,2})P(\vec{\Aa}^{\,1}) (s_D(1) + s_C(1)) (s_D(2) + s_C(2))  \\
+m_{P(I^{3}|I^{2}) \rightarrow I^{3} }(k) &= \sum_{i^2} P(k|i^2)  P(\vec{\Aa}^{\,2}) P(i^2|\vec{\Aa}^{\,2}) m_{P(I^{2}|I^{1}) \rightarrow I^{2} }(i^2) \\
+& =  P(\vec{\Aa}^{\,2}) \Big( P(k|\vec{\Aa}^{\,2}) \underbrace{m_{P(I^{2}|I^{1}) \rightarrow I^{2} }(k)}_{P(k|\vec{\Aa}^{\,1})P(\vec{\Aa}^{\,1})} + \sum_j^{\texttt{socios}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,2}) \underbrace{m_{P(I^{2}|I^{1}) \rightarrow I^{2} }(j)}_{P(c|\vec{\Aa}^{\,1})P(\vec{\Aa}^{\,1})}  \Big) \\
 \end{split}
+\end{equation}
+%
+donde todos los mensajes que reciben los individuos cooperadores $j$, $m_{P(I^{2}|I^{1}) \rightarrow I^{2} }(j)$, son iguales.
+%
+\begin{equation}
+\begin{split}
+m_{P(I^{3}|I^{2}) \rightarrow I^{3} }(k)
+& = \Big(\prod_{t=1}^2 P(\vec{\Aa}^{\,t}) \Big) \Big( P(k|\vec{\Aa}^{\,2}) P(k|\vec{\Aa}^{\,1}) + P(c|\vec{\Aa}^{\,1}) \sum_j^{\texttt{socios}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,2})   \Big) \\
+& = \Big(\prod_{t=1}^2 P(\vec{\Aa}^{\,t}) \Big) \Big( \underbrace{P(k|\vec{\Aa}^{\,2}) P(k|\vec{\Aa}^{\,1}) + P(c|\vec{\Aa}^{\,1},\vec{\Aa}^{\,2})}_{P(k|\vec{\Aa}^{\,1},\vec{\Aa}^{\,2})}   \Big) \\
+\end{split}
+\end{equation}
+%
+Abriendo la recursión nos ecnotramos con, 
+%
+\begin{equation}
+P(k|\vec{\Aa}^{\,1},\vec{\Aa}^{\,2}) = P(k|\vec{\Aa}^{\,1})P(k|\vec{\Aa}^{\,2}) + P(k|\vec{\Aa}^{\,2})P(c|\vec{\Aa}^{\,1}) + P(c|\vec{\Aa}^{\,1},\vec{\Aa}^{\,2})
 \end{equation}
 %
 Luego, la hipótesis inductiva $\text{HI}_M(T)$ para individuos desertores $k$ de regiones $r$ mixtas es,
-\begin{equation}
-m_{P(I^{T+1}|I^{T}) \rightarrow I^{T+1} }(k) = \Bigg(\prod_{t=1}^{T} P(\vec{\Aa}^{\,2}) \Bigg) \Bigg(\prod_{t=1}^{T} s_D(t) + s_C(t) \Bigg) 
+%
+\begin{equation}\label{eq:HI_M}
+\begin{split}
+P(k|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T}) &\overset{\text{HI}_M(T)}{=} \Big(\prod_{t=1}^{T} P(k|\vec{\Aa}^{\,t}) \Big) + \Big(\sum_{t=1}^{T} P(c|\wedge_{q=1}^t\vec{\Aa}^{\,q})  \prod_{q=t+1}^T P(k|\vec{\Aa}^{\,q}) \Big) \\[-0.2cm]
+m_{P(I^{T+1}|I^{T}) \rightarrow I^{T+1} }(k) &\ \ \ = P(k|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T}) \prod_{t=1}^T P(\vec{\Aa}^{\,t})
+\end{split}
 \end{equation}
 %
+donde el posterior del individuo desertor en una región mixta $r$ es 
+la suma del posterior de un individuo desertor en una región enteramente desertora, y un promedio movil exponencial del posterior de los individuos cooperadores.
+%
+\paragraph{Caso Base.} El caso base ya está demostrado por extensión.
 
-
-
-
-
-
-
-
-
-
-
-\newpage
-
-
-
-
-que primero juega y después recibe la parte del fondo común.
-\begin{equation}
-P(\bm{a}^{:t},e|n,N, c_0) =
-\begin{cases}
- P(a_0(1)|e) & \ \  t=1 \\
- (P(\bm{a}^{:t-1},e|n,N,c_0) + P(\bm{a}^{:t-1}, e|n,N,c_1)) p(a_0(t)|e) & \ \  t>1
-\end{cases}
-\end{equation}
-Donde $\bm{a}^{:t} = \bm{a}(1 \dots t)$ representa las primeras $t$ observaciones.
-En $t=1$ actualiza sus recursos con el pago recibido $P(a_0(1)|e)$.
-En $t>1$ incorpora la recursos recibidos del fondo común generado en el tiempo anterior, $ P(\bm{a}^{:t-1}, e|n,N,c_1)$, y finalmente actualiza sus recursos totales (la suma) con el pago $P(a_0(t)|e)$.
-
-% Parrafo
-
-Para simplificar la notación, hagamos los siguiemtes renombres, $\omega_D(t) = P(\bm{a}^{:T},e|n,N, c_0)$ y $\omega_C(t) = P(\bm{a}^{:T},e|n,N, c_1)$, los tamaños de las poblaciones en el tiempo $t$ o equivalentemente los posteriors proprcionales, y llamemos $r(t) =p(a_0(t)|e) $ al resultado obtenido en el tiempo $t$.
-Veamos la forma que tiene el tamaño de la población en el tiempo 2,
-\begin{align}
-\omega_D(2) & = r(2) ( \omega_D(1) + \omega_C(1) ) \\
-& = r(2)r(1) + r(2)\omega_C(1)
-\end{align}
-Y la forma que tiene el tamaño de la población en el tiempo $t=3$
-\begin{align}
-\omega_D(3) & = r(3) (\omega_D(2)+\omega_C(2)) \\
-& = r(3) (r(2)r(1) + r(2)\omega_C(1) + \omega_C(2) ) \\
-& = r(3)r(2)r(1) + r(3)r(2)\omega_C(1) + r(3)\omega_C(2) 
-\end{align}
-
-Acá ya podemos ver un patrón a partir del cual proponemos la siguiente hipótesis inductiva (HI).
-\begin{equation} \label{eq:HI} \tag{HI} 
-\omega_D(t) = \prod^t_{i=1} r(i) + \sum^{t-1}_{j=1} \omega_C(j)
-\prod^t_{j<k} r(k)
-\end{equation}
-
-\paragraph{Caso Base.} Queremos ver que vale la \ref{eq:HI} en el tiempo $t=1$.
-\begin{equation} 
-\omega_D(1) \overset{\ref{eq:HI}}{=} \prod^1_{i=1} r(i) + \underbrace{\sum^{0}_{j=1} \omega_C(j) \prod^1_{j<k} r(k) }_{\text{vale $0$ por rango}} = r(1)
-\end{equation}
-Luego, vale el caso base.
-
-\paragraph{Paso inductivo.} Dado que vale $\omega_D(t)$ quiero ver que vale $\omega_D(t+1)$: $\omega_D(t) \Rightarrow \omega_D(t+1)$
+\paragraph{Paso inductivo.} Dado que vale $\text{HI}_{M_D}(T)$, $\text{HI}_{M_C}(T)$ quiero ver que vale $\text{HI}_{M_D}(T+1)$.
 
 \begin{equation}
 \begin{split}
-\omega_D(t+1) &:= (\omega_D(t) + \omega_C(t)) r(t+1)  \\
-& \overset{\ref{eq:HI}}{=} \bigg( \prod^t_{i=1} r(i) + \sum^{t-1}_{j=1} \omega_C(j) \prod^t_{j<k} r(k) + \omega_C(t) \bigg) r(t+1) \\
-& = \bigg( \prod^t_{i=1} r(i) + \sum^{t}_{j=1} \omega_C(j) \prod^t_{j<k} r(k)\bigg) r(t+1) \\
-& = r(t+1) \prod^t_{i=1} r(i) + r(t+1) \sum^{t}_{j=1}  \omega_C(j) \prod^t_{j<k} r(k) \\ 
-& = \prod^{t+1}_{i=1} r(i) + \sum^{t}_{j=1}  \omega_C(j) \prod^{t+1}_{j<k} r(k) \\
+m_{P(I^{T+1}|I^{T}) \rightarrow I^{T+1} }(k) &= \sum_{i^T} P(k|i^T)  P(\vec{\Aa}^{\,T}) P(i^T|\vec{\Aa}^{\,T}) m_{P(I^{T}|I^{T-1}) \rightarrow I^{T} }(i^T) \\
+& =  P(\vec{\Aa}^{\,T}) \Big( P(k|\vec{\Aa}^{\T}) m_{P(I^{T}|I^{T-1}) \rightarrow I^{T} }(k) + \sum_j^{\texttt{socios}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,T}) m_{P(I^{T}|I^{T-1}) \rightarrow I^{T} }(j)  \Big) \\
+&\overset{\text{HI}}{=} \Big(\prod_{t=1}^T P(\vec{\Aa}^{\,t}) \Big) \Big( P(k|\vec{\Aa}^{\,T}) P(k|\vec{\Aa}^{\,1},\dots, \vec{\Aa}^{\,T-1}) + P(c|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T})\Big) \\
+ &=\Big(\prod_{t=1}^T P(\vec{\Aa}^{\,t}) \Big) \Bigg( \Big(\prod_{t=1}^{T} P(k|\vec{\Aa}^{\,t}) \Big) + \Big(\sum_{t=1}^{T} P(c|\wedge_{q=1}^t\vec{\Aa}^{\,q})  \prod_{q=t+1}^T P(k|\vec{\Aa}^{\,q}) \Big) \Bigg)
 \end{split}
 \end{equation}
-Luego, vale el paso inductivo. \\
+%
+Luego, vale la hipótesis inductiva. 
 
+
+\subsection{Tasa de supervivencia}
 % Parrafo 
 
 Para determinar la tasa de crecimiento de las estrategia desertora en la población mixta, calculamos el cambio en el tamaño de la población luego de un paso temporal usando las tasas de crecimiento caracterísiticas 
