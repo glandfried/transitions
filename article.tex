@@ -570,23 +570,23 @@ Para ello exhiben una serie de modelos gráficos sin especificar las probabilida
 \centering
 \tikz{
     \node[latent] (c2) {$C^2$};
-    \node[const, above=of c2, yshift=0.1cm] (pc2) {$P(C^2)$};
+    \node[const, above=of c2, yshift=0.1cm] (pc2) {$P(c^2)$};
     \node[const, above=of pc2, yshift=0.1cm] (nc2) {Col\en{l}ectiv\en{e}\es{o} 2};
     \node[const, above=of nc2] (fc2) {\includegraphics[width=0.06\linewidth]{static/collective2A.png} \ \includegraphics[width=0.045\linewidth]{static/collective2B.png}};
     
     
     \node[latent, right=of c2, xshift=1cm] (c1) {$C^1$};
-    \node[const, above=of c1, yshift=0.1cm] (pc1) {$P(C^1|C^2)$};
+    \node[const, above=of c1, yshift=0.1cm] (pc1) {$P(c^1|c^2)$};
     \node[const, above=of pc1, yshift=0.1cm] (nc1) {Col\en{l}ectiv\en{e}\es{o} 1};
     \node[const, above=of nc1] (fc1) {\includegraphics[width=0.04\linewidth]{static/collective1A.png} \ \includegraphics[width=0.04\linewidth]{static/collective1B.png}};
     
     \node[latent, right=of c1, xshift=1cm] (i) {$I$};
-    \node[const, above=of i, yshift=0.1cm] (pi) {$P(I|C^1,C^2)$};
+    \node[const, above=of i, yshift=0.1cm] (pi) {$P(i|c^1,c^2)$};
     \node[const, above=of pi, yshift=0.1cm] (ni) {Individu\en{al}\es{o}:};
     \node[const, above=of ni] (fi) {\includegraphics[width=0.09\linewidth]{static/individual.png}\ };
     
-    \node[latent, right=of i, xshift=1cm] (a) {\en{$e$}\es{$a$}};
-    \node[const, above=of a, yshift=0.1cm] (pa) {$P(\en{e}\es{a}|I,C^1,C^2)$};
+    \node[latent, right=of i, xshift=1cm] (a) { $\A$};
+    \node[const, above=of a, yshift=0.1cm] (pa) {$P(\Aa|i,c^1,c^2)$};
     \node[const, above=of pa, yshift=0.1cm] (na) {\en{Environment}\es{Ambiente}};
     \node[const, above=of na] (fa) {\includegraphics[width=0.03\linewidth]{static/water.png}\includegraphics[width=0.04\linewidth]{static/wind.png}\includegraphics[width=0.025\linewidth]{static/fire.png} \ };
     
@@ -608,7 +608,7 @@ Para ello exhiben una serie de modelos gráficos sin especificar las probabilida
 La validez de este modelo es trivial en tanto la regla del producto siempre permite la descomposición,
 %
 \begin{equation}
-P(e,I,C^1,C^2)= P(e|I,C^1,C^2)P(I|C^1,C^2)P(C^1|C^2)P(C^2)
+P(\Aa,i,c^1,c^2)= P(\Aa|i,c^1,c^2)P(i|c^1,c^2)P(c^1|c^2)P(c^2)
 \end{equation}
 %
 Sin embargo el modelo no expresa una interpretación causal.
@@ -630,15 +630,15 @@ Interpretemos el modelo de Ole Peters en términos causales para definir las dis
 La probabilidad del ambiente, en este caso depende de un parámetro $p$ que determina cuan sesgada está la moneda.
 %
 \begin{equation}
-P(\en{e}\es{a}) = p^{\en{e}\es{a}} (1-p)^{(1-\en{e}\es{a})}
+P(\Aa) = p^{\Aa} (1-p)^{(1-\Aa)}
 \end{equation}
 %
-Para definir la probabilidad de las estrategia dado el ambiente, $P(e|a)$, necesitamos que para cada ambiente la probabilidad de todas las estrategias sume 1.
+Para definir la probabilidad de las estrategia dado el ambiente, $P(\Ee|\Aa)$, necesitamos que para cada ambiente la probabilidad de todas las estrategias sume 1.
 %
 Digamos, por ahora, que la probabilidad de la estrategia es proporcional a su aptitud, 
 %
 \begin{equation}\label{eq:probabilidad_propro_aptitud}
-P(\E | \A) \propto  f_{\E}(\A)
+P(\Ee | \Aa) \propto  f_{\Ee}(\Aa)
 \end{equation}
 %
 Con esto podemos definir parcialmente un modelo gráfico con una interpretación causal.
@@ -646,13 +646,13 @@ Con esto podemos definir parcialmente un modelo gráfico con una interpretación
 \begin{figure}[H]
 \centering
 \tikz{
-    \node[latent] (e) {$\en{e}\es{a}_t$};
-    \node[const, right=of e] (en) {\ $P(\en{e}\es{a}) = p^{\en{e}\es{a}} (1-p)^{(1-\en{e}\es{a})}$};
+    \node[latent] (e) {$\A_t$};
+    \node[const, right=of e] (en) {\ $P(\Aa) = p^{\Aa} (1-p)^{(1-\Aa)}$};
     \node[const, left=of e] (ne) {\en{Environment}\es{Ambiente}: \ \ \ };
     
     
-    \node[latent, below=of e] (r) {$\en{s}\es{a}$};
-    \node[const, right=of r] (rn) {$P(\en{s}\es{a}|\en{e}\es{a}) \propto f_e(a)$};
+    \node[latent, below=of e] (r) {$\E$};
+    \node[const, right=of r] (rn) {$P(\Ee|\Aa) \propto f_\Ee(\Aa)$};
     \node[const, left=of r] (nr) {\en{Strategy}\es{Estrategia}: \ \ \ };
     
     \edge {e} {r};
@@ -662,7 +662,7 @@ Con esto podemos definir parcialmente un modelo gráfico con una interpretación
 \label{fig:model-lewontin-peters}
 \end{figure}
 %
-¿Cómo podemos calcular la probabilidad de $P(\E|\A)$?
+¿Cómo podemos calcular la probabilidad de $P(\Ee|\Aa)$?
 
 \subsection{Sum-product algorithm}
 
@@ -685,12 +685,12 @@ El siguiente factor graph representa el modelo de la figura \ref{fig:model-lewon
 \tikz{
 
     \node[factor] (fa) {};
-    \node[const, above=of fa] (nfa) {$P(\A)$};
+    \node[const, above=of fa] (nfa) {$P(\Aa)$};
     
     \node[latent, right=of fa] (a) {$\A$};
     
     \node[factor, right=of a] (fe) {};
-    \node[const, above=of fe] (nfe) {$P(\E|\A) \propto f_{\E}(\A)$};
+    \node[const, above=of fe] (nfe) {$P(\Ee|\Aa) \propto f_{\Ee}(\Aa)$};
     
     \node[latent, right=of fe, xshift=0.3cm] (e) {$\E$};
     
@@ -708,92 +708,92 @@ El siguiente factor graph representa el modelo de la figura \ref{fig:model-lewon
 \label{fig:factor_graph}
 \end{figure}
 %
-\en{There are two types of messages: those sent by variable-type nodes to their function-type neighbors ($m_{v \rightarrow f}(v)$) and the ones that function-type nodes send to their variable-type neighbors ($m_{f \rightarrow v}(v)$). }%
-\es{Hay dos tipos de mensajes: los mensajes que envian los nodos variables a sus funciones vecinas ($m_{v \rightarrow f}(v)$); y los mensajes que env\'ian los nodos funciones a sus variables vecinas ($m_{f \rightarrow v}(v)$). }%
+\en{There are two types of messages: those sent by variable-type nodes to their function-type neighbors ($m_{V \rightarrow F}(v)$) and the ones that function-type nodes send to their variable-type neighbors ($m_{F \rightarrow V}(v)$). }%
+\es{Hay dos tipos de mensajes: los mensajes que envian los nodos variables a sus funciones vecinas ($m_{V \rightarrow F}(v)$); y los mensajes que env\'ian los nodos funciones a sus variables vecinas ($m_{F \rightarrow V}(v)$). }%
 %
 \en{The former partially performs the product rule. }%
 \es{El primero codifica una porci\'on de la regla del producto. }%
 %
 \begin{equation*}\label{eq:m_v_f} \tag{\text{\en{product step}\es{paso del producto}}}
-m_{v \rightarrow f}(v) = \prod_{h}^{n(v) \setminus \{f\} } m_{h \rightarrow v}(v)
+m_{V \rightarrow F}(v) = \prod_{H}^{n(V) \setminus \{F\} } m_{H \rightarrow V}(v)
 \end{equation*}
 %
-\en{where $n(v) \setminus \{f\}$ represents the set of neighbor nodes to $v$ except $f$. }%
-\es{donde $n(v) \setminus \{f\}$ representa el conjunto de vecinos del nodo $v$ salvo $f$. }%
+\en{where $n(V) \setminus \{F\}$ represents the set of neighbor nodes to $V$ except $F$. }%
+\es{donde $n(V) \setminus \{F\}$ representa el conjunto de vecinos del nodo $V$ salvo $F$. }%
 %
-\en{In a brief, the messages sent by the variable-type node $v$ are simply the product of the messages that $v$ receives from the rest of their neighbors $h \in n(v)$ except $f$. }%
-\es{En pocas palabras, los mensajes que env\'ia una variables $v$ es simplemente la multiplicaci\'on de los mensajes que recibi\'o del resto de sus vecinos $h \in n(v)$ salvo $f$. }%
+\en{In a brief, the messages sent by the variable-type node $V$ are simply the product of the messages that $V$ receives from the rest of their neighbors $H \in n(V)$ except $F$. }%
+\es{En pocas palabras, los mensajes que env\'ia una variables $V$ es simplemente la multiplicaci\'on de los mensajes que recibi\'o del resto de sus vecinos $H \in n(V)$ salvo $F$. }%
 %
 \en{The messages sent by the function-type nodes encode a portion of the sum rule. }%
 \es{Los mensajes que env\'ian los nodos funciones codifican una parte de la regla de la suma. }%
 %
 \begin{equation*}\label{eq:m_f_v}  \tag{\text{\en{sum step}\es{paso de la suma}}}
-m_{f \rightarrow v}(v) = \sum_{\bm{u}} \Big( f(\bm{u},v) \prod_{u}^{\bm{u}} m_{u \rightarrow f}(u) \Big)
+m_{F \rightarrow V}(v) = \sum_{\bm{u}}^{\bm{U}} \Big( F(\bm{u},v) \prod_{U}^{\bm{U}} m_{U \rightarrow F}(u) \Big)
 \end{equation*}
 %
-\en{where $\bm{u} = n(f)\setminus \{v\}$ is the set of all neighbors to $f$ except $v$, and $f(\bm{h},v)$ represents the function $f$, evaluated in all its arguments. }%
-\es{donde $\bm{u} = n(f)\setminus \{v\}$ es el conjunto de todos los vecinos de $f$ salvo $v$, y $f(\bm{h},v)$ representa la funci\'on $f$, evaluada en todos sus argumentos. }%
+\en{where $\bm{U} = n(F)\setminus \{V\}$ is the set of all neighbors to $F$ except $V$, and $F(\bm{u},v)$ represents the function $F$, evaluated in all its arguments. }%
+\es{donde $\bm{U} = n(F)\setminus \{V\}$ es el conjunto de todos los vecinos de $F$ salvo $V$, y $F(\bm{u},V)$ representa la funci\'on $F$, evaluada en todos sus argumentos. }%
 %
-\en{The messages sent by the function-type node $f$ to a neighboring variable-type node $v$ is simply the integration (or sum) over $\bm{h}$ of the product of itself and all the messages that $f$ receives from the rest of its neighbors $\bm{h}$ except $v$. }%
-\es{En pocas palabras, los mensajes que envía una funci\'on $f$ a una variable vecina $v$ es simplemente la integraci\'on (o suma) sobre $\bm{h}$ del producto de sí mismo con todos los mensajes que $f$ recibe del resto de sus vecinos $\bm{h}$ salvo $v$. }%
+\en{The messages sent by the function-type node $F$ to a neighboring variable-type node $V$ is simply the integration (or sum) over $\bm{U}$ of the product of itself and all the messages that $F$ receives from the rest of its neighbors $\bm{U}$ except $V$. }%
+\es{En pocas palabras, los mensajes que envía una funci\'on $F$ a una variable vecina $V$ es simplemente la integraci\'on (o suma) sobre $\bm{U}$ del producto de sí mismo con todos los mensajes que $F$ recibe del resto de sus vecinos $\bm{U}$ salvo $V$. }%
 %
-\en{Finally, the marginal probability distribution of a variable $v$ is simply the product of the messages that $v$ receives from all its neighbors. }%
-\es{Finalmente, la distribuci\'on de probabilidad marginal de una variable $v$ es simplemente la multiplicaci\'on de los mensajes que $v$ recibe de todos sus vecinos. }%
+\en{Finally, the marginal probability distribution of a variable $V$ is simply the product of the messages that $V$ receives from all its neighbors. }%
+\es{Finalmente, la distribuci\'on de probabilidad marginal de una variable $V$ es simplemente la multiplicaci\'on de los mensajes que $V$ recibe de todos sus vecinos. }%
 %
 \begin{equation*}\label{eq:marginal}  \tag{\text{\en{marginal probability}\es{probabilidad marginal}}}
-P(v) = \prod_{h \in n(v)} m_{h \rightarrow v}(v)
+P(V=v) = \prod_{H \in n(V)} m_{H \rightarrow V}(v)
 \end{equation*}
 %
-Cuando alguno de las variables $u$ es observable, se la elimina de la suma $\bm{u}\setminus u$ y se obtiene la marginal de dos variables, $P(v,u)$.
+Cuando alguno de las variables es observable, se la elimina de la suma y se obtiene la marginal de dos variables, $P(v,u)$.
 %
 \en{This algorithm encodes the minimum number of steps required to calculate any marginal probability distribution. }%
 \es{Este algoritmo codifica la m\'inima cantidad de pasos que se requieren para calcular cualquier distribuci\'on de probabilidad marginal. }%
 
 % Parrafo
 
-Nosotros queremos calcular $P(\E|\A)$ y para eso necesitamos calcular marginales $P(\E,\A)/P(\A)$. 
+Nosotros queremos calcular $P(\Ee|\Aa)$ y para eso necesitamos calcular marginales $P(\Ee,\Aa)/P(\Aa)$. 
 %
-Como en nuestro modelo una de las distribuciones de probabilidad está definida de forma proporcional, las marginales $P(\E,\A)$ y $P(\A)$ también serán proporcionales.
+Como en nuestro modelo una de las distribuciones de probabilidad está definida de forma proporcional, las marginales $P(\Ee,\Aa)$ y $P(\Aa)$ también serán proporcionales.
 %
-Para calcular la marginal $P(\E,\A)$, consideraremos que $\A^*$ es observable.
+Para calcular la marginal $P(\Ee,\Aa)$, consideraremos que $\Aa^*$ es observable.
 %
-El mensaje del factor del ambiente $f_{\A}$ a la variable ambiente $\A$ es,
+El mensaje del factor del ambiente $P(\Aa)$ a la variable ambiente $\A$ es,
 \begin{equation}
-m_{f_{\A}\rightarrow \A }(\A^*) = P(\A^*) = m_{f_{\A} \rightarrow f_{\E} }(\A^*)
+m_{P(\A) \rightarrow \A }(\Aa^*) = P(\Aa^*) = m_{\A \rightarrow P(\E|\A)} }(\Aa^*)
 \end{equation}
 %
-Que es el mismo mensaje que envía la variable $\A$ al factor de estrategias $f_{\E}$.
+Que es el mismo mensaje que envía la variable $\A$ al factor de estrategias $P(\E|\A)$.
 %
-Luego, el mensaje que envía el factor de estategias $f_{\E}$ a la variable estrategias es,
-%
-\begin{equation}
-m_{f_{\E} \rightarrow \E } \propto P(\A^*)f_{\E}(\A)
-\end{equation}
-%
-Notar que no integramos en los valores del ambiente porque consideramos que la variable $\A$ es observable.
-%
-Luego, la marginal de un vector de observaciones del ambiente $\bm{\A}$ es,
+Luego, el mensaje que envía el factor de estategias $P(\E|\A)$ a la variable estrategias es,
 %
 \begin{equation}
-P(\E,\bm{\A}) \propto \prod_{\A^*}^{\bm{\A}} P(\A^*)f_{\E}(\A^*)
+m_{P(\E|\A) \rightarrow \E }(\Ee) \propto P(\Aa^*)f_{\Ee}(\Aa^*)
 \end{equation}
 %
-Integrando sobre las estrtategia $\E$ obtenemos la marginal de las observaciones,
+Notar que no integramos en los valores del ambiente porque consideramos que la variable $\Aa^*$ es observable y por lo tanto constante.
+%
+Luego, la marginal de un vector de observaciones del ambiente $\vec{\Aa}$ es,
+%
+\begin{equation}
+P(\Ee,\vec{\Aa}) \propto \prod_{\Aa}^{\vec{\Aa}} P(\Aa)f_{\Ee}(\Aa)
+\end{equation}
+%
+Integrando sobre las estrategia $\E$ obtenemos la marginal de las observaciones,
 %
 \begin{align}
-P(\bm{\A}) & \propto \sum_{\E} \prod_{\A^*}^{\bm{\A}} P(\A^*)f_{\E}(\A^*) \\
-& = \prod_{\A^*}^{\bm{\A}} P(\A^*)  \sum_{\E} \prod_{\A^*}^{\bm{\A}}f_{\E}(\A^*)
+P(\vec{\Aa}) & \propto \sum_{\Ee}^\E \prod_{\Aa}^{\vec{\Aa}} P(\Aa)f_{\Ee}(\Aa) \\
+& = \Big(\prod_{\Aa}^{\vec{\Aa}} P(\Aa) \Big)  \Big( \sum_{\Ee} \prod_{\Aa}^{\vec{\Aa}}f_{\Ee}(\Aa) \Big) 
 \end{align}
 %
 Luego, la probabilidad de la estrategia dado el ambiente es
 %
 \begin{equation}\label{eq:replicator_dynamic_posterior}
-P(\E|\bm{\A}) = \frac{ \prod_{\A^*}^{\bm{\A}}f_{\E}(\A^*)}{\sum_{\E} \prod_{\A^*}^{\bm{\A}}f_{\E}(\A^*)}
+P(\Ee|\vec{\Aa}) = \frac{ \prod_{\Aa}^{\vec{\Aa}}f_{\Ee}(\Aa)}{\sum_{\Ee} \prod_{\Aa}^{\vec{\Aa}}f_{\Ee}(\Aa)}
 \end{equation}
 %
 La probabilidad condicional de la estrategia dado el ambiente resultó ser el replicator dynamic!
 %
-Es decir, el replicator dynamic surgió de considerar el modelo causal en el que el ambiente causa las estretgias y en el que las el tamaño de las estrategias depende de la adaptabilidad de esa estrategia al ambiente.
+Es decir, el replicator dynamic surgió de considerar el modelo causal en el que el ambiente causa las estrategias y en el que el tamaño de las estrategias depende de la adaptabilidad de esa estrategia al ambiente.
 
 % Parrafo
 
@@ -804,9 +804,9 @@ Nuestro modelo permite elegir el conjunto de estrategias que queramos.
 Si bien podemos proponer cualquier tipo de estrategia, vamos a limitarnos a aquellas que tienen un recurso $R$ para repartir entre cara y sello.
 %
 \begin{equation}
-f_{\E}(\A) = \begin{cases}
- \E & \A = 1 \\
- R-\E & \A = 0
+f_{\Ee}(\Aa) = \begin{cases}
+ \Ee & \Aa = 1 \\
+ R-\Ee & \Aa = 0
   \end{cases}
 \end{equation}
 %
@@ -815,17 +815,17 @@ con $ 0 \leq \E \leq R$.
 Esta familia de funciones de apritud son proporcionales a la distribución de probabilidad Bernoulli.
 %
 \begin{equation}
-\text{P}(\E|\A) = \E^\A \cdot (1-\E)^{(1-\A)} = \text{Bernoulli}(\E|\A)
+P(\Ee|\Aa) = \Ee^\Aa \cdot (1-\Ee)^{(1-\Aa)} = \text{Bernoulli}(\Ee|\Aa)
 \end{equation}
 %
-con $ 0 \leq \E \leq 1$.
+con $ 0 \leq \Ee \leq 1$.
 %
-La estrategia $\E \approx 0.71$ es la propuesta por Ole Peters, y la la estraetgia $\E \approx 0.77$ es la propuesta por Lewontin y Cohen.
+La estrategia $\Ee \approx 0.71$ es la propuesta por Ole Peters, y la la estraetgia $\Ee \approx 0.77$ es la propuesta por Lewontin y Cohen.
 %
-Cuando consideramos las ifnitias estraetgias que tienen un recurso $R$ fijo, el posterior de la estretgia $\E$ dado un vector de observaciones del ambiente $\bm{a}$ tiene solución analítica y pertenecerá a la distribución Beta (notar que el denominador de la ecuación \ref{eq:replicator_dynamic_posterior} es la función Beta o la integral de Euler).
+Cuando consideramos las infinitas estrategias que tienen un recurso $R$ fijo, el posterior de la estretgia $\Ee$ dado un vector de observaciones del ambiente $\vec{\Aa}$ tiene solución analítica y pertenecerá a la distribución Beta (notar que el denominador de la ecuación \ref{eq:replicator_dynamic_posterior} es la función Beta o la integral de Euler).
 %
 \begin{equation}
-P(\E|\bm{\A}) = \text{Beta}(\texttt{sum}(\bm{\A}), \, \texttt{length}(\bm{\A}) - \texttt{sum}(\bm{\A}))
+P(\Ee|\vec{\Aa}) = \text{Beta}(\texttt{sum}(\vec{\Aa}), \, \texttt{length}(\vec{\Aa}) - \texttt{sum}(\vec{\Aa}))
 \end{equation}
 %
 Este modelo nos permitirá analizar la estabilidad evolutiva del espacio de estrategias desertoras. 
@@ -868,35 +868,45 @@ Responderemos estas y otras preguntas en la siguiente sección.
 
 
 En esta sección analizaremos si efectivamente existe alguna ventaja evolutiva de la cooperación y la especialización en presencia de deserción.
-Para ello analizaremos la selección multinivel medainte modelos causales probabilísiticos.
-
+%
+El concepto clave para dar una respuesta a este problema es el de ``estructura poblacional''.
+%
+Darwin ya ofrece una pista.
+%
+\begin{quotation}
+It must not be forgotten that although a high standard of morality gives but a slight or no advantage to each individual man and his children over the other men of the same tribe, yet that an increase in the number of well-endowed men and an advancement in the standard of morality will certainly given an immense advantage to one tribe over another.
+\end{quotation}
+%
+Las poblaciones no son bloques monolíticos ni gases perfectos, siempre poseen algún tipo de estructura que afecta su evolución.
+%
+Para ello analizaremos la selección multinivel mediante modelos causales probabilísiticos.
 
 \subsection{Modelo multinivel}
 
-Supongamos que tenemos grupos de $N$ individuos en el que $n$ son cooperadores y $N-n$ desertores.
+Supongamos que tenemos regiones de $N$ individuos en el que $n$ son cooperadores y $N-n$ desertores.
 %
-Con $N$ individuos, hay $N+1$ tipos de grupos posibles, desde $n=0$ (todos desertores) hasta $n=N$ (todos cooperadores).
+Con $N$ individuos, hay $N+1$ tipos de regiones posibles, desde $n=0$ (todos desertores) hasta $n=N$ (todos cooperadores).
 %
-Luego, si cada individuo pertenece a un único grupo necesitamos $M = N(N+1)$ individuos totales, $i \in \{1, \dots, M\}$.
+Luego, si cada individuo pertenece a una única región necesitamos $M = N(N+1)$ individuos totales, $i \in \{1, \dots, M\}$.
 %
-Los individuos están caracterizados por tres atributos: el vector de estrategias $\bm{\Ee} = (\Ee_1, \dots, \Ee_M)$, que es un parámetro del modelo (en el caso más simple, todos los individuos tienen la misma estrategia); el grupo al que pertenecen, $\texttt{grupo}(i) = i \ \texttt{div} \ N$, definido como la división entera por $N$; y el comportamiento social, $\texttt{coop}(i) = i \ \texttt{mod} \ N < \texttt{grupo}(i)$, los primeros $n$ individuos del grupo son cooperadores y el resto desertores.
+Los individuos están caracterizados por tres atributos: el vector de estrategias $\vec{\Ee} = (\Ee_1, \dots, \Ee_M)$, que es un parámetro del modelo (en el caso más simple, todos los individuos tienen la misma estrategia); la región a la que pertenece, $\texttt{region}(i) = i \ \texttt{div} \ N$, definido como la división entera por $N$; y el comportamiento social, $\texttt{coop}(i) = i \ \texttt{mod} \ N < \texttt{region}(i)$, los primeros $n$ individuos del grupo son cooperadores y el resto desertores.
 %
-Como antes, el ambiente $\A$ es una variable independiente que con probabilidad $p$ sale cara y con probabilidad $1-p$ sale sello, $P(\Aa) = p^\Aa (1-p)^{1-\Aa}$, pero ahora en cada tiempo $t$ tenemos un vector $\bm{\Aa}$, en el que cada elemento influencia al $i-$ésimo agente, $P(i|\bm{\Aa}) = \bm{\Ee}_i^{\bm{\Aa}_i} (1-\bm{\Ee}_i)^{\bm{\Aa}_i$.
+Como antes, la variable ambiente $\A$ sale cara con probabilidad $p$ y sello con probabilidad $1-p$, $P(\Aa) = p^\Aa (1-p)^{1-\Aa}$, pero ahora en cada tiempo $t$ tenemos un vector $\vec{\Aa}$, en el que cada elemento influencia al $i-$ésimo agente, $P(i|\vec{\Aa}) = \Ee_i^{\Aa_i} (1-\Ee_i)^{1-\Aa_i}$.
 %
 Ahora sin embargo, los agentes también están influenciados por los recursos del los otros agentes en el tiempo anterior, 
 %
 \begin{equation}
 P(i^{t+1}|i^t) = 
 \begin{cases}
-1/N & \texttt{coop}(i^t) \text{ y } (\texttt{grupo}(i^{t+1}) = \texttt{grupo}(i^{t})) \\
-1 & \neg \texttt{coop}(i^t) \text{ y } i^{t+1} = i^t \\
+1/N & \texttt{coop}(i^t) \wedge (\texttt{region}(i^{t+1}) = \texttt{region}(i^{t})) \\
+1 & \neg \texttt{coop}(i^t) \wedge i^{t+1} = i^t \\
 0 & \texttt{else} \\
 \end{cases}
 \end{equation}
 %
-Los individuos cooperadores dividen la riqueza en partes iguales con los miembros de su grupo, y los individuos desertores se quedan con toda su riqueza.
+Los individuos cooperadores dividen la riqueza en partes iguales con los miembros de la misma región, y los individuos desertores se quedan con toda su riqueza.
 %
-Finalmente, los grupos dependen de los individuos que los integran $P(g|i)=\mathbb{I}(\texttt{grupo}(i) = g)$, la función indiciadora que vale $1$ para los individuos que forman parte del grupo $g$ y $0$ para el resto.
+Finalmente, los grupos están constituidos por los miembros de cada región, $P(g|i)=\mathbb{I}(\texttt{region}(i) = g)$, la función indiciadora que vale $1$ para los individuos que pertenecen a la región $g$ y $0$ para el resto.
 %
 \begin{figure}[H]
 \centering
@@ -980,33 +990,25 @@ Finalmente, los grupos dependen de los individuos que los integran $P(g|i)=\math
 %
 En resumen, en cada tiempo $t$ el ambiente influencia a los individuos, y los individuos influencian a los grupos de su propio tiempo y a los individuos del tiempo $t+1$.
 %
-Este modelo tiene $3$ hiperparámetros: el vector de estrategias $\bm{\Ee}$, la probabilidad del ambiente $p$, y el tamaño de los grupos $N$.
+Este modelo tiene $3$ hiperparámetros: el vector de estrategias $\vec{\Ee}$, la probabilidad del ambiente $p$, y el tamaño de los grupos $N$.
 %
 Este modelo se puede simplificar levemente, usando una única variable de grupo que dependa de la última variable individuo, gracias a que la margnial de los grupos es la misma en cualquier tiempo $t$.
 
 % Parrafo
 
-En el problema evolutivo nos va a interesar la selección de los individuos cooperadores dado el ambiente dentro de cada grupo (nivel 1), $P(\texttt{coop}(i^T)|\bm{\Aa}^1, \dots, \bm{\Aa}^{T-1}, g)$, la selección de los grupos dado el ambiente (nivel 2), $P(g^T|\bm{\Aa}^1, \dots, \bm{\Aa}^{T-1})$, y la selección de los individuos cooperadores dado el ambiente integrando todos los grupos (multinivel), $P(\texttt{coop}(i^T)|\bm{\Aa}^1, \dots, \bm{\Aa}^{T-1})$.
-%
-% \begin{table}[H]
-% \centering
-% \begin{tabular}{ccc}
-%         Selección de nivel 1 & Selección de nivel 2 & Selección multinivel\\ 
-%         $P(\texttt{coop}(i^T)|\bm{\Aa}^1, \dots, \bm{\Aa}^{T-1}, g)$ & $P(g^T|\bm{\Aa}^1, \dots, \bm{\Aa}^{T-1})$ & $P(\texttt{coop}(i^T)|\bm{\Aa}^1, \dots, \bm{\Aa}^{T-1})$ \\ 
-% \end{tabular}
-% \end{table}
+En el problema evolutivo nos va a interesar la selección de los individuos cooperadores dado el ambiente dentro de cada grupo (nivel 1), $P(\texttt{coop}(i^T)|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1}, g)$, la selección de los grupos dado el ambiente (nivel 2), $P(g^T|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1})$, y la selección de los individuos cooperadores dado el ambiente integrando todos los grupos (multinivel), $P(\texttt{coop}(i^T)|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1})$.
 %
 La selección multinivel se obtiene integrando el producto de las selecciones de nivel 1 y 2, 
 %
 \begin{equation}\label{eq:posterior_multinivel}
-\underbrace{P(\texttt{coop}(i^T)|\bm{\Aa}^1, \dots, \bm{\Aa}^{T-1})}_{\text{Selección multinivel}} = \sum_{g=0}^N \underbrace{P(\texttt{coop}(i^T)|\bm{\Aa}^1, \dots, \bm{\Aa}^{T-1}, g)}_{\text{Selección de nivel 1}} \cdot \underbrace{P(g^T|\bm{\Aa}^1, \dots, \bm{\Aa}^{T-1})}_{\text{Selección de nivel 2}}
+\underbrace{P(\texttt{coop}(i^T)|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1})}_{\text{Selección multinivel}} = \sum_{g=0}^N \underbrace{P(\texttt{coop}(i^T)|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1}, g)}_{\text{Selección de nivel 1}} \cdot \underbrace{P(g^T|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1})}_{\text{Selección de nivel 2}}
 \end{equation}
 %
 donde el posterior de la selección de nivel 1 se obtiene integrando la probabilidad de todos los individuos cooperadores que forman parte del grupo $g$,
 %
 \begin{equation}\label{eq:posterior_nivel_1}
 \begin{split}
-P(\texttt{coop}(i^T)|\bm{\Aa}^1, \dots, \bm{\Aa}^{T-1}, g) &= \sum_{j=1}^M P(I^T=j|\bm{\Aa}^1, \dots, \bm{\Aa}^{T-1}, g)\mathbb{I}(\texttt{coop}(j) \text{ y } \texttt{grupo}(j)=g)
+P(\texttt{coop}(i^T)|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1}, g) &= \sum_{j=1}^M P(I^T=j|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1}, g)\mathbb{I}(\texttt{coop}(j))
 \end{split}
 \end{equation}
 
@@ -1014,66 +1016,65 @@ P(\texttt{coop}(i^T)|\bm{\Aa}^1, \dots, \bm{\Aa}^{T-1}, g) &= \sum_{j=1}^M P(I^T
 
 Para calcular los posteriors va a ser suficiente con calcular las probabilidades marginales, pues ambas expresiones son proporcionales.
 %
-Las probabilidades marginales se pueden obtener mediante el sum-product algorithm en un modelo como el de la figura~\ref{fig:multilevel_model} pero que tiene como observables las variables que en el posterior aparecen en el condicional.
+Las probabilidades marginales se pueden obtener mediante el sum-product algorithm en un modelo como el de la figura~\ref{fig:multilevel_model} pero que tiene como observables las variables que en el posterior aparecen en el condicional (ver sección metodología).
 %
-Ya hemos visto en la sección metodología que la probabilidad marginal de una variable $v$ es el producto de los mensajes que recibe de los nodos vecinos del factor graph.
+% Ya hemos visto en la sección metodología que la probabilidad marginal de una variable $v$ es el producto de los mensajes que recibe de los nodos vecinos del factor graph.
+% %
+% Las variables observables no deben integrarse cuando se aplica el sum-product algorithm, por lo que la marginal de $v$ será la probabilidad conjunta de $v$ y todas las variables observables del modelo.
 %
-Las variables observables no deben integrarse cuando se aplica el sum-product algorithm, por lo que la marginal de $v$ será la probabilidad conjunta de $v$ y todas las variables observables del modelo.
-%
-La probabilidad marginal de los individuos en el tiempo $T$ cuando tenemos como observable todos los ambientes $\bm{\Aa}^{t}$ y el grupo $g$ es, 
+La probabilidad marginal de los individuos en el tiempo $T$ cuando tenemos como observable todos los ambientes $\vec{\Aa}^{\,t}$ y el grupo $g$ es, 
 %
 \begin{equation}\label{eq:posterior_individuos_dado_grupo}
-P(i^{T},\bm{\Aa}^1, \dots, \bm{\Aa}^{T-1}, g) = m_{P(i^{T}|i^{T-1}) \rightarrow i^T}(i^T) \cdot m_{P(g^{T}|i^{T}) \rightarrow i^T}(i^T) 
+P(i^{T},\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1}, g) = m_{P(I^{T}|I^{T-1}) \rightarrow I^T}(i^T) \cdot m_{P(G^{T}|I^{T}) \rightarrow I^T}(i^T) 
 \end{equation}
 %
-el producto de los mensaje que la variable $i^T$ recibe del factor social $P(i^{T}|i^{T-1})$ y del factor de grupo $P(g^{T}|i^{T})$, en el modelo que tiene al conjunto $\{ \bm{\Aa}^1, \dots, \bm{\Aa}^{T-1}, g\}$ como variables observables.
+el producto de los mensaje que la variable $i^T$ recibe del factor social $P(I^{T}|I^{T-1})$ y del factor de grupo $P(G^{T}|I^{T})$, en el modelo que tiene al conjunto $\{ \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1}, g\}$ como variables observables.
 %
-La probabilidad marginal de los grupos en el tiempo $T$, cuando tenemos como observable todos los ambientes $\bm{\Aa}^{t}$ es, 
+La probabilidad marginal de los grupos en el tiempo $T$, cuando tenemos como observable todos los ambientes $\vec{\Aa}^{\,t}$ es, 
 %
 \begin{equation}\label{eq:posterior_nivel_2}
-P(g^{T},\bm{\Aa}^1, \dots, \bm{\Aa}^{T-1}) = m_{P(g^{T}|i^{T}) \rightarrow g^T}(g^T)
+P(g^{T},\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1}) = m_{P(G^{T}|I^{T}) \rightarrow G^T}(g^T)
 \end{equation}
 %
-el mensaje que la variable $g^T$ recibe del factor de grupo $P(g^{T}|i^{T})$, en el modelo que tiene a $\{ \bm{\Aa}^1, \dots, \bm{\Aa}^{T-1}\}$ como observables.
+el mensaje que la variable $G^T$ recibe del factor de grupo $P(G^{T}|I^{T})$, en el modelo que tiene a $\{ \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1}\}$ como observables.
 %
 Una forma alternativa de calcular la marginal de los selección multinivel (Eq.~\ref{eq:posterior_multinivel}) es integrando la probabilidad de los individuos cooperadores dado los ambientes
 \begin{equation}\label{eq:posterior_multinivel_alternativa}
 \begin{split}
-P(\texttt{coop}(i^T)|\bm{\Aa}^1, \dots, \bm{\Aa}^{T-1}) &= \sum_{j=1}^M P(I^T=j|\bm{\Aa}^1, \dots, \bm{\Aa}^{T-1})\mathbb{I}(\texttt{coop}(j))
+P(\texttt{coop}(i^T)|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1}) &= \sum_{j=1}^M P(I^T=j|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1})\mathbb{I}(\texttt{coop}(j))
 \end{split}
 \end{equation}
 %
-donde la probabilidad de los individuos cuando tenemos como observable todos los ambientes $\bm{\Aa}^{t}$ es,
+donde la probabilidad de los individuos cuando tenemos como observable todos los ambientes $\vec{\Aa}^{\,t}$ es,
 %
 \begin{equation}
-P(i^{T},\bm{\Aa}^1, \dots, \bm{\Aa}^{T-1}) = m_{P(i^{T}|i^{T-1}) \rightarrow i^T}(i^T)
+P(i^{T},\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1}) = m_{P(I^{T}|I^{T-1}) \rightarrow I^T}(i^T)
 \end{equation}
 %
-el mensaje que la variable $i^T$ recibe del factor de social $P(i^{T}|i^{T-1})$ en el modelo que tiene a $\{ \bm{\Aa}^1, \dots, \bm{\Aa}^{T-1}\}$ como observables.
+el mensaje que la variable $i^T$ recibe del factor social $P(I^{T}|I^{T-1})$ en el modelo que tiene a $\{ \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1}\}$ como observables.
 %
 En resumen, necesitamos calcular solamente tres mensajes.
 %
 \begin{table}[H]
 \centering
 \begin{tabular}{cccc}
- Mensajes & $m_{P(g^{T}|i^{T}) \rightarrow i^T}(i^T)$ & $m_{P(g^{T}|i^{T}) \rightarrow g^T}(g^T)$ & $m_{P(i^{T}|i^{T-1}) \rightarrow i^T}(i^T)$ \\[0.1cm]
- Observables & $\{g\}$ &  $\{ \bm{\Aa}^1, \dots, \bm{\Aa}^{T-1}\}$ &   $\{ \bm{\Aa}^1, \dots, \bm{\Aa}^{T-1}\}$\\ 
- & & & 
+ Mensajes & $m_{P(G^{T}|I^{T}) \rightarrow I^T}(i^T)$ & $m_{P(G^{T}|I^{T}) \rightarrow G^T}(g^T)$ & $m_{P(I^{T}|I^{T-1}) \rightarrow I^T}(i^T)$ \\[0.1cm]
+ Observables & $\{g\}$ &  $\{ \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1}\}$ &   $\{ \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1}\}$
 \end{tabular}
 \caption{Los mensajes que componen las marginales de la selección de nivel 1, 2 y multinivel.}
 \end{table}
 %
 El primer mensaje, que envía el factor de grupo a la variable individuo cuando la variable de grupo es observable, es
 \begin{equation}
- m_{P(g^{T}|i^{T}) \rightarrow i^T}(i^T) = P(g|i) = \mathbb{I}(\texttt{grupo}(i) = g)
+ m_{P(G^{T}|I^{T}) \rightarrow I^T}(i^T) = P(g|i) = \mathbb{I}(\texttt{region}(i) = g)
 \end{equation}
 %
-la función indiciadora que vale $1$ para los individuos que forman parte del grupo $g$ y $0$ para el resto.
+la función indiciadora que vale $1$ para los individuos que se encuentran en la región $r = g$ y $0$ para el resto.
 %
 El segundo mensaje, que el factor grupo envía a la variable grupo, es
 %
 \begin{equation}
- m_{P(g^{T}|i^{T}) \rightarrow g^T}(g^T) = \sum_i P(g|i) m_{P(i^{T}|i^{T-1}) \rightarrow i^T}(i^T) 
+ m_{P(G^{T}|I^{T}) \rightarrow G^T}(g^T) = \sum_i P(g^T|i) \,  m_{P(I^{T}|I^{T-1}) \rightarrow I^T}(i) 
 \end{equation}
 %
 el cual está compuesto por el tercer mensaje, que el factor social envía a la variable individuo.
@@ -1083,7 +1084,7 @@ Para computar este tercer y último mensaje debemos calcular los mensajes preced
 Entre ellos están los mensajes que el factor ambiente envía a la variable ambiente,
 %
 \begin{equation}
-m_{P(\vec{\Aa}^{\,t})\rightarrow \vec{\Aa}^{\,t}}(\vec{\Aa}^{\,t}) = P(\vec{\Aa}^{\,t}) = m_{\vec{\Aa}^{\,t} \rightarrow P(i^t|\vec{\Aa}^{\,t})} (\vec{\Aa}^{\,t})
+m_{P(\vec{\A}^{\,t})\rightarrow \vec{\A}^{\,t}}(\vec{\Aa}^{\,t}) = P(\vec{\Aa}^{\,t}) = m_{\vec{\A}^{\,t} \rightarrow P(I^t|\vec{\A}^{\,t})} (\vec{\Aa}^{\,t})
 \end{equation}
 %
 que es el mismo mensaje que la variable ambiente envía al factor individuo.
@@ -1091,7 +1092,7 @@ que es el mismo mensaje que la variable ambiente envía al factor individuo.
 Luego podemos generar el mensaje que envía el factor individuo a la variable individuo, 
 %
 \begin{equation}
-m_{P(i^t|\vec{\Aa}^{\,t}) \rightarrow i^t}(i^t) = P(\vec{\Aa}^{\,t}) \, P(i^t|\vec{\Aa}^{\,t})
+m_{P(I^t|\vec{\A}^{\,t}) \rightarrow I^t}(i^t) = P(\vec{\Aa}^{\,t}) \, P(i^t|\vec{\Aa}^{\,t})
 \end{equation}
 %
 que como la variable ambiente es observable, no incluye la integración que suelen hacer los mensajes que envían los factores.
@@ -1100,55 +1101,54 @@ Y por último, el mensaje que la variable individuo envía al factor social,
 %
 \begin{equation}\label{eq:m_i_pii}
 \begin{split}
-m_{i^t \rightarrow P(i^{t+1}|i^t)}(i^t) =m_{P(i^t|\vec{\Aa}^{\,t}) \rightarrow i^t}(i^t) m_{P(i^t|i^{t-1}) \rightarrow i^t }(i^t) & = P(\vec{\Aa}^{\,t}) \, P(i^t|\vec{\Aa}^{\,t}) \text{Prior}(i^t)
+m_{I^t \rightarrow P(I^{t+1}|I^t)}(i^t) =m_{P(I^t|\vec{\Aa}^{\,t}) \rightarrow I^t}(i^t) \, m_{P(I^t|I^{t-1}) \rightarrow I^t }(i^t) % & = P(\vec{\Aa}^{\,t}) \, P(i^t|\vec{\Aa}^{\,t}) \text{Prior}(i^t)
 \end{split}
 \end{equation}
 %
-donde $\text{Prior}(i^t) = m_{P(i^t|i^{t-1}) \rightarrow i^t }(i^t)$ es el mensaje que la variable individuo recibe del factor social pasado.
-%
+% donde $\text{Prior}(i^t) = m_{P(i^t|i^{t-1}) \rightarrow i^t }(i^t)$ es el mensaje que la variable individuo recibe del factor social pasado.
+% %
 No incluimos en la multiplicación el mensaje que el factor de grupo envía a la variable individuo porque al no ser observable se cancela automáticamente, $m_{P(g^t|i^{t}) \rightarrow i^t}(i^t) = \sum_g P(g|i^t) = 1$.
+% %
+% Notar que la ecuación~\ref{eq:m_i_pii} es proprocional al proceso multiplicativo estudiado por Ole Peters (segundos nodos de la figura \ref{fig:protocolo}), en el que los recursos previos $\omega_i(t)$ se actualizan en función de la aptitud al ambiente $f(\Aa)$.
 %
-Notar que la ecuación~\ref{eq:m_i_pii} es proprocional al proceso multiplicativo estudiado por Ole Peters (segundos nodos de la figura \ref{fig:protocolo}), en el que los recursos previos $\omega_i(t)$ se actualizan en función de la aptitud al ambiente $f(\Aa)$.
+% \begin{equation}
+% \begin{split}
+% m_{i^t \rightarrow P(i^{t+1}|i^t)}(i^t) & \propto P(i^t|\vec{\Aa}^{\,t}) \text{Prior}(i^t) \propto f_{\Ee_i}(\Aa_{i}^{t}) \text{Prior}(i^t) = f_{\Ee_i}(\Aa_{i}^{t}) \omega_i(t) 
+% \end{split}
+% \end{equation}
 %
-\begin{equation}
-\begin{split}
-m_{i^t \rightarrow P(i^{t+1}|i^t)}(i^t) & \propto P(i^t|\vec{\Aa}^{\,t}) \text{Prior}(i^t) \propto f_{\Ee_i}(\Aa_{i}^{t}) \text{Prior}(i^t) = f_{\Ee_i}(\Aa_{i}^{t}) \omega_i(t) 
-\end{split}
-\end{equation}
-%
-donde el segundo proporcional vale por construcción de la distribución de probabilidad $ P(i^t|\vec{\Aa}^{\,t})$ (ver ecuación~\ref{eq:probabilidad_propro_aptitud}), y donde la igualdad final vale por renombre $\text{Prior}(i^t) = \omega_i(t)$.
+% donde el segundo proporcional vale por construcción de la distribución de probabilidad $ P(i^t|\vec{\Aa}^{\,t})$ (ver ecuación~\ref{eq:probabilidad_propro_aptitud}), y donde la igualdad final vale por renombre $\text{Prior}(i^t) = \omega_i(t)$.
 %
 Finalmente, el tercer mensaje objetivo (que codifica la selección multinivel) introduce el factor social sobre los recursos individuales.
 %
 \begin{equation}\label{eq:m_pii_i}
 \begin{split}
-m_{P(i^{t+1}|i^{t}) \rightarrow i^{t+1} }(i^{t+1}) & = \sum_{i^t} P(i^{t+1}|i^t) \, P(\vec{\Aa}^{\,t}) \, P(i^t|\vec{\Aa}^{\,t}) \,  m_{P(i^t|i^{t-1}) \rightarrow i^t }(i^t) 
+m_{P(I^{t+1}|I^{t}) \rightarrow I^{t+1} }(i^{t+1}) & = \sum_{i^t} P(i^{t+1}|i^t) \, P(\vec{\Aa}^{\,t}) \, P(i^t|\vec{\Aa}^{\,t}) \,  m_{P(I^t|I^{t-1}) \rightarrow I^t }(i^t) 
 \end{split}
 \end{equation}
 %
 Este mensaje está definido recursivamente.
 %
-Para calcularlo lo resolveremos por casos debido a que el factor social es diferente según la población sea enteramente desertora, enteramente cooperadora o mixta.
+Para calcularlo lo resolveremos por casos debido a que el factor social es diferente según la región sea enteramente desertora, enteramente cooperadora o mixta.
 %
-Notar que la ecuación~\ref{eq:m_pii_i} es proprocional a los recursos individuales luego de la redistribución del fondo común,
-%
-\begin{equation}
-\begin{split}
-m_{P(i^{t+1}|i^{t}) \rightarrow i^{t+1} }(i^{t+1}) & \propto \sum_{i^t} P(i^{t+1}|i^t) \, P(i^t|\vec{\Aa}^{\,t}) \,  \text{Prior}(i^t) \\
-& \propto \sum_{i^t} P(i^{t+1}|i^t) \, f_{\Ee_i}(\Aa_{i}^{t}) \omega_i(t)  = \omega_i(t+1)
-\end{split}
-\end{equation}
-%
-Este mensaje generaliza el último nodo de la figura~\ref{fig:protocolo}.
+% Notar que la ecuación~\ref{eq:m_pii_i} es proprocional a los recursos individuales luego de la redistribución del fondo común,
+% %
+% \begin{equation}
+% \begin{split}
+% m_{P(i^{t+1}|i^{t}) \rightarrow i^{t+1} }(i^{t+1}) & \propto \sum_{i^t} P(i^{t+1}|i^t) \, P(i^t|\vec{\Aa}^{\,t}) \,  \text{Prior}(i^t) \\
+% & \propto \sum_{i^t} P(i^{t+1}|i^t) \, f_{\Ee_i}(\Aa_{i}^{t}) \omega_i(t)  = \omega_i(t+1)
+% \end{split}
+% \end{equation}
+% %
+% Este mensaje generaliza el último nodo de la figura~\ref{fig:protocolo}.
 
 % Parrafo
 
-En la introducción hemos derivado la tasa de crecimiento de esta marginal para los grupos enteramente desertoras y solo hemos presentado un resultado numérico para el grupo enteramente cooperador.
-%
-En la siguiente sección resolveremos analíticamente la marginal para grupos enteramente cooperadoras y mixtos, y verificaremos la hipótesis de Ole Peters de la ventaja evolutiva de la cooperación.
+% En la introducción hemos derivado la tasa de crecimiento de esta marginal para los grupos enteramente desertoras y solo hemos presentado un resultado numérico para el grupo enteramente cooperador.
+% %
+En la siguiente sección resolveremos analíticamente el posterior de la selección de grupos y multinivel y verificaremos la hipótesis de Ole Peters de la ventaja evolutiva de la cooperación.
 %
 Y la sección \ref{sec:especialization}, haremos uso de los resultado análitico para demostrar la ventaja evolutiva de la especilización, rechazando la hipótesis de Ole Peters de que la especialización es un mecanismo implausible para poblaciones chicas.
-
 
 \subsection{Selección de nivel 1, nivel 2 y multinivel}
 
@@ -1156,130 +1156,181 @@ En esta subsección resolveremos la marginal que necesitamos para computar el po
 %
 \begin{equation}
 \begin{split}
-P(i^{T+1}, \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T}) & = m_{P(i^{T+1}|i^{T}) \rightarrow i^{T+1} }(i^{T+1})
+P(I^{T+1}=k, \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T}) & = m_{P(I^{T+1}|I^{T}) \rightarrow I^{T+1} }(k)
 \end{split}
 \end{equation}
 %
 donde el mensaje está definido recursivamente en la ecuación~\ref{eq:m_pii_i}.
 %
-En el anexo lo resolvemos por casos mediante inducción matemática: primero para los individuos del grupo enteramente desertores, luego para los del grupos enteramente cooperadores, y finalmente para los del grupos mixtos.
+En el anexo lo resolvemos por casos mediante inducción matemática: primero para los individuos de la región enteramente desertora, luego para la región enteramente cooperadores, y finalmente para la región mixta.
+%
+En todos los casos, la marginal es igual al posterior por la probabilidad del ambiente observado,
 %
 \begin{equation}
-P(i^{T+1}, \bm{\Aa}^1, \dots, \bm{\Aa}^T) = 
+\begin{split}
+P(I^{T+1}=k, \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T}) & = P(k| \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T}) \prod_{t=1}^T P(\vec{\Aa}^{\,t})
+\end{split}
+\end{equation}
+%
+donde
+%
+\begin{equation}
+P(k| \vec{\Aa}^{\,1}, \dots, \bm{\Aa}^T) = 
 \begin{cases}
-\prod_{t=1}^{T}  P(\vec{\Aa}^{\,t}) P(i^{T+1}|\vec{\Aa}^{\,t}) & \texttt{grupo}(i^{T+1})=0
-\prod_{t=1}^{T}  P(\vec{\Aa}^{\,t})  \sum_j^{\texttt{G}(i^{T+1})} \frac{1}{N} P(j|\vec{\Aa}^{\,t}) & \texttt{grupo}(i^{T+1}) = N  \\
- & \texttt{coop}(i^{T+1}) \text{ y } \texttt{grupo}(i^{T+1}) \neq 0 \text{ y } \texttt{grupo}(i^{T+1}) \neq N
-\end{cases}
-\end{equation}
-
-
-
-
-
-
-Posteriors.
-
-
-
-\begin{equation}
- P(k|\vec{\Aa}^{\,1},\dots,\vec{\Aa}^{\,T}) = \prod_{t=1}^{T}   \frac{1}{N} \sum_j^{\texttt{socios}(r)} P(j|\vec{\Aa}^{\,t}) 
-\end{equation}
-
-
-\begin{equation}
-P(k|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T}) = \Big(\prod_{t=1}^{T} P(k|\vec{\Aa}^{\,t}) \Big) + \Big(\sum_{t=1}^{T} P(c|\wedge_{q=1}^t\vec{\Aa}^{\,q})  \prod_{q=t+1}^T P(k|\vec{\Aa}^{\,q}) \Big)
-\end{equation}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-\newpage
-
-
-
-\subsection{Ventaja evolutiva de la cooperación}
-
-Notar la diferencia entre esta ecuación, y la de ecuación~\ref{eq:marginal_multinivel_desertor}.
-%
-Los individuos de los grupos enteramente cooperadores juegan con una variable aleatoria, $s_C(\vec{\Aa}\,)$, distinta a la variable aleatoria de la que dependen los individuos de los grupos enteramente desertores.
-%
-Los posibles fitness cooperativos para la población de tamaño 3 son,
-%
-\begin{equation}
-s_C(\vec{\Aa}\,) =
-\begin{cases}
-(1-\Ee) & \text{ si } \texttt{sum}(\vec{\Aa}\,) = 0 \\
-\frac{1}{3} \Ee + \frac{2}{3} (1-\Ee)  & \text{ si } \texttt{sum}(\vec{\Aa}\,) = 1 \\
-\frac{2}{3} \Ee + \frac{1}{3} (1-\Ee)    & \text{ si } \texttt{sum}(\vec{\Aa}\,) = 2 \\
-\Ee & \text{ si } \texttt{sum}(\vec{\Aa}\,) = 3
+\prod_{t=1}^{T} P(k|\vec{\Aa}^{\,t}) &  r=0  \\
+\prod_{t=1}^{T} \sum_j^{\texttt{socios}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,t}) & r  = N  \\
+\Big(\prod_{t=1}^{T} P(k|\vec{\Aa}^{\,t}) \Big) + \Big(\sum_{t=1}^{T} P(c|\wedge_{q=1}^t\vec{\Aa}^{\,q})  \prod_{q=t+1}^T P(k|\vec{\Aa}^{\,q}) \Big) & 0 < r < N  
 \end{cases}
 \end{equation}
 %
-Y en general, 
-\begin{equation}\label{eq:fitness_cooperador}
-s_C(\vec{\Aa}\,) = \frac{a}{n} e + \frac{n-a}{n}(1-e)
-\end{equation}
-%
-El fitness conjunto, luego de observar $T$ estados del ambiente, es
-%
-\begin{equation}
-f(\bm{a}|e,n,c=1) = \prod^T_t f(a^t|e,n,c=1)
-\end{equation}
-%
-Donde $\bm{a}$ es el vector de tamaño $T$ con la cantidad de éxitos obtenidos en cada caso.
-La tasa de crecimiento característica de los agentes cooperadores la podemos calcular utilizando la media geomética~\ref{eq:geometric_mean},
-%
-\begin{equation}
-\overline{f}(e,n,c=1) = \prod_{a=0}^n f(a|e,n,c=1)^{\text{Binomial}(a|n,p^*)}
-\end{equation}
-%
-donde $p^*$ es la verdadera probabilidad de generación de los estados $a$.
-Cuando la población es muy grande, $n\rightarrow \infty$, en cada ronda habrá invariantemente una proproción $p*$ que obtuvo éxito, por lo que el likelihood caracterísitico se reduce a,
-%
-\begin{equation}
-\lim_{n\rightarrow \infty} \overline{f}(e,c=1) = p^* e + (1-p^*)(1-e)
-\end{equation}
-%
-El likelihood temporal caracterísitico de una estrategia $e$ en una población cooperativa infinita es la esperanza, la cual es lineal respecto de la verdadera probabilidad de generación de los estados del ambiente.
+donde $r = \texttt{region}(k)$, y $c$ es una individuos que pertenece a los cooperadores de la región $r$, $c \in \texttt{socios}(r)$.
 
-%En el siguiente modelo hacemos explícito el tipo de comportamiento $c\in\{0,1\}$ del agente.
-%La extensión del modelo de Ole Peters que realizamos en la sección Metodología (figura~\ref{fig:modelo_beta_binomial}) sólo analizamos el comportamiento desertor individual.
+% Parrafo
+
+Con esto podemos calcular el posterior de los grupos (nivel 2),
+%
+\begin{equation}
+P(g|\vec{\Aa}^{\,1}, \dots, \bm{\Aa}^T) = \sum_i \mathbb{I}(\texttt{region}(i)=g) P(i|\vec{\Aa}^{\,1}, \dots, \bm{\Aa}^T)
+\end{equation}
+%
+y de los comportamientos cooperadores (multinivel),
+\begin{equation}
+P(\texttt{coop}|\vec{\Aa}^{\,1}, \dots, \bm{\Aa}^T) = \sum_i P(i|\vec{\Aa}^{\,1}, \dots, \bm{\Aa}^T)\mathbb{I}(\texttt{coop}(i))
+\end{equation}
+%
+En la siguiente figura mostramos el posterior de los grupos cuando las regiones tienen $N=2$ individuos (3 regiones), y el 
+%
+\todo{Agregar regiones al modelo para que el prior de los grupos sea 0.5 cuando hay 3 regiones, y que solo se necesiten N individuos, y no M}
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.49\textwidth}
+    \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-6.pdf}
+    \caption{Selección de grupos}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.49\textwidth}
+    \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-6.pdf}
+    \caption{Selección multinivel}
+    \end{subfigure}
+    \caption{
+    Evolución del posterior de los grupos a medida que avanza en el tiempo.
+    }
+    \label{fig:multilevel-selection-6}
+\end{figure}
+%
+\todo{Hacer figura multinivel}
+En pocas iteraciones, el posterior del grupo de la región enteramente cooperadora llega a 1, lo que significa que todos los recursos están concentrados allí.
+%
+En términos evolutivos, los grupos de las regiones enteramente cooperadores serán capaces de invadir regiones compuesta enteramente por grupos desertores y mixtos.
+
+% Parrafo
+
+\begin{conclution}[La ventaja evolutiva de la cooperación]
+La selección multinivel favorece a las estrategias cooperativas incluso con grupos de tamaño mínimo (dos).
+La aparición de una relación de mutua cooperación invade poblaciones compuesta enteramente por grupos desertores y mixtos.
+\end{conclution}
+%
+La ventaja evolutiva de la cooperación se extiende inmediatamente a poblaciones de tamaño mayor.
+Si existe ventaja evolutiva en poblaciones de tamaño 2, más aun en poblaciones de mayor tamaño.
+En el anexo hacemos una extensión de este modelo.
+
+
+\subsection{Los bienes comunes no son un dilema del prisionero}
+
+Para ejemplificar el problema de la estabilidad evolutiva de la cooperación en este sistema, analicemos la media temporal de los posteriors en el tiempo.
+%
+\begin{equation}
+P(i^{T+1} | \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T}) \overset{\hfrac{\text{caso}}{1}}{=} \prod_{t=1}^{T} P(i^{T+1}|\vec{\Aa}^{\,t}) & \propto \prod_{t=1}^{T} f_{\Ee_i}(\Aa_{i}^{t}) = \omega_D(T)
+\end{equation}
+
+
+
+\begin{equation}
+P(i^{T+1}|\vec{\Aa}^{\,1},\dots,\vec{\Aa}^{\,T}) \overset{\hfrac{}{\text{caso}}}{=} \prod_{t=1}^{T} \underbrace{\sum_j^{\texttt{G}(i^{T+1})} \frac{1}{N} P(j|\vec{\Aa}^{\,t})}_{s_C(\vec{\Aa}\,)} \propto \prod_{t=1}^{T} \sum_j^{\texttt{socios}(i^{T+1})} \frac{1}{N} f_{\Ee_j}(\Aa_{j}^{t}) = \omega_C(T)
+\end{equation}
+
+\begin{equation}
+\begin{split}
+P(i^{T+1}|\vec{\Aa}^{\,1},\dots,\vec{\Aa}^{\,T}) & \overset{\hfrac{}{\text{caso}}}{=} \Big(\prod_{t=1}^{T} P(k|\vec{\Aa}^{\,t}) \Big) + \Big(\sum_{t=1}^{T} P(c|\wedge_{q=1}^t\vec{\Aa}^{\,q})  \prod_{q=t+1}^T P(k|\vec{\Aa}^{\,q}) \Big) \\
+& \propto \omega_D(T) + \Big(\sum_{t=1}^{T} \omega_C(t) \omega_D(T-t-1) \Big)
+\end{split}
+\end{equation}
+
+
+
+La población más chica posible está compuesta por dos agentes.
+%
+En este caso las tasas de crecimiento temporal caracterísitica para las diferentes estrategias son (demostraciones en la sección Resultados):
+%
+\begin{equation}
+   g(\cdot,\cdot) = \bordermatrix{ & C & D \cr
+      C & \approx 1.0 & \approx 0.47 \cr
+      D & \approx 0.95 & \approx 0.95 } 
+\end{equation}
+%
+El primer agente que ``decida'' desertar unilateralmente va a ver reducida su tasa de crecimiento de $f(C,C) = 1.0$ a $ f(D,C) = 0.95$.
+% 
+\begin{conclution}[La no necesidad de castigos]
+Sin necesidad de introducir castigos, las estrategias desertoras afectan negativamente su tasa de crecimiento a largo plazo a causa de su propio comportamiento, pues al evitar compartir sus recursos generan un aumento de sus fluctuaciones.
+\end{conclution}
+
+Esto parecería apoyar la idea de Ole Peters de que la cooperación no es altruista sino que está impulsada por el interés personal\footnote{
+La estructura de pagos coinicide con la matriz de pagos del Stag-Hunt. Sin embargo, los análisis que llegan a la conclusión de que las poblaciones enteramente cooperadoras son evolutivamente estables se basan en dinámicas aditivas en poblaciones infinitas, apartándose del modelo estandar de crecimiento exponencial.}.
+Sin embargo para la teoría de la evolución la frecuencia de los estrategias en la población depende, no del valor absoluto de la tasa de crecimiento, sino de la diferencia respecto de las tasas de crecimiento de las otras estrategias en la población.
+Por más que la mutua cooperación ofrezca una tasa de crecimiento mayor que la deserción unilateral ($f(C,C) = 1.00 > 0.95 = f(D,C)$), un mutante desertor invadirá evolutivamente la población debido a que su tasa de crecimiento será mayor a la del agente cooperador ($f(D,C) = 0.95 > 0.47 = f(C,D)$). 
+
+\begin{conclution}[Estabilidad evolutiva nivel 1]
+Esto quiere decir que las estrategias cooperadoras no son evolutivamentes estables al interior de las poblaciones.
+\end{conclution}
+
+% 
+% 
+% \subsection{Ventaja evolutiva de la cooperación}
+% 
+% Notar la diferencia entre esta ecuación, y la de ecuación~\ref{eq:marginal_multinivel_desertor}.
+% %
+% Los individuos de los grupos enteramente cooperadores juegan con una variable aleatoria, $s_C(\vec{\Aa}\,)$, distinta a la variable aleatoria de la que dependen los individuos de los grupos enteramente desertores.
+% %
+% Los posibles fitness cooperativos para la población de tamaño 3 son,
+% %
+% \begin{equation}
+% s_C(\vec{\Aa}\,) =
+% \begin{cases}
+% (1-\Ee) & \text{ si } \texttt{sum}(\vec{\Aa}\,) = 0 \\
+% \frac{1}{3} \Ee + \frac{2}{3} (1-\Ee)  & \text{ si } \texttt{sum}(\vec{\Aa}\,) = 1 \\
+% \frac{2}{3} \Ee + \frac{1}{3} (1-\Ee)    & \text{ si } \texttt{sum}(\vec{\Aa}\,) = 2 \\
+% \Ee & \text{ si } \texttt{sum}(\vec{\Aa}\,) = 3
+% \end{cases}
+% \end{equation}
+% %
+% Y en general, 
+% \begin{equation}\label{eq:fitness_cooperador}
+% s_C(\vec{\Aa}\,) = \frac{a}{n} e + \frac{n-a}{n}(1-e)
+% \end{equation}
+% %
+% El fitness conjunto, luego de observar $T$ estados del ambiente, es
+% %
+% \begin{equation}
+% f(\bm{a}|e,n,c=1) = \prod^T_t f(a^t|e,n,c=1)
+% \end{equation}
+% %
+% Donde $\bm{a}$ es el vector de tamaño $T$ con la cantidad de éxitos obtenidos en cada caso.
+% La tasa de crecimiento característica de los agentes cooperadores la podemos calcular utilizando la media geomética~\ref{eq:geometric_mean},
+% %
+% \begin{equation}
+% \overline{f}(e,n,c=1) = \prod_{a=0}^n f(a|e,n,c=1)^{\text{Binomial}(a|n,p^*)}
+% \end{equation}
+% %
+% donde $p^*$ es la verdadera probabilidad de generación de los estados $a$.
+% Cuando la población es muy grande, $n\rightarrow \infty$, en cada ronda habrá invariantemente una proproción $p*$ que obtuvo éxito, por lo que el likelihood caracterísitico se reduce a,
+% %
+% \begin{equation}
+% \lim_{n\rightarrow \infty} \overline{f}(e,c=1) = p^* e + (1-p^*)(1-e)
+% \end{equation}
+% %
+% El likelihood temporal caracterísitico de una estrategia $e$ en una población cooperativa infinita es la esperanza, la cual es lineal respecto de la verdadera probabilidad de generación de los estados del ambiente.
+% 
+% %En el siguiente modelo hacemos explícito el tipo de comportamiento $c\in\{0,1\}$ del agente.
+% %La extensión del modelo de Ole Peters que realizamos en la sección Metodología (figura~\ref{fig:modelo_beta_binomial}) sólo analizamos el comportamiento desertor individual.
 
 \subsection{La ventaja de la especialización}
 
@@ -1350,163 +1401,6 @@ Los puntos indican la estretgia óptima para el tamaño de la población.
 Cuando la población tiene tamaño 1, la estrategia mejor adaptada es la que apuesta con la misma probjabilidad que el ambiente.
 Pero rápidamente, a medida que aumentamos el tamaño de la población, la cooperación favorece a las estrategias especialistas hasta que en poblaciones de tamaño inifinto el nivel se alcanza un nivel de especialización total que logra la tasa de crecimiento máxima, que es equivalente a la probabilidad de generación de las aptitudes $p^*$.
 
-\subsection{Selección multinivel}
-
-Para concluir que existe una ventaja evolutiva a favor de la cooperación y la especialización hace falta demostrar que la cooperación, no sólo puede resisitir la invasión de mutantes desertores, sino que ella misma invadirá poblaciones de desertores una vez que aparece.
-Para empezar, veamos qué ocurre en poblaciones de tamaño 2.
-
-% 
-
-En la introducción hemos visto que, si bien la deserción unilateral produce pérdidas en términos absolutos para el mismo agente desertor sin necesidad de introducir castigos, los mutantes desertores invadirán evolutivamente la población debido a que su tasa de crecimiento será mayor que la del agente cooperador.
-¿Pero qué ocurre con las diferentes tipos de poblaciones?
-Una vez que surge una población enteramente cooperadora, ¿ésta es capaz de invadir el resto de poblaciones no cooperadoras?.
-
-% Parrafo
-
-Para responder esta pregunta extenderemos el modelo bayesiano, incluyendo un nuevo nivel superior: el tipo de grupo.
-En una población de tamaño 2 tenemos 4 configuraciones posibles: CC, CD, DC, DD.
-Definiendo un prior uniforme sobre estas 4 configuraciones estaremos expresando que no tenemos preferencia sobre ninguna de ellas, las configuraciones compiten bajos mismas condiciones iniciales.
-Esta distribución la podemos expresar de forma compacta mediante una variable $g$ que representa la cantidad de desertores que hay en el grupo,
-%
-\begin{align}
-\centering
-P(g) = \begin{tabular}{|c|c|c|c|}
-        \hline
-        $g=0$ & $g=1$ & $g=2$ \\ \hline
-        $1/4$ & $1/2$ & $1/4$ \\ \hline
-\end{tabular}
-\end{align}
-%
-La variable de grupo $g$ determina la composición inicial de las estrategias coperativa al interior del grupo.
-Los sujetos están caracterizados por su estrategia $e$, su comportamiento $c$ y su identidad $i$, $s_i=(e,c,i)$.
-En el grupo $g=0$ está compuesto por dos estrategias cooperadoras, $s_1=(e,c=1,1)$ y $s_2=(e,c=1,2)$, el grupo $g=1$ está compuesto por una estrategia cooperadora y una desertora, $s_3=(e,c=1,3)$ y $s_4=(e,c=0,4)$, y el grupo $g=2$ enteramente desertor lo resumimos mediante un único agente desertor $s_5=(e,c=0,5)$
-%
-\begin{align}
-\centering
-P(s^0|g) = \begin{tabular}{|c|c|c|c|c|c|}
-        \hline
-        & $s^0_1$ & $s^0_2$ & $s^0_3$ &  $s^0_4$ & $s^0_5$ \\ \hline
-       $g=0$ & $0.5$ & $0.5$ & $0$ &  $0$ & $0$  \\ \hline
-       $g=1$ & $0$ & $0$ & $0.5$ & $0.5$ & $0$ \\ \hline
-       $g=2$ & $0$ & $0$ & $0$ & $0$ & $1.0$ \\ \hline
-\end{tabular}
-\end{align}
-%
-En cada paso temporal, las estrategias cooperadoras ceden la mitad de los recursos a sus compañeras de grupo, y las estrategias desertoras mantienen para si todos los recursos.
-%
-\begin{align}
-\centering
-P(s^{t}|s^{t-1}) = \begin{tabular}{|c|c|c|c|c|c|}
-        \hline
-        & $s^t_1$ & $s^t_2$ & $s^t_3$ & $s^t_4$ & $s^t_5$ \\ \hline
-       $s^{t-1}_1$ & $0.5$ & $0.5$ & $0$ &  $0$ & $0$  \\ \hline
-       $s^{t-1}_2$ & $0.5$ & $0.5$ & $0$ & $0$ & $0$  \\ \hline \hline
-       $s^{t-1}_3$ & $0$ & $0$ & $0.5$ & $0.5$ & $0$  \\ \hline
-       $s^{t-1}_4$ & $0$ & $0$ & $0$ & $1.0$ & $0$  \\ \hline \hline
-       $s^{t-1}_5$ & $0$ & $0$ & $0$ & $0$ & $1.0$  \\ \hline
-\end{tabular}
-\end{align}
-%
-En cada tiempo $t$ cada sujeto $i$ actualiza sus recursos en función del estado $a_i$.
-Para simplificar, en vez de observar 5 valores, observamos solamente $a^t=(a^t_1, a^t_2)$, uno por cada miembro del grupo: el primer elemento es el valor que reciben los agentes impares, y el segundo los agentes pares. 
-%
-\begin{align}
-\centering
-P(a^{t}|s^{t}) \propto \begin{tabular}{|c|c|c|c|c|c|c|}
-        \hline
-        & $a^t=(0,0)$ & $a^t=(1,0)$ & $a^t=(0,1)$ &  $a^t=(1,1)$  \\ \hline
-       $s^{t}_1$ & $0.6$ & $1.5$ & $0.6$ & $1.5$ \\ \hline
-       $s^{t}_2$ & $0.6$ & $0.6$ & $1.5$ & $1.5$  \\ \hline
-       $s^{t}_3$ & $0.6$ & $1.5$ & $0.6$ & $1.5$  \\ \hline
-       $s^{t}_4$ & $0.6$ & $0.6$ & $1.5$ & $1.5$ \\ \hline
-       $s^{t}_5$ & $0.6$ & $1.5$ & $0.6$ & $1.5$ \\ \hline
-\end{tabular}
-\end{align}
-Notar que la probabilidad está definida en términos proporcionales por lo que en este primer caso estamos analizamos agentes basados en la estrategia original propuesta por Ole Peters, $e=0.71$.
-
-% Parrafo
-
-Todas estas distribuciones de probabilidad condicional definen las probabilidad conjunta, que puede ser expresada en términos gráficos del siguiente modo,
-%
-\begin{figure}[H]
-\centering
-\tikz{
-    \node[latent] (m) {$g$};
-
-    \node[latent, right=of m] (e0) {$s^0$};
-    
-    \node[latent, right=of e0] (e1) {$s^1$};
-    \node[latent, below=of e1] (r1) {$a^1$};
-    
-    \node[latent, right=of e1] (e2) {$s^2$};
-    \node[latent, below=of e2] (r2) {$a^2$};
-    
-    \node[latent, right=of e2] (e3) {$s^3$};
-    
-    
-    \edge {m} {e0};
-    \edge {e0} {e1};
-    \edge {e1} {r1,e2};
-    \edge {e2} {r2,e3};
-}
-\caption{
-Modelo bayesiano jerarquico para analizar la selección multinivel en procesos evolutivos.
-}
-\label{fig:modelo_grafico}
-\end{figure}
-%
-Veamos cómo evoluciona el posterior de estos 3 grupos.
-%
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[b]{0.66\textwidth}
-    \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-6.pdf}
-    \end{subfigure}
-    \caption{
-    Evolución del posterior de los grupos a medida que avanza en el tiempo.
-    }
-    \label{fig:multilevel-selection-6}
-\end{figure}
-%
-La aparición de un grupo cooperador es suficiente para invadir poblaciones compuesta enteramente por grupos desertores y mixtos.
-%
-\begin{conclution}[La ventaja evolutiva de la cooperación]
-La selección multinivel favorece a las estrategias cooperativas incluso con grupos de tamaño mínimo (dos).
-La aparición de una relación de mutua cooperación invade poblaciones compuesta enteramente por grupos desertores y mixtos.
-\end{conclution}
-%
-La ventaja evolutiva de la cooperación se extiende inmediatamente a poblaciones de tamaño mayor.
-Si existe ventaja evolutiva en poblaciones de tamaño 2, más aun en poblaciones de mayor tamaño.
-En el anexo hacemos una extensión de este modelo.
-
-
-% \subsection{Estabilidad evolutiva}
-%
-% Para ejemplificar el problema de la estabilidad evolutiva de la cooperación en este sistema, analicemos las tasas de crecimiento de las estrategias cooperadora y desertora en poblaciones mixtas.
-% La población más chica posible está compuesta por dos agentes.
-% En este caso las tasas de crecimiento temporal caracterísitica para las diferentes estrategias son (demostraciones en la sección Resultados):
-% %
-% \begin{equation}
-%    f(\cdot,\cdot) = \bordermatrix{ & C & D \cr
-%       C & \approx 1.0 & \approx 0.47 \cr
-%       D & \approx 0.95 & \approx 0.95 } 
-% \end{equation}
-% %
-% El primer agente que ``decida'' desertar unilateralmente va a ver reducida su tasa de crecimiento de $f(C,C) = 1.0$ a $ f(D,C) = 0.95$.
-% % 
-% \begin{conclution}[La no necesidad de castigos]
-% Sin necesidad de introducir castigos, las estrategias desertoras afectan negativamente su tasa de crecimiento a largo plazo a causa de su propio comportamiento, pues al evitar compartir sus recursos generan un aumento de sus fluctuaciones.
-% \end{conclution}
-% 
-% Esto parecería apoyar la idea de Ole Peters de que la cooperación no es altruista sino que está impulsada por el interés personal\footnote{
-% La estructura de pagos coinicide con la matriz de pagos del Stag-Hunt. Sin embargo, los análisis que llegan a la conclusión de que las poblaciones enteramente cooperadoras son evolutivamente estables se basan en dinámicas aditivas en poblaciones infinitas, apartándose del modelo estandar de crecimiento exponencial.}.
-% Sin embargo para la teoría de la evolución la frecuencia de los estrategias en la población depende, no del valor absoluto de la tasa de crecimiento, sino de la diferencia respecto de las tasas de crecimiento de las otras estrategias en la población.
-% Por más que la mutua cooperación ofrezca una tasa de crecimiento mayor que la deserción unilateral ($f(C,C) = 1.00 > 0.95 = f(D,C)$), un mutante desertor invadirá evolutivamente la población debido a que su tasa de crecimiento será mayor a la del agente cooperador ($f(D,C) = 0.95 > 0.47 = f(C,D)$). 
-% 
-% \begin{conclution}[Estabilidad evolutiva nivel 1]
-% Esto quiere decir que las estrategias cooperadoras no son evolutivamentes estables al interior de las poblaciones.
-% \end{conclution}
-
 
 \section{Discusiones}
 
@@ -1547,7 +1441,7 @@ Hasta donde sabemos, nuestro trabajo sería el primero que desarrolla un modelo 
 
 \subsection{Selección de nivel 1, nivel 2 y multinivel}
 
-En esta sección resolveremos por casos la marginal que necesitamos para computar el psterior de la la selección de nivel 1, de nivel 2 y multinivel,
+En esta sección resolveremos por casos la marginal que necesitamos para computar el posterior de la la selección de nivel 1, de nivel 2 y multinivel,
 %
 \begin{equation}
 \begin{split}
@@ -1557,20 +1451,21 @@ P(i^{T+1}, \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T}) & = m_{P(I^{T+1}|I^{T}) \rig
 %
 donde el mensaje está definido en la ecuación~\ref{eq:m_pii_i}.
 %
-Debido a que ese mensaje está definido de forma recursiva, realizaremos demostraciones por inducción, separada por casos: primero para los grupos enteramente desertores, luego para los grupos enteramente cooperadores, y finalmente para los grupos mixtos.
+Debido a que ese mensaje está definido de forma recursiva, realizaremos demostraciones por inducción, separada por casos: primero para las regiones enteramente desertoras, luego para las regiones enteramente cooperadoras, y finalmente para las regiones mixtas.
 
 \subsubsection{Regiones enteramente desertoras}
 
-Ya hemos visto en la introducción que la tasa de crecimiento de los individuos aislados, o de individuos en grupos enteramente desesertores, se puede calcular como la media geométrica.
-%
-Proponemos la siguiente hipótesis inductiva para la población desertora ($\text{HI}_d(T)$)
+Debido a que ya hemos visto en la introducción, que la tasa de crecimiento de los individuos se puede calcular como la media geométrica, proponemos la siguiente hipótesis inductiva para la región enteramente desertora ($\text{HI}_d(T)$)
 %
 \begin{equation}
- m_{P(i^{T+1}|i^{T}) \rightarrow i^{T+1} }(i^{T+1}) = \prod_{t=1}^{T} P(\vec{\Aa}^{\,t}) \, P(i^{T+1}|\vec{\Aa}^{\,t})
+ m_{P(I^{T+1}|I^{T}) \rightarrow I^{T+1} }(k) \overset{\text{HI}_d}{=} \prod_{t=1}^{T} P(\vec{\Aa}^{\,t}) \, P(i^{T+1}|\vec{\Aa}^{\,t})
 \end{equation}
 %
-Esta hipótesis vale en el caso base $T=1$ 
-pues $m_{P(i^1|i^0) \rightarrow i^1 }(i^1}) = 1$, y $P(i^{t+1}|i^t) = \mathbb{I}(i^{t+1} = i^t)$,
+con $\texttt{region}(k)=0$.
+%
+\paragraph{Caso Base}
+Esta hipótesis vale en el caso base, $T=1$, 
+pues $P(i^{t+1}|i^t) = \mathbb{I}(i^{t+1} = i^t)$,
 %
 \begin{equation}
 \begin{split}
@@ -1592,11 +1487,11 @@ m_{P(i^{T+1}|i^{T}) \rightarrow i^{T+1} }(i^{T+1}) & \overset{\hfrac{eq}{\ref{eq
 \end{split}
 \end{equation}
 %
-Luego, la marginal objetivo en el caso de la población enteramente cooperadora es,
+Luego, el posterior de los individuos en la región enteramente cooperadora es,
 %
 \begin{equation}\label{eq:posterior_multinivel_desertor}
 \begin{split}
-P(i^{T+1} | \bm{\Aa}^1, \dots, \bm{\Aa}^{T}) \overset{\hfrac{\text{caso}}{1}}{=} \prod_{t=1}^{T} P(i^{T+1}|\vec{\Aa}^{\,t}) & \propto \prod_{t=1}^{T} f_{\Ee_i}(\Aa_{i}^{t})
+P(i^{T+1} | \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T}) \overset{\hfrac{\text{caso}}{1}}{=} \prod_{t=1}^{T} P(i^{T+1}|\vec{\Aa}^{\,t}) & \propto \prod_{t=1}^{T} f_{\Ee_i}(\Aa_{i}^{t})
 \end{split}
 \end{equation}
 %
