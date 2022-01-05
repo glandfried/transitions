@@ -87,9 +87,6 @@
 \end{abstract}
 
 
-\todo[inline]{En los mensajes usar las variables en Mayúsculas}
-\todo[inline]{Cambiar el nombre del atributo \texttt{grupo} de los individuos por \texttt{región} en la que se encuentran, para que no se confuda con la variable grupo del modelo}
-
 \section{Introducción}
 
 \en{In the last third of the history of the Universe, sometime around 4 billion years ago, a simple form of matter organization capable of self-replication appeared on Earth. }%
@@ -866,7 +863,6 @@ Responderemos estas y otras preguntas en la siguiente sección.
 
 \section{Resultados}
 
-
 En esta sección analizaremos si efectivamente existe alguna ventaja evolutiva de la cooperación y la especialización en presencia de deserción.
 %
 El concepto clave para dar una respuesta a este problema es el de ``estructura poblacional''.
@@ -1161,9 +1157,9 @@ Este mensaje está definido recursivamente.
 % \end{equation}
 % %
 % Este mensaje generaliza el último nodo de la figura~\ref{fig:protocolo}.
-
+%
 % Parrafo
-
+%
 % En la introducción hemos derivado la tasa de crecimiento de esta marginal para los grupos enteramente desertoras y solo hemos presentado un resultado numérico para el grupo enteramente cooperador.
 % %
 % En la siguiente sección resolveremos analíticamente el posterior de la selección de grupos y multinivel y verificaremos la hipótesis de Ole Peters de la ventaja evolutiva de la cooperación.
@@ -1204,9 +1200,7 @@ P(k)\prod_{t=1}^{T} \sum_j^{\texttt{socios}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,t})
 \end{equation}
 %
 donde $r = \texttt{region}(k)$, y $c$ es una individuos que pertenece a los cooperadores de la región $r$, $c \in \texttt{socios}(r)$.
-
-% Parrafo
-
+%
 Con esto podemos calcular el posterior de los grupos (nivel 2),
 %
 \begin{equation}
@@ -1214,59 +1208,143 @@ P(g|\vec{\Aa}^{\,1}, \dots, \bm{\Aa}^T) = \sum_i \mathbb{I}(\texttt{region}(i)=g
 \end{equation}
 %
 y de los comportamientos cooperadores (multinivel),
+%
 \begin{equation}
 P(\texttt{coop}|\vec{\Aa}^{\,1}, \dots, \bm{\Aa}^T) = \sum_i P(i|\vec{\Aa}^{\,1}, \dots, \bm{\Aa}^T)\mathbb{I}(\texttt{coop}(i))
 \end{equation}
 %
 En la siguiente figura mostramos el posterior de los grupos cuando las regiones tienen $N=2$ individuos (3 regiones), y el 
 %
-\todo{Agregar regiones al modelo para que el prior de los grupos sea 0.5 cuando hay 3 regiones, y que solo se necesiten N individuos, y no M}
 \begin{figure}[H]
     \centering
-    \begin{subfigure}[b]{0.49\textwidth}
-    \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-6.pdf}
-    \caption{Selección de grupos}
+    \begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-level-1-posterior.pdf}
+    \caption{Selección nivel 1}
+    \label{fig:multilevel-selection-level-1}
     \end{subfigure}
-    \begin{subfigure}[b]{0.49\textwidth}
+    \begin{subfigure}[b]{0.32\textwidth}
     \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-6.pdf}
+    \caption{Selección nivel 2}
+    \label{fig:multilevel-selection-6}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-multilevel-posterior.pdf}
     \caption{Selección multinivel}
+    \label{fig:multilevel-selection-multilevel-posterior}
     \end{subfigure}
     \caption{
-    Evolución del posterior de los grupos a medida que avanza en el tiempo.
+    Evolución del posterior de los grupos (selección de nivel 2) y de los individuos cooperadores (selección multinivel) a medida que avanza el tiempo.
     }
-    \label{fig:multilevel-selection-6}
+    \label{fig:multilevel-selection}
 \end{figure}
 %
-\todo{Hacer figura multinivel}
-En pocas iteraciones, el posterior del grupo de la región enteramente cooperadora llega a 1, lo que significa que todos los recursos están concentrados allí.
+En pocas iteraciones, el posterior del grupo de la región enteramente cooperadora llega a 1, lo que significa que todos los recursos están concentrados allí (figura~\ref{fig:multilevel-selection-6}).
 %
 En términos evolutivos, los grupos de las regiones enteramente cooperadores serán capaces de invadir regiones compuesta enteramente por grupos desertores y mixtos.
-
-% Parrafo
-
+%
+A través de la selección de grupos, los comportamientos cooperadores logran invadir poblaciones con comportamientos desertores.
+%
 \begin{conclution}[La ventaja evolutiva de la cooperación]
 La selección multinivel favorece a las estrategias cooperativas incluso con grupos de tamaño mínimo (dos).
-La aparición de una relación de mutua cooperación invade poblaciones compuesta enteramente por grupos desertores y mixtos.
 \end{conclution}
 %
 La ventaja evolutiva de la cooperación se extiende inmediatamente a poblaciones de tamaño mayor.
-Si existe ventaja evolutiva en poblaciones de tamaño 2, más aun en poblaciones de mayor tamaño.
-En el anexo hacemos una extensión de este modelo.
 
+\subsection{Dilema social}
 
-\subsection{Los bienes comunes no son un dilema del prisionero}
-
-Para ejemplificar el problema de la estabilidad evolutiva de la cooperación en este sistema, analicemos la media temporal de los posteriors en el tiempo.
+En las últimas décadas la biología evolutiva a comenzado a adoptar la analogía de la ``tragedia de los comunes'' en relación al estudio de la evolución de la cooperación y de las trasiciones evolutivas mayores~\cite{rankin2007-tragedyCommonsBiology}.
+%
+El concepto de ``tragedia de los comunes'' contiene la creencia de que los bienes comunes tienen una estructura de pagos isomorfa al dilema del prisionero de N jugadores~\cite{hardin1971-collectiveAsPrisionerDilema}.
+%
+Imaginemos dos jugadores, cada uno de los cuales tiene que decidir si coopera o no.
+%
+Cooperar (C) implica un coste $c$, para que la otra persona reciba un beneficio b, con $b > c$.
+%
+Desistir (D) significa negarse a cooperar y no conlleva ningún coste. 
+%
+De este modo, se obtiene la siguiente matriz de pagos:
 %
 \begin{equation}
-P(i^{T+1} | \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T}) \overset{\hfrac{\text{caso}}{1}}{=} \prod_{t=1}^{T} P(i^{T+1}|\vec{\Aa}^{\,t}) & \propto \prod_{t=1}^{T} f_{\Ee_i}(\Aa_{i}^{t}) = \omega_D(T)
+  \bordermatrix{ & C & D \cr
+      C & b-c & -c \cr
+      D & b & 0 } 
 \end{equation}
+%
+Los jugadores ganan más si optan por la cooperación mutua que por la deserción mutua, ya que $b - c > 0$.
+%
+Sin embargo, independientemente de lo que haga el otro jugador, es mejor no cooperar: si mi compañero deserta, es mejor para mí desertar que cooperar, ya que $0 > -c$; si mi compañero coopera, sigue siendo mejor para mí desertar que cooperar, ya que $b > b - c$.
+%
+De ahí el dilema: aunque la cooperación mutua es un resultado preferible, ningún individuo tiene el incentivo de cooperar.
 
+% Parrafo
 
-
+Para verificar la creencia de que la dinámica de bienes comunes produce matrices de pagos isomórfas al dilema del prisionero, analicemos la media temporal de los posteriors en el tiempo.
+%
+La mutua deserción produce un posterior que es proporcional al proceso multipicativo estudiado por Ole Peters,
+%
 \begin{equation}
-P(i^{T+1}|\vec{\Aa}^{\,1},\dots,\vec{\Aa}^{\,T}) \overset{\hfrac{}{\text{caso}}}{=} \prod_{t=1}^{T} \underbrace{\sum_j^{\texttt{G}(i^{T+1})} \frac{1}{N} P(j|\vec{\Aa}^{\,t})}_{s_C(\vec{\Aa}\,)} \propto \prod_{t=1}^{T} \sum_j^{\texttt{socios}(i^{T+1})} \frac{1}{N} f_{\Ee_j}(\Aa_{j}^{t}) = \omega_C(T)
+P(k | \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T}) \overset{\hfrac{\text{caso}}{1}}{=} P(k) \prod_{t=1}^{T} P(k|\vec{\Aa}^{\,t}) \\
+& \propto P(k) \prod_{t=1}^{T} f_{\Ee_i}(\Aa_{i}^{t})
 \end{equation}
+%
+donde el proporcional vale por construcción de la distribución de probabilidad $ P(i^t|\vec{\Aa}^{\,t})$ (ver ecuación~\ref{eq:probabilidad_propro_aptitud}).
+%
+En la introducción vimos que en una ambiente con $p=0.5$ y un individuo con estrategia $\Ee=1.5$ y recursos totales $R=2.1$ es $\approx 0.95$.
+
+% Parrafo
+
+De modo similar, el posterior de mutua cooperación es proporcional al proceso cooperativo estudiado por Ole Peters.
+%
+\begin{equation}
+P(i^{T+1}|\vec{\Aa}^{\,1},\dots,\vec{\Aa}^{\,T}) \overset{\hfrac{}{\text{caso}}}{=} \prod_{t=1}^{T} \underbrace{\sum_j^{\texttt{socios}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,t})}_{s_C(\vec{\Aa}\,)} \propto \prod_{t=1}^{T} \sum_j^{\texttt{socios}(r)} \frac{1}{N} f_{\Ee_j}(\Aa_{j}^{t}) = \omega_C(T)
+\end{equation}
+%
+donde el proporcional vale por construcción de la distribución de probabilidad $ P(i^t|\vec{\Aa}^{\,t})$.
+%
+Notar la diferencia entre el posterior de mutua cooperación y el de mutua deserción.
+%
+Los individuos de los grupos enteramente cooperadores juegan con una variable aleatoria, $s_C(\vec{\Aa}\,)$, distinta a la variable aleatoria de la que dependen los individuos de los grupos enteramente desertores.
+%
+Los posibles fitness cooperativos para la población de tamaño 3 son,
+%
+\begin{equation}
+s_C(\vec{\Aa}\,) =
+\begin{cases}
+(1-\Ee) & \text{ si } \texttt{sum}(\vec{\Aa}\,) = 0 \\
+\frac{1}{3} \Ee + \frac{2}{3} (1-\Ee)  & \text{ si } \texttt{sum}(\vec{\Aa}\,) = 1 \\
+\frac{2}{3} \Ee + \frac{1}{3} (1-\Ee)    & \text{ si } \texttt{sum}(\vec{\Aa}\,) = 2 \\
+\Ee & \text{ si } \texttt{sum}(\vec{\Aa}\,) = 3
+\end{cases}
+\end{equation}
+%
+Y en general, 
+\begin{equation}\label{eq:fitness_cooperador}
+s_C(\vec{\Aa}\,) = \frac{a}{n} e + \frac{n-a}{n}(1-e)
+\end{equation}
+%
+El fitness conjunto, luego de observar $T$ estados del ambiente, es
+%
+\begin{equation}
+f(\bm{a}|e,n,c=1) = \prod^T_t f(a^t|e,n,c=1)
+\end{equation}
+%
+Donde $\bm{a}$ es el vector de tamaño $T$ con la cantidad de éxitos obtenidos en cada caso.
+La tasa de crecimiento característica de los agentes cooperadores la podemos calcular utilizando la media geomética~\ref{eq:geometric_mean},
+%
+\begin{equation}
+\overline{f}(e,n,c=1) = \prod_{a=0}^n f(a|e,n,c=1)^{\text{Binomial}(a|n,p^*)}
+\end{equation}
+%
+donde $p^*$ es la verdadera probabilidad de generación de los estados $a$.
+Cuando la población es muy grande, $n\rightarrow \infty$, en cada ronda habrá invariantemente una proproción $p*$ que obtuvo éxito, por lo que el likelihood caracterísitico se reduce a,
+%
+\begin{equation}
+\lim_{n\rightarrow \infty} \overline{f}(e,c=1) = p^* e + (1-p^*)(1-e)
+\end{equation}
+%
+El likelihood temporal caracterísitico de una estrategia $e$ en una población cooperativa infinita es la esperanza, la cual es lineal respecto de la verdadera probabilidad de generación de los estados del ambiente.
+
+% Parrafo
 
 \begin{equation}
 \begin{split}
@@ -1302,55 +1380,6 @@ Por más que la mutua cooperación ofrezca una tasa de crecimiento mayor que la 
 Esto quiere decir que las estrategias cooperadoras no son evolutivamentes estables al interior de las poblaciones.
 \end{conclution}
 
-% 
-% 
-% \subsection{Ventaja evolutiva de la cooperación}
-% 
-% Notar la diferencia entre esta ecuación, y la de ecuación~\ref{eq:marginal_multinivel_desertor}.
-% %
-% Los individuos de los grupos enteramente cooperadores juegan con una variable aleatoria, $s_C(\vec{\Aa}\,)$, distinta a la variable aleatoria de la que dependen los individuos de los grupos enteramente desertores.
-% %
-% Los posibles fitness cooperativos para la población de tamaño 3 son,
-% %
-% \begin{equation}
-% s_C(\vec{\Aa}\,) =
-% \begin{cases}
-% (1-\Ee) & \text{ si } \texttt{sum}(\vec{\Aa}\,) = 0 \\
-% \frac{1}{3} \Ee + \frac{2}{3} (1-\Ee)  & \text{ si } \texttt{sum}(\vec{\Aa}\,) = 1 \\
-% \frac{2}{3} \Ee + \frac{1}{3} (1-\Ee)    & \text{ si } \texttt{sum}(\vec{\Aa}\,) = 2 \\
-% \Ee & \text{ si } \texttt{sum}(\vec{\Aa}\,) = 3
-% \end{cases}
-% \end{equation}
-% %
-% Y en general, 
-% \begin{equation}\label{eq:fitness_cooperador}
-% s_C(\vec{\Aa}\,) = \frac{a}{n} e + \frac{n-a}{n}(1-e)
-% \end{equation}
-% %
-% El fitness conjunto, luego de observar $T$ estados del ambiente, es
-% %
-% \begin{equation}
-% f(\bm{a}|e,n,c=1) = \prod^T_t f(a^t|e,n,c=1)
-% \end{equation}
-% %
-% Donde $\bm{a}$ es el vector de tamaño $T$ con la cantidad de éxitos obtenidos en cada caso.
-% La tasa de crecimiento característica de los agentes cooperadores la podemos calcular utilizando la media geomética~\ref{eq:geometric_mean},
-% %
-% \begin{equation}
-% \overline{f}(e,n,c=1) = \prod_{a=0}^n f(a|e,n,c=1)^{\text{Binomial}(a|n,p^*)}
-% \end{equation}
-% %
-% donde $p^*$ es la verdadera probabilidad de generación de los estados $a$.
-% Cuando la población es muy grande, $n\rightarrow \infty$, en cada ronda habrá invariantemente una proproción $p*$ que obtuvo éxito, por lo que el likelihood caracterísitico se reduce a,
-% %
-% \begin{equation}
-% \lim_{n\rightarrow \infty} \overline{f}(e,c=1) = p^* e + (1-p^*)(1-e)
-% \end{equation}
-% %
-% El likelihood temporal caracterísitico de una estrategia $e$ en una población cooperativa infinita es la esperanza, la cual es lineal respecto de la verdadera probabilidad de generación de los estados del ambiente.
-% 
-% %En el siguiente modelo hacemos explícito el tipo de comportamiento $c\in\{0,1\}$ del agente.
-% %La extensión del modelo de Ole Peters que realizamos en la sección Metodología (figura~\ref{fig:modelo_beta_binomial}) sólo analizamos el comportamiento desertor individual.
 
 \subsection{La ventaja de la especialización}
 
@@ -1759,6 +1788,33 @@ Luego, vale la hipótesis inductiva.
 %     }
 %     \label{fig:multilevel-selection-4}
 % \end{figure}
+
+% 
+% 
+% 
+% 
+% 
+% 
+% \begin{quotation}
+% 
+% The prisoner’s dilemma is an extreme example of a social dilemma, because (D, D) is the only Nash equilibrium.
+% The stug-hunt may be more realistic models of the underlying social dilemma.
+% 
+% \begin{equation}
+%   \bordermatrix{ & C & D \cr
+%       C & s/2 & 0 \cr
+%       D & h & h } 
+% \end{equation}
+% 
+% con $s=kb/2$, $k>2$ y $h=b$. 
+% In this case, both (C, C) and (D, D) are Nash equilibria: once playing one of them, no player would be willing to unilaterally change his mind.
+% The cooperative equilibrium is Pareto optimal, which means that no further Pareto improvements (changes in the strategy profile making at least one player better off without making the other player worse off) are possible.
+% The defective equilibrium, however, is risk-dominant; no matter what my co-player does, if I decide to hunt hare I will get h; if I decide to hunt stag instead and my co-player abandons me, I will
+% get nothing. In other words, stag hunters depend on each other whereas harehunters are independent. This makes the defective equilibrium salient for risk-averse individuals, even if it is Pareto inferior. Pessimists will invariably prefer
+% to play D.
+% \end{quotation}
+% 
+% 
 
 
 \end{document}

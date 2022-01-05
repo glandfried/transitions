@@ -171,27 +171,47 @@ run(`pdfcrop --margins '0 0 0 0' pdf/multilevel-selection-5.pdf pdf/multilevel-s
 ######################
 # Bayesian inference (multilevel biomass proportion)
 
-# Biomasa de cada individuo por grupo
-b_eg0 = game(2,0,150,1).*1/4
-b_eg1 = game(2,1,150,1).*1/2
-b_eg2 = game(2,2,150,1).*1/4
+# Biomasa de cada individuo por region
+b_eg0 = game(2,0,150,1).*(1/4*1/2) # enteramente cooperadora
+b_eg1 = game(2,1,150,1).*(1/2*1/2)
+b_eg2 = game(2,2,150,1).*(1/4*1/2)
 
-# Biomasa por grupo
+# Biomasa por grupo (posterior nivel 2)
 b_g0 = [ sum(c) for c in eachcol(b_eg0)]
 b_g1 = [ sum(c) for c in eachcol(b_eg1)]
 b_g2 = [ sum(c) for c in eachcol(b_eg2)]
 b_g = [transpose(b_g0); transpose(b_g1); transpose(b_g2)]
 
+# Biomasa cooperadores (posterior multilevel)
+w_coop = [ sum(c) for c in eachcol(b_eg0)]
+w_coop  = w_coop .+ b_eg1[1,:]
+
 # Biomasa total
 B = [ sum(c) for c in eachcol(b_g)]
 
-# P(g|r)
-p = plot(b_g0./B, label="CC", thickness_scaling = 1.5, grid=false, xlab="Tiempo", ylab="P(g|a)", color = 3, foreground_color_legend = nothing)
+# P(g|a)
+p = plot(b_g0./B, label="CC", thickness_scaling = 1.5, grid=false, xlab="Tiempo", ylab="P( g | a1, ..., at)", color = 3, foreground_color_legend = nothing)
 plot!(b_g1./B, label="CD", color=2)
 plot!(b_g2./B, label="DD", color=1)
 
 savefig(p, "png/multilevel-selection-6.png") 
 savefig(p, "pdf/multilevel-selection-6.pdf") 
+
+# P(coop|a)
+p = plot(w_coop./B, label="Cooperator", thickness_scaling = 1.5, grid=false, xlab="Tiempo", ylab="P( coop | a1, ..., at)", color = 3, foreground_color_legend = nothing)
+
+savefig(p, "png/multilevel-selection-multilevel-posterior.png") 
+savefig(p, "pdf/multilevel-selection-multilevel-posterior.pdf") 
+
+
+# Biomasa individuos engrupo mixto (posterior nivel 1)
+
+p = plot(b_eg1[1,:]./b_g1, label="Cooperator", thickness_scaling = 1.5, grid=false, xlab="Tiempo", ylab="P( i | a1, ..., at)", color = 3, foreground_color_legend = nothing)
+plot!(b_eg1[2,:]./b_g1, label="Desertor", color=2)
+savefig(p, "png/multilevel-selection-level-1-posterior.png") 
+savefig(p, "pdf/multilevel-selection-level-1-posterior.pdf") 
+
+
 
 #######################
 
