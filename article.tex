@@ -1407,12 +1407,18 @@ En la siguiente figura variamos la proproción de desertores en una grupo de tam
 %
 \begin{figure}[H]
     \centering
-    \begin{subfigure}[b]{0.66\textwidth}
-    \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-7.pdf}
+    \begin{subfigure}[b]{0.48\textwidth}
+    \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-5.pdf}
+    \caption{}
+    \label{fig:multilevel-selection-5}
     \end{subfigure}
-    \caption{
-    }
+    \begin{subfigure}[b]{0.48\textwidth}
+    \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-7.pdf}
+    \caption{}
     \label{fig:multilevel-selection-7}
+    \end{subfigure}
+    \caption{}
+    }
 \end{figure}
 %
 Esto significa que existen al menos dos tipos de matrices de pagos según la tasa de crecimiento de los cooperadores en regiones mixtas $g_{CD}$ sea mayor o menor a la tasa de crecimiento de los desertores en regiones entteramente desertoras. 
@@ -1433,34 +1439,53 @@ Para representar el orden de preferencia usamos, sólo a modo ilustrativo, las l
 % %
 % Y cuando $ g_{CD} < g_{DD}$, luego $g_{DC} \approx g_{DD}$.
 % 
-% En este caso las tasas de crecimiento temporal caracterísitica para las diferentes estrategias son (demostraciones en la sección Resultados):
-% %
-% \begin{equation}
-%    g(\cdot,\cdot) = \bordermatrix{ & C & D \cr
-%       C & \approx 1.0 & \approx 0.47 \cr
-%       D & \approx 0.95 & \approx 0.95 } 
-% \end{equation}
-% %
-% El primer agente que ``decida'' desertar unilateralmente va a ver reducida su tasa de crecimiento de $f(C,C) = 1.0$ a $ f(D,C) = 0.95$.
-% % 
+Cuando el grupo tiene tamaño 2 las tasas de crecimiento temporal caracterísitica para las diferentes estrategias son (demostraciones en la sección Resultados):
+%
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \begin{equation*}
+ \ \ \ \  \ \ \ \   \bordermatrix{ & 0/1 & 1/1 \cr
+      C & 0.475 & 0.226 \cr
+      D & 0.452 &  0.452 }
+\end{equation*}
+    \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-8.pdf}
+    \caption{$g_C(\Ee=0.71,n,N=2)$}
+    \label{fig:multilevel-selection-8}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.48\textwidth}
+    \begin{equation*} 
+\ \ \ \ \ \ \ \  \bordermatrix{ & 0/15 & 1/15 & 2/15 & 3/15 \cr
+      C & 0.497 & 0.466 & 435 & 0.403 \cr
+      D & 0.467 & 0.452 & 0.452 & 0.452}       
+\end{equation*}
+    \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-9.pdf}
+    \caption{}
+    \label{fig:multilevel-selection-9}
+    \end{subfigure}
+    \caption{}
+    }
+\end{figure}
+
+%
+El primer agente que ``decida'' desertar unilateralmente va a ver reducida su tasa de crecimiento de $f(C,C) = 1.0$ a $ f(D,C) = 0.95$.
+% 
 \begin{conclution}[Los bienes comunes no son dilemas del prisionero]
 Sin necesidad de introducir castigos, las estrategias desertoras afectan negativamente su propia tasa de crecimiento a largo plazo debido que su propio comportamiento aumento las fluctuaciones de .
 \end{conclution}
 
 
-\begin{conclution}[La no necesidad de castigos]
-Sin necesidad de introducir castigos, las estrategias desertoras afectan negativamente su tasa de crecimiento a largo plazo a causa de su propio comportamiento, pues al evitar compartir sus recursos generan un aumento de sus fluctuaciones.
-\end{conclution}
-
-Esto parecería apoyar la idea de Ole Peters de que la cooperación no es altruista sino que está impulsada por el interés personal\footnote{
-La estructura de pagos coinicide con la matriz de pagos del Stag-Hunt. Sin embargo, los análisis que llegan a la conclusión de que las poblaciones enteramente cooperadoras son evolutivamente estables se basan en dinámicas aditivas en poblaciones infinitas, apartándose del modelo estandar de crecimiento exponencial.}.
-Sin embargo para la teoría de la evolución la frecuencia de los estrategias en la población depende, no del valor absoluto de la tasa de crecimiento, sino de la diferencia respecto de las tasas de crecimiento de las otras estrategias en la población.
-Por más que la mutua cooperación ofrezca una tasa de crecimiento mayor que la deserción unilateral ($f(C,C) = 1.00 > 0.95 = f(D,C)$), un mutante desertor invadirá evolutivamente la población debido a que su tasa de crecimiento será mayor a la del agente cooperador ($f(D,C) = 0.95 > 0.47 = f(C,D)$). 
-
-\begin{conclution}[Estabilidad evolutiva nivel 1]
-Esto quiere decir que las estrategias cooperadoras no son evolutivamentes estables al interior de las poblaciones.
-\end{conclution}
-
+% 
+% Esto parecería apoyar la idea de Ole Peters de que la cooperación no es altruista sino que está impulsada por el interés personal\footnote{
+% La estructura de pagos coinicide con la matriz de pagos del Stag-Hunt. Sin embargo, los análisis que llegan a la conclusión de que las poblaciones enteramente cooperadoras son evolutivamente estables se basan en dinámicas aditivas en poblaciones infinitas, apartándose del modelo estandar de crecimiento exponencial.}.
+% Sin embargo para la teoría de la evolución la frecuencia de los estrategias en la población depende, no del valor absoluto de la tasa de crecimiento, sino de la diferencia respecto de las tasas de crecimiento de las otras estrategias en la población.
+% Por más que la mutua cooperación ofrezca una tasa de crecimiento mayor que la deserción unilateral ($f(C,C) = 1.00 > 0.95 = f(D,C)$), un mutante desertor invadirá evolutivamente la población debido a que su tasa de crecimiento será mayor a la del agente cooperador ($f(D,C) = 0.95 > 0.47 = f(C,D)$). 
+% 
+% \begin{conclution}[Estabilidad evolutiva nivel 1]
+% Esto quiere decir que las estrategias cooperadoras no son evolutivamentes estables al interior de las poblaciones.
+% \end{conclution}
+% 
 
 \subsection{La ventaja de la especialización}
 

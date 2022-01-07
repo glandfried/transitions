@@ -105,6 +105,12 @@ function posterior_level_2(e,NN = 10,T=100)
     return posteriorsM
 end
 
+function omega_desertor(f_c, f_d, t)
+    return f_d^(t) + sum([ (f_c^i)*(f_d^(t-i)) for i in 1:(t)])
+end
+
+
+
 postC, postD, joint_log_evidence = posterior_evidence_level_1(e,9,9,10000)
 fig = plot(e,postC, thickness_scaling = 2, grid=false, label="Cooperation", legend=:best,foreground_color_legend = nothing, ylab="Density", xlab="Estrategy", color=3, linewidth=2)
 plot!(-1.0.*reverse(e),reverse(postD), label="Desertion", color=1, linewidth=2)
@@ -151,18 +157,19 @@ savefig(fig, "png/multilevel-selection-4.png")
 
 ######################
 
-function omega_desertor(f_c, f_d, t)
-    return f_d^t + sum([ (f_c^i)*(f_d^(t-i)) for i in 1:t])
-end
 
+f_C = coop_temporal_average(100, 1.5/2.1, 0.5, 100)*2.1
 f_c = coop_temporal_average(99, 1.5/2.1, 0.5, 100)*2.1
 f_d = coop_temporal_average(1, 1.5/2.1, 0.5, 1)*2.1
 T = 1000
 trayectorias = log.(transpose(game(100,1,T)))
-fig= plot(trayectorias[:,1], label=false, color=3,legend=:best,foreground_color_legend = nothing, ylab="log recursos", xlab="Tiempo", linewidth=1.5, grid=false,thickness_scaling = 1.5)
+trayectorias_C = log.(transpose(game(100,0,T)))
+fig= plot(trayectorias[:,1], label=false, color=3,legend=:best,foreground_color_legend = nothing, ylab="log recursos", xlab="Tiempo", linewidth=1, grid=false,thickness_scaling = 1.5)
+#plot!(trayectorias[:,1], label=false, color=1, linewidth=1.5)
 plot!(trayectorias[:,end], label=false, color=1, linewidth=1.5)
-plot!(log.(omega_desertor.(f_c, f_d, 0:T)), label=false,color="black")
-plot!( log.(f_c.^[i for i in 0:T]), label=false, color="black")
+plot!(log.(omega_desertor.(f_c, f_d, 0:(T))), label=false,color="black",linewidth=1.5)
+plot!( log.(f_c.^[i for i in 0:T]), label=false, color="black", linewidth=1.5)
+plot!( log.(f_C.^[i for i in 0:T]), label=false, color="black", linestyles=:dash)
 savefig(fig, "pdf/multilevel-selection-5.pdf")
 savefig(fig, "png/multilevel-selection-5.png")
 run(`pdfcrop --margins '0 0 0 0' pdf/multilevel-selection-5.pdf pdf/multilevel-selection-5.pdf`) 
@@ -228,13 +235,53 @@ for n in nx#n=950
     push!(fD,wD101/wD100)
 end
 
-fig=plot(nx/N, reverse(fC),label="Cooperador", color=3, legend=(0.2,0.3),foreground_color_legend = nothing, ylab="Fitness", xlab="Proporción desertores", linewidth=1.5, grid=false,thickness_scaling = 1.5)
+fig=plot((nx/N), reverse(fC),label="Cooperador", color=3, legend=(0.2,0.3),foreground_color_legend = nothing, ylab="Fitness", xlab="Proporción desertores", linewidth=1.5, grid=false,thickness_scaling = 1.5)
 plot!(nx/N,reverse(fD), label="Desertor", color=1)
 savefig(fig, "pdf/multilevel-selection-7.pdf")
 savefig(fig, "png/multilevel-selection-7.png")
 run(`pdfcrop --margins '0 0 0 0' pdf/multilevel-selection-7.pdf pdf/multilevel-selection-7.pdf`) 
 
-########
+fD = []
+fC = []
+N= 2
+nx = 0:N
+t = 100
+f_d = coop_temporal_average(1, 1.5/2.1, 0.5, 1)
+for n in nx#n=950
+    push!(fC,coop_temporal_average(n, 1.5/2.1, 0.5, N))
+    wD101 = omega_desertor(fC[end],f_d,t+1)
+    wD100 = omega_desertor(fC[end],f_d,t)
+    push!(fD,wD101/wD100)
+end
+
+scatter([(nx/(N-1))[1:end-1];(nx/(N-1))[1:end-1]], [reverse(fC)[1:end-1];reverse(fD)[2:end]], color=[3,3,1,1],foreground_color_legend = nothing, ylab="Fitness", xlab="Proporción desertores", linewidth=1.5,label=false, grid=false,thickness_scaling = 1.5 )
+savefig(fig, "pdf/multilevel-selection-8.pdf")
+savefig(fig, "png/multilevel-selection-8.png")
+run(`pdfcrop --margins '0 0 0 0' pdf/multilevel-selection-8.pdf pdf/multilevel-selection-8.pdf`) 
+
+
+fD = []
+fC = []
+N= 16
+nx = 0:N
+t = 100
+f_d = coop_temporal_average(1, 1.5/2.1, 0.5, 1)
+for n in nx#n=950
+    push!(fC,coop_temporal_average(n, 1.5/2.1, 0.5, N))
+    wD101 = omega_desertor(fC[end],f_d,t+1)
+    wD100 = omega_desertor(fC[end],f_d,t)
+    push!(fD,wD101/wD100)
+end
+
+scatter((nx/(N-1))[1:end-1], reverse(fC)[1:end-1], color=3,foreground_color_legend = nothing, ylab="Fitness", xlab="Proporción desertores", linewidth=1.5,label=false, grid=false,thickness_scaling = 1.5, xlim=[0,0.21], ylim=[0.4,0.5])
+scatter!((nx/(N-1))[1:end-1], reverse(fD)[2:end], color=1,foreground_color_legend = nothing, ylab="Fitness", xlab="Proporción desertores", linewidth=1.5,label=false, grid=false,thickness_scaling = 1.5 )
+
+savefig(fig, "pdf/multilevel-selection-9.pdf")
+savefig(fig, "png/multilevel-selection-9.png")
+run(`pdfcrop --margins '0 0 0 0' pdf/multilevel-selection-9.pdf pdf/multilevel-selection-9.pdf`) 
+
+
+#########
 
 # De nuevo la tasa de crecimiento del desertor mixto
 
@@ -243,10 +290,12 @@ function g_DC(gDD,gCD,T)
     for t in 1:(T-1)
         res += gCD^t * gDD^(T-t-1)
     end
-    res += gCD^T
+    if T>1
+        res += gCD^T
+    end
     return res
 end
 
-fig = plot([g_DC(0.45,0.48/2,T)/g_DC(0.45,0.48/2,T-1) for T in 2:10 ])
+fig = plot([g_DC(0.45,0.48/2,T)/g_DC(0.45,0.48/2,T-1) for T in 1:10 ])
 
 
