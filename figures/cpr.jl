@@ -362,5 +362,3 @@ plot!(transpose(dilema(10,2,c=25)[(end-1):end,:]),legend=false, color="red")
 savefig(p, "cpr_prisioner_dilema_highcost.pdf") 
 savefig(p, "cpr_prisioner_dilema_highcost.png") 
 
-
-

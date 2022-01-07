@@ -215,17 +215,16 @@ savefig(p, "pdf/multilevel-selection-level-1-posterior.pdf")
 
 #######################
 
-
 fD = []
 fC = []
 N= 1000
 nx = 1:N
-t = 1000
+t = 100
 f_d = coop_temporal_average(1, 1.5/2.1, 0.5, 1)
 for n in nx#n=950
     push!(fC,coop_temporal_average(n, 1.5/2.1, 0.5, N))
-    wD101 = omega_desertor(fC[end],f_d,101)
-    wD100 = omega_desertor(fC[end],f_d,100)
+    wD101 = omega_desertor(fC[end],f_d,t+1)
+    wD100 = omega_desertor(fC[end],f_d,t)
     push!(fD,wD101/wD100)
 end
 
@@ -234,5 +233,20 @@ plot!(nx/N,reverse(fD), label="Desertor", color=1)
 savefig(fig, "pdf/multilevel-selection-7.pdf")
 savefig(fig, "png/multilevel-selection-7.png")
 run(`pdfcrop --margins '0 0 0 0' pdf/multilevel-selection-7.pdf pdf/multilevel-selection-7.pdf`) 
+
+########
+
+# De nuevo la tasa de crecimiento del desertor mixto
+
+function g_DC(gDD,gCD,T)
+    res = gDD^T 
+    for t in 1:(T-1)
+        res += gCD^t * gDD^(T-t-1)
+    end
+    res += gCD^T
+    return res
+end
+
+fig = plot([g_DC(0.45,0.48/2,T)/g_DC(0.45,0.48/2,T-1) for T in 2:10 ])
 
 

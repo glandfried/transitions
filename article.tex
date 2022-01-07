@@ -138,25 +138,25 @@
 \en{For example, suppose nature flips a coin, if it comes up heads the population reproduces 50\% and if it comes up tails it survives 60\%. }%
 \es{Por ejemplo, supongamos que la naturaleza lanza una moneda, si sale cara la población se reproduce 50\% y si sale seca sobrevive 60\%. }%
 \begin{equation} \label{eq:estrategia_base}
-f(a) =
+f(\Aa) =
 \begin{cases}
- 1.5 & a = \text{ \en{Head}\es{Cara} } \\
- 0.6 & a = \text{ \en{Tail}\es{Sello} }
+ 1.5 & \Aa = \text{ \en{Head}\es{Cara} } \\
+ 0.6 & \Aa = \text{ \en{Tail}\es{Sello} }
 \end{cases}
 \end{equation}
 %
 \en{A similar example was proposed by Lewontin and Cohen (1969)~\cite{lewontin1969-randomlyVaryingEnvironment}. }%
 \es{Un ejemplo similar fue propuesto por Lewontin y Cohen (1969)~\cite{lewontin1969-randomlyVaryingEnvironment}. }%
 %
-\en{Other strategies $e$ will have other functions $f_e(a)$. }%
-\es{Otras estrategias $e$ tendrán otras funciones $f_e(a)$. }%
+\en{Other strategies $\Ee$ will have other functions $f(\Ee,\Aa)$. }%
+\es{Otras estrategias $\Ee$ tendrán otras funciones $f(\Ee,\Aa)$. }%
 %
-\en{According to the standard model of evolution, known as \emph{replicator dynamic} \cite{taylor1978-replicatorDynamic}, the change in the proportion of a strategy in the population, $x_e$, is determined by its characteristic growth rate $g_e$, }%
-\es{Según el modelo estándar de evolución, conocido como \emph{replicator dynamic} \cite{taylor1978-replicatorDynamic}, el cambio de la proporción de una estrategia en la población, $x_e$, está determinado por su tasa de crecimiento caracterísitica $g_e$, }%
+\en{According to the standard model of evolution, known as \emph{replicator dynamic} \cite{taylor1978-replicatorDynamic}, the change in the proportion of a strategy in the population, $x_\Ee$, is determined by its characteristic growth rate $g_\Ee$, }%
+\es{Según el modelo estándar de evolución, conocido como \emph{replicator dynamic} \cite{taylor1978-replicatorDynamic}, el cambio de la proporción de una estrategia en la población, $x_\Ee$, está determinado por su tasa de crecimiento caracterísitica $g_\Ee$, }%
 % schuster1983-replicatorDynamics, hofbauer2003-evolutionaryGameDynamics
 %
 \begin{equation} \label{eq:replicator_dynamic}  \tag{Replicator dynamic}
-\hspace{3cm} x_e^\prime = \frac{x_e g_e}{\sum_i x_i g_i}
+\hspace{3cm} x_\Ee^\prime = \frac{x_\Ee g_\Ee}{\sum_i x_i g_i}
 \end{equation}
 %
 \en{where the denominator acts as a normalization constant. }%
@@ -254,7 +254,7 @@ f(a) =
 \end{equation}
 %
 \en{where $n_1$ and $n_2$ represents the number of occurrences of $f(\text{\en{head}\es{cara}})$ and $f(\text{\en{tail}\es{sello}})$, with $n_1 + n_2 = T$. }%
-\es{donde $n_1$ y $n_2$ representa la cantidad de ocurrencias de $f_e(\text{cara})$ y $f_e(\text{seca})$, con $n_1 + n_2 = T$. }%
+\es{donde $n_1$ y $n_2$ representa la cantidad de ocurrencias de $f(\text{cara})$ y $f(\text{seca})$, con $n_1 + n_2 = T$. }%
 %
 \en{In the limit, $T \rightarrow \infty$ all individual trajectories will be determined by the same characteristic growth rate $g$. }%
 \es{En el límite, $T \rightarrow \infty$ todas las trayectorias individuales estarán determinadas por la misma tasa de crecimiento caracterísitica $g$. }%
@@ -263,7 +263,7 @@ f(a) =
 \begin{split}
 \lim_{T \rightarrow \infty} \omega_e(T) & = {g}^T \\
 \left( \lim_{T \rightarrow \infty} \omega_e(T) \right)^{1/T} & =  {g} \\
-\lim_{T \rightarrow \infty} f_e(\text{cara})^{n_1/T} f_e(\text{seca})^{n_2/T} & 
+\lim_{T \rightarrow \infty} f(\text{cara})^{n_1/T} f(\text{seca})^{n_2/T} & 
  \end{split}
 \end{equation}
 %
@@ -274,7 +274,7 @@ f(a) =
 \es{Por lo tanto, la tasa de crecimiento es, }%
 %
 \begin{equation}
-{f_e} = (1.5 \cdot 0.6)^{1/2} \approx 0.95
+g = (1.5 \cdot 0.6)^{1/2} \approx 0.95
 \end{equation}
 %
 \en{This formula, which allows computing the long-term growth rate of individual trajectories, has previously been used in the evolution literature under the name \emph{geometric mean}. }%
@@ -312,10 +312,10 @@ f(a) =
     \node[latent, minimum size=2cm ] (x1_0) {$\omega_1(t)$} ;
     \node[latent, below=of x1_0, minimum size=2cm ] (x2_0) {$\omega_2(t)$} ;
 
-    \node[latent, right=of x1_0, minimum size=3cm ] (x1_0g) {$ \omega_1(t)\cdot f_e(a_1(t))$} ;
-    \node[latent, right=of x2_0, minimum size=1.8cm, xshift=0.6cm , align=left] (x2_0g) {$\omega_2(t)\cdot$\\$f_e(a_2(t))$} ;
+    \node[latent, right=of x1_0, minimum size=3cm ] (x1_0g) {$ \omega_1(t)\cdot f(\Aa_1(t))$} ;
+    \node[latent, right=of x2_0, minimum size=1.8cm, xshift=0.6cm , align=left] (x2_0g) {$\omega_2(t)\cdot$\\$f(\Aa_2(t))$} ;
     
-    \node[latent, right=of x1_0g, minimum size=3.8cm, yshift=-1.33cm, align=right] (x_0) {$\omega_1(t)\cdot f_e(a_1(t))$\\$+\omega_2(t)\cdot f_e(a_2(t))$ } ;
+    \node[latent, right=of x1_0g, minimum size=3.8cm, yshift=-1.33cm, align=right] (x_0) {$\omega_1(t)\cdot f(\Aa_1(t))$\\$+\omega_2(t)\cdot f(\Aa_2(t))$ } ;
     
     \node[const, above=of x_0] (nx_0) {$\overbrace{\text{Pool}\hspace{2.5cm}\text{Share}}^{\text{\normalsize Cooperaci\'on}}$} ;
     
@@ -551,10 +551,10 @@ P(\text{Dat\en{a}\es{os}}) = \sum_i P(\,\text{Dat\en{a}\es{os}}\,|\,\text{\en{Hy
 \centering
  \begin{tabular}{l|l}
   \en{Bayes theorem}\es{Teorema de Bayes} & Replicator dynamic  \\ \hline
-  Prior $P(H)$ & \en{Old distribution of strategies}\es{Distribución de estrategias} $x_e$ \\ \hline
-  \en{Likelihood}\es{Verosimilitud} $P(D|H)$ & \en{Fitness}\es{Aptitud} $f_e(a)$ \\ \hline
-  Posterior $P(H|D)$ & \en{New distribution of strategies}\es{Nueva distribución de estrategias} $x_e^\prime$ \\ \hline
-  Evidenc\en{e}\es{ia} $P(D)$ & \en{Population mean fitness}\es{Aptitud media de la población} $\sum x_e f_e(a) $ \\ \hline
+  Prior $P(H)$ & \en{Old distribution of strategies}\es{Distribución de estrategias} $x_\Ee$ \\ \hline
+  \en{Likelihood}\es{Verosimilitud} $P(D|H)$ & \en{Fitness}\es{Aptitud} $f(\Ee, \Aa)$ \\ \hline
+  Posterior $P(H|D)$ & \en{New distribution of strategies}\es{Nueva distribución de estrategias} $x_\Ee^\prime$ \\ \hline
+  Evidenc\en{e}\es{ia} $P(D)$ & \en{Population mean fitness}\es{Aptitud media de la población} $\sum x_\Ee f(\Ee,\Aa) $ \\ \hline
  \end{tabular}
 \end{align*}
 %
@@ -630,12 +630,33 @@ La probabilidad del ambiente, en este caso depende de un parámetro $p$ que dete
 P(\Aa) = p^{\Aa} (1-p)^{(1-\Aa)}
 \end{equation}
 %
-Para definir la probabilidad de las estrategia dado el ambiente, $P(\Ee|\Aa)$, necesitamos que para cada ambiente la probabilidad de todas las estrategias sume 1.
+Para definir la probabilidad de las estrategia, necesitamos un espacio de hipótesis que contenga más de una estrategia.
+%
+El ejemplo Lewontin-Peters considera una única estrategia.
+%
+Nuestro modelo permite elegir el conjunto de estrategias que queramos.
+%
+Si bien podemos proponer cualquier tipo de estrategia, vamos a limitarnos a aquellas que tienen un recurso $R$ para repartir entre cara y sello.
+%
+En base a la propuesta de Lewonti-Cohen y Peters, proponemos la siguiente familia de aptitudes, 
+%
+\begin{equation}
+f(\Ee, \Aa) = \begin{cases}
+ \Ee & \Aa = 1 \\
+ R-\Ee & \Aa = 0
+  \end{cases}
+\end{equation}
+%
+con $ 0 \leq \Ee \leq R$.
+%
+La estrategia propuesta por Lewontin-Cohen es $\Ee=1.7$ y $R=2.2$, y la de Peters es $\Ee = 1.5$ y $R=2.1$.
+%
+Para definir la probabilidad de las estrategias dado un ambiente, $P(\Ee|\Aa)$, necesitamos que sumen 1.
 %
 Digamos, por ahora, que la probabilidad de la estrategia es proporcional a su aptitud, 
 %
 \begin{equation}\label{eq:probabilidad_propro_aptitud}
-P(\Ee | \Aa) \propto  f_{\Ee}(\Aa)
+P(\Ee | \Aa) \propto  f(\Ee,\Aa)
 \end{equation}
 %
 Con esto podemos definir parcialmente un modelo gráfico con una interpretación causal.
@@ -649,7 +670,7 @@ Con esto podemos definir parcialmente un modelo gráfico con una interpretación
     
     
     \node[latent, below=of e] (r) {$\E$};
-    \node[const, right=of r] (rn) {$P(\Ee|\Aa) \propto f_\Ee(\Aa)$};
+    \node[const, right=of r] (rn) {$P(\Ee|\Aa) \propto f(\Ee,\Aa)$};
     \node[const, left=of r] (nr) {\en{Strategy}\es{Estrategia}: \ \ \ };
     
     \edge {e} {r};
@@ -687,7 +708,7 @@ El siguiente factor graph representa el modelo de la figura \ref{fig:model-lewon
     \node[latent, right=of fa] (a) {$\A$};
     
     \node[factor, right=of a] (fe) {};
-    \node[const, above=of fe] (nfe) {$P(\Ee|\Aa) \propto f_{\Ee}(\Aa)$};
+    \node[const, above=of fe] (nfe) {$P(\Ee|\Aa) \propto f(\Ee,\Aa)$};
     
     \node[latent, right=of fe, xshift=0.3cm] (e) {$\E$};
     
@@ -764,7 +785,7 @@ Que es el mismo mensaje que envía la variable $\A$ al factor de estrategias $P(
 Luego, el mensaje que envía el factor de estategias $P(\E|\A)$ a la variable estrategias es,
 %
 \begin{equation}
-m_{P(\E|\A) \rightarrow \E }(\Ee) \propto P(\Aa^*)f_{\Ee}(\Aa^*)
+m_{P(\E|\A) \rightarrow \E }(\Ee) \propto P(\Aa^*)f(\Ee,\Aa^*)
 \end{equation}
 %
 Notar que no integramos en los valores del ambiente porque consideramos que la variable $\Aa^*$ es observable y por lo tanto constante.
@@ -772,44 +793,27 @@ Notar que no integramos en los valores del ambiente porque consideramos que la v
 Luego, la marginal de un vector de observaciones del ambiente $\vec{\Aa}$ es,
 %
 \begin{equation}
-P(\Ee,\vec{\Aa}) \propto \prod_{\Aa}^{\vec{\Aa}} P(\Aa)f_{\Ee}(\Aa)
+P(\Ee,\vec{\Aa}) \propto \prod_{\Aa}^{\vec{\Aa}} P(\Aa)f(\Ee,\Aa)
 \end{equation}
 %
 Integrando sobre las estrategia $\E$ obtenemos la marginal de las observaciones,
 %
 \begin{align}
-P(\vec{\Aa}) & \propto \sum_{\Ee}^\E \prod_{\Aa}^{\vec{\Aa}} P(\Aa)f_{\Ee}(\Aa) \\
-& = \Big(\prod_{\Aa}^{\vec{\Aa}} P(\Aa) \Big)  \Big( \sum_{\Ee} \prod_{\Aa}^{\vec{\Aa}}f_{\Ee}(\Aa) \Big) 
+P(\vec{\Aa}) & \propto \sum_{\Ee}^\E \prod_{\Aa}^{\vec{\Aa}} P(\Aa)f(\Ee,\Aa) \\
+& = \Big(\prod_{\Aa}^{\vec{\Aa}} P(\Aa) \Big)  \Big( \sum_{\Ee} \prod_{\Aa}^{\vec{\Aa}}f(\Ee,\Aa) \Big) 
 \end{align}
 %
 Luego, la probabilidad de la estrategia dado el ambiente es
 %
 \begin{equation}\label{eq:replicator_dynamic_posterior}
-P(\Ee|\vec{\Aa}) = \frac{ \prod_{\Aa}^{\vec{\Aa}}f_{\Ee}(\Aa)}{\sum_{\Ee} \prod_{\Aa}^{\vec{\Aa}}f_{\Ee}(\Aa)}
+P(\Ee|\vec{\Aa}) = \frac{ \prod_{\Aa}^{\vec{\Aa}}f(\Ee,\Aa)}{\sum_{\Ee} \prod_{\Aa}^{\vec{\Aa}}f(\Ee,\Aa)}
 \end{equation}
 %
 La probabilidad condicional de la estrategia dado el ambiente resultó ser el replicator dynamic!
 %
 Es decir, el replicator dynamic surgió de considerar el modelo causal en el que el ambiente causa las estrategias y en el que el tamaño de las estrategias depende de la adaptabilidad de esa estrategia al ambiente.
-
-% Parrafo
-
-El ejemplo Lewontin-Peters considera una única estrategia.
 %
-Nuestro modelo permite elegir el conjunto de estrategias que queramos.
-%
-Si bien podemos proponer cualquier tipo de estrategia, vamos a limitarnos a aquellas que tienen un recurso $R$ para repartir entre cara y sello.
-%
-\begin{equation}
-f_{\Ee}(\Aa) = \begin{cases}
- \Ee & \Aa = 1 \\
- R-\Ee & \Aa = 0
-  \end{cases}
-\end{equation}
-%
-con $ 0 \leq \E \leq R$.
-%
-Esta familia de funciones de apritud son proporcionales a la distribución de probabilidad Bernoulli.
+Luego, la probabilidad de la estrategia dado la observación de un ambiente es,
 %
 \begin{equation}
 P(\Ee|\Aa) = \Ee^\Aa \cdot (1-\Ee)^{(1-\Aa)} = \text{Bernoulli}(\Ee|\Aa)
@@ -819,7 +823,7 @@ con $ 0 \leq \Ee \leq 1$.
 %
 La estrategia $\Ee \approx 0.71$ es la propuesta por Ole Peters, y la la estraetgia $\Ee \approx 0.77$ es la propuesta por Lewontin y Cohen.
 %
-Cuando consideramos las infinitas estrategias que tienen un recurso $R$ fijo, el posterior de la estretgia $\Ee$ dado un vector de observaciones del ambiente $\vec{\Aa}$ tiene solución analítica y pertenecerá a la distribución Beta (notar que el denominador de la ecuación \ref{eq:replicator_dynamic_posterior} es la función Beta o la integral de Euler).
+Y el posterior de la estretgia $\Ee$ dado un vector de observaciones del ambiente $\vec{\Aa}$ tiene solución analítica y pertenecerá a la distribución Beta (notar que el denominador de la ecuación \ref{eq:replicator_dynamic_posterior} es la función Beta o la integral de Euler).
 %
 \begin{equation}
 P(\Ee|\vec{\Aa}) = \text{Beta}(\texttt{sum}(\vec{\Aa}), \, \texttt{length}(\vec{\Aa}) - \texttt{sum}(\vec{\Aa}))
@@ -877,7 +881,7 @@ Las poblaciones no son bloques monolíticos ni gases perfectos, siempre poseen a
 %
 Para ello analizaremos la selección multinivel mediante modelos causales probabilísiticos.
 
-\subsection{Modelo multinivel}
+\subsection{Modelo causal probabilísitico.}
 
 Supongamos que tenemos regiones de $N$ individuos en el que $n$ son cooperadores y $N-n$ desertores.
 %
@@ -904,7 +908,7 @@ P(\Aa) = p^\Aa (1-p)^{1-\Aa}
 %
 pero ahora en cada tiempo $t$ tenemos un vector $\vec{\Aa}$, en el que cada elemento influencia al $i-$ésimo agente,
 \begin{equation}
-P(i|\vec{\Aa}) = \Ee_i^{\Aa_i} (1-\Ee_i)^{1-\Aa_i}
+P(i|\vec{\Aa}) = \frac{\Ee_i^{\Aa_i} (1-\Ee_i)^{1-\Aa_i}}{\sum_j \Ee_j^{\Aa_j} (1-\Ee_j)^{1-\Aa_j}} \propto \Ee_i^{\Aa_i} (1-\Ee_i)^{1-\Aa_i}
 \end{equation}
 %
 Ahora sin embargo, los agentes también están influenciados por los recursos del los otros agentes en el tiempo anterior, 
@@ -983,8 +987,8 @@ Finalmente, los grupos están constituidos por los miembros de cada región, $P(
     \node[factor, yshift=0.5cm, below=of i3] (fg3) {};
     \node[latent, yshift=0.5cm, below=of fg3 ] (g3) {$G^3$};
     
-     \node[const, left=of fa1] (pa) {$P(\bm{\Aa})$};
-     \node[const, left=of fia1] (pea) {$P(i|\bm{\Aa})$};
+     \node[const, left=of fa1] (pa) {$P(\vec{\Aa})$};
+     \node[const, left=of fia1] (pea) {$P(i|\vec{\Aa})$};
      \node[const, left=of fg1] (pg) {$P(g|i)$};
      \node[const, above=of fii2] (pee) {$P(i^{t+1}|i^t)$};
      \node[const, left=of fi0] (pa) {$P(i^1)$};
@@ -1030,7 +1034,7 @@ P(\texttt{coop}(i^T)|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1}, g) &= \sum_{j=1}
 \end{split}
 \end{equation}
 
-\subsection{Selección de nivel 1, nivel 2 y multinivel}
+\subsection{Probabilidades marginales y equivalencia con el modelo de Ole Peters}
 
 Para calcular los posteriors va a ser suficiente con calcular las probabilidades marginales, pues ambas expresiones son proporcionales.
 %
@@ -1166,7 +1170,6 @@ Este mensaje está definido recursivamente.
 % %
 % Y la sección \ref{sec:especialization}, haremos uso de los resultado análitico para demostrar la ventaja evolutiva de la especilización, rechazando la hipótesis de Ole Peters de que la especialización es un mecanismo implausible para poblaciones chicas.
 % 
-% \subsection{Selección de nivel 1, nivel 2 y multinivel}
 % 
 % En esta subsección resolveremos la marginal que necesitamos para computar el posterior de la la selección de nivel 1, de nivel 2 y multinivel,
 % %
@@ -1191,7 +1194,7 @@ P(I^{T+1}=k, \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T}) & = P(k| \vec{\Aa}^{\,1}, 
 donde
 %
 \begin{equation}
-P(k| \vec{\Aa}^{\,1}, \dots, \bm{\Aa}^T) = 
+P(k| \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^T) = 
 \begin{cases}
 P(k)\prod_{t=1}^{T} P(k|\vec{\Aa}^{\,t}) &  r=0  \\
 P(k)\prod_{t=1}^{T} \sum_j^{\texttt{socios}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,t}) & r  = N  \\
@@ -1200,17 +1203,19 @@ P(k)\prod_{t=1}^{T} \sum_j^{\texttt{socios}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,t})
 \end{equation}
 %
 donde $r = \texttt{region}(k)$, y $c$ es una individuos que pertenece a los cooperadores de la región $r$, $c \in \texttt{socios}(r)$.
-%
+
+\subsection{Selección de nivel 1, nivel 2 y multinivel}
+
 Con esto podemos calcular el posterior de los grupos (nivel 2),
 %
 \begin{equation}
-P(g|\vec{\Aa}^{\,1}, \dots, \bm{\Aa}^T) = \sum_i \mathbb{I}(\texttt{region}(i)=g) P(i|\vec{\Aa}^{\,1}, \dots, \bm{\Aa}^T)
+P(g|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^T) = \sum_i \mathbb{I}(\texttt{region}(i)=g) P(i|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^T)
 \end{equation}
 %
 y de los comportamientos cooperadores (multinivel),
 %
 \begin{equation}
-P(\texttt{coop}|\vec{\Aa}^{\,1}, \dots, \bm{\Aa}^T) = \sum_i P(i|\vec{\Aa}^{\,1}, \dots, \bm{\Aa}^T)\mathbb{I}(\texttt{coop}(i))
+P(\texttt{coop}|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^T) = \sum_i P(i|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^T)\mathbb{I}(\texttt{coop}(i))
 \end{equation}
 %
 En la siguiente figura mostramos el posterior de los grupos cuando las regiones tienen $N=2$ individuos (3 regiones), y el 
@@ -1250,19 +1255,13 @@ La selección multinivel favorece a las estrategias cooperativas incluso con gru
 %
 La ventaja evolutiva de la cooperación se extiende inmediatamente a poblaciones de tamaño mayor.
 
-\subsection{Dilema social}
+\subsection{Dilema de los bienes comunes}
 
-En las últimas décadas la biología evolutiva a comenzado a adoptar la analogía de la ``tragedia de los comunes'' en relación al estudio de la evolución de la cooperación y de las trasiciones evolutivas mayores~\cite{rankin2007-tragedyCommonsBiology}.
+En las últimas décadas la biología evolutiva a comenzado a adoptar la analogía de la ``tragedia de los comunes''~\cite{rankin2007-tragedyCommonsBiology}.
 %
-El concepto de ``tragedia de los comunes'' contiene la creencia de que los bienes comunes tienen una estructura de pagos isomorfa al dilema del prisionero de N jugadores~\cite{hardin1971-collectiveAsPrisionerDilema}.
+Este concepto contiene la idea de que los bienes comunes tienen una estructura de pagos isomorfa al dilema del prisionero de N jugadores~\cite{hardin1971-collectiveAsPrisionerDilema}.
 %
-Imaginemos dos jugadores, cada uno de los cuales tiene que decidir si coopera o no.
-%
-Cooperar (C) implica un coste $c$, para que la otra persona reciba un beneficio b, con $b > c$.
-%
-Desistir (D) significa negarse a cooperar y no conlleva ningún coste. 
-%
-De este modo, se obtiene la siguiente matriz de pagos:
+En un dilema del prisionero de dos jugadores, cooperar (C) implica un coste $c$ para que la otra persona reciba un beneficio b, con $b > c$, y desertar (D) significa negarse a cooperar y no conlleva ningún coste. 
 %
 \begin{equation}
   \bordermatrix{ & C & D \cr
@@ -1278,95 +1277,177 @@ De ahí el dilema: aunque la cooperación mutua es un resultado preferible, ning
 
 % Parrafo
 
-Para verificar la creencia de que la dinámica de bienes comunes produce matrices de pagos isomórfas al dilema del prisionero, analicemos la media temporal de los posteriors en el tiempo.
+En vez de utilizar una matriz de pagos del dilema del prisionero para representar un proceso de bienes comunes, en nuestro trabajo definimos el proceso de bienes comunes a partir del cual podemos derivar la matriz de pagos asociada.
 %
-La mutua deserción produce un posterior que es proporcional al proceso multipicativo estudiado por Ole Peters,
+Si el proceso tuviera una estrucutra de pagos de los bienes comunes, entonces deberíamos observar que los desertores tienen una tasa de crecimiento mayor a lo cooperadores.
 %
-\begin{equation}
-P(k | \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T}) \overset{\hfrac{\text{caso}}{1}}{=} P(k) \prod_{t=1}^{T} P(k|\vec{\Aa}^{\,t}) \\
-& \propto P(k) \prod_{t=1}^{T} f_{\Ee_i}(\Aa_{i}^{t})
-\end{equation}
+Sin embargo, lo que se observa es que el primer desertor de una población enteramente cooperadora obtiene una tasa de crecimiento menor a la que tenía antes de desertar. 
 %
-donde el proporcional vale por construcción de la distribución de probabilidad $ P(i^t|\vec{\Aa}^{\,t})$ (ver ecuación~\ref{eq:probabilidad_propro_aptitud}).
+La siguiente es la trayectoria de los recursos de los individuos que están en un grupos de tammaño 100,
 %
-En la introducción vimos que en una ambiente con $p=0.5$ y un individuo con estrategia $\Ee=1.5$ y recursos totales $R=2.1$ es $\approx 0.95$.
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.5\textwidth}
+    \includegraphics[width=\linewidth]{figures/pdf/ergodicity_desertion.pdf}
+    \end{subfigure}
+    \caption{
+    Los colores representan los grupos con 0, 1 y 2 desertores.
+    Todos los grupos tienen tamaño 100.
+    Las curvas de los individuos desertores son las que están arriba en cada uno de los grupos.
+    }
+    \label{fig:ergodicity_desertion}
+\end{figure}
+%
+Notar que los recursos del individuo desertor del grupo azul (grupo con 1 desertor), está por debajo de los recursos de los individuos del grupo enteramente cooperador (grupo con 0 desertores).
+%
+Esto mismo ocurre incluso cuando el un segundo individuo cambia de comportamiento de cooperador a desertor.
+%
+Los recursos de los individuos desertores del grupo rojo (grupo con 2 desertores), está por debajo de los recursos de los individuos cooperadores del grupo con 1 desertor.
+%
+Esto significa que desertar, en vez de aumentar la tasa de crecimiento de los individuos desertores, la reduce.
+%
+Es decir, la matriz de pagos de los bienes comunes no tiene la estructura del dilema del prisionero como habitualmente se afirma en la literatura.
 
 % Parrafo
 
-De modo similar, el posterior de mutua cooperación es proporcional al proceso cooperativo estudiado por Ole Peters.
+Calculemos la matriz de pagos que surge del proceso de bienes comunes.
+%
+La mutua deserción produce un posterior que se actualiza en función de la siguiente productoria,
 %
 \begin{equation}
-P(i^{T+1}|\vec{\Aa}^{\,1},\dots,\vec{\Aa}^{\,T}) \overset{\hfrac{}{\text{caso}}}{=} \prod_{t=1}^{T} \underbrace{\sum_j^{\texttt{socios}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,t})}_{s_C(\vec{\Aa}\,)} \propto \prod_{t=1}^{T} \sum_j^{\texttt{socios}(r)} \frac{1}{N} f_{\Ee_j}(\Aa_{j}^{t}) = \omega_C(T)
+\prod_{t=1}^{T} P(k|\vec{\Aa}^{\,t}) & \propto \prod_{t=1}^{T} \Ee_k^{\Aa_k} (1-\Ee_k)^{1-\Aa_k} 
 \end{equation}
 %
-donde el proporcional vale por construcción de la distribución de probabilidad $ P(i^t|\vec{\Aa}^{\,t})$.
+donde el proporcional vale por constante de normalización de la distribución de probabilidad $ P(i^t|\vec{\Aa}^{\,t})$.
 %
-Notar la diferencia entre el posterior de mutua cooperación y el de mutua deserción.
+Esta expresión es proporcional al crecimiento de los recursos individuales estudiado pr Ole Peters.
 %
-Los individuos de los grupos enteramente cooperadores juegan con una variable aleatoria, $s_C(\vec{\Aa}\,)$, distinta a la variable aleatoria de la que dependen los individuos de los grupos enteramente desertores.
-%
-Los posibles fitness cooperativos para la población de tamaño 3 son,
+La tasa de crecimiento de un estrategia $\Ee=1.5/2.1 \approx 0.71$ en una ambiente con $p=0.5$ es $g_{DD} = 0.71^{1/2}\cdot0.29^{1/2} \approx 0.45$.
+
+% Parrafo
+
+El posterior de la mutua cooperación también se actualiza en función de una productoria, pero la variable aleatoria en cada paso es el promedio de los resultados los socios de la región,
 %
 \begin{equation}
-s_C(\vec{\Aa}\,) =
-\begin{cases}
-(1-\Ee) & \text{ si } \texttt{sum}(\vec{\Aa}\,) = 0 \\
-\frac{1}{3} \Ee + \frac{2}{3} (1-\Ee)  & \text{ si } \texttt{sum}(\vec{\Aa}\,) = 1 \\
-\frac{2}{3} \Ee + \frac{1}{3} (1-\Ee)    & \text{ si } \texttt{sum}(\vec{\Aa}\,) = 2 \\
-\Ee & \text{ si } \texttt{sum}(\vec{\Aa}\,) = 3
-\end{cases}
+\prod_{t=1}^{T} \sum_j^{\texttt{socios}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,t}) \propto \prod_{t=1}^{T} \underbrace{ \sum_j^{\texttt{socios}(r)} \frac{1}{N} \Ee_k^{\Aa_k} (1-\Ee_k)^{1-\Aa_k} }_{f_{CC}(\Ee,\vec{\Aa}\,,N)} 
 \end{equation}
 %
-Y en general, 
+donde el proporcional vale por constante de normalización de la distribución de probabilidad $ P(i^t|\vec{\Aa}^{\,t})$.
+%
+Cuando todos los miembros del grupo tienen la misma estrategia $\Ee$, los posibles valores de la variable aleatoria cooperativa es,
+% %
+% \begin{equation}
+% f_C(\Ee,\vec{\Aa}\,) =
+% \begin{cases}
+% (1-\Ee) & \text{ si } \texttt{sum}(\vec{\Aa}\,) = 0 \\
+% \frac{1}{3} \Ee + \frac{2}{3} (1-\Ee)  & \text{ si } \texttt{sum}(\vec{\Aa}\,) = 1 \\
+% \frac{2}{3} \Ee + \frac{1}{3} (1-\Ee)    & \text{ si } \texttt{sum}(\vec{\Aa}\,) = 2 \\
+% \Ee & \text{ si } \texttt{sum}(\vec{\Aa}\,) = 3
+% \end{cases}
+% \end{equation}
+% %
+% Y en general, 
 \begin{equation}\label{eq:fitness_cooperador}
-s_C(\vec{\Aa}\,) = \frac{a}{n} e + \frac{n-a}{n}(1-e)
+f_{CC}(\Ee, \vec{\Aa}\,,N) = \frac{\texttt{sum}(\vec{\Aa}\,)}{N} \Ee + \frac{N-\texttt{sum}(\vec{\Aa}\,)}{N}(1-\Ee)
 \end{equation}
 %
-El fitness conjunto, luego de observar $T$ estados del ambiente, es
+donde la probabilidad de ocurrencia es $f_C(\Ee, \vec{\Aa}\,,N) \sim \text{Binomial}(\texttt{sum}(\vec{\Aa}\,)|N,p)$, con $p$ la probabilidad del ambiente.
+%
+Lugo, la tasa de crecimiento característica de la mutua cooperación $g_{CC}$ la podemos calcular utilizando la media geomética~\ref{eq:geometric_mean},
 %
 \begin{equation}
-f(\bm{a}|e,n,c=1) = \prod^T_t f(a^t|e,n,c=1)
+g_{CC}(\Ee,N) = \prod_{x=0}^N \Big(\frac{x}{N} \Ee + \frac{N-x}{N}(1-\Ee)\Big)^{\text{Binomial}(x|N,p)}
 \end{equation}
 %
-Donde $\bm{a}$ es el vector de tamaño $T$ con la cantidad de éxitos obtenidos en cada caso.
-La tasa de crecimiento característica de los agentes cooperadores la podemos calcular utilizando la media geomética~\ref{eq:geometric_mean},
+La tasa de crecimiento cooperativa de una estrategia $\Ee=0.71$ en un grupo de tamaño 2 en un ambiente con probabilidad $p=0.5$, $0.71^{1/4}\cdot 0.5^{1/2} \cdot 0.29^{1/4} \approx 0.48$
+%
+Cuando la población es muy grande, $N\rightarrow \infty$, en cada ronda habrá invariantemente una proproción $p$ que obtuvo éxito, por lo que la tasa de crecimiento se reduce a la media aritmética,
 %
 \begin{equation}
-\overline{f}(e,n,c=1) = \prod_{a=0}^n f(a|e,n,c=1)^{\text{Binomial}(a|n,p^*)}
+\lim_{N\rightarrow \infty} g_{CC}(\Ee,N) = p \Ee + (1-p)(1-\Ee)
 \end{equation}
 %
-donde $p^*$ es la verdadera probabilidad de generación de los estados $a$.
-Cuando la población es muy grande, $n\rightarrow \infty$, en cada ronda habrá invariantemente una proproción $p*$ que obtuvo éxito, por lo que el likelihood caracterísitico se reduce a,
-%
-\begin{equation}
-\lim_{n\rightarrow \infty} \overline{f}(e,c=1) = p^* e + (1-p^*)(1-e)
-\end{equation}
-%
-El likelihood temporal caracterísitico de una estrategia $e$ en una población cooperativa infinita es la esperanza, la cual es lineal respecto de la verdadera probabilidad de generación de los estados del ambiente.
+La tasa de crecimiento cooperativa de estrategia $\Ee=0.71$ en un grupo de tamaño infinito en un ambiente con probabilidad $p=0.5$, es $0.5\cdot 0.71 + 0.5 \cdot 0.29 = 0.5$
 
 % Parrafo
 
+La tasa de crecimiento de los individuos cooperadores en poblaciones mixtas se extiende facilmente,
+%
+\begin{equation}
+g_{CD}(\Ee,n,N) = \prod_{x=0}^n \Big(\frac{x}{N} \Ee + \frac{N-x}{N}(1-\Ee)\Big)^{\text{Binomial}(x|n,p)}
+\end{equation}
+%
+La tasa de crecimiento cooperativa de una estrategia $\Ee=0.71$ en un grupo de tamaño 2 en un ambiente con probabilidad $p=0.5$ es $g_{CD}(0.71,1,2)=(\frac{0.71}{2})^{1/4}\cdot (\frac{0.29}{2})^{1/2}  \approx 0.23$
+
+% Parrafo
+
+El posterior de los individuos desertores en poblaciones mixtas se actualiza en fución de,
+%
 \begin{equation}
 \begin{split}
-P(i^{T+1}|\vec{\Aa}^{\,1},\dots,\vec{\Aa}^{\,T}) & \overset{\hfrac{}{\text{caso}}}{=} \Big(\prod_{t=1}^{T} P(k|\vec{\Aa}^{\,t}) \Big) + \Big(\sum_{t=1}^{T} P(c|\wedge_{q=1}^t\vec{\Aa}^{\,q})  \prod_{q=t+1}^T P(k|\vec{\Aa}^{\,q}) \Big) \\
-& \propto \omega_D(T) + \Big(\sum_{t=1}^{T} \omega_C(t) \omega_D(T-t-1) \Big)
+& \Big(\prod_{t=1}^{T} P(k|\vec{\Aa}^{\,t}) \Big) + \Big(\sum_{t=1}^{T} \prod_{q=1}^{t} \sum_j^{\texttt{socios}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,q})  \prod_{q=t+1}^T P(k|\vec{\Aa}^{\,q}) \Big) \\
 \end{split}
 \end{equation}
-
-
-
-La población más chica posible está compuesta por dos agentes.
 %
-En este caso las tasas de crecimiento temporal caracterísitica para las diferentes estrategias son (demostraciones en la sección Resultados):
+el factor de crecimiento individual más una media movil de del crecimiento de los cooperadores pesado por el crecimiento de individual posterior.
+%
+Cada uno de los elementos que actualizan el posterior de los individuos desertores en regiones mixtas se pueden estimar utilizar las tasas de crecimiento de los desertores en regiones enteramente desertoras $g_{DD}$ e individuos cooperadores en regiones mixtas $g_{CD}(\Ee,n,N)$.
+%
+Debido a que no encontramos una solución analítica más simple, realizamos la estimación de la tasa de crecimiento calculado el crecimiento del posterior que ocurre en cada paso 
 %
 \begin{equation}
-   g(\cdot,\cdot) = \bordermatrix{ & C & D \cr
-      C & \approx 1.0 & \approx 0.47 \cr
-      D & \approx 0.95 & \approx 0.95 } 
+g_{DC} = \frac{ g_{DD}^T + \sum^{T-1}_{t=1} g_{CD}^t g_{DD}^{T-t} + g_{CD}^T}{  g_{DD}^{T-1} + \sum^{T-2}_{t=1} g_{CD}^t g_{DD}^{T-1-t} + g_{CD}^{T-1} }
 \end{equation}
 %
-El primer agente que ``decida'' desertar unilateralmente va a ver reducida su tasa de crecimiento de $f(C,C) = 1.0$ a $ f(D,C) = 0.95$.
+Esta tasa de crecimiento se estabiliza luego de una decena de pasos temporales en la tasa de crecimiento que sea mayor, $g_{DC} \approx \texttt{max}(g_{DD}, g_{CD})$.
+%
+La tasa de crecimiento de los individuos desertores en regiones mixtas se mantiene igual que la tasa de crecimiento de los individuos cooperdora de esa misma región hasta que la proporción de cooperadores lleva la tasa de crecimientos de estos por debajo de la tasa de crecimiento de los desertores en poblaciones enteramente desertoras.
+%
+En la siguiente figura variamos la proproción de desertores en una grupo de tamaño $1000$ y calculamos a tasa de crecimiento del paso temporal $100$ al $101$.
+%
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.66\textwidth}
+    \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-7.pdf}
+    \end{subfigure}
+    \caption{
+    }
+    \label{fig:multilevel-selection-7}
+\end{figure}
+%
+Esto significa que existen al menos dos tipos de matrices de pagos según la tasa de crecimiento de los cooperadores en regiones mixtas $g_{CD}$ sea mayor o menor a la tasa de crecimiento de los desertores en regiones entteramente desertoras. 
+%
+Para representar el orden de preferencia usamos, sólo a modo ilustrativo, las letras $b$, $c$ y $\varepsilon$ significando beneficio, costo y error respectivmente, con $b>c>>0$ y $0<\varepsilon\approx 0$.
+%
+% Cuando la población es muy grande y hay pocos desertores $N >> 0$ y $n \approx0$, $ g_{CD} > g_{DD}$,
+% \begin{equation}
+%    g_{(\cdot,\cdot)}(\Ee,n,N) = \bordermatrix{ & C \ (n) & D \ (n-1)  \cr
+%       C \ (n) &  b & b-c \cr
+%       D \ (n-1) & b-c+\varepsilon & -c } \ \ \ \
+%       g_{(\cdot,\cdot)} = \bordermatrix{ & C & D \cr
+%       C & b-c & -c \cr
+%       D & b+\varepsilon & b } 
+% \end{equation}
+% %
+%  luego $g_{DC} \approx g_{CD}$.
+% %
+% Y cuando $ g_{CD} < g_{DD}$, luego $g_{DC} \approx g_{DD}$.
 % 
+% En este caso las tasas de crecimiento temporal caracterísitica para las diferentes estrategias son (demostraciones en la sección Resultados):
+% %
+% \begin{equation}
+%    g(\cdot,\cdot) = \bordermatrix{ & C & D \cr
+%       C & \approx 1.0 & \approx 0.47 \cr
+%       D & \approx 0.95 & \approx 0.95 } 
+% \end{equation}
+% %
+% El primer agente que ``decida'' desertar unilateralmente va a ver reducida su tasa de crecimiento de $f(C,C) = 1.0$ a $ f(D,C) = 0.95$.
+% % 
+\begin{conclution}[Los bienes comunes no son dilemas del prisionero]
+Sin necesidad de introducir castigos, las estrategias desertoras afectan negativamente su propia tasa de crecimiento a largo plazo debido que su propio comportamiento aumento las fluctuaciones de .
+\end{conclution}
+
+
 \begin{conclution}[La no necesidad de castigos]
 Sin necesidad de introducir castigos, las estrategias desertoras afectan negativamente su tasa de crecimiento a largo plazo a causa de su propio comportamiento, pues al evitar compartir sus recursos generan un aumento de sus fluctuaciones.
 \end{conclution}
@@ -1543,7 +1624,7 @@ Luego, el posterior de los individuos en la región enteramente cooperadora es,
 %
 \begin{equation}\label{eq:posterior_multinivel_desertor}
 \begin{split}
-P(i^{T+1} | \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T}) \overset{\hfrac{\text{caso}}{1}}{=}  P(i^{T+1})  \prod_{t=1}^{T} P(i^{T+1}|\vec{\Aa}^{\,t}) & \propto  P(i^{T+1}) \prod_{t=1}^{T} f_{\Ee_i}(\Aa_{i}^{t})
+P(i^{T+1} | \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T}) \overset{\hfrac{\text{caso}}{1}}{=}  P(i^{T+1})  \prod_{t=1}^{T} P(i^{T+1}|\vec{\Aa}^{\,t}) & \propto  P(i^{T+1}) \prod_{t=1}^{T} f(\Ee_i,\Aa_{i}^{t})
 \end{split}
 \end{equation}
 %
@@ -1588,7 +1669,7 @@ donde la igualdad $\overset{\hfrac{*}{\text{caso}}}{=}$ vale porque en los grupo
 %
 Luego, la marginal objetivo en el caso de la población enteramente cooperadora es 
 \begin{equation}\label{eq:marginal_multinivel_cooperador}
-P(i^{T+1}|\vec{\Aa}^{\,1},\dots,\vec{\Aa}^{\,T}) \overset{\hfrac{}{\text{caso}}}{=} P(i^{T+1}) \prod_{t=1}^{T} \sum_j^{\texttt{socios}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,t}) \propto P(i^{T+1})\prod_{t=1}^{T} \sum_j^{\texttt{socios}(r)} \frac{1}{N} f_{\Ee_j}(\Aa_{j}^{t})
+P(i^{T+1}|\vec{\Aa}^{\,1},\dots,\vec{\Aa}^{\,T}) \overset{\hfrac{}{\text{caso}}}{=} P(i^{T+1}) \prod_{t=1}^{T} \sum_j^{\texttt{socios}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,t}) \propto P(i^{T+1})\prod_{t=1}^{T} \sum_j^{\texttt{socios}(r)} \frac{1}{N} f(\Ee_j,\Aa_{j}^{t})
 \end{equation}
 %
 
