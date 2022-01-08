@@ -640,7 +640,7 @@ Si bien podemos proponer cualquier tipo de estrategia, vamos a limitarnos a aque
 %
 En base a la propuesta de Lewonti-Cohen y Peters, proponemos la siguiente familia de aptitudes, 
 %
-\begin{equation}
+\begin{equation}\label{eq:familia_de_aptitudes}
 f(\Ee, \Aa) = \begin{cases}
  \Ee & \Aa = 1 \\
  R-\Ee & \Aa = 0
@@ -1034,7 +1034,7 @@ P(\texttt{coop}(i^T)|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1}, g) &= \sum_{j=1}
 \end{split}
 \end{equation}
 
-\subsection{Probabilidades marginales y equivalencia con el modelo de Ole Peters}
+\subsection{Probabilidades marginales}
 
 Para calcular los posteriors va a ser suficiente con calcular las probabilidades marginales, pues ambas expresiones son proporcionales.
 %
@@ -1123,23 +1123,13 @@ Y por último, el mensaje que la variable individuo envía al factor social,
 %
 \begin{equation}\label{eq:m_i_pii}
 \begin{split}
-m_{I^t \rightarrow P(I^{t+1}|I^t)}(i^t) =m_{P(I^t|\vec{\Aa}^{\,t}) \rightarrow I^t}(i^t) \, m_{P(I^t|I^{t-1}) \rightarrow I^t }(i^t) % & = P(\vec{\Aa}^{\,t}) \, P(i^t|\vec{\Aa}^{\,t}) \text{Prior}(i^t)
+m_{I^t \rightarrow P(I^{t+1}|I^t)}(i^t) =m_{P(I^t|\vec{\A}^{\,t}) \rightarrow I^t}(i^t) \, m_{P(I^t|I^{t-1}) \rightarrow I^t }(i^t) % & = P(\vec{\Aa}^{\,t}) \, P(i^t|\vec{\Aa}^{\,t}) \text{Prior}(i^t)
 \end{split}
 \end{equation}
 %
 % donde $\text{Prior}(i^t) = m_{P(i^t|i^{t-1}) \rightarrow i^t }(i^t)$ es el mensaje que la variable individuo recibe del factor social pasado.
 % %
 No incluimos en la multiplicación el mensaje que el factor de grupo envía a la variable individuo porque al no ser observable se cancela automáticamente, $m_{P(g^t|i^{t}) \rightarrow i^t}(i^t) = \sum_g P(g|i^t) = 1$.
-% %
-% Notar que la ecuación~\ref{eq:m_i_pii} es proprocional al proceso multiplicativo estudiado por Ole Peters (segundos nodos de la figura \ref{fig:protocolo}), en el que los recursos previos $\omega_i(t)$ se actualizan en función de la aptitud al ambiente $f(\Aa)$.
-%
-% \begin{equation}
-% \begin{split}
-% m_{i^t \rightarrow P(i^{t+1}|i^t)}(i^t) & \propto P(i^t|\vec{\Aa}^{\,t}) \text{Prior}(i^t) \propto f_{\Ee_i}(\Aa_{i}^{t}) \text{Prior}(i^t) = f_{\Ee_i}(\Aa_{i}^{t}) \omega_i(t) 
-% \end{split}
-% \end{equation}
-%
-% donde el segundo proporcional vale por construcción de la distribución de probabilidad $ P(i^t|\vec{\Aa}^{\,t})$ (ver ecuación~\ref{eq:probabilidad_propro_aptitud}), y donde la igualdad final vale por renombre $\text{Prior}(i^t) = \omega_i(t)$.
 %
 Finalmente, el tercer mensaje objetivo (que codifica la selección multinivel) introduce el factor social sobre los recursos individuales.
 %
@@ -1151,18 +1141,6 @@ m_{P(I^{t+1}|I^{t}) \rightarrow I^{t+1} }(i^{t+1}) & = \sum_{i^t} P(i^{t+1}|i^t)
 %
 Este mensaje está definido recursivamente.
 %
-% Notar que la ecuación~\ref{eq:m_pii_i} es proprocional a los recursos individuales luego de la redistribución del fondo común,
-% %
-% \begin{equation}
-% \begin{split}
-% m_{P(i^{t+1}|i^{t}) \rightarrow i^{t+1} }(i^{t+1}) & \propto \sum_{i^t} P(i^{t+1}|i^t) \, P(i^t|\vec{\Aa}^{\,t}) \,  \text{Prior}(i^t) \\
-% & \propto \sum_{i^t} P(i^{t+1}|i^t) \, f_{\Ee_i}(\Aa_{i}^{t}) \omega_i(t)  = \omega_i(t+1)
-% \end{split}
-% \end{equation}
-% %
-% Este mensaje generaliza el último nodo de la figura~\ref{fig:protocolo}.
-%
-% Parrafo
 %
 % En la introducción hemos derivado la tasa de crecimiento de esta marginal para los grupos enteramente desertoras y solo hemos presentado un resultado numérico para el grupo enteramente cooperador.
 % %
@@ -1203,6 +1181,81 @@ P(k)\prod_{t=1}^{T} \sum_j^{\texttt{socios}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,t})
 \end{equation}
 %
 donde $r = \texttt{region}(k)$, y $c$ es una individuos que pertenece a los cooperadores de la región $r$, $c \in \texttt{socios}(r)$.
+
+\subsection{Equivalencia con el modelo de Ole Peters}
+
+El modelo causal propuesto no requiere suponer que el proceso de actualización de los recursos sea multiplicativo, como propone Ole Peters para su juego.
+%
+Todos los supuestos de nuestro modelo se encuentran explicitados en la red bayesiana de la figura ~\ref{fig:multilevel_model}.
+%
+Este modelo supone simplemente que los individuos se ven afectados por el ambientes independientes, con un valor arbitrario para caras y otro para sellos, e implementa el protocolo de cooperación en términos probabilísiticos.
+%
+No indicar el tipo de proceso al que están sujetos los recursos.
+%
+Sin embargo, nuestro modelo causal probabilístico y el juego propuesto por Ole Peters son equivalentes.
+ 
+% Parrafo
+
+Sin necesidad de presuponer un proceso multiplicativo, los posteriors de los individuos en nuestro modelo causal son proporcionales a la trayectoria de los recursos que surgen del juego propuesto por Ole Peters.
+%
+El posterior de los individuos de la región enteramente desertora es,
+%
+\begin{equation}
+\begin{split}
+P(i^{T+1} | \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T}) & \overset{r=0}{=}  P(i^{T+1})  \prod_{t=1}^{T} P(i^{T+1}|\vec{\Aa}^{\,t}) \\
+& \propto P(i^{T+1}) \prod_{t=1}^{T} \Ee_k^{\Aa_k} (1-\Ee_k)^{1-\Aa_k}   \propto P(i^{T+1}) \prod_{t=1}^{T} f(2.1\,\Ee_i,\Aa_{i}^{t})
+\end{split}
+\end{equation}
+%
+donde $r = \texttt{region}(i^{T+1}) = 0$ indica la región sin cooperadores y $f$ es la familia de aptitudes que definimos en la ecuación \ref{eq:familia_de_aptitudes} a partir del juego propuesto por Ole Peters.
+%
+El primer proporcional vale por constante de normalización de la distribución de probabilidad $ P(i^t|\vec{\Aa}^{\,t})$.
+%
+Y el segundo proporcional vale cuando los recursos totales $R$ de la familia de aptitudes $f$ es $R=2.1$.
+%
+Si consideramos que el prior $P(i^{T+1})$ representa los recursos inciales $\omega(0)$, luego el posterior de los individuos desertores es proporcional al crecimiento de los recursos individuales estudiado pr Ole Peters.
+
+% Parrafo
+
+Lo mismo ocurre con los posteriors de los individuos cooperadores.
+%
+Notar que el mensaje que envían las variables individuos al factor social (ecuación~\ref{eq:m_i_pii}) es proprocional al segundo nodo de la figura \ref{fig:protocolo} donde se especifica el protocolo cooperativo, en el que los recursos previos $\omega_i(t)$ se actualizan en función de la aptitud al ambiente $f(\Aa)$.
+%
+\begin{equation}
+\begin{split}
+m_{I^t \rightarrow P(I^{t+1}|I^t)}(i^t) & = m_{P(I^t|\vec{\A}^{\,t}) \rightarrow I^t}(i^t) \, m_{P(I^t|I^{t-1}) \rightarrow I^t }(i^t) \\
+& = P(i^t| \vec{\Aa}^{\,t}) \, P(i^t, \vec{\Aa}^{\,t}, \dots, \vec{\Aa}^{\,t}) \\
+& \propto f(2.1\,\Ee_i,\Aa_{i}^{t}) \omega(t-1)
+\end{split}
+\end{equation}
+%
+donde la marginal $P(i^t, \vec{\Aa}^{\,t}, \dots, \vec{\Aa}^{\,t})$ es proporcional al posterior $P(i^t| \vec{\Aa}^{\,t}, \dots, \vec{\Aa}^{\,t})$.
+%
+Nuevamente, la prorporcionalidad vale por contrucción de la distribución de probabilidad $P(i^t|\vec{\Aa}^{\,t})$, cuando los recursos totales $R$ de la familia de aptitudes $f$ es $R=2.1$.
+%
+Y el mensaje que envía el factor social a la variable individuo del siguiente tiempo (ecuación~\ref{eq:m_pii_i}) es proprocional a los recursos individuales luego de la redistribución del fondo común,
+%
+\begin{equation}
+\begin{split}
+m_{P(I^{t+1}|I^{t}) \rightarrow I^{t+1} }(i^{t+1}) & = \sum_{i^t} P(i^{t+1}|i^t) \, P(\vec{\Aa}^{\,t}) \, P(i^t|\vec{\Aa}^{\,t}) \,  m_{P(I^t|I^{t-1}) \rightarrow I^t }(i^t) \\
+%& \propto \sum_{i^t} P(i^{t+1}|i^t) \, P(i^t|\vec{\Aa}^{\,t}) \,  \text{Prior}(i^t) \\
+= P(I^{t+1}, \vec{\Aa}^{\,1} , \dots, \vec{\Aa}^{\,T} ) & \propto \sum_{i^t} P(i^{t+1}|i^t) \, f_{\Ee_i}(\Aa_{i}^{t}) \omega_i(t)  = \omega_i(t+1)
+\end{split}
+\end{equation}
+%
+donde $P(i^{t+1}|i^t) = \frac{1}{N}$ cuando los individuos pertenecen a la misma región $\texttt{region}(i^{T+1}) = \texttt{region}(i^{T+1})$
+%
+Este mensaje generaliza el último nodo de la especificación del protocolo cooperativo (figura~\ref{fig:protocolo}).
+
+% Parrafo
+
+En general, los posteriors de los individuos no son más que la proproción de recursos totales.
+%
+\begin{equation}
+P(k| \vec{\Aa}^{\,1}, \dots,  \vec{\Aa}^{\,T}) = \frac{\omega_k(T)}{\sum_j \omega_j(T)}
+\end{equation}
+%
+La proporcionalidad entre el posterior de los individuos y las trayectorias de los recursos propuesto por Ole Peters nos permite trabajar indistintamanete con una u otro expresión.
 
 \subsection{Dilema de los bienes comunes}
 
@@ -1267,11 +1320,8 @@ La mutua deserción produce un posterior que se actualiza en función de la sigu
 \prod_{t=1}^{T} P(k|\vec{\Aa}^{\,t}) & \propto \prod_{t=1}^{T} \Ee_k^{\Aa_k} (1-\Ee_k)^{1-\Aa_k} 
 \end{equation}
 %
-donde el proporcional vale por constante de normalización de la distribución de probabilidad $ P(i^t|\vec{\Aa}^{\,t})$.
-%
-Esta expresión es proporcional al crecimiento de los recursos individuales estudiado pr Ole Peters.
-%
 La tasa de crecimiento de un estrategia $\Ee=1.5/2.1 \approx 0.71$ en una ambiente con $p=0.5$ es $g_{DD} = 0.71^{1/2}\cdot0.29^{1/2} \approx 0.45$.
+
 
 % Parrafo
 
@@ -1616,7 +1666,7 @@ m_{P(I^{T+1}|I^{T}) \rightarrow I^{T+1} }(i^{T+1}) & \overset{\hfrac{eq}{\ref{eq
 \end{split}
 \end{equation}
 %
-Luego, el posterior de los individuos en la región enteramente cooperadora es,
+Luego, el posterior de los individuos en la región enteramente desertora es,
 %
 \begin{equation}\label{eq:posterior_multinivel_desertor}
 \begin{split}
