@@ -106,7 +106,7 @@ function posterior_level_2(e,NN = 10,T=100)
 end
 
 function omega_desertor(f_c, f_d, t)
-    return f_d^(t) + sum([ (f_c^i)*(f_d^(t-i)) for i in 1:(t)])
+    return f_d^(t) + sum([ (f_c^i)*prod([f_d for j in (i+1):t]) for i in 1:(t)])
 end
 
 
@@ -235,7 +235,7 @@ for n in nx#n=950
     push!(fD,wD101/wD100)
 end
 
-fig=plot((nx/N), reverse(fC),label="Cooperador", color=3, legend=(0.2,0.3),foreground_color_legend = nothing, ylab="Fitness", xlab="Proporción desertores", linewidth=1.5, grid=false,thickness_scaling = 1.5)
+fig=plot((nx/N), reverse(fC),label="Cooperador", color=3, legend=(0.2,0.3),foreground_color_legend = nothing, ylab="Fitness", xlab="Proporción desertores (total)", linewidth=1.5, grid=false,thickness_scaling = 1.5)
 plot!(nx/N,reverse(fD), label="Desertor", color=1)
 savefig(fig, "pdf/multilevel-selection-7.pdf")
 savefig(fig, "png/multilevel-selection-7.png")
@@ -254,7 +254,7 @@ for n in nx#n=950
     push!(fD,wD101/wD100)
 end
 
-scatter([(nx/(N-1))[1:end-1];(nx/(N-1))[1:end-1]], [reverse(fC)[1:end-1];reverse(fD)[2:end]], color=[3,3,1,1],foreground_color_legend = nothing, ylab="Fitness", xlab="Proporción desertores", linewidth=1.5,label=false, grid=false,thickness_scaling = 1.5 )
+fig=scatter([(nx/(N-1))[1:end-1];(nx/(N-1))[1:end-1]], [reverse(fC)[1:end-1];reverse(fD)[2:end]], color=[3,3,1,1],foreground_color_legend = nothing, ylab="Fitness", xlab="Proporción desertores (otros)", linewidth=1.5,label=false, grid=false,thickness_scaling = 1.5 )
 savefig(fig, "pdf/multilevel-selection-8.pdf")
 savefig(fig, "png/multilevel-selection-8.png")
 run(`pdfcrop --margins '0 0 0 0' pdf/multilevel-selection-8.pdf pdf/multilevel-selection-8.pdf`) 
@@ -273,9 +273,8 @@ for n in nx#n=950
     push!(fD,wD101/wD100)
 end
 
-scatter((nx/(N-1))[1:end-1], reverse(fC)[1:end-1], color=3,foreground_color_legend = nothing, ylab="Fitness", xlab="Proporción desertores", linewidth=1.5,label=false, grid=false,thickness_scaling = 1.5, xlim=[0,0.21], ylim=[0.4,0.5])
-scatter!((nx/(N-1))[1:end-1], reverse(fD)[2:end], color=1,foreground_color_legend = nothing, ylab="Fitness", xlab="Proporción desertores", linewidth=1.5,label=false, grid=false,thickness_scaling = 1.5 )
-
+fig=scatter((nx/(N-1))[1:end-1], reverse(fC)[1:end-1], color=3,foreground_color_legend = nothing, ylab="Fitness", xlab="Proporción desertores (otros)", linewidth=1.5,label=false, grid=false,thickness_scaling = 1.5, xlim=[0,0.21], ylim=[0.4,0.5])
+scatter!((nx/(N-1))[1:end-1], reverse(fD)[2:end], color=1, label=false)
 savefig(fig, "pdf/multilevel-selection-9.pdf")
 savefig(fig, "png/multilevel-selection-9.png")
 run(`pdfcrop --margins '0 0 0 0' pdf/multilevel-selection-9.pdf pdf/multilevel-selection-9.pdf`) 

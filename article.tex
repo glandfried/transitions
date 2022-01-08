@@ -1204,57 +1204,6 @@ P(k)\prod_{t=1}^{T} \sum_j^{\texttt{socios}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,t})
 %
 donde $r = \texttt{region}(k)$, y $c$ es una individuos que pertenece a los cooperadores de la región $r$, $c \in \texttt{socios}(r)$.
 
-\subsection{Selección de nivel 1, nivel 2 y multinivel}
-
-Con esto podemos calcular el posterior de los grupos (nivel 2),
-%
-\begin{equation}
-P(g|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^T) = \sum_i \mathbb{I}(\texttt{region}(i)=g) P(i|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^T)
-\end{equation}
-%
-y de los comportamientos cooperadores (multinivel),
-%
-\begin{equation}
-P(\texttt{coop}|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^T) = \sum_i P(i|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^T)\mathbb{I}(\texttt{coop}(i))
-\end{equation}
-%
-En la siguiente figura mostramos el posterior de los grupos cuando las regiones tienen $N=2$ individuos (3 regiones), y el 
-%
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[b]{0.32\textwidth}
-    \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-level-1-posterior.pdf}
-    \caption{Selección nivel 1}
-    \label{fig:multilevel-selection-level-1}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.32\textwidth}
-    \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-6.pdf}
-    \caption{Selección nivel 2}
-    \label{fig:multilevel-selection-6}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.32\textwidth}
-    \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-multilevel-posterior.pdf}
-    \caption{Selección multinivel}
-    \label{fig:multilevel-selection-multilevel-posterior}
-    \end{subfigure}
-    \caption{
-    Evolución del posterior de los grupos (selección de nivel 2) y de los individuos cooperadores (selección multinivel) a medida que avanza el tiempo.
-    }
-    \label{fig:multilevel-selection}
-\end{figure}
-%
-En pocas iteraciones, el posterior del grupo de la región enteramente cooperadora llega a 1, lo que significa que todos los recursos están concentrados allí (figura~\ref{fig:multilevel-selection-6}).
-%
-En términos evolutivos, los grupos de las regiones enteramente cooperadores serán capaces de invadir regiones compuesta enteramente por grupos desertores y mixtos.
-%
-A través de la selección de grupos, los comportamientos cooperadores logran invadir poblaciones con comportamientos desertores.
-%
-\begin{conclution}[La ventaja evolutiva de la cooperación]
-La selección multinivel favorece a las estrategias cooperativas incluso con grupos de tamaño mínimo (dos).
-\end{conclution}
-%
-La ventaja evolutiva de la cooperación se extiende inmediatamente a poblaciones de tamaño mayor.
-
 \subsection{Dilema de los bienes comunes}
 
 En las últimas décadas la biología evolutiva a comenzado a adoptar la analogía de la ``tragedia de los comunes''~\cite{rankin2007-tragedyCommonsBiology}.
@@ -1396,96 +1345,118 @@ Cada uno de los elementos que actualizan el posterior de los individuos desertor
 Debido a que no encontramos una solución analítica más simple, realizamos la estimación de la tasa de crecimiento calculado el crecimiento del posterior que ocurre en cada paso 
 %
 \begin{equation}
-g_{DC} = \frac{ g_{DD}^T + \sum^{T-1}_{t=1} g_{CD}^t g_{DD}^{T-t} + g_{CD}^T}{  g_{DD}^{T-1} + \sum^{T-2}_{t=1} g_{CD}^t g_{DD}^{T-1-t} + g_{CD}^{T-1} }
+g_{D}(\Ee,n,N) = \frac{ g_{D}(\Ee)^T + \sum^{T}_{t=1} g_{C}(\Ee,n,N)^t \prod_{q=t+1}^{T} g_{D}(\Ee)}{ g_{D}(\Ee)^{T-1} + \sum^{T-1}_{t=1} g_{C}(\Ee,n,N)^t  \prod_{q=t+1}^{T-1} g_{D}(\Ee)}
 \end{equation}
 %
-Esta tasa de crecimiento se estabiliza luego de una decena de pasos temporales en la tasa de crecimiento que sea mayor, $g_{DC} \approx \texttt{max}(g_{DD}, g_{CD})$.
+Esta tasa de crecimiento se estabiliza luego de una decena de pasos temporales en la tasa de crecimiento que sea mayor, $g_{D}(\Ee,n,N) \approx \texttt{max}(g_{D}(\Ee), g_{C}(\Ee,n,N))$.
 %
-La tasa de crecimiento de los individuos desertores en regiones mixtas se mantiene igual que la tasa de crecimiento de los individuos cooperdora de esa misma región hasta que la proporción de cooperadores lleva la tasa de crecimientos de estos por debajo de la tasa de crecimiento de los desertores en poblaciones enteramente desertoras.
+En la figura \ref{fig:multilevel-selection-7} mostramos la tasa de crecimiento de los desertores en función de la proproción de desertores totales en una grupo de tamaño $1000$.
 %
-En la siguiente figura variamos la proproción de desertores en una grupo de tamaño $1000$ y calculamos a tasa de crecimiento del paso temporal $100$ al $101$.
+La tasa de crecimiento de los individuos desertores en regiones mixtas, $g_{D}(\Ee,n,N)$, se mantiene igual que la tasa de crecimiento de los individuos cooperdora, $g_{C}(\Ee,n,N)$, hasta que la proporción de cooperadores lleva la reduce la tasa de crecimientos por debajo de la tasa de crecimiento de los regiones enteramente desertoras, $g_{D}(\Ee)$.
+%
+En la figura~\ref{fig:multilevel-selection-5} podemos ver cómo la tasa de crecimiento estimada, reescladas por el factor $2.1$, se superpone sobre las trayectorias de los recursos del grupo con un desertor presentado en la figura \ref{ergodicity_desertion}.
 %
 \begin{figure}[H]
     \centering
-    \begin{subfigure}[b]{0.48\textwidth}
-    \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-5.pdf}
-    \caption{}
-    \label{fig:multilevel-selection-5}
-    \end{subfigure}
     \begin{subfigure}[b]{0.48\textwidth}
     \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-7.pdf}
     \caption{}
     \label{fig:multilevel-selection-7}
     \end{subfigure}
+    \begin{subfigure}[b]{0.48\textwidth}
+    \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-5.pdf}
     \caption{}
+    \label{fig:multilevel-selection-5}
+    \end{subfigure}
+    \caption{
+    Figura \ref{fig:multilevel-selection-7}: estimación de la tasa de crecimiento en grupos mixtos de tamaño 100.
+    %
+    Figura \ref{fig:multilevel-selection-5}: trayectoria de los recursos de un desertor (azul) y cooperador (verde) en un grupo de tamaño 100 con un único desertor (ver figura~\ref{ergodicity_desertion}), las curvas negras son las estimaciones de las tasas de crecimiento, y la curva negra punteadas son los recursos de mutua cooperación.
     }
 \end{figure}
 %
-Esto significa que existen al menos dos tipos de matrices de pagos según la tasa de crecimiento de los cooperadores en regiones mixtas $g_{CD}$ sea mayor o menor a la tasa de crecimiento de los desertores en regiones entteramente desertoras. 
+En la figura \ref{fig:multilevel-selection-5} vemos que a partir de las tasas de crecimiento de los individuos cooperdores$g_C(\Ee=1.5/2.1,n=99,N=100)$ y desertores $g_D(\Ee=1.5/2.1)$, podemos estimar correctamente la trayectoria de los recursos de un individuo desertor en una población mixta.
 %
-Para representar el orden de preferencia usamos, sólo a modo ilustrativo, las letras $b$, $c$ y $\varepsilon$ significando beneficio, costo y error respectivmente, con $b>c>>0$ y $0<\varepsilon\approx 0$.
+No importa el tamaño del grupo, siempre la mutua cooperación ofrece la tasa de crecimiento más alta, y la primera deserción produce una baja de la tasa de crecimiento incluso del individuo desertor.
 %
-% Cuando la población es muy grande y hay pocos desertores $N >> 0$ y $n \approx0$, $ g_{CD} > g_{DD}$,
-% \begin{equation}
-%    g_{(\cdot,\cdot)}(\Ee,n,N) = \bordermatrix{ & C \ (n) & D \ (n-1)  \cr
-%       C \ (n) &  b & b-c \cr
-%       D \ (n-1) & b-c+\varepsilon & -c } \ \ \ \
-%       g_{(\cdot,\cdot)} = \bordermatrix{ & C & D \cr
-%       C & b-c & -c \cr
-%       D & b+\varepsilon & b } 
-% \end{equation}
-% %
-%  luego $g_{DC} \approx g_{CD}$.
-% %
-% Y cuando $ g_{CD} < g_{DD}$, luego $g_{DC} \approx g_{DD}$.
-% 
-Cuando el grupo tiene tamaño 2 las tasas de crecimiento temporal caracterísitica para las diferentes estrategias son (demostraciones en la sección Resultados):
+Las siguientes matrices resumen las tasas de crecimiento para individuos cooperadores y desertores (filas), para diferente cantidad de desertores en el contexto social (columnas), en grupos de tamaño 2 y tamaño 16 respectivamente.
+%
+\begin{equation*}
+\bordermatrix{ & 0/1 & 1/1 \cr
+      C & 0.475 & 0.226 \cr
+      D & 0.452 &  0.452 }\ \ \ \ \ \ \ \  \bordermatrix{ & 0/15 & 1/15 & 2/15 & 3/15 \cr
+      C & 0.497 & 0.466 & 0.435 & 0.403 \cr
+      D & 0.467 & 0.452 & 0.452 & 0.452}       
+\end{equation*}
+%
+El primer agent que ``decida'' desertar unilateralmente va a ver reducida su tasa de crecimiento.
+%
+Cuando todos (o muchos) de los miembros del grupo son desertores, el primer agente que ``decida'' cooperar unilateralmente, también va a ver reducida su tasa de crecimiento.
+%
+Esto significa que la matriz de pagos no son isomorfas al dilema del prisionero.
+%
+De hecho, la estructura de pagos de la matriz izquierda se conoce como stag-hunt.
+%
+\begin{conclution}[Los bienes comunes no son dilemas del prisionero]
+Sin necesidad de introducir castigos, las estrategias desertoras afectan negativamente su propia tasa de crecimiento a largo plazo debido que su propio comportamiento aumento las fluctuaciones de la variable aleatoria de la que dependen.
+\end{conclution}
+%
+En todos los casos, la tasa de crecimiento más alta se obtiene por mutua cooperación.
+%
+Por este motivo, la selección multinivel favorece a los individuos cooperadores sobre los desertores, a pesar de que la presencia de destores afecte negativa su tasa de crecimiento.
+
+
+\subsection{Selección de nivel 1, nivel 2 y multinivel}
+
+Con esto podemos calcular el posterior de los grupos (nivel 2),
+%
+\begin{equation}
+P(g|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^T) = \sum_i \mathbb{I}(\texttt{region}(i)=g) P(i|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^T)
+\end{equation}
+%
+y de los comportamientos cooperadores (multinivel),
+%
+\begin{equation}
+P(\texttt{coop}|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^T) = \sum_i P(i|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^T)\mathbb{I}(\texttt{coop}(i))
+\end{equation}
+%
+En la siguiente figura mostramos el posterior de los grupos cuando las regiones tienen $N=2$ individuos (3 regiones), y el 
 %
 \begin{figure}[H]
     \centering
-    \begin{subfigure}[b]{0.48\textwidth}
-    \centering
-    \begin{equation*}
- \ \ \ \  \ \ \ \   \bordermatrix{ & 0/1 & 1/1 \cr
-      C & 0.475 & 0.226 \cr
-      D & 0.452 &  0.452 }
-\end{equation*}
-    \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-8.pdf}
-    \caption{$g_C(\Ee=0.71,n,N=2)$}
-    \label{fig:multilevel-selection-8}
+    \begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-level-1-posterior.pdf}
+    \caption{Selección nivel 1}
+    \label{fig:multilevel-selection-level-1}
     \end{subfigure}
-    \begin{subfigure}[b]{0.48\textwidth}
-    \begin{equation*} 
-\ \ \ \ \ \ \ \  \bordermatrix{ & 0/15 & 1/15 & 2/15 & 3/15 \cr
-      C & 0.497 & 0.466 & 435 & 0.403 \cr
-      D & 0.467 & 0.452 & 0.452 & 0.452}       
-\end{equation*}
-    \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-9.pdf}
-    \caption{}
-    \label{fig:multilevel-selection-9}
+    \begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-6.pdf}
+    \caption{Selección nivel 2}
+    \label{fig:multilevel-selection-6}
     \end{subfigure}
-    \caption{}
+    \begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-multilevel-posterior.pdf}
+    \caption{Selección multinivel}
+    \label{fig:multilevel-selection-multilevel-posterior}
+    \end{subfigure}
+    \caption{
+    Evolución del posterior de los grupos (selección de nivel 2) y de los individuos cooperadores (selección multinivel) a medida que avanza el tiempo.
     }
+    \label{fig:multilevel-selection}
 \end{figure}
-
 %
-El primer agente que ``decida'' desertar unilateralmente va a ver reducida su tasa de crecimiento de $f(C,C) = 1.0$ a $ f(D,C) = 0.95$.
-% 
-\begin{conclution}[Los bienes comunes no son dilemas del prisionero]
-Sin necesidad de introducir castigos, las estrategias desertoras afectan negativamente su propia tasa de crecimiento a largo plazo debido que su propio comportamiento aumento las fluctuaciones de .
+En pocas iteraciones, el posterior del grupo de la región enteramente cooperadora llega a 1, lo que significa que todos los recursos están concentrados allí (figura~\ref{fig:multilevel-selection-6}).
+%
+En términos evolutivos, los grupos de las regiones enteramente cooperadores serán capaces de invadir regiones compuesta enteramente por grupos desertores y mixtos.
+%
+A través de la selección de grupos, los comportamientos cooperadores logran invadir poblaciones con comportamientos desertores.
+%
+\begin{conclution}[La ventaja evolutiva de la cooperación]
+La selección multinivel favorece a las estrategias cooperativas incluso con grupos de tamaño mínimo (dos).
 \end{conclution}
+%
+La ventaja evolutiva de la cooperación se extiende inmediatamente a poblaciones de tamaño mayor.
 
-
-% 
-% Esto parecería apoyar la idea de Ole Peters de que la cooperación no es altruista sino que está impulsada por el interés personal\footnote{
-% La estructura de pagos coinicide con la matriz de pagos del Stag-Hunt. Sin embargo, los análisis que llegan a la conclusión de que las poblaciones enteramente cooperadoras son evolutivamente estables se basan en dinámicas aditivas en poblaciones infinitas, apartándose del modelo estandar de crecimiento exponencial.}.
-% Sin embargo para la teoría de la evolución la frecuencia de los estrategias en la población depende, no del valor absoluto de la tasa de crecimiento, sino de la diferencia respecto de las tasas de crecimiento de las otras estrategias en la población.
-% Por más que la mutua cooperación ofrezca una tasa de crecimiento mayor que la deserción unilateral ($f(C,C) = 1.00 > 0.95 = f(D,C)$), un mutante desertor invadirá evolutivamente la población debido a que su tasa de crecimiento será mayor a la del agente cooperador ($f(D,C) = 0.95 > 0.47 = f(C,D)$). 
-% 
-% \begin{conclution}[Estabilidad evolutiva nivel 1]
-% Esto quiere decir que las estrategias cooperadoras no son evolutivamentes estables al interior de las poblaciones.
-% \end{conclution}
-% 
 
 \subsection{La ventaja de la especialización}
 
