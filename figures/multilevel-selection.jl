@@ -197,28 +197,67 @@ w_coop  = w_coop .+ b_eg1[1,:]
 B = [ sum(c) for c in eachcol(b_g)]
 
 # P(g|a)
-p = plot(b_g0./B, label="CC", thickness_scaling = 1.5, grid=false, xlab="Tiempo", ylab="P( g | a1, ..., at)", color = 3, foreground_color_legend = nothing)
-plot!(b_g1./B, label="CD", color=2)
-plot!(b_g2./B, label="DD", color=1)
+p = plot(b_g0./B, label="CC", thickness_scaling = 1.5, grid=false, xlab="Tiempo", ylab="P( g | a1, ..., at)", color = 3, foreground_color_legend = nothing,linewidth=2)
+plot!(b_g1./B, label="CD", color=2,linewidth=2)
+plot!(b_g2./B, label="DD", color=1,linewidth=2)
 
 savefig(p, "png/multilevel-selection-6.png") 
 savefig(p, "pdf/multilevel-selection-6.pdf") 
 
 # P(coop|a)
-p = plot(w_coop./B, label="Cooperator", thickness_scaling = 1.5, grid=false, xlab="Tiempo", ylab="P( coop | a1, ..., at)", color = 3, foreground_color_legend = nothing)
+p = plot(w_coop./B, label="Cooperator", thickness_scaling = 1.5, grid=false, xlab="Tiempo", ylab="P( coop | a1, ..., at)", color = 3, foreground_color_legend = nothing,linewidth=2)
 
 savefig(p, "png/multilevel-selection-multilevel-posterior.png") 
 savefig(p, "pdf/multilevel-selection-multilevel-posterior.pdf") 
 
-
 # Biomasa individuos engrupo mixto (posterior nivel 1)
 
-p = plot(b_eg1[1,:]./b_g1, label="Cooperator", thickness_scaling = 1.5, grid=false, xlab="Tiempo", ylab="P( i | a1, ..., at)", color = 3, foreground_color_legend = nothing)
-plot!(b_eg1[2,:]./b_g1, label="Desertor", color=2)
+p = plot(b_eg1[1,:]./b_g1, label="Cooperator", thickness_scaling = 1.5, grid=false, xlab="Tiempo", ylab="P( coop | a1, ..., at, g=1)", color = 3, foreground_color_legend = nothing,linewidth=2)
+plot!(b_eg1[2,:]./b_g1, label="Desertor", color=2,linewidth=2)
 savefig(p, "png/multilevel-selection-level-1-posterior.png") 
 savefig(p, "pdf/multilevel-selection-level-1-posterior.pdf") 
 
 
+N=16
+b_eg_N16 = []
+b_g_N16 = []
+B = [0 for i in 1:1001]
+w_coop = [0 for i in 1:1001]
+for n in 0:16
+    push!(b_eg_N16, game(16,n,1000).*(pdf(Binomial(16,0.5))[n+1].*(1/16)))
+    push!(b_g_N16 , [sum(c) for c in eachcol(b_eg_N16[end])])
+    B = B .+ b_g_N16[end]
+    w_coop = w_coop .+ [ sum(c) for c in eachcol(b_eg_N16[end][1:(N-n),:])]
+end
+
+p = plot(1 .- (b_eg_N16[2][end,:] ./ [ sum(c) for c in eachcol(b_eg_N16[2])]),label=false, thickness_scaling = 1.5, grid=false, xlab="Tiempo", ylab="P( coop | a1, ..., at, g=1)", color = 3, foreground_color_legend = nothing, linewidth=2)
+plot!((b_eg_N16[2][end,:] ./ [ sum(c) for c in eachcol(b_eg_N16[2])]),  label=false, color=2, linewidth=2)
+savefig(p, "png/multilevel-selection-level-1-posterior-N16.png") 
+savefig(p, "pdf/multilevel-selection-level-1-posterior-N16.pdf") 
+
+p = plot(w_coop./B, label="Cooperator", thickness_scaling = 1.5, grid=false, xlab="Tiempo", ylab="P( coop | a1, ..., at)", color = 3, foreground_color_legend = nothing, linewidth=2)
+savefig(p, "png/multilevel-selection-multilevel-posterior-N16.png") 
+savefig(p, "pdf/multilevel-selection-multilevel-posterior-N16.pdf") 
+
+
+p = plot(b_g_N16[1]./B, label="0", thickness_scaling = 1.5, grid=false, xlab="Tiempo", ylab="P( g | a1, ..., at)", color = 3, foreground_color_legend = nothing, linewidth=2)
+plot!(b_g_N16[2]./B, label=false, color="gray")
+plot!(b_g_N16[3]./B, label=false, color="gray")
+plot!(b_g_N16[4]./B, label=false, color="gray")
+plot!(b_g_N16[5]./B, label=false, color="gray")
+plot!(b_g_N16[6]./B, label=false, color="gray")
+plot!(b_g_N16[7]./B, label=false, color="gray")
+plot!(b_g_N16[8]./B, label=false, color="gray")
+plot!(b_g_N16[9]./B, label=false, color="gray")
+plot!(b_g_N16[10]./B, label=false, color="gray")
+plot!(b_g_N16[11]./B, label=false, color="gray")
+plot!(b_g_N16[12]./B, label=false, color="gray")
+plot!(b_g_N16[13]./B, label=false, color="gray")
+plot!(b_g_N16[14]./B, label=false, color="gray")
+plot!(b_g_N16[15]./B, label=false, color="gray")
+plot!(b_g_N16[16]./B, label="16", color=2, linewidth=2)
+savefig(p, "png/multilevel-selection-level-2-N16.png") 
+savefig(p, "pdf/multilevel-selection-level-2-N16.pdf") 
 
 #######################
 

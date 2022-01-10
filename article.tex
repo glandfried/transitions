@@ -1284,10 +1284,12 @@ En vez de utilizar una matriz de pagos del dilema del prisionero para representa
 Si el proceso tuviera una estrucutra de pagos de los bienes comunes, entonces deberíamos observar que los desertores tienen una tasa de crecimiento mayor a lo cooperadores.
 %
 Sin embargo, lo que se observa es que el primer desertor de una población enteramente cooperadora obtiene una tasa de crecimiento menor a la que tenía antes de desertar. 
+
+% Parrafo
+
+En la figura~\ref{fig:ergodicity_desertion} podemos observar las trayectoria de los recursos, equivalente el posterior proporcional (ver sección anterior), de los individuos que están en un grupos de tamaño 100.
 %
-La siguiente es la trayectoria de los recursos de los individuos que están en un grupos de tammaño 100,
-%
-\begin{figure}[H]
+\begin{figure}[ht!]
     \centering
     \begin{subfigure}[b]{0.5\textwidth}
     \includegraphics[width=\linewidth]{figures/pdf/ergodicity_desertion.pdf}
@@ -1300,18 +1302,16 @@ La siguiente es la trayectoria de los recursos de los individuos que están en u
     \label{fig:ergodicity_desertion}
 \end{figure}
 %
-Notar que los recursos del individuo desertor del grupo azul (grupo con 1 desertor), está por debajo de los recursos de los individuos del grupo enteramente cooperador (grupo con 0 desertores).
+Los recursos del primer individuo desertor (grupo azul con 1 desertor), está por debajo de los recursos de los individuos del grupo enteramente cooperador (grupo verde con 0 desertores).
 %
-Esto mismo ocurre incluso cuando el un segundo individuo cambia de comportamiento de cooperador a desertor.
-%
-Los recursos de los individuos desertores del grupo rojo (grupo con 2 desertores), está por debajo de los recursos de los individuos cooperadores del grupo con 1 desertor.
-%
-Esto significa que desertar, en vez de aumentar la tasa de crecimiento de los individuos desertores, la reduce.
-%
-Es decir, la matriz de pagos de los bienes comunes no tiene la estructura del dilema del prisionero como habitualmente se afirma en la literatura.
+La reducción de los recursos le ocurre incluso al segundo individuo que cambia de comportamiento de cooperador a desertor: los recursos de los individuos desertores del grupo con 2 desertores, está por debajo de los recursos de los individuos cooperadores del grupo con 1 desertor.
 
 % Parrafo
 
+Esto significa que desertar, en vez de aumentar la tasa de crecimiento de los individuos desertores, la reduce.
+%
+Es decir, la matriz de pagos de los bienes comunes no tiene la estructura del dilema del prisionero como habitualmente se afirma en la literatura.
+%
 Calculemos la matriz de pagos que surge del proceso de bienes comunes.
 %
 La mutua deserción produce un posterior que se actualiza en función de la siguiente productoria,
@@ -1427,7 +1427,11 @@ En la figura~\ref{fig:multilevel-selection-5} podemos ver cómo la tasa de creci
 %
 En la figura \ref{fig:multilevel-selection-5} vemos que a partir de las tasas de crecimiento de los individuos cooperdores$g_C(\Ee=1.5/2.1,n=99,N=100)$ y desertores $g_D(\Ee=1.5/2.1)$, podemos estimar correctamente la trayectoria de los recursos de un individuo desertor en una población mixta.
 %
-No importa el tamaño del grupo, siempre la mutua cooperación ofrece la tasa de crecimiento más alta, y la primera deserción produce una baja de la tasa de crecimiento incluso del individuo desertor.
+Notar que la tasa de crecimiento del individuo desertor es mayor a la de los cooperadores en la primera decena de tiempos hasta que se estabiliza en el mismo valor.
+%
+Esto coloca a los desertores en una posición relativa mejor que los cooperadores.
+%
+Pero, no importa el tamaño del grupo, siempre la mutua cooperación ofrece la tasa de crecimiento más alta, y la primera deserción produce una baja de la tasa de crecimiento incluso del individuo desertor.
 %
 Las siguientes matrices resumen las tasas de crecimiento para individuos cooperadores y desertores (filas), para diferente cantidad de desertores en el contexto social (columnas), en grupos de tamaño 2 y tamaño 16 respectivamente.
 %
@@ -1436,7 +1440,7 @@ Las siguientes matrices resumen las tasas de crecimiento para individuos coopera
       C & 0.475 & 0.226 \cr
       D & 0.452 &  0.452 }\ \ \ \ \ \ \ \  \bordermatrix{ & 0/15 & 1/15 & 2/15 & 3/15 \cr
       C & 0.497 & 0.466 & 0.435 & 0.403 \cr
-      D & 0.467 & 0.452 & 0.452 & 0.452}       
+      D & 0.466 & 0.452 & 0.452 & 0.452}       
 \end{equation*}
 %
 El primer agent que ``decida'' desertar unilateralmente va a ver reducida su tasa de crecimiento.
@@ -1458,55 +1462,116 @@ Por este motivo, la selección multinivel favorece a los individuos cooperadores
 
 \subsection{Selección de nivel 1, nivel 2 y multinivel}
 
-Con esto podemos calcular el posterior de los grupos (nivel 2),
+En la sección anterior hemos visto que desertar unilateralmente reducen la tasa de crecimiento de los proprios desertores respecto de la que podrían tener a través de la mutua cooperación.
 %
-\begin{equation}
-P(g|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^T) = \sum_i \mathbb{I}(\texttt{region}(i)=g) P(i|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^T)
-\end{equation}
+Sin embargo, la tasa de crecimiento de los cooperadores se ve reducida en mayor medida, lo que hace que en términos \emph{relativos} los desertores se encuentren en una mejor posición que los cooperadores de su propio grupo.
 %
-y de los comportamientos cooperadores (multinivel),
+Esto hace que al interior de los grupos los individuos desertores tengan una ventaja sobre los individuos cooperadores.
 %
-\begin{equation}
-P(\texttt{coop}|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^T) = \sum_i P(i|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^T)\mathbb{I}(\texttt{coop}(i))
-\end{equation}
+Por lo tanto, la evolución favorecerá los comportamientos desertores a través de la selección individual (nivel 1).
 %
-En la siguiente figura mostramos el posterior de los grupos cuando las regiones tienen $N=2$ individuos (3 regiones), y el 
+En la figura~\ref{fig:multilevel-selection-level-1-posterior} podemos ver el posterior los individuos cooperadores y desertores en regiones con 1 destertor en grupos de tamaño 2 y 16.
 %
 \begin{figure}[H]
     \centering
-    \begin{subfigure}[b]{0.32\textwidth}
+    \begin{subfigure}[b]{0.48\textwidth}
     \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-level-1-posterior.pdf}
-    \caption{Selección nivel 1}
-    \label{fig:multilevel-selection-level-1}
+    \caption{$N=2$}
     \end{subfigure}
-    \begin{subfigure}[b]{0.32\textwidth}
-    \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-6.pdf}
-    \caption{Selección nivel 2}
-    \label{fig:multilevel-selection-6}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.32\textwidth}
-    \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-multilevel-posterior.pdf}
-    \caption{Selección multinivel}
-    \label{fig:multilevel-selection-multilevel-posterior}
+    \begin{subfigure}[b]{0.48\textwidth}
+    \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-level-1-posterior-N16.pdf}
+    \caption{$N=16$}
     \end{subfigure}
     \caption{
-    Evolución del posterior de los grupos (selección de nivel 2) y de los individuos cooperadores (selección multinivel) a medida que avanza el tiempo.
+    Posterior de los comportamientos sociales cooperador/desertor dentro de una región con 1 desertor en grupos de tamaño $2$ y $16$
     }
-    \label{fig:multilevel-selection}
+    \label{fig:multilevel-selection-level-1-posterior}
 \end{figure}
 %
-En pocas iteraciones, el posterior del grupo de la región enteramente cooperadora llega a 1, lo que significa que todos los recursos están concentrados allí (figura~\ref{fig:multilevel-selection-6}).
+Los comportamientos desertores pueden invadir al interior de los grupos de tamaño 2, pues rápidamente el posterior de los desertores es 1 y de los cooperadores es 0.
 %
-En términos evolutivos, los grupos de las regiones enteramente cooperadores serán capaces de invadir regiones compuesta enteramente por grupos desertores y mixtos.
+Sin embargo, los comportamientos desertores no pueden invadir al interior de grupos de tamaño 2, pues el posterior de ambos comportamientos nunca se estabiliza en 0 y 1.
+
+% Parrafo
+
+A pesar de que en los grupos de tamaño 2 los desertores puedan invadir, las regiones que persistan enteramente cooperadoras al tener una tasa de crecimiento mayor al resto van a tener una gran ventaja sobre las regiones mixtas.
 %
-A través de la selección de grupos, los comportamientos cooperadores logran invadir poblaciones con comportamientos desertores.
+La evolución favorecerá a los grupos enteramente cooperadores a través de la selección de grupos (nivel 2), tanto en poblaciones de tamaño 2 como de tamaño 16, incluso con la elección del prior que rechaza poblaciones homogenes.
+% %
+% \begin{equation}
+% P(g|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^T) = \sum_i \mathbb{I}(\texttt{region}(i)=g) P(i|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^T)
+% \end{equation}
+% %
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+    \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-6.pdf}
+    \caption{$N=2$}
+    \label{fig:multilevel-selection-6}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.48\textwidth}
+    \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-level-2-N16.pdf}
+    \caption{$N=16$}
+    \label{fig:multilevel-selection-level-2-N16}
+    \end{subfigure}
+    \caption{
+    Selección de grupos (nivel 2) entre grupos de tamaño $2$ y tamaño $16$.
+    Las rectas grises representan el posterior de grupos mixtos.
+    }
+    \label{fig:posterior_level_2}
+\end{figure}
+%
+Notar que el prior de la población enteramente cooperadora es $0.25$ en grupos de tamaño 2 y aproximadamente $ \text{Binomial}(0|N=16,0.5) \approx 0$ para grupos de tamaño $16$.
+%
+Esto hace que la ventaja del grupo cooperador tarde un tiempo en verse.
+%
+Si el prior fuera uniforme, la ventaja del grupo enteramente cooperador se vería inmediatamente.
+%
+Agregamos el prior binomial como una forma de expresar el efecto negativo que tiene la mutación sobre las poblaciones homogenas.
+%
+Sin embargo, debido a que el prior de las poblaciones homogeneas nunca sea cero y que la tasa de crecimiento de la población enteramenete cooperadora sea superior al resto, siempre existe un tiempo $t$ en el cual el posterior del grupo enteramente cooperador será mayor al resto de los grupos.
+%
+Si bien el prior binomial no impide que con suficiente tiempo el grupo enteramente cooperador se imponga sobre el resto, sí impone un límite temporal mínimo para que la selección de grupo sea perceptible: cuanto más grande es $N$, más cerca están los cooperadores de la media aritmética, pero más peso tienen los individuos de regiones mixtas.
+%
+Según la escala de tiempo que se considere, habrá un límite efectivo al tamaño del grupo, lo que es esperable ver en términos evolutivos.
+
+% Parrafo
+
+% Si la y de los comportamientos cooperadores (multinivel),
+% %
+% \begin{equation}
+% P(\texttt{coop}|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^T) = \sum_i P(i|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^T)\mathbb{I}(\texttt{coop}(i))
+% \end{equation}
+% %
+Cuando se produce una selección de nivel 2 a favor de los grupos enteramenete cooperadores, se produce también una selección multinivel a favor de los individuos cooperadores.
+%
+En la figura~\ref{fig:multilevel-selection-multilevel-posterior} vemos la evolución del posterior de los individuos cooperadores integrando todos los grupos.
+%
+La probabilidad de los individuos cooperadores comienza a $0.5$ debido a la simetría del prior binomial entre regiones y el prior uniforme entre comportamientos cooperador y desertor.
+%
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+    \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-multilevel-posterior.pdf}
+    \caption{$N=2$}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.48\textwidth}
+    \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-multilevel-posterior-N16.pdf}
+    \caption{$N=16$}
+    \end{subfigure}
+    \caption{
+    Selección multinivel del los individuos cooperadores en grupos de tamaño $2$ y $16$.
+    }
+    \label{fig:multilevel-selection-multilevel-posterior}
+\end{figure}
+%
+Debido a que el posterior de los individuos cooperdores cae abtruptamente en la mayoría de las regiones mixtas, vemos al principio una baja.
+%
+Pero como la ventaja del grupo enteramente cooperador se impone luego de cierto tiempo (debido al priori binomial), observamos finalmente que los comportamientos cooperadores pueden invadir poblaciones con desertores gracias a la selección multinivel.
 %
 \begin{conclution}[La ventaja evolutiva de la cooperación]
 La selección multinivel favorece a las estrategias cooperativas incluso con grupos de tamaño mínimo (dos).
 \end{conclution}
-%
-La ventaja evolutiva de la cooperación se extiende inmediatamente a poblaciones de tamaño mayor.
-
 
 \subsection{La ventaja de la especialización}
 
@@ -1576,10 +1641,6 @@ Cada una de las curvas representa un tamaño de población cooperativa.
 Los puntos indican la estretgia óptima para el tamaño de la población.
 Cuando la población tiene tamaño 1, la estrategia mejor adaptada es la que apuesta con la misma probjabilidad que el ambiente.
 Pero rápidamente, a medida que aumentamos el tamaño de la población, la cooperación favorece a las estrategias especialistas hasta que en poblaciones de tamaño inifinto el nivel se alcanza un nivel de especialización total que logra la tasa de crecimiento máxima, que es equivalente a la probabilidad de generación de las aptitudes $p^*$.
-
-\subsection{Limite de los grupos}
-
-\todo[inline]{Calcular el tiempo promedio que los grupos cooperadores superan a los grupos mixtos, lo que impone una límite a la ventaja evolutiva de la cooperación. Cuanto más grande es $N$, más cerca están los cooperadores de la media aritmética, pero más peso tienen los individuos de regiones mixtas. }
 
 \section{Discusiones}
 
