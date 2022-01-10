@@ -564,7 +564,8 @@ P(\text{Dat\en{a}\es{os}}) = \sum_i P(\,\text{Dat\en{a}\es{os}}\,|\,\text{\en{Hy
 \en{Based on this isomorphism, Czégel, Zachar and Szathmáry recently proposed to analyze the evolution of a population subject to multilevel selection through hierarchical Bayesian modeling~\cite{czegel2019-bayesianEvolution}. }
 \es{En base a este isomorfismo, Czégel, Zachar y Szathmáry propusieron recientemente analizar la evolución de una población sujeta a selección multinivel a través de modelo bayesianos jerárquicos~\cite{czegel2019-bayesianEvolution}. }%
 %
-Para ello exhiben una serie de modelos gráficos sin especificar las probabilidades condicionales.
+\en{To do so, they display a series of graphical models without specifying the conditional probabilities. }%
+\es{Para ello exhiben una serie de modelos gráficos sin especificar las probabilidades condicionales. }%
 %
 \begin{figure}[H]
 \centering
@@ -599,49 +600,62 @@ Para ello exhiben una serie de modelos gráficos sin especificar las probabilida
     
     \plate {aa} {(a)} {}; 
     }
-\caption{% \en{Model proposed by Czégel, Zachar and Szathmáry~\cite{czegel2019-bayesianEvolution} to represent multilevel selection. }%% \es{Modelo propuesto por Czégel, Zachar y Szathmáry~\cite{czegel2019-bayesianEvolution} para representar selección multinivel. }%
+\caption{
+\en{Model proposed by Czégel, Zachar and Szathmáry~\cite{czegel2019-bayesianEvolution} to represent multilevel selection. }%
+\es{Modelo propuesto por Czégel, Zachar y Szathmáry~\cite{czegel2019-bayesianEvolution} para representar selección multinivel. }%
+%
+\en{The box represents repetition of the variable. }%
+\es{La caja representa repetición de la variable. }%
+%
+\en{The uppercase letters are variable names, and the lowercase letters are specific values. }%
+\es{Las mayusculas son nombres de variables, y las minúsculas son sus valores específicos. }%
 }
 
 \label{fig:czegel_et_el}
 \end{figure}
 %
-La validez de este modelo es trivial en tanto la regla del producto siempre permite la descomposición,
+\en{The validity of this model is trivial as the product rule always allows the following decomposition, }%
+\es{La validez de este modelo es trivial en tanto la regla del producto siempre permite la siguente descomposición, }%
 %
 \begin{equation}
 P(\Aa,i,c^1,c^2)= P(\Aa|i,c^1,c^2)P(i|c^1,c^2)P(c^1|c^2)P(c^2)
 \end{equation}
 %
-Sin embargo el modelo no expresa una interpretación causal.
+\en{However, the model does not express the causal relationship between the variables. }%
+\es{Sin embargo el modelo no expresa la relación causal entre las variables. }%
 %
-Esto se constata en todas las distribuciones de probabilidad condicional.
+\en{This is evident in all conditional probability distributions. }%
+\es{Esto se constata en todas las distribuciones de probabilidad condicional. }%
 %
-En un extremo, la colectividad de nivel 2, que está compuesta tanto por la colectividad de nivel 1 y por individuos, aparece en el modelo como una variable independiente.
+\en{At one extreme, the level 2 collective, which is composed of both the level 1 collective and individuals, appears in the model as an independent variable. }%
+\es{En un extremo, el colectivo de nivel 2, que está compuesta tanto por el colectivo de nivel 1 y por los individuos, aparece en el modelo como una variable independiente. }%
 %
-En el otro extremo, el ambiente, que suele considerarse en los modelos causales como una variable aleatoria independiente, aparece en el modelo como dependiente de los individuos y colectividades.
+\en{At the other extreme, the environment, which is usually considered in causal models as an independent random variable, appears in this model as dependent on individuals and collectives. }%
+\es{En el otro extremo, el ambiente, que suele considerarse en los modelos causales como una variable aleatoria independiente, aparece en este modelo como dependiente de los individuos y los colectivos. }%
 %
-Y a la inversa, todas las colectividades e individuos aparecen independientes del ambiente.
+\en{Conversely, all collectives and individuals appear independent of the environment. }%
+\es{Y a la inversa, todas los colectivos e individuos aparecen independientes del ambiente. }%
 %
-Esto quizás explique porque en el artículo evitaron especificar las ditribuciones de probabilidad condicional, y ofrecieron en cambio un ejemplo pictórico de la distribución de probabilidad conjunta.
+\en{This perhaps explains why the authors avoided specifying conditional probability distributions, and instead provided a pictorial example of the joint probability distribution. }%
+\es{Esto quizás explique porque los autores evitaron especificar las distribuciones de probabilidad condicional, y ofrecieron en cambio un ejemplo pictórico de la distribución de probabilidad conjunta. }%
 
 % Parrafo
 
-Interpretemos el modelo de Ole Peters en términos causales para definir las distribuciones de probabilidad condicional.
+\en{To define conditional probability distributions it is convenient to express the models in causal terms. }%
+\es{Para definir las distribuciones de probabilidad condicional es conveniente expresar los modelos en términos causales. }%
 %
-La probabilidad del ambiente, en este caso depende de un parámetro $p$ que determina cuan sesgada está la moneda.
+\en{In the Lewontin-Cohen and Peters models, the binary states of the environment depend on a probability $p$. }%
+\es{En los modelos de Lewontin-Cohen y de Peters, los estados binarios del ambiente depende de un probabilidad $p$. }%
 %
 \begin{equation}
 P(\Aa) = p^{\Aa} (1-p)^{(1-\Aa)}
 \end{equation}
 %
-Para definir la probabilidad de las estrategia, necesitamos un espacio de hipótesis que contenga más de una estrategia.
+\en{To define the probability of the strategies, we need a space of alternative strategies, not present in the Lewontin-Cohen and Peters models. }%
+\es{Para definir la probabilidad de las estrategia, necesitamos un espacio de estrategias alternativas, no presente en los modelo de Lewontin-Cohen y de Peters. }%
 %
-El ejemplo Lewontin-Peters considera una única estrategia.
-%
-Nuestro modelo permite elegir el conjunto de estrategias que queramos.
-%
-Si bien podemos proponer cualquier tipo de estrategia, vamos a limitarnos a aquellas que tienen un recurso $R$ para repartir entre cara y sello.
-%
-En base a la propuesta de Lewonti-Cohen y Peters, proponemos la siguiente familia de aptitudes, 
+\en{While we are free to propose any set of strategies, we will consider only those that allocate a limited resource $R$ among the binary states of the environment, }%
+\es{Si bien tenemos la libertad de proponer cualquier conjunto de estrategias, vamos a considerar sólo a aquellas que reparten un recurso limitado $R$ entre los estados binarios del ambiente, }%
 %
 \begin{equation}\label{eq:familia_de_aptitudes}
 f(\Ee, \Aa) = \begin{cases}
@@ -650,19 +664,24 @@ f(\Ee, \Aa) = \begin{cases}
   \end{cases}
 \end{equation}
 %
-con $ 0 \leq \Ee \leq R$.
+\en{with $ 0 \leq \Ee \leq R$. }%
+\es{con $ 0 \leq \Ee \leq R$. }%
 %
-La estrategia propuesta por Lewontin-Cohen es $\Ee=1.7$ y $R=2.2$, y la de Peters es $\Ee = 1.5$ y $R=2.1$.
+\en{The strategy proposed by Lewontin-Cohen is $\Ee=1.7$ with $R=2.2$, and the strategy proposed by Peters is $\Ee=1.5$ with $R=2.1$. }%
+\es{La estrategia propuesta por Lewontin-Cohen es $\Ee=1.7$ con $R=2.2$, y la de Peters es $\Ee = 1.5$ con $R=2.1$. }%
 %
-Para definir la probabilidad de las estrategias dado un ambiente, $P(\Ee|\Aa)$, necesitamos que sumen 1.
+\en{To define the probability of the strategies given the environment, $P(\Ee|\Aa)$, we need the set of strategies to integrate 1. }%
+\es{Para definir la probabilidad de las estrategias dado el ambiente, $P(\Ee|\Aa)$, necesitamos que el conjunto de estrategias integren 1. }%
 %
-Digamos, por ahora, que la probabilidad de la estrategia es proporcional a su aptitud, 
+\en{Let's say, for now, that the probability of the strategy is proportional to its fitness, }%
+\es{Digamos, por ahora, que la probabilidad de la estrategia es proporcional a su aptitud, }%
 %
 \begin{equation}\label{eq:probabilidad_propro_aptitud}
 P(\Ee | \Aa) \propto  f(\Ee,\Aa)
 \end{equation}
 %
-Con esto podemos definir parcialmente un modelo gráfico con una interpretación causal.
+\en{This allows us to partially define a graphical model with a causal interpretation, in which the environment is an independent random variable and strategy selection depends on the observed states of the environment. }%
+\es{Esto nos permite definir parcialmente un modelo gráfico con una interpretación causal, en el que el ambiente es una variable aleatoria independiete y las selección de estrategias depende de los estados observados del ambiente. }%
 %
 \begin{figure}[H]
 \centering
@@ -683,7 +702,8 @@ Con esto podemos definir parcialmente un modelo gráfico con una interpretación
 \label{fig:model-lewontin-peters}
 \end{figure}
 %
-¿Cómo podemos calcular la probabilidad de $P(\Ee|\Aa)$?
+\en{How can we calculate the probability of $P(\Ee|\Aa)$? }%
+\es{¿Cómo podemos calcular la probabilidad de $P(\Ee|\Aa)$? }%
 
 \subsection{Sum-product algorithm}
 
