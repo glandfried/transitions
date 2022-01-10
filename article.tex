@@ -423,7 +423,9 @@ g = (1.5 \cdot 0.6)^{1/2} \approx 0.95
 \en{We show that, once cooperation emerges, individually maladapted strategies (specialists) manage to outperform, even organized in small groups, both individually well-adapted strategies (generalists) and their cooperative groups of infinite size. }%
 \es{Mostramos que, una vez que la cooperación emerge, las estrategias individualmente mal adaptadas (especialistas) consigen superar, incluso organizadas en grupos pequeños, tanto a las estrategias bien adaptas individualmemte (generalistas) como a sus grupos cooperativos de tamaño infinito. }%
 
-%
+% Parrafo
+
+
 \en{It is extraordinary that such a simple assumption has such fundamental conclusions for understanding the complexity of life. }%
 \es{Es extraordinario que un supuesto tan simple tenga conclusiones tan fudamentales para entender la complejidad de la vida. }%
 %
@@ -1575,33 +1577,55 @@ La selección multinivel favorece a las estrategias cooperativas incluso con gru
 
 \subsection{La ventaja de la especialización}
 
-Conociendo al tasa de crecimiento caracterísitica de la población cooperadora y desertora, podemos analizar qué ocurre con las diferentes estrategias en diferentes ambientes.
-En la siguiente figura graficamos el likelihood característico individual (líneas continuas) y cooperativos (líneas punteadas) de tres estrategias ($e \in \{0.5, 0.75, 0.99\}$) para diferentes probabilidades de generación del ambiente.
+\en{The evolutionary transition from unicellularity to multicellularity involves the specialization of cells: from protists to plants, fungi and animals. }%
+\es{La transición evolutiva de la unicelularidad a la multiclelularidad involucra una especialización de las células: de los los protistas a las plantas, hongos y animales. }%
+%
+\en{Then, to explain evolutionary transitions, it is necessary to demonstrate the evolutionary advantage of cooperation in the presence of defection, but also the advantage of specialization. }%
+\es{Luego, para explicar las transiciones evolutivas es necesario demostrar la ventaja evolutiva de la cooperación en presencia de deserción, pero también la ventaja de la especiliazación. }%
+%
+\en{However, Ole Peters believes that specialization is a too complex property to produce a benefit in simple aggregations of, for example, two agents. }
+\es{Sin embargo, Ole Peters considera a la especialización como una caracterísitica demasiado compleja para que produzca un beneficio en agregaciones simples de por ejemplo dos agentes. }%
+%
+\en{He says the ``[advantage of cooperation] it may explain the transition from single cells to bicellular organisms, too small and simple to benefit from new function or specialization.'' }
+\es{Dice que la ventaja de la cooperación: ``it may explain the transition from single cells to bicellular organisms, too small and simple to benefit from new function or specialization.'' }%
+
+% Parrafo
+
+\en{Here we show that strategies that are individually poorly adapted to the environment (specialists), once cooperation emerges, manage to outperform both individually well-adapted strategies (generalists), as well as their cooperative groups of infinite size. }%
+\es{Aquí mostramos que, una vez que la cooperación emerge, las estrategias individualmente mal adaptadas al ambiente (especialistas) consigen superar tanto a las estrategias bien adaptas individualmemte (generalistas), como a sus grupos cooperativos de tamaño infinito. }%
+%
+Para ello analizamos la tasa de crecimiento de tres estrategias ($e \in \{0.5, 0.71, 0.99\}$) en diferentes ambientes (figura~\ref{fig:tasa-temporal-0}).
 %
 \begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.66\textwidth}
     \includegraphics[width=\linewidth]{figures/pdf/tasa-temporal-0.pdf}
     \end{subfigure}
-    \caption{Likelihood característico bajo regímenes individuales (líneas continuas) y cooperativos infinitos (líneas punteadas) de tres estrategias ($e \in \{0.5, 0.75, 0.99\}$) en diferentes tipos de ambiente $p^*$.}
-    \label{fig:fitness_temporal}
+    \caption{Likelihood característico bajo regímenes individuales (líneas continuas) y cooperativos infinitos (líneas punteadas) de tres estrategias ($e \in \{0.5, 0.71, 0.99\}$) en diferentes ambiente $p$.}
+    \label{fig:tasa-temporal-0}
 \end{figure}
 %
-La flecha representa la conclusión de Ole Peters que presentamos en la introducción, donde mostramos experimentalmente que en un ambiente que genera los estados con una probabilidad de $p^* = 0.5$, la estretgia $e=0.71$ pasa de una tasa de crecimiento individual equivalente a la media geométrica a una tasa de crecimiento cooperativa equialente a su media aritmética.
-El punto rojo representa la conclusión que sacamos en la sección metodología, que en un ambiente con $p^*=0.71$ la estrategia individual mejor adaptada es $e=0.71$.
+Las líneas continuas representan la tasa de crecimiento individual (o desertores en grupos enteramenete desertores) y la línea punteadas la tasa de crecimiento de los individuos cooperadores en grupos enteramenete cooperadores. 
+%
+La flecha representa la conclusión de Ole Peters presentada en la introducción: en un ambiente que genera los estados con una probabilidad de $p = 0.5$, la estretgia $e=1.5/2.1 \approx 0.71 $ puede aumentar su tasa de crecimiento individual, equivalente a la media geométrica, a una tasa de crecimiento cooperativa equvialente a su media aritmética.
+%
+El punto rojo representa la conclusión que sacamos en la sección metodología, que en un ambiente con $p=0.71$ la estrategia individual mejor adaptada es $e=0.71$.
 
-% Parrafo
+% Parrafo 
 
-Con esta imagen podemos sacar algunas conclusiones nuevas.
-Arriba del punto rojo se encuentra el likelihood caracterísitica de la población cooperativa de la estrategia especialista $e=0.99$.
+Con la figura~\ref{fig:tasa-temporal-0} podemos sacar algunas conclusiones nuevas.
+%
+Notar que arriba del punto rojo se encuentra la tasa de crecimiento cooperativa de la estrategia especialista $e=0.99$.
+%
+Esto sugiere que las estrategias que individualmente están mal adaptadas al ambiente (la tasa de crecimiento de la estrategia $e=0.99$ en un ambiente $p=0.71$ es menor a la tasa de crecimiento individual de la estraetgia $e=0.71$), cooperando superan incluso a la población cooperativa que individualmemte está bien adaptada.
+%
+La tasa de crecimiennto cooperativa, sin embago, la hemos calculado para un grupo enteramente cooperativo de tamaño infinito.
+%
+Para que sea una conclusión interesante en términos evolutivos, necesitamos que esto mismo ocurra en poblaciones finitas, particularmente pequeñas.
 
-\begin{conclution}[La ventaja de la especialización]
-La cooperación ofrece una ventaja a favor de las estrategias especialistas. Estrategias que individualmente están mal adaptadas al ambiente, cooperando superan incluso a la población cooperativa que individualmemte está bien adaptada.
-\end{conclution}
+% Parrafo 
 
-Esta conclusión la hemos obtenido a partir de tasa de crecimiento caracterísitica de una población cooperativa infinita.
-Para que sea una conclusión interesante este comportamiento debería ocurrir en poblaciones finitas, particularmente pequeñas.
-En la siguiente figura graficamos las tasas de crecimiento caracterísitica de la estrategia especialista $e=0.99$ para poblaciones cooperativas de tamaño 1 a 5.
+En la figura~\ref{fig:tasa-temporal-1} graficamos las tasas de crecimiento de la estrategia especialista $e=0.99$ para poblaciones cooperativas de tamaño 1 a 5.
 %
 \begin{figure}[H]
     \centering
@@ -1610,20 +1634,23 @@ En la siguiente figura graficamos las tasas de crecimiento caracterísitica de l
     \end{subfigure}
     \caption{
     Tasa de superviencia temporal de la estrategia especialista ($e=0.99$) en función del ambiente, para diferentes tamaños de población cooperativa (de 1 a 5).
+    %
     La línea punteada negra represeta la tasa de crecimiento de una población cooperativa inifinitamente grande.
+    %
     Las rectas grises se dejan como referencia visual de las estrtegias $e \in \{0.5, 0.71\}$ analizadas en la figura anterior.
     }
-    \label{fig:multilevel-selection-1}
+    \label{fig:tasa-temporal-1}
 \end{figure}
 %
-Un población de tres agentes es suficiente para que la estrategia especialista mal adaptada individualmente, logre cooperativamente superar a la población cooperativa compuesta de estrategia individualmente bien adapatadas!
-Es realmente extraordinario que un sistema tan simple como el que estamos analizando tenga conclusiones tan fudamentales para entender la complejidad de la vida.
-El proceso multiplicativo al cuál está sujeto la vida favorece tanto la cooperación como la especialización.
-
-% Parrafo
-
+Notar que en un ambiente $p=0.71$ la estrategia especilista $\Ee=0.99$ logra en grupos cooperativos de tamaño 3 una tasa de crecimiento que está por arriba de la tasa de crecimiento de la estrategia individualmente bien adapatada al ambiente $\Ee = 0.71$, superando incluso la tasa de crecimiento que la estraetgia individualmemte bien adapta consigue en grupo cooperativos de tamaño infinito!
+%
+Es realmente extraordinario que el mismo supuesto básico que ofrece una ventaja evolutiva de la cooperación, ofrezca también una ventaja evolutiva a favor de la especilización incuso en grupos de tamaño 3. 
+%
+El mismo proceso multiplicativo al cuál está sujeto la vida y los proceso de inferencia favorecen tanto la cooperación como la especialización.
+%
 El nivel de especialización depende del tamaño de la población.
-Para analizarlo, fijamos el ambiente en $p^* = 0.71$ y analizamos como varía la tasa de crecimiento caracterísitica cooperativa para todo el rango de estrategias para diferentes tamaños de población (de 1 a 5).
+%
+En la figura~\ref{fig:tasa-temporal-2} fijamos el ambiente en $p = 0.71$ y analizamos como varía la tasa de crecimiento cooperativa de las diferentes estrategias en grupos de tamaños 1 a 5.
 %
 \begin{figure}[H]
     \centering
@@ -1631,16 +1658,29 @@ Para analizarlo, fijamos el ambiente en $p^* = 0.71$ y analizamos como varía la
     \includegraphics[width=\linewidth]{figures/pdf/tasa-temporal-2.pdf}
     \end{subfigure}
     \caption{
-    La tasa de crecimiento temporal de las estretgias para diferentes tamaño de población enteramente cooperativa (de 1 a 5) en un ambiente $p^*=0.71$.
+    La tasa de crecimiento de las diferentes estretgias para grupos enteramenete cooperativos de tamaño 1 a 5 en un ambiente $p=0.71$.
+    %
+    Ele eje x representa las diferentes estrategias.
+    %
+    Cada una de las curvas indica la tasa de crecimiento para los diferentes tamaños del grupo cooperativo.
+    %
+    Los puntos indican la estretgia óptima en cada uno de los tamaños.
+    %
     }
-    \label{fig:multilevel-selection-1}
+    \label{fig:tasa-temporal-2}
 \end{figure}
 %
-Ele eje x representa las diferentes estrategias.
-Cada una de las curvas representa un tamaño de población cooperativa.
-Los puntos indican la estretgia óptima para el tamaño de la población.
-Cuando la población tiene tamaño 1, la estrategia mejor adaptada es la que apuesta con la misma probjabilidad que el ambiente.
-Pero rápidamente, a medida que aumentamos el tamaño de la población, la cooperación favorece a las estrategias especialistas hasta que en poblaciones de tamaño inifinto el nivel se alcanza un nivel de especialización total que logra la tasa de crecimiento máxima, que es equivalente a la probabilidad de generación de las aptitudes $p^*$.
+Cuando la población tiene tamaño 1, la estrategia mejor adaptada es la que repate los recursos con la misma probabilidad que el ambiente $\Ee^*=p$.
+%
+Pero rápidamente, a medida que aumentamos el tamaño de la población, la cooperación favorece a las estrategias especialistas $\Ee^* > p$.
+%
+Cuanto más grande son los grupos, más especilista es la estrategia óptima.
+%
+En el extremos, la estrategia óptima en grupos cooperativos de tamaño inifinto se alcanza con el nivel de especialización máximo, en el que todos los individuos ponen todos sus recursos en el estado ambiental que ocurre con mayor frecuencia.
+
+\begin{conclution}[La ventaja de la especialización]
+La cooperación ofrece una ventaja a favor de las estrategias especialistas en grupos de tamaño minimo (dos). Estrategias que individualmente están mal adaptadas al ambiente, cooperando superan incluso a la población cooperativa que individualmemte está bien adaptada.
+\end{conclution}
 
 \section{Discusiones}
 
