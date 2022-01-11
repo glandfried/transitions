@@ -925,51 +925,83 @@ P(\Ee|\vec{\Aa}) = \text{Beta}(\texttt{sum}(\vec{\Aa}), \, \texttt{length}(\vec{
 
 \section{Resultados}
 
-En esta sección analizaremos si efectivamente existe alguna ventaja evolutiva de la cooperación y la especialización en presencia de deserción.
+\en{In this section we will analyze whether there is indeed any evolutionary advantage of cooperation and specialization in the presence of defection. }%
+\es{En esta sección analizaremos si efectivamente existe alguna ventaja evolutiva de la cooperación y la especialización en presencia de deserción. }%
 %
-El concepto clave para dar una respuesta a este problema es el de ``estructura poblacional''.
+\en{To do so, we will extend the causal model proposed in the methodology section, by simply incorporating the cooperative behavior presented in the introduction section, including a defector behavior (who receives the benefit of cooperation without contributing to it). }%
+\es{Para ello, extenderemos el modelo causal propuesto en la sección metodología, incorporando simplemente el comportamiento cooperativo presentado en la sección introducción, incluyendo un comportamiento desertor (que recibe el beneficio de la cooperación sin aportar al mismo). }%
 %
-Darwin ya ofrece una pista.
+\en{This modification alone has a fundamental evolutionary consequence: the formation of groups and thus the emergence of a new evolutionary entity. }%
+\es{Esta sola modificación tiene una consecuencia evolutiva fundamental: la formación de grupos y por lo tanto la aparición de una nueva entidad evolutiva. }
+%
+\en{Because, while defecting individuals may have a relative advantage over cooperating individuals, groups may be favored by mutual cooperation. }%
+\es{Porque, si bien los individuos desertores puede tener una ventaja relativa sobre los individuos cooperadores, los grupos pueden verse favorecidos por la mututa cooperación. }%
+%
+\en{Darwin has already discussed this topic. }
+\es{Darwin ya discutió sobre este tema. }
 %
 \begin{quotation}
 It must not be forgotten that although a high standard of morality gives but a slight or no advantage to each individual man and his children over the other men of the same tribe, yet that an increase in the number of well-endowed men and an advancement in the standard of morality will certainly given an immense advantage to one tribe over another.
 \end{quotation}
 %
-Las poblaciones no son bloques monolíticos ni gases perfectos, siempre poseen algún tipo de estructura que afecta su evolución.
+\en{The incorporation of cooperation in the probabilistic causal model induces the formation of groups and therefore a type of group-level selection that acts in parallel to individual-level selection. }%
+\es{La incorporación de la cooperación en el modelo causal probabilísitico induce la formación de grupos y por lo tanto un tipo de selección a nivel grupal que actúa de forma paralela a la selección de nivel individual. }%
 %
-Para ello analizaremos la selección multinivel mediante modelos causales probabilísiticos.
+\en{The joint result of both selection processes, known as multilevel selection, will be the property of interest. }%
+\es{El resultado de ambos procesos de selección, conocido como selección multinivel, será la propiedad de interés. }%
 
 \subsection{Modelo causal probabilísitico.}
 
-Supongamos que tenemos regiones de $N$ individuos en el que $n$ son cooperadores y $N-n$ desertores.
+\en{Suppose we have regions of $N$ individuals in which $n$ are cooperators and $N-n$ defectors. }%
+\es{Supongamos que tenemos regiones de $N$ individuos en el que $n$ son cooperadores y $N-n$ desertores. }%
 %
-Con $N$ individuos, hay $N+1$ tipos de regiones posibles, desde $n=0$ (todos desertores) hasta $n=N$ (todos cooperadores).
+\en{With $N$ individuals, there are $N+1$ types of possible regions, from $n=0$ (all defectors) to $n=N$ (all cooperators). }%
+\es{Con $N$ individuos, hay $N+1$ tipos de regiones posibles, desde $n=0$ (todos desertores) hasta $n=N$ (todos cooperadores). }%
 %
-Luego, si cada individuo pertenece a una única región necesitamos $M = N(N+1)$ individuos totales, $i \in \{1, \dots, M\}$.
+\en{Then, if each individual belongs to a single region we need $M = N(N+1)$ total individuals, $i \in \{1, \dots, M\}$. }%
+\es{Luego, si cada individuo pertenece a una única región necesitamos $M = N(N+1)$ individuos totales, $i \in \{1, \dots, M\}$. }%
 %
-Los individuos $i$ están caracterizados por tres atributos: la región a la que pertenece, $\texttt{region}(i)=i \ \texttt{div} \ N$; si su comportamiento social es cooperador, $\texttt{coop}(i) =  i \ \texttt{mod} \ N < \texttt{region}(i)$ (los primeros $n$ individuos de la región son cooperadores y el resto desertores); y la estrategia que utilizan para interactuar con el ambiente, $\Ee_i$, del mismo modo que fue definido en la metodología (ecuación~\ref{}).
+\en{Individuals $i$ are characterized by three attributes: }%
+\es{Los individuos $i$ están caracterizados por tres atributos: }%
 %
-A priori, no hay preferencia por el comportamiento social desertor o cooperador.
+\en{the region to which it belongs, $\texttt{region}(i)=i \ \texttt{div} \ N$; }%
+\es{la región a la que pertenece, $\texttt{region}(i)=i \ \texttt{div} \ N$; }%
 %
-Por ese motivo, es más probable a priori que los individuos habiten regiones mixtas.
+\en{if their social behavior is cooperative, $\texttt{coop}(i) =  i \ \texttt{mod} \ N < \texttt{region}(i)$ (the first $n$ individuals in the region are cooperators and the rest defectors); }%
+\es{si su comportamiento social es cooperador, $\texttt{coop}(i) =  i \ \texttt{mod} \ N < \texttt{region}(i)$ (los primeros $n$ individuos de la región son cooperadores y el resto desertores); }%
+%
+\en{and the strategy $\Ee_i$ they use to allocate resources $f_1(\Ee,\Aa)$ (equation \ref{eq:familia_de_aptitudes}). }%
+\es{y la estrategia $\Ee_i$ que utilizan para alocar recursos $f_1(\Ee,\Aa)$ (ecuación~\ref{eq:familia_de_aptitudes}). }%
+%
+\en{A priori, there is no preference for defector or cooperative social behavior. }%
+\es{A priori, no hay preferencia por el comportamiento social desertor o cooperador. }%
+%
+\en{Then, by combinatorics, it will be more likely a priori that individuals will inhabit mixed regions. }%
+\es{Entonces, por simple combinatoria, será más probable a priori que los individuos habiten regiones mixtas. }%
 %
 \begin{equation}
 P(i) = \frac{1}{N} \text{Binomial}(\texttt{region}(i),N,0.5) 
 \end{equation}
 %
-donde la distribución binomial otorga más peso a los individuos de las regiones mixtas, el parámetro $0.5$ indica un prior uniforme entre los comportamientos sociales cooperador y desertor, y el factor $\frac{1}{N}$ indica que todos los individuos de la misma región empiezan con los mismos recursos iniciales.
+\en{where the binomial distribution gives more weight to individuals from mixed regions, the parameter $0.5$ indicates a uniform prior between cooperating and defecting social behaviors, and the factor $\frac{1}{N}$ indicates that all individuals in the same region start with the same initial resources. }%
+\es{donde la distribución binomial otorga más peso a los individuos de las regiones mixtas, el parámetro $0.5$ indica un prior uniforme entre los comportamientos sociales cooperador y desertor, y el factor $\frac{1}{N}$ indica que todos los individuos de la misma región empiezan con los mismos recursos iniciales. }%
 %
-Como hemos visto en la sección metodología, la variable ambiente $\A$ sale cara con probabilidad $p$ y sello con probabilidad $1-p$, 
+\en{As we have seen in the methodology section, the probability of the environmental states is, }%
+\es{Como hemos visto en la sección metodología, la probabilidad de los estados ambientales es, }%
+%
 \begin{equation}
 P(\Aa) = p^\Aa (1-p)^{1-\Aa}
 \end{equation}
 %
-pero ahora en cada tiempo $t$ tenemos un vector $\vec{\Aa}$, en el que cada elemento influencia al $i-$ésimo agente,
+\en{but now at each time $t$ we have a vector $\vec{\Aa}$, in which the $i-$th element influences the $i-$th individual, }%
+\es{pero ahora en cada tiempo $t$ tenemos un vector $\vec{\Aa}$, en el que el $i-$ésimo elemento influencia al $i-$ésimo individuo, }%
+%
 \begin{equation}
 P(i|\vec{\Aa}) = \frac{\Ee_i^{\Aa_i} (1-\Ee_i)^{1-\Aa_i}}{\sum_j \Ee_j^{\Aa_j} (1-\Ee_j)^{1-\Aa_j}} \propto \Ee_i^{\Aa_i} (1-\Ee_i)^{1-\Aa_i}
 \end{equation}
 %
-Ahora sin embargo, los agentes también están influenciados por los recursos del los otros agentes en el tiempo anterior, 
+\en{Now, however, the agents are also influenced by the resources of the other agents at the previous time, }%
+\es{Ahora sin embargo, los agentes también están influenciados por los recursos del los otros agentes en el tiempo anterior, }%
 %
 \begin{equation}
 P(i^{t+1}|i^t) = 
@@ -980,9 +1012,11 @@ P(i^{t+1}|i^t) =
 \end{cases}
 \end{equation}
 %
-Los individuos cooperadores dividen la riqueza en partes iguales con los miembros de la misma región, y los individuos desertores se quedan con toda su riqueza.
+\en{Cooperating individuals divide the wealth equally with members of the same region, and defecting individuals retain all their wealth. }%
+\es{Los individuos cooperadores dividen la riqueza en partes iguales con los miembros de la misma región, y los individuos desertores se quedan con toda su riqueza. }%
 %
-Finalmente, los grupos están constituidos por los miembros de cada región, $P(g|i)=\mathbb{I}(\texttt{region}(i) = g)$, la función indiciadora que vale $1$ para los individuos que pertenecen a la región $g$ y $0$ para el resto.
+\en{Finally, the groups are constituted by the members of each region, $P(g|i)=\mathbb{I}(\texttt{region}(i) = g)$, the indexing function which is $1$ when individuals belong to region $g$ and $0$ otherwise. }%
+\es{Finalmente, los grupos están constituidos por los miembros de cada región, $P(g|i)=\mathbb{I}(\texttt{region}(i) = g)$, la función indiciadora que es $1$ cuando los individuos pertenecen a la región $g$ y $0$ en otro caso. }%
 %
 \begin{figure}[H]
 \centering
@@ -1011,7 +1045,7 @@ Finalmente, los grupos están constituidos por los miembros de cada región, $P(
     \edge {i3} {c3};
     
     }
- \caption{Red bayesiana}
+ \caption{\en{Bayesian network}\es{Red bayesiana}}
  \label{fig:red_bayesiana_multinivel}
  \end{subfigure}
 \begin{subfigure}[b]{0.58\textwidth}    
@@ -1064,27 +1098,44 @@ Finalmente, los grupos están constituidos por los miembros de cada región, $P(
  \caption{Factor graph}
  \label{fig:factor_graph_multinivel}
  \end{subfigure}
-\caption{Modelo multinivel. Figura~\ref{fig:red_bayesiana_multinivel}: la red de dependencias probabilísiticas que surge del modelo causal multinivel. Figura~\ref{fig:factor_graph_multinivel}: el grafo de factores inducido por la red bayesiana, que será utilizado para aplicar el algoritmo suma-producto. Las variables pintadas de gris se consideran observables. }
+ \caption{
+ \en{Hierarchical model. }%
+ \es{Modelo jerárquico. }%
+ %
+ \en{Figure~\ref{fig:red_bayesiana_multinivel}: the probabilistic dependencies arising from the multilevel causal model. }%
+ \es{Figura~\ref{fig:red_bayesiana_multinivel}: las dependencias probabilísiticas que surge del modelo causal multinivel. }%
+ %
+ \en{Figure~\ref{fig:factor_graph_multinivel}: the factor graph induced by the Bayesian network, which will be used to apply the sum-product algorithm. }%
+ \es{Figura~\ref{fig:factor_graph_multinivel}: el grafo de factores inducido por la red bayesiana, que será utilizado para aplicar el algoritmo suma-producto. }%
+ %
+ \en{The gray variables are observed. }%
+ \es{Las variables en gris se consideran observables. }%
+ }
 \label{fig:multilevel_model}
 \end{figure}
 %
-En resumen, en cada tiempo $t$ el ambiente influencia a los individuos, y los individuos influencian a los grupos de su propio tiempo y a los individuos del tiempo $t+1$.
+\en{In short, at each time $t$ the environment influences individuals, and individuals influence the groups of their own time and the individuals of time $t+1$. }%
+\es{En resumen, en cada tiempo $t$ el ambiente influencia a los individuos, y los individuos influencian a los grupos de su propio tiempo y a los individuos del tiempo $t+1$. }%
 %
-Este modelo tiene $3$ hiperparámetros: el vector de estrategias $\vec{\Ee}$, la probabilidad del ambiente $p$, y el tamaño de los grupos $N$.
+\en{This model has $3$ hyperparameters: the vector of strategies $\vec{\Ee}$, the probability of the environment $p$, and the size of the groups $N$. }%
+\es{Este modelo tiene $3$ hiperparámetros: el vector de estrategias $\vec{\Ee}$, la probabilidad del ambiente $p$, y el tamaño de los grupos $N$. }%
 %
-Este modelo se puede simplificar levemente, usando una única variable de grupo que dependa de la última variable individuo, gracias a que la margnial de los grupos es la misma en cualquier tiempo $t$.
+%Este modelo se puede simplificar levemente, usando una única variable de grupo que dependa de la última variable individuo, gracias a que la margnial de los grupos es la misma en cualquier tiempo $t$.
 
 % Parrafo
 
-En el problema evolutivo nos va a interesar la selección de los individuos cooperadores dado el ambiente dentro de cada grupo (nivel 1), $P(\texttt{coop}(i^T)|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1}, g)$, la selección de los grupos dado el ambiente (nivel 2), $P(g^T|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1})$, y la selección de los individuos cooperadores dado el ambiente integrando todos los grupos (multinivel), $P(\texttt{coop}(i^T)|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1})$.
+\en{The evolutionary problem we are interested in is the selection of cooperative individuals given the environment within each group (level 1), $P(\texttt{coop}(i^T)|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1}, g)$, the selection of groups given the environment (level 2), $P(g^T|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1})$,  and selection of cooperative individuals given the environment for all groups (multilevel), $P(\texttt{coop}(i^T)|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1})$. }%
+\es{El problema evolutivo que nos interesa es la selección de los individuos cooperadores dado el ambiente dentro de cada grupo (nivel 1), $P(\texttt{coop}(i^T)|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1}, g)$, la selección de los grupos dado el ambiente (nivel 2), $P(g^T|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1})$, y la selección de los individuos cooperadores dado el ambiente integrando todos los grupos (multinivel), $P(\texttt{coop}(i^T)|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1})$. }%
 %
-La selección multinivel se obtiene integrando el producto de las selecciones de nivel 1 y 2, 
+\en{The multilevel selection is obtained by integrating the product of level 1 and 2 selections, }%
+\es{La selección multinivel se obtiene integrando el producto de las selecciones de nivel 1 y 2, }%
 %
 \begin{equation}\label{eq:posterior_multinivel}
-\underbrace{P(\texttt{coop}(i^T)|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1})}_{\text{Selección multinivel}} = \sum_{g=0}^N \underbrace{P(\texttt{coop}(i^T)|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1}, g)}_{\text{Selección de nivel 1}} \cdot \underbrace{P(g^T|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1})}_{\text{Selección de nivel 2}}
+\underbrace{P(\texttt{coop}(i^T)|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1})}_{\text{\en{Multilevel selection}\es{Selección multinivel}}} = \sum_{g=0}^N \underbrace{P(\texttt{coop}(i^T)|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1}, g)}_{\text{\en{Level 1 selection}\es{Selección de nivel 1}}} \cdot \underbrace{P(g^T|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1})}_{\text{\en{Level 2 selection}\es{Selección de nivel 2}}}
 \end{equation}
 %
-donde el posterior de la selección de nivel 1 se obtiene integrando la probabilidad de todos los individuos cooperadores que forman parte del grupo $g$,
+\en{where the posterior of level 1 selection is obtained by integrating the probability of all cooperating individuals that are part of the group $g$, }%
+\es{donde el posterior de la selección de nivel 1 se obtiene integrando la probabilidad de todos los individuos cooperadores que forman parte del grupo $g$, }%
 %
 \begin{equation}\label{eq:posterior_nivel_1}
 \begin{split}
@@ -1094,90 +1145,115 @@ P(\texttt{coop}(i^T)|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1}, g) &= \sum_{j=1}
 
 \subsection{Probabilidades marginales}
 
-Para calcular los posteriors va a ser suficiente con calcular las probabilidades marginales, pues ambas expresiones son proporcionales.
+\en{To compute the posteriors it will be sufficient to compute the marginal probabilities, since both expressions are proportional. }%
+\es{Para calcular los posteriors va a ser suficiente con calcular las probabilidades marginales, pues ambas expresiones son proporcionales. }%
 %
-Las probabilidades marginales se pueden obtener mediante el sum-product algorithm en un modelo como el de la figura~\ref{fig:multilevel_model} pero que tiene como observables las variables que en el posterior aparecen en el condicional (ver sección metodología).
+\en{The marginal probabilities can be obtained by applying the sum-product algorithm in the model of figure~\ref{fig:multilevel_model}, taking as observed the variables that in the posterior appear in the conditional (see methodology section). }%
+\es{Las probabilidades marginales se pueden obtener aplicando el sum-product algorithm en el modelo de la figura~\ref{fig:multilevel_model} pero que tiene como observables las variables que en el posterior aparecen en el condicional (ver sección metodología). }%
 %
 % Ya hemos visto en la sección metodología que la probabilidad marginal de una variable $v$ es el producto de los mensajes que recibe de los nodos vecinos del factor graph.
 % %
 % Las variables observables no deben integrarse cuando se aplica el sum-product algorithm, por lo que la marginal de $v$ será la probabilidad conjunta de $v$ y todas las variables observables del modelo.
 %
-La probabilidad marginal de los individuos en el tiempo $T$ cuando tenemos como observable todos los ambientes $\vec{\Aa}^{\,t}$ y el grupo $g$ es, 
+\en{The marginal probability of the individuals at time $T$, when the environment variables $vec{\Aa}^{\,t}$ and the group variable $g$ are observed, is }%
+\es{La probabilidad marginal de los individuos en el tiempo $T$ cuando todos los ambientes $\vec{\Aa}^{\,t}$ y el grupo $g$ son observados, }%
 %
 \begin{equation}\label{eq:posterior_individuos_dado_grupo}
 P(i^{T},\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1}, g) = m_{P(I^{T}|I^{T-1}) \rightarrow I^T}(i^T) \cdot m_{P(G^{T}|I^{T}) \rightarrow I^T}(i^T) 
 \end{equation}
 %
-el producto de los mensaje que la variable $i^T$ recibe del factor social $P(I^{T}|I^{T-1})$ y del factor de grupo $P(G^{T}|I^{T})$, en el modelo que tiene al conjunto $\{ \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1}, g\}$ como variables observables.
+\en{the product of the messages that the variable $i^T$ receives from the social factor $P(I^{T}|I^{T-1})$ and from the group factor $P(G^{T}|I^{T})$, in the model that has the set $\{ \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1}, g\}$ as observed variables. }%
+\es{el producto de los mensajes que la variable $i^T$ recibe del factor social $P(I^{T}|I^{T-1})$ y del factor de grupo $P(G^{T}|I^{T})$, en el modelo que tiene al conjunto $\{ \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1}, g\}$ como variables observables. }%
 %
-La probabilidad marginal de los grupos en el tiempo $T$, cuando tenemos como observable todos los ambientes $\vec{\Aa}^{\,t}$ es, 
+\en{The marginal probability of the groups at time $T$, when we observe all the environmental states $\vec{\Aa}^{\,t}$, is }%
+\es{La probabilidad marginal de los grupos en el tiempo $T$, cuando observamos todos los estados ambientales $\vec{\Aa}^{\,t}$, es }%
 %
 \begin{equation}\label{eq:posterior_nivel_2}
 P(g^{T},\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1}) = m_{P(G^{T}|I^{T}) \rightarrow G^T}(g^T)
 \end{equation}
 %
-el mensaje que la variable $G^T$ recibe del factor de grupo $P(G^{T}|I^{T})$, en el modelo que tiene a $\{ \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1}\}$ como observables.
+\en{the message that the variable $G^T$ receives from the group factor $P(G^{T}|I^{T})$, in the model that has $\{ \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1} \}$ as observed variables. }%
+\es{el mensaje que la variable $G^T$ recibe del factor de grupo $P(G^{T}|I^{T})$, en el modelo que tiene a $\{ \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1}\}$ como variables observadas. }%
 %
-Una forma alternativa de calcular la marginal de los selección multinivel (Eq.~\ref{eq:posterior_multinivel}) es integrando la probabilidad de los individuos cooperadores dado los ambientes
+\en{An alternative way to compute the multilevel selection marginal (Eq.~\ref{eq:posterior_multinivel}) is by integrating the probability of all cooperating individuals given the environments }%
+\es{Una forma alternativa de calcular la marginal de la selección multinivel (Eq.~\ref{eq:posterior_multinivel}) es integrando la probabilidad de los individuos cooperadores dado los ambientes }%
+%
 \begin{equation}\label{eq:posterior_multinivel_alternativa}
 \begin{split}
-P(\texttt{coop}(i^T)|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1}) &= \sum_{j=1}^M P(I^T=j|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1})\mathbb{I}(\texttt{coop}(j))
+P(\texttt{coop}(i^T),\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1}) &= \sum_{j=1}^M P(I^T=j,\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1})\mathbb{I}(\texttt{coop}(j))
 \end{split}
 \end{equation}
 %
-donde la probabilidad de los individuos cuando tenemos como observable todos los ambientes $\vec{\Aa}^{\,t}$ es,
+\en{where the probability of individuals, when the environmental states $\vec{\Aa}^{\,t}$ are observed, is }%
+\es{donde la probabilidad de los individuos cuando tenemos como observable todos los ambientes $\vec{\Aa}^{\,t}$ es, }%
 %
 \begin{equation}
 P(i^{T},\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1}) = m_{P(I^{T}|I^{T-1}) \rightarrow I^T}(i^T)
 \end{equation}
 %
-el mensaje que la variable $i^T$ recibe del factor social $P(I^{T}|I^{T-1})$ en el modelo que tiene a $\{ \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1}\}$ como observables.
+\en{the message that the variable $i^T$ receives from the social factor $P(I^{T}|I^{T-1})$ in the model that has $\{ \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1}\}$ as observed variables. }%
+\es{el mensaje que la variable $i^T$ recibe del factor social $P(I^{T}|I^{T-1})$ en el modelo que tiene a $\{ \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1}\}$ como observables. }%
 %
-En resumen, necesitamos calcular solamente tres mensajes.
+\en{In summary, we need to compute only three messages. }%
+\es{En resumen, necesitamos calcular solamente tres mensajes. }%
 %
 \begin{table}[H]
 \centering
 \begin{tabular}{cccc}
- Mensajes & $m_{P(G^{T}|I^{T}) \rightarrow I^T}(i^T)$ & $m_{P(G^{T}|I^{T}) \rightarrow G^T}(g^T)$ & $m_{P(I^{T}|I^{T-1}) \rightarrow I^T}(i^T)$ \\[0.1cm]
- Observables & $\{g\}$ &  $\{ \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1}\}$ &   $\{ \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1}\}$
+ \en{Messages}\es{Mensajes} & $m_{P(G^{T}|I^{T}) \rightarrow I^T}(i^T)$ & $m_{P(G^{T}|I^{T}) \rightarrow G^T}(g^T)$ & $m_{P(I^{T}|I^{T-1}) \rightarrow I^T}(i^T)$ \\[0.1cm]
+ \en{Observed}\es{Observables} & $\{g\}$ &  $\{ \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1}\}$ &   $\{ \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1}\}$
 \end{tabular}
-\caption{Los mensajes que componen las marginales de la selección de nivel 1, 2 y multinivel.}
+\caption{
+\en{The messages that comprise the marginals of the level 1, 2 and multilevel selection. }%
+\es{Los mensajes que componen las marginales de la selección de nivel 1, 2 y multinivel. }%
+}
 \end{table}
 %
-El primer mensaje, que envía el factor de grupo a la variable individuo cuando la variable de grupo es observable, es
+\en{The first message, which is sent by the group factor to the individual variable when the group variable is observed, is }%
+\es{El primer mensaje, que envía el factor de grupo a la variable individuo cuando la variable de grupo es observada, es }%
+%
 \begin{equation}
  m_{P(G^{T}|I^{T}) \rightarrow I^T}(i^T) = P(g|i) = \mathbb{I}(\texttt{region}(i) = g)
 \end{equation}
 %
-la función indiciadora que vale $1$ para los individuos que se encuentran en la región $r = g$ y $0$ para el resto.
+\en{the indicator function which is $1$ for individuals in the region $r = g$ and $0$ for the rest. }%
+\es{la función indiciadora que vale $1$ para los individuos que se encuentran en la región $r = g$ y $0$ para el resto. }%
 %
-El segundo mensaje, que el factor grupo envía a la variable grupo, es
+\en{The second message, which the group factor sends to the group variable, is }%
+\es{El segundo mensaje, que el factor grupo envía a la variable grupo, es }%
 %
 \begin{equation}
  m_{P(G^{T}|I^{T}) \rightarrow G^T}(g^T) = \sum_i P(g^T|i) \,  m_{P(I^{T}|I^{T-1}) \rightarrow I^T}(i) 
 \end{equation}
 %
-el cual está compuesto por el tercer mensaje, que el factor social envía a la variable individuo.
+\en{which is composed of the third message, which the social factor sends to the individuals' variable. }%
+\es{el cual está compuesto por el tercer mensaje, que el factor social envía a la variable individuo. }%
 %
-Para computar este tercer y último mensaje debemos calcular los mensajes precedentes que lo componen.
+\en{To compute this third and last message we must find the preceding messages that compose it. }%
+\es{Para computar este tercer y último mensaje debemos calcular los mensajes precedentes que lo componen. }%
 %
-Entre ellos están los mensajes que el factor ambiente envía a la variable ambiente,
+\en{Among them are the messages that the environmental factor sends to the environmental variable, }%
+\es{Entre ellos están los mensajes que el factor ambiente envía a la variable ambiente, }%
 %
 \begin{equation}
 m_{P(\vec{\A}^{\,t})\rightarrow \vec{\A}^{\,t}}(\vec{\Aa}^{\,t}) = P(\vec{\Aa}^{\,t}) = m_{\vec{\A}^{\,t} \rightarrow P(I^t|\vec{\A}^{\,t})} (\vec{\Aa}^{\,t})
 \end{equation}
 %
-que es el mismo mensaje que la variable ambiente envía al factor individuo.
+\en{which is the same message that the environment variable sends to the individuals factor. }
+\es{que es el mismo mensaje que la variable ambiente envía al factor individuo. }%
 %
-Luego podemos generar el mensaje que envía el factor individuo a la variable individuo, 
+\en{Then we can generate the message that the individuals factor sends to the individuals variable, }%
+\es{Luego podemos generar el mensaje que envía el factor individuo a la variable individuo, }%
 %
 \begin{equation}
 m_{P(I^t|\vec{\A}^{\,t}) \rightarrow I^t}(i^t) = P(\vec{\Aa}^{\,t}) \, P(i^t|\vec{\Aa}^{\,t})
 \end{equation}
 %
-que como la variable ambiente es observable, no incluye la integración que suelen hacer los mensajes que envían los factores.
+\en{that since the environmental variable is observed, the integration is not performed. }%
+\es{que como la variable ambiente es observable, no incluye la integración que suelen hacer los mensajes que envían los factores. }%
 %
-Y por último, el mensaje que la variable individuo envía al factor social,
+\en{And finally, the message that the individual variable sends to the social factor, }%
+\es{Y por último, el mensaje que la variable individuo envía al factor social, }%
 %
 \begin{equation}\label{eq:m_i_pii}
 \begin{split}
@@ -1187,9 +1263,11 @@ m_{I^t \rightarrow P(I^{t+1}|I^t)}(i^t) =m_{P(I^t|\vec{\A}^{\,t}) \rightarrow I^
 %
 % donde $\text{Prior}(i^t) = m_{P(i^t|i^{t-1}) \rightarrow i^t }(i^t)$ es el mensaje que la variable individuo recibe del factor social pasado.
 % %
-No incluimos en la multiplicación el mensaje que el factor de grupo envía a la variable individuo porque al no ser observable se cancela automáticamente, $m_{P(g^t|i^{t}) \rightarrow i^t}(i^t) = \sum_g P(g|i^t) = 1$.
+\en{We do not include in the product the message that the group factor sends to the individual variable, because as it is not observed, the message is automatically cancelled, $m_{P(g^t|i^{t}) \rightarrow i^t}(i^t) = \sum_g P(g|i^t) = 1$. }%
+\es{No incluimos en la multiplicación el mensaje que el factor de grupo envía a la variable individuo porque al no ser observable se cancela automáticamente, $m_{P(g^t|i^{t}) \rightarrow i^t}(i^t) = \sum_g P(g|i^t) = 1$. }%
 %
-Finalmente, el tercer mensaje objetivo (que codifica la selección multinivel) introduce el factor social sobre los recursos individuales.
+\en{Finally, the third target message (encoding multilevel selection) introduces the social factor over individual resources. }%
+\es{Finalmente, el tercer mensaje objetivo (que codifica la selección multinivel) introduce el factor social sobre los recursos individuales. }%
 %
 \begin{equation}\label{eq:m_pii_i}
 \begin{split}
@@ -1197,7 +1275,8 @@ m_{P(I^{t+1}|I^{t}) \rightarrow I^{t+1} }(i^{t+1}) & = \sum_{i^t} P(i^{t+1}|i^t)
 \end{split}
 \end{equation}
 %
-Este mensaje está definido recursivamente.
+\en{This message is recursively defined. }%
+\es{Este mensaje está definido recursivamente. }%
 %
 %
 % En la introducción hemos derivado la tasa de crecimiento de esta marginal para los grupos enteramente desertoras y solo hemos presentado un resultado numérico para el grupo enteramente cooperador.
@@ -1217,9 +1296,11 @@ Este mensaje está definido recursivamente.
 % %
 % donde el mensaje está definido recursivamente en la ecuación~\ref{eq:m_pii_i}.
 %
-Para calcularlo, en el anexo lo resolvemos por casos mediante inducción matemática: primero para los individuos de la región enteramente desertora, luego para la región enteramente cooperadores, y finalmente para la región mixta.
+\en{In the appendix we solve it with mathematical induction by cases: first for individuals in the entirely defecting region, then for the entirely cooperating region, and finally for the mixed region. }%
+\es{En el anexo lo resolvemos con inducción matemática por casos: primero para los individuos de la región enteramente desertora, luego para la región enteramente cooperadores, y finalmente para la región mixta. }%
 %
-En todos los casos, la marginal es igual al posterior por la probabilidad del ambiente observado,
+\en{In all cases, the marginal is equal to the posterior times the probability of the observed environment, }%
+\es{En todos los casos, la marginal es igual al posterior por la probabilidad del ambiente observado, }%
 %
 \begin{equation}
 \begin{split}
@@ -1227,71 +1308,84 @@ P(I^{T+1}=k, \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T}) & = P(k| \vec{\Aa}^{\,1}, 
 \end{split}
 \end{equation}
 %
-donde
+\en{where}\es{donde}
 %
 \begin{equation}
 P(k| \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^T) = 
 \begin{cases}
 P(k)\prod_{t=1}^{T} P(k|\vec{\Aa}^{\,t}) &  r=0  \\
-P(k)\prod_{t=1}^{T} \sum_j^{\texttt{socios}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,t}) & r  = N  \\
+P(k)\prod_{t=1}^{T} \sum_j^{\texttt{\en{partners}\es{socios}}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,t}) & r  = N  \\
 \Big(P(k)\prod_{t=1}^{T} P(k|\vec{\Aa}^{\,t}) \Big) + \Big(\sum_{t=1}^{T} P(c|\wedge_{q=1}^t\vec{\Aa}^{\,q})  \prod_{q=t+1}^T P(k|\vec{\Aa}^{\,q}) \Big) & 0 < r < N  
 \end{cases}
 \end{equation}
 %
-donde $r = \texttt{region}(k)$, y $c$ es una individuos que pertenece a los cooperadores de la región $r$, $c \in \texttt{socios}(r)$.
+\en{where $r = \texttt{region}(k)$, and $c$ is a cooperative individual belonging the specific region, $c \in \texttt{partners}(r)$. }%s
+\es{donde $r = \texttt{region}(k)$, y $c$ es un individuo cooperador que pertence a esa región, $c \in \texttt{\en{partners}\es{socios}}(r)$. }%
 
 \subsection{Equivalencia con el modelo de Ole Peters}
 
-El modelo causal propuesto no requiere suponer que el proceso de actualización de los recursos sea multiplicativo, como propone Ole Peters para su juego.
+\en{The proposed causal model does not require assuming that the resource updating process is multiplicative, as proposed by Ole Peters for his game. }%
+\es{El modelo causal propuesto no requiere suponer que el proceso de actualización de los recursos sea multiplicativo, como propone Ole Peters para su juego. }%
 %
-Todos los supuestos de nuestro modelo se encuentran explicitados en la red bayesiana de la figura ~\ref{fig:multilevel_model}.
+\en{All the assumptions of our model are made explicit in the Bayesian network in Figure~\ref{fig:multilevel_model}. }
+\es{Todos los supuestos de nuestro modelo se encuentran explicitados en la red bayesiana de la figura~\ref{fig:multilevel_model}. }%
 %
-Este modelo supone simplemente que los individuos se ven afectados por el ambientes independientes, con un valor arbitrario para caras y otro para sellos, e implementa el protocolo de cooperación en términos probabilísiticos.
+\en{It does not assume any particular process, other than that individuals are affected by the environment, and that individuals can cooperate and defect. }%
+\es{No supone ningún tipo de proceso particular, más allá de que los individuos se ven afectados por el ambiente, y que los individuos pueden cooperar y desertar. }%
 %
-No indicar el tipo de proceso al que están sujetos los recursos.
-%
-Sin embargo, nuestro modelo causal probabilístico y el juego propuesto por Ole Peters son equivalentes.
+\en{However, our probabilistic causal model and the game proposed by Ole Peters are equivalent. }%
+\es{Sin embargo, nuestro modelo causal probabilístico y el juego propuesto por Ole Peters son equivalentes. }%
  
 % Parrafo
 
-Sin necesidad de presuponer un proceso multiplicativo, los posteriors de los individuos en nuestro modelo causal son proporcionales a la trayectoria de los recursos que surgen del juego propuesto por Ole Peters.
+\en{Without the need to presuppose a multiplicative process, the posteriors of individuals in our causal model are proportional to the trajectory of resources arising from the game proposed by Ole Peters. }%
+\es{Sin necesidad de presuponer un proceso multiplicativo, los posteriors de los individuos en nuestro modelo causal son proporcionales a la trayectoria de los recursos que surgen del juego propuesto por Ole Peters. }%
 %
-El posterior de los individuos de la región enteramente desertora es,
+\en{The posterior of individuals from the entirely deserting region is, }%
+\es{El posterior de los individuos de la región enteramente desertora es, }%
 %
 \begin{equation}
 \begin{split}
 P(i^{T+1} | \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T}) & \overset{r=0}{=}  P(i^{T+1})  \prod_{t=1}^{T} P(i^{T+1}|\vec{\Aa}^{\,t}) \\
-& \propto P(i^{T+1}) \prod_{t=1}^{T} \Ee_k^{\Aa_k} (1-\Ee_k)^{1-\Aa_k}   \propto P(i^{T+1}) \prod_{t=1}^{T} f(2.1\,\Ee_i,\Aa_{i}^{t})
+& \propto P(i^{T+1}) \prod_{t=1}^{T} \Ee_k^{\Aa_k} (1-\Ee_k)^{1-\Aa_k}   \propto P(i^{T+1}) \prod_{t=1}^{T} 2.1 f_1(\Ee_i,\Aa_{i}^{t})
 \end{split}
 \end{equation}
 %
-donde $r = \texttt{region}(i^{T+1}) = 0$ indica la región sin cooperadores y $f$ es la familia de aptitudes que definimos en la ecuación \ref{eq:familia_de_aptitudes} a partir del juego propuesto por Ole Peters.
+\en{where $r = \texttt{region}(i^{T+1}) = 0$ denotes the region without cooperators and $f_i$ is the fitness function that we define in the equation \ref{eq:familia_de_aptitudes} from the game proposed by Ole Peters. }%
+\es{donde $r = \texttt{region}(i^{T+1}) = 0$ indica la región sin cooperadores y $f$ es la familia de aptitudes que definimos en la ecuación \ref{eq:familia_de_aptitudes} a partir del juego propuesto por Ole Peters. }%
 %
-El primer proporcional vale por constante de normalización de la distribución de probabilidad $ P(i^t|\vec{\Aa}^{\,t})$.
+\en{The first proportional is valid because of the normalization constant of the probability distribution $P(i^t|\vec{\Aa}^{\,t})$. }%
+\es{El primer proporcional vale por constante de normalización de la distribución de probabilidad $ P(i^t|\vec{\Aa}^{\,t})$. }%
 %
-Y el segundo proporcional vale cuando los recursos totales $R$ de la familia de aptitudes $f$ es $R=2.1$.
+\en{And the second proportional simply includes the factor $2.1$, so that the fitness function matches the one proposed by Ole Peters. }%
+\es{Y el segundo proporcional simplemente incluye el factor $2.1$, para que la función de aptitudes coincida con la prouesta por Ole Peters. }%
 %
-Si consideramos que el prior $P(i^{T+1})$ representa los recursos inciales $\omega(0)$, luego el posterior de los individuos desertores es proporcional al crecimiento de los recursos individuales estudiado pr Ole Peters.
+\en{If we consider that the prior $P(i^{T+1})$ represents the initial resources $\omega(0)$, then the posterior of the individual defectors in entirely defecting groups is proportional to the growth of the individual resources studied by Ole Peters. }%
+\es{Si consideramos que el prior $P(i^{T+1})$ representa los recursos inciales $\omega(0)$, luego el posterior de los individuos desertores en grupos enteramenete desertoras es proporcional al crecimiento de los recursos individuales estudiado pr Ole Peters. }%
 
 % Parrafo
 
-Lo mismo ocurre con los posteriors de los individuos cooperadores.
+\en{The same is true for the posteriors of cooperating individuals. }%
+\es{Lo mismo ocurre con los posteriors de los individuos cooperadores. }%
 %
-Notar que el mensaje que envían las variables individuos al factor social (ecuación~\ref{eq:m_i_pii}) es proprocional al segundo nodo de la figura \ref{fig:protocolo} donde se especifica el protocolo cooperativo, en el que los recursos previos $\omega_i(t)$ se actualizan en función de la aptitud al ambiente $f(\Aa)$.
+\en{Note that the message sent by the individual variables to the social factor (eq~\ref{eq:m_i_pii}) is proportional to the second node of the cooperative protocol (fig~\ref{fig:protocolo}), in which the previous resources $\omega_i(t)$ are updated by the product of the fitness function. }%
+\es{Notar que el mensaje que envían las variables individuos al factor social (ecuación~\ref{eq:m_i_pii}) es proprocional al segundo nodo de del protocolo cooperativo (figura \ref{fig:protocolo}), en el que los recursos previos $\omega_i(t)$ mediante el producto de la función de fitness. }%
 %
 \begin{equation}
 \begin{split}
 m_{I^t \rightarrow P(I^{t+1}|I^t)}(i^t) & = m_{P(I^t|\vec{\A}^{\,t}) \rightarrow I^t}(i^t) \, m_{P(I^t|I^{t-1}) \rightarrow I^t }(i^t) \\
 & = P(i^t| \vec{\Aa}^{\,t}) \, P(i^t, \vec{\Aa}^{\,t}, \dots, \vec{\Aa}^{\,t}) \\
-& \propto f(2.1\,\Ee_i,\Aa_{i}^{t}) \omega(t-1)
+& \propto 2.1\,f_1(\,\Ee_i,\Aa_{i}^{t}) \omega(t-1)
 \end{split}
 \end{equation}
 %
-donde la marginal $P(i^t, \vec{\Aa}^{\,t}, \dots, \vec{\Aa}^{\,t})$ es proporcional al posterior $P(i^t| \vec{\Aa}^{\,t}, \dots, \vec{\Aa}^{\,t})$.
+%donde la marginal $P(i^t, \vec{\Aa}^{\,t}, \dots, \vec{\Aa}^{\,t})$ es proporcional al posterior $P(i^t| \vec{\Aa}^{\,t}, \dots, \vec{\Aa}^{\,t})$.
 %
-Nuevamente, la prorporcionalidad vale por contrucción de la distribución de probabilidad $P(i^t|\vec{\Aa}^{\,t})$, cuando los recursos totales $R$ de la familia de aptitudes $f$ es $R=2.1$.
+\en{Again, the proportionality holds by construction of the probability distribution $P(i^t|\vec{\Aa}^{\,t})$. }%
+\es{Nuevamente, la prorporcionalidad vale por construcción de la distribución de probabilidad $P(i^t|\vec{\Aa}^{\,t})$. }%
 %
-Y el mensaje que envía el factor social a la variable individuo del siguiente tiempo (ecuación~\ref{eq:m_pii_i}) es proprocional a los recursos individuales luego de la redistribución del fondo común,
+\en{And the message that the social factor sends to the individual variable of the following time (equation~\ref{eq:m_pii_i}) is proprotional to the individual resources after pooling and sharing, }%
+\es{Y el mensaje que envía el factor social a la variable individuo del siguiente tiempo (ecuación~\ref{eq:m_pii_i}) es proprocional a los recursos individuales luego de la redistribución del fondo común, }%
 %
 \begin{equation}
 \begin{split}
@@ -1301,27 +1395,34 @@ m_{P(I^{t+1}|I^{t}) \rightarrow I^{t+1} }(i^{t+1}) & = \sum_{i^t} P(i^{t+1}|i^t)
 \end{split}
 \end{equation}
 %
-donde $P(i^{t+1}|i^t) = \frac{1}{N}$ cuando los individuos pertenecen a la misma región $\texttt{region}(i^{T+1}) = \texttt{region}(i^{T+1})$
+\en{where $P(i^{t+1}|i^t) = \frac{1}{N}$ when individuals belong to the same region $\texttt{region}(i^{T+1}) = \texttt{region}(i^{T+1})$. }%
+\es{donde $P(i^{t+1}|i^t) = \frac{1}{N}$ cuando los individuos pertenecen a la misma región $\texttt{region}(i^{T+1}) = \texttt{region}(i^{T+1})$. }%
 %
-Este mensaje generaliza el último nodo de la especificación del protocolo cooperativo (figura~\ref{fig:protocolo}).
+\en{This message generalizes the last node of the cooperative protocol (figure~\ref{fig:protocolo}). }%
+\es{Este mensaje generaliza el último nodo del protocolo cooperativo (figura~\ref{fig:protocolo}). }%
 
 % Parrafo
 
-En general, los posteriors de los individuos no son más que la proproción de recursos totales.
+\en{In general, the posterior of individuals is nothing more than the proportion of resources they manage. }%
+\es{En general, el posterior de los individuos no es más que la proporción de recursos que maneja. }%
 %
 \begin{equation}
 P(k| \vec{\Aa}^{\,1}, \dots,  \vec{\Aa}^{\,T}) = \frac{\omega_k(T)}{\sum_j \omega_j(T)}
 \end{equation}
 %
-La proporcionalidad entre el posterior de los individuos y las trayectorias de los recursos propuesto por Ole Peters nos permite trabajar indistintamanete con una u otro expresión.
+\en{The proportionality between the posteriority of individuals and the trajectories of resources proposed by Ole Peters allows us to work with both expressions interchangeably. }%
+\es{La proporcionalidad entre el posterior de los individuos y las trayectorias de los recursos propuesto por Ole Peters nos permite trabajar indistintamanete con una u otra expresión. }%
 
 \subsection{Dilema de los bienes comunes}
 
-En las últimas décadas la biología evolutiva a comenzado a adoptar la analogía de la ``tragedia de los comunes''~\cite{rankin2007-tragedyCommonsBiology}.
+\en{In the last few decades evolutionary biology has begun to adopt the analogy of the ``tragedy of the commons''~\cite{rankin2007-tragedyCommonsBiology}. }%
+\es{En las últimas décadas la biología evolutiva ha comenzado a adoptar la analogía de la ``tragedia de los comunes''~\cite{rankin2007-tragedyCommonsBiology}. }%
 %
-Este concepto contiene la idea de que los bienes comunes tienen una estructura de pagos isomorfa al dilema del prisionero de N jugadores~\cite{hardin1971-collectiveAsPrisionerDilema}.
+\en{This concept contains the idea that the commons has a payoff structure isomorphic to the N-player prisoner's dilemma~\cite{hardin1971-collectiveAsPrisionerDilema}. }%
+\es{Este concepto contiene la idea de que los bienes comunes tienen una estructura de pagos isomorfa al dilema del prisionero de N jugadores~\cite{hardin1971-collectiveAsPrisionerDilema}. }%
 %
-En un dilema del prisionero de dos jugadores, cooperar (C) implica un coste $c$ para que la otra persona reciba un beneficio b, con $b > c$, y desertar (D) significa negarse a cooperar y no conlleva ningún coste. 
+\en{In a two-player prisoner's dilemma, cooperating implies a cost $c$ for the other person to receive a benefit $b$, with $b > c$, and defecting means refusing to cooperate and carries no cost. }%
+\es{En un dilema del prisionero de dos jugadores, cooperar implica un coste $c$ para que la otra persona reciba un beneficio b, con $b > c$, y desertar significa negarse a cooperar y no conlleva ningún coste. }% 
 %
 \begin{equation}
   \bordermatrix{ & C & D \cr
@@ -1329,23 +1430,27 @@ En un dilema del prisionero de dos jugadores, cooperar (C) implica un coste $c$ 
       D & b & 0 } 
 \end{equation}
 %
-Los jugadores ganan más si optan por la cooperación mutua que por la deserción mutua, ya que $b - c > 0$.
+\en{Players gain more if they opt for mutual cooperation than for mutual defection, since $b - c > 0$. }%
+\es{Los jugadores ganan más si optan por la cooperación mutua que por la deserción mutua, ya que $b - c > 0$. }%
 %
-Sin embargo, independientemente de lo que haga el otro jugador, es mejor no cooperar: si mi compañero deserta, es mejor para mí desertar que cooperar, ya que $0 > -c$; si mi compañero coopera, sigue siendo mejor para mí desertar que cooperar, ya que $b > b - c$.
+\en{However, regardless of what the other player does, it is better not to cooperate: if my partner defects, it is better for me to defect than to cooperate, since $0 > -c$; if my partner cooperates, it is still better for me to defect than to cooperate, since $b > b - c$. }%
+\es{Sin embargo, independientemente de lo que haga el otro jugador, es mejor no cooperar: si mi compañero deserta, es mejor para mí desertar que cooperar, ya que $0 > -c$; si mi compañero coopera, sigue siendo mejor para mí desertar que cooperar, ya que $b > b - c$. }%
 %
-De ahí el dilema: aunque la cooperación mutua es un resultado preferible, ningún individuo tiene el incentivo de cooperar.
+\en{This creates a dilemma: although mutual cooperation is a preferable outcome, no individual has the incentive to cooperate. }%
+\es{De ahí el dilema: aunque la cooperación mutua es un resultado preferible, ningún individuo tiene el incentivo de cooperar. }%
 
 % Parrafo
 
-En vez de utilizar una matriz de pagos del dilema del prisionero para representar un proceso de bienes comunes, en nuestro trabajo definimos el proceso de bienes comunes a partir del cual podemos derivar la matriz de pagos asociada.
+%En vez de utilizar una matriz de pagos del dilema del prisionero para representar un proceso de bienes comunes, en nuestro trabajo definimos el proceso de bienes comunes a partir del cual podemos derivar la matriz de pagos asociada.
 %
-Si el proceso tuviera una estrucutra de pagos de los bienes comunes, entonces deberíamos observar que los desertores tienen una tasa de crecimiento mayor a lo cooperadores.
+\en{If our causal model had a payoff structure isomorphic to the prisoner's dilemma, then we should observe that defectors have a higher growth rate than cooperators. }%
+\es{Si nuestro modelo causal tuviera una estrucutra de pagos isomorfa al dilema del prisioner, entonces deberíamos observar que los desertores tienen una tasa de crecimiento mayor a lo cooperadores. }%
 %
-Sin embargo, lo que se observa es que el primer desertor de una población enteramente cooperadora obtiene una tasa de crecimiento menor a la que tenía antes de desertar. 
-
-% Parrafo
-
-En la figura~\ref{fig:ergodicity_desertion} podemos observar las trayectoria de los recursos, equivalente el posterior proporcional (ver sección anterior), de los individuos que están en un grupos de tamaño 100.
+\en{What is found, however, is that the first defector from an entirely cooperative group obtains a lower growth rate than before defecting. }%
+\es{Sin embargo, lo que se encuentra es que el primer desertor de un grupo enteramente cooperadora obtiene una tasa de crecimiento menor a la que tenía antes de desertar. }% 
+%
+\en{In the figure~\ref{fig:ergodicity_desertion} we can observe the trajectories of the resources, equivalent to the proportional posterior (see previous section), of the individuals that are in a group of size 100. }%
+\es{En la figura~\ref{fig:ergodicity_desertion} podemos observar las trayectoria de los recursos, equivalente el posterior proporcional (ver sección anterior), de los individuos que están en un grupos de tamaño 100. }%
 %
 \begin{figure}[ht!]
     \centering
@@ -1353,45 +1458,54 @@ En la figura~\ref{fig:ergodicity_desertion} podemos observar las trayectoria de 
     \includegraphics[width=\linewidth]{figures/pdf/ergodicity_desertion.pdf}
     \end{subfigure}
     \caption{
-    Los colores representan los grupos con 0, 1 y 2 desertores.
-    Todos los grupos tienen tamaño 100.
-    Las curvas de los individuos desertores son las que están arriba en cada uno de los grupos.
+    \en{The colors represent groups of size 100 with 0, 1 and 2 defectors. }%
+    \es{Los colores representan los grupos de tamaño 100 con 0, 1 y 2 desertores. }%
+    %
+    \en{The curves of the individual defectors are those at the top of each of the groups. }%
+    \es{Las curvas de los individuos desertores son las que están arriba en cada uno de los grupos. }%
     }
     \label{fig:ergodicity_desertion}
 \end{figure}
 %
-Los recursos del primer individuo desertor (grupo azul con 1 desertor), está por debajo de los recursos de los individuos del grupo enteramente cooperador (grupo verde con 0 desertores).
+\en{The resources of the first individual defector (blue group with 1 defector), is below the resources of the individuals in the fully cooperative group (green group with 0 defectors). }%
+\es{Los recursos del primer individuo desertor (grupo azul con 1 desertor), está por debajo de los recursos de los individuos del grupo enteramente cooperador (grupo verde con 0 desertores). }%
 %
-La reducción de los recursos le ocurre incluso al segundo individuo que cambia de comportamiento de cooperador a desertor: los recursos de los individuos desertores del grupo con 2 desertores, está por debajo de los recursos de los individuos cooperadores del grupo con 1 desertor.
+\en{The reduction in resources occurs even for the second individual who changes from cooperative to defector behavior: the resources of the defector individuals in the group with 2 defectors are below the resources of the cooperative individuals in the group with 1 defector. }%
+\es{La reducción de recursos le ocurre incluso al segundo individuo que cambia de comportamiento cooperador a desertor: los recursos de los individuos desertores del grupo con 2 desertores está por debajo de los recursos de los individuos cooperadores del grupo con 1 desertor. }%
 
 % Parrafo
 
-Esto significa que desertar, en vez de aumentar la tasa de crecimiento de los individuos desertores, la reduce.
+\en{Defecting, instead of increasing the growth rate of the defected individuals, reduces it. }%
+\es{Desertar, en vez de aumentar la tasa de crecimiento de los individuos desertores, la reduce. }%
 %
-Es decir, la matriz de pagos de los bienes comunes no tiene la estructura del dilema del prisionero como habitualmente se afirma en la literatura.
+\en{In other words, the commons does not have the structure of the prisoner's dilemma, as is usually claimed in the literature. }%
+\es{Es decir, los bienes comunes no tiene la estructura del dilema del prisionero como habitualmente se afirma en la literatura. }%
 %
-Calculemos la matriz de pagos que surge del proceso de bienes comunes.
+\en{Let us calculate the payoff matrix arising from the cooperative causal model. }%
+\es{Calculemos la matriz de pagos que surge del modelo causal cooperativo. }%
 %
-La mutua deserción produce un posterior que se actualiza en función de la siguiente productoria,
+\en{Mutual defection produces a posterior that is updated according to the following product, }%
+\es{La mutua deserción produce un posterior que se actualiza en función de la siguiente productoria, }%
 %
 \begin{equation}
 \prod_{t=1}^{T} P(k|\vec{\Aa}^{\,t}) & \propto \prod_{t=1}^{T} \Ee_k^{\Aa_k} (1-\Ee_k)^{1-\Aa_k} 
 \end{equation}
 %
-La tasa de crecimiento de un estrategia $\Ee=1.5/2.1 \approx 0.71$ en una ambiente con $p=0.5$ es $g_{DD} = 0.71^{1/2}\cdot0.29^{1/2} \approx 0.45$.
-
-
-% Parrafo
-
-El posterior de la mutua cooperación también se actualiza en función de una productoria, pero la variable aleatoria en cada paso es el promedio de los resultados los socios de la región,
+\en{The growth rate of a strategy $\Ee= 0.71 \approx 1.5/2.1$ in an environment with $p=0.5$ is $g_{DD} = 0.71^{1/2}\cdot0.29^{1/2} \approx 0.452$. }%
+\es{La tasa de crecimiento de un estrategia $\Ee= 0.71 \approx 1.5/2.1$ en una ambiente con $p=0.5$ es $g_{DD} = 0.71^{1/2}\cdot0.29^{1/2} \approx 0.452$. }%
+%
+\en{The posterior of mutual cooperation is also updated with a product, but the random variable at each step is the average of the results of the partners, }%
+\es{El posterior de la mutua cooperación también se actualiza en función de una productoria, pero la variable aleatoria en cada paso es el promedio de los resultados los socios, }%
 %
 \begin{equation}
-\prod_{t=1}^{T} \sum_j^{\texttt{socios}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,t}) \propto \prod_{t=1}^{T} \underbrace{ \sum_j^{\texttt{socios}(r)} \frac{1}{N} \Ee_k^{\Aa_k} (1-\Ee_k)^{1-\Aa_k} }_{f_{CC}(\Ee,\vec{\Aa}\,,N)} 
+\prod_{t=1}^{T} \sum_j^{\texttt{\en{partners}\es{socios}}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,t}) \propto \prod_{t=1}^{T} \underbrace{ \sum_j^{\texttt{\en{partners}\es{socios}}(r)} \frac{1}{N} \Ee_k^{\Aa_k} (1-\Ee_k)^{1-\Aa_k} }_{f_{C}(\Ee,\vec{\Aa}\,,N)} 
 \end{equation}
 %
-donde el proporcional vale por constante de normalización de la distribución de probabilidad $ P(i^t|\vec{\Aa}^{\,t})$.
+\en{where the proportional is valid because of the normalization constant of the probability distribution $P(i^t|\vec{\Aa}^{\,t})$. }%
+\es{donde el proporcional vale por constante de normalización de la distribución de probabilidad $ P(i^t|\vec{\Aa}^{\,t})$. }%
 %
-Cuando todos los miembros del grupo tienen la misma estrategia $\Ee$, los posibles valores de la variable aleatoria cooperativa es,
+\en{When all members of the group have the same strategy $\Ee$, the possible values of the cooperative random variable is, }%
+\es{Cuando todos los miembros del grupo tienen la misma estrategia $\Ee$, los posibles valores de la variable aleatoria cooperativa es, }%
 % %
 % \begin{equation}
 % f_C(\Ee,\vec{\Aa}\,) =
@@ -1405,64 +1519,75 @@ Cuando todos los miembros del grupo tienen la misma estrategia $\Ee$, los posibl
 % %
 % Y en general, 
 \begin{equation}\label{eq:fitness_cooperador}
-f_{CC}(\Ee, \vec{\Aa}\,,N) = \frac{\texttt{sum}(\vec{\Aa}\,)}{N} \Ee + \frac{N-\texttt{sum}(\vec{\Aa}\,)}{N}(1-\Ee)
+f_{C}(\Ee, \vec{\Aa}\,,N) = \frac{\texttt{sum}(\vec{\Aa}\,)}{N} \Ee + \frac{N-\texttt{sum}(\vec{\Aa}\,)}{N}(1-\Ee)
 \end{equation}
 %
-donde la probabilidad de ocurrencia es $f_C(\Ee, \vec{\Aa}\,,N) \sim \text{Binomial}(\texttt{sum}(\vec{\Aa}\,)|N,p)$, con $p$ la probabilidad del ambiente.
+\en{where $f_C(\Ee, \vec{\Aa}\,,N) \sim \text{Binomial}(\texttt{sum}(\vec{\Aa}\,)|N,p)$, with $p$ the probability of the environment. }%
+\es{donde $f_C(\Ee, \vec{\Aa}\,,N) \sim \text{Binomial}(\texttt{sum}(\vec{\Aa}\,)|N,p)$, con $p$ la probabilidad del ambiente. }%
 %
-Lugo, la tasa de crecimiento característica de la mutua cooperación $g_{CC}$ la podemos calcular utilizando la media geomética~\ref{eq:geometric_mean},
+\en{Then, the growth rate of the mutual cooperation can be computed using the geometic average~\ref{eq:geometric_mean}, }
+\es{Luego, la tasa de crecimiento de la mutua cooperación la podemos calcular utilizando la media geomética~\ref{eq:geometric_mean}, }%
 %
 \begin{equation}
-g_{CC}(\Ee,N) = \prod_{x=0}^N \Big(\frac{x}{N} \Ee + \frac{N-x}{N}(1-\Ee)\Big)^{\text{Binomial}(x|N,p)}
+g_{C}(\Ee,N) = \prod_{x=0}^N \Big(\frac{x}{N} \Ee + \frac{N-x}{N}(1-\Ee)\Big)^{\text{Binomial}(x|N,p)}
 \end{equation}
 %
-La tasa de crecimiento cooperativa de una estrategia $\Ee=0.71$ en un grupo de tamaño 2 en un ambiente con probabilidad $p=0.5$, $0.71^{1/4}\cdot 0.5^{1/2} \cdot 0.29^{1/4} \approx 0.48$
+\en{The cooperative growth rate of a strategy $\Ee=0.71$ in a group of size 2 in an environment with probability $p=0.5$, is $0.71^{1/4}\cdot 0.5^{1/2} \cdot 0.29^{1/4} \approx 0.475$. }%
+\es{La tasa de crecimiento cooperativa de una estrategia $\Ee=0.71$ en un grupo de tamaño 2 en un ambiente con probabilidad $p=0.5$, $0.71^{1/4}\cdot 0.5^{1/2} \cdot 0.29^{1/4} \approx 0.475$. }%
 %
-Cuando la población es muy grande, $N\rightarrow \infty$, en cada ronda habrá invariantemente una proproción $p$ que obtuvo éxito, por lo que la tasa de crecimiento se reduce a la media aritmética,
+\en{When the population is very large, $N\rightarrow \infty$, in each round there will invariably be a $p$ proproportion that succeeded, so the growth rate is reduced to the arithmetic mean, }%
+\es{Cuando la población es muy grande, $N\rightarrow \infty$, en cada ronda habrá invariantemente una proproción $p$ que obtuvo éxito, por lo que la tasa de crecimiento se reduce a la media aritmética, }%
 %
 \begin{equation}
-\lim_{N\rightarrow \infty} g_{CC}(\Ee,N) = p \Ee + (1-p)(1-\Ee)
+\lim_{N\rightarrow \infty} g_{C}(\Ee,N) = p \Ee + (1-p)(1-\Ee)
 \end{equation}
 %
-La tasa de crecimiento cooperativa de estrategia $\Ee=0.71$ en un grupo de tamaño infinito en un ambiente con probabilidad $p=0.5$, es $0.5\cdot 0.71 + 0.5 \cdot 0.29 = 0.5$
-
-% Parrafo
-
-La tasa de crecimiento de los individuos cooperadores en poblaciones mixtas se extiende facilmente,
+\en{The cooperative growth rate of a strategy $\Ee=0.71$ in a group of infinite size in an environment with probability $p=0.5$ is $0.5\cdot 0.71 + 0.5 \cdot 0.29 = 0.5$. }%
+\es{La tasa de crecimiento cooperativa de una estrategia $\Ee=0.71$ en un grupo de tamaño infinito en un ambiente con probabilidad $p=0.5$, es $0.5\cdot 0.71 + 0.5 \cdot 0.29 = 0.5$. }%
+%
+\en{The growth rate of cooperative individuals in mixed populations is easily extended, }%
+\es{La tasa de crecimiento de los individuos cooperadores en poblaciones mixtas se extiende facilmente, }%
 %
 \begin{equation}
 g_{CD}(\Ee,n,N) = \prod_{x=0}^n \Big(\frac{x}{N} \Ee + \frac{N-x}{N}(1-\Ee)\Big)^{\text{Binomial}(x|n,p)}
 \end{equation}
 %
-La tasa de crecimiento cooperativa de una estrategia $\Ee=0.71$ en un grupo de tamaño 2 en un ambiente con probabilidad $p=0.5$ es $g_{CD}(0.71,1,2)=(\frac{0.71}{2})^{1/4}\cdot (\frac{0.29}{2})^{1/2}  \approx 0.23$
-
-% Parrafo
-
-El posterior de los individuos desertores en poblaciones mixtas se actualiza en fución de,
+\en{The cooperative growth rate of a strategy $\Ee=0.71$ in a mixed group of size 2 in an environment with probability $p=0.5$ is, $g_{CD}(0.71,1,2)=(\frac{0.71}{2})^{1/4}\cdot (\frac{0.29}{2})^{1/2}  \approx 0.226$. }%
+\es{La tasa de crecimiento cooperativa de una estrategia $\Ee=0.71$ en un grupo mixto de tamaño 2 en un ambiente con probabilidad $p=0.5$ es $g_{CD}(0.71,1,2)=(\frac{0.71}{2})^{1/4}\cdot (\frac{0.29}{2})^{1/2}  \approx 0.226$. }%
+%
+\en{The posterior of defector individuals in mixed populations is updated as a function of, }%
+\es{El posterior de los individuos desertores en poblaciones mixtas se actualiza en función de, }%
 %
 \begin{equation}
 \begin{split}
-& \Big(\prod_{t=1}^{T} P(k|\vec{\Aa}^{\,t}) \Big) + \Big(\sum_{t=1}^{T} \prod_{q=1}^{t} \sum_j^{\texttt{socios}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,q})  \prod_{q=t+1}^T P(k|\vec{\Aa}^{\,q}) \Big) \\
+& \Big(\prod_{t=1}^{T} P(k|\vec{\Aa}^{\,t}) \Big) + \Big(\sum_{t=1}^{T} \prod_{q=1}^{t} \sum_j^{\texttt{\en{partners}\es{socios}}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,q})  \prod_{q=t+1}^T P(k|\vec{\Aa}^{\,q}) \Big) \\
 \end{split}
 \end{equation}
 %
-el factor de crecimiento individual más una media movil de del crecimiento de los cooperadores pesado por el crecimiento de individual posterior.
+\en{the sum of individual growth plus a moving average of the growth of cooperators weighted by individual growth. }%
+\es{la suma del crecimiento individual más una media movil del crecimiento de los cooperadores pesado por crecimienti individual. }%
 %
-Cada uno de los elementos que actualizan el posterior de los individuos desertores en regiones mixtas se pueden estimar utilizar las tasas de crecimiento de los desertores en regiones enteramente desertoras $g_{DD}$ e individuos cooperadores en regiones mixtas $g_{CD}(\Ee,n,N)$.
+\en{Each of the elements updating the posterior of defecting individuals in mixed regions can be estimated using the growth rates of defecting individuals in entirely defecting regions $g_{D}$ and cooperating individuals in mixed regions $g_{CD}(\Ee,n,N)$. }%
+\es{Cada uno de los elementos que actualizan el posterior de los individuos desertores en regiones mixtas se pueden estimar utilizar las tasas de crecimiento de los desertores en regiones enteramente desertoras $g_{D}$ e individuos cooperadores en regiones mixtas $g_{CD}(\Ee,n,N)$. }%
 %
-Debido a que no encontramos una solución analítica más simple, realizamos la estimación de la tasa de crecimiento calculado el crecimiento del posterior que ocurre en cada paso 
+\en{Because we did not find a simpler analytical solution, we performed the growth rate estimation as the difference between time steps, }%
+\es{Debido a que no encontramos una solución analítica más simple, realizamos la estimación de la tasa de crecimiento como la diferencia entre pasos temporales, }%
 %
 \begin{equation}
 g_{D}(\Ee,n,N) = \frac{ g_{D}(\Ee)^T + \sum^{T}_{t=1} g_{C}(\Ee,n,N)^t \prod_{q=t+1}^{T} g_{D}(\Ee)}{ g_{D}(\Ee)^{T-1} + \sum^{T-1}_{t=1} g_{C}(\Ee,n,N)^t  \prod_{q=t+1}^{T-1} g_{D}(\Ee)}
 \end{equation}
 %
-Esta tasa de crecimiento se estabiliza luego de una decena de pasos temporales en la tasa de crecimiento que sea mayor, $g_{D}(\Ee,n,N) \approx \texttt{max}(g_{D}(\Ee), g_{C}(\Ee,n,N))$.
+\en{This growth rate stabilizes after a dozen time steps at the larger growth rate, $g_{D}(\Ee,n,N) \approx \texttt{max}(g_{D}(\Ee), g_{C}(\Ee,n,N))$. }%
+\es{Esta tasa de crecimiento se estabiliza luego de una decena de pasos temporales en la tasa de crecimiento que sea mayor, $g_{D}(\Ee,n,N) \approx \texttt{max}(g_{D}(\Ee), g_{C}(\Ee,n,N))$. }%
 %
-En la figura \ref{fig:multilevel-selection-7} mostramos la tasa de crecimiento de los desertores en función de la proproción de desertores totales en una grupo de tamaño $1000$.
+\en{In figure \ref{fig:multilevel-selection-7} we show the growth rate of defectors as a function of the proportion of total defectors in a group of size $1000$. }%
+\es{En la figura \ref{fig:multilevel-selection-7} mostramos la tasa de crecimiento de los desertores en función de la proproción de desertores totales en una grupo de tamaño $1000$. }%
 %
-La tasa de crecimiento de los individuos desertores en regiones mixtas, $g_{D}(\Ee,n,N)$, se mantiene igual que la tasa de crecimiento de los individuos cooperdora, $g_{C}(\Ee,n,N)$, hasta que la proporción de cooperadores lleva la reduce la tasa de crecimientos por debajo de la tasa de crecimiento de los regiones enteramente desertoras, $g_{D}(\Ee)$.
+\en{The growth rate of defecting individuals in mixed regions, $g_{D}(\Ee,n,N)$, remains the same as the growth rate of cooperating individuals, $g_{C}(\Ee,n,N)$, until the proportion of defectors reduces the growth rate of cooperators below the growth rate of entirely defecting regions, $g_{D}(\Ee)$. }%
+\es{La tasa de crecimiento de los individuos desertores en regiones mixtas, $g_{D}(\Ee,n,N)$, se mantiene igual que la tasa de crecimiento de los individuos cooperdora, $g_{C}(\Ee,n,N)$, hasta que la proporcipon de desertores reduce la tasa crecimiento de los cooperadores por debajo de la tasa de crecimiento de los regiones enteramente desertoras, $g_{D}(\Ee)$. }%
 %
-En la figura~\ref{fig:multilevel-selection-5} podemos ver cómo la tasa de crecimiento estimada, reescladas por el factor $2.1$, se superpone sobre las trayectorias de los recursos del grupo con un desertor presentado en la figura \ref{ergodicity_desertion}.
+\en{In Figure~\ref{fig:multilevel-selection-5} we see that the estimated growth rate, rescaled by the $2.1$ factor, overlaps over the resource trajectories presented in Figure~\ref{fig:ergodicity_desertion}. }
+\es{En la figura~\ref{fig:multilevel-selection-5} vemos que la tasa de crecimiento estimada, reescladas por el factor $2.1$, se superpone sobre las trayectorias de los recursos presentado en la figura \ref{fig:ergodicity_desertion}. }%
 %
 \begin{figure}[H]
     \centering
@@ -1477,21 +1602,25 @@ En la figura~\ref{fig:multilevel-selection-5} podemos ver cómo la tasa de creci
     \label{fig:multilevel-selection-5}
     \end{subfigure}
     \caption{
-    Figura \ref{fig:multilevel-selection-7}: estimación de la tasa de crecimiento en grupos mixtos de tamaño 100.
+    \en{Figure \ref{fig:multilevel-selection-7}: estimation of growth rate in mixed groups of size 100. }%
+    \es{Figura \ref{fig:multilevel-selection-7}: estimación de la tasa de crecimiento en grupos mixtos de tamaño 100. }%
     %
-    Figura \ref{fig:multilevel-selection-5}: trayectoria de los recursos de un desertor (azul) y cooperador (verde) en un grupo de tamaño 100 con un único desertor (ver figura~\ref{ergodicity_desertion}), las curvas negras son las estimaciones de las tasas de crecimiento, y la curva negra punteadas son los recursos de mutua cooperación.
+    \en{Figure \ref{fig:multilevel-selection-5}: trajectory of the resources of a defector (blue) and cooperator (green) in a group of size 100 with a single defector (see figure~\ref{fig:ergodicity_desertion}), the black curves are the estimates of the growth rates, and the dotted black curve are the resources of cooperators in regions without defectors. }%
+    \es{Figura \ref{fig:multilevel-selection-5}: trayectoria de los recursos de un desertor (azul) y cooperador (verde) en un grupo de tamaño 100 con un único desertor (ver figura~\ref{fig:ergodicity_desertion}), las curvas negras son las estimaciones de las tasas de crecimiento, y la curva negra punteadas son los recursos de mutua cooperación. }%
     }
 \end{figure}
 %
-En la figura \ref{fig:multilevel-selection-5} vemos que a partir de las tasas de crecimiento de los individuos cooperdores$g_C(\Ee=1.5/2.1,n=99,N=100)$ y desertores $g_D(\Ee=1.5/2.1)$, podemos estimar correctamente la trayectoria de los recursos de un individuo desertor en una población mixta.
+\en{In Figure \ref{fig:multilevel-selection-5} we see that from the growth rates of cooperators $g_C(\Ee=1.5/2.1,n=99,N=100)$ and defectors $g_D(\Ee=1.5/2.1)$, we can correctly estimate the resource trajectory of a defector individual in a mixed population. }%
+\es{En la figura \ref{fig:multilevel-selection-5} vemos que a partir de las tasas de crecimiento de los individuos cooperdores $g_C(\Ee=1.5/2.1,n=99,N=100)$ y desertores $g_D(\Ee=1.5/2.1)$, podemos estimar correctamente la trayectoria de los recursos de un individuo desertor en una población mixta. }%
 %
-Notar que la tasa de crecimiento del individuo desertor es mayor a la de los cooperadores en la primera decena de tiempos hasta que se estabiliza en el mismo valor.
+\en{Note that the growth rate of the individual defector is higher than that of the cooperators only in the first few time steps, which places the defectors in a better relative position. }%
+\es{Notar que la tasa de crecimiento del individuo desertor es mayor a la de los cooperadores sólo en las primeros pasos temporales, lo que lo coloca a los desertores en una posición relativa mejor. }%
 %
-Esto coloca a los desertores en una posición relativa mejor que los cooperadores.
+\en{But regardless of the size of the group, mutual cooperation always offers the highest growth rate, and the first defection always produces a drop in all growth rate, reducing even the growth rate of the individual defector. }%
+\es{Pero, no importa el tamaño del grupo, siempre la mutua cooperación ofrece la tasa de crecimiento más alta, y la primera deserción produce una baja de la tasa de crecimiento incluso del individuo desertor. }%
 %
-Pero, no importa el tamaño del grupo, siempre la mutua cooperación ofrece la tasa de crecimiento más alta, y la primera deserción produce una baja de la tasa de crecimiento incluso del individuo desertor.
-%
-Las siguientes matrices resumen las tasas de crecimiento para individuos cooperadores y desertores (filas), para diferente cantidad de desertores en el contexto social (columnas), en grupos de tamaño 2 y tamaño 16 respectivamente.
+\en{The following matrices summarize the growth rates of cooperators and defectors (rows), for different numbers of defectors in the social context (columns), in groups of size 2 (left) and size 16 (right). }%
+\es{Las siguientes matrices resumen las tasas de crecimiento para individuos cooperadores y desertores (filas), para diferente cantidad de desertores en el contexto social (columnas), en grupos de tamaño 2 (izquierda) y tamaño 16 (derecha). }%
 %
 \begin{equation*}
 \bordermatrix{ & 0/1 & 1/1 \cr
@@ -1501,21 +1630,28 @@ Las siguientes matrices resumen las tasas de crecimiento para individuos coopera
       D & 0.466 & 0.452 & 0.452 & 0.452}       
 \end{equation*}
 %
-El primer agent que ``decida'' desertar unilateralmente va a ver reducida su tasa de crecimiento.
+\en{The first agent that unilaterally ``decides'' to defect will reduce its own growth rate. }%
+\es{El primer agente que unilateralmente ``decida'' desertar va a reducir su propia tasa de crecimiento. }%
 %
-Cuando todos (o muchos) de los miembros del grupo son desertores, el primer agente que ``decida'' cooperar unilateralmente, también va a ver reducida su tasa de crecimiento.
+\en{Similarly, when all (or many) of the group members are defectors, the first agent who unilaterally ``decides'' to cooperate will also reduce his own growth rate. }%
+\es{De modo similar, cuando todos (o muchos) de los miembros del grupo son desertores, el primer agente que unilateralmente ``decida'' cooperar , también reducirá su propia tasa de crecimiento. }%
 %
-Esto significa que la matriz de pagos no son isomorfas al dilema del prisionero.
+\en{This means that the payoff matrix is not isomorphic to a prisoner's dilemma. }%
+\es{Esto significa que la matriz de pagos no son isomorfas al dilema del prisionero. }%
 %
-De hecho, la estructura de pagos de la matriz izquierda se conoce como stag-hunt.
+\en{In fact, the payoff structure of the left-hand matrix is known as stag-hunt. }%
+\es{De hecho, la estructura de pagos de la matriz izquierda se conoce como stag-hunt. }%
 %
-\begin{conclution}[Los bienes comunes no son dilemas del prisionero]
-Sin necesidad de introducir castigos, las estrategias desertoras afectan negativamente su propia tasa de crecimiento a largo plazo debido que su propio comportamiento aumento las fluctuaciones de la variable aleatoria de la que dependen.
+\begin{conclution}[\en{Commons are not prisoner's dilemmas}\es{Los bienes comunes no son dilemas del prisionero}]
+\en{Without the need to introduce penalties, defector strategies negatively affect their own long-term growth rate because their own behavior increases the fluctuations of the random variable on which they depend. }%
+\es{Sin necesidad de introducir castigos, las estrategias desertoras afectan negativamente su propia tasa de crecimiento a largo plazo debido que su propio comportamiento aumento las fluctuaciones de la variable aleatoria de la que dependen.}
 \end{conclution}
 %
-En todos los casos, la tasa de crecimiento más alta se obtiene por mutua cooperación.
+\en{In all cases, the highest growth rate is obtained by mutual cooperation. }%
+\es{En todos los casos, la tasa de crecimiento más alta se obtiene por mutua cooperación. }%
 %
-Por este motivo, la selección multinivel favorece a los individuos cooperadores sobre los desertores, a pesar de que la presencia de destores afecte negativa su tasa de crecimiento.
+\en{For this reason, multilevel selection favors cooperators over defectors, even though the presence of defectors negatively affects their growth rate. }%
+\es{Por este motivo, la selección multinivel favorece a los individuos cooperadores sobre los desertores, a pesar de que la presencia de destores afecte negativa su tasa de crecimiento. }%
 
 
 \subsection{Selección de nivel 1, nivel 2 y multinivel}
@@ -1839,32 +1975,32 @@ con $i = i^{T+1}$.
 Teniendo en cuenta que ya hemos visto en la introducción que los individuos cooperadores dividen los recursos en partes iguales luego de cada paso, proponemos la siguiente hipótesis inductiva para el grupo enteramente cooperador ($\text{HI}_c(T)$)
 %
 \begin{equation}
- m_{P(I^{T+1}|I^{T}) \rightarrow I^{T+1} }(i^{T+1}) =  P(i^{T+1})\prod_{t=1}^{T}  P(\vec{\Aa}^{\,t})  \sum_j^{\texttt{socios}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,t}) 
+ m_{P(I^{T+1}|I^{T}) \rightarrow I^{T+1} }(i^{T+1}) =  P(i^{T+1})\prod_{t=1}^{T}  P(\vec{\Aa}^{\,t})  \sum_j^{\texttt{\en{partners}\es{socios}}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,t}) 
 \end{equation}
 %
-donde $r = \texttt{region}(i^{T+1})$, y $\texttt{socios}(r)$ es el conjunto de todos los miembros cooperadores que pertenecen a la región $r$.
+donde $r = \texttt{region}(i^{T+1})$, y $\texttt{\en{partners}\es{socios}}(r)$ es el conjunto de todos los miembros cooperadores que pertenecen a la región $r$.
 %
 Esta hipótesis vale en el caso $T=1$.
 %
 \begin{equation}
 \begin{split}
 m_{P(I^{2}|I^{1}) \rightarrow I^{2} }(i^{2}) & \overset{\hfrac{eq}{\ref{eq:m_pii_i}}}{=}  \sum_{i^1} P(i^{2}|i^1) \, P(\vec{\Aa}^{\,1}) \, P(i^1|\vec{\Aa}^{\,1}) \,   P(i^1) \\[-0.3cm]
-&= P(\vec{\Aa}^{\,1}) \sum_j^{\texttt{socios}(r)} \frac{1}{N} \, P(j|\vec{\Aa}^{\,1}) P(j) \\[-0.3cm]
-& = P(i^2) P(\vec{\Aa}^{\,1}) \sum_j^{\texttt{socios}(r)} \frac{1}{N} \, P(j|\vec{\Aa}^{\,1})
+&= P(\vec{\Aa}^{\,1}) \sum_j^{\texttt{\en{partners}\es{socios}}(r)} \frac{1}{N} \, P(j|\vec{\Aa}^{\,1}) P(j) \\[-0.3cm]
+& = P(i^2) P(\vec{\Aa}^{\,1}) \sum_j^{\texttt{\en{partners}\es{socios}}(r)} \frac{1}{N} \, P(j|\vec{\Aa}^{\,1})
 \end{split}
 \end{equation}
 %
-pues $P(i^{t+1}|i^t) = \frac{1}{N}\mathbb{I}(\texttt{region}(i^{t+1}) = \texttt{region}(i^t))$, y para todo $j \in \texttt{socios}(region(i^2))$ vale que $P(j) = P(i^2)$
+pues $P(i^{t+1}|i^t) = \frac{1}{N}\mathbb{I}(\texttt{region}(i^{t+1}) = \texttt{region}(i^t))$, y para todo $j \in \texttt{\en{partners}\es{socios}}(region(i^2))$ vale que $P(j) = P(i^2)$
 %
 Y dado que vale la hipótesis inductiva para el tiempo $T$, $\text{HI}_c(T)$, también vale para el tiempo $T+1$, pues
 %
 \begin{equation}
 \begin{split}
 m_{P(I^{T+1}|I^{T}) \rightarrow I^{T+1} }(i^{T+1}) & \overset{\hfrac{eq}{\ref{eq:m_pii_i}}}{=}  \sum_{i^T} P(i^{T+1}|i^T) \, P(\vec{\Aa}^{\,T}) \, P(i^T|\vec{\Aa}^{\,T}) \,  m_{P(I^T|I^{T-1}) \rightarrow I^T }(i^T) \\
-&\overset{\hfrac{}{\text{caso}}}{=} \sum_j^{\texttt{socios}(r)} P(\vec{\Aa}^{\,T}) \frac{1}{N} \, P(j|\vec{\Aa}^{\,T})m_{P(I^T|I^{T-1}) \rightarrow I^T }(j) \\
-&\overset{\hfrac{*}{\text{caso}}}{=} \Big(\sum_j^{\texttt{socios}(r)} P(\vec{\Aa}^{\,T}) \frac{1}{N} \, P(j|\vec{\Aa}^{\,T}) \Big) \Big(m_{P(I^T|I^{T-1}) \rightarrow I^T }(i^{T+1}) \Big) \\
-& \overset{\text{HI}_c}{=} \Big(\sum_j^{\texttt{socios}(r)} P(\vec{\Aa}^{\,T}) \frac{1}{N} \, P(j|\vec{\Aa}^{\,T}) \Big) \Big( P(i^{T+1})\prod_{t=1}^{T-1}  \sum_j^{\texttt{socios}(r)} P(\vec{\Aa}^{\,t}) \frac{1}{N} P(j|\vec{\Aa}^{\,t})  \Big) \\
-& = P(i^{T+1})\prod_{t=1}^{T}  P(\vec{\Aa}^{\,t})  \sum_j^{\texttt{socios}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,t})
+&\overset{\hfrac{}{\text{caso}}}{=} \sum_j^{\texttt{\en{partners}\es{socios}}(r)} P(\vec{\Aa}^{\,T}) \frac{1}{N} \, P(j|\vec{\Aa}^{\,T})m_{P(I^T|I^{T-1}) \rightarrow I^T }(j) \\
+&\overset{\hfrac{*}{\text{caso}}}{=} \Big(\sum_j^{\texttt{\en{partners}\es{socios}}(r)} P(\vec{\Aa}^{\,T}) \frac{1}{N} \, P(j|\vec{\Aa}^{\,T}) \Big) \Big(m_{P(I^T|I^{T-1}) \rightarrow I^T }(i^{T+1}) \Big) \\
+& \overset{\text{HI}_c}{=} \Big(\sum_j^{\texttt{\en{partners}\es{socios}}(r)} P(\vec{\Aa}^{\,T}) \frac{1}{N} \, P(j|\vec{\Aa}^{\,T}) \Big) \Big( P(i^{T+1})\prod_{t=1}^{T-1}  \sum_j^{\texttt{\en{partners}\es{socios}}(r)} P(\vec{\Aa}^{\,t}) \frac{1}{N} P(j|\vec{\Aa}^{\,t})  \Big) \\
+& = P(i^{T+1})\prod_{t=1}^{T}  P(\vec{\Aa}^{\,t})  \sum_j^{\texttt{\en{partners}\es{socios}}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,t})
 \end{split}
 \end{equation}
 %
@@ -1872,20 +2008,20 @@ donde la igualdad $\overset{\hfrac{*}{\text{caso}}}{=}$ vale porque en los grupo
 %
 Luego, la marginal objetivo en el caso de la población enteramente cooperadora es 
 \begin{equation}\label{eq:marginal_multinivel_cooperador}
-P(i^{T+1}|\vec{\Aa}^{\,1},\dots,\vec{\Aa}^{\,T}) \overset{\hfrac{}{\text{caso}}}{=} P(i^{T+1}) \prod_{t=1}^{T} \sum_j^{\texttt{socios}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,t}) \propto P(i^{T+1})\prod_{t=1}^{T} \sum_j^{\texttt{socios}(r)} \frac{1}{N} f(\Ee_j,\Aa_{j}^{t})
+P(i^{T+1}|\vec{\Aa}^{\,1},\dots,\vec{\Aa}^{\,T}) \overset{\hfrac{}{\text{caso}}}{=} P(i^{T+1}) \prod_{t=1}^{T} \sum_j^{\texttt{\en{partners}\es{socios}}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,t}) \propto P(i^{T+1})\prod_{t=1}^{T} \sum_j^{\texttt{\en{partners}\es{socios}}(r)} \frac{1}{N} f(\Ee_j,\Aa_{j}^{t})
 \end{equation}
 %
 
 \subsubsection{Regiones mixtas, individuos cooperadores}
 
-Los bienes comunes son generados por el conjunto de individuos cooperadores de la región $r$, \texttt{socios}($r$).
+Los bienes comunes son generados por el conjunto de individuos cooperadores de la región $r$, \texttt{\en{partners}\es{socios}}($r$).
 %
 El tamaño de este conjunto depende de la cantidad de cooperadores que están en la misma región.
 %
 Sin embargo, la división del bien común se sigue dividiendo en partes iguales entre todos los miembros de la región $\frac{1}{2}$.
 %
 \begin{equation}
- P(i^{T+1}|\vec{\Aa}^{\,1},\dots,\vec{\Aa}^{\,T}) = P(i^{T+1}) \prod_{t=1}^{T}  \frac{1}{N} \sum_j^{\texttt{socios}(r)} P(j|\vec{\Aa}^{\,t}) 
+ P(i^{T+1}|\vec{\Aa}^{\,1},\dots,\vec{\Aa}^{\,T}) = P(i^{T+1}) \prod_{t=1}^{T}  \frac{1}{N} \sum_j^{\texttt{\en{partners}\es{socios}}(r)} P(j|\vec{\Aa}^{\,t}) 
 \end{equation}
 %
 donde la demostración es equivalente al caso anterior. 
@@ -1900,11 +2036,11 @@ Por definición,
 m_{P(I^{2}|I^{1}) \rightarrow I^{2} }(k) = \sum_{i^1} P(k|i^1)  P(\vec{\Aa}^{\,1})P(i^1|\vec{\Aa}^{\,1}) P(i^1)
 \end{equation}
 %
-En el caso de regiones mixtas, el factor social vale $1$ cuando $k=i^1$ y vale $1/N$ cuando $i^1 \in \texttt{socios}(r)$.
+En el caso de regiones mixtas, el factor social vale $1$ cuando $k=i^1$ y vale $1/N$ cuando $i^1 \in \texttt{\en{partners}\es{socios}}(r)$.
 %
 \begin{equation}
 \begin{split}
-m_{P(I^{2}|I^{1}) \rightarrow I^{2} }(k) = P(\vec{\Aa}^{\,1}) \Big(P(k) P(k|\vec{\Aa}^{\,1})\phantom{\Bigg|_j} + \underbrace{P(c)\sum_j^{\texttt{socios}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,1})}_{P(c|\vec{\Aa}^{\,1})} \Big) 
+m_{P(I^{2}|I^{1}) \rightarrow I^{2} }(k) = P(\vec{\Aa}^{\,1}) \Big(P(k) P(k|\vec{\Aa}^{\,1})\phantom{\Bigg|_j} + \underbrace{P(c)\sum_j^{\texttt{\en{partners}\es{socios}}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,1})}_{P(c|\vec{\Aa}^{\,1})} \Big) 
 \end{split}
 \end{equation}
 %
@@ -1915,7 +2051,7 @@ Por definición, el siguiente mensaje
 \begin{equation}
 \begin{split}
 m_{P(I^{3}|I^{2}) \rightarrow I^{3} }(k) &= \sum_{i^2} P(k|i^2)  P(\vec{\Aa}^{\,2}) P(i^2|\vec{\Aa}^{\,2}) m_{P(I^{2}|I^{1}) \rightarrow I^{2} }(i^2) \\
-& =  P(\vec{\Aa}^{\,2}) \Big( P(k|\vec{\Aa}^{\,2}) \underbrace{m_{P(I^{2}|I^{1}) \rightarrow I^{2} }(k)}_{P(k)P(k|\vec{\Aa}^{\,1})P(\vec{\Aa}^{\,1})} + \sum_j^{\texttt{socios}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,2}) \underbrace{m_{P(I^{2}|I^{1}) \rightarrow I^{2} }(j)}_{P(c|\vec{\Aa}^{\,1})P(\vec{\Aa}^{\,1})}  \Big) \\
+& =  P(\vec{\Aa}^{\,2}) \Big( P(k|\vec{\Aa}^{\,2}) \underbrace{m_{P(I^{2}|I^{1}) \rightarrow I^{2} }(k)}_{P(k)P(k|\vec{\Aa}^{\,1})P(\vec{\Aa}^{\,1})} + \sum_j^{\texttt{\en{partners}\es{socios}}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,2}) \underbrace{m_{P(I^{2}|I^{1}) \rightarrow I^{2} }(j)}_{P(c|\vec{\Aa}^{\,1})P(\vec{\Aa}^{\,1})}  \Big) \\
 \end{split}
 \end{equation}
 %
@@ -1924,7 +2060,7 @@ donde todos los mensajes que reciben los individuos cooperadores $j$, $m_{P(I^{2
 \begin{equation}
 \begin{split}
 m_{P(I^{3}|I^{2}) \rightarrow I^{3} }(k)
-& = \Big(\prod_{t=1}^2 P(\vec{\Aa}^{\,t}) \Big) \Big( P(k|\vec{\Aa}^{\,2}) P(k|\vec{\Aa}^{\,1})P(k) + P(c|\vec{\Aa}^{\,1}) \sum_j^{\texttt{socios}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,2})   \Big) \\
+& = \Big(\prod_{t=1}^2 P(\vec{\Aa}^{\,t}) \Big) \Big( P(k|\vec{\Aa}^{\,2}) P(k|\vec{\Aa}^{\,1})P(k) + P(c|\vec{\Aa}^{\,1}) \sum_j^{\texttt{\en{partners}\es{socios}}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,2})   \Big) \\
 & = \Big(\prod_{t=1}^2 P(\vec{\Aa}^{\,t}) \Big) \Big( \underbrace{P(k|\vec{\Aa}^{\,2}) P(k|\vec{\Aa}^{\,1}) P(k)+ P(c|\vec{\Aa}^{\,1},\vec{\Aa}^{\,2})}_{P(k|\vec{\Aa}^{\,1},\vec{\Aa}^{\,2})}   \Big) \\
 \end{split}
 \end{equation}
@@ -1954,7 +2090,7 @@ la suma del posterior de un individuo desertor en una región enteramente desert
 \begin{equation}
 \begin{split}
 m_{P(I^{T+1}|I^{T}) \rightarrow I^{T+1} }(k) &= \sum_{i^T} P(k|i^T)  P(\vec{\Aa}^{\,T}) P(i^T|\vec{\Aa}^{\,T}) m_{P(I^{T}|I^{T-1}) \rightarrow I^{T} }(i^T) \\
-& =  P(\vec{\Aa}^{\,T}) \Big( P(k|\vec{\Aa}^{\T}) m_{P(I^{T}|I^{T-1}) \rightarrow I^{T} }(k) + \sum_j^{\texttt{socios}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,T}) m_{P(I^{T}|I^{T-1}) \rightarrow I^{T} }(j)  \Big) \\
+& =  P(\vec{\Aa}^{\,T}) \Big( P(k|\vec{\Aa}^{\T}) m_{P(I^{T}|I^{T-1}) \rightarrow I^{T} }(k) + \sum_j^{\texttt{\en{partners}\es{socios}}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,T}) m_{P(I^{T}|I^{T-1}) \rightarrow I^{T} }(j)  \Big) \\
 &\overset{\text{HI}}{=} \Big(\prod_{t=1}^T P(\vec{\Aa}^{\,t}) \Big) \Big( P(k|\vec{\Aa}^{\,T}) P(k|\vec{\Aa}^{\,1},\dots, \vec{\Aa}^{\,T-1}) + P(c|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T})\Big) \\
  &=\Big(\prod_{t=1}^T P(\vec{\Aa}^{\,t}) \Big) \Bigg( \Big(P(k)\prod_{t=1}^{T} P(k|\vec{\Aa}^{\,t}) \Big) + \Big(\sum_{t=1}^{T} P(c|\wedge_{q=1}^t\vec{\Aa}^{\,q})  \prod_{q=t+1}^T P(k|\vec{\Aa}^{\,q}) \Big) \Bigg)
 \end{split}
