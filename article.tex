@@ -639,7 +639,7 @@ P(\Aa,i,c^1,c^2)= P(\Aa|i,c^1,c^2)P(i|c^1,c^2)P(c^1|c^2)P(c^2)
 \en{This perhaps explains why the authors avoided specifying conditional probability distributions, and instead provided a pictorial example of the joint probability distribution. }%
 \es{Esto quizás explique porque los autores evitaron especificar las distribuciones de probabilidad condicional, y ofrecieron en cambio un ejemplo pictórico de la distribución de probabilidad conjunta. }%
 
-% Parrafo
+\subsection{Ejemplo de modelo causal}
 
 \en{To define conditional probability distributions it is convenient to express the models in causal terms. }%
 \es{Para definir las distribuciones de probabilidad condicional es conveniente expresar los modelos en términos causales. }%
@@ -658,7 +658,7 @@ P(\Aa) = p^{\Aa} (1-p)^{(1-\Aa)}
 \es{Si bien tenemos la libertad de proponer cualquier conjunto de estrategias, vamos a considerar sólo a aquellas que reparten un recurso limitado $R$ entre los estados binarios del ambiente, }%
 %
 \begin{equation}\label{eq:familia_de_aptitudes}
-f(\Ee, \Aa) = \begin{cases}
+f_R(\Ee, \Aa) = \begin{cases}
  \Ee & \Aa = 1 \\
  R-\Ee & \Aa = 0
   \end{cases}
@@ -670,6 +670,12 @@ f(\Ee, \Aa) = \begin{cases}
 \en{The strategy proposed by Lewontin-Cohen is $\Ee=1.7$ with $R=2.2$, and the strategy proposed by Peters is $\Ee=1.5$ with $R=2.1$. }%
 \es{La estrategia propuesta por Lewontin-Cohen es $\Ee=1.7$ con $R=2.2$, y la de Peters es $\Ee = 1.5$ con $R=2.1$. }%
 %
+\en{To express the strategies with a single parameter, we will work only with the family of fitnesses in which $R=1$, $f_1(\Ee, \Aa)$. }%
+\es{Para expresar las estrategias con un sólo parámetro, vamos a trabajar solamente con la familia de aptitudes en la que $R=1$, $f_1(\Ee, \Aa)$. }%
+%
+\en{Now, all strategies lie between 0 and 1: the strategy $\Ee = 1.5/2.1 \approx 0.71$ is the one proposed by Ole Peters, and the strategy $\Ee 1.7/2.2 \approx 0.77$ is the one proposed by Lewontin and Cohen. }%
+\es{Ahora, todas las estrategias están entre 0 y 1: la estrategia $\Ee = 1.5/2.1 \approx 0.71$ es la propuesta por Ole Peters, y la estrategia $\Ee 1.7/2.2 \approx 0.77$ es la propuesta por Lewontin y Cohen. }%
+%
 \en{To define the probability of the strategies given the environment, $P(\Ee|\Aa)$, we need the set of strategies to integrate 1. }%
 \es{Para definir la probabilidad de las estrategias dado el ambiente, $P(\Ee|\Aa)$, necesitamos que el conjunto de estrategias integren 1. }%
 %
@@ -677,11 +683,12 @@ f(\Ee, \Aa) = \begin{cases}
 \es{Digamos, por ahora, que la probabilidad de la estrategia es proporcional a su aptitud, }%
 %
 \begin{equation}\label{eq:probabilidad_propro_aptitud}
-P(\Ee | \Aa) \propto  f(\Ee,\Aa)
+P(\Ee | \Aa) \propto  \Ee^{\Aa}(1-\Ee)^{1-\Aa} = f_1(\Ee,\Aa)
 \end{equation}
 %
-\en{This allows us to partially define a graphical model with a causal interpretation, in which the environment is an independent random variable and strategy selection depends on the observed states of the environment. }%
-\es{Esto nos permite definir parcialmente un modelo gráfico con una interpretación causal, en el que el ambiente es una variable aleatoria independiete y las selección de estrategias depende de los estados observados del ambiente. }%
+
+\en{This allows us to partially define a graphical model with a causal interpretation, }%
+\es{Esto nos permite definir parcialmente un modelo gráfico con una interpretación causal, }%
 %
 \begin{figure}[H]
 \centering
@@ -692,7 +699,7 @@ P(\Ee | \Aa) \propto  f(\Ee,\Aa)
     
     
     \node[latent, below=of e] (r) {$\E$};
-    \node[const, right=of r] (rn) {$P(\Ee|\Aa) \propto f(\Ee,\Aa)$};
+    \node[const, right=of r] (rn) {$P(\Ee|\Aa) \propto f_1(\Ee,\Aa)$};
     \node[const, left=of r] (nr) {\en{Strategy}\es{Estrategia}: \ \ \ };
     
     \edge {e} {r};
@@ -701,6 +708,9 @@ P(\Ee | \Aa) \propto  f(\Ee,\Aa)
 \caption{Modelo causal Lewontin-Peters}
 \label{fig:model-lewontin-peters}
 \end{figure}
+%
+\en{in which the environment is an independent random variable and strategy depends on the observed states of the environment. }%
+\es{en el que el ambiente es una variable aleatoria independiete y las estrategias dependen de los estados observados del ambiente. }%
 %
 \en{How can we calculate the probability of $P(\Ee|\Aa)$? }%
 \es{¿Cómo podemos calcular la probabilidad de $P(\Ee|\Aa)$? }%
@@ -731,7 +741,7 @@ El siguiente factor graph representa el modelo de la figura \ref{fig:model-lewon
     \node[latent, right=of fa] (a) {$\A$};
     
     \node[factor, right=of a] (fe) {};
-    \node[const, above=of fe] (nfe) {$P(\Ee|\Aa) \propto f(\Ee,\Aa)$};
+    \node[const, above=of fe] (nfe) {$P(\Ee|\Aa) \propto f_1(\Ee,\Aa)$};
     
     \node[latent, right=of fe, xshift=0.3cm] (e) {$\E$};
     
@@ -769,14 +779,14 @@ m_{V \rightarrow F}(v) = \prod_{H}^{n(V) \setminus \{F\} } m_{H \rightarrow V}(v
 \es{Los mensajes que env\'ian los nodos funciones codifican una parte de la regla de la suma. }%
 %
 \begin{equation*}\label{eq:m_f_v}  \tag{\text{\en{sum step}\es{paso de la suma}}}
-m_{F \rightarrow V}(v) = \sum_{\bm{u}}^{\bm{U}} \Big( F(\bm{u},v) \prod_{U}^{\bm{U}} m_{U \rightarrow F}(u) \Big)
+m_{F \rightarrow V}(v) = \sum_{\bm{u}} \Big( F(\bm{u},v) \prod_{U}^{\bm{U}} m_{U \rightarrow F}(u) \Big)
 \end{equation*}
 %
-\en{where $\bm{U} = n(F)\setminus \{V\}$ is the set of all neighbors to $F$ except $V$, and $F(\bm{u},v)$ represents the function $F$, evaluated in all its arguments. }%
-\es{donde $\bm{U} = n(F)\setminus \{V\}$ es el conjunto de todos los vecinos de $F$ salvo $V$, y $F(\bm{u},V)$ representa la funci\'on $F$, evaluada en todos sus argumentos. }%
+\en{where $\bm{U} = n(F)\setminus \{V\}$ is the set of all neighbors to $F$ except $V$, $\bm{i}$ a set of specific values with $u \in \bm{u}$, and $F(\bm{u},v)$ represents the function $F$, evaluated in all its arguments. }%
+\es{donde $\bm{U} = n(F)\setminus \{V\}$ es el conjunto de todos los vecinos de $F$ salvo $V$, $\bm{u}$ un conjunto de valores específicos con $u \in \bm{u}$, y $F(\bm{u},V)$ representa la funci\'on $F$, evaluada en todos sus argumentos. }%
 %
-\en{The messages sent by the function-type node $F$ to a neighboring variable-type node $V$ is simply the integration (or sum) over $\bm{U}$ of the product of itself and all the messages that $F$ receives from the rest of its neighbors $\bm{U}$ except $V$. }%
-\es{En pocas palabras, los mensajes que envía una funci\'on $F$ a una variable vecina $V$ es simplemente la integraci\'on (o suma) sobre $\bm{U}$ del producto de sí mismo con todos los mensajes que $F$ recibe del resto de sus vecinos $\bm{U}$ salvo $V$. }%
+\en{The messages sent by the function-type node $F$ to a neighboring variable-type node $V$ is simply the sum (or integration) over $\bm{U}$ of the product of itself and all the messages that $F$ receives from the rest of its neighbors $\bm{U}$ except $V$. }%
+\es{En pocas palabras, los mensajes que envía una funci\'on $F$ a una variable vecina $V$ es simplemente la suma (o integraci\'on) sobre $\bm{U}$ del producto de sí mismo con todos los mensajes que $F$ recibe del resto de sus vecinos $\bm{U}$ salvo $V$. }%
 %
 \en{Finally, the marginal probability distribution of a variable $V$ is simply the product of the messages that $V$ receives from all its neighbors. }%
 \es{Finalmente, la distribuci\'on de probabilidad marginal de una variable $V$ es simplemente la multiplicaci\'on de los mensajes que $V$ recibe de todos sus vecinos. }%
@@ -785,76 +795,101 @@ m_{F \rightarrow V}(v) = \sum_{\bm{u}}^{\bm{U}} \Big( F(\bm{u},v) \prod_{U}^{\bm
 P(V=v) = \prod_{H \in n(V)} m_{H \rightarrow V}(v)
 \end{equation*}
 %
-Cuando alguno de las variables es observable, se la elimina de la suma y se obtiene la marginal de dos variables, $P(v,u)$.
+\en{When we observe some variable $u$, we exclude it from the summations, which allows us to compute the marginal probability over two variables, $P(v,u)$. }%
+\es{Cuando observamos alguna variable $u$, la excluímos de las sumatorias, lo que nos permite computar la probabilidad marginal sobre dos variables, $P(v,u)$. }%
 %
 \en{This algorithm encodes the minimum number of steps required to calculate any marginal probability distribution. }%
 \es{Este algoritmo codifica la m\'inima cantidad de pasos que se requieren para calcular cualquier distribuci\'on de probabilidad marginal. }%
 
-% Parrafo
+\subsection{Computo de marginales}
 
-Nosotros queremos calcular $P(\Ee|\Aa)$ y para eso necesitamos calcular marginales $P(\Ee,\Aa)/P(\Aa)$. 
+\en{As we will later use the sum-product algorithm to solve a more complex causal model, we show its use in this simple causal model (figure~\ref{fig:model-lewontin-peters}) to gain some intuition. }%
+\es{Como más adelante utilizaremos el sum-product algorithm para resolver un modelo causal más complejo, mostrtamos su uso en este modelo causal simple (figure~\ref{fig:model-lewontin-peters}) para adquirir un poco de intuición.  }%
 %
-Como en nuestro modelo una de las distribuciones de probabilidad está definida de forma proporcional, las marginales $P(\Ee,\Aa)$ y $P(\Aa)$ también serán proporcionales.
+\en{Using this procedure we will normalize the probability of the strategies given the environment $P(\Ee|\Aa)$, and obtain the posterior of the strategies given a vector of observations $P(\Ee,\vec{\Aa}\,)$. }%
+\es{Mediante este procedimiento normalizaremos la probabilidad de las estrategias dado el ambiente $P(\Ee|\Aa)$, y obtendremos el posterior de las estrategias dado un vector de observaciones $P(\Ee,\vec{\Aa}\,)$. }%
 %
-Para calcular la marginal $P(\Ee,\Aa)$, consideraremos que $\Aa^*$ es observable.
+\en{These conclusions will be of interest in the results section. }%
+\es{Estas conclusiones serán de interés en la sección resultados. }%
+
+% Parrafo 
+
+% \en{Since we want $P(\Ee|\Aa)$ we need the marginals $P(\Ee,\Aa)/P(\Aa)$. }%
+% \es{Como queremos calcular $P(\Ee|\Aa)$ necesitamos las marginales $P(\Ee,\Aa)/P(\Aa)$. }%
+% %
+% \en{Since one of the probability distributions is defined by a proportional term, its marginals will also be proportional. }%
+% \es{Notar que una de las distribuciones de probabilidad está definida de forma proporcional, sus marginales también serán proporcionales. }%
+% %
+\en{To compute $P(\Ee,\Aa)$, we will consider $\Aa^*$ observable. }%
+\es{Para computar $P(\Ee,\Aa)$, consideraremos $\Aa^*$ observable. }%
 %
-El mensaje del factor del ambiente $P(\Aa)$ a la variable ambiente $\A$ es,
+\en{The message from the environment factor $P(\Aa)$ to the environment variable $A$ is, }%
+\es{El mensaje del factor del ambiente $P(\Aa)$ a la variable ambiente $\A$ es, }%
+%
 \begin{equation}
 m_{P(\A) \rightarrow \A }(\Aa^*) = P(\Aa^*) = m_{\A \rightarrow P(\E|\A)} }(\Aa^*)
 \end{equation}
 %
-Que es el mismo mensaje que envía la variable $\A$ al factor de estrategias $P(\E|\A)$.
+\en{Which is the same message that the variable $\A$ sends to the strategy factor $P(\E|\A)$. }%
+\es{Que es el mismo mensaje que envía la variable $\A$ al factor de estrategias $P(\E|\A)$. }%
 %
-Luego, el mensaje que envía el factor de estategias $P(\E|\A)$ a la variable estrategias es,
-%
-\begin{equation}
-m_{P(\E|\A) \rightarrow \E }(\Ee) \propto P(\Aa^*)f(\Ee,\Aa^*)
-\end{equation}
-%
-Notar que no integramos en los valores del ambiente porque consideramos que la variable $\Aa^*$ es observable y por lo tanto constante.
-%
-Luego, la marginal de un vector de observaciones del ambiente $\vec{\Aa}$ es,
+\en{Then, the message sent by the strategies factor $P(\E|\A)$ to the strategies variable is, }%
+\es{Luego, el mensaje que envía el factor de estrategias $P(\E|\A)$ a la variable estrategias es, }%
 %
 \begin{equation}
-P(\Ee,\vec{\Aa}) \propto \prod_{\Aa}^{\vec{\Aa}} P(\Aa)f(\Ee,\Aa)
+m_{P(\E|\A) \rightarrow \E }(\Ee) \propto P(\Aa^*)f_1(\Ee,\Aa^*)
 \end{equation}
 %
-Integrando sobre las estrategia $\E$ obtenemos la marginal de las observaciones,
+\en{Note that we do not integrate in the values of the environment because we consider that the variable $\Aa^*$ is observable and therefore constant. }%
+\es{Notar que no integramos en los valores del ambiente porque consideramos que la variable $\Aa^*$ es observable y por lo tanto constante. }%
 %
-\begin{align}
-P(\vec{\Aa}) & \propto \sum_{\Ee}^\E \prod_{\Aa}^{\vec{\Aa}} P(\Aa)f(\Ee,\Aa) \\
-& = \Big(\prod_{\Aa}^{\vec{\Aa}} P(\Aa) \Big)  \Big( \sum_{\Ee} \prod_{\Aa}^{\vec{\Aa}}f(\Ee,\Aa) \Big) 
-\end{align}
+\en{Then, the marginal of the strategies and a vector of environmental states $\vec{\Aa}$ is, }%
+\es{Luego, la marginal de las estrategias y un vector de estados del ambiente $\vec{\Aa}$ es, }%
 %
-Luego, la probabilidad de la estrategia dado el ambiente es
+\begin{equation}
+P(\Ee,\vec{\Aa}) \propto \prod_{\Aa}^{\vec{\Aa}} P(\Aa)f_1(\Ee,\Aa)
+\end{equation}
+%
+% Integrando sobre las estrategia $\E$ obtenemos la marginal de las observaciones,
+% %
+% \begin{align}
+% P(\vec{\Aa}) & \propto \sum_{\Ee}^\E \prod_{\Aa}^{\vec{\Aa}} P(\Aa)f(\Ee,\Aa) \\
+% & = \Big(\prod_{\Aa}^{\vec{\Aa}} P(\Aa) \Big)  \Big( \sum_{\Ee} \prod_{\Aa}^{\vec{\Aa}}f(\Ee,\Aa) \Big) 
+% \end{align}
+% %
+\en{Normalizing it we obtain the posterior, }%
+\es{Normalizando obtenemos el posterior, }%
 %
 \begin{equation}\label{eq:replicator_dynamic_posterior}
-P(\Ee|\vec{\Aa}) = \frac{ \prod_{\Aa}^{\vec{\Aa}}f(\Ee,\Aa)}{\sum_{\Ee} \prod_{\Aa}^{\vec{\Aa}}f(\Ee,\Aa)}
+P(\Ee|\vec{\Aa}) = \frac{ \prod_{\Aa}^{\vec{\Aa}}f_1(\Ee,\Aa)}{\int_{\Ee} \prod_{\Aa}^{\vec{\Aa}}f_1(\Ee,\Aa)}
 \end{equation}
 %
-La probabilidad condicional de la estrategia dado el ambiente resultó ser el replicator dynamic!
+\en{which again has the same structure as the replicator dynamic, this time with an integral instead of a sum because the set of strategies is infinite. }%
+\es{que nuevamente tiene la misma estructura del replicator dynamic, esta vez con un integral en vez de una suma debido a que el espacio de estrategias es infinito. }%
 %
-Es decir, el replicator dynamic surgió de considerar el modelo causal en el que el ambiente causa las estrategias y en el que el tamaño de las estrategias depende de la adaptabilidad de esa estrategia al ambiente.
+%Es decir, el replicator dynamic surgió de considerar el modelo causal en el que el ambiente causa las estrategias y en el que el tamaño de las estrategias depende de la adaptabilidad de esa estrategia al ambiente.
 %
-Luego, la probabilidad de la estrategia dado la observación de un ambiente es,
+\en{Then, the posterior belongs to the Beta distribution (note that the denominator of the equation \ref{eq:replicator_dynamic_posterior} is the Beta function or the Euler integral).}
+\es{Luego, el posterior pertenece a la distribución Beta (notar que el denominador de la ecuación \ref{eq:replicator_dynamic_posterior} es la función Beta o la integral de Euler). }%
 %
 \begin{equation}
-P(\Ee|\Aa) = \Ee^\Aa \cdot (1-\Ee)^{(1-\Aa)} = \text{Bernoulli}(\Ee|\Aa)
+P(\Ee|\vec{\Aa}) = \text{Beta}(\texttt{sum}(\vec{\Aa}), \, \texttt{length}(\vec{\Aa}) - \texttt{sum}(\vec{\Aa})) =  \frac{\Ee^{\texttt{sum}(\vec{\Aa})} \cdot (1-\Ee)^{\texttt{length}(\vec{\Aa}) - \texttt{sum}(\vec{\Aa})}}{B(\texttt{sum}(\vec{\Aa}), \, \texttt{length}(\vec{\Aa}) - \texttt{sum}(\vec{\Aa}))} 
+%
 \end{equation}
 %
-con $ 0 \leq \Ee \leq 1$.
+\en{with $B(\cdot,\cdot)$ the Beta function. }%
+\es{con $B(\cdot,\cdot)$ la función Beta. }%
 %
-La estrategia $\Ee \approx 0.71$ es la propuesta por Ole Peters, y la la estraetgia $\Ee \approx 0.77$ es la propuesta por Lewontin y Cohen.
+\en{The result of the posterior will indicate the evolutionary stability of the strategies. }%
+\es{El resultado del posterior nos indicará la estabilidad evolutiva de las estrategias. }%
+
+% Parrafo
+
+\en{Suppose that the environmental states are generated with probabilities $P(\A = 1) = 0.71$ and $P(\A = 0) = 0.29$. }%
+\es{Supongamos que los estados del ambiente se generan con probabilidades $P(\A = 1) = 0.71$ y $P(\A = 0) = 0.29$. }%
 %
-Y el posterior de la estretgia $\Ee$ dado un vector de observaciones del ambiente $\vec{\Aa}$ tiene solución analítica y pertenecerá a la distribución Beta (notar que el denominador de la ecuación \ref{eq:replicator_dynamic_posterior} es la función Beta o la integral de Euler).
-%
-\begin{equation}
-P(\Ee|\vec{\Aa}) = \text{Beta}(\texttt{sum}(\vec{\Aa}), \, \texttt{length}(\vec{\Aa}) - \texttt{sum}(\vec{\Aa}))
-\end{equation}
-%
-Este modelo nos permitirá analizar la estabilidad evolutiva del espacio de estrategias desertoras. 
-Supongamos que la moneda está sesgada de modo que el $0.71$ de las veces sale cara y el $0.29$ sale seca.
-En las siguientes figuras mostramos cómo cambia la proporción de las estrategias a medida que agregamos observaciones al modelo.
+\en{In Figure~\ref{fig:estrategias_individuales} we show how the posterior of the strategies changes as we add observations to the model. }%
+\es{En la figura~\ref{fig:estrategias_individuales} mostramos cómo cambia el posterior de las estrategias a medida que agregamos observaciones al modelo. }%
 %
 \begin{figure}[H]
     \centering
@@ -870,23 +905,23 @@ En las siguientes figuras mostramos cómo cambia la proporción de las estrategi
     \includegraphics[width=\linewidth]{figures/coin3.pdf}
     \caption{$T = 10^5$}
     \end{subfigure}
-    \caption{Densidad (eje y) de las diferentes estrategias desertoras (eje x) a medida que avanza el juego ($T=1, \, T=10, \, T=10^5$).}
+    \caption{
+    \en{Posterior probability of strategies as time progresses ($T=1, \, T=10, \, T=10^5$). }%
+    \es{Probabilidad posterior de las estrategias a medida que avanza el tiempo ($T=1, \, T=10, \, T=10^5$). }%
+    }
     \label{fig:estrategias_individuales}
 \end{figure}
 %
-El proceso evolutivo selecciona las estrategias individuales que reparten los recursos en la misma proporción que se generan los estados del ambiente.
-Cuando el ambientes genera los estados con una probabilidad de $p*=0.71$, entonces la estrategia individual mejor adaptada es la que en cada ronda apuesta $0.71$ de sus recursos al ambiente $a=1$, y $0.29$ de sus recursos al ambiente $a=0$.
+\en{The evolutionary process selects the strategy that allocates resources in the same proportion as the states of the environment are generated. }%
+\es{El proceso evolutivo selecciona la estrategia que reparte los recursos en la misma proporción que se generan los estados del ambiente. }%
+%
+\en{When the environment generates the states with probability $p=0.71$, then the best adapted strategy is $\Ee = 0.71$. }%
+\es{Cuando el ambientes genera los estados con una probabilidad $p=0.71$, entonces la estrategia mejor adaptada es $\Ee = 0.71$. }%
 
 % Parrafo
 
-El ejemplo de Ole Peters supone que la moneda no está sesgada.
-En este contexto, la estrategia utilizada por él para mostrar la ventaja de la cooperación no es la que está mejor adaptada en términos individuales.
-¿Las estrategias individuales que mejor se adaptaron al ambiente tienen la misma tasa de crecimiento temporal que la de los grupos cooperativos?
-¿Que ocurre cuando la probabilidad del ambiente estocástico varía? 
-¿Será que si la probabilidad del ambiente no cambia, no hay ninguna ventaja a favor de la cooperación?
-Responderemos estas y otras preguntas en la siguiente sección.
-%Si ese fuera el caso, un pequeño costo asociado a la coordinación haría generaría una ventaja a favor de las estrategias individuales.
-%Al menos en ambientes estocásticos estables, que mantinen 
+\en{This selection of individual strategies, perhaps intuitive, will be different, and perhaps counter-intuitive, when we incorporate the possibility of cooperation and defection into the model. }
+\es{Esta selección de estrategias individuales, quizás intuitiva, será diferente, y quizás contra-intuitiva, cuando incorporemos al modelo la posibilidad de cooperación y deserción. }
 
 \section{Resultados}
 
