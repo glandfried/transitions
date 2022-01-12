@@ -1484,28 +1484,52 @@ P(k| \vec{\Aa}^{\,1}, \dots,  \vec{\Aa}^{\,T}) = \frac{\omega_k(T)}{\sum_j \omeg
 \en{Let us calculate the payoff matrix arising from the cooperative causal model. }%
 \es{Calculemos la matriz de pagos que surge del modelo causal cooperativo. }%
 %
-\en{Mutual defection produces a posterior that is updated according to the following product, }%
-\es{La mutua deserción produce un posterior que se actualiza en función de la siguiente productoria, }%
+Queremos estimar la tasa de crecimiento temporal de los posteriors,
 %
 \begin{equation}
-\prod_{t=1}^{T} P(k|\vec{\Aa}^{\,t}) & \propto \prod_{t=1}^{T} \Ee_k^{\Aa_k} (1-\Ee_k)^{1-\Aa_k} 
+\frac{P(k|\vec{\Aa}^{\,1}, \dots , \vec{\Aa}^{\,T})}{P(k)} \approx g(k|\vec{\Ee},p,N)^T
 \end{equation}
 %
-\en{The growth rate of a strategy $\Ee= 0.71 \approx 1.5/2.1$ in an environment with $p=0.5$ is $g_{DD} = 0.71^{1/2}\cdot0.29^{1/2} \approx 0.452$. }%
-\es{La tasa de crecimiento de un estrategia $\Ee= 0.71 \approx 1.5/2.1$ en una ambiente con $p=0.5$ es $g_{DD} = 0.71^{1/2}\cdot0.29^{1/2} \approx 0.452$. }%
+donde la aproximación es una igualdad cuando el tiempo tiende a infinito, $\lim_{T \rightarrow \infty}$.
 %
-\en{The posterior of mutual cooperation is also updated with a product, but the random variable at each step is the average of the results of the partners, }%
-\es{El posterior de la mutua cooperación también se actualiza en función de una productoria, pero la variable aleatoria en cada paso es el promedio de los resultados los socios, }%
+La tasa de crecimiento depende de los hyperparámtros del modelo, $\vec{\Ee}$, $p$ y $N$.
+%
+En esta sección vamos a considerar unicamente los modelos en el que todos los individuos tienen la misma estrategia $\Ee$.
+%
+Resolveremos este problema por casos, según el comportamiento sea cooperativo, $g_C$, o desertivos, $g_D$, para diferente contextos sociales $g_{[\cdot]}^n(k|\cdot)$, donde $n$ representa la cantidad de cooperadores con lo que interactúa el individuo $k$ (sin contar al individuo $k$).
+% 
+\en{The growth rate of mutual defection is, }%
+\es{La tasa de crecimiento de la deserción mutua es, }%
 %
 \begin{equation}
-\prod_{t=1}^{T} \sum_j^{\texttt{\en{partners}\es{socios}}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,t}) \propto \prod_{t=1}^{T} \underbrace{ \sum_j^{\texttt{\en{partners}\es{socios}}(r)} \frac{1}{N} \Ee_k^{\Aa_k} (1-\Ee_k)^{1-\Aa_k} }_{f_{C}(\Ee,\vec{\Aa}\,,N)} 
+\begin{split}
+\lim_{T \rightarrow \infty} g_D^0(k|\Ee,p,N)^T &= \prod_{t=1}^T P(k|\vec{\Aa}^{\,T+1}) \propto \prod_{t=1}^T \Ee^{\Aa^t_k} (1-\Ee)^{1-\Aa^t_k} \\
+\lim_{T \rightarrow \infty} g_D^0(k|\Ee,p,N) &\propto \Big( \prod_{t=1}^T \Ee^{\Aa^t_k} (1-\Ee)^{1-\Aa^t_k} \Big) ^{1/T} = \Ee^{p} (1-\Ee) ^{1-p}
+\end{split}
 \end{equation}
 %
-\en{where the proportional is valid because of the normalization constant of the probability distribution $P(i^t|\vec{\Aa}^{\,t})$. }%
-\es{donde el proporcional vale por constante de normalización de la distribución de probabilidad $ P(i^t|\vec{\Aa}^{\,t})$. }%
+que es independiete del tamaño $N$ de las regiones.
 %
-\en{When all members of the group have the same strategy $\Ee$, the possible values of the cooperative random variable is, }%
-\es{Cuando todos los miembros del grupo tienen la misma estrategia $\Ee$, los posibles valores de la variable aleatoria cooperativa es, }%
+\en{The proportional is valid because of the normalization constant of the probability distribution $P(i^t|\vec{\Aa}^{\,t})$. }%
+\es{El proporcional vale por constante de normalización de la distribución de probabilidad $ P(i^t|\vec{\Aa}^{\,t})$. }%
+%
+\en{The growth rate of a strategy $\Ee= 0.71 \approx 1.5/2.1$ in an environment with $p=0.5$ is $ 0.71^{1/2}\cdot0.29^{1/2} \approx 0.452$. }%
+\es{La tasa de crecimiento de un estrategia $\Ee= 0.71 \approx 1.5/2.1$ en una ambiente con $p=0.5$ es $ 0.71^{1/2}\cdot0.29^{1/2} \approx 0.452$. }%
+
+% Parrafo
+
+\en{The growth rate of the cooperators can also be computed using the geometic average, }
+\es{La tasa de crecimiento de los cooperadores también la podemos calcular utilizando la media geomética, }%
+%
+\begin{equation}
+\begin{split}
+\lim_{T \rightarrow \infty} g_C^n(k|\Ee,p,N)^T &= \prod_{t=1}^{T} \sum_j^{\texttt{\en{partners}\es{socios}}(k)} \frac{1}{N} P(j|\vec{\Aa}^{\,t}) \propto \prod_{t=1}^{T}  \sum_j^{\texttt{\en{partners}\es{socios}}(k)} \frac{1}{N} \Ee^{\Aa^t_j} (1-\Ee)^{1-\Aa^t_j} \\
+\lim_{T \rightarrow \infty} g_C^n(k|\Ee,p,N) & \propto \Big( \prod_{t=1}^{T}  \sum_j^{\texttt{\en{partners}\es{socios}}(k)} \frac{1}{N} \Ee^{\Aa^t_j} (1-\Ee)^{1-\Aa^t_j} \Big)^{1/T} = \prod_{x=0}^{n+1} \Big(\frac{x}{N} \Ee + \frac{n+1-x}{N}(1-\Ee)\Big)^{\text{B}(x|n,p)}
+\end{split}
+\end{equation}
+%
+donde $x$ representa la cantidad de éxitos dentro del grupo cooperador, y $\text{B}(x|n,p)$ es la probabilidad binomial de obtener $x$ éxitos en una muestra de tamaño $n$.
+%
 % %
 % \begin{equation}
 % f_C(\Ee,\vec{\Aa}\,) =
@@ -1518,76 +1542,67 @@ P(k| \vec{\Aa}^{\,1}, \dots,  \vec{\Aa}^{\,T}) = \frac{\omega_k(T)}{\sum_j \omeg
 % \end{equation}
 % %
 % Y en general, 
-\begin{equation}\label{eq:fitness_cooperador}
-f_{C}(\Ee, \vec{\Aa}\,,N) = \frac{\texttt{sum}(\vec{\Aa}\,)}{N} \Ee + \frac{N-\texttt{sum}(\vec{\Aa}\,)}{N}(1-\Ee)
-\end{equation}
+% \begin{equation}\label{eq:fitness_cooperador}
+% f_{C}(\Ee, \vec{\Aa}\,,N) = \frac{\texttt{sum}(\vec{\Aa}\,)}{N} \Ee + \frac{N-\texttt{sum}(\vec{\Aa}\,)}{N}(1-\Ee)
+% \end{equation}
+% %
+% \en{where $f_C(\Ee, \vec{\Aa}\,,N) \sim \text{Binomial}(\texttt{sum}(\vec{\Aa}\,)|N,p)$, with $p$ the probability of the environment. }%
+% \es{donde $f_C(\Ee, \vec{\Aa}\,,N) \sim \text{Binomial}(\texttt{sum}(\vec{\Aa}\,)|N,p)$, con $p$ la probabilidad del ambiente. }%
+% %
+% \en{Then, the growth rate of the mutual cooperation can be computed using the geometic average~\ref{eq:geometric_mean}, }
+% \es{Luego, la tasa de crecimiento de la mutua cooperación la podemos calcular utilizando la media geomética~\ref{eq:geometric_mean}, }%
+% %
+% \begin{equation}
+% g_{C}(\Ee,N) = \prod_{x=0}^N \Big(\frac{x}{N} \Ee + \frac{N-x}{N}(1-\Ee)\Big)^{\text{Binomial}(x|N,p)}
+% \end{equation}
 %
-\en{where $f_C(\Ee, \vec{\Aa}\,,N) \sim \text{Binomial}(\texttt{sum}(\vec{\Aa}\,)|N,p)$, with $p$ the probability of the environment. }%
-\es{donde $f_C(\Ee, \vec{\Aa}\,,N) \sim \text{Binomial}(\texttt{sum}(\vec{\Aa}\,)|N,p)$, con $p$ la probabilidad del ambiente. }%
+\en{Then, the cooperative growth in a group of size 2 are $g_C^2(k|\Ee=0.71,p=0.5,N=2) \propto 0.71^{1/4}\cdot 0.5^{1/2} \cdot 0.29^{1/4} \approx 0.475$ and $g_C^1(k|\Ee=0.71,p=0.5,N=2) \propto (\frac{0.71}{2})^{1/4}\cdot (\frac{0.29}{2})^{1/2}  \approx 0.226$ }%
+\es{Luego, la tasa de crecimiento cooperativa en grupos de tamaño $2$ son $g_C^2(k|\Ee=0.71,p=0.5,N=2) \propto 0.71^{1/4}\cdot 0.5^{1/2} \cdot 0.29^{1/4} \approx 0.475$ y $g_C^1(k|\Ee=0.71,p=0.5,N=2) \propto (\frac{0.71}{2})^{1/4}\cdot (\frac{0.29}{2})^{1/2}  \approx 0.226$ . }%
 %
-\en{Then, the growth rate of the mutual cooperation can be computed using the geometic average~\ref{eq:geometric_mean}, }
-\es{Luego, la tasa de crecimiento de la mutua cooperación la podemos calcular utilizando la media geomética~\ref{eq:geometric_mean}, }%
-%
-\begin{equation}
-g_{C}(\Ee,N) = \prod_{x=0}^N \Big(\frac{x}{N} \Ee + \frac{N-x}{N}(1-\Ee)\Big)^{\text{Binomial}(x|N,p)}
-\end{equation}
-%
-\en{The cooperative growth rate of a strategy $\Ee=0.71$ in a group of size 2 in an environment with probability $p=0.5$, is $0.71^{1/4}\cdot 0.5^{1/2} \cdot 0.29^{1/4} \approx 0.475$. }%
-\es{La tasa de crecimiento cooperativa de una estrategia $\Ee=0.71$ en un grupo de tamaño 2 en un ambiente con probabilidad $p=0.5$, $0.71^{1/4}\cdot 0.5^{1/2} \cdot 0.29^{1/4} \approx 0.475$. }%
-%
-\en{When the population is very large, $N\rightarrow \infty$, in each round there will invariably be a $p$ proproportion that succeeded, so the growth rate is reduced to the arithmetic mean, }%
-\es{Cuando la población es muy grande, $N\rightarrow \infty$, en cada ronda habrá invariantemente una proproción $p$ que obtuvo éxito, por lo que la tasa de crecimiento se reduce a la media aritmética, }%
-%
-\begin{equation}
-\lim_{N\rightarrow \infty} g_{C}(\Ee,N) = p \Ee + (1-p)(1-\Ee)
-\end{equation}
-%
-\en{The cooperative growth rate of a strategy $\Ee=0.71$ in a group of infinite size in an environment with probability $p=0.5$ is $0.5\cdot 0.71 + 0.5 \cdot 0.29 = 0.5$. }%
-\es{La tasa de crecimiento cooperativa de una estrategia $\Ee=0.71$ en un grupo de tamaño infinito en un ambiente con probabilidad $p=0.5$, es $0.5\cdot 0.71 + 0.5 \cdot 0.29 = 0.5$. }%
-%
-\en{The growth rate of cooperative individuals in mixed populations is easily extended, }%
-\es{La tasa de crecimiento de los individuos cooperadores en poblaciones mixtas se extiende facilmente, }%
+\en{When the group is very large, $N\rightarrow \infty$, }%
+\es{Cuando el grupo es muy grande, $N\rightarrow \infty$, }%
 %
 \begin{equation}
-g_{CD}(\Ee,n,N) = \prod_{x=0}^n \Big(\frac{x}{N} \Ee + \frac{N-x}{N}(1-\Ee)\Big)^{\text{Binomial}(x|n,p)}
+\lim_{N \rightarrow \infty} g_C^n(k|\Ee,p,N) \propto \Big( p \Ee + (1-p)(1-\Ee) \Big)  \frac{n}{N}
 \end{equation}
 %
-\en{The cooperative growth rate of a strategy $\Ee=0.71$ in a mixed group of size 2 in an environment with probability $p=0.5$ is, $g_{CD}(0.71,1,2)=(\frac{0.71}{2})^{1/4}\cdot (\frac{0.29}{2})^{1/2}  \approx 0.226$. }%
-\es{La tasa de crecimiento cooperativa de una estrategia $\Ee=0.71$ en un grupo mixto de tamaño 2 en un ambiente con probabilidad $p=0.5$ es $g_{CD}(0.71,1,2)=(\frac{0.71}{2})^{1/4}\cdot (\frac{0.29}{2})^{1/2}  \approx 0.226$. }%
-%
-\en{The posterior of defector individuals in mixed populations is updated as a function of, }%
-\es{El posterior de los individuos desertores en poblaciones mixtas se actualiza en función de, }%
+\en{the growth rate is just the arithmetic mean, weighed by the proportion of cooperators. }%
+\es{la tasa de crecimiento es la media aritmética pesada por la proporción de cooperadores. }%
+% %
+% \en{The cooperative growth rate of a strategy $\Ee=0.71$ in a group of infinite size in an environment with probability $p=0.5$ is $0.5\cdot 0.71 + 0.5 \cdot 0.29 = 0.5$. }%
+% \es{La tasa de crecimiento cooperativa de una estrategia $\Ee=0.71$ en un grupo de tamaño infinito en un ambiente con probabilidad $p=0.5$, es $0.5\cdot 0.71 + 0.5 \cdot 0.29 = 0.5$. }%
+
+% Parrafo
+
+\en{The growth rate of the defectos in goups with at least one cooperator is, }
+\es{La tasa de crecimiento de desertores en grupos con al menos un cooperador es, }%
 %
 \begin{equation}
 \begin{split}
-& \Big(\prod_{t=1}^{T} P(k|\vec{\Aa}^{\,t}) \Big) + \Big(\sum_{t=1}^{T} \prod_{q=1}^{t} \sum_j^{\texttt{\en{partners}\es{socios}}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,q})  \prod_{q=t+1}^T P(k|\vec{\Aa}^{\,q}) \Big) \\
+\lim_{T \rightarrow \infty} g_D^n(k|\Ee,p,N)^T &= \Big(\prod_{t=1}^{T} P(k|\vec{\Aa}^{\,t}) \Big) + \Big(\sum_{t=1}^{T} \prod_{q=1}^{t} \sum_j^{\texttt{\en{partners}\es{socios}}(k)} \frac{1}{N} P(j|\vec{\Aa}^{\,q})  \prod_{q=t+1}^T P(k|\vec{\Aa}^{\,q}) \Big) \\
+& \approx  g_D^0(k|\Ee,p,N)^T + \sum^{T}_{t=1}  g_C^{n-1}(k|\Ee,p,N)^t g_D^0(k|\Ee,p,N)^{T-t} \\
+& \propto (\Ee^{p} (1-\Ee) ^{1-p})^T + \sum^{T}_{t=1} \Big(\prod_{x=0}^n(\frac{x}{N} \Ee + \frac{n-x}{N}(1-\Ee))^{\text{B}(x|n,p)}\Big)^t (\Ee^{p} (1-\Ee) ^{1-p})^{T-t}
 \end{split}
 \end{equation}
 %
-\en{the sum of individual growth plus a moving average of the growth of cooperators weighted by individual growth. }%
-\es{la suma del crecimiento individual más una media movil del crecimiento de los cooperadores pesado por crecimienti individual. }%
+\en{the sum of individual growth plus a moving average of the growth of cooperators weighted by individual growth,  which we approximate using the growth rates $g_D^0$ and $g_C^n$. }%
+\es{la suma del crecimiento individual más una media movil del crecimiento de los cooperadores pesado por crecimienti individual, que aproximamos usando las tasas de crecimiento $g_D^0$ y $g_C^n$. }%
+% %
+% \en{Because we did not find a simpler analytical solution, we performed the growth rate estimation as the difference between time steps, }%
+% \es{Debido a que no encontramos una solución analítica más simple, realizamos la estimación de la tasa de crecimiento como la diferencia entre pasos temporales, }%
+% %
+% \begin{equation}
+% g_{D}(\Ee,n,N) = 
+% \end{equation}
 %
-\en{Each of the elements updating the posterior of defecting individuals in mixed regions can be estimated using the growth rates of defecting individuals in entirely defecting regions $g_{D}$ and cooperating individuals in mixed regions $g_{CD}(\Ee,n,N)$. }%
-\es{Cada uno de los elementos que actualizan el posterior de los individuos desertores en regiones mixtas se pueden estimar utilizar las tasas de crecimiento de los desertores en regiones enteramente desertoras $g_{D}$ e individuos cooperadores en regiones mixtas $g_{CD}(\Ee,n,N)$. }%
+\en{This growth rate is not constant, but quickly stabilizes at the higher growth rate, $g_D^n(k|\Ee,p,N)$$\approx$$\texttt{max}($$g_D^0(k|\Ee,p,N)$$, \,$$g_C^n(k|\Ee,p,N)$. }%
+\es{Esta tasa de crecimiento no es constante, pero se estabiliza rápidamente de pasos temporales en la tasa de crecimiento que sea mayor, $g_D^n(k|\Ee,p,N)$$\approx$$\texttt{max}($$g_D^0(k|\Ee,p,N)$$, \,$$g_C^n(k|\Ee,p,N)$. }%
 %
-\en{Because we did not find a simpler analytical solution, we performed the growth rate estimation as the difference between time steps, }%
-\es{Debido a que no encontramos una solución analítica más simple, realizamos la estimación de la tasa de crecimiento como la diferencia entre pasos temporales, }%
+\en{In figure \ref{fig:multilevel-selection-7} we show the proprotional of the growth rate as a function of the proportion of total defectors in a group of size $1000$. }%
+\es{En la figura \ref{fig:multilevel-selection-7} mostramos el proporcional de la tasa de crecimiento en función de la proproción de desertores totales en una grupo de tamaño $1000$. }%
 %
-\begin{equation}
-g_{D}(\Ee,n,N) = \frac{ g_{D}(\Ee)^T + \sum^{T}_{t=1} g_{C}(\Ee,n,N)^t \prod_{q=t+1}^{T} g_{D}(\Ee)}{ g_{D}(\Ee)^{T-1} + \sum^{T-1}_{t=1} g_{C}(\Ee,n,N)^t  \prod_{q=t+1}^{T-1} g_{D}(\Ee)}
-\end{equation}
-%
-\en{This growth rate stabilizes after a dozen time steps at the larger growth rate, $g_{D}(\Ee,n,N) \approx \texttt{max}(g_{D}(\Ee), g_{C}(\Ee,n,N))$. }%
-\es{Esta tasa de crecimiento se estabiliza luego de una decena de pasos temporales en la tasa de crecimiento que sea mayor, $g_{D}(\Ee,n,N) \approx \texttt{max}(g_{D}(\Ee), g_{C}(\Ee,n,N))$. }%
-%
-\en{In figure \ref{fig:multilevel-selection-7} we show the growth rate of defectors as a function of the proportion of total defectors in a group of size $1000$. }%
-\es{En la figura \ref{fig:multilevel-selection-7} mostramos la tasa de crecimiento de los desertores en función de la proproción de desertores totales en una grupo de tamaño $1000$. }%
-%
-\en{The growth rate of defecting individuals in mixed regions, $g_{D}(\Ee,n,N)$, remains the same as the growth rate of cooperating individuals, $g_{C}(\Ee,n,N)$, until the proportion of defectors reduces the growth rate of cooperators below the growth rate of entirely defecting regions, $g_{D}(\Ee)$. }%
-\es{La tasa de crecimiento de los individuos desertores en regiones mixtas, $g_{D}(\Ee,n,N)$, se mantiene igual que la tasa de crecimiento de los individuos cooperdora, $g_{C}(\Ee,n,N)$, hasta que la proporcipon de desertores reduce la tasa crecimiento de los cooperadores por debajo de la tasa de crecimiento de los regiones enteramente desertoras, $g_{D}(\Ee)$. }%
-%
-\en{In Figure~\ref{fig:multilevel-selection-5} we see that the estimated growth rate, rescaled by the $2.1$ factor, overlaps over the resource trajectories presented in Figure~\ref{fig:ergodicity_desertion}. }
-\es{En la figura~\ref{fig:multilevel-selection-5} vemos que la tasa de crecimiento estimada, reescladas por el factor $2.1$, se superpone sobre las trayectorias de los recursos presentado en la figura \ref{fig:ergodicity_desertion}. }%
+\en{In Figure~\ref{fig:multilevel-selection-5} we rescale the proportional growth rate by a factor $2.1$, and we see that it overlaps over the resource trajectories presented in Figure~\ref{fig:ergodicity_desertion}. }
+\es{En la figura~\ref{fig:multilevel-selection-5} reesclamos la tasa de crecimiento proporcional por un factor $2.1$, y vemos que se solapa sobre las trayectorias de los recursos presentado en la figura \ref{fig:ergodicity_desertion}. }%
 %
 \begin{figure}[H]
     \centering
@@ -1602,16 +1617,17 @@ g_{D}(\Ee,n,N) = \frac{ g_{D}(\Ee)^T + \sum^{T}_{t=1} g_{C}(\Ee,n,N)^t \prod_{q=
     \label{fig:multilevel-selection-5}
     \end{subfigure}
     \caption{
-    \en{Figure \ref{fig:multilevel-selection-7}: estimation of growth rate in mixed groups of size 100. }%
-    \es{Figura \ref{fig:multilevel-selection-7}: estimación de la tasa de crecimiento en grupos mixtos de tamaño 100. }%
+    \en{Figure \ref{fig:multilevel-selection-7}: estimation of proportional growth rate in mixed groups of size 100. }%
+    \es{Figura \ref{fig:multilevel-selection-7}: estimación de la tasa de crecimiento proporcional en grupos mixtos de tamaño 100. }%
     %
-    \en{Figure \ref{fig:multilevel-selection-5}: trajectory of the resources of a defector (blue) and cooperator (green) in a group of size 100 with a single defector (see figure~\ref{fig:ergodicity_desertion}), the black curves are the estimates of the growth rates, and the dotted black curve are the resources of cooperators in regions without defectors. }%
+    \en{Figure \ref{fig:multilevel-selection-5}: trajectory of the resources of a defector (blue) and cooperator (green) in a group of size 100 with a single defector (see figure~\ref{fig:ergodicity_desertion}), the black curves are the estimates growth rates, and the dotted black curve are the resources of cooperators in regions without defectors. }%
     \es{Figura \ref{fig:multilevel-selection-5}: trayectoria de los recursos de un desertor (azul) y cooperador (verde) en un grupo de tamaño 100 con un único desertor (ver figura~\ref{fig:ergodicity_desertion}), las curvas negras son las estimaciones de las tasas de crecimiento, y la curva negra punteadas son los recursos de mutua cooperación. }%
     }
+    \label{fig:growth_rate_defector_mixed}
 \end{figure}
-%
-\en{In Figure \ref{fig:multilevel-selection-5} we see that from the growth rates of cooperators $g_C(\Ee=1.5/2.1,n=99,N=100)$ and defectors $g_D(\Ee=1.5/2.1)$, we can correctly estimate the resource trajectory of a defector individual in a mixed population. }%
-\es{En la figura \ref{fig:multilevel-selection-5} vemos que a partir de las tasas de crecimiento de los individuos cooperdores $g_C(\Ee=1.5/2.1,n=99,N=100)$ y desertores $g_D(\Ee=1.5/2.1)$, podemos estimar correctamente la trayectoria de los recursos de un individuo desertor en una población mixta. }%
+% 
+% \en{In Figure \ref{fig:multilevel-selection-5} we see that from the growth rates of cooperators $g_C(\Ee=1.5/2.1,n=99,N=100)$ and defectors $g_D(\Ee=1.5/2.1)$, we can correctly estimate the resource trajectory of a defector individual in a mixed population. }%
+% \es{En la figura \ref{fig:multilevel-selection-5} vemos que a partir de las tasas de crecimiento de los individuos cooperdores $g_C(\Ee=1.5/2.1,n=99,N=100)$ y desertores $g_D(\Ee=1.5/2.1)$, podemos estimar correctamente la trayectoria de los recursos de un individuo desertor en una población mixta. }%
 %
 \en{Note that the growth rate of the individual defector is higher than that of the cooperators only in the first few time steps, which places the defectors in a better relative position. }%
 \es{Notar que la tasa de crecimiento del individuo desertor es mayor a la de los cooperadores sólo en las primeros pasos temporales, lo que lo coloca a los desertores en una posición relativa mejor. }%
@@ -1623,11 +1639,14 @@ g_{D}(\Ee,n,N) = \frac{ g_{D}(\Ee)^T + \sum^{T}_{t=1} g_{C}(\Ee,n,N)^t \prod_{q=
 \es{Las siguientes matrices resumen las tasas de crecimiento para individuos cooperadores y desertores (filas), para diferente cantidad de desertores en el contexto social (columnas), en grupos de tamaño 2 (izquierda) y tamaño 16 (derecha). }%
 %
 \begin{equation*}
-\bordermatrix{ & 0/1 & 1/1 \cr
+\begin{split}
+g_{[\cdot]}^n(k|\Ee=0.71, \, p=0.5, \, N=2)  \ \ \ \ & \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ g_{[\cdot]}^n(k|\Ee=0.71, \, p=0.5, \, N=16)  \\[0.1cm] \hline
+\bordermatrix{ & n=0 & n=1 \cr
       C & 0.475 & 0.226 \cr
-      D & 0.452 &  0.452 }\ \ \ \ \ \ \ \  \bordermatrix{ & 0/15 & 1/15 & 2/15 & 3/15 \cr
+      D & 0.452 &  0.452 }\ \ \ \ \ \ \ \ \ \ \ \ \  &  \ \ \ \ \ \ \ \ \ \ \ \ \  \bordermatrix{ & n=0 & n=1 & n=2 & n=3 \cr
       C & 0.497 & 0.466 & 0.435 & 0.403 \cr
       D & 0.466 & 0.452 & 0.452 & 0.452}       
+\end{split}
 \end{equation*}
 %
 \en{The first agent that unilaterally ``decides'' to defect will reduce its own growth rate. }%
