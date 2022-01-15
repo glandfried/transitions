@@ -21,8 +21,7 @@
 
 
 %opening
-\title{Multilevel selection in causal cooperative processes: nonergodicity of evolutionary and inferential systems as the general driver of cooperation and specialization.}
-%Selección multinivel en procesos cooperativos causales: la no-ergodicidad de los sistemas evolutivos e inferenciales como el impulsor general de la cooperación y la especialización
+\title{Multilevel selection in causal models: the non-ergodicity of evolutionary and probabilistic theories as the general driver of the emergence of cooperation and specialization. }
 \author{Gustavo Landfried}
 
 \begin{document}
@@ -1470,12 +1469,12 @@ P(k| \vec{\Aa}^{\,1}, \dots,  \vec{\Aa}^{\,T}) = \frac{\omega_k(T)}{\sum_j \omeg
 \en{The resources of the first individual defector (blue group with 1 defector), is below the resources of the individuals in the fully cooperative group (green group with 0 defectors). }%
 \es{Los recursos del primer individuo desertor (grupo azul con 1 desertor), está por debajo de los recursos de los individuos del grupo enteramente cooperador (grupo verde con 0 desertores). }%
 %
-\en{The reduction in resources occurs even for the second individual who changes from cooperative to defector behavior: the resources of the defector individuals in the group with 2 defectors are below the resources of the cooperative individuals in the group with 1 defector. }%
+\en{The reduction in resources occurs even for the second individual who changes from cooperative to a defective behavior: the resources of the defector individuals in the group with 2 defectors are below the resources of the cooperative individuals in the group with 1 defector. }%
 \es{La reducción de recursos le ocurre incluso al segundo individuo que cambia de comportamiento cooperador a desertor: los recursos de los individuos desertores del grupo con 2 desertores está por debajo de los recursos de los individuos cooperadores del grupo con 1 desertor. }%
 
 % Parrafo
 
-\en{Defecting, instead of increasing the growth rate of the defected individuals, reduces it. }%
+\en{Defecting, instead of increasing the growth rate of the defective sindividuals, reduces it. }%
 \es{Desertar, en vez de aumentar la tasa de crecimiento de los individuos desertores, la reduce. }%
 %
 \en{In other words, the commons does not have the structure of the prisoner's dilemma, as is usually claimed in the literature. }%
@@ -1484,19 +1483,24 @@ P(k| \vec{\Aa}^{\,1}, \dots,  \vec{\Aa}^{\,T}) = \frac{\omega_k(T)}{\sum_j \omeg
 \en{Let us calculate the payoff matrix arising from the cooperative causal model. }%
 \es{Calculemos la matriz de pagos que surge del modelo causal cooperativo. }%
 %
-Queremos estimar la tasa de crecimiento temporal de los posteriors,
+\en{We want to estimate the temporal growth rate of the posteriors, }%
+\es{Queremos estimar la tasa de crecimiento temporal de los posteriors, }%
 %
 \begin{equation}
 \frac{P(k|\vec{\Aa}^{\,1}, \dots , \vec{\Aa}^{\,T})}{P(k)} \approx g(k|\vec{\Ee},p,N)^T
 \end{equation}
 %
-donde la aproximación es una igualdad cuando el tiempo tiende a infinito, $\lim_{T \rightarrow \infty}$.
+\en{where the approximation is an equality when time tends to infinity, $\lim_{T \rightarrow \infty}$. }%
+\es{donde la aproximación es una igualdad cuando el tiempo tiende a infinito, $\lim_{T \rightarrow \infty}$. }%
 %
-La tasa de crecimiento depende de los hyperparámtros del modelo, $\vec{\Ee}$, $p$ y $N$.
+\en{The growth rate depends on the hyperparameters of the model, $\vec{\Ee}$, $p$ and $N$. }%
+\es{La tasa de crecimiento depende de los hyperparámtros del modelo, $\vec{\Ee}$, $p$ y $N$. }%
 %
-En esta sección vamos a considerar unicamente los modelos en el que todos los individuos tienen la misma estrategia $\Ee$.
+\en{Here we will only consider models in which all individuals have the same strategy $\Ee$. }
+\es{Aquí vamos a considerar únicamente los modelos en el que todos los individuos tienen la misma estrategia $\Ee$. }%
 %
-Resolveremos este problema por casos, según el comportamiento sea cooperativo, $g_C$, o desertivos, $g_D$, para diferente contextos sociales $g_{[\cdot]}^n(k|\cdot)$, donde $n$ representa la cantidad de cooperadores con lo que interactúa el individuo $k$ (sin contar al individuo $k$).
+\en{We will solve this problem by cases, depending on whether the behavior is cooperative, $g_C$, or defective, $g_D$, for different social contexts $g_{[\cdot]}^n(k|\cdot)$, where $n$ represents the number of cooperators with which the individual $k$ interacts (excluding $k$). }%
+\es{Resolveremos este problema por casos, según el comportamiento sea cooperativo, $g_C$, o desertivos, $g_D$, para diferente contextos sociales $g_{[\cdot]}^n(k|\cdot)$, donde $n$ representa la cantidad de cooperadores con lo que interactúa el individuo $k$ (excluyendo a $k$). }%
 % 
 \en{The growth rate of mutual defection is, }%
 \es{La tasa de crecimiento de la deserción mutua es, }%
@@ -1508,7 +1512,8 @@ Resolveremos este problema por casos, según el comportamiento sea cooperativo, 
 \end{split}
 \end{equation}
 %
-que es independiete del tamaño $N$ de las regiones.
+\en{which is independent of the size $N$. }%
+\es{que es independiete del tamaño $N$. }%
 %
 \en{The proportional is valid because of the normalization constant of the probability distribution $P(i^t|\vec{\Aa}^{\,t})$. }%
 \es{El proporcional vale por constante de normalización de la distribución de probabilidad $ P(i^t|\vec{\Aa}^{\,t})$. }%
@@ -1524,11 +1529,12 @@ que es independiete del tamaño $N$ de las regiones.
 \begin{equation}
 \begin{split}
 \lim_{T \rightarrow \infty} g_C^n(k|\Ee,p,N)^T &= \prod_{t=1}^{T} \sum_j^{\texttt{\en{partners}\es{socios}}(k)} \frac{1}{N} P(j|\vec{\Aa}^{\,t}) \propto \prod_{t=1}^{T}  \sum_j^{\texttt{\en{partners}\es{socios}}(k)} \frac{1}{N} \Ee^{\Aa^t_j} (1-\Ee)^{1-\Aa^t_j} \\
-\lim_{T \rightarrow \infty} g_C^n(k|\Ee,p,N) & \propto \Big( \prod_{t=1}^{T}  \sum_j^{\texttt{\en{partners}\es{socios}}(k)} \frac{1}{N} \Ee^{\Aa^t_j} (1-\Ee)^{1-\Aa^t_j} \Big)^{1/T} = \prod_{x=0}^{n+1} \Big(\frac{x}{N} \Ee + \frac{n+1-x}{N}(1-\Ee)\Big)^{\text{B}(x|n,p)}
+\lim_{T \rightarrow \infty} g_C^n(k|\Ee,p,N) & \propto \Big( \prod_{t=1}^{T}  \sum_j^{\texttt{\en{partners}\es{socios}}(k)} \frac{1}{N} \Ee^{\Aa^t_j} (1-\Ee)^{1-\Aa^t_j} \Big)^{1/T} = \prod_{x=0}^{n+1} \Big(\frac{x}{N} \Ee + \frac{n+1-x}{N}(1-\Ee)\Big)^{\text{B}(x|n+1,p)}
 \end{split}
 \end{equation}
 %
-donde $x$ representa la cantidad de éxitos dentro del grupo cooperador, y $\text{B}(x|n,p)$ es la probabilidad binomial de obtener $x$ éxitos en una muestra de tamaño $n$.
+\en{where $x$ represents the number of successes within the cooperating group, and $\text{B}(x|n+1,p)$ is the binomial probability of obtaining $x$ successes in a sample of size $n+1$. }%
+\es{donde $x$ representa la cantidad de éxitos dentro del grupo cooperador, y $\text{B}(x|n+1,p)$ es la probabilidad binomial de obtener $x$ éxitos en una muestra de tamaño $n+1$. }%
 %
 % %
 % \begin{equation}
@@ -1563,7 +1569,7 @@ donde $x$ representa la cantidad de éxitos dentro del grupo cooperador, y $\tex
 \es{Cuando el grupo es muy grande, $N\rightarrow \infty$, }%
 %
 \begin{equation}
-\lim_{N \rightarrow \infty} g_C^n(k|\Ee,p,N) \propto \Big( p \Ee + (1-p)(1-\Ee) \Big)  \frac{n}{N}
+\lim_{N \rightarrow \infty} g_C^n(k|\Ee,p,N) \propto \Big( p \Ee + (1-p)(1-\Ee) \Big)  \frac{n+1}{N}
 \end{equation}
 %
 \en{the growth rate is just the arithmetic mean, weighed by the proportion of cooperators. }%
@@ -1595,13 +1601,13 @@ donde $x$ representa la cantidad de éxitos dentro del grupo cooperador, y $\tex
 % g_{D}(\Ee,n,N) = 
 % \end{equation}
 %
-\en{This growth rate is not constant, but quickly stabilizes at the higher growth rate, $g_D^n(k|\Ee,p,N)$$\approx$$\texttt{max}($$g_D^0(k|\Ee,p,N)$$, \,$$g_C^n(k|\Ee,p,N)$. }%
-\es{Esta tasa de crecimiento no es constante, pero se estabiliza rápidamente de pasos temporales en la tasa de crecimiento que sea mayor, $g_D^n(k|\Ee,p,N)$$\approx$$\texttt{max}($$g_D^0(k|\Ee,p,N)$$, \,$$g_C^n(k|\Ee,p,N)$. }%
+\en{This growth rate is not constant, but quickly stabilizes at the higher growth rate, $g_D^n(k|\Ee,p,N)$ $\approx$ $\texttt{max}(g_D^0(k|\Ee,p,N),$ $g_C^n(k|\Ee,p,N))$. }%
+\es{Esta tasa de crecimiento no es constante, pero se estabiliza rápidamente de pasos temporales en la tasa de crecimiento que sea mayor, $g_D^n(k|\Ee,p,N)$ $\approx$ $\texttt{max}(g_D^0(k|\Ee,p,N),$ $g_C^n(k|\Ee,p,N))$. }%
 %
-\en{In figure \ref{fig:multilevel-selection-7} we show the proprotional of the growth rate as a function of the proportion of total defectors in a group of size $1000$. }%
-\es{En la figura \ref{fig:multilevel-selection-7} mostramos el proporcional de la tasa de crecimiento en función de la proproción de desertores totales en una grupo de tamaño $1000$. }%
+\en{In figure \ref{fig:multilevel-selection-7} we show the proprotional growth rate as a function of the number of defectors in a group of size $1000$. }%
+\es{En la figura \ref{fig:multilevel-selection-7} mostramos el proporcional de la tasa de crecimiento en función del número de desertores totales en una grupo de tamaño $1000$. }%
 %
-\en{In Figure~\ref{fig:multilevel-selection-5} we rescale the proportional growth rate by a factor $2.1$, and we see that it overlaps over the resource trajectories presented in Figure~\ref{fig:ergodicity_desertion}. }
+\en{In Figure~\ref{fig:multilevel-selection-5} we rescale the proportional growth rate by a factor $2.1$, and we see that it overlaps over the trajectories of resource presented in Figure~\ref{fig:ergodicity_desertion}. }
 \es{En la figura~\ref{fig:multilevel-selection-5} reesclamos la tasa de crecimiento proporcional por un factor $2.1$, y vemos que se solapa sobre las trayectorias de los recursos presentado en la figura \ref{fig:ergodicity_desertion}. }%
 %
 \begin{figure}[H]
@@ -1640,10 +1646,10 @@ donde $x$ representa la cantidad de éxitos dentro del grupo cooperador, y $\tex
 %
 \begin{equation*}
 \begin{split}
-g_{[\cdot]}^n(k|\Ee=0.71, \, p=0.5, \, N=2)  \ \ \ \ & \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ g_{[\cdot]}^n(k|\Ee=0.71, \, p=0.5, \, N=16)  \\[0.1cm] \hline
-\bordermatrix{ & n=0 & n=1 \cr
+\ \ \ \ \ \ \ g_{[\cdot]}^n(k|\Ee=0.71, \, p=0.5, \, N=2)  & \ \ \ \ \ \ \ \  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ g_{[\cdot]}^n(k|\Ee=0.71, \, p=0.5, \, N=16) \\[0.1cm] 
+ \propto \bordermatrix{ & n=1 & n=0 \cr
       C & 0.475 & 0.226 \cr
-      D & 0.452 &  0.452 }\ \ \ \ \ \ \ \ \ \ \ \ \  &  \ \ \ \ \ \ \ \ \ \ \ \ \  \bordermatrix{ & n=0 & n=1 & n=2 & n=3 \cr
+      D & 0.452 &  0.452 }\ \ \ \ \ \ \ \  &  \ \ \ \ \ \ \ \ \ \ \  \propto \bordermatrix{ & n=15 & n=14 & n=13 & n=12 \cr
       C & 0.497 & 0.466 & 0.435 & 0.403 \cr
       D & 0.466 & 0.452 & 0.452 & 0.452}       
 \end{split}
@@ -1662,28 +1668,30 @@ g_{[\cdot]}^n(k|\Ee=0.71, \, p=0.5, \, N=2)  \ \ \ \ & \ \ \ \ \ \ \ \ \ \ \ \ \
 \es{De hecho, la estructura de pagos de la matriz izquierda se conoce como stag-hunt. }%
 %
 \begin{conclution}[\en{Commons are not prisoner's dilemmas}\es{Los bienes comunes no son dilemas del prisionero}]
-\en{Without the need to introduce penalties, defector strategies negatively affect their own long-term growth rate because their own behavior increases the fluctuations of the random variable on which they depend. }%
-\es{Sin necesidad de introducir castigos, las estrategias desertoras afectan negativamente su propia tasa de crecimiento a largo plazo debido que su propio comportamiento aumento las fluctuaciones de la variable aleatoria de la que dependen.}
+\en{Without penalties, defector strategies negatively affect their own long-term growth rate because their own behavior increases the fluctuations of the random variable on which they depend. }%
+\es{Sin castigos, las estrategias desertoras afectan negativamente su propia tasa de crecimiento a largo plazo debido a que su propio comportamiento aumenta las fluctuaciones de la variable aleatoria de la que dependen.}
 \end{conclution}
 %
 \en{In all cases, the highest growth rate is obtained by mutual cooperation. }%
 \es{En todos los casos, la tasa de crecimiento más alta se obtiene por mutua cooperación. }%
-%
-\en{For this reason, multilevel selection favors cooperators over defectors, even though the presence of defectors negatively affects their growth rate. }%
-\es{Por este motivo, la selección multinivel favorece a los individuos cooperadores sobre los desertores, a pesar de que la presencia de destores afecte negativa su tasa de crecimiento. }%
+% %
+% \en{For this reason, multilevel selection will favors cooperators over defectors, even though the presence of defectors negatively affects their growth rate. }%
+% \es{Por este motivo, la selección multinivel favorecerá a los individuos cooperadores sobre los desertores, a pesar de que la presencia de destores afecte negativa su tasa de crecimiento. }%
 
 
 \subsection{Selección de nivel 1, nivel 2 y multinivel}
 
-En la sección anterior hemos visto que desertar unilateralmente reducen la tasa de crecimiento de los proprios desertores respecto de la que podrían tener a través de la mutua cooperación.
+\en{In the previous section we have seen that unilateral defection reduces the growth rate of the defectors themselves compared to what they could have through mutual cooperation. }%
+\es{En la sección anterior hemos visto que desertar unilateralmente reduce la tasa de crecimiento de los proprios desertores respecto de la que podrían tener a través de la mutua cooperación. }%
 %
-Sin embargo, la tasa de crecimiento de los cooperadores se ve reducida en mayor medida, lo que hace que en términos \emph{relativos} los desertores se encuentren en una mejor posición que los cooperadores de su propio grupo.
+\en{However, the growth rate of cooperators is reduced to a greater extent. This means that the defectors always have a better relative position than the cooperators in their own group. }%
+\es{Sin embargo, la tasa de crecimiento de los cooperadores se reduce en mayor medida. Esto hace que los desertores siempre tengan una posición relativa mejor que los cooperadores de su propio grupo. }%
 %
-Esto hace que al interior de los grupos los individuos desertores tengan una ventaja sobre los individuos cooperadores.
+\en{Therefore, evolution will favor defector behaviors through individual selection (level 1). }%
+\es{Por lo tanto, la evolución favorecerá los comportamientos desertores a través de la selección individual (nivel 1). }%
 %
-Por lo tanto, la evolución favorecerá los comportamientos desertores a través de la selección individual (nivel 1).
-%
-En la figura~\ref{fig:multilevel-selection-level-1-posterior} podemos ver el posterior los individuos cooperadores y desertores en regiones con 1 destertor en grupos de tamaño 2 y 16.
+\en{In Figure~\ref{fig:multilevel-selection-level-1-posterior} we can see the posterior of cooperating and deserting individuals in regions with 1 defector in groups of size 2 and 16. }%
+\es{En la figura~\ref{fig:multilevel-selection-level-1-posterior} podemos ver el posterior los individuos cooperadores y desertores en regiones con 1 destertor en grupos de tamaño 2 y 16. }%
 %
 \begin{figure}[H]
     \centering
@@ -1696,20 +1704,29 @@ En la figura~\ref{fig:multilevel-selection-level-1-posterior} podemos ver el pos
     \caption{$N=16$}
     \end{subfigure}
     \caption{
-    Posterior de los comportamientos sociales cooperador/desertor dentro de una región con 1 desertor en grupos de tamaño $2$ y $16$
+    \en{Posterior of cooperator/defector social behaviors within a region with 1 defector in groups of size $2$ and $16$. }%
+    \es{Posterior de los comportamientos sociales cooperador/desertor dentro de una región con 1 desertor en grupos de tamaño $2$ y $16$. }%
     }
     \label{fig:multilevel-selection-level-1-posterior}
 \end{figure}
 %
-Los comportamientos desertores pueden invadir al interior de los grupos de tamaño 2, pues rápidamente el posterior de los desertores es 1 y de los cooperadores es 0.
+\en{Defector behaviors can invade within groups of size 2, as the posterior of the defectors quickly stabilizes at 1. }%
+\es{Los comportamientos desertores pueden invadir al interior de los grupos de tamaño 2, pues el posterior de los desertores rápidamente se estabiliza en 1. }%
 %
-Sin embargo, los comportamientos desertores no pueden invadir al interior de grupos de tamaño 2, pues el posterior de ambos comportamientos nunca se estabiliza en 0 y 1.
+\en{However, defector behaviors cannot invade within groups of size 16, as the posterior of both behaviors never stabilizes at 0 and 1. }%
+\es{Sin embargo, los comportamientos desertores no pueden invadir al interior de grupos de tamaño 16, pues el posterior de ambos comportamientos nunca se estabiliza en 0 y 1. }%
 
 % Parrafo
 
-A pesar de que en los grupos de tamaño 2 los desertores puedan invadir, las regiones que persistan enteramente cooperadoras al tener una tasa de crecimiento mayor al resto van a tener una gran ventaja sobre las regiones mixtas.
+
+\en{Although defectors may invade size 2 groups, regions that remain fully cooperative will have a great advantage over mixed regions because the growth rate of mutual cooperation is always the highest one. }%
+\es{A pesar de que los desertores puedan invadir grupos de tamaño 2, las regiones que persistan enteramente cooperadoras tendrán una gran ventaja sobre las regiones mixtas gracias a que la tasa de crecimiento de la mutua cooperación es siempre mayor que el resto. }%
 %
-La evolución favorecerá a los grupos enteramente cooperadores a través de la selección de grupos (nivel 2), tanto en poblaciones de tamaño 2 como de tamaño 16, incluso con la elección del prior que rechaza poblaciones homogenes.
+\en{Therefore, evolution will favor fully cooperative groups through group selection (level 2). }%
+\es{Por lo tanto, la evolución favorecerá a los grupos enteramente cooperadores a través de la selección de grupos (nivel 2). }%
+%
+\en{In figure~\ref{fig:posterior_level_2} we see the posterior of the groups, of size 2 and 16. }%
+\es{En la figura~\ref{fig:posterior_level_2} vemos el posterior de los grupos de tamaño 2 y 16. }%
 % %
 % \begin{equation}
 % P(g|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^T) = \sum_i \mathbb{I}(\texttt{region}(i)=g) P(i|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^T)
@@ -1728,25 +1745,32 @@ La evolución favorecerá a los grupos enteramente cooperadores a través de la 
     \label{fig:multilevel-selection-level-2-N16}
     \end{subfigure}
     \caption{
-    Selección de grupos (nivel 2) entre grupos de tamaño $2$ y tamaño $16$.
-    Las rectas grises representan el posterior de grupos mixtos.
+    \en{Group selection (level 2) of size $2$ and of size $16$. }%
+    \es{Selección de grupos (nivel 2) entre grupos de tamaño $2$ y tamaño $16$. }%
+    %
+    \en{The gray lines represent the posterior of mixed groups. }%
+    \es{Las rectas grises representan el posterior de grupos mixtos. }%
     }
     \label{fig:posterior_level_2}
 \end{figure}
 %
-Notar que el prior de la población enteramente cooperadora es $0.25$ en grupos de tamaño 2 y aproximadamente $ \text{Binomial}(0|N=16,0.5) \approx 0$ para grupos de tamaño $16$.
+\en{Note that the prior of the entirely cooperative group is $0.25$ in groups of size 2 and approximately $ \text{B}(0|N=16,0.5) \approx 0$ for groups of size $16$. }
+\es{Notar que el prior del grupo enteramente cooperador es $0.25$ en grupos de tamaño 2 y aproximadamente $ \text{Binomial}(0|N=16,0.5) \approx 0$ para grupos de tamaño $16$. }%
 %
-Esto hace que la ventaja del grupo cooperador tarde un tiempo en verse.
+\en{The choice of a prior that rejects homogeneous populations causes the advantage of the cooperating group to take time to stabilize. }%
+\es{La elección de un prior que rechaza poblaciones homogenes hace que la ventaja del grupo cooperador necesite un tiempo hasta estabilizarse. }%
 %
-Si el prior fuera uniforme, la ventaja del grupo enteramente cooperador se vería inmediatamente.
+\en{With a uniform prior, the advantage of the fully cooperative group would be seen immediately. }%
+\es{Si el prior fuera uniforme, la ventaja del grupo enteramente cooperador se vería inmediatamente. }%
 %
-Agregamos el prior binomial como una forma de expresar el efecto negativo que tiene la mutación sobre las poblaciones homogenas.
+\en{In any case, since the prior of homogeneous populations is never zero and the growth rate of the fully cooperative population is higher than the rest, there is always a time $t$ in which the posterior of the fully cooperative group will be higher than that of the rest of the groups. }%
+\es{En cualquier caso, debido a que el prior de las poblaciones homogeneas nunca es cero y que la tasa de crecimiento de la población enteramenete cooperadora sea superior al resto, siempre existe un tiempo $t$ en el cual el posterior del grupo enteramente cooperador será mayor al del resto de los grupos. }%
 %
-Sin embargo, debido a que el prior de las poblaciones homogeneas nunca sea cero y que la tasa de crecimiento de la población enteramenete cooperadora sea superior al resto, siempre existe un tiempo $t$ en el cual el posterior del grupo enteramente cooperador será mayor al resto de los grupos.
+\en{The larger $N$ is, the closer the cooperators are to the arithmetic mean, but the more weight individuals from mixed regions receive. }%
+\es{Cuanto más grande es $N$, más cerca están los cooperadores de la media aritmética, pero más peso reciben los individuos de regiones mixtas. }%
 %
-Si bien el prior binomial no impide que con suficiente tiempo el grupo enteramente cooperador se imponga sobre el resto, sí impone un límite temporal mínimo para que la selección de grupo sea perceptible: cuanto más grande es $N$, más cerca están los cooperadores de la media aritmética, pero más peso tienen los individuos de regiones mixtas.
-%
-Según la escala de tiempo que se considere, habrá un límite efectivo al tamaño del grupo, lo que es esperable ver en términos evolutivos.
+\en{Given a maximum time, the optimal group size will always be finite, which is reasonable in evolutionary terms. }
+\es{Dada un tiempo máximo, el tamaño óptimo del grupo será siempre finito, lo que es razonable en términos evolutivos. }%
 
 % Parrafo
 
@@ -1756,13 +1780,13 @@ Según la escala de tiempo que se considere, habrá un límite efectivo al tama�
 % P(\texttt{coop}|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^T) = \sum_i P(i|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^T)\mathbb{I}(\texttt{coop}(i))
 % \end{equation}
 % %
-Cuando se produce una selección de nivel 2 a favor de los grupos enteramenete cooperadores, se produce también una selección multinivel a favor de los individuos cooperadores.
+\en{When there is level 2 selection in favor of fully cooperative groups, there is also multilevel selection in favor of cooperative individuals. }%
+\es{Cuando se produce una selección de nivel 2 a favor de los grupos enteramenete cooperadores, se produce también una selección multinivel a favor de los individuos cooperadores. }%
 %
-En la figura~\ref{fig:multilevel-selection-multilevel-posterior} vemos la evolución del posterior de los individuos cooperadores integrando todos los grupos.
+\en{In Figure~\ref{fig:multilevel-selection-multilevel-posterior} we see the posterior of the cooperative individuals, integrating all groups. }%
+\es{En la figura~\ref{fig:multilevel-selection-multilevel-posterior} vemos el posterior de los individuos cooperadores, integrando todos los grupos. }%
 %
-La probabilidad de los individuos cooperadores comienza a $0.5$ debido a la simetría del prior binomial entre regiones y el prior uniforme entre comportamientos cooperador y desertor.
-%
-\begin{figure}[ht!]
+\begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.48\textwidth}
     \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-multilevel-posterior.pdf}
@@ -1773,26 +1797,183 @@ La probabilidad de los individuos cooperadores comienza a $0.5$ debido a la sime
     \caption{$N=16$}
     \end{subfigure}
     \caption{
-    Selección multinivel del los individuos cooperadores en grupos de tamaño $2$ y $16$.
+    \en{Multilevel selection of cooperative individuals in groups of size $2$ and $16$. }%
+    \es{Selección multinivel del los individuos cooperadores en grupos de tamaño $2$ y $16$. }%
     }
     \label{fig:multilevel-selection-multilevel-posterior}
 \end{figure}
 %
-Debido a que el posterior de los individuos cooperdores cae abtruptamente en la mayoría de las regiones mixtas, vemos al principio una baja.
+\en{The probability of cooperative individuals starts at $0.5$ due to the symmetry of the binomial prior between regions and the uniform prior between cooperative and defective behaviors. }%
+\es{La probabilidad de los individuos cooperadores comienza a $0.5$ debido a la simetría del prior binomial entre regiones y el prior uniforme entre comportamientos cooperador y desertor. }%
 %
-Pero como la ventaja del grupo enteramente cooperador se impone luego de cierto tiempo (debido al priori binomial), observamos finalmente que los comportamientos cooperadores pueden invadir poblaciones con desertores gracias a la selección multinivel.
+\en{Because in most mixed regions the posterior of cooperative individuals drops abruptly, we see at the beginning a drop in the multilevel posterior. }%s
+\es{Debido a que en la mayoría de las regiones mixtas el posterior de los individuos cooperdores cae abtruptamente, vemos al principio una baja en el posterior multinivel. }%
 %
-\begin{conclution}[La ventaja evolutiva de la cooperación]
-La selección multinivel favorece a las estrategias cooperativas incluso con grupos de tamaño mínimo (dos).
+\en{But since the advantage of the fully cooperative group is imposed after a certain time (delay produced by the binomial prior), we finally observe that cooperative behaviors can invade populations with defectors as the posterior multilevel stabilizes at 1. }%
+\es{Pero como la ventaja del grupo enteramente cooperador se impone luego de cierto tiempo (demora producida por el priori binomial), finalmente observamos que los comportamientos cooperadores pueden invadir poblaciones con desertores pues el posterior multinivel se estabiliza en 1. }%
+%
+\begin{conclution}[\en{The evolutionary advantage of cooperation}\es{La ventaja evolutiva de la cooperación}]
+\en{Multilevel selection favors cooperative strategies even with groups of minimum size (two). }%
+\es{La selección multinivel favorece a las estrategias cooperativas incluso con grupos de tamaño mínimo (dos). }%
 \end{conclution}
 
 \subsection{La ventaja de la especialización}
 
-\en{The evolutionary transition from unicellularity to multicellularity involves the specialization of cells: from protists to plants, fungi and animals. }%
-\es{La transición evolutiva de la unicelularidad a la multiclelularidad involucra una especialización de las células: de los los protistas a las plantas, hongos y animales. }%
+\en{To explain evolutionary transitions, it is necessary to demonstrate the evolutionary advantage of cooperation in the presence of defection, but also the advantage of specialization. }%
+\es{Para explicar las transiciones evolutivas es necesario demostrar la ventaja evolutiva de la cooperación en presencia de deserción, pero también la ventaja de la especiliazación. }%
 %
-\en{Then, to explain evolutionary transitions, it is necessary to demonstrate the evolutionary advantage of cooperation in the presence of defection, but also the advantage of specialization. }%
-\es{Luego, para explicar las transiciones evolutivas es necesario demostrar la ventaja evolutiva de la cooperación en presencia de deserción, pero también la ventaja de la especiliazación. }%
+\en{Generalist strategies are those that achieve similar returns in each of the environmental states. }%
+\es{Las estrategias generalistas son las que logran retornos similares en cada uno de los estados ambientales. }%
+%
+\en{The most extreme case is the strategy $\Ee = 0.5$, which has the same individual growth rate $g(k|\Ee=0.5,p,N=1) \propto 0.5$ irrespective of the type of environment $p$. }%
+\es{El caso más extremo es la estrategia $\Ee = 0.5$, que tiene la misma tasa de crecimiento individual $g(k|\Ee=0.5,p,N=1) \propto 0.5$ indistintamente del tipo de ambiente $p$. }%
+%
+\en{Specialist strategies are those that have high returns in one of the environmental states and high losses in the other. }%
+\es{Las estrategias especialistas son las que tienen altos retornos en uno de los estados ambientales y altas pérdidas en el otro. }%
+%
+\en{The extreme case is the strategy $\Ee = 1.0$, unfeasible in stochastic environments because its individual growth rate is $g(k|\Ee=1.0,p,N=1) = 0$ when $p\neq0$. }%
+\es{El caso extremos es la estrategia $\Ee = 1.0$, inviable en ambientes estocásticos debido a que su tasa de crecimiento individual es $g(k|\Ee=1.0,p,N=1) = 0$ cuando $p\neq0$. }%
+
+% Parrafo
+
+\en{We have seen in the methodological section that the individual strategy best adapted to the environment $p=0.71$ was $\Ee^*=0.71$. }%
+\es{Hemos visto en la sección metodológica que la estrategia individual mejor adaptada al ambiente $p=0.71$ fue $\Ee^*=0.71$. }%
+%
+\en{In general the best adapted strategy is $\Ee^*=p$. }%
+\es{En general la estrategia individual mejor adaptada es $\Ee^*=p$. }%
+%
+\en{Now that we know that there is an evolutionary advantage in favor of cooperation, is there another strategy that is better adapted to the environment? }%
+\es{Ahora que sabemos que existe una ventaja evolutiva a favor de la cooperación, ¿hay una estrategia mejor adaptada al ambiente? }%
+%
+\en{If there were an advantage in favor of specialization we would expect to see that if the probability of the environment is biased toward one of the states, then the optimal strategy is biased even more, $\Ee^* > p > 0.5$ or $\Ee^* < p < 0.5$. }%
+\es{Si hubiera una ventaja a favor de la especialización esperaríamos ver que si la probabilidad del ambiente está sesgada hacia uno de los estados, entonces la estrategia óptima esté sesgada aún más, $\Ee^* > p > 0.5$ o $\Ee^* < p < 0.5$. }%
+
+% Parrafo
+
+\en{In figure~\ref{fig:tasa-temporal-0} we compute the individual (solid lines) and cooperative (dashed line) growth rate of the strategies $\Ee \in \{0.5, 0.71, 0.99\}$ at all possible $p$ values of the environment. }%
+\es{En la figura~\ref{fig:tasa-temporal-0} calculamos la tasa de crecimiento individual (líneas continuas) y cooperativa (línea punteada) de las estrategias $\Ee \in \{0.5, 0.71, 0.99\}$ para todos los posibles valores $p$ del ambiente. }%
+%
+\en{Note that the individual growth rates of the strategies are proportional to the geometric mean of their bets and that the cooperative growth rates are equivalent to the arithmetic mean of their bets (in groups of infinite size), and that both means are equal for the strategy $\Ee = 0.5$. }%
+\es{Notar que las tasas de crecimiento individual de las estrategias son proporcionales a la media geométrica de sus apuestas y que las tasas de crecimiento cooperativo son equivalentes a la media aritmética de sus apuestas (en grupos de tamaño infinito), y que ambas medias son iguales para la estrategia $\Ee = 0.5$. }%
+%
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.5\textwidth}
+    \includegraphics[width=\linewidth]{figures/pdf/tasa-temporal-0.pdf}
+    \end{subfigure}
+    \caption{
+    \en{Proportional of the individual and cooperative growth rates (continuous and dotted lines), of three strategies ($\Ee \in \{0.5, 0.71, 0.99\}$) in different environment $p$. }%
+    \es{Proporcionales de las tasas de crecimient individual y cooperativa (líneas continuas y punteadas), de tres estrategias ($e \in \{0.5, 0.71, 0.99\}$) en diferentes ambiente $p$. }%
+    }
+    \label{fig:tasa-temporal-0}
+\end{figure}
+%
+\en{The arrow represents Ole Peters' conclusion presented in the introduction: in an environment that generates states with probability $p = 0.5$, the strategy $\Ee=1.5/2.1 \approx 0.71$ can increase its individual growth rate, equal to the geometric mean, to a cooperative growth rate equal to its arithmetic mean. }%
+\es{La flecha representa la conclusión de Ole Peters presentada en la introducción: en un ambiente que genera los estados con una probabilidad de $p = 0.5$, la estretgia $\Ee=1.5/2.1 \approx 0.71 $ puede aumentar su tasa de crecimiento individual, equivalente a la media geométrica, a una tasa de crecimiento cooperativa equvialente a su media aritmética. }%
+%
+\en{The red dot represents the conclusion we made in the methodology section, that in an environment with $p=0.71$ the best adapted individual strategy is $\Ee^*=0.71$. }%
+\es{El punto rojo representa la conclusión que sacamos en la sección metodología, que en un ambiente con $p=0.71$ la estrategia individual mejor adaptada es $\Ee=0.71$. }%
+
+% Parrafo 
+
+\en{With the figure~\ref{fig:tasa-temporal-0} we can derive some new conclusions. }%
+\es{Con la figura~\ref{fig:tasa-temporal-0} podemos sacar algunas conclusiones nuevas. }%
+%
+\en{Note that above the red dot is the cooperative growth rate of the specialist strategy $\Ee=0.99$. }%
+\es{Notar que arriba del punto rojo se encuentra la tasa de crecimiento cooperativa de la estrategia especialista $\Ee=0.99$. }%
+%
+\es{This suggests that a strategy that is individually poorly adapted to the environment, as is the case of the specialist strategy $g(k|\Ee=0.99,p=0.71,N=1) < g(k|\Ee=0.71,p=0.71,N=1)$, achieves in cooperative groups a growth rate that is higher than the growth rate that the individually well adapted strategy achieves through cooperative groups, $g_C^{N-1}(k|\Ee=0.99,p=0.71,N=\infty) > g_C^{N-1}(k|\Ee=0.71,p=0.71,N=\infty)$. }%
+\es{Esto sugiere que una estrategia que individualmente están mal adaptadas al ambiente, como es el caso de la estrategia especialista $g(k|\Ee=0.99,p=0.71,N=1) < g(k|\Ee=0.71,p=0.71,N=1)$, logra en grupos cooperativos una tasa de crecimiento que es mayor que las tasa de crecmiento que la estrategia individalmente bien adaptada logra a través de grupos cooperativos, $g_C^{N-1}(k|\Ee=0.99,p=0.71,N=\infty) > g_C^{N-1}(k|\Ee=0.71,p=0.71,N=\infty)$. }%
+
+% Parrafo
+
+\en{We have computed the cooperative growth rate for groups of infinite size. }%
+\es{La tasa de crecimiento cooperativa la hemos calculado para grupos de tamaño infinito. }%
+%
+\en{To be an interesting conclusion for evolutionary theory we need this result to occur also in small groups. }%
+\es{Para que sea una conclusión interesante en términos evolutivos, necesitamos que este mismo resultado ocurra en grupos finitos, particularmente pequeños. }%
+%
+\en{In Figure~\ref{fig:tasa-temporal-1} we plot the growth rates of the specialist strategy $\Ee=0.99$ for cooperative groups of size 1 to 5. }%
+\es{En la figura~\ref{fig:tasa-temporal-1} graficamos las tasas de crecimiento de la estrategia especialista $\Ee=0.99$ para grupos cooperativos de tamaño 1 a 5. }%
+%
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.5\textwidth}
+    \includegraphics[width=\linewidth]{figures/pdf/tasa-temporal-1.pdf}
+    \end{subfigure}
+    \caption{
+    \en{Proportional growth rate of the specialist strategy ($\Ee=0.99$) as a function of the probability of environment $p$, for cooperative groups of size 1 to 5. }%
+    \es{Tasa de crecimiento proporcional de la estrategia especialista ($\Ee=0.99$) en función de la probabilidad del ambiente $p$, para grupos cooperativos de tamaño 1 a 5. }%
+    %
+    \en{The black dotted line represents the proportional growth rate of an infinitely large cooperative group. }%
+    \es{La línea punteada negra represeta la tasa de crecimiento proporcional de un grupo cooperativo inifinitamente grande. }%
+    %
+    \en{The gray lines are visual references to the strategies $\Ee \in \{0.5, 0.71\}$ discussed in the previous figure. }%
+    \es{Las rectas grises son referencias visuales de las estrategias $e \in \{0.5, 0.71\}$ analizadas en la figura anterior. }%
+    }
+    \label{fig:tasa-temporal-1}
+\end{figure}
+%
+\en{Note that in an environment $p=0.71$ the specialist strategy $\Ee=0.99$ achieves in cooperative groups of size 3 a growth rate that is above the growth rate of the strategy individually well adapted to the environment $\Ee=0.71$, outperforming even the growth rate that the individually well-adapted strategy obtains in cooperative groups of infinite size, $g_C^{2}(k|\Ee=0.99,p=0.71,N=3) > g_C^{N-1}(k|\Ee=0.71,p=0.71,N=\infty)$! }%
+\es{Notar que en un ambiente $p=0.71$ la estrategia especilista $\Ee=0.99$ logra en grupos cooperativos de tamaño 3 una tasa de crecimiento que está por arriba de la tasa de crecimiento de la estrategia individualmente bien adapatada al ambiente $\Ee = 0.71$, superando incluso la tasa de crecimiento que la estrategia individulamente bien adaptada obtiene en grupo cooperativos de tamaño infinito, $g_C^{2}(k|\Ee=0.99,p=0.71,N=3) > g_C^{N-1}(k|\Ee=0.71,p=0.71,N=\infty)$! }%
+%
+\en{It is extraordinary that the same basic assumption that offers an evolutionary advantage in favor of cooperation also offers an evolutionary advantage in favor of specialization, even in small groups. }%
+\es{Es extraordinario que el mismo supuesto básico que ofrece una ventaja evolutiva a favor de la cooperación, ofrezca también una ventaja evolutiva a favor de la especilización incuso en grupos pequeños. }%
+%
+\en{The emergence of cooperation immediately produces an evolutionary advantage in favor of specialization. }%
+\es{La emergencia de la cooperación produce inmediatamente una ventaja evolutiva a favor de la especialización. }%
+
+% Parrafo
+
+\en{The optimal level of specialization depends on the size of the groups. }%
+\es{El nivel de especialización óptimo depende del tamaño de los grupos. }%
+%
+\en{In Figure~\ref{fig:tasa-temporal-2} we set the environment at $p = 0.71$ and analyze how the cooperative growth rate of all possible strategies varies in groups of sizes 1 to 5. }%
+\es{En la figura~\ref{fig:tasa-temporal-2} fijamos el ambiente en $p = 0.71$ y analizamos como varía la tasa de crecimiento cooperativa de todas las posibles estrategias en grupos de tamaños 1 a 5. }%
+%
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.5\textwidth}
+    \includegraphics[width=\linewidth]{figures/pdf/tasa-temporal-2.pdf}
+    \end{subfigure}
+    \caption{
+    \en{The proportional growth rate of all possible strategies for entirely cooperative groups of size 1 to 5, in an environment $p=0.71$. }%
+    \es{La tasa de crecimiento proprocional de todas las posibles estrategias para grupos enteramenete cooperativos de tamaño 1 a 5, en un ambiente $p=0.71$. }%
+    %
+    \en{The dots indicate the optimum strategy in each of the sizes. }%
+    \es{Los puntos indican la estretgia óptima en cada uno de los tamaños. }%
+    %
+    }
+    \label{fig:tasa-temporal-2}
+\end{figure}
+%
+\en{When the group has size 1, the best adapted strategy is the one that divides the bet in the same proportion as the probability of the environment $\Ee^*=p$. }%
+\es{Cuando el grupo tiene tamaño 1, la estrategia mejor adaptada es la que divide la apuesta en la misma proproción que la probabilidad de el ambiente $\Ee^*=p$. }%
+%
+\en{But as soon as cooperation arises, an advantage in favor of the specialist strategies $\Ee^* > p = 0.71$ appears. }%
+\es{Pero apenas surge la cooperación aparece una ventaja a favor de las estrategias especialistas $\Ee^* > p = 0.71$. }%
+%
+\en{The larger the groups, the more specialist the optimal strategy becomes. }%
+\es{Cuanto más grande son los grupos, más especialista es vuelve la estrategia óptima. }%
+%
+\en{At the extremes (cooperative groups of infinite size) the optimal strategy is reached at the maximum level of specialization, in which all individuals bet all resources on the most frequent environmental state. }%
+\es{En el extremos (grupos cooperativos de tamaño inifinito) la estrategia óptima se alcanza con el nivel de especialización máximo, en el que todos los individuos apuestan todos los recursos al estado ambiental más frecuente. }%
+
+\begin{conclution}[\en{The advantage of specialization}\es{La ventaja de la especialización}]
+\en{Cooperation offers an advantage in favor of specialist strategies in groups of minimum size (two). }%
+\es{La cooperación ofrece una ventaja a favor de las estrategias especialistas en grupos de tamaño mínimo (dos). }%
+%
+\en{Strategies that individually are poorly adapted to the environment, cooperatively achieve better results than those obtained by cooperative groups of individually well-adapted strategies. }
+\es{Estrategias que individualmente están mal adaptadas al ambiente, cooperando logran mejorar los resultados que obtienen grupos cooperativos de estrategias individualmemte bien adaptada al ambiente. }%
+\end{conclution}
+
+
+\en{Here we show that strategies that are individually poorly adapted to the environment (specialists), once cooperation emerges, manage to outperform both individually well-adapted strategies (generalists), as well as their cooperative groups of infinite size. }%
+\es{Aquí mostramos que, una vez que la cooperación emerge, las estrategias individualmente mal adaptadas al ambiente (especialistas) consigen superar tanto a las estrategias bien adaptas individualmemte (generalistas), como a sus grupos cooperativos de tamaño infinito. }%
+%
+
+\section{Discusiones}
+
 %
 \en{However, Ole Peters believes that specialization is a too complex property to produce a benefit in simple aggregations of, for example, two agents. }
 \es{Sin embargo, Ole Peters considera a la especialización como una caracterísitica demasiado compleja para que produzca un beneficio en agregaciones simples de por ejemplo dos agentes. }%
@@ -1800,100 +1981,6 @@ La selección multinivel favorece a las estrategias cooperativas incluso con gru
 \en{He says the ``[advantage of cooperation] it may explain the transition from single cells to bicellular organisms, too small and simple to benefit from new function or specialization.'' }
 \es{Dice que la ventaja de la cooperación: ``it may explain the transition from single cells to bicellular organisms, too small and simple to benefit from new function or specialization.'' }%
 
-% Parrafo
-
-\en{Here we show that strategies that are individually poorly adapted to the environment (specialists), once cooperation emerges, manage to outperform both individually well-adapted strategies (generalists), as well as their cooperative groups of infinite size. }%
-\es{Aquí mostramos que, una vez que la cooperación emerge, las estrategias individualmente mal adaptadas al ambiente (especialistas) consigen superar tanto a las estrategias bien adaptas individualmemte (generalistas), como a sus grupos cooperativos de tamaño infinito. }%
-%
-Para ello analizamos la tasa de crecimiento de tres estrategias ($e \in \{0.5, 0.71, 0.99\}$) en diferentes ambientes (figura~\ref{fig:tasa-temporal-0}).
-%
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[b]{0.66\textwidth}
-    \includegraphics[width=\linewidth]{figures/pdf/tasa-temporal-0.pdf}
-    \end{subfigure}
-    \caption{Likelihood característico bajo regímenes individuales (líneas continuas) y cooperativos infinitos (líneas punteadas) de tres estrategias ($e \in \{0.5, 0.71, 0.99\}$) en diferentes ambiente $p$.}
-    \label{fig:tasa-temporal-0}
-\end{figure}
-%
-Las líneas continuas representan la tasa de crecimiento individual (o desertores en grupos enteramenete desertores) y la línea punteadas la tasa de crecimiento de los individuos cooperadores en grupos enteramenete cooperadores. 
-%
-La flecha representa la conclusión de Ole Peters presentada en la introducción: en un ambiente que genera los estados con una probabilidad de $p = 0.5$, la estretgia $e=1.5/2.1 \approx 0.71 $ puede aumentar su tasa de crecimiento individual, equivalente a la media geométrica, a una tasa de crecimiento cooperativa equvialente a su media aritmética.
-%
-El punto rojo representa la conclusión que sacamos en la sección metodología, que en un ambiente con $p=0.71$ la estrategia individual mejor adaptada es $e=0.71$.
-
-% Parrafo 
-
-Con la figura~\ref{fig:tasa-temporal-0} podemos sacar algunas conclusiones nuevas.
-%
-Notar que arriba del punto rojo se encuentra la tasa de crecimiento cooperativa de la estrategia especialista $e=0.99$.
-%
-Esto sugiere que las estrategias que individualmente están mal adaptadas al ambiente (la tasa de crecimiento de la estrategia $e=0.99$ en un ambiente $p=0.71$ es menor a la tasa de crecimiento individual de la estraetgia $e=0.71$), cooperando superan incluso a la población cooperativa que individualmemte está bien adaptada.
-%
-La tasa de crecimiennto cooperativa, sin embago, la hemos calculado para un grupo enteramente cooperativo de tamaño infinito.
-%
-Para que sea una conclusión interesante en términos evolutivos, necesitamos que esto mismo ocurra en poblaciones finitas, particularmente pequeñas.
-
-% Parrafo 
-
-En la figura~\ref{fig:tasa-temporal-1} graficamos las tasas de crecimiento de la estrategia especialista $e=0.99$ para poblaciones cooperativas de tamaño 1 a 5.
-%
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[b]{0.66\textwidth}
-    \includegraphics[width=\linewidth]{figures/pdf/tasa-temporal-1.pdf}
-    \end{subfigure}
-    \caption{
-    Tasa de superviencia temporal de la estrategia especialista ($e=0.99$) en función del ambiente, para diferentes tamaños de población cooperativa (de 1 a 5).
-    %
-    La línea punteada negra represeta la tasa de crecimiento de una población cooperativa inifinitamente grande.
-    %
-    Las rectas grises se dejan como referencia visual de las estrtegias $e \in \{0.5, 0.71\}$ analizadas en la figura anterior.
-    }
-    \label{fig:tasa-temporal-1}
-\end{figure}
-%
-Notar que en un ambiente $p=0.71$ la estrategia especilista $\Ee=0.99$ logra en grupos cooperativos de tamaño 3 una tasa de crecimiento que está por arriba de la tasa de crecimiento de la estrategia individualmente bien adapatada al ambiente $\Ee = 0.71$, superando incluso la tasa de crecimiento que la estraetgia individualmemte bien adapta consigue en grupo cooperativos de tamaño infinito!
-%
-Es realmente extraordinario que el mismo supuesto básico que ofrece una ventaja evolutiva de la cooperación, ofrezca también una ventaja evolutiva a favor de la especilización incuso en grupos de tamaño 3. 
-%
-El mismo proceso multiplicativo al cuál está sujeto la vida y los proceso de inferencia favorecen tanto la cooperación como la especialización.
-%
-El nivel de especialización depende del tamaño de la población.
-%
-En la figura~\ref{fig:tasa-temporal-2} fijamos el ambiente en $p = 0.71$ y analizamos como varía la tasa de crecimiento cooperativa de las diferentes estrategias en grupos de tamaños 1 a 5.
-%
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[b]{0.66\textwidth}
-    \includegraphics[width=\linewidth]{figures/pdf/tasa-temporal-2.pdf}
-    \end{subfigure}
-    \caption{
-    La tasa de crecimiento de las diferentes estretgias para grupos enteramenete cooperativos de tamaño 1 a 5 en un ambiente $p=0.71$.
-    %
-    Ele eje x representa las diferentes estrategias.
-    %
-    Cada una de las curvas indica la tasa de crecimiento para los diferentes tamaños del grupo cooperativo.
-    %
-    Los puntos indican la estretgia óptima en cada uno de los tamaños.
-    %
-    }
-    \label{fig:tasa-temporal-2}
-\end{figure}
-%
-Cuando la población tiene tamaño 1, la estrategia mejor adaptada es la que repate los recursos con la misma probabilidad que el ambiente $\Ee^*=p$.
-%
-Pero rápidamente, a medida que aumentamos el tamaño de la población, la cooperación favorece a las estrategias especialistas $\Ee^* > p$.
-%
-Cuanto más grande son los grupos, más especilista es la estrategia óptima.
-%
-En el extremos, la estrategia óptima en grupos cooperativos de tamaño inifinto se alcanza con el nivel de especialización máximo, en el que todos los individuos ponen todos sus recursos en el estado ambiental que ocurre con mayor frecuencia.
-
-\begin{conclution}[La ventaja de la especialización]
-La cooperación ofrece una ventaja a favor de las estrategias especialistas en grupos de tamaño minimo (dos). Estrategias que individualmente están mal adaptadas al ambiente, cooperando superan incluso a la población cooperativa que individualmemte está bien adaptada.
-\end{conclution}
-
-\section{Discusiones}
 
 Es realmente extraordinario que un sistema tan simple como el que hemos analizando tenga conclusiones tan fudamentales para entender la complejidad de la vida.
 La ventaja evolutiva de la cooperación y la especialización es consecuencia de la no-ergodicidad de los procesos multiplicativos a los que está sujeto la vida, por lo que ésta debe ser considerada la primera causa de las transiciones evolutivas mayores.
