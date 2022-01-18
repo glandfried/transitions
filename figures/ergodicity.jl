@@ -42,7 +42,7 @@ for i in 1:N
     e[:,i] .= cumsum(log.([ f(r()) for i in 1:T]))
 end
 
-fig = plot(e, label=false, thickness_scaling = 1.5, grid=false, xlab="Tiempo", ylab="log(Recursos) ")
+fig = plot(e, label=false, thickness_scaling = 1.5, grid=false, xlab="Time", ylab="log(Resources) ")
 plot!([1,2000],[0,T*log(ensamble_average )], color="black", label=false)
 #plot!([1,2000],[0,T*log(time_average )], color="black", label=false)
 savefig(fig, "pdf/ergodicity_individual_trayectories.pdf")
@@ -57,7 +57,7 @@ for i in 1:N
     e[:,i] .= cumsum(log.([ f(r()) for i in 1:T]))
 end
 
-fig = plot([1,T],[0,T*log(ensamble_average )], color="black", label=false, thickness_scaling = 1.5, grid=false, xlab="Tiempo", ylab="log(Recursos) ")
+fig = plot([1,T],[0,T*log(ensamble_average )], color="black", label=false, thickness_scaling = 1.5, grid=false, xlab="Time", ylab="log(Resources) ")
 plot!([1,T],[0,T*log(time_average )], color=1, label=false)
 #plot!(e, label=false, color=1)
 savefig(fig, "pdf/ergodicity_individual_trayectories_longrun.pdf")
@@ -72,7 +72,7 @@ for i in 1:N
     e[:,i] .= [[1]; cumprod([ f(r()) for i in 1:T])]
 end
 
-fig = plot(log.(e[:,1]), thickness_scaling = 1.5, grid=false, xlab="Tiempo", ylab="log(Recursos) ", label="10^0", legend=(0.15,0.9), foreground_color_legend = nothing)
+fig = plot(log.(e[:,1]), thickness_scaling = 1.5, grid=false, xlab="Time", ylab="log(Resources) ", label="10^0", legend=(0.15,0.9), foreground_color_legend = nothing)
 plot!(1:T+1,log.([mean(e[t,1:(10^1)]) for t in 1:T+1]), linewidth=1.2, label="10^1")
 plot!(1:T+1,log.([mean(e[t,1:(10^2)]) for t in 1:T+1]),linewidth=1.4, label="10^2")
 plot!(1:T+1,log.([mean(e[t,1:(10^3)]) for t in 1:T+1]), linewidth=1.6, label="10^3")
@@ -82,7 +82,7 @@ run(`pdfcrop --margins '0 0 0 0' pdf/ergodicity_expectedValue.pdf pdf/ergodicity
 
 
 coop = game(100,0)[1,:]
-fig=plot([1,1001], [0, 1001*log(time_average)], label=false, thickness_scaling = 1.5, grid=false, xlab="Tiempo", ylab="log(Recursos) ")
+fig=plot([1,1001], [0, 1001*log(time_average)], label=false, thickness_scaling = 1.5, grid=false, xlab="Time", ylab="log(Resources) ")
 plot!([1,1001], [0, 1001*log(ensamble_average)], label=false, color="black")
 plot!(log.(coop), label=false, color=3)
 savefig(fig, "pdf/ergodicity_cooperation.pdf")
@@ -92,11 +92,11 @@ run(`pdfcrop --margins '0 0 0 0' pdf/ergodicity_cooperation.pdf pdf/ergodicity_c
 coop0 = game(100,0)
 coop1 = game(100,1)
 coop2 = game(100,2)
-fig = plot(log.(transpose(coop0[end:end,:])), color=3, thickness_scaling = 1.5, grid=false, xlab="Tiempo", ylab="log(Recursos) ", label="0 Desertors", legend=(0.15,0.9), foreground_color_legend = nothing)
+fig = plot(log.(transpose(coop0[end:end,:])), color=3, thickness_scaling = 1.5, grid=false, xlab="Time", ylab="log(Resources) ", label="0 Defectors", legend=(0.15,0.9), foreground_color_legend = nothing)
 plot!(log.(transpose(coop1[end:end,:])), color=1, label=false)
-plot!(log.(transpose(coop1[1:1,:])), color=1, label="1 Desertors")
+plot!(log.(transpose(coop1[1:1,:])), color=1, label="1 Defectors")
 plot!(log.(transpose(coop2[end-1:end,:])), color=2, label=false)
-plot!(log.(transpose(coop2[1:1,:])), color=2, label="2 Desertors")
+plot!(log.(transpose(coop2[1:1,:])), color=2, label="2 Defectors")
 savefig(fig, "pdf/ergodicity_desertion.pdf")
 run(`pdfcrop --margins '0 0 0 0' pdf/ergodicity_desertion.pdf pdf/ergodicity_desertion.pdf`) 
 

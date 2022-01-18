@@ -109,7 +109,7 @@
 \end{abstract}
 
 
-\section{Introducción}
+\section{\en{Introduction}\es{Introducción}}
 
 \en{In the last third of the history of the Universe, sometime around 4 billion years ago, a simple form of matter organization capable of self-replication appeared on Earth. }%
 \es{En el último tercio de la historia del Universo, en algún momento hace aproximadamente 4000 millones de años, apareció en la tierra una forma de organización de la materia capaz de auto-replicarse. }%
@@ -120,8 +120,8 @@
 \en{The errors produced during replication diversified the life forms, and the growth rates of the different strategies favored those better adapted to the environment. }%
 \es{Los errores producidos durante la replicación diversificaron las formas de vida, y las tasas de crecimiento de las diferentes estrategias favorecieron a aquellas mejor adaptadas al ambiente. }%
 %
-\en{From that moment until now, life has acquired an extraordinary complexity. }%
-\es{Desde aquel momento hasta ahora la vida adquirió una extraordinaria complejidad. }%
+\en{From that moment until now, life has acquired an extraordinary complexity, both in terms of cooperation and specialization. }%
+\es{Desde aquel momento hasta ahora la vida adquirió una extraordinaria complejidad, tanto a nivel de cooperación como de especialización. }%
 %
 \begin{figure}[H]
     \centering
@@ -129,8 +129,8 @@
     \includegraphics[width=\linewidth]{auxiliar/images/biomass.jpg}
     \end{subfigure}
     \caption{
-    \en{Current distribution of biomass on Earth estimated by Bar-On et al..~\cite{barOn2018-biomass}. }
-	\es{Distribución actual de la biomasa en la Tierra estimada por Bar-On et al.~\cite{barOn2018-biomass}. }%
+    \en{Distribution of biomass on Earth estimated by Bar-On et al.~\cite{barOn2018-biomass}. }
+	\es{Distribución de la biomasa en la Tierra estimada por Bar-On et al.~\cite{barOn2018-biomass}. }%
     }
     \label{fig:biomass}
 \end{figure}
@@ -219,7 +219,7 @@ f(\Aa) =
     \includegraphics[width=\linewidth]{figures/pdf/ergodicity_expectedValue.pdf}
     \end{subfigure}
     \caption{
-    \en{Average of individual resources over time for different population sizes, in logarithmic scale. }%
+    \en{Average of individual resources over time for different population sizes, in log scale. }%
     \es{Promedio de los recursos individuales en el tiempo para diferentes tamaños de la población, en escala logarítimica. }%
     %
     \en{As we increase the size of the population, the average approaches the expected value of $1.05^t$. }%
@@ -299,7 +299,7 @@ f(\Aa) =
 g = (1.5 \cdot 0.6)^{1/2} \approx 0.95
 \end{equation}
 %
-\en{This formula, which allows computing the long-term growth rate of individual trajectories, has previously been used in the evolution literature under the name \emph{geometric mean}. }%
+\en{This formula, which allows computing the long-term growth rate of individual trajectories, has previously been used in the evolution literature under the name \emph{geometric mean}~\cite{dempster1955-geometricMean}. }%
 \es{Esta fórmula, que permite computar la tasa de crecimiento a largo plazo de las trayectorias individuales, ha sido usada previamente en la literatura de evolución bajo el nombre de \emph{media geométrica}~\cite{dempster1955-geometricMean}. }%
 %
 \en{An important property of the geometric mean is that its value is always less than the expected value (or arithmetic mean). }%
@@ -317,14 +317,14 @@ g = (1.5 \cdot 0.6)^{1/2} \approx 0.95
 % \end{equation}
 % 
 
-\subsection{Cooperacion}
+\subsection{Coopera\en{tion}\es{ción}}
 
-\en{As a consequence of the non-ergodicity of multiplicative processes, fluctuations have a negative effect on individual growth rates, which can be reduced through mutual cooperation~\cite{yaari2010-cooperationEvolution, peters-cooperation2019.03.04}. }%
-\es{Como consecuencia de la no-ergodicidad de los procesos multiplicativos, las fluctuaciones tienen un efecto negativo en las tasas de crecimiento individuales, las cuales pueden ser reducidas a través de la mutua cooperación~\cite{yaari2010-cooperationEvolution, peters-cooperation2019.03.04}. }%
+\en{As a consequence of the non-ergodicity of multiplicative processes, fluctuations have a negative effect on individual growth rates, which can be reduced through mutual cooperation. }%
+\es{Como consecuencia de la no-ergodicidad de los procesos multiplicativos, las fluctuaciones tienen un efecto negativo en las tasas de crecimiento individuales, las cuales pueden ser reducidas a través de la mutua cooperación. }%
 %
 %Parafraseando a Den Boer~\cite{denBoer1968-spreadingRisk}, la  supervivencia de una población depende de la distribución del riesgo dentro de la población y entre las poblaciones de diferentes especies.
-\en{Ole Peters~\cite{peters-cooperation2019.03.04} considers the following cooperative strategy and analyzes the consequences it has on the growth rate of the agents. }%
-\es{Ole Peters~\cite{peters-cooperation2019.03.04} considera la siguiente estrategia cooperativa y analiza la consecuencias que tiene sobre la tasa de crecimiento de los agentes. }%
+\en{Yaari-Solomon and Peters-Adamou~\cite{yaari2010-cooperationEvolution, peters-cooperation2019.03.04} (hereinafter Yaari and Peters) considers the following cooperative strategy and analyzes the consequences it has on the growth rate of the agents. }%
+\es{Yaari-Solomon and Peters-Adamou~\cite{peters-cooperation2019.03.04} (de aquí en adelante Yaari y Peters) consideran la siguiente estrategia cooperativa y analiza la consecuencias que tiene sobre la tasa de crecimiento de los agentes. }%
 %
 \begin{figure}[H]
 \centering
@@ -339,7 +339,7 @@ g = (1.5 \cdot 0.6)^{1/2} \approx 0.95
     
     \node[latent, right=of x1_0g, minimum size=3.8cm, yshift=-1.33cm, align=right] (x_0) {$\omega_1(t)\cdot f(\Aa_1(t))$\\$+\omega_2(t)\cdot f(\Aa_2(t))$ } ;
     
-    \node[const, above=of x_0] (nx_0) {$\overbrace{\text{Pool}\hspace{2.5cm}\text{Share}}^{\text{\normalsize Cooperaci\'on}}$} ;
+    \node[const, above=of x_0] (nx_0) {$\overbrace{\text{Pool}\hspace{2.5cm}\text{Share}}^{\text{\normalsize Coopera\en{tion}\es{ci\'on}}}$} ;
     
     \node[latent, right=of x1_0g, minimum size=2.5cm,  xshift=4.5cm] (x1_1) {$\omega_1(t+1)$ } ;
     \node[latent, below=of x1_1, minimum size=2.5cm, yshift=0.7cm] (x2_1) {$\omega_2(t+1)$ } ;
@@ -358,11 +358,11 @@ g = (1.5 \cdot 0.6)^{1/2} \approx 0.95
 \label{fig:protocolo}
 \end{figure}
 %
-\en{Fully cooperative populations reduce their fluctuations, which generates an increase in the growth rate of all their members. }%
-\es{Las poblaciones enteramente cooperadoras reducen sus fluctuaciones, lo que genera una aumento en la tasa de crecimiento de todos sus miembros. }%
+\en{Fully cooperative groups reduce their fluctuations, generating an increase in the growth rate of all their members. }%
+\es{Grupos enteramente cooperadoras reducen sus fluctuaciones, generando un aumento en la tasa de crecimiento de todos sus miembros. }%
 %
-\en{In Figure \ref{fig:ergodicity_cooperation} we show the trajectory of an agent in a cooperating population of size 33. }%
-\es{En la figura \ref{fig:ergodicity_cooperation} mostramos la trayectoria de un agente en una población cooperadora de tamaño 33. }%
+\en{In Figure \ref{fig:ergodicity_cooperation} we show the trajectory of an agent in a cooperating group of size 33. }%
+\es{En la figura \ref{fig:ergodicity_cooperation} mostramos la trayectoria de un agente en un grupo cooperador de tamaño 33. }%
 %
 \begin{figure}[H]
     \centering
@@ -370,16 +370,16 @@ g = (1.5 \cdot 0.6)^{1/2} \approx 0.95
     \includegraphics[width=\linewidth]{figures/pdf/ergodicity_cooperation.pdf}
     \end{subfigure}
     \caption{
-    \en{The resources of an individual from a population of 33 agents who share their wealth after each iteration (green line), approaches the expected value (black line). As a visual reference, we show the characteristic growth rate of the individuals (blue line). }%
-    \es{Los recursos de un individuo de una población de 33 agentes que comparten su riqueza luego de cada iteración (recta verde), se pega al valor esperado (recta negra).
-    Como referencia visual, dejamos la tasa de crecimiento caracterísitica de los individuos (recta azul). }%
+    \en{The resources of an individual from a group of 33 agents who share their wealth after each iteration (green line), approaches the expected value (black line). As a visual reference, we show the growth rate of the individuals (blue line). }%
+    \es{Los recursos de un individuo de una grupo de 33 agentes que comparten su riqueza luego de cada iteración (recta verde), se pega al valor esperado (recta negra).
+    Como referencia visual, dejamos la tasa de crecimiento de los individuos (recta azul). }%
     }
     \label{fig:ergodicity_cooperation}
 \end{figure}
 %
 % \paragraph{Conclusión Ole Peters} (La ventaja de la cooperación)\textbf{.}
-\en{Individuals in fully cooperative populations achieve growth rates equivalent to the average of system states, which in non-ergodic systems is always higher than individual growth rates. }%
-\es{Los individuos de las poblaciones enteramente cooperadoras logran acceder a tasas de crecimiento equivalentes al promedio de estados del sistema, que en los sistemas no-ergódicos es siempre superior que la tasas de crecimiento individual. }%
+\en{Individuals in fully cooperative groups achieve growth rates equivalent to the average of system states, which in non-ergodic systems is always higher than individual growth rates. }%
+\es{Los individuos de los grupos enteramente cooperadoras logran acceder a tasas de crecimiento equivalentes al promedio de estados del sistema, que en los sistemas no-ergódicos es siempre superior que la tasas de crecimiento individual. }%
 %
 \en{Ole Peters believs that the increase in the growth rate is sufficient argument to demonstrate the evolutionary advantage of cooperation, which he proposes as the main explanation for evolutionary transitions. }%
 \es{Ole Peters considera que el aumento de la tasa de crecimiento es argumento suficiente para demostrar la ventaja evolutiva de la cooperación, lo que propone como principal explicación de las transiciones evolutivas. }%
@@ -390,7 +390,7 @@ g = (1.5 \cdot 0.6)^{1/2} \approx 0.95
 \en{This does not seem to be a minor problem, considering the temptation to stop contributing to the common fund while continuing to receive its benefits. }%
 \es{No parece ser un problema menor, teniendo en cuenta la tentación de dejar de aportar al fondo común mientras se siguen recibiendo sus beneficios. }%
 
-\subsection{Multilevel selection}
+\paragraph{\en{Multilevel selection}\es{Selección multinivel}}
 
 \en{To demonstrate the evolutionary advantage of cooperation in the presence of defection it is necessary to consider selection at both the individual and group level. }%
 \es{Para demostrar la ventaja evolutiva de la cooperción en presencia de desertores es necesario considerar selección tanto a nivel individual como a nivel grupal. }%
@@ -403,11 +403,11 @@ g = (1.5 \cdot 0.6)^{1/2} \approx 0.95
 
 % Parrafo
 
-\en{The co-author of the concept of evolutionary transitions (Szathmary~\cite{szathmary1995-evolutionaryTransitions, szathmary2015-evolutionaryTransitions}) recently proposed to analyze the evolution of populations subject to multilevel selection by means of Bayesian hierarchical models~\cite{czegel2019-bayesianEvolution}, making use of the isomorphism between evolutionary theory and Bayesian inference~\cite{harper2009-replicatorAsInference,shalizi2009-replicatorAsInference}. }%
-\es{El co-autor del concepto de transiciones evolutivas (Szathmary~\cite{szathmary1995-evolutionaryTransitions, szathmary2015-evolutionaryTransitions}) propuso recientemente analizar la evolución de las poblaciones sujetas a selección multinivel mediante modelos jerárquicos bayesianos~\cite{czegel2019-bayesianEvolution}, haciendo uso del isomorfismo entre las teoría de la evolución y la inferencia bayesiana~\cite{harper2009-replicatorAsInference,shalizi2009-replicatorAsInference}. }%
+\en{The co-author of the concept of evolutionary transitions (Szathmáry~\cite{szathmary1995-evolutionaryTransitions, szathmary2015-evolutionaryTransitions}) recently proposed to analyze the evolution of populations subject to multilevel selection by means of Bayesian hierarchical models~\cite{czegel2019-bayesianEvolution}, making use of the isomorphism between evolutionary theory and Bayesian inference~\cite{harper2009-replicatorAsInference,shalizi2009-replicatorAsInference}. }%
+\es{El co-autor del concepto de transiciones evolutivas (Szathmáry~\cite{szathmary1995-evolutionaryTransitions, szathmary2015-evolutionaryTransitions}) propuso recientemente analizar la evolución de las poblaciones sujetas a selección multinivel mediante modelos jerárquicos bayesianos~\cite{czegel2019-bayesianEvolution}, haciendo uso del isomorfismo entre las teoría de la evolución y la inferencia bayesiana~\cite{harper2009-replicatorAsInference,shalizi2009-replicatorAsInference}. }%
 %
-\en{However, beyond the proposal, the authors of this article (Czegel et al~\cite{czegel2019-bayesianEvolution}) fail to offer a model that represents multilevel selection, their examples are only pictorial. }%
-\es{Sin embargo, más allá de la propuesta, los autores de este artículo (Czegel et al~\cite{czegel2019-bayesianEvolution}) no logran ofrecer un modelo que represente selección multinivel, sus ejemplos son sólo pictóricos. }%
+\en{However, this work does not provide any model that performs multilevel selection, so the proposal remains open. }%
+\es{Sin embargo, este trabajo no proveé ningun modelo que realice selección multinivel, por lo que la propuesta sigue abierta. }%
 
 % Parrafo
 
@@ -420,7 +420,7 @@ g = (1.5 \cdot 0.6)^{1/2} \approx 0.95
 % \en{With this model we demonstrate, as Ole Peters intended, that the advantage of cooperation (now in the presence of defection) is a consequence of the most basic and fundamental assumption of evolutionary theory: that evolutionary processes are multiplicative and noisy. }%
 % \es{Con este modelo demostramos, como pretendía Ole Peters, de que la ventaja de la cooperación (ahora en presencia de deserción) es consecuencia del supuesto más básico y fundamental de la teoría de la evolución: que los procesos evolutivos son multiplicativos y ruidosos. }%
 
-\subsection{Especialización}
+\paragraph{Especialización}
 
 % \en{According to Ole Peters, an important evolutionary phenomenon on which his analysis can shed new light is the transition to multicellularity. }%
 % \es{Según Ole Peters, un importante fenómeno evolutivo sobre el que su análisis puede arrojar nueva luz es la transición a la multicelularidad. }%
@@ -432,35 +432,34 @@ g = (1.5 \cdot 0.6)^{1/2} \approx 0.95
 \es{Luego, para explicar las transiciones evolutivas es necesario demostrar la ventaja evolutiva de la cooperación en presencia de deserción, pero también la ventaja de la especiliazación. }%
 
 % Parrafo
-
-\en{However, Ole Peters believes that the cause of the cooperation advantage (the assumption of non-ergodicity of noisy multiplicative processes) does not allow explaining the specialization advantage. }%
-\es{Sin embargo, Ole Peters cree que la causa de la ventaja de la cooperación (el supuesto de la no-ergodicidad de los procesos multiplicativos ruidosos) no permite explicar la ventaja de la especialización. }%
-%
-\en{Ole Peters believes that specialization is a too complex property to produce a benefit in simple aggregations of, for example, two agents. }
-\es{Ole Peters considera a la especialización como una caracterísitica demasiado compleja para que produzca un beneficio en agregaciones simples de por ejemplo dos agentes. }%
-%
-\en{He says the ``[advantage of cooperation] it may explain the transition from single cells to bicellular organisms, too small and simple to benefit from new function or specialization.'' }
-\es{Dice que la ventaja de la cooperación: ``it may explain the transition from single cells to bicellular organisms, too small and simple to benefit from new function or specialization.'' }%
-%
-\en{He believes that other explanations of evolutionary transitions, such as the emergence of specialization, are implausible. }%
-\es{El cree que otras explicaciones de las transiciones evolutivas, como la emergencia de la especialización, son implausibles. }%
+% 
+% \en{However, Ole Peters believes that the cause of the cooperation advantage (the assumption of non-ergodicity of noisy multiplicative processes) does not allow explaining the specialization advantage. }%
+% \es{Sin embargo, Ole Peters cree que la causa de la ventaja de la cooperación (el supuesto de la no-ergodicidad de los procesos multiplicativos ruidosos) no permite explicar la ventaja de la especialización. }%
+% %
+% \en{Ole Peters believes that specialization is a too complex property to produce a benefit in simple aggregations of, for example, two agents. }
+% \es{Ole Peters considera a la especialización como una caracterísitica demasiado compleja para que produzca un beneficio en agregaciones simples de por ejemplo dos agentes. }%
+% %
+% \en{He says the ``[advantage of cooperation] it may explain the transition from single cells to bicellular organisms, too small and simple to benefit from new function or specialization.'' }
+% \es{Dice que la ventaja de la cooperación: ``it may explain the transition from single cells to bicellular organisms, too small and simple to benefit from new function or specialization.'' }%
+% %
+% \en{He believes that other explanations of evolutionary transitions, such as the emergence of specialization, are implausible. }%
+% \es{El cree que otras explicaciones de las transiciones evolutivas, como la emergencia de la especialización, son implausibles. }%
 
 % Parrafo
 
-\en{In this paper we show that the same minimal assumptions used by Ole Peters to explain the evolutionary advantage of cooperation also allow us to explain the evolutionary advantage of specialization, even for the simplest aggregations of two agents. }%
-\es{En este trabajo demostramos que los mismos supuestos mínimos que utiliza Ole Peters para explicar la ventaja evolutiva de la cooperación, permiten también explicar la ventaja evolutiva de especialización, incluso para las agregaciones más simples de dos agentes. }%
+\en{In this paper we show that the same minimal assumptions used by Yaari and Peters to explain the evolutionary advantage of cooperation also allow us to explain the evolutionary advantage of specialization, even for the simplest aggregations of two agents. }%
+\es{En este trabajo demostramos que los mismos supuestos mínimos que utilizam Yaari y Peters para explicar la ventaja evolutiva de la cooperación, permiten también explicar la ventaja evolutiva de especialización, incluso para las agregaciones más simples de dos agentes. }%
 %
 \en{We show that, once cooperation emerges, individually maladapted strategies (specialists) manage to outperform, even organized in small groups, both individually well-adapted strategies (generalists) and their cooperative groups of infinite size. }%
 \es{Mostramos que, una vez que la cooperación emerge, las estrategias individualmente mal adaptadas (especialistas) consigen superar, incluso organizadas en grupos pequeños, tanto a las estrategias bien adaptas individualmemte (generalistas) como a sus grupos cooperativos de tamaño infinito. }%
 
 % Parrafo
 
-
 \en{It is extraordinary that such a simple assumption has such fundamental conclusions for understanding the complexity of life. }%
 \es{Es extraordinario que un supuesto tan simple tenga conclusiones tan fudamentales para entender la complejidad de la vida. }%
 %
-\en{Because the evolutionary advantage of cooperation and specialization is a direct consequence of the non-ergodicity of the multiplicative processes to which life is subject, we support Ole Peters' idea of considering it the first cause of major evolutionary transitions. }%
-\es{Debido a que la ventaja evolutiva de la cooperación y la especialización es consecuencia directa de la no-ergodicidad de los procesos multiplicativos a los que está sujeto la vida, apoyamos la idea de Ole Peters de consideradala la primera causa de las transiciones evolutivas mayores. }%
+% \en{Because the evolutionary advantage of cooperation and specialization is a direct consequence of the non-ergodicity of the multiplicative processes to which life is subject, we support Ole Peters' idea of considering it the first cause of major evolutionary transitions. }%
+% \es{Debido a que la ventaja evolutiva de la cooperación y la especialización es consecuencia directa de la no-ergodicidad de los procesos multiplicativos a los que está sujeto la vida, apoyamos la idea de Ole Peters de consideradala la primera causa de las transiciones evolutivas mayores. }%
 
 \section{Metodología}
 
