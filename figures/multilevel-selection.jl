@@ -111,27 +111,28 @@ end
 
 
 
-postC, postD, joint_log_evidence = posterior_evidence_level_1(e,9,9,10000)
-fig = plot(e,postC, thickness_scaling = 2, grid=false, label="Cooperation", legend=:best,foreground_color_legend = nothing, ylab="Density", xlab="Estrategy", color=3, linewidth=2)
-plot!(-1.0.*reverse(e),reverse(postD), label="Desertion", color=1, linewidth=2)
-savefig(fig, "pdf/multilevel-selection-1.pdf")
-savefig(fig, "png/multilevel-selection-1.png")
-run(`pdfcrop --margins '0 0 0 0' pdf/multilevel-selection-1.pdf pdf/multilevel-selection-1.pdf`) 
+# postC, postD, joint_log_evidence = posterior_evidence_level_1(e,9,9,10000)
+# fig = plot(e,postC, thickness_scaling = 2, grid=false, label="Cooperation", legend=:best,foreground_color_legend = nothing, ylab="Density", xlab="Estrategy", color=3, linewidth=2)
+# plot!(-1.0.*reverse(e),reverse(postD), label="Desertion", color=1, linewidth=2)
+# savefig(fig, "pdf/multilevel-selection-1.pdf")
+# savefig(fig, "png/multilevel-selection-1.png")
+# run(`pdfcrop --margins '0 0 0 0' pdf/multilevel-selection-1.pdf pdf/multilevel-selection-1.pdf`) 
+# 
+# Random.seed!(2)
+# postC, postD, joint_log_evidence = posterior_evidence_level_1(e,8,9,10000)
+# fig = plot(e,postC, thickness_scaling = 2, grid=false, label="Cooperation", legend=:best,foreground_color_legend = nothing, ylab="Density", xlab="Estrategy", color=3, linewidth=2)
+# plot!(-1.0.*reverse(e),reverse(postD), label="Desertion", color=1, linewidth=2)
+# savefig(fig, "pdf/multilevel-selection-2.pdf")
+# savefig(fig, "png/multilevel-selection-2.png")
+# run(`pdfcrop --margins '0 0 0 0' pdf/multilevel-selection-2.pdf pdf/multilevel-selection-2.pdf`) 
+# 
+# postC, postD, joint_log_evidence = posterior_evidence_level_1(e,7,9,10000)
+# fig = plot(e,postC, thickness_scaling = 2, grid=false, label="Cooperation", legend=:best,foreground_color_legend = nothing, ylab="Density", xlab="Estrategy", color=3, linewidth=2)
+# plot!(-1.0.*reverse(e),reverse(postD), label="Desertion", color=1, linewidth=2)
+# savefig(fig, "pdf/multilevel-selection-3.pdf")
+# savefig(fig, "png/multilevel-selection-3.png")
+# run(`pdfcrop --margins '0 0 0 0' pdf/multilevel-selection-3.pdf pdf/multilevel-selection-3.pdf`)
 
-Random.seed!(2)
-postC, postD, joint_log_evidence = posterior_evidence_level_1(e,8,9,10000)
-fig = plot(e,postC, thickness_scaling = 2, grid=false, label="Cooperation", legend=:best,foreground_color_legend = nothing, ylab="Density", xlab="Estrategy", color=3, linewidth=2)
-plot!(-1.0.*reverse(e),reverse(postD), label="Desertion", color=1, linewidth=2)
-savefig(fig, "pdf/multilevel-selection-2.pdf")
-savefig(fig, "png/multilevel-selection-2.png")
-run(`pdfcrop --margins '0 0 0 0' pdf/multilevel-selection-2.pdf pdf/multilevel-selection-2.pdf`) 
-
-postC, postD, joint_log_evidence = posterior_evidence_level_1(e,7,9,10000)
-fig = plot(e,postC, thickness_scaling = 2, grid=false, label="Cooperation", legend=:best,foreground_color_legend = nothing, ylab="Density", xlab="Estrategy", color=3, linewidth=2)
-plot!(-1.0.*reverse(e),reverse(postD), label="Desertion", color=1, linewidth=2)
-savefig(fig, "pdf/multilevel-selection-3.pdf")
-savefig(fig, "png/multilevel-selection-3.png")
-run(`pdfcrop --margins '0 0 0 0' pdf/multilevel-selection-3.pdf pdf/multilevel-selection-3.pdf`) 
 # P(poblaciones que contengan desertores) 
 postL2 = posterior_level_2(e,10,100)
 pData = sum([sum(exp.(le)) for le in postL2])
@@ -150,7 +151,7 @@ end
 
 postL2slide_maximum_temporal = [ maximum(coop_temporal_average.(i, e, A, i)) for i in 1:16]
 postL2slide = posterior_level_2_slide_coop(e,16,10000)
-fig = plot(1:16, exp.(postL2slide./10000 ), label="gmean(Evidencia)", thickness_scaling = 1.5, grid=false, ylab="Tasa de crecimiento", xlab="Tamaño de la población", legend=:bottomright, foreground_color_legend = nothing)
+fig = plot(1:16, exp.(postL2slide./10000 ), label="gmean(Evidencia)", thickness_scaling = 1.5, grid=false, ylab="fitness", xlab="Population size", legend=:bottomright, foreground_color_legend = nothing)
 plot!(1:16, postL2slide_maximum_temporal, label="max(Analítica)")
 savefig(fig, "pdf/multilevel-selection-4.pdf")
 savefig(fig, "png/multilevel-selection-4.png")
@@ -218,16 +219,16 @@ savefig(p, "png/multilevel-selection-level-1-posterior.png")
 savefig(p, "pdf/multilevel-selection-level-1-posterior.pdf") 
 
 
-N=16
-b_eg_N16 = []
-b_g_N16 = []
-B = [0 for i in 1:1001]
-w_coop = [0 for i in 1:1001]
+global N=16
+global b_eg_N16 = []
+global b_g_N16 = []
+global B = [0 for i in 1:1001]
+global w_coop = [0 for i in 1:1001]
 for n in 0:16
-    push!(b_eg_N16, game(16,n,1000).*(pdf(Binomial(16,0.5))[n+1].*(1/16)))
+    push!(b_eg_N16, game(16,n,1000).*(pdf.(Binomial(16,0.5), 0:16)[n+1].*(1/16)))
     push!(b_g_N16 , [sum(c) for c in eachcol(b_eg_N16[end])])
-    B = B .+ b_g_N16[end]
-    w_coop = w_coop .+ [ sum(c) for c in eachcol(b_eg_N16[end][1:(N-n),:])]
+    global B = B .+ b_g_N16[end]
+    global w_coop = w_coop .+ [ sum(c) for c in eachcol(b_eg_N16[end][1:(N-n),:])]
 end
 
 p = plot(1 .- (b_eg_N16[2][end,:] ./ [ sum(c) for c in eachcol(b_eg_N16[2])]),label=false, thickness_scaling = 1.5, grid=false, xlab="Tiempo", ylab="P( coop | a1, ..., at, g=1)", color = 3, foreground_color_legend = nothing, linewidth=2)
