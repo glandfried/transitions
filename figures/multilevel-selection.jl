@@ -151,8 +151,8 @@ end
 
 postL2slide_maximum_temporal = [ maximum(coop_temporal_average.(i, e, A, i)) for i in 1:16]
 postL2slide = posterior_level_2_slide_coop(e,16,10000)
-fig = plot(1:16, exp.(postL2slide./10000 ), label="gmean(Evidencia)", thickness_scaling = 1.5, grid=false, ylab="fitness", xlab="Population size", legend=:bottomright, foreground_color_legend = nothing)
-plot!(1:16, postL2slide_maximum_temporal, label="max(Analítica)")
+fig = plot(1:16, exp.(postL2slide./10000 ), label="gmean(Evidence)", thickness_scaling = 1.5, grid=false, ylab="Proportional growth rate", xlab="Population size", legend=:bottomright, foreground_color_legend = nothing)
+plot!(1:16, postL2slide_maximum_temporal, label="max(Analitic)")
 savefig(fig, "pdf/multilevel-selection-4.pdf")
 savefig(fig, "png/multilevel-selection-4.png")
 
@@ -165,7 +165,7 @@ f_d = coop_temporal_average(1, 1.5/2.1, 0.5, 1)*2.1
 T = 1000
 trayectorias = log.(transpose(game(100,1,T)))
 trayectorias_C = log.(transpose(game(100,0,T)))
-fig= plot(trayectorias[:,1], label=false, color=3,legend=:best,foreground_color_legend = nothing, ylab="log recursos", xlab="Tiempo", linewidth=1, grid=false,thickness_scaling = 1.5)
+fig= plot(trayectorias[:,1], label=false, color=3,legend=:best,foreground_color_legend = nothing, ylab="log(Resources)", xlab="Time", linewidth=1, grid=false,thickness_scaling = 1.5)
 #plot!(trayectorias[:,1], label=false, color=1, linewidth=1.5)
 plot!(trayectorias[:,end], label=false, color=1, linewidth=1.5)
 plot!(log.(omega_desertor.(f_c, f_d, 0:(T))), label=false,color="black",linewidth=1.5)
@@ -198,22 +198,22 @@ w_coop  = w_coop .+ b_eg1[1,:]
 B = [ sum(c) for c in eachcol(b_g)]
 
 # P(g|a)
-p = plot(b_g0./B, label="CC", thickness_scaling = 1.5, grid=false, xlab="Tiempo", ylab="P( g | a1, ..., at)", color = 3, foreground_color_legend = nothing,linewidth=2)
-plot!(b_g1./B, label="CD", color=2,linewidth=2)
-plot!(b_g2./B, label="DD", color=1,linewidth=2)
+p = plot(b_g0./B, label="CC", thickness_scaling = 1.5, grid=false, xlab="Time", ylab="P( g | a1, ..., at)", color = 3, foreground_color_legend = nothing,linewidth=2)
+plot!(b_g1./B, label="CD", color="gray" ,linewidth=1)
+plot!(b_g2./B, label="DD", color=2,linewidth=2)
 
 savefig(p, "png/multilevel-selection-6.png") 
 savefig(p, "pdf/multilevel-selection-6.pdf") 
 
 # P(coop|a)
-p = plot(w_coop./B, label="Cooperator", thickness_scaling = 1.5, grid=false, xlab="Tiempo", ylab="P( coop | a1, ..., at)", color = 3, foreground_color_legend = nothing,linewidth=2)
+p = plot(w_coop./B, label="Cooperator", thickness_scaling = 1.5, grid=false, xlab="Time", ylab="P( coop | a1, ..., at)", color = 3, foreground_color_legend = nothing,linewidth=2)
 
 savefig(p, "png/multilevel-selection-multilevel-posterior.png") 
 savefig(p, "pdf/multilevel-selection-multilevel-posterior.pdf") 
 
 # Biomasa individuos engrupo mixto (posterior nivel 1)
 
-p = plot(b_eg1[1,:]./b_g1, label="Cooperator", thickness_scaling = 1.5, grid=false, xlab="Tiempo", ylab="P( coop | a1, ..., at, g=1)", color = 3, foreground_color_legend = nothing,linewidth=2)
+p = plot(b_eg1[1,:]./b_g1, label="Cooperator", thickness_scaling = 1.5, grid=false, xlab="Time", ylab="P( coop | a1, ..., at, g=1)", color = 3, foreground_color_legend = nothing,linewidth=2)
 plot!(b_eg1[2,:]./b_g1, label="Desertor", color=2,linewidth=2)
 savefig(p, "png/multilevel-selection-level-1-posterior.png") 
 savefig(p, "pdf/multilevel-selection-level-1-posterior.pdf") 
@@ -231,17 +231,17 @@ for n in 0:16
     global w_coop = w_coop .+ [ sum(c) for c in eachcol(b_eg_N16[end][1:(N-n),:])]
 end
 
-p = plot(1 .- (b_eg_N16[2][end,:] ./ [ sum(c) for c in eachcol(b_eg_N16[2])]),label=false, thickness_scaling = 1.5, grid=false, xlab="Tiempo", ylab="P( coop | a1, ..., at, g=1)", color = 3, foreground_color_legend = nothing, linewidth=2)
+p = plot(1 .- (b_eg_N16[2][end,:] ./ [ sum(c) for c in eachcol(b_eg_N16[2])]),label=false, thickness_scaling = 1.5, grid=false, xlab="Time", ylab="P( coop | a1, ..., at, g=1)", color = 3, foreground_color_legend = nothing, linewidth=2)
 plot!((b_eg_N16[2][end,:] ./ [ sum(c) for c in eachcol(b_eg_N16[2])]),  label=false, color=2, linewidth=2)
 savefig(p, "png/multilevel-selection-level-1-posterior-N16.png") 
 savefig(p, "pdf/multilevel-selection-level-1-posterior-N16.pdf") 
 
-p = plot(w_coop./B, label="Cooperator", thickness_scaling = 1.5, grid=false, xlab="Tiempo", ylab="P( coop | a1, ..., at)", color = 3, foreground_color_legend = nothing, linewidth=2)
+p = plot(w_coop./B, label="Cooperator", thickness_scaling = 1.5, grid=false, xlab="Time", ylab="P( coop | a1, ..., at)", color = 3, foreground_color_legend = nothing, linewidth=2)
 savefig(p, "png/multilevel-selection-multilevel-posterior-N16.png") 
 savefig(p, "pdf/multilevel-selection-multilevel-posterior-N16.pdf") 
 
 
-p = plot(b_g_N16[1]./B, label="0", thickness_scaling = 1.5, grid=false, xlab="Tiempo", ylab="P( g | a1, ..., at)", color = 3, foreground_color_legend = nothing, linewidth=2)
+p = plot(b_g_N16[1]./B, label="0", thickness_scaling = 1.5, grid=false, xlab="Time", ylab="P( g | a1, ..., at)", color = 3, foreground_color_legend = nothing, linewidth=2)
 plot!(b_g_N16[2]./B, label=false, color="gray")
 plot!(b_g_N16[3]./B, label=false, color="gray")
 plot!(b_g_N16[4]./B, label=false, color="gray")
@@ -275,7 +275,7 @@ for n in nx#n=950
     push!(fD,wD101/wD100)
 end
 
-fig=plot((nx/N), reverse(fC),label="Cooperador", color=3, legend=(0.2,0.3),foreground_color_legend = nothing, ylab="Fitness", xlab="Proporción desertores (total)", linewidth=1.5, grid=false,thickness_scaling = 1.5)
+fig=plot((nx/N), reverse(fC),label="Cooperator", color=3, legend=(0.2,0.3),foreground_color_legend = nothing, ylab="Proportional growth rate", xlab="Proprotions of defectors (total)", linewidth=1.5, grid=false,thickness_scaling = 1.5)
 plot!(nx/N,reverse(fD), label="Desertor", color=1)
 savefig(fig, "pdf/multilevel-selection-7.pdf")
 savefig(fig, "png/multilevel-selection-7.png")
@@ -294,7 +294,7 @@ for n in nx#n=950
     push!(fD,wD101/wD100)
 end
 
-fig=scatter([(nx/(N-1))[1:end-1];(nx/(N-1))[1:end-1]], [reverse(fC)[1:end-1];reverse(fD)[2:end]], color=[3,3,1,1],foreground_color_legend = nothing, ylab="Fitness", xlab="Proporción desertores (otros)", linewidth=1.5,label=false, grid=false,thickness_scaling = 1.5 )
+fig=scatter([(nx/(N-1))[1:end-1];(nx/(N-1))[1:end-1]], [reverse(fC)[1:end-1];reverse(fD)[2:end]], color=[3,3,1,1],foreground_color_legend = nothing, ylab="Proportional growth rate", xlab="Proprotions of defectors (otros)", linewidth=1.5,label=false, grid=false,thickness_scaling = 1.5 )
 savefig(fig, "pdf/multilevel-selection-8.pdf")
 savefig(fig, "png/multilevel-selection-8.png")
 run(`pdfcrop --margins '0 0 0 0' pdf/multilevel-selection-8.pdf pdf/multilevel-selection-8.pdf`) 
@@ -313,7 +313,7 @@ for n in nx#n=950
     push!(fD,wD101/wD100)
 end
 
-fig=scatter((nx/(N-1))[1:end-1], reverse(fC)[1:end-1], color=3,foreground_color_legend = nothing, ylab="Fitness", xlab="Proporción desertores (otros)", linewidth=1.5,label=false, grid=false,thickness_scaling = 1.5, xlim=[0,0.21], ylim=[0.4,0.5])
+fig=scatter((nx/(N-1))[1:end-1], reverse(fC)[1:end-1], color=3,foreground_color_legend = nothing, ylab="Proportional growth rate", xlab="Proprotions of defectors (others)", linewidth=1.5,label=false, grid=false,thickness_scaling = 1.5, xlim=[0,0.21], ylim=[0.4,0.5])
 scatter!((nx/(N-1))[1:end-1], reverse(fD)[2:end], color=1, label=false)
 savefig(fig, "pdf/multilevel-selection-9.pdf")
 savefig(fig, "png/multilevel-selection-9.png")

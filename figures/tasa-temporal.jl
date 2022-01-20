@@ -26,7 +26,7 @@ function coop_temporal_average(n, e, ambiente, N)
     return res
 end
 
-fig = plot(e, (0.5.^e).*(0.5.^(1.0.-e)),label="0.50", xlab="Ambiente", ylab="Tasa de supervivencia", legend=(0.15,0.9), thickness_scaling = 1.5, grid=false, foreground_color_legend = nothing)
+fig = plot(e, (0.5.^e).*(0.5.^(1.0.-e)),label="0.50", xlab="Environment", ylab="Proportional growth rate", legend=(0.15,0.9), thickness_scaling = 1.5, grid=false, foreground_color_legend = nothing)
 plot!(e, (0.71.^e).*(0.29.^(1.0.-e)),label="0.71")
 plot!(e, (0.99.^e).*(0.01.^(1.0.-e)),label="0.99")
  # <\Delta x>
@@ -38,7 +38,7 @@ scatter!([0.71],[0.71^0.71*0.29^0.29], color=2,label=false)
 savefig(fig, "pdf/tasa-temporal-0.pdf")
 savefig(fig, "png/tasa-temporal-0.png")
 
-fig = plot(e, (0.5.^e).*(0.5.^(1.0.-e)),label=false, xlab="Ambiente", ylab="Tasa de supervivencia", legend=(0.15,0.9), thickness_scaling = 1.5, grid=false, foreground_color_legend = nothing, color="gray", alpha=0.5)
+fig = plot(e, (0.5.^e).*(0.5.^(1.0.-e)),label=false, xlab="Environment", ylab="Proportional growth rate", legend=(0.15,0.9), thickness_scaling = 1.5, grid=false, foreground_color_legend = nothing, color="gray", alpha=0.5)
 plot!(e, (0.71.^e).*(0.29.^(1.0.-e)),label=false, color="gray", alpha=0.5)
 scatter!([0.71],[0.71^0.71*0.29^0.29], color="gray",label=false)
 plot!(e, (0.99.^e).*(0.01.^(1.0.-e)),label=false, color="gray", alpha=0.5)
@@ -66,7 +66,7 @@ eN = zeros(Float64,(N,length(e)))
 for i in 1:N
     eN[i,:] .= coop_temporal_average.(i,e,0.71,i)
 end
-fig= plot(e,eN[1,:], xlab="Estrategia", ylab="Tasa de supervivencia", legend=(0.15,1.0), thickness_scaling = 1.5, label="1", grid=false, foreground_color_legend = nothing)
+fig= plot(e,eN[1,:], xlab="Estrategy", ylab="Proportional growth rate", legend=(0.15,1.0), thickness_scaling = 1.5, label="1", grid=false, foreground_color_legend = nothing)
 plot!([0.71,0.71],[0.0,maximum(eN)], color="black", line=:dash, label=false)
 plot!(e,eN[2,:], color=2, label="2")
 plot!(e,eN[3,:], color=3, label="3")

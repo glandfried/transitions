@@ -92,20 +92,28 @@
 \en{That is, contrary to the belief established since the mid-20th century in economics, we show that the dynamics of common goods cannot be represented by a prisoner's dilemma payoff matrix. }%
 \es{Es decir, en contra de la creencia establecida que en economía se tiene desde mediados del siglo 20, mostramos que los dinámicas de bienes comunes no puede representarse mediante una matriz de pagos del dilema del prisionero. }%
 %
-\en{Moreover, contrary to the belief that specialization is too complex a feature to produce a benefit in simple aggregations, we show that as soon as cooperation emerges, an advantage in favor of specialist strategies appears even in groups of size 2. }
+\en{Moreover, contrary to the belief that specialization is too complex a feature to produce a benefit in simple aggregations, we show that as soon as cooperation emerges, an advantage in favor of specialist strategies appears even in groups of size 2. }%
 \es{Además, en contra de la creencia de que la especialización es una caracterísitica demasiado compleja para que produzca un beneficio en agregaciones simples, mostramos que apenas surge la cooperación, aparece una ventaja a favor de las estrategias especialistas incluso en grupos de tamaño 2. }%
+%
+\en{Since the specialist strategies are individually poorly adapted to the environment, an irreversibility of the evolutionary transition is created. }%
+\es{Como la estrategias especialistas están individualmente mal adaptadas al ambiente, se crea una irreversbilidad de la transici evolutivas. }%
+%
+\en{Finally, although in this causal model there is no evolutionary advantage in favor of the division of labor, its emergence is viable by evolutionary drift. }%
+\es{Finalmene, si bien en este modelo causal no hay una ventaja evolutiva a favor de la división del trabajo, su aparición es viable por deriva evolutiva. }%
 
 % Parrafo
 
-\en{Even if our causal model does not assume any kind of process to update resources, probabilistic inference is proportional to the resources obtained through a multiplicative process. }%
-\es{Incluso si nuestro modelo causal no presupone ningún tipo de proceso para actualizar los recursos, la inferencia probabilistica es proporcional a los recursos obtenidos a través de un proceso multiplicativo. }%
+\en{The reason why an advantage in favor of cooperation and specialization arises in our simple causal model is due to the multiplicative (non-ergodic) nature of probabilistic theory and its isomorphism with evolutionary theory. }%
+\es{El motivo por el cual surge una ventaja a favor de la cooperación y la especialización en simple modelo causal se debe a la naturaleza multiplicativa (no-ergódica) de la teoría de la probabililidad y a su isomorfismo con la teoría de la evolución. }%
 %
+% \en{Even if our causal model does not assume any kind of process to update resources, probabilistic inference is proportional to the resources obtained through a multiplicative process. }%
+% \es{Incluso si nuestro modelo causal no presupone ningún tipo de proceso para actualizar los recursos, la inferencia probabilistica es proporcional a los recursos obtenidos a través de un proceso multiplicativo. }%
+% %
 \en{The multiplicative updating of the probabilities of individuals, which arises naturally from applying the rules of probability to the causal model, is in line with the long-established idea in evolutionary theory that the growth of lineages follow multiplicative processes. }%
 \es{La actualización multiplicativa de las probabilidades de los individuos, que surge naturalmente de aplicar las reglas de la probabilidad al modelo causal, está en línea con la idea largamente establecida en la teoría de la evolución de que el crecimiento de los linajes siguen procesos multiplicativos. }% 
 %
-%
-\en{The reason why an advantage in favor of cooperation and specialization arises in our simple causal model is due to the multiplicative (non-ergodic) nature of probabilistic theory and its isomorphism with evolutionary theory. }%
-\es{El motivo por el cual surge una ventaja a favor de la cooperación y la especialización en simple modelo causal se debe a la naturaleza multiplicativa (no-ergódica) de la teoría de la probabililidad y a su isomorfismo con la teoría de la evolución. }%
+
+
 \end{abstract}
 
 
@@ -138,24 +146,24 @@
 \en{The current complexity of life is the consequence of a series of evolutionary transitions in which entities capable of self-replication after the transition become part of higher level cooperative units~\cite{maynardSmith1995-majorTransitions, szathmary1995-evolutionaryTransitions, szathmary2015-evolutionaryTransitions}. }%
 \es{La complejidad actual de la vida es consecuencia de una serie de transiciones evolutivas en las que entidades capaces de autoreplicación luego de la transición pasan a formar parte de unidades cooperativas de nivel superior~\cite{maynardSmith1995-majorTransitions, szathmary1995-evolutionaryTransitions, szathmary2015-evolutionaryTransitions}. }%
 %
-\en{Some of the paradigmatic transitions are: from replicating molecules to protocells; from prokaryotic to eukaryotic cells; and from protists to animals, plants and fungi (cell differentiation). }%
-\es{Algunas de las transiciones paradigmáticas son: de las moléculas replicantes a las protocélulas; de las celulas procariotas a las eucariotas; y de los protistas a los animales, plantas y hongos (diferenciación celular). }%
+\en{Some of the paradigmatic transitions are: from prokaryotic to eukaryotic cells; from protozoa to animals, plants and fungi (cell differentiation and emergence of multicellular organisms); and from solitary individuals to societies. }%
+\es{Algunas de las transiciones paradigmáticas son: de las células procariotas a las eucariotas; de los protozoa a los animales, plantas y hongos (diferenciación celular y emergencia de organiismos multicelulares); y de los individuos solitarios a las sociedades. }%
 %
-\en{How to explain this permanent tendency of life in favor of cooperative aggregation and specialization? }%
-\es{¿Cómo se explica esta tendencia permanente de la vida en favor de la agregación cooperativa y la especialización? }%
+\en{How to explain this permanent tendency of life in favor of cooperative and specialization? }%
+\es{¿Cómo se explica esta tendencia permanente de la vida en favor de la cooperación y la especialización? }%
 %``The transition must be explained in terms of inmmediate selection advantage to individual replicators'' szathmary1995-evolutionaryTransitions
 
 % Parrafo
 
-\en{In evolution, the growth of a lineage over time, $\omega(t)$, is governed by a stochastic sequence of survival and reproduction rates $f(\cdot)$ dependent on a random environment $a$, }
-\es{En evolución, el crecimiento de un linaje en el tiempo, $\omega(t)$, esta gobernado por una secuencias estocástica de tasas de supervivencia y reproducción $f(\cdot)$ dependientes de un ambiente aleatorio $a$, }%
+\en{In evolution it is said that the growth of a lineage over time, $\omega(t)$, is governed by a stochastic sequence of survival and reproduction rates $f(\cdot)$ dependent on a random environment $\Aa$, }
+\es{En evolución se dice que el crecimiento de un linaje en el tiempo, $\omega(t)$, esta gobernado por una secuencias estocástica de tasas de supervivencia y reproducción $f(\cdot)$ dependientes de un ambiente aleatorio $\Aa$, }%
 %
 \begin{equation} \label{eq:modelo_exponencial}
-\omega(T) = \prod_t^T f(a(t)) \approx g^T
+\omega(T) = \prod_t^T f(\Aa(t)) \approx g^T
 \end{equation}
 %
-\en{where $a(t)$ represents the state of the environment at time $t$ and $g$ represents the characteristic growth rate when $T$ is sufficiently large. }%
-\es{donde $a(t)$ representa el estado del ambiente en el tiempo $t$ y $g$ representa la tasa de crecimiento caracterísitica cuando $T$ es suficientemente grande. }%
+\en{where $\Aa(t)$ represents the state of the environment at time $t$ and $g$ represents the characteristic growth rate when $T$ is sufficiently large. }%
+\es{donde $\Aa(t)$ representa el estado del ambiente en el tiempo $t$ y $g$ representa la tasa de crecimiento caracterísitica cuando $T$ es suficientemente grande. }%
 %
 \en{For example, suppose nature flips a coin, if it comes up heads the population reproduces 50\% and if it comes up tails it survives 60\%. }%
 \es{Por ejemplo, supongamos que la naturaleza lanza una moneda, si sale cara la población se reproduce 50\% y si sale seca sobrevive 60\%. }%
@@ -167,11 +175,11 @@ f(\Aa) =
 \end{cases}
 \end{equation}
 %
-\en{A similar example was proposed by Lewontin and Cohen (1969)~\cite{lewontin1969-randomlyVaryingEnvironment}. }%
-\es{Un ejemplo similar fue propuesto por Lewontin y Cohen (1969)~\cite{lewontin1969-randomlyVaryingEnvironment}. }%
+\en{A similar example was proposed by Lewontin and Cohen (1969)~\cite{lewontin1969-randomlyVaryingEnvironment},  in which the population reproduces 70\% or survives 50\%. }%
+\es{Un ejemplo similar fue anlizado por Lewontin y Cohen (1969)~\cite{lewontin1969-randomlyVaryingEnvironment}, en el que la población se reproduce 70\% o sobrevive 50\%. }%
 %
-\en{Other strategies $\Ee$ will have other functions $f(\Ee,\Aa)$. }%
-\es{Otras estrategias $\Ee$ tendrán otras funciones $f(\Ee,\Aa)$. }%
+\en{Different strategies $\Ee$ can be described with different functions $f_\Ee(\Aa)$. }%
+\es{Diferentes estrategias $\Ee$ las podemos describr con diferentes funciones $f_\Ee(\Aa)$. }%
 %
 \en{According to the standard model of evolution, known as \emph{replicator dynamic} \cite{taylor1978-replicatorDynamic}, the change in the proportion of a strategy in the population, $x_\Ee$, is determined by its characteristic growth rate $g_\Ee$, }%
 \es{Según el modelo estándar de evolución, conocido como \emph{replicator dynamic} \cite{taylor1978-replicatorDynamic}, el cambio de la proporción de una estrategia en la población, $x_\Ee$, está determinado por su tasa de crecimiento caracterísitica $g_\Ee$, }%
@@ -187,14 +195,14 @@ f(\Aa) =
 \en{But, what is the characteristic growth rate $g$? }%
 \es{¿Cuál es la tasa de crecimiento característica $g$? }%
 %
-\en{Much of the evolutionary literature bases its analysis on populations of infinite size and considers that the correct estimate is obtained by the expected value of the resources over time, $g^t = \langle \omega \rangle_t$. }%
-\es{Buena parte de la literatura en evolución basa su análisis en poblaciones de tamaño infinito y considera que la estimación correcta se obtiene mediante el valor esperado de los recursos en el tiempo, $g^t = \langle \omega \rangle_t$. }%
+\en{Much of the evolutionary literature bases its analysis on populations of infinite size and considers that the correct estimate is obtained by the expected value, $g^t = \langle \omega \rangle_t$. }%
+\es{Buena parte de la literatura en evolución basa su análisis en poblaciones de tamaño infinito y considera que la estimación correcta se obtiene mediante el valor esperado, $g^t = \langle \omega \rangle_t$. }%
 %
 \begin{equation}
 \langle \omega \rangle_t = \sum_{\omega \in \Omega_t} \omega \cdot  P(\omega)
 \end{equation}
 %
-\en{Where $\Omega_t$ is the set of all possible resource trajectories at time $t$, and $P(\omega)$ is the probability that the $\omega$ resource state occurs. }%
+\en{Where $\Omega_t$ is the set of all possible resource trajectories at time $t$, and $P(\omega)$ is the probability that the resource state $\omega$ occurs. }%
 \es{Donde $\Omega_t$ es el conjunto de todas las posibles trayectorias de los recursos en el tiempo $t$, y $P(\omega)$ es la la probabilidad de que ocurra el estado de los recursos $\omega$. }%
 % 
 \en{In the coin example, the expected value in the first two time steps is, }%
@@ -210,8 +218,8 @@ f(\Aa) =
 \en{That is, the estimated growth rate according to the expected value is $5\%$ for each time step, $\langle \omega \rangle_t = 1.05^t$. }%
 \es{Es decir, la tasa de crecimiento estimada según el valor esperado es de $5\%$ por cada paso temporal, $\langle \omega \rangle_t = 1.05^t$. }%
 %
-\en{And indeed that is what happens with the average of the individual trajectories, $\omega(t)$, when the population is sufficiently large, }%
-\es{Y efectivamente eso es lo que ocurre con el promedio de las trayectoria individuales, $\omega(t)$, cuando la población es suficientemente grande, }%
+\en{And indeed that is what happens with the average of several individual trajectories, $\omega(t)$. }%
+\es{Y efectivamente eso es lo que ocurre con el promedio de varias trayectoria individuales, $\omega(tThis theoretical paradigm is forced)$. }%
 %
 \begin{figure}[H]
     \centering
@@ -1652,8 +1660,8 @@ P(k| \vec{\Aa}^{\,1}, \dots,  \vec{\Aa}^{\,T}) = \frac{\omega_k(T)}{\sum_j \omeg
     \label{fig:multilevel-selection-5}
     \end{subfigure}
     \caption{
-    \en{Figure \ref{fig:multilevel-selection-7}: estimation of proportional growth rate in mixed groups of size 100. }%
-    \es{Figura \ref{fig:multilevel-selection-7}: estimación de la tasa de crecimiento proporcional en grupos mixtos de tamaño 100. }%
+    \en{Figure \ref{fig:multilevel-selection-7}: proportional growth rate in mixed groups of size 100. }%
+    \es{Figura \ref{fig:multilevel-selection-7}: tasa de crecimiento proporcional en grupos mixtos de tamaño 100. }%
     %
     \en{Figure \ref{fig:multilevel-selection-5}: trajectory of the resources of a defector (blue) and cooperator (green) in a group of size 100 with a single defector (see figure~\ref{fig:ergodicity_desertion}), the black curves are the estimates growth rates, and the dotted black curve are the resources of cooperators in regions without defectors. }%
     \es{Figura \ref{fig:multilevel-selection-5}: trayectoria de los recursos de un desertor (azul) y cooperador (verde) en un grupo de tamaño 100 con un único desertor (ver figura~\ref{fig:ergodicity_desertion}), las curvas negras son las estimaciones de las tasas de crecimiento, y la curva negra punteadas son los recursos de mutua cooperación. }%
@@ -2001,15 +2009,128 @@ P(k| \vec{\Aa}^{\,1}, \dots,  \vec{\Aa}^{\,T}) = \frac{\omega_k(T)}{\sum_j \omeg
 % \es{Aquí mostramos que, una vez que la cooperación emerge, las estrategias individualmente mal adaptadas al ambiente (especialistas) consigen superar tanto a las estrategias bien adaptas individualmemte (generalistas), como a sus grupos cooperativos de tamaño infinito. }%
 % %
 
-\section{The step into irreversible transitions, reproductive division of labour}
 
-\begin{quotation}
-A major transition is said to occur when independently replicating units evolve into groups of entities that can only replicate as part of the group and that show a relative lack of within-group conflict [1–3] \cite{gonzalesForero2021-eusociality}
+\section{\en{Irreversibility of evolutionary transitions}\es{Irreversibilidad de las transitions evolutivas}}
 
-Eusociality is commonly defined as involving groups with reproductive division of labour, overlapping generations and cooperative work
-\end{quotation}
+\en{The reason why an advantage in favor of cooperation and specialization arises in our simple causal model is due to the multiplicative (non-ergodic) nature of probabilistic theory and its isomorphism with evolutionary theory. }%
+\es{El motivo por el cual surge una ventaja a favor de la cooperación y la especialización en simple modelo causal se debe a la naturaleza multiplicativa (no-ergódica) de la teoría de la probabililidad y a su isomorfismo con la teoría de la evolución. }%
+%
+\en{If the population structure persists for a certain minimum time, the evolutionary advantage in favor of cooperation is immediately produced. }%
+\es{Si la estructura población persiste durante cierto tiempo mínimo, inmediátamente se produce la ventaja evolutiva de favor de la cooperación. }%
+%
+\en{With the formation of cooperative groups, an evolutionary advantage emerges in favor of specialist strategies. }%
+\es{Con la formación de grupos cooperativo emerge una ventaja evolutiva a favor de estrategias especialistas. }%
+%
+\en{Specialist strategies are able to improve, within cooperative groups, the performance that individually well-adapted strategies can achieve both individually and cooperatively. }%
+\es{Las estrategia especialista logran mejorar, al interior de los grupos cooperativos, el desempeño que las estrategias individualmente bien adaptadas pueden obtener de forma individual como cooperativa. }%
+%
+\en{But a characteristic of specialist strategies is that they are individually maladapted to the environment. }%
+\es{Pero una caracterísitica de las estrategias especialistas es que están individualmente mal adaptadas al ambiente. }
+%
+\en{This means that, once the individuals of the groups acquire a specialist strategy, they are obliged to remain within the group, since leaving it produces a considerable drop in their evolutionary viability. }%
+\es{Esto significa que, una vez que los individuos de los grupos adquieren una estrategia especialista, se ven obligados a permanecer al interior del grupo, pues dejarlo le produce una considerarble baja en su viabilidad evolutiva. }%
+%
+\en{The evolutionary advantage of cooperation and specialization therefore produces the irreversibility of evolutionary transitions. }
+\es{La ventaja evolutiva de la cooperación y de la especialización produce, por lo tanto, la irreversibilidad de las transiciones evolutivas. }%
+%
+\begin{conclution}[\en{Irreversibility of evolutionary transitions}\es{Irreversibilidad de las transitions evolutivas}]
+\en{The evolutionary advantage of specialization produces the irreversibility of evolutionary transitions, since individuals cannot leave groups without a reduction of their evolutionary viability. }%
+\es{La ventaja evolutiva de la especialización produce la irreversibilidad de las transiciones evolutivas, pues las individos no pueden dejar los grupos sin una baja de su viabilidad evolutiva. }%
+\end{conclution}
 
 
+\section{\en{Viability of division of labor}\es{La viabilidad de la división del trabajo}}
+
+\en{A major transition occurs when units that were previously capable of independent reproduction evolve into entities that can only replicate collectively. }%
+\es{Una transición mayor ocurre cuando unidades que previemante eran capaces de replicarse de forma independiente evolucionan hacia entidades que sólo puede replicarse colectivamente. }%
+%
+\en{In general this involves division of labor. }%
+\es{En general esto involucra división del trabajo. }%
+%
+\en{The reproductive division of labor is observed in almost all multicellular organisms and eusocial animals. }%
+\es{La división reproductiva del trabajo se observa en casi todos los organismos multicelulares y los animales eusociales. }%
+
+% Parrafo
+
+\en{To study the division of labor we analyze what happens when individuals in the same group can acquire different strategies. }%
+\es{Para estudiar la división del trabajo analizamos qué ocurre cuando los individuos de un mismo grupo pueden aquerir estrategias distintas. }%
+%
+\en{Is there any combination of strategies that offers a growth rate equal to or higher than that obtained by members of fully cooperative groups when using the same strategy? }%
+\es{¿Existe alguna combinación de estrategias que ofrece una tasa de crecmiento igual o mayor a la que obtienen los miembros de los grupos enteramente cooperativos cuando utilizan la misma estrategia? }%
+%
+\en{In Figure~\ref{fig:divisionOfLabor1} we analyze the growth rate of all strategy combinations in a cooperative group of size 2, in an environment that produces states with probability $p=0.6$. }%
+\es{En la figura~\ref{fig:divisionOfLabor1} analizamos la tasa de crecimiento de todas las combinaciones de estrategias posibles en un grupo cooperativo de tamaño 2, en un ambiente que produce los estados con probabilidad $p=0.6$. }%
+%
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+    \includegraphics[width=\linewidth]{figures/pdf/divisionOfLabor.pdf}
+    \end{subfigure}
+    \caption{
+    \en{Proportional growth rate for all combinations of strategies in a fully cooperative group of size 2. }%
+    \es{Tasa de crecimiento proporcional para diferentes combinaciones de estratgias en un grupo de tamaño 2 enteramente cooperativo. }%
+    }
+    \label{fig:divisionOfLabor1}
+\end{figure}
+%
+\en{We find that the only optimal strategy combination occurs when both individuals use the same strategy, $\Ee_1 = \Ee_2 \approx 0.69$. }%
+\es{Encontramos que la única combinación óptimas de estrategia ee cuando ambos individuos usan la misma estrategia, $\Ee_1 = \Ee_2 \approx 0.69$. }%
+%
+\en{That is, it is not convenient to change the strategy if we restrict the analysis to individuals who work with the same intensity, since the sum of their bets is $1$ regardless of the individual, $\Ee_i + (1_\Ee_i) = 1$. }%
+\es{Es decir, no conveniene un cambio de estrategia si restringimos el análisis a individuos que trabajan con la misma intensidad, en tanto que la suma de sus apuestas es $1$ indistintamente del individuo $\Ee_i + (1_\Ee_i) = 1$. }%
+%
+\en{To analyze the division of labor in general terms we will allow individuals to transfer part of their tasks to others, while maintaining the same total restriction, $ \frac{1}{N} \sum_i^N \Ee_i + (1_\Ee_i) = 1$. }%
+\es{Para analizar la división de trabajo en términos generales vamos a permitir que los individuos cedan parte de sus tareas a otros, manteniendo la misma restricción total, $ \frac{1}{N} \sum_i^N \Ee_i + (1_\Ee_i) = 1$. }% 
+%
+\begin{equation}\label{eq:divisionOfLabor}
+P(i|\Aa) \propto  \bordermatrix{ & \Aa = 1 & \Aa = 0 \cr
+      i = 1 & 0.69+d & 0.31+d \cr
+      i = 2 & 0.69-d & 0.31-d } 
+\end{equation}
+%
+\en{Where the variable $d$ is the transfer of tasks performed by individuals using the strategy $\Ee = 0.69$. }%
+\es{Donde la variable $d$ es la cesión de tareas que realizan individuos con la estrategia $\Ee = 0.69$. }%
+%
+\en{In this case, the maximum assignment of tasks is $d=31$, the point at which one of the individuals abandons his task completely in one of the states, $P(i=2|\Aa=0) \propto 0.0$, thanks to the increase in the level of activity of the other individual. }%
+\es{En este caso, la cesión máxima de tareas es $d=31$, punto en el que uno de los individuos abandona  completamentesu tarea en uno de los estados, $P(i=2|\Aa=0) \propto 0.0$, gracias al aumento en el nivel de actividad del otro individuo. }%
+%
+\en{This type of task assignment has the characteristic of keeping the sum of the stakes constant in all possible environmental states, thus keeping the behavior of the group constant at a global level. }%
+\es{Este tipo de cesión de tareas tiene la caracterísitica de manetener constante la suma de las apuestas en todas estados ambientales posibles, por lo que mantiene constante el comportamiento del grupo a nivel global. }%
+%
+\en{In the figure~\ref{fig:divisionOfLabor2} we show the growth rate for the different strategies and different levels of division of labor. }%
+\es{En la figura~\ref{fig:divisionOfLabor2} mostramos la tasa de crecimiento de las diferentes estrategias para diferente niveles de división del trabajo. }%
+%
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+    \includegraphics[width=\linewidth,page=2]{figures/pdf/divisionOfLabor.pdf}
+    \end{subfigure}
+    \caption{
+    \en{Proportional growth rates for different strategies and division of labor in a fully cooperative group of size 2. }%
+    \es{Tasas de crecimiento proporcional para diferentes estrategias y división del trabajo en un grupo enteramente cooperativo de tamaño 2. }%
+    }
+    \label{fig:divisionOfLabor2}
+\end{figure}
+%
+\en{The division of labor does not affect the growth rate of individuals in fully cooperative groups. }%
+\es{La división del trabajo no afecta la tasa de crecimiento de los individuos en grupos enteramente cooperativos. }%
+%
+\en{A decrease in the activity level of one individual is compensated by an increase in the activity level of another. }%
+\es{La baja el nivel de actividad de un individuo se compensa por el aumento de actividad de otro. }% 
+%
+\en{Therefore, cooperation makes the division of labor between individuals viable. }
+\es{Por lo tanto, la cooperación hace viable la división del trabajo entre individuos. }
+%
+\en{Unlike cooperation and specialization, the multiplicative nature of probabilistic and evolutionary theories does not create an evolutionary advantage in favor of division of labor, it allows its evolutionary drift. }%
+\es{A diferencia de la cooperación y la especialización, la naturaleza multiplicativa de las teorías probabilisticas y evolutivas no genera una ventaja evolutiva en favor de la división del trabajo, permite su deriva evolutiva. }%
+%
+\en{The evolutionary advantage of the division of labor, therefore, lies elsewhere. }%
+\es{La ventaja evolutiva de la división del trabajo, por lo tanto, debe busacársela en otra parte. }%
+
+\begin{conclution}[\en{Viability of division of labor}\es{La viabilidad de la división del trabajo}]
+\en{Unlike cooperation and specialization, the multiplicative nature of probabilistic and evolutionary theories does not create an evolutionary advantage in favor of division of labor, it allows its evolutionary drift. }%
+\es{A diferencia de la cooperación y la especialización, la naturaleza multiplicativa de las teorías probabilisticas y evolutivas no genera una ventaja evolutiva en favor de la división del trabajo, permite su deriva evolutiva. }%
+\end{conclution}
 
 
 \section{Discusiones}
@@ -2028,8 +2149,8 @@ Eusociality is commonly defined as involving groups with reproductive division o
 
 % Parrafo
 
-\en{This theoretical paradigm is forced to explain why cooperation is systematically observed in nature. }%
-\es{El paradigma teórico de la ``tragedia de los comunes'' se ve obligado a explicar por qué la cooperación se observa sistemáticamente en las ciencias de la vida. }%
+\en{However, cooperation is consistently observed in the history of life. }%
+\es{Sin embargo, la cooperación se observa sistemáticamente en la historia de la vida. }%
 %
 \en{In the last third of the universe's history, a simple self-replicating organization of matter emerged on earth. }%
 \es{En el último tercio de la historia del universo surgió en la tierra una organización de la materia simple capaz de autoreplicarse. }%
@@ -2040,13 +2161,13 @@ Eusociality is commonly defined as involving groups with reproductive division o
 \en{The current complexity of life is the consequence of a series of evolutionary transitions in which entities capable of self-replication after the transition become part of higher level cooperative units. }%
 \es{La complejidad actual de la vida es consecuencia de una serie de transiciones evolutivas en las que entidades capaces de autoreplicación luego de la transición pasan a formar parte de unidades cooperativas de nivel superior. }%
 %
-\en{The theoretical paradigm of the ``tragedy of the commons'' makes it necessary to identify special conditions in each case to explain the observed tendency of life in favor of cooperative aggregation (and specialization). }%
-\es{El paradigma teórico de la ``tragedia de los comunes'' obliga a identificar condiciones especiales en cada caso que expliquen la tendencia observada de la vida en favor de la agregación cooperativa (y la especialización). }%
+\en{Therefore, the theoretical paradigm of the ``tragedy of the commons'' is obliged to identify in each case the special conditions that explain the tendency observed in nature in favor of cooperative aggregation (and specialization). }%
+\es{Por lo tanto, el paradigma teórico de la ``tragedia de los comunes'' está obligado a identificar en cada caso las condiciones especiales que expliquan la tendencia observada en la naturaleza a favor de la agregación cooperativa (y la especialización). }%
 
 % Parrafo
 
-\en{However, the result of the probabilistic inference that emerges from the proposed causal model, without including any of these special conditions, reveals an advantage in favor of cooperation and specialization after individuals interact for a certain period of time. }%
-\es{Sin embargo, el resultado de la inferencia probabilística que surge del modelo causal propuesto, sin incluir ninguna de estas condiciones especiales, revela una ventaja a favor de la cooperación y la especialización luego de que los individuos interactúan durante un cierto tiempo. }% 
+\en{Without including any of these special conditions, the result of the probabilistic inference that emerges from the proposed causal model reveals an advantage in favor of cooperation and specialization over time. }%
+\es{Sin incluir ninguna de estas condiciones especiales, el resultado de la inferencia probabilística que surge del modelo causal propuesto revela una ventaja a favor de la cooperación y la especialización en el tiempo. }% 
 %
 \en{How can this counter-intuitive result emerge from such a simple model? }%
 \es{¿Cómo se explica que emerga este resultado contra-intuitivo de un modelo tan simple? }%
@@ -2057,8 +2178,8 @@ Eusociality is commonly defined as involving groups with reproductive division o
 \en{Because in multiplicative processes the impacts of losses are greater than those of gains, fluctuations produce a negative effect on growth rates, which can be reduced through mutual cooperation. }%
 \es{Debido a que en los procesos multiplicativos los impactos de las pérdidas son mayores a los de las ganancias, las fluctuaciones producen un efecto negativo en las tasas de crecimiento, las cuales pueden ser reducidas a través de la mutua cooperación. }%
 %
-\en{And then, as soon as cooperation emerges, an advantage in favor of specialist strategies appears, because it is no longer necessary for individuals to reduce fluctuations through generalist strategies that avoid bad outcomes in all possible states, and individuals can devote themselves to take advantage of the most frequent environmental state. }%
-\es{Y luego, apenas surge la cooperación, aparece una ventaja en favor de las estrategias especialistas, porque deja de ser necesario para los individuos reduicir la fluctuaciones través de estrategias generalistas que evitan malos resultados en todos los posibles estados, y los indviduos pueden dedicarse a sacar provecho del estado ambiental más frecuente. }%
+\en{As soon as cooperation emerges, an advantage in favor of specialist strategies appears, because it is no longer necessary for individuals to reduce fluctuations through generalist strategies that avoid bad outcomes in all possible states, and can devote themselves together with other individuals to take advantage of the most frequent environmental state. }%
+\es{Apenas surge la cooperación, aparece también una ventaja en favor de las estrategias especialistas porque deja de ser necesario para los individuos reduicir la fluctuaciones través de estrategias generalistas que evitan malos resultados en todos los posibles estados, y pueden dedicarse en conjunto con otros individuos a sacar provecho del estado ambiental más frecuente. }%
 
 % Parrafo
 
@@ -2068,8 +2189,8 @@ Eusociality is commonly defined as involving groups with reproductive division o
 \en{The multiplicative updating of the probabilities of individuals, which arises naturally from applying the rules of probability to the causal model, is in line with the long-established idea in evolutionary theory that the growth of lineages follow multiplicative processes~\cite{dempster1955-geometricMean, denBoer1968-spreadingRisk}. }%
 \es{La actualización multiplicativa de las probabilidades de los individuos, que surge naturalmente de aplicar las reglas de la probabilidad al modelo causal, está en línea con la idea largamente establecida en la teoría de la evolución de que el crecimiento de los linajes siguen procesos multiplicativos~\cite{dempster1955-geometricMean, denBoer1968-spreadingRisk}. }% 
 %
-\en{This coincidence is an additional support to the hypothesis of isomorphism between evolutionary and probabilistic theory, previously identified between the fundamental equations of both theories: the Bayes theorem and the replicator dynamic~\cite{harper2009-replicatorAsInference,shalizi2009-replicatorAsInference}. }%
-\es{Esta coincidecia es un apoyo adicional a la hipótesis de isomorfimo entre la teoría de la evolutivas y probabilisticas, previamente identificado entre las ecuaciones fundamentales de ambas teorías: el teorema de bayes y el replicator dynamic~\cite{harper2009-replicatorAsInference,shalizi2009-replicatorAsInference}. }%
+\en{This coincidence is an additional support to the hypothesis of isomorphism between evolutionary and probabilistic theories, previously identified between their fundamental equations: the Bayes theorem and the replicator dynamic~\cite{harper2009-replicatorAsInference,shalizi2009-replicatorAsInference}. }%
+\es{Esta coincidecia es un apoyo adicional a la hipótesis de isomorfimo entre las teorías de la evolutivas y probabilisticas, previamente identificado entre sus ecuaciones fundamentales: el teorema de bayes y el replicator dynamic~\cite{harper2009-replicatorAsInference,shalizi2009-replicatorAsInference}. }%
 %
 %
 \en{Based on this isomorphism, the co-author of the concept of evolutionary transitions (Szathmary~\cite{szathmary1995-evolutionaryTransitions, szathmary2015-evolutionaryTransitions}) recently proposed to analyze the evolution of populations subject to multilevel selection by means of Bayesian hierarchical models~\cite{czegel2019-bayesianEvolution}. }%
@@ -2077,11 +2198,11 @@ Eusociality is commonly defined as involving groups with reproductive division o
 
 % Parrafo
 
-\en{Our work, to the best of our knowledge, would be the first to develop a Bayesian hierarchical model to solve an evolution problem under multilevel selection. }%
-\es{Nuestro trabajo, hasta donde sabemos, sería el primero en desarrollar un modelo jerárquico bayesiano para resolver un problema de evolución bajo selección multinivel. }%
+\en{To the best of our knowledge, our work would be the first to develop a Bayesian hierarchical model to solve an evolution problem under multilevel selection. }%
+\es{Hasta donde sabemos, nuestro trabajo sería el primero en desarrollar un modelo jerárquico bayesiano para resolver un problema de evolución bajo selección multinivel. }%
 %
-\en{There we were able to identify a ``multilevel posterior'' (i.e. the probability of individuals integrating all groups) as the average of the ``level 1 posteriors'' (i.e. probability of individuals within groups) weighted by the ``level 2 posteriors'' (i.e. probability of groups). }%
-\es{Allí pudimos identificar un ``posterior multinivel'' (i.e. la probabilidad de los individuos integrando todos los grupos) como el promedio del ``posteriors de nivel 1'' (i.e. probabilidad de los individuos al interior de los grupos) pesado por el ``posterior de nivel 2'' (i.e la probabilidad de los grupos). }%
+\en{We were able to identify in it a ``multilevel posterior'' (i.e. the probability of individuals integrating all groups) as the average of the ``level 1 posteriors'' (i.e. probability of individuals within groups) weighted by the ``level 2 posteriors'' (i.e. probability of groups). }%
+\es{En él pudimos identificar un ``posterior multinivel'' (i.e. la probabilidad de los individuos integrando todos los grupos) como el promedio del ``posteriors de nivel 1'' (i.e. probabilidad de los individuos al interior de los grupos) pesado por el ``posterior de nivel 2'' (i.e la probabilidad de los grupos). }%
 %
 \en{The reason why an advantage in favor of cooperation and specialization arises in our simple causal model is due to the multiplicative (non-ergodic) nature of probabilistic theory and its isomorphism with evolutionary theory. }%
 \es{El motivo por el cual surge una ventaja a favor de la cooperación y la especialización en simple modelo causal se debe a la naturaleza multiplicativa (no-ergódica) de la teoría de la probabililidad y a su isomorfismo con la teoría de la evolución. }%
@@ -2089,8 +2210,14 @@ Eusociality is commonly defined as involving groups with reproductive division o
 \en{That is, contrary to the belief established since the mid-20th century in economics, we show that the dynamics of common goods cannot be represented by a prisoner's dilemma payoff matrix. }%
 \es{Es decir, en contra de la creencia establecida que en economía se tiene desde mediados del siglo 20, mostramos que los dinámicas de bienes comunes no puede representarse mediante una matriz de pagos del dilema del prisionero. }%
 %
-\en{Moreover, contrary to the belief that specialization is too complex a feature to produce a benefit in simple aggregations, we show that as soon as cooperation emerges, an advantage in favor of specialist strategies appears even in groups of size 2. }
+\en{Moreover, contrary to the belief that specialization is too complex a feature to produce a benefit in simple aggregations, we show that as soon as cooperation emerges, an advantage in favor of specialist strategies appears even in groups of size 2. }%
 \es{Además, en contra de la creencia de que la especialización es una caracterísitica demasiado compleja para que produzca un beneficio en agregaciones simples, mostramos que apenas surge la cooperación, aparece una ventaja a favor de las estrategias especialistas incluso en grupos de tamaño 2. }%
+%
+\en{Since the specialist strategies are individually poorly adapted to the environment, an irreversibility of the evolutionary transition is created. }%
+\es{Como la estrategias especialistas están individualmente mal adaptadas al ambiente, se crea una irreversbilidad de la transici evolutivas. }%
+%
+\en{Finally, although in this causal model there is no evolutionary advantage in favor of the division of labor, its emergence is viable by evolutionary drift. }%
+\es{Finalmene, si bien en este modelo causal no hay una ventaja evolutiva a favor de la división del trabajo, su aparición es viable por deriva evolutiva. }%
 
 % Parrafo
 
