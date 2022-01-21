@@ -7,6 +7,25 @@ compile:
 	pdflatex article.tex
 	pdflatex article.tex
 
+publish: clean pdfclean landfried-transiciones.pdf landfried-transitions.pdf 
+	
+landfried-transitions.pdf:
+	sed -i 's/\\estrue/\\entrue/g' article.tex
+	pdflatex article.tex
+	bibtex article.aux
+	pdflatex article.tex
+	pdflatex article.tex
+	cp article.pdf landfried-transitions.pdf
+	
+landfried-transiciones.pdf:
+	sed -i 's/\\entrue/\\estrue/g' article.tex
+	pdflatex article.tex
+	bibtex article.aux
+	pdflatex article.tex
+	pdflatex article.tex
+	mv article.pdf landfried-transiciones.pdf
+
+
 pdfclean:
 	- rm -f article*.pdf
 
