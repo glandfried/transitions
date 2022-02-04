@@ -1,0 +1,25 @@
+From its origins until now, life has acquired an extraordinary complexity, both in terms of cooperation and specialization.
+
+This complexity developed through a series of major evolutionary transitions in which entities capable of self-replication become part of a higher level cooperative unit. 
+
+In evolutionary theory, everyone is taught that lineage growth is a multiplicative and noisy process: a sequence of survival and reproductive rates.
+
+Peters and Amadou showed that multiplicative processes offer an advantage in favor of mutual cooperation.
+But is unconditional cooperation an evolutionary stable strategy?
+And what about specialization?
+
+Making use of the isomorphism between evolutionary theory and Bayesian inference, the co-author of the concept of major evolutionary transitions recently proposed to analyze the evolution of populations subject to multilevel selection using Bayesian hierarchical models.
+
+With the basic model we generalize the coin game proposed by Ole Peters.
+
+We show the posterior of the strategies as more environments are observed. Always the optimal individual strategy is the generalist one, the strategy that allocates resources with the same probability as the environment.
+
+In the extended model we include the option of cooperating and defecting.
+
+The probability of finding a cooperative individual is a weighted average of the probability of finding cooperative individuals within groups times the probability of the groups. Here we show the posterior given group of size 2.
+
+As soon as cooperation emerges, an advantage in favor of specialization appears. Here we show the growth rate of the different strategies (x-axis) in an environment with probability 0.71. As we increase the size of the group, the optimal strategy becomes more and more specialized.
+
+The evolutionary advantage of specialization produces the irreversibility of evolutionary transitions, since individuals cannot leave groups without a reduction of their evolutionary viability. 
+
+Thanks
