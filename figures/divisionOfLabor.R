@@ -4,6 +4,7 @@ this.dir <- dirname(parent.frame(2)$ofile)
 nombre.R <-  sys.frame(1)$ofile
 require(tools)
 nombre <- print(file_path_sans_ext(nombre.R))
+nombre <- "divisionOfLabor"
 pdf(paste0("pdf/",nombre,".pdf"), width = 5, height = 5  )
 setwd(this.dir)
 ###############################
