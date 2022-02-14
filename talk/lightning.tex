@@ -90,16 +90,16 @@
 \vspace{0.75cm}
 
 \begin{equation*}
-\omega(T) = \prod_t^T f(a(t))
+\omega(T) = \prod_t^T f(\Aa(t))
 \end{equation*}
 
 \vspace{0.5cm}
 
 \begin{equation*}
-f(a) =
+f(\Aa) =
 \begin{cases}
- 1.5 & \text{ Environment } = \text{ \en{Head}\es{Cara} } \\
- 0.6 & \text{ Environment } = \text{  \en{Tail}\es{Seca} }
+ 1.5 & \Aa = \text{ \en{Head}\es{Cara} } \\
+ 0.6 & \Aa = \text{  \en{Tail}\es{Seca} }
 \end{cases}
 \end{equation*}
 
@@ -127,10 +127,10 @@ Individuals
 \end{textblock}
 
 
-\only<2>{
+\only<2->{
 \begin{textblock}{140}(10,73)
-$\bullet$ But is unconditional cooperation an evolutionary stable strategy? \\[0.1cm]
-$\bullet$ And what about specialization?
+$\bullet$ But is unconditional cooperation an evolutionary stable strategy? \\[0.1cm] 
+\onslide<2>{$\bullet$ And what about specialization?}
 \end{textblock}
 }
 
@@ -155,6 +155,8 @@ $\bullet$ And what about specialization?
 \en{Basic model}\es{Modelo básico}
 \end{textblock}
 \vspace{0.75cm}
+\vspace{0.5cm}
+
 \centering
 
 \tikz{
@@ -173,7 +175,12 @@ $\bullet$ And what about specialization?
     \edge {e} {r};
     \plate {ee} {(e)} {$t$}; 
     }
+    
+     \vspace{0.7cm}
+     \pause
 
+$f(s = 0.71, \Aa) \propto 1.5^e (0.6)^{1-e} = \text{ Peter's example }$
+    
 
 \end{frame}
 
@@ -365,6 +372,20 @@ Irreversibility of evolutionary transitions
 \en{Specialist individuals cannot leave groups  \\ without a reduction of their evolutionary viability. }%
 
 \end{frame}
+
+\begin{frame}[plain]
+\begin{textblock}{160}(0,4)
+ \centering \LARGE
+The general driver of evolutionary transitions
+\end{textblock}
+\vspace{1cm}
+\centering
+
+The multiplicative nature of the evolutionary and probabilistic selection processes \\ is the general driver for the emergence of cooperation and specialization.
+
+
+\end{frame}
+
 
 \begin{frame}[plain]
 

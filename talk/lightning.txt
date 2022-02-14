@@ -5,14 +5,15 @@ This complexity developed through a series of major evolutionary transitions in 
 In evolutionary theory, everyone is taught that lineage growth is a multiplicative and noisy process: a sequence of survival and reproductive rates.
 
 Peters and Amadou showed that multiplicative processes offer an advantage in favor of mutual cooperation.
+
 But is unconditional cooperation an evolutionary stable strategy?
 And what about specialization?
 
-Making use of the isomorphism between evolutionary theory and Bayesian inference, the co-author of the concept of major evolutionary transitions recently proposed to analyze the evolution of populations subject to multilevel selection using Bayesian hierarchical models.
+Making use of the isomorphism between evolutionary theory and Bayesian inference, the co-author of the concept of major evolutionary transitions recently proposed to analyze multilevel selection using Bayesian hierarchical models.
 
-With the basic model we generalize the coin game proposed by Ole Peters.
+This basic model generalize the coin game proposed by Ole Peters, by including an infinite set of strategies. Strategy 71 is proprotional to Peter's example. 
 
-We show the posterior of the strategies as more environments are observed. Always the optimal individual strategy is the generalist one, the strategy that allocates resources with the same probability as the environment.
+Here we show the posterior of the strategies as more environments are observed. Always the optimal individual strategy is the generalist one, the strategy that allocates resources with the same probability as the environment.
 
 In the extended model we include the option of cooperating and defecting.
 
@@ -21,5 +22,8 @@ The probability of finding a cooperative individual is a weighted average of the
 As soon as cooperation emerges, an advantage in favor of specialization appears. Here we show the growth rate of the different strategies (x-axis) in an environment with probability 0.71. As we increase the size of the group, the optimal strategy becomes more and more specialized.
 
 The evolutionary advantage of specialization produces the irreversibility of evolutionary transitions, since individuals cannot leave groups without a reduction of their evolutionary viability. 
+
+Under this minimal set of hypotheses, where we consider unconditionally cooperative individuals who generate a common good that can be exploited by defecting individuals without receiving some kind of punishment in return (e.g. end of cooperation), the evolution of cooperation literature predicts defection as the only evolutionarily stable strategy. 
+The multiplicative nature of the evolutionary and probabilistic selection processes is the general driver for the emergence of cooperation and specialization.
 
 Thanks
