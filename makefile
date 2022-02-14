@@ -7,6 +7,12 @@ compile:
 	pdflatex article.tex
 	pdflatex article.tex
 
+summary:
+	pdflatex summary.tex
+	bibtex summary.aux
+	pdflatex summary.tex
+	pdflatex summary.tex
+
 publish: clean pdfclean landfried-transiciones.pdf landfried-transitions.pdf 
 	
 landfried-transitions.pdf:
