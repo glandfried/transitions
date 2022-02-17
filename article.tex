@@ -14,13 +14,11 @@
 \newcommand{\Aa}{\en{e}\es{a}}
 
 
-
 \newtheorem{conclution}{\en{Conclution}\es{Conclusión}}%[section]
 \newtheorem{objective}{\en{Objective}\es{Objetivo}}%[section]
 
-
 %opening
-\title{\vspace{-2.2cm}Multilevel selection in causal models: the multiplicative nature of evolutionary and probabilistic selection processes as the general driver for the irreversibility emergence of cooperation and specialization. \footnote{\url{https://github.com/glandfried/transitions/releases/download/doc.0.1.0/landfried-trans\en{itions}\es{iciones}.pdf} } }
+\title{\vspace{-2.2cm}Multilevel selection in causal models: the multiplicative nature of evolutionary and probabilistic selection processes as the general driver for the irreversibility emergence of cooperation and specialization.\footnote{\url{https://github.com/glandfried/transitions/releases/download/doc1.0.0/landfried-transitions.pdf}} }
 \author{Gustavo Landfried$^1$}
 \affil{\small 1. Universidad de Buenos Aires. Facultad de Ciencias Exactas y Naturales. Departamento de Computaci\'on. Buenos Aires, Argentina}
 \affil{\en{Mail}\es{Correo:} \url{glandfried@dc.uba.ar}}
@@ -30,92 +28,47 @@
 \maketitle
 
 \begin{abstract}
-\en{In the last third of the universe's history, a simple self-replicating organization of matter emerged on earth. }%
-\es{En el último tercio de la historia del universo surgió en la tierra una organización de la materia simple capaz de autoreplicarse. }%
-%
-\en{The growth of these lineages followed multiplicative and noisy processes: sequences of survival and reproduction rates. }%
-\es{El crecimiento de estos linajes siguieron procesos multiplicativos y ruidosos: secuencias de tasas de supervivencia y reproducción. }%
-%
-% \en{The errors produced during replication diversified the life forms, and the growth rates of the different strategies favored those better adapted to the environment. }%
-% \es{Los errores producidos durante la replicación diversificaron las formas de vida, y las tasas de crecimiento de las diferentes estrategias favorecieron a aquellas mejor adaptadas al ambiente. }%
-% %
-\en{The current complexity of life is the consequence of a series of evolutionary transitions in which entities capable of self-replication after the transition become part of higher level cooperative units. }%
-\es{La complejidad actual de la vida es consecuencia de una serie de transiciones evolutivas en las que entidades capaces de autoreplicación luego de la transición pasan a formar parte de unidades cooperativas de nivel superior. }%
-%
-% \en{How to explain this permanent tendency of life in favor of cooperative aggregation and specialization? }%
-% \es{¿Cómo se explica esta tendencia permanente de la vida en favor de la agregación cooperativa y la especialización? }%
-\en{To explain evolutionary transitions, it is necessary to demonstrate the evolutionary advantage of cooperation, but also the advantage of specialization. }%
-\es{Para explicar las transiciones evolutivas es necesario demostrar la ventaja evolutiva de la cooperación, pero también la ventaja de la especiliazación. }%
 
-% Parrafo
-
-\en{Recently it has been shown that, as a consequence of the non-ergodicity of multiplicative processes, fluctuations have a negative effect on individual growth rates, which can be reduced through mutual cooperation, leading to an increase in the long-term growth rates of all individuals. }%
-\es{Recientemente se ha mostrado que, como consecuencia de la no-ergodicidad de los procesos multiplicativos, las fluctuaciones tienen un efecto negativo en las tasas de crecimiento individuales, las cuales pueden ser reducidas a través de la mutua cooperación, produciendo un aumento de la tasas de crecimiento a largo plazo de todos los individuos. }%
-%
-% \en{Ole Peters believs that the increase in the growth rate is sufficient argument to demonstrate the evolutionary advantage of cooperation, which he proposes as the main explanation for evolutionary transitions. }%
-% \es{Ole Peters considera que el aumento de la tasa de crecimiento es argumento suficiente para demostrar la ventaja evolutiva de la cooperación, lo que propone como principal explicación de las transiciones evolutivas. }%
-% %
-% \en{However, he does not consider the problem of defection, who says ``our cooperators are unable to break the cooperative pact''. }%
-% \es{Sin embargo no considera el problema de la deserción, quien dice ``our cooperators are unable to break the cooperative pact''. }%
-% %
-% \en{Yaari suggests a group selection argument but he did not provide a formal demonstration. }
-% \es{Yaari sugiere un argumento de selección de grupos pero no prové una demostración formal. }
-\en{However, these papers do not provide a formal proof of the evolutionary advantage of cooperation. }%
-\es{Sin embargo estos trabajos no porveen una demostración formal que justifique la ventaja evolutiva de la cooperación. }%
-% Parrafo
+\en{To explain why major evolutionary transitions are so common in the history of life we need to find the causes that systematically generate the irreversible emergence of cooperation and specialization. }%
+\es{Para explicar por qué las grandes transiciones evolutivas son tan comunes en la historia de la vida necesitamos encontrar las causas que sistemáticamente generan la emergencia irreversible de la cooperación y la especialización. }%
 %
 \en{For this purpose it is necessary to consider selection at both the individual and group level. }%
 \es{Para este propósito es necesario considerar selección tanto a nivel individual como a nivel grupal. }%
 %
-\en{The co-author of the concept of evolutionary transitions (Szathmáry) recently proposed to analyze the evolution of populations subject to multilevel selection by means of Bayesian hierarchical models, making use of the isomorphism between evolutionary theory and Bayesian inference. }%
-\es{El co-autor del concepto de transiciones evolutivas (Szathmary) propuso recientemente analizar la evolución de las poblaciones sujetas a selección multinivel mediante modelos jerárquicos bayesianos, haciendo uso del isomorfismo entre las teoría de la evolución y la inferencia bayesiana. }%
+\en{The co-author of the concept of major evolutionary transitions (Szathmáry) recently proposed to analyze the evolution of populations subject to multilevel selection by means of Bayesian hierarchical models, making use of the isomorphism between evolutionary theory and Bayesian inference. }%
+\es{El co-autor del concepto de transiciones evolutivas mayores (Szathmáry) propuso recientemente analizar la evolución de las poblaciones sujetas a selección multinivel mediante modelos jerárquicos bayesianos, haciendo uso del isomorfismo entre las teoría de la evolución y la inferencia bayesiana. }%
 %
-\en{However, this work does not provide any model that performs multilevel selection, so the proposal remains open. }%
-\es{Sin embargo, este trabajo no proveé ningun modelo que realice selección multinivel, por lo que la propuesta sigue abierta. }%
+\en{However, the proposal remains open. }%
+\es{Sin embargo, la propuesta sigue abierta. }%
+%
+% \en{Moreover, the models do not express a causal relationship between the variables. }%
+% \es{Además, los modelos no expresan una relación causal entre las variables. }%
 
 % Parrafo
 
 \en{In this paper we specify a probabilistic causal model, in which individuals are affected by the environment and by the social behaviors of cooperation and defection of their context. }%
 \es{En este trabajo especificamos un modelo causal probabilístico, en el que los individuos se ven afectados por el ambiente y por los comportamientos sociales de cooperación y deserción de su contexto. }%
 %
-\en{Under this minimal set of hypotheses, where we consider \emph{unconditionally} cooperative individuals who generate a common good that can be exploited by defecting individuals without receiving some kind of punishment in return (e.g. end of cooperation), the evolution of cooperation literature predicts defection as the only evolutionarily stable strategy. }%
-\es{Bajo este conjunto mínimo de hipótesis, donde consideramos individuos \emph{incondicionalmente} cooperadores que generan un bien común que puede ser explotado por individuos desertores sin que reciban a cambio algún tipo de castigo (e.g fin de la cooperación), la literatura de evolución de la cooperación predice que la deserción es la única estrategia evolutivamente estable. }%
+\en{Even under this minimal set of hypotheses, where we consider \emph{unconditionally} cooperative individuals who generate a common good that can be exploited by defecting individuals without receiving some kind of punishment in return (e.g. end of cooperation), probabilistic inference shows that cooperative individuals are favored by multilevel selection. }%
+\es{Incluso bajo este conjunto mínimo de hipótesis, donde consideramos individuos \emph{incondicionalmente} cooperadores que generan un bien común que puede ser explotado por individuos desertores sin que reciban a cambio algún tipo de castigo (e.g fin de la cooperación), la inferencia probabilística muestra que los individuos cooperadoras se ven favorecidas mediante selección multinivel. }%
 %
-% \en{It is assumed that common goods, if not accompanied by special conditions (such as communication allowing coordination, memory allowing rewards or punishments, etc.), lead to their overexploitation, because even if the optimum is obtained through mutual cooperation there would be an individual incentive to defect. }%
-% \es{Se supone que los bienes comunes, si no están acompañados de condiciones especiales (como la comunicación que permita la coordinación, la memoria que permita aplicar premios o castigos, etc), conducen a su sobreexplotación, porque aunque el óptimo se obtenga a través de la mutua cooperación habría una incentivo individual para desertar. }%
-%
-\en{However, probabilistic inference shows that cooperative individuals are favored by multilevel selection. }%
-\es{Sin embargo, la inferencia probabilística muestra que los individuos cooperadoras se ven favorecidas mediante selección multinivel. }%
-%
-\en{While resource-avoidance strategies can invade entirely cooperative groups by natural selection, such behavior at the same time increases their own individual fluctuations, reducing their own long-term growth rate without the need to introduce penalties. }%
-\es{Si bien las estrategias que evitan compartir recursos pueden invadir por selección natural grupos enteramente cooperadores, tal comportamiento aumenta sus propias fluctuaciones individuales, reduciendo su propia tasa de crecimiento a largo plazo sin necesidad de introducir castigos. }%
-%
-\en{That is, contrary to the belief established since the mid-20th century in economics, we show that the dynamics of common goods cannot be represented by a prisoner's dilemma payoff matrix. }%
-\es{Es decir, en contra de la creencia establecida que se tiene en economía desde mediados del siglo 20, mostramos que los dinámicas de bienes comunes no puede representarse mediante una matriz de pagos del dilema del prisionero. }%
-%
-\en{Moreover, contrary to the belief that specialization is too complex a feature to produce a benefit in simple aggregations, we show that as soon as cooperation emerges, an advantage in favor of specialist strategies appears even in groups of size 2. }%
-\es{Además, en contra de la creencia de que la especialización es una caracterísitica demasiado compleja para que produzca un beneficio en agregaciones simples, mostramos que apenas surge la cooperación, aparece una ventaja a favor de las estrategias especialistas incluso en grupos de tamaño 2. }%
+\en{In addition, we show that as soon as cooperation emerges, an advantage in favor of specialist strategies appears. }%
+\es{Además, mostramos que apenas surge la cooperación, aparece una ventaja a favor de las estrategias especialistas. }%
 %
 \en{Since the specialist strategies are individually poorly adapted to the environment, an irreversibility of the evolutionary transition is created. }%
-\es{Como la estrategias especialistas están individualmente mal adaptadas al ambiente, se crea una irreversbilidad de las transiciones evolutivas. }%
-%
-\en{Finally, although in this causal model there is no evolutionary advantage in favor of the division of labor, its emergence is viable by evolutionary drift. }%
-\es{Finalmene, si bien en este modelo causal no hay una ventaja evolutiva a favor de la división del trabajo, su aparición es viable por deriva evolutiva. }%
+\es{Como la estrategias especialistas están individualmente mal adaptadas al ambiente, se crea una irreversbilidad de la transici evolutivas. }%
 
 % Parrafo
 
 \en{The reason why an advantage in favor of cooperation and specialization arises in our simple causal model is due to the multiplicative (non-ergodic) nature of probability theory and its isomorphism with evolutionary theory. }%
 \es{El motivo por el cual surge una ventaja a favor de la cooperación y la especialización en simple modelo causal se debe a la naturaleza multiplicativa (no-ergódica) de la teoría de la probabililidad y a su isomorfismo con la teoría de la evolución. }%
-%
-% \en{Even if our causal model does not assume any kind of process to update resources, probabilistic inference is proportional to the resources obtained through a multiplicative process. }%
-% \es{Incluso si nuestro modelo causal no presupone ningún tipo de proceso para actualizar los recursos, la inferencia probabilistica es proporcional a los recursos obtenidos a través de un proceso multiplicativo. }%
 % %
-\en{The multiplicative updating of the probabilities of individuals, which arises naturally from applying the rules of probability to the causal model, is in line with the long-established idea in evolutionary theory that the growth of lineages follow multiplicative processes. }%
-\es{La actualización multiplicativa de las probabilidades de los individuos, que surge naturalmente de aplicar las reglas de la probabilidad al modelo causal, está en línea con la idea largamente establecida en la teoría de la evolución de que el crecimiento de los linajes siguen procesos multiplicativos. }% 
-%
-
+% \en{The multiplicative updating of the probabilities of individuals, which arises naturally from applying the rules of probability to the causal model, is in line with the long-established idea in evolutionary theory that the growth of lineages follow multiplicative processes. }%
+% \es{La actualización multiplicativa de las probabilidades de los individuos, que surge naturalmente de aplicar las reglas de la probabilidad al modelo causal, está en línea con la idea largamente establecida en la teoría de la evolución de que el crecimiento de los linajes siguen procesos multiplicativos. }% 
 
 \end{abstract}
+
+
 
 
 \section{\en{Introduction}\es{Introducción}} \label{sec:introduction}
@@ -131,8 +84,10 @@
 %
 \en{From that moment until now, life has acquired an extraordinary complexity, both in terms of cooperation and specialization. }%
 \es{Desde aquel momento hasta ahora la vida adquirió una extraordinaria complejidad, tanto a nivel de cooperación como de especialización. }%
-%
-\begin{figure}[H]
+
+% Parrafo
+
+\begin{figure}[ht!]
     \centering
     \begin{subfigure}[b]{0.65\textwidth}
     \includegraphics[width=\linewidth]{auxiliar/images/biomass.jpg}
@@ -387,37 +342,20 @@ g = (1.5 \cdot 0.6)^{1/2} \approx 0.95
 \en{Fully cooperative groups reduce their fluctuations, generating an increase in the growth rate of all their members. }%
 \es{Grupos enteramente cooperadoras reducen sus fluctuaciones, generando un aumento en la tasa de crecimiento de todos sus miembros. }%
 % 
-% \en{Individuals in fully cooperative groups achieve growth rates equivalent to the average of system states, which in non-ergodic systems is always higher than individual growth rates. }%
-% \es{Los individuos de los grupos enteramente cooperadoras logran acceder a tasas de crecimiento equivalentes al promedio de estados del sistema, que en los sistemas no-ergódicos es siempre superior que la tasas de crecimiento individual. }%
-%
-\en{Peters-Amadou~\cite{peters-cooperation2019.03.04} believe that such increase in the growth rate is sufficient argument to demonstrate the evolutionary advantage of cooperation. }%
-\es{Peters-Amadou~\cite{peters-cooperation2019.03.04} consideran que el aumento de la tasa de crecimiento es argumento suficiente para demostrar la ventaja evolutiva de la cooperación. }%
-%
-\en{However, they do not consider the problem of defection, who say ``our cooperators are unable to break the cooperative pact''. }%
-\es{Sin embargo ellos no consideran el problema de la deserción, quienes dicen ``our cooperators are unable to break the cooperative pact''. }%
-%
-\en{This does not seem to be a minor problem, considering the temptation to stop contributing to the common fund while continuing to receive its benefits. }%
-\es{No parece ser un problema menor, teniendo en cuenta la tentación de dejar de aportar al fondo común mientras se siguen recibiendo sus beneficios. }%
 
 \paragraph{\en{Multilevel selection}\es{Selección multinivel}}
 
 \en{To demonstrate the evolutionary advantage of cooperation in the presence of defection it is necessary to consider selection at both the individual and group level. }%
 \es{Para demostrar la ventaja evolutiva de la cooperción en presencia de desertores es necesario considerar selección tanto a nivel individual como a nivel grupal. }%
 %
-\en{Yaari and Solomon~\cite{yaari2010-cooperationEvolution} already suggest a verbal argument for group selection: while there would be a temptation to defect, fully cooperative groups will do better. }%
-\es{Yaari y Solomon~\cite{yaari2010-cooperationEvolution} sugieren ya un argumento verbal de la selección de grupo: si bien habría una tentación para desertar, a los grupos enteramente cooperadores le irá mejor. }%
-%
-\en{However, they do not provide this argument with a formal proof. }%
-\es{Sin embargo no acompañan este argumento con una demostración formal. }%
-% Parrafo
 \en{The co-author of the concept of evolutionary transitions (Szathmáry~\cite{szathmary1995-evolutionaryTransitions, szathmary2015-evolutionaryTransitions}) recently proposed to analyze the evolution of populations subject to multilevel selection by means of Bayesian hierarchical models~\cite{czegel2019-bayesianEvolution}, making use of the isomorphism between evolutionary theory and Bayesian inference~\cite{harper2009-replicatorAsInference,shalizi2009-replicatorAsInference}. }%
 \es{El co-autor del concepto de transiciones evolutivas (Szathmáry~\cite{szathmary1995-evolutionaryTransitions, szathmary2015-evolutionaryTransitions}) propuso recientemente analizar la evolución de las poblaciones sujetas a selección multinivel mediante modelos jerárquicos bayesianos~\cite{czegel2019-bayesianEvolution}, haciendo uso del isomorfismo entre las teoría de la evolución y la inferencia bayesiana~\cite{harper2009-replicatorAsInference,shalizi2009-replicatorAsInference}. }%
 %
 \en{However, this work does not provide any model that performs multilevel selection, so the proposal remains open. }%
 \es{Sin embargo, este trabajo no proveé ningun modelo que realice selección multinivel, por lo que la propuesta sigue abierta. }%
-% Parrafo
-\en{In this paper we demonstrate the evolutionary advantage of cooperation in the presence of defection using a Bayesian hierarchical model representing evolution under multilevel selection. }%
-\es{En este trabajo demostramos la ventaja evolutiva de la cooperación en presencia de deserción mediante un modelo jerárquico bayesiano que represente evolución bajo selección multinivel. }%
+% 
+\en{In this paper we demonstrate the evolutionary advantage of cooperation in the presence of defection using a probabilistic causal model representing evolution under multilevel selection. }%
+\es{En este trabajo demostramos la ventaja evolutiva de la cooperación en presencia de deserción mediante un modelo causal probabilistico que represente evolución bajo selección multinivel. }%
 %
 \en{To the best of our knowledge, our work would be the first to develop a Bayesian hierarchical model to solve an evolution problem under multilevel selection. }%
 \es{Hasta donde sabemos, nuestro trabajo sería el primero en desarrollar un modelo jerárquico bayesiano para resolver un problema de evolución bajo selección multinivel. }%
@@ -425,56 +363,13 @@ g = (1.5 \cdot 0.6)^{1/2} \approx 0.95
 % \en{With this model we demonstrate, as Ole Peters intended, that the advantage of cooperation (now in the presence of defection) is a consequence of the most basic and fundamental assumption of evolutionary theory: that evolutionary processes are multiplicative and noisy. }%
 % \es{Con este modelo demostramos, como pretendía Ole Peters, de que la ventaja de la cooperación (ahora en presencia de deserción) es consecuencia del supuesto más básico y fundamental de la teoría de la evolución: que los procesos evolutivos son multiplicativos y ruidosos. }%
 
-\paragraph{\en{Specialization}\es{Especialización}}
-
-\en{Peters-Amadou propose multiplicative processes as the main explanation of major evolutionary transitions. }%
-\es{Peters-Amadou proponen a los procesos multiplicativos como la principal explicación de la transiciones evolutvas mayores. }%
-%
-\en{However, they believe that multiplicative processes can only explain the advantage of cooperation, but not the advantage of specialization. }%
-\es{Sin embargo, ellos creen que los procesos multiplicativos sólo pueden explicar la ventaja de la cooperación, pero no la ventaja de la especialización. }%
-% %
-% \en{Ole Peters believes that specialization is a too complex property to produce a benefit in simple aggregations of, for example, two agents. }
-% \es{Ole Peters considera a la especialización como una caracterísitica demasiado compleja para que produzca un beneficio en agregaciones simples de por ejemplo dos agentes. }%
-% %
-% \en{He says the ``[advantage of cooperation] it may explain the transition from single cells to bicellular organisms, too small and simple to benefit from new function or specialization.'' }
-% \es{Dice que la ventaja de la cooperación: ``it may explain the transition from single cells to bicellular organisms, too small and simple to benefit from new function or specialization.'' }%
-% %
-% \en{He believes that other explanations of evolutionary transitions, such as the emergence of specialization, are implausible. }%
-% \es{El cree que otras explicaciones de las transiciones evolutivas, como la emergencia de la especialización, son implausibles. }%
-%
-% \en{According to Ole Peters, an important evolutionary phenomenon on which his analysis can shed new light is the transition to multicellularity. }%
-% \es{Según Ole Peters, un importante fenómeno evolutivo sobre el que su análisis puede arrojar nueva luz es la transición a la multicelularidad. }%
-% \en{But, to explain evolutionary transitions, it is necessary to demonstrate the evolutionary advantage of cooperation in the presence of defection, but also the advantage of specialization. }%
-% \es{Luego, para explicar las transiciones evolutivas es necesario demostrar la ventaja evolutiva de la cooperación en presencia de deserción, pero también la ventaja de la especiliazación. }%
-% \en{However evolutionary transitions not only involve cooperation, it also involves specialization. }%
-% \es{Sin embargo, las transiciones evolutivas no involucran sólo cooperación, involucra también especialización. }%
-% %
-% 
-% % Parrafo
-% Parrafo
-% 
-\en{In this paper we show that the same minimal assumptions used by Yaari and Peters to explain the evolutionary advantage of cooperation also allow us to explain the evolutionary advantage of specialization, even for the simplest aggregations of two agents. }%
-\es{En este trabajo demostramos que los mismos supuestos mínimos que utilizam Yaari y Peters para explicar la ventaja evolutiva de la cooperación, permiten también explicar la ventaja evolutiva de especialización, incluso para las agregaciones más simples de dos agentes. }%
-%
-\en{Once cooperation emerges, individually maladapted strategies (specialists) manage to outperform, even organized in small groups, both individually well-adapted strategies (generalists) and their cooperative groups of infinite size. }%
-\es{Una vez que la cooperación emerge, las estrategias individualmente mal adaptadas (especialistas) consigen superar, incluso organizadas en grupos pequeños, tanto a las estrategias bien adaptas individualmemte (generalistas) como a sus grupos cooperativos de tamaño infinito. }%
-%
-\en{Since the specialist strategies are individually poorly adapted to the environment, an irreversibility of the evolutionary transition is created. }%
-\es{Como la estrategias especialistas están individualmente mal adaptadas al ambiente, se crea una irreversbilidad de la transici evolutivas. }%
-%
-\en{It is extraordinary that such an essential assumption, i.e. the multiplicative nature of probability and evolutionary theories, has such fundamental conclusions for understanding the emergence of the complexity of life. }%
-\es{Es extraordinario que un supuesto tan esencial, i.e. la naturaleza multiplicativa de las teorías probabilisticas y evolutivas, tenga conclusiones tan fudamentales para entender la emergencia de la complejidad de la vida. }%
-%
-% \en{Because the evolutionary advantage of cooperation and specialization is a direct consequence of the non-ergodicity of the multiplicative processes to which life is subject, we support Ole Peters' idea of considering it the first cause of major evolutionary transitions. }%
-% \es{Debido a que la ventaja evolutiva de la cooperación y la especialización es consecuencia directa de la no-ergodicidad de los procesos multiplicativos a los que está sujeto la vida, apoyamos la idea de Ole Peters de consideradala la primera causa de las transiciones evolutivas mayores. }%
-
 \section{\en{Methodology}\es{Metodología}}\label{sec:methodology}
 
 \en{In this section we present the isomorphism between probabilitic and evolutionary theory. }%
 \es{En esta sección presentamos el isomorfismo entre las teorías de la probabilidad y de la evolución. }%
 %
-\en{In the section \ref{sec:results} we will poof the evolutionary advantage of cooperation and specialization using a Bayesian hierarchical model representing evolution under multilevel selection. }%
-\es{En la sección \ref{sec:results} demostraremos la ventaja evolutiva de la cooperación en presencia de deserción mediante un modelo jerárquico bayesiano que representa evolución bajo selección multinivel. }%
+\en{In section ``\nameref{sec:results}'' we will prove the evolutionary advantage of cooperation, specialization and their irreversibility using a Bayesian hierarchical model with a causal interpretation representing evolution under multilevel selection. }%
+\es{En la sección ``\nameref{sec:results}'' demostraremos la ventaja evolutiva de la cooperación, la especialización y su irreversbilidad mediante un modelo jerárquico bayesiano con una interpretación causal que representa evolución bajo selección multinivel. }%
 %
 
 \subsection{\en{Probability theory and causal models}\es{Teoría de la probabilidad y modelos causales}}
@@ -490,39 +385,15 @@ g = (1.5 \cdot 0.6)^{1/2} \approx 0.95
 
 % Parrafo
 
-\en{Probability theory can be summarized in two rules: the \ref{eq:sum_rule} and the~\ref{eq:product_rule}. }%
-\es{La teoría de la probabilidad puede resumirse en dos reglas: la~\ref{eq:sum_rule} y la~\ref{eq:product_rule}. }%
+\en{Probability theory can be summarized in two rules: the sum rule and the product rule. }%
+\es{La teoría de la probabilidad puede resumirse en dos reglas: la regal de la suma y la regla del producto. }%
 %
-\en{The \ref{eq:sum_rule} states that any marginal distribution can be obtained by integrating or summing the joint distribution. }%
-\es{La \ref{eq:sum_rule} afirma que cualquier distribución marginal se puede obtener integrando o sumando la distribución conjunta. }%
+\en{The product rule allows describing multidimensional models through causal mechanisms: belief distributions on each effect, given the hidden values of its causes (conditional probabilities). }%
+\es{La regla del producto permite describir modelos multidimensionales a través de mecanismos causales: distribuciones de creencias sobre cada uno de los efectos, dados los valores ocultos de sus causas (probabilidades condicionales). }%
 %
-\begin{equation} \label{eq:sum_rule}
- \tag{\en{sum rule}\es{regla de la suma}}
- P(x) = \sum_{y} P(x,y) \ \ \ \ \ \text{or} \ \ \ \ \ p(x) = \int p(x,y) \, dy
-\end{equation}
-%
-\en{Where usually $P(\cdot)$ and $p(\cdot)$ represent discrete and continuous probability distributions respectively. }%
-\es{Donde usualmente $P(\cdot)$ y $p(\cdot)$ representan distribuciones de probabilidad discretas y continuas respectivamente. }%
-%
-\en{On the other hand, the \ref{eq:product_rule} states that any joint distribution can be expressed as the product of one-dimensional conditional distributions. }%
-\es{Por su parte, la \ref{eq:product_rule} se\~nala que cualquier distribuci\'on conjunta puede ser expresada como el producto de distribuciones condicionales uni-dimensionles. }%
-%
-\begin{equation}\label{eq:product_rule}
-\tag{\en{product rule}\es{regla del producto}}
- P(x,y,z) = P(x|y,z) P(y|z) P(z)
-\end{equation}
-%
-\en{This expression can be simplified by eliminating from the conditionals the variables that do not affect the function. }%
-\es{Esta expresión se puede simplificar eliminado de los condicionales las variables que no afectan a la función. }%
-%
-\en{The minimum set of variables that appear on the right side of the conditional are said to be the ``parents'' of the left side variable. }%
-\es{Al conjunto mínimo de variables que aparecen del lado derecho del condicional decimos que son los ``padres'' de la variable de la izquierda. }%
-
+\en{The sum rule, on the other hand, predicts the behavior of a variable (marginal probabilities) with the contribution of all the hypotheses of the multidimensional causal model. }%
+\es{La regla de la suma, por su parte, predice el comportamiento de una variable (probabilidades marginales) con la contribución de todas las hipótesis contradictorias del modelo causal multidimensional. }%
 % Parrafo
-
-\en{Another way of defining joint distributions is by means of graphical models, in which there is a node for each variable, and an arrow for each pair ``parent$\rightarrow$child''. }%
-\es{Otra forma de definir distribuciones conjuntas es mediante modelos gráficos, en los que hay un nodo por cada variable, y una flecha por cada par ``padre$\rightarrow$hijo''. }% 
-%
 \en{Graphical models are a well-established tool in probability because they: 1. provide an intuitive language to unambiguously express all hypotheses, 2. reduce the dimensionality of the joint probability distribution, 3. and allows to perform inference efficiently through the sum-product algorithm~\cite{kschischang2001-factorGraphsAndTheSumProductAlgorithm}. }%
 \es{Los modelos gráficos son una herramienta bien establecida en probabilidad debido a que: 1. ofrecen un lenguaje intuitivo para expresar sin ambigüedad todas las hipótesis; 2. reducen la dimensionalidad de la distribución de probabilidad conjunta; 3. y permiten realizar inferencia de forma eficiente a través del algoritmos suma-producto~\cite{kschischang2001-factorGraphsAndTheSumProductAlgorithm}. }%
 \en{To use the graphical models no causal interpretation is required, in fact the conditional probabilities can be expressed in any order. }%
@@ -670,30 +541,23 @@ P(\Aa,i,c^1,c^2)= P(\Aa|i,c^1,c^2)P(i|c^1,c^2)P(c^1|c^2)P(c^2)
 \en{Conversely, all collectives and individuals appear independent of the environment. }%
 \es{Y a la inversa, todas los colectivos e individuos aparecen independientes del ambiente. }%
 %
-\en{This perhaps explains why the authors avoided specifying conditional probability distributions, and instead provided a pictorial example of the joint probability distribution. }%
-\es{Esto quizás explique porque los autores evitaron especificar las distribuciones de probabilidad condicional, y ofrecieron en cambio un ejemplo pictórico de la distribución de probabilidad conjunta. }%
+% \en{This perhaps explains why the authors avoided specifying conditional probability distributions, and instead provided a pictorial example of the joint probability distribution. }%
+% \es{Esto quizás explique porque los autores evitaron especificar las distribuciones de probabilidad condicional, y ofrecieron en cambio un ejemplo pictórico de la distribución de probabilidad conjunta. }%
 
-\subsection{\en{Basic causal model}\es{Modelo causal básico}}
+\subsection{\en{A basic causal model: advantage for generalist individuals}\es{Un modelo causal básico: ventaja para los individuos generalistas}}
 
-\en{The basic causal model we present here serves to introduce the methodology we will use in section \ref{sec:results}, and the conclusion we will draw from it will be of interest later on. }%
-\es{El modelo causal básico que presentamos aquí sirve para introducir la metodología que utilizaremos en la sección \ref{sec:results}, y la conclusión que de él saquemos será de interés más adelante. }%
-% \en{To define conditional probability distributions it is convenient to express the models in causal terms. }%
-% \es{Para definir las distribuciones de probabilidad condicional es conveniente expresar los modelos en términos causales. }%
-\en{This model generalizes the problems analyzed by Lewontin, Yaari and Peters~\cite{lewontin1969-randomlyVaryingEnvironment, peters2019-ergodicityEconomi.s}, and formalizes in probabilistic terms the model proposed by Yaari-Solomon~\cite{yaari2010-cooperationEvolution}. }%
-\es{Este modelo generaliza los problemas analizados por Lewontin-Cohen y Peters~\cite{lewontin1969-randomlyVaryingEnvironment, peters2019-ergodicityEconomics}, y formaliza en términos probabilisticos el modelo propuesto por Yaari-Solomon~\cite{yaari2010-cooperationEvolution}. }% 
-% %
-\en{In them, the binary environmental states depend on a probability $p$. }%
-\es{En ellos, los estados ambientales binarios dependen de un probabilidad $p$. }%
+\en{The basic causal model we present here serves to introduce the methodology we will use in section ``\nameref{sec:results}'', and the conclusion we will draw from it will be of interest later on. }%
+\es{El modelo causal básico que presentamos aquí sirve para introducir la metodología que utilizaremos en la sección ``\nameref{sec:results}'', y la conclusión que de él saquemos será de interés más adelante. }%
+%
+\en{In them, the binary environmental states depend on a probability $p$ (for example $p$ is the probability of the coin coming up heads). }%
+\es{En ellos, los estados ambientales binarios dependen de un probabilidad $p$ (por ejemplo $p$ es la probabilidad de la moneda de salir cara). }%
 %
 \begin{equation}
 P(\Aa) = p^{\Aa} (1-p)^{(1-\Aa)}
 \end{equation}
 %
-\en{To define the probability of the strategies, we need a space of alternative strategies, not present in the Lewontin-Cohen and Peters-Amadou models. }%
-\es{Para definir la probabilidad de las estrategia, necesitamos un espacio de estrategias alternativas, no presente en los modelo de Lewontin-Cohen y de Peters-Amadou. }%
-%
 \en{While we are free to propose any set of strategies, we will consider only those that allocate a limited resource $R$ among the binary states of the environment, with $ 0 \leq \Ee \leq R$. }%
-\es{Si bien tenemos la libertad de proponer cualquier conjunto de estrategias, vamos a considerar sólo a aquellas que reparten un recurso limitado $R$ entre los estados binarios del ambiente, con $ 0 \leq \Ee \leq R$. }%
+\es{Si bien tenemos la libertad de proponer cualquier conjunto de estrategias, vamos a considerar sólo aquellas que reparten un recurso limitado $R$ entre los estados binarios del ambiente, con $ 0 \leq \Ee \leq R$. }%
 %
 \en{The strategy proposed by Lewontin-Cohen is $\Ee=1.7$ with $R=2.2$, and the strategy proposed by Peters is $\Ee=1.5$ with $R=2.1$. }%
 \es{La estrategia propuesta por Lewontin-Cohen es $\Ee=1.7$ con $R=2.2$, y la de Peters es $\Ee = 1.5$ con $R=2.1$. }%
@@ -714,14 +578,14 @@ f(\Ee, \Aa) = \begin{cases}
 \en{For other ways of defining this same function, see Yaari-Solomon equation 11~\cite{yaari2010-cooperationEvolution}. }%
 \es{Para ver otras formas de definir esta misma función, ver la ecuación 11 de Yaari-Solomon~\cite{yaari2010-cooperationEvolution}. }%
 %
-\en{To define the probability of the strategies given the environment, $p(\Ee|\Aa)$, we need the set of strategies to integrate 1. }%
-\es{Para definir la probabilidad de las estrategias dado el ambiente, $p(\Ee|\Aa)$, necesitamos que el conjunto de estrategias integren 1. }%
+\en{To define the probability of the strategies given the environment, $P(\Ee|\Aa)$, we need the set of strategies to integrate 1. }%
+\es{Para definir la probabilidad de las estrategias dado el ambiente, $P(\Ee|\Aa)$, necesitamos que el conjunto de estrategias integren 1. }%
 %
 \en{Let's say, for now, that the probability of the strategy is proportional to its fitness, }%
 \es{Digamos, por ahora, que la probabilidad de la estrategia es proporcional a su aptitud, }%
 %
 \begin{equation}\label{eq:probabilidad_propro_aptitud}
-p(\Ee | \Aa) \propto  \Ee^{\Aa}(1-\Ee)^{1-\Aa} = f(\Ee,\Aa)
+P(\Ee | \Aa) \propto  \Ee^{\Aa}(1-\Ee)^{1-\Aa} = f(\Ee,\Aa)
 \end{equation}
 %
 \en{This allows us to partially define a graphical model with a causal interpretation, }%
@@ -736,7 +600,7 @@ p(\Ee | \Aa) \propto  \Ee^{\Aa}(1-\Ee)^{1-\Aa} = f(\Ee,\Aa)
     
     
     \node[latent, below=of e] (r) {$\E$};
-    \node[const, right=of r] (rn) {$p(\Ee|\Aa) \propto f(\Ee,\Aa)$};
+    \node[const, right=of r] (rn) {$P(\Ee|\Aa) \propto f(\Ee,\Aa)$};
     \node[const, left=of r] (nr) {\en{Strategy}\es{Estrategia}: \ \ \ };
     
     \edge {e} {r};
@@ -751,173 +615,6 @@ p(\Ee | \Aa) \propto  \Ee^{\Aa}(1-\Ee)^{1-\Aa} = f(\Ee,\Aa)
 %
 \en{in which the environment is an independent random variable and the strategies depends on the observed states of the environment. }%
 \es{en el que el ambiente es una variable aleatoria independiete y las estrategias dependen de los estados observados del ambiente. }%
-%
-\en{Which is the probability $p(\Ee|\Aa)$? }%
-\es{¿Cuál es la probabilidad $p(\Ee|\Aa)$? }%
-
-\subsection{Sum-product algorithm}
-
-\en{The \emph{sum-product algorithm} takes advantage of the factoriztion of the joint probability distribution, induced by the causal model, to efficiently apply the rules of probability. }%
-\es{El \emph{sum-product algorithm} aprovecha la factorización de la distribuci\'on de probabilidad conjunta, inducida por el modelo causal, para aplicar eficientemente las reglas de la probabilidad. }%
-%
-\en{It is a way of computing the rules of probability (the sum and product rule) by message passing between probability distributions and their variables. }%
-\es{Es una forma de computar las reglas de la probabilidad (la regla de la suma y el producto) mediante pasaje de mensajes entre las distribuciones de probabilidad y sus variables. }%
-%
-\en{For this purpose, it is convenient to represent the graphical model with a \emph{factor graph}, a bipartite graph with variable nodes (white circles) and function nodes (black squares). }%
-\es{Para ello es conveniente representar el modelo mediante un \emph{factor graph}, un gráfos con nodos variables (círculos blancos), y nodos funciones (cuadrados negros). }%
-%
-\en{The edge between node variables and node functions represents the mathematical relationship ``the variable $v$ is an argument of the function $f$''. }%
-\es{Los ejes entre nodos variables y nodos funciones representan la relaci\'on matem\'atica ``la variable $v$ es argumento de la funci\'on $f$''. }%
-%
-\en{The following factor graph of the graphical model \ref{fig:model-lewontin-peters}. }%
-\es{El siguiente es el factor graph del modelo gráfico \ref{fig:model-lewontin-peters}. }%
-%
-\begin{figure}[H]
-\centering
-\tikz{
-
-    \node[factor] (fa) {};
-    \node[const, above=of fa] (nfa) {$P(\Aa^t)$};
-    
-    \node[latent, right=of fa] (a) {$\A$};
-    
-    \node[factor, right=of a] (fe) {};
-    \node[const, above=of fe] (nfe) {$p(\Ee|\Aa^t) \propto f(\Ee,\Aa^t)$};
-    
-    \node[latent, right=of fe, xshift=0.3cm] (e) {$\E$};
-    
-
-     \plate {hola} {(fa)(nfa)(a)(fe)(nfe)} {$\text{Time } t$}; 
-
-    \edge[-] {fa} {a};
-    \edge[-] {a} {fe};
-    \edge[-] {fe} {e};
-    }
-\caption{
- \en{Graphical way of representing the factorization of joint distribution induced by the basic causal model (Fig.~\ref{fig:model-lewontin-peters}). }%
- \es{Forma gráfica de representar la factorizaci\'on de la distribución conjunta inducida por el modelo causal básico (figura~\ref{fig:model-lewontin-peters}). }%
- %
- \en{The box represents repetition. }%
- \es{La caja representa repetición. }%
- }
-\label{fig:factor_graph}
-\end{figure}
-%
-\en{There are two types of messages: those sent by variable-type nodes to their function-type neighbors ($m_{V \rightarrow F}(v)$) and the ones that function-type nodes send to their variable-type neighbors ($m_{F \rightarrow V}(v)$). }%
-\es{Hay dos tipos de mensajes: los mensajes que envian los nodos variables a sus funciones vecinas ($m_{V \rightarrow F}(v)$); y los mensajes que env\'ian los nodos funciones a sus variables vecinas ($m_{F \rightarrow V}(v)$). }%
-%
-\en{The former partially performs the product rule. }%
-\es{El primero codifica una porci\'on de la regla del producto. }%
-%
-\begin{equation*}\label{eq:m_v_f} \tag{\text{\en{product step}\es{paso del producto}}}
-m_{V \rightarrow F}(v) = \prod_{H}^{\bm{H}} m_{H \rightarrow V}(v)
-\end{equation*}
-%
-\en{where $\bm{H} = n(V) \setminus \{F\}$ represents the set of neighbor nodes to $V$ except $F$. }%
-\es{donde $\bm{H} = n(V) \setminus \{F\}$ representa el conjunto de vecinos del nodo $V$ salvo $F$. }%
-%
-\en{In a brief, the messages sent by the variable-type node $V$ are simply the product of the messages that $V$ receives from the rest of their neighbors $H \in n(V)$ except $F$. }%
-\es{En pocas palabras, los mensajes que env\'ia una variables $V$ es simplemente la multiplicaci\'on de los mensajes que recibi\'o del resto de sus vecinos $H \in n(V)$ salvo $F$. }%
-%
-\en{The other messages sent by the function-type nodes encode a portion of the sum rule. }%
-\es{Los otros mensajes que envían los nodos funciones codifican una parte de la regla de la suma. }%
-%
-\begin{equation*}\label{eq:m_f_v}  \tag{\text{\en{sum step}\es{paso de la suma}}}
-m_{F \rightarrow V}(v) = \sum_{u_1}^{U_1} \dots \sum_{u_n}^{U_n} \Big( F(u_1, \dots, u_n, v) \prod_{U_i}^{\bm{U}} m_{U \rightarrow F}(u_i) \Big)
-\end{equation*}
-%
-\en{where $U_i \in \bm{U} = n(F)\setminus \{V\}$ is the set of all neighbors to $F$ except $V$ of size $n$, $u_i$ is a specific value of the variable $U_i$, $u_i \in U_i$, and $F(u_1, \dots, u_n, v)$ represents the function $F$, evaluated in all its arguments. }%
-\es{donde $U_i \in \bm{U} = n(F)\setminus \{V\}$ es el conjunto de todos los vecinos de $F$ salvo $V$ de tamaño $n$, $u_i$ es un valor específico de la variable $U_i$, $u_i \in U_i$, y $F(u_1, \dots, u_n, v)$ representa la función $F$ evaluada en todos sus argumentos. }%
-%
-\en{In short, the messages sent by the function-type node $F$ to a neighboring variable-type node $V$ is simply the sum (or integration) over $\bm{U}$ of the product of itself and all the messages that receives from the rest of its neighbors $\bm{U}$ except $V$. }%
-\es{En pocas palabras, los mensajes que envía una funci\'on $F$ a una variable vecina $V$ es simplemente la suma (o integraci\'on) sobre $\bm{U}$ del producto de sí mismo con todos los mensajes que recibe del resto de sus vecinos $\bm{U}$ salvo $V$. }%
-%
-\en{Finally, the marginal probability distribution of a variable $V$ is simply the product of the messages that $V$ receives from all its neighbors. }%
-\es{Finalmente, la distribuci\'on de probabilidad marginal de una variable $V$ es simplemente la multiplicaci\'on de los mensajes que $V$ recibe de todos sus vecinos. }%
-%
-\begin{equation*}\label{eq:marginal}  \tag{\text{\en{marginal probability}\es{probabilidad marginal}}}
-P(V=v) = \prod_{H \in n(V)} m_{H \rightarrow V}(v)
-\end{equation*}
-%
-\en{When we observe some variable $u$, we exclude it from the summations, which allows us to compute the marginal probability over two variables, $P(v,u)$. }%
-\es{Cuando observamos alguna variable $u$, la excluímos de las sumatorias, lo que nos permite computar la probabilidad marginal sobre dos variables, $P(v,u)$. }%
-%
-\en{This algorithm encodes the minimum number of steps required to calculate any marginal probability distribution. }%
-\es{Este algoritmo codifica la m\'inima cantidad de pasos que se requieren para calcular cualquier distribuci\'on de probabilidad marginal. }%
-
-\subsection{\en{Computation of marginal distributions}\es{Computo de distribuciones marginales}}
-
-\en{As we will later use the sum-product algorithm to solve the extended causal model, we show its use in this basic causal model (figure~\ref{fig:model-lewontin-peters}) to gain some intuition. }%
-\es{Como más adelante utilizaremos el sum-product algorithm para resolver un modelo causal extendido, mostramos su uso en este modelo causal básico (figure~\ref{fig:model-lewontin-peters}) para adquirir un poco de intuición. }%
-%
-\en{Using this procedure we will obtain the marginal distribution of the strategies and a vector of observations $p(\Ee,\vec{\Aa}\,)$, and we will normalize it to obtain the posterior $p(\Ee|\vec{\Aa})$. }%
-\es{Mediante este procedimiento normalizaremos obtendremos la distribución marginal de las estrategias y un vector de observaciones $p(\Ee,\vec{\Aa}\,)$, y la nmormalizaremos para obtener el posterior de las estrategias dado el ambiente $p(\Ee|\vec{\Aa})$. }%
-%
-% \en{Since we want $P(\Ee|\Aa)$ we need the marginals $P(\Ee,\Aa)/P(\Aa)$. }%
-% \es{Como queremos calcular $P(\Ee|\Aa)$ necesitamos las marginales $P(\Ee,\Aa)/P(\Aa)$. }%
-% %
-% \en{Since one of the probability distributions is defined by a proportional term, its marginals will also be proportional. }%
-% \es{Notar que una de las distribuciones de probabilidad está definida de forma proporcional, sus marginales también serán proporcionales. }%
-% %
-\en{To compute $p(\Ee,\Aa)$, we will consider $\Aa=\Aa^*$ observable. }%
-\es{Para computar $p(\Ee,\Aa)$, consideraremos $\Aa=\Aa^*$ observable. }%
-%
-\en{Then, the message from the environment factor $P(\Aa)$ to the environment variable $\A$ is, }%
-\es{Luego, el mensaje del factor del ambiente $P(\Aa)$ a la variable ambiente $\A$ es, }%
-%
-\begin{equation}
-m_{P(\A) \rightarrow \A }(\Aa^*) = P(\Aa^*) = m_{\A \rightarrow p(\E|\A)}(\Aa^*)
-\end{equation}
-%
-\en{which is the same message that the variable $\A$ sends to the strategy factor $p(\E|\A)$. }%
-\es{que es el mismo mensaje que envía la variable $\A$ al factor de estrategias $p(\E|\A)$. }%
-%
-\en{Then, the message sent by the strategies factor $p(\E|\A)$ to the strategies variable $\E$ is, }%
-\es{Luego, el mensaje que envía el factor de estrategias $p(\E|\A)$ a la variable estrategias $\E$ es, }%
-%
-\begin{equation}
-m_{p(\E|\A) \rightarrow \E }(\Ee) \propto P(\Aa^*)f(\Ee,\Aa^*)
-\end{equation}
-%
-\en{Note that we do not integrate the values of the environment because $\Aa^*$ is observable and therefore constant. }%
-\es{Notar que no integramos los valores del ambiente porque $\Aa^*$ es observable y por lo tanto constante. }%
-%
-\en{Then, the marginal of the strategies and a vector of environmental states $\vec{\Aa}$ is, }%
-\es{Luego, la marginal de las estrategias y un vector de estados del ambiente $\vec{\Aa}$ es, }%
-%
-\begin{equation}
-p(\Ee,\vec{\Aa}) \propto \prod_{\Aa}^{\vec{\Aa}} P(\Aa)f(\Ee,\Aa)
-\end{equation}
-%
-% Integrando sobre las estrategia $\E$ obtenemos la marginal de las observaciones,
-% %
-% \begin{align}
-% P(\vec{\Aa}) & \propto \sum_{\Ee}^\E \prod_{\Aa}^{\vec{\Aa}} P(\Aa)f(\Ee,\Aa) \\
-% & = \Big(\prod_{\Aa}^{\vec{\Aa}} P(\Aa) \Big)  \Big( \sum_{\Ee} \prod_{\Aa}^{\vec{\Aa}}f(\Ee,\Aa) \Big) 
-% \end{align}
-% %
-\en{Normalizing it we obtain the posterior, }%
-\es{Normalizando obtenemos el posterior, }%
-%
-\begin{equation}\label{eq:replicator_dynamic_posterior}
-p(\Ee|\vec{\Aa}) = \frac{ \prod_{\Aa}^{\vec{\Aa}}f(\Ee,\Aa)}{\int_{\Ee} \prod_{\Aa}^{\vec{\Aa}}f(\Ee,\Aa)}
-\end{equation}
-%
-% \en{which again has the same structure as the replicator dynamic, this time with an integral instead of a sum because the set of strategies is infinite. }%
-% \es{que nuevamente tiene la misma estructura del replicator dynamic, esta vez con un integral en vez de una suma debido a que el espacio de estrategias es infinito. }%
-%
-%Es decir, el replicator dynamic surgió de considerar el modelo causal en el que el ambiente causa las estrategias y en el que el tamaño de las estrategias depende de la adaptabilidad de esa estrategia al ambiente.
-%
-\en{Then, the posterior belongs to the Beta distribution (note that the denominator of the equation \ref{eq:replicator_dynamic_posterior} is the Beta function or the Euler integral).}
-\es{Luego, el posterior pertenece a la distribución Beta (notar que el denominador de la ecuación \ref{eq:replicator_dynamic_posterior} es la función Beta o la integral de Euler). }%
-%
-\begin{equation}
-P(\Ee|\vec{\Aa}) = \text{Beta}(\texttt{sum}(\vec{\Aa}), \, \texttt{length}(\vec{\Aa}) - \texttt{sum}(\vec{\Aa})) =  \frac{\Ee^{\texttt{sum}(\vec{\Aa})} \cdot (1-\Ee)^{\texttt{length}(\vec{\Aa}) - \texttt{sum}(\vec{\Aa})}}{B(\texttt{sum}(\vec{\Aa}), \, \texttt{length}(\vec{\Aa}) - \texttt{sum}(\vec{\Aa}))} 
-%
-\end{equation}
-%
-\en{with $B(\cdot,\cdot)$ the Beta function. }%
-\es{con $B(\cdot,\cdot)$ la función Beta. }%
 %
 \en{The result of the posterior will indicate the evolutionary stability of the strategies. }%
 \es{El resultado del posterior nos indicará la estabilidad evolutiva de las estrategias. }%
@@ -951,12 +648,12 @@ P(\Ee|\vec{\Aa}) = \text{Beta}(\texttt{sum}(\vec{\Aa}), \, \texttt{length}(\vec{
     \label{fig:estrategias_individuales}
 \end{figure}
 %
-\en{The evolutionary process selects the strategy that allocates resources in the same proportion as the states of the environment are generated. }%
-\es{El proceso evolutivo selecciona la estrategia que reparte los recursos en la misma proporción que se generan los estados del ambiente. }%
+\en{The evolutionary process selects the most generalist individual strategy of all, the one that distributes resources in the same proportion as the states of the environment are generated. }%
+\es{El proceso evolutivo selecciona la estrategia individual más generalista de todas, la que reparte los recursos en la misma proporción que se generan los estados del ambiente. }%
 %
 \en{When the environment generates the states with probability $p=0.71$, then the best adapted strategy is $\Ee = 0.71$. }%
 \es{Cuando el ambientes genera los estados con una probabilidad $p=0.71$, entonces la estrategia mejor adaptada es $\Ee = 0.71$. }%
-% Parrafo
+%
 \en{The selection of individual strategies, now intuitive, will be different and perhaps counter-intuitive when we incorporate the possibility of cooperation and defection into the model. }%
 \es{La selección de estrategias individuales, ahora intuitiva, será diferente y quizás contra-intuitiva cuando incorporemos al modelo la posibilidad de cooperación y deserción. }%
 
@@ -965,26 +662,9 @@ P(\Ee|\vec{\Aa}) = \text{Beta}(\texttt{sum}(\vec{\Aa}), \, \texttt{length}(\vec{
 % \en{In this section we will analyze whether there is indeed any evolutionary advantage of cooperation and specialization in the presence of defection. }%
 % \es{En esta sección analizaremos si efectivamente existe alguna ventaja evolutiva de la cooperación y la especialización en presencia de deserción. }%
 % %
-\en{To analyze whether there is any evolutionary advantage in favor of cooperation and specialization, in this section we will extend the causal model proposed in the \ref{sec:methodology} section by incorporating unconditionally cooperative behaviors, such as the one presented in the \ref{sec:introduction} section, including defecting behaviors (which receive the benefit of cooperation without contributing to it). }%
-\es{Para analizar si existe alguna ventaja evolutiva a favor de la cooperación y la especialización, en esta sección extenderemos el modelo causal propuesto en la sección \ref{sec:methodology} incorporando comportamientos incondicionalmente cooperativos, como el presentado en la sección \ref{sec:introduction}, incluyendo comportamientos desertores (que reciben el beneficio de la cooperación sin aportar al mismo). }%
-%
-\en{Cooperation in a non-randomly distributed population induces groups formation and therefore a type of group-level selection that acts in parallel to individual-level selection. }%
-\es{La cooperación en poblaciones distribuidas no aleatoriamente induce la formación de grupos y por lo tanto un tipo de selección a nivel grupal que actúa de forma paralela a la selección de nivel individual. }%
-%
-\en{Darwin has already discussed this topic. }
-\es{Darwin ya discutió sobre este tema. }
-%
-\begin{quotation}
-It must not be forgotten that although a high standard of morality gives but a slight or no advantage to each individual (...), an advancement in the standard of morality will certainly given an immense advantage to one tribe over another.
-\end{quotation}
-% \en{This modification alone has a fundamental evolutionary consequence: the formation of groups and thus the emergence of a new evolutionary entity. }%
-% \es{Esta sola modificación tiene una consecuencia evolutiva fundamental: la formación de grupos y por lo tanto la aparición de una nueva entidad evolutiva. }
-%
-\en{In other words, while defecting individuals may have a relative advantage over cooperating individuals, groups may be favored by mutual cooperation. }%
-\es{En otras palabras, si bien los individuos desertores puede tener una ventaja relativa sobre los individuos cooperadores, los grupos pueden verse favorecidos por la mututa cooperación. }%
-%
-\en{The result of both selection processes, known as multilevel selection, is the property of interest. }%
-\es{El resultado de ambos procesos de selección, conocido como selección multinivel, es la propiedad de nuestro interés. }%
+\en{In this section we will extend the causal model proposed in section ``\nameref{sec:methodology}'' by incorporating unconditionally cooperative behaviors, such as the one presented in the ``\nameref{sec:introduction}'' section, including defecting behaviors (which receive the benefit of cooperation without contributing to it). }%
+\es{En esta sección extenderemos el modelo causal propuesto en la sección ``\nameref{sec:methodology}'' incorporando comportamientos incondicionalmente cooperativos, como el presentado en la sección ``\nameref{sec:introduction}'', incluyendo comportamientos desertores (que reciben el beneficio de la cooperación sin aportar al mismo). }%
+
 
 \subsection{\en{Extended causal model}\es{Modelo causal extendido}}
 
@@ -1006,8 +686,8 @@ It must not be forgotten that although a high standard of morality gives but a s
 \en{the region to which it belongs, $\texttt{region}(i)=i \ \texttt{div} \ N$; }%
 \es{la región a la que pertenece, $\texttt{region}(i)=i \ \texttt{div} \ N$; }%
 %
-\en{if their social behavior is cooperative, $\texttt{coop}(i) =  i \ \texttt{mod} \ N < \texttt{region}(i)$ (the first $n$ individuals in the region are cooperators and the rest defectors); }%
-\es{si su comportamiento social es cooperador, $\texttt{coop}(i) =  i \ \texttt{mod} \ N < \texttt{region}(i)$ (los primeros $n$ individuos de la región son cooperadores y el resto desertores); }%
+\en{and if their social behavior is cooperative, $\texttt{coop}(i) =  i \ \texttt{mod} \ N < \texttt{region}(i)$ (the first $n$ individuals in the region are cooperators and the rest defectors); }%
+\es{y si su comportamiento social es cooperador, $\texttt{coop}(i) =  i \ \texttt{mod} \ N < \texttt{region}(i)$ (los primeros $n$ individuos de la región son cooperadores y el resto desertores); }%
 %
 \en{and the strategy $\Ee_i$ they use to allocate resources $f(\Ee,\Aa)$ (equation \ref{eq:familia_de_aptitudes}). }%
 \es{y la estrategia $\Ee_i$ que utilizan para alocar recursos $f(\Ee,\Aa)$ (ecuación~\ref{eq:familia_de_aptitudes}). }%
@@ -1022,15 +702,15 @@ P(i) = \frac{1}{N} \mathcal{B}(\texttt{region}(i)|N,0.5)
 \en{where the binomial distribution $\mathcal{B}$ gives more weight to individuals from mixed regions, the parameter $0.5$ indicates a uniform prior between cooperating and defecting social behaviors, and the factor $\frac{1}{N}$ indicates that all individuals in the same region start with the same initial resources. }%
 \es{donde la distribución binomial $\mathcal{B}$ otorga más peso a los individuos de las regiones mixtas, el parámetro $0.5$ indica un prior uniforme entre los comportamientos sociales cooperador y desertor, y el factor $\frac{1}{N}$ indica que todos los individuos de la misma región empiezan con los mismos recursos iniciales. }%
 %
-\en{As we have seen in the section \ref{sec:methodology}, the probability of the environmental states is, }%
-\es{Como hemos visto en la sección \ref{sec:methodology}, la probabilidad de los estados ambientales es, }%
+\en{As we have seen in the section ``\nameref{sec:methodology}'', the probability of the environmental states is, }%
+\es{Como hemos visto en la sección ``\nameref{sec:methodology}'', la probabilidad de los estados ambientales es, }%
 %
 \begin{equation}
 P(\Aa) = p^\Aa (1-p)^{1-\Aa}
 \end{equation}
 %
-\en{but now at each time $t$ we have a vector $\vec{\Aa}$, in which the $i-$th element influences the $i-$th individual, }%
-\es{pero ahora en cada tiempo $t$ tenemos un vector $\vec{\Aa}$, en el que el $i-$ésimo elemento influencia al $i-$ésimo individuo, }%
+\en{but now at each time $t$ we have a vector $\vec{\Aa}$, in which the $i-$th environmental state influences the $i-$th individual, }%
+\es{pero ahora en cada tiempo $t$ tenemos un vector $\vec{\Aa}$, en el que el $i-$ésimo estado ambiental influencia al $i-$ésimo individuo, }%
 %
 \begin{equation}
 P(i|\vec{\Aa}) = \frac{\Ee_i^{\Aa_i} (1-\Ee_i)^{1-\Aa_i}}{\sum_j \Ee_j^{\Aa_j} (1-\Ee_j)^{1-\Aa_j}} \propto \Ee_i^{\Aa_i} (1-\Ee_i)^{1-\Aa_i}
@@ -1054,7 +734,7 @@ P(i^{t+1}|i^t) =
 \en{Finally, the groups are made up of members from each region, $P(g|i)=\mathbb{I}(\texttt{region}(i) = g)$, the indexing function which is $1$ when individuals belong to region $g$ and $0$ otherwise. }%
 \es{Finalmente, los grupos están constituidos por los miembros de cada región, $P(g|i)=\mathbb{I}(\texttt{region}(i) = g)$, la función indiciadora que es $1$ cuando los individuos pertenecen a la región $g$ y $0$ en otro caso. }%
 %
-\begin{figure}[H]
+\begin{figure}[ht!]
 \centering
  \begin{subfigure}[b]{0.4\textwidth}    
  \centering
@@ -1170,71 +850,20 @@ P(i^{t+1}|i^t) =
 \underbrace{P(\texttt{coop}(i^T)|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1})}_{\text{\en{Multilevel selection}\es{Selección multinivel}}} = \sum_{g=0}^N \underbrace{P(\texttt{coop}(i^T)|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1}, g)}_{\text{\en{Level 1 selection}\es{Selección de nivel 1}}} \cdot \underbrace{P(g^T|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1})}_{\text{\en{Level 2 selection}\es{Selección de nivel 2}}}
 \end{equation}
 %
-\en{where the posterior of level 1 selection is obtained by integrating the probability of all cooperating individuals that are part of the group $g$, }%
-\es{donde el posterior de la selección de nivel 1 se obtiene integrando la probabilidad de todos los individuos cooperadores que forman parte del grupo $g$, }%
-%
-\begin{equation}\label{eq:posterior_nivel_1}
-\begin{split}
-P(\texttt{coop}(i^T)|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1}, g) &= \sum_{j=1}^M P(I^T=j|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1}, g)\mathbb{I}(\texttt{coop}(j))
-\end{split}
-\end{equation}
-%
 \en{An alternative way to compute the multilevel selection marginal (Eq.~\ref{eq:posterior_multinivel}) is by integrating the probability of all cooperating individuals given the environments }%
 \es{Una forma alternativa de calcular la marginal de la selección multinivel (Eq.~\ref{eq:posterior_multinivel}) es integrando la probabilidad de los individuos cooperadores dado los ambientes }%
 %
 \begin{equation}\label{eq:posterior_multinivel_alternativa}
 \begin{split}
-P(\texttt{coop}(i^T),\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1}) &= \sum_{j=1}^M P(I^T=j,\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1})\mathbb{I}(\texttt{coop}(j))
-\end{split}
-\end{equation}
-%
-\en{where the probability of individuals, when the environmental states $\vec{\Aa}^{\,t}$ are observed, is }%
-\es{donde la probabilidad de los individuos cuando tenemos como observable todos los ambientes $\vec{\Aa}^{\,t}$ es, }%
-%
-\begin{equation}
-P(i^{T},\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1}) = m_{P(I^{T}|I^{T-1}) \rightarrow I^T}(i^T)
-\end{equation}
-%
-\en{This message is recursively defined. }%
-\es{Este mensaje está definido recursivamente. }%
-%
-\begin{equation}\label{eq:m_pii_i}
-\begin{split}
-m_{P(I^{t+1}|I^{t}) \rightarrow I^{t+1} }(i^{t+1}) & = \sum_{i^t} P(i^{t+1}|i^t) \, P(\vec{\Aa}^{\,t}) \, P(i^t|\vec{\Aa}^{\,t}) \,  m_{P(I^t|I^{t-1}) \rightarrow I^t }(i^t) 
+P(\texttt{coop}(i^T)|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1}) &= \sum_{j=1}^M P(I^T=j|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1})\mathbb{I}(\texttt{coop}(j))
 \end{split}
 \end{equation}
 %
 %
+\en{where $\mathbb{I}(\cdot)$ is the indicator function. }%
+\es{donde $\mathbb{I}(\cdot)$ es la función indiciadora. }%
 %
-% En la introducción hemos derivado la tasa de crecimiento de esta marginal para los grupos enteramente desertoras y solo hemos presentado un resultado numérico para el grupo enteramente cooperador.
-% %
-% En la siguiente sección resolveremos analíticamente el posterior de la selección de grupos y multinivel y verificaremos la hipótesis de Ole Peters de la ventaja evolutiva de la cooperación.
-% %
-% Y la sección \ref{sec:especialization}, haremos uso de los resultado análitico para demostrar la ventaja evolutiva de la especilización, rechazando la hipótesis de Ole Peters de que la especialización es un mecanismo implausible para poblaciones chicas.
-% 
-% 
-% En esta subsección resolveremos la marginal que necesitamos para computar el posterior de la la selección de nivel 1, de nivel 2 y multinivel,
-% %
-% \begin{equation}
-% \begin{split}
-% P(I^{T+1}=k, \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T}) & = m_{P(I^{T+1}|I^{T}) \rightarrow I^{T+1} }(k)
-% \end{split}
-% \end{equation}
-% %
-% donde el mensaje está definido recursivamente en la ecuación~\ref{eq:m_pii_i}.
-%
-%
-\en{In all cases, the marginal is equal to the posterior times the probability of the observed environment, }%
-\es{En todos los casos, la marginal es igual al posterior por la probabilidad del ambiente observado, }%
-%
-\begin{equation}
-\begin{split}
-P(I^{T+1}=k, \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T}) & = P(k| \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T}) \prod_{t=1}^T P(\vec{\Aa}^{\,t})
-\end{split}
-\end{equation}
-%
-\en{where}\es{donde} (\en{all steps are described in detail in the appendix}
-\es{en el anexo resolvemos todos los pasos detalladamente})
+\en{Then, the posteriors of individuals are}\es{Luego} (\en{a detailed mathematical proof can be found in the appendix section ``\nameref{sec:probabilistic_inference}''}\es{una demostración matemática detallada se encuentran en la sección ``\nameref{sec:probabilistic_inference}'' del apéndice.})
 %
 \begin{equation}
 P(k| \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^T) = 
@@ -1263,83 +892,19 @@ P(k)\prod_{t=1}^{T} \sum_j^{\texttt{\en{partners}\es{socios}}(r)} \frac{1}{N} P(
 %
 \en{However, our probabilistic causal model and the multiplicative process discussed in the introduction are equivalent. }%
 \es{Sin embargo, nuestro modelo causal probabilístico y el proceso multiplicativo analizado en la introducción son equivalentes. }%
-%  
-% % Parrafo
-% 
-% \en{Without the need to presuppose a multiplicative process, the posteriors of individuals in our causal model are proportional to the trajectory of resources arising from the game proposed by Ole Peters. }%
-% \es{Sin necesidad de presuponer un proceso multiplicativo, los posteriors de los individuos en nuestro modelo causal son proporcionales a la trayectoria de los recursos que surgen del juego propuesto por Ole Peters. }%
 %
-\en{The posterior of individuals from the entirely defecting region is, }%
-\es{El posterior de los individuos de la región enteramente desertora es, }%
+\en{A detailed mathematical proof can be found in the appendix section ``\nameref{sec:peters_isomorphism}''. }%
+\es{Una demostración matemática detallada se encuentran en la sección ``\nameref{sec:peters_isomorphism}'' del apéndice. }%
 %
-\begin{equation}
-\begin{split}
-P(i^{T+1} | \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T}) & \overset{r=0}{=}  P(i^{T+1})  \prod_{t=1}^{T} P(i^{T+1}|\vec{\Aa}^{\,t}) \\
-& \propto P(i^{T+1}) \prod_{t=1}^{T} \Ee_k^{\Aa_k} (1-\Ee_k)^{1-\Aa_k}   \propto P(i^{T+1}) \prod_{t=1}^{T} R f(\Ee_i,\Aa_{i}^{t})
-\end{split}
-\end{equation}
-%
-\en{where $r = \texttt{region}(i^{T+1}) = 0$ denotes the region without cooperators, $f$ is the fitness function that we define in the equation \ref{eq:familia_de_aptitudes}. }%
-\es{donde $r = \texttt{region}(i^{T+1}) = 0$ indica la región sin cooperadores, $f$ es la familia de aptitudes que definimos en la ecuación \ref{eq:familia_de_aptitudes}. }%
-%
-\en{The first proportional is valid because of the normalization constant of the probability distribution $P(i^t|\vec{\Aa}^{\,t})$. }%
-\es{El primer proporcional vale por constante de normalización de la distribución de probabilidad $ P(i^t|\vec{\Aa}^{\,t})$. }%
-%
-\en{And the second proportional simply includes the factor $R$, so that the fitness function matches the one proposed by Lewontin-Cohen, when $R=2.2$, or the one proposed by Peters, when $R=2.1$. }%
-\es{Y el segundo proporcional simplemente incluye el factor $R$ para que la función de aptitudes coincida con la prouesta por Lewontin-Cohen, cuando $R=2.2$, o la propuesta por Peters, $R=2.1$. }%
-%
-\en{When the prior $P(i^{T+1})$ represents the initial resources $\omega(0)$, then the posterior of the individual defectors in entirely defecting groups is proportional to the growth of the individual resources studied in the introduction section. }%
-\es{Si consideramos que el prior $P(i^{T+1})$ representa los recursos inciales $\omega(0)$, luego el posterior de los individuos desertores en grupos enteramenete desertoras es proporcional al crecimiento de los recursos individuales estudiada en la introducción. }%
-
-% Parrafo
-
-\en{The same is true for the posteriors of cooperating individuals. }%
-\es{Lo mismo ocurre con los posteriors de los individuos cooperadores. }%
-%
-\en{First, the message sent by the individual variables to the social factor is proportional to the second node of the cooperative protocol (figure~\ref{fig:protocolo}), in which the previous resources $\omega_i(t)$ are updated by the product of the fitness function. }%
-\es{Primero, el mensaje que envían las variables individuos al factor social es proprocional al segundo nodo de del protocolo cooperativo (figura~\ref{fig:protocolo}), en el que los recursos previos $\omega_i(t)$ mediante el producto de la función de fitness. }%
-%
-\begin{equation}
-\begin{split}
-m_{I^t \rightarrow P(I^{t+1}|I^t)}(i^t) & = m_{P(I^t|\vec{\A}^{\,t}) \rightarrow I^t}(i^t) \, m_{P(I^t|I^{t-1}) \rightarrow I^t }(i^t) \\
-& = P(i^t| \vec{\Aa}^{\,t}) \, P(i^t, \vec{\Aa}^{\,t}, \dots, \vec{\Aa}^{\,t}) \\
-& \propto R\,f(\,\Ee_i,\Aa_{i}^{t}) \omega(t-1)
-\end{split}
-\end{equation}
-%
-%donde la marginal $P(i^t, \vec{\Aa}^{\,t}, \dots, \vec{\Aa}^{\,t})$ es proporcional al posterior $P(i^t| \vec{\Aa}^{\,t}, \dots, \vec{\Aa}^{\,t})$.
-%
-\en{Again, the proportionality holds by construction of the probability distribution $P(i^t|\vec{\Aa}^{\,t})$. }%
-\es{Nuevamente, la prorporcionalidad vale por construcción de la distribución de probabilidad $P(i^t|\vec{\Aa}^{\,t})$. }%
-%
-\en{And the message that the social factor sends to the individual variable of the following time is proprotional to the individual resources after pooling and sharing, }%
-\es{Y el mensaje que envía el factor social a la variable individuo del siguiente tiempo es proprocional a los recursos individuales luego de la redistribución del fondo común, }%
-%
-\begin{equation}
-\begin{split}
-m_{P(I^{t+1}|I^{t}) \rightarrow I^{t+1} }(i^{t+1}) & = \sum_{i^t} P(i^{t+1}|i^t) \, P(\vec{\Aa}^{\,t}) \, P(i^t|\vec{\Aa}^{\,t}) \,  m_{P(I^t|I^{t-1}) \rightarrow I^t }(i^t) \\
-%& \propto \sum_{i^t} P(i^{t+1}|i^t) \, P(i^t|\vec{\Aa}^{\,t}) \,  \text{Prior}(i^t) \\
-= P(I^{t+1}, \vec{\Aa}^{\,1} , \dots, \vec{\Aa}^{\,T} ) & \propto \sum_{i^t} P(i^{t+1}|i^t) \, f_{\Ee_i}(\Aa_{i}^{t}) \omega_i(t)  = \omega_i(t+1)
-\end{split}
-\end{equation}
-%
-\en{where $P(i^{t+1}|i^t) = \frac{1}{N}$ when individuals belong to the same region $\texttt{region}(i^{t+1}) = \texttt{region}(i^{t})$. }%
-\es{donde $P(i^{t+1}|i^t) = \frac{1}{N}$ cuando los individuos pertenecen a la misma región $\texttt{region}(i^{t+1}) = \texttt{region}(i^{t})$. }%
-%
-\en{This message generalizes the last node of the cooperative protocol (figure~\ref{fig:protocolo}). }%
-\es{Este mensaje generaliza el último nodo del protocolo cooperativo (figura~\ref{fig:protocolo}). }%
-
-% Parrafo
-
-\en{In the introduction we have not analyzed the resource trajectory of defectors in cooperative groups, but in general, the posterior of individuals is no more than the proportion of resources they manage. }%
-\es{En la introducción no hemos analizado la trayectoria de los recursos de los desertores en grupos cooperativos, pero en general, el posterior de los individuos no es más que la proporción de recursos que maneja. }%
+\en{In general, the posterior of individuals is no more than the proportion of resources they manage (all steps are described in the long article). }%
+\es{En general, el posterior de los individuos no es más que la proporción de recursos que maneja (en artículo largo mostramos todos los pasos). }%
 %
 \begin{equation}
 P(k| \vec{\Aa}^{\,1}, \dots,  \vec{\Aa}^{\,T}) = \frac{\omega_k(T)}{\sum_j \omega_j(T)}
 \end{equation}
 %
-\en{The proportionality between the posterior probability of individuals and the trajectories of resources studied in the introduction section allows us to work with both expressions interchangeably. }%
-\es{La proporcionalidad entre la probabilidad a posteriori de los individuos y las trayectorias de los recursos estudiada en la instroducción nos permite trabajar indistintamanete con una u otra expresión. }%
+\en{The proportionality between the posterior probability of individuals and the trajectories of resources studied in section ``\nameref{sec:introduction}'' allows us to work with both expressions interchangeably. }%
+\es{La proporcionalidad entre la probabilidad a posteriori de los individuos y las trayectorias de los recursos estudiada en la ``\nameref{sec:introduction}'' nos permite trabajar indistintamanete con una u otra expresión. }%
 
 % Parrafo
 
@@ -1438,116 +1003,19 @@ P(k| \vec{\Aa}^{\,1}, \dots,  \vec{\Aa}^{\,T}) = \frac{\omega_k(T)}{\sum_j \omeg
 %
 \en{We will solve this problem by cases, depending on whether the behavior is cooperative, $g_C$, or defective, $g_D$, for different social contexts $g_{[\cdot]}^n(k|\cdot)$, where $n$ represents the number of cooperators with which the individual $k$ interacts (excluding $k$). }%
 \es{Resolveremos este problema por casos, según el comportamiento sea cooperativo, $g_C$, o desertivos, $g_D$, para diferente contextos sociales $g_{[\cdot]}^n(k|\cdot)$, donde $n$ representa la cantidad de cooperadores con lo que interactúa el individuo $k$ (excluyendo a $k$). }%
-% 
-\en{The growth rate of mutual defection is, }%
-\es{La tasa de crecimiento de la deserción mutua es, }%
 %
-\begin{equation}
-\begin{split}
-\lim_{T \rightarrow \infty} g_D^0(k|\Ee,p,N)^T &= \prod_{t=1}^T P(k|\vec{\Aa}^{\,T+1}) \propto \prod_{t=1}^T \Ee^{\Aa^t_k} (1-\Ee)^{1-\Aa^t_k} \\
-\lim_{T \rightarrow \infty} g_D^0(k|\Ee,p,N) &\propto \Big( \prod_{t=1}^T \Ee^{\Aa^t_k} (1-\Ee)^{1-\Aa^t_k} \Big) ^{1/T} = \Ee^{p} (1-\Ee) ^{1-p}
-\end{split}
-\end{equation}
-%
-\en{which is independent of the size $N$. }%
-\es{que es independiete del tamaño $N$. }%
-%
-\en{The proportional is valid because of the normalization constant of the probability distribution $P(i^t|\vec{\Aa}^{\,t})$. }%
-\es{El proporcional vale por constante de normalización de la distribución de probabilidad $ P(i^t|\vec{\Aa}^{\,t})$. }%
-%
-\en{The growth rate of a strategy $\Ee= 0.71 \approx 1.5/2.1$ in an environment with $p=0.5$ is $ 0.71^{1/2}\cdot0.29^{1/2} \approx 0.452$. }%
-\es{La tasa de crecimiento de un estrategia $\Ee= 0.71 \approx 1.5/2.1$ en una ambiente con $p=0.5$ es $ 0.71^{1/2}\cdot0.29^{1/2} \approx 0.452$. }%
+\en{A detailed mathematical proof can be found in the appendix section ``\nameref{sec:growth_rates}''. }%
+\es{Una demostración matemática detallada se encuentran en la sección `` \nameref{sec:growth_rates}'' del apéndice. }%
 
 % Parrafo
 
-\en{The growth rate of the cooperators can also be computed using the geometic average, }
-\es{La tasa de crecimiento de los cooperadores también la podemos calcular utilizando la media geomética, }%
-%
-\begin{equation}
-\begin{split}
-\lim_{T \rightarrow \infty} g_C^n(k|\Ee,p,N)^T &= \prod_{t=1}^{T} \sum_j^{\texttt{\en{partners}\es{socios}}(k)} \frac{1}{N} P(j|\vec{\Aa}^{\,t}) \propto \prod_{t=1}^{T}  \sum_j^{\texttt{\en{partners}\es{socios}}(k)} \frac{1}{N} \Ee^{\Aa^t_j} (1-\Ee)^{1-\Aa^t_j} \\
-\lim_{T \rightarrow \infty} g_C^n(k|\Ee,p,N) & \propto \Big( \prod_{t=1}^{T}  \sum_j^{\texttt{\en{partners}\es{socios}}(k)} \frac{1}{N} \Ee^{\Aa^t_j} (1-\Ee)^{1-\Aa^t_j} \Big)^{1/T} = \prod_{x=0}^{n+1} \Big(\frac{x}{N} \Ee + \frac{n+1-x}{N}(1-\Ee)\Big)^{\mathcal{B}(x|n+1,p)}
-\end{split}
-\end{equation}
-%
-\en{where $x$ represents the number of successes within the cooperating group, and $\mathcal{B}(x|n+1,p)$ is the binomial probability of obtaining $x$ successes in a sample of size $n+1$. }%
-\es{donde $x$ representa la cantidad de éxitos dentro del grupo cooperador, y $\mathcal{B}(x|n+1,p)$ es la probabilidad binomial de obtener $x$ éxitos en una muestra de tamaño $n+1$. }%
-%
-% %
-% \begin{equation}
-% f_C(\Ee,\vec{\Aa}\,) =
-% \begin{cases}
-% (1-\Ee) & \text{ si } \texttt{sum}(\vec{\Aa}\,) = 0 \\
-% \frac{1}{3} \Ee + \frac{2}{3} (1-\Ee)  & \text{ si } \texttt{sum}(\vec{\Aa}\,) = 1 \\
-% \frac{2}{3} \Ee + \frac{1}{3} (1-\Ee)    & \text{ si } \texttt{sum}(\vec{\Aa}\,) = 2 \\
-% \Ee & \text{ si } \texttt{sum}(\vec{\Aa}\,) = 3
-% \end{cases}
-% \end{equation}
-% %
-% Y en general, 
-% \begin{equation}\label{eq:fitness_cooperador}
-% f_{C}(\Ee, \vec{\Aa}\,,N) = \frac{\texttt{sum}(\vec{\Aa}\,)}{N} \Ee + \frac{N-\texttt{sum}(\vec{\Aa}\,)}{N}(1-\Ee)
-% \end{equation}
-% %
-% \en{where $f_C(\Ee, \vec{\Aa}\,,N) \sim \text{Binomial}(\texttt{sum}(\vec{\Aa}\,)|N,p)$, with $p$ the probability of the environment. }%
-% \es{donde $f_C(\Ee, \vec{\Aa}\,,N) \sim \text{Binomial}(\texttt{sum}(\vec{\Aa}\,)|N,p)$, con $p$ la probabilidad del ambiente. }%
-% %
-% \en{Then, the growth rate of the mutual cooperation can be computed using the geometic average~\ref{eq:geometric_mean}, }
-% \es{Luego, la tasa de crecimiento de la mutua cooperación la podemos calcular utilizando la media geomética~\ref{eq:geometric_mean}, }%
-% %
-% \begin{equation}
-% g_{C}(\Ee,N) = \prod_{x=0}^N \Big(\frac{x}{N} \Ee + \frac{N-x}{N}(1-\Ee)\Big)^{\text{Binomial}(x|N,p)}
-% \end{equation}
-%
-\en{Then, the cooperative growth rate in a group of size 2 are $g_C^2(k|\Ee=0.71,p=0.5,N=2) \propto 0.71^{1/4}\cdot 0.5^{1/2} \cdot 0.29^{1/4} \approx 0.475$ and $g_C^1(k|\Ee=0.71,p=0.5,N=2) \propto (\frac{0.71}{2})^{1/4}\cdot (\frac{0.29}{2})^{1/2}  \approx 0.226$. }%
-\es{Luego, la tasa de crecimiento cooperativa en grupos de tamaño $2$ son $g_C^2(k|\Ee=0.71,p=0.5,N=2) \propto 0.71^{1/4}\cdot 0.5^{1/2} \cdot 0.29^{1/4} \approx 0.475$ y $g_C^1(k|\Ee=0.71,p=0.5,N=2) \propto (\frac{0.71}{2})^{1/4}\cdot (\frac{0.29}{2})^{1/2} \approx 0.226$. }%
-%
-\en{When the group is very large, $N\rightarrow \infty$, }%
-\es{Cuando el grupo es muy grande, $N\rightarrow \infty$, }%
-%
-\begin{equation}
-\lim_{N \rightarrow \infty} g_C^n(k|\Ee,p,N) \propto \Big( p \Ee + (1-p)(1-\Ee) \Big)  \frac{n+1}{N}
-\end{equation}
-%
-\en{the growth rate is just the arithmetic mean, weighed by the proportion of cooperators. }%
-\es{la tasa de crecimiento es la media aritmética pesada por la proporción de cooperadores. }%
-% %
-% \en{The cooperative growth rate of a strategy $\Ee=0.71$ in a group of infinite size in an environment with probability $p=0.5$ is $0.5\cdot 0.71 + 0.5 \cdot 0.29 = 0.5$. }%
-% \es{La tasa de crecimiento cooperativa de una estrategia $\Ee=0.71$ en un grupo de tamaño infinito en un ambiente con probabilidad $p=0.5$, es $0.5\cdot 0.71 + 0.5 \cdot 0.29 = 0.5$. }%
-
-% Parrafo
-
-\en{The growth rate of the defectos in goups with at least one cooperator is, }
-\es{La tasa de crecimiento de desertores en grupos con al menos un cooperador es, }%
-%
-\begin{equation}
-\begin{split}
-\lim_{T \rightarrow \infty} g_D^n(k|\Ee,p,N)^T &= \Big(\prod_{t=1}^{T} P(k|\vec{\Aa}^{\,t}) \Big) + \Big(\sum_{t=1}^{T} \prod_{q=1}^{t} \sum_j^{\texttt{\en{partners}\es{socios}}(k)} \frac{1}{N} P(j|\vec{\Aa}^{\,q})  \prod_{q=t+1}^T P(k|\vec{\Aa}^{\,q}) \Big) \\
-& \approx  g_D^0(k|\Ee,p,N)^T + \sum^{T}_{t=1}  g_C^{n-1}(k|\Ee,p,N)^t g_D^0(k|\Ee,p,N)^{T-t} \\
-& \propto (\Ee^{p} (1-\Ee) ^{1-p})^T + \sum^{T}_{t=1} \Big(\prod_{x=0}^n(\frac{x}{N} \Ee + \frac{n-x}{N}(1-\Ee))^{\mathcal{B}(x|n,p)}\Big)^t (\Ee^{p} (1-\Ee) ^{1-p})^{T-t}
-\end{split}
-\end{equation}
-%
-\en{the sum of individual growth plus a moving average of the growth of cooperators weighted by individual growth, which we approximate using the growth rates $g_D^0$ and $g_C^n$. }%
-\es{la suma del crecimiento individual más una media movil del crecimiento de los cooperadores pesado por crecimienti individual, que aproximamos usando las tasas de crecimiento $g_D^0$ y $g_C^n$. }%
-% %
-% \en{Because we did not find a simpler analytical solution, we performed the growth rate estimation as the difference between time steps, }%
-% \es{Debido a que no encontramos una solución analítica más simple, realizamos la estimación de la tasa de crecimiento como la diferencia entre pasos temporales, }%
-% %
-% \begin{equation}
-% g_{D}(\Ee,n,N) = 
-% \end{equation}
-%
-\en{This growth rate is not constant, but quickly stabilizes at the higher growth rate, $g_D^n(k|\Ee,p,N)$ $\approx$ $\texttt{max}(g_D^0(k|\Ee,p,N),$ $g_C^n(k|\Ee,p,N))$. }%
-\es{Esta tasa de crecimiento no es constante, pero se estabiliza rápidamente de pasos temporales en la tasa de crecimiento que sea mayor, $g_D^n(k|\Ee,p,N)$ $\approx$ $\texttt{max}(g_D^0(k|\Ee,p,N),$ $g_C^n(k|\Ee,p,N))$. }%
-%
 \en{In figure \ref{fig:multilevel-selection-7} we show the proprotional growth rate as a function of the number of defectors in a group of size $1000$. }%
 \es{En la figura \ref{fig:multilevel-selection-7} mostramos el proporcional de la tasa de crecimiento en función del número de desertores totales en una grupo de tamaño $1000$. }%
 %
 \en{In Figure~\ref{fig:multilevel-selection-5} we rescale the proportional growth rate by a factor $R=2.1$, and we see that it overlaps over the trajectories of resource presented in Figure~\ref{fig:ergodicity_desertion}. }
 \es{En la figura~\ref{fig:multilevel-selection-5} reesclamos la tasa de crecimiento proporcional por un factor $R=2.1$, y vemos que se solapa sobre las trayectorias de los recursos presentado en la figura \ref{fig:ergodicity_desertion}. }%
 %
-\begin{figure}[H]
+\begin{figure}[ht!]
     \centering
     \begin{subfigure}[b]{0.48\textwidth}
     \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-7.pdf}
@@ -1630,7 +1098,7 @@ P(k| \vec{\Aa}^{\,1}, \dots,  \vec{\Aa}^{\,T}) = \frac{\omega_k(T)}{\sum_j \omeg
 \en{In Figure~\ref{fig:multilevel-selection-level-1-posterior} we can see the posterior of cooperating and deserting individuals in regions with 1 defector in groups of size 2 and 16. }%
 \es{En la figura~\ref{fig:multilevel-selection-level-1-posterior} podemos ver el posterior los individuos cooperadores y desertores en regiones con 1 destertor en grupos de tamaño 2 y 16. }%
 %
-\begin{figure}[H]
+\begin{figure}[ht!]
     \centering
     \begin{subfigure}[b]{0.48\textwidth}
     \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-level-1-posterior.pdf}
@@ -1669,7 +1137,7 @@ P(k| \vec{\Aa}^{\,1}, \dots,  \vec{\Aa}^{\,T}) = \frac{\omega_k(T)}{\sum_j \omeg
 % P(g|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^T) = \sum_i \mathbb{I}(\texttt{region}(i)=g) P(i|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^T)
 % \end{equation}
 % %
-\begin{figure}[H]
+\begin{figure}[ht!]
     \centering
     \begin{subfigure}[b]{0.48\textwidth}
     \includegraphics[width=\linewidth]{figures/pdf/multilevel-selection-6.pdf}
@@ -1773,8 +1241,8 @@ P(k| \vec{\Aa}^{\,1}, \dots,  \vec{\Aa}^{\,T}) = \frac{\omega_k(T)}{\sum_j \omeg
 
 % Parrafo
 
-\en{We have seen, in the methodological section, that the individual strategy best adapted to the environment $p=0.71$ was $\Ee^*=0.71$. }%
-\es{Hemos visto en la sección metodológica que la estrategia individual mejor adaptada al ambiente $p=0.71$ fue $\Ee^*=0.71$. }%
+\en{We have seen, in section ``\nameref{sec:methodology}'', that the individual strategy best adapted to the environment $p=0.71$ was $\Ee^*=0.71$. }%
+\es{Hemos visto en la sección ``\nameref{sec:methodology}'' que la estrategia individual mejor adaptada al ambiente $p=0.71$ fue $\Ee^*=0.71$. }%
 %
 \en{In general the optimal individual strategy is $\Ee^*=p$. }%
 \es{En general la estrategia individual óptima es $\Ee^*=p$. }%
@@ -1793,9 +1261,9 @@ P(k| \vec{\Aa}^{\,1}, \dots,  \vec{\Aa}^{\,T}) = \frac{\omega_k(T)}{\sum_j \omeg
 \en{Note that the individual growth rates are proportional to the geometric mean, and that the cooperative growth rates are proprotional to the arithmetic mean (groups of infinite size), and that both means are equal for the strategy $\Ee = 0.5$. }%
 \es{Notar que las tasas de crecimiento individual son proporcionales a la media geométrica, que las tasas de crecimiento cooperativo son proporcionales a la media aritmética (grupos de tamaño infinito), y que ambas medias son iguales para la estrategia $\Ee = 0.5$. }%
 %
-\begin{figure}[H]
+\begin{figure}[ht!]
     \centering
-    \begin{subfigure}[b]{0.6\textwidth}
+    \begin{subfigure}[b]{0.55\textwidth}
     \includegraphics[width=\linewidth]{figures/pdf/tasa-temporal-0.pdf}
     \end{subfigure}
     \caption{
@@ -1808,8 +1276,8 @@ P(k| \vec{\Aa}^{\,1}, \dots,  \vec{\Aa}^{\,T}) = \frac{\omega_k(T)}{\sum_j \omeg
 \en{The arrow represents the Yaari-Peters conclusion discussed in the introduction: mutual cooperation can increase the individual growth rate, equal to the geometric mean, to a cooperative growth rate equal to its arithmetic mean. }%
 \es{La flecha representa la conclusión Yaari-Peters discutida en la introducción: la mutua cooperación puede aumentar la tasa de crecimiento individual, equivalente a la media geométrica, a una tasa de crecimiento cooperativa equvialente a su media aritmética. }%
 %
-\en{The red dot represents the conclusion we made in the methodology section, that in an environment with $p=0.71$ the best adapted individual strategy is $\Ee^*=0.71$. }%
-\es{El punto rojo representa la conclusión que sacamos en la sección metodología, que en un ambiente con $p=0.71$ la estrategia individual mejor adaptada es $\Ee=0.71$. }%
+\en{The red dot represents the conclusion we made in section ``\nameref{sec:methodology}'', that in an environment with $p=0.71$ the best adapted individual strategy is $\Ee^*=0.71$. }%
+\es{El punto rojo representa la conclusión que sacamos en la sección ``\nameref{sec:methodology}'', que en un ambiente con $p=0.71$ la estrategia individual mejor adaptada es $\Ee=0.71$. }%
 
 % Parrafo 
 
@@ -1835,7 +1303,7 @@ P(k| \vec{\Aa}^{\,1}, \dots,  \vec{\Aa}^{\,T}) = \frac{\omega_k(T)}{\sum_j \omeg
 %
 \begin{figure}[H]
     \centering
-    \begin{subfigure}[b]{0.6\textwidth}
+    \begin{subfigure}[b]{0.55\textwidth}
     \includegraphics[width=\linewidth]{figures/pdf/tasa-temporal-1.pdf}
     \end{subfigure}
     \caption{
@@ -1870,7 +1338,7 @@ P(k| \vec{\Aa}^{\,1}, \dots,  \vec{\Aa}^{\,T}) = \frac{\omega_k(T)}{\sum_j \omeg
 %
 \begin{figure}[ht!]
     \centering
-    \begin{subfigure}[b]{0.6\textwidth}
+    \begin{subfigure}[b]{0.55\textwidth}
     \includegraphics[width=\linewidth]{figures/pdf/tasa-temporal-2.pdf}
     \end{subfigure}
     \caption{
@@ -1936,100 +1404,6 @@ P(k| \vec{\Aa}^{\,1}, \dots,  \vec{\Aa}^{\,T}) = \frac{\omega_k(T)}{\sum_j \omeg
 \begin{conclution}[\en{Irreversibility of evolutionary transitions}\es{Irreversibilidad de las transitions evolutivas}]
 \en{The evolutionary advantage of specialization produces the irreversibility of evolutionary transitions, since individuals cannot leave groups without a reduction of their evolutionary viability. }%
 \es{La ventaja evolutiva de la especialización produce la irreversibilidad de las transiciones evolutivas, pues las individos no pueden dejar los grupos sin una baja de su viabilidad evolutiva. }%
-\end{conclution}
-
-
-\section{\en{Viability of division of labor}\es{La viabilidad de la división del trabajo}}
-
-\en{A major transition involves, in general, division of labor. }%
-\es{Las transiciones evolutivas mayores involucran generalmente división del trabajo. }%
-%
-\en{For example, reproductive division of labor is observed in almost all multicellular organisms and eusocial animals. }%
-\es{Por ejemplo, la división reproductiva del trabajo se observa en casi todos los organismos multicelulares y los animales eusociales. }%
-% Parrafo
-\en{To study the division of labor we analyze what happens when individuals of the same group can acquire different strategies. }%
-\es{Para estudiar la división del trabajo analizamos qué ocurre cuando los individuos de un mismo grupo pueden aquerir estrategias distintas. }%
-%
-\en{Is there any combination of strategies that offers a growth rate equal to or higher than that obtained by members of fully cooperative groups when using the same strategy? }%
-\es{¿Existe alguna combinación de estrategias que ofrece una tasa de crecmiento igual o mayor a la que obtienen los miembros de los grupos enteramente cooperativos cuando utilizan la misma estrategia? }%
-
-%
-
-\en{In Figure~\ref{fig:divisionOfLabor1} we analyze the growth rate of all strategy combinations in a cooperative group of size 2, in an environment that produces states with probability $p=0.6$. }%
-\es{En la figura~\ref{fig:divisionOfLabor1} analizamos la tasa de crecimiento de todas las combinaciones de estrategias posibles en un grupo cooperativo de tamaño 2, en un ambiente que produce los estados con probabilidad $p=0.6$. }%
-%
-\begin{figure}[ht!]
-    \centering
-    \begin{subfigure}[b]{0.4\textwidth}
-    \includegraphics[width=\linewidth]{figures/pdf/divisionOfLabor.pdf}
-    \end{subfigure}
-    \caption{
-    \en{Proportional growth rate for all combinations of strategies in a fully cooperative group of size 2. }%
-    \es{Tasa de crecimiento proporcional para diferentes combinaciones de estratgias en un grupo de tamaño 2 enteramente cooperativo. }%
-    }
-    \label{fig:divisionOfLabor1}
-\end{figure}
-%
-\en{We find that the only optimal strategy combination occurs when both individuals use the same strategy, $\Ee_1 = \Ee_2 \approx 0.69$. }%
-\es{Encontramos que la única combinación óptimas de estrategia ee cuando ambos individuos usan la misma estrategia, $\Ee_1 = \Ee_2 \approx 0.69$. }%
-%
-\en{That is, it is not convenient to change the strategy if we restrict the analysis to individuals who work with the same intensity, since the sum of their bets is $1$ regardless of the individual, $\Ee_i + (1-\Ee_i) = 1$. }%
-\es{Es decir, no conveniene un cambio de estrategia si restringimos el análisis a individuos que trabajan con la misma intensidad, en tanto que la suma de sus apuestas es $1$ indistintamente del individuo $\Ee_i + (1-\Ee_i) = 1$. }%
-%
-\en{To analyze the division of labor in more general terms we will allow individuals to transfer part of their tasks to others, while maintaining the same total restriction, $ \frac{1}{N} \sum_i^N \Ee_i + (1-\Ee_i) = 1$. }%
-\es{Para analizar la división de trabajo en términos más generales vamos a permitir que los individuos cedan parte de sus tareas a otros, manteniendo la misma restricción total, $ \frac{1}{N} \sum_i^N \Ee_i + (1-\Ee_i) = 1$. }% 
-%
-\en{For example, a division of labor can be represented by the following matrix. }%
-\es{Por ejemplo, una división del trabajo puede representarse con la siguiete matriz. }%
-%
-\begin{equation}\label{eq:divisionOfLabor}
-P(i|\Aa) \propto  \bordermatrix{ & \Aa = 1 & \Aa = 0 \cr
-      i = 1 & 0.69+d & 0.31+d \cr
-      i = 2 & 0.69-d & 0.31-d } 
-\end{equation}
-%
-\en{Where the variable $d$ is the transfer of tasks performed by individuals using the strategy $\Ee = 0.69$. }%
-\es{Donde la variable $d$ es la cesión de tareas que realizan individuos con la estrategia $\Ee = 0.69$. }%
-%
-\en{In this case, the maximum assignment of tasks is $d=31$, the point at which one of the individuals abandons his task completely in one of the states, $P(i=2|\Aa=0) \propto 0.0$, thanks to the increase in the level of activity of the other individual. }%
-\es{En este caso, la cesión máxima de tareas es $d=31$, punto en el que uno de los individuos abandona  completamentesu tarea en uno de los estados, $P(i=2|\Aa=0) \propto 0.0$, gracias al aumento en el nivel de actividad del otro individuo. }%
-%
-\en{This type of task assignment has the characteristic of keeping the sum of the stakes constant in all possible environmental states, thus keeping the behavior of the group constant at a global level. }%
-\es{Este tipo de cesión de tareas tiene la caracterísitica de manetener constante la suma de las apuestas en todas estados ambientales posibles, por lo que mantiene constante el comportamiento del grupo a nivel global. }%
-%
-\en{In the figure~\ref{fig:divisionOfLabor2} we show the growth rate for the different strategies and different levels of division of labor. }%
-\es{En la figura~\ref{fig:divisionOfLabor2} mostramos la tasa de crecimiento de las diferentes estrategias para diferente niveles de división del trabajo. }%
-%
-\begin{figure}[ht!]
-    \centering
-    \begin{subfigure}[b]{0.4\textwidth}
-    \includegraphics[width=\linewidth,page=2]{figures/pdf/divisionOfLabor.pdf}
-    \end{subfigure}
-    \caption{
-    \en{Proportional growth rates for different strategies and division of labor in a fully cooperative group of size 2. }%
-    \es{Tasas de crecimiento proporcional para diferentes estrategias y división del trabajo en un grupo enteramente cooperativo de tamaño 2. }%
-    }
-    \label{fig:divisionOfLabor2}
-\end{figure}
-%
-\en{The division of labor does not affect the growth rate of individuals in fully cooperative groups. }%
-\es{La división del trabajo no afecta la tasa de crecimiento de los individuos en grupos enteramente cooperativos. }%
-%
-\en{A decrease in the activity level of one individual is compensated by an increase in the activity level of another. }%
-\es{La baja el nivel de actividad de un individuo se compensa por el aumento de actividad de otro. }% 
-%
-\en{Therefore, cooperation makes the division of labor between individuals viable. }%
-\es{Por lo tanto, la cooperación hace viable la división del trabajo entre individuos. }%
-%
-\en{Unlike cooperation and specialization, the multiplicative nature of probability and evolutionary theories does not create an evolutionary advantage in favor of division of labor, it allows its evolutionary drift. }%
-\es{A diferencia de la cooperación y la especialización, la naturaleza multiplicativa de las teorías probabilisticas y evolutivas no genera una ventaja evolutiva en favor de la división del trabajo, permite su deriva evolutiva. }%
-%
-\en{The evolutionary advantage of the division of labor, therefore, lies elsewhere. }%
-\es{La ventaja evolutiva de la división del trabajo, por lo tanto, debe busacársela en otra parte. }%
-
-\begin{conclution}[\en{Viability of division of labor}\es{La viabilidad de la división del trabajo}]
-\en{Unlike cooperation and specialization, the multiplicative nature of probability and evolutionary theories does not create an evolutionary advantage in favor of division of labor, it allows its evolutionary drift. }%
-\es{A diferencia de la cooperación y la especialización, la naturaleza multiplicativa de las teorías probabilisticas y evolutivas no genera una ventaja evolutiva en favor de la división del trabajo, permite su deriva evolutiva. }%
 \end{conclution}
 
 
@@ -2108,16 +1482,13 @@ P(i|\Aa) \propto  \bordermatrix{ & \Aa = 1 & \Aa = 0 \cr
 \es{El motivo por el cual surge una ventaja a favor de la cooperación y la especialización en simple modelo causal se debe a la naturaleza multiplicativa (no-ergódica) de la teoría de la probabililidad y a su isomorfismo con la teoría de la evolución. }%
 %
 \en{That is, contrary to the belief established since the mid-20th century in economics, we show that the dynamics of common goods cannot be represented by a prisoner's dilemma payoff matrix. }%
-\es{Es decir, en contra de la creencia establecida que en economía se tiene desde mediados del siglo 20, mostramos que las dinámicas de bienes comunes no puede representarse mediante una matriz de pagos del dilema del prisionero. }%
+\es{Es decir, en contra de la creencia establecida que en economía se tiene desde mediados del siglo 20, mostramos que los dinámicas de bienes comunes no puede representarse mediante una matriz de pagos del dilema del prisionero. }%
 %
 \en{Moreover, contrary to the belief that specialization is too complex a feature to produce a benefit in simple aggregations, we show that as soon as cooperation emerges, an advantage in favor of specialist strategies appears even in groups of size 2. }%
 \es{Además, en contra de la creencia de que la especialización es una caracterísitica demasiado compleja para que produzca un beneficio en agregaciones simples, mostramos que apenas surge la cooperación, aparece una ventaja a favor de las estrategias especialistas incluso en grupos de tamaño 2. }%
 %
 \en{Since the specialist strategies are individually poorly adapted to the environment, an irreversibility of the evolutionary transition is created. }%
 \es{Como la estrategias especialistas están individualmente mal adaptadas al ambiente, se crea una irreversbilidad de la transici evolutivas. }%
-%
-\en{Finally, although in this causal model there is no evolutionary advantage in favor of the division of labor, its emergence is viable by evolutionary drift. }%
-\es{Finalmene, si bien en este modelo causal no hay una ventaja evolutiva a favor de la división del trabajo, su aparición es viable por deriva evolutiva. }%
 
 % Parrafo
 
@@ -2137,60 +1508,252 @@ P(i|\Aa) \propto  \bordermatrix{ & \Aa = 1 & \Aa = 0 \cr
 \es{Ambas propuestas combinadas ofrecen una solución nueva al problema de las transiciones evolutivas mayores, que es más sencilla que las anterios (procesos multiplicativos ruidosos), basada en principios matemáticos bien fundados (la aplicación estrica de las reglas de la probabilidad). }%
 
 
-% 
-% La ventaja evolutiva de la cooperación y la especialización es consecuencia de la no-ergodicidad de los procesos multiplicativos a los que está sujeto la vida, por lo que ésta debe ser considerada la primera causa de las transiciones evolutivas mayores.
-% 
-
-
-%
-% \en{We show that while resource-avoidance strategies can invade entirely cooperative groups by natural selection, such behavior at the same time increases their own individual fluctuations, reducing their own long-term growth rate without the need to introduce penalties. }%
-% \es{Mostramos que, si bien las estrategias que evitan compartir recursos pueden invadir por selección natural grupos enteramente cooperadores, tal comportamiento aumenta sus propias fluctuaciones individuales, reduciendo su propia tasa de crecimiento a largo plazo sin necesidad de introducir castigos. }%
-% %
-% %
-% %
-
-% 
-% 
-% 
-% %
-% \en{However, Ole Peters believes that specialization is a too complex property to produce a benefit in simple aggregations of, for example, two agents. }
-% \es{Sin embargo, Ole Peters considera a la especialización como una caracterísitica demasiado compleja para que produzca un beneficio en agregaciones simples de por ejemplo dos agentes. }%
-% %
-% \en{He says the ``[advantage of cooperation] it may explain the transition from single cells to bicellular organisms, too small and simple to benefit from new function or specialization.'' }
-% \es{Dice que la ventaja de la cooperación: ``it may explain the transition from single cells to bicellular organisms, too small and simple to benefit from new function or specialization.'' }%
-
-
-%% 
-% Según Czegel \cite{czegel2019-bayesianEvolution} el isomorfismo entre los procesos evolutivos y la inferencia bayesiana multinivel,  ``support a learning theory-oriented narrative of evolutionary complexification: the complexity and depth of the hierarchical structure of individuality mirror the amount and complexity of data that have been integrated about the environment through the course of evolutionary history.''
-% Esta especulación es rechazada por el modelo de Ole Peters, el cual muestra que un simple proceso multiplicativo ruidoso favorece la selección multinivel de grupos cooperativos por sobre grupos con desertores.
-% 
-% Por otra parte, según \cite{peters-cooperation2019.03.04} su modelo ``paints a picture of cooperation driven by self-interest, not altruism, with cooperators outgrowing similar non-cooperators''.
-% Esta especulación es rechazada por la metodología de Czegel \cite{czegel2019-bayesianEvolution}, la cual muestra que si bien las estrategias cooperativas no son evolutivamente estables al interior de los grupos, estos se ven favorecidos gracias a la selección multinivel.
-% 
-% Además Czegel \cite{czegel2019-bayesianEvolution} dice que, ``This isomorphism allows for a natural interpretation of evolutionary transitions in individuality as \emph{learning the structure}''.
-% En este trabajo mostramos que lo que se aprende no es la estructura, sino que \emph{aprenden la dinámica}, en particular la ventaja que la no-ergódico de los procesos multiplicativos ofrece a favor de la cooperación y la especialización.
-% 
-% %La posibilidad de supervivencia y reproducción de una población depende no sólo del sistema de reciprocidad para la propagación del riesgo dentro de las poblaciones y entre las poblaciones de diferentes especies.
-% 
-% 
-% %Con la idea de analizar los efetos de la selección multinivel, traduicimos el modelo de Ole Peters a una distirbución de probabilidad jerárquica, la cual describiremos en términos gráficos y analizaremos utilizando solamente las reglas de la probabilidad.
-
-
 {\footnotesize
 \bibliographystyle{auxiliar/biblio/plos2015.bst}
 \bibliography{auxiliar/biblio/biblio_notUrl.bib}
 }
 
-\section{\en{Appendix}\es{Apéndice}}
+\section{Appendix}
 
 
-\subsection{\en{Probabilistic inference}\es{Inferencia probabilística}} \label{sec:probabilistic_inference}
+\subsection{Sum-product algorithm}
+
+\en{The \emph{sum-product algorithm} takes advantage of the factoriztion of the joint probability distribution, induced by the causal model, to efficiently apply the rules of probability. }%
+\es{El \emph{sum-product algorithm} aprovecha la factorización de la distribuci\'on de probabilidad conjunta, inducida por el modelo causal, para aplicar eficientemente las reglas de la probabilidad. }%
+%
+\en{It is a way of computing the rules of probability (the sum and product rule) by message passing between probability distributions and their variables. }%
+\es{Es una forma de computar las reglas de la probabilidad (la regla de la suma y el producto) mediante pasaje de mensajes entre las distribuciones de probabilidad y sus variables. }%
+%
+\en{For this purpose, it is convenient to represent the graphical model with a \emph{factor graph}, a bipartite graph with variable nodes (white circles) and function nodes (black squares). }%
+\es{Para ello es conveniente representar el modelo mediante un \emph{factor graph}, un gráfos con nodos variables (círculos blancos), y nodos funciones (cuadrados negros). }%
+%
+\en{The edge between node variables and node functions represents the mathematical relationship ``the variable $v$ is an argument of the function $f$''. }%
+\es{Los ejes entre nodos variables y nodos funciones representan la relaci\'on matem\'atica ``la variable $v$ es argumento de la funci\'on $f$''. }%
+%
+\en{The following factor graph of the graphical model \ref{fig:model-lewontin-peters}. }%
+\es{El siguiente es el factor graph del modelo gráfico \ref{fig:model-lewontin-peters}. }%
+%
+\begin{figure}[H]
+\centering
+\tikz{
+
+    \node[factor] (fa) {};
+    \node[const, above=of fa] (nfa) {$P(\Aa^t)$};
+    
+    \node[latent, right=of fa] (a) {$\A$};
+    
+    \node[factor, right=of a] (fe) {};
+    \node[const, above=of fe] (nfe) {$p(\Ee|\Aa^t) \propto f(\Ee,\Aa^t)$};
+    
+    \node[latent, right=of fe, xshift=0.3cm] (e) {$\E$};
+    
+
+     \plate {hola} {(fa)(nfa)(a)(fe)(nfe)} {$\text{Time } t$}; 
+
+    \edge[-] {fa} {a};
+    \edge[-] {a} {fe};
+    \edge[-] {fe} {e};
+    }
+\caption{
+ \en{Graphical way of representing the factorization of joint distribution induced by the basic causal model (Fig.~\ref{fig:model-lewontin-peters}). }%
+ \es{Forma gráfica de representar la factorizaci\'on de la distribución conjunta inducida por el modelo causal básico (figura~\ref{fig:model-lewontin-peters}). }%
+ %
+ \en{The box represents repetition. }%
+ \es{La caja representa repetición. }%
+ }
+\label{fig:factor_graph}
+\end{figure}
+%
+\en{There are two types of messages: those sent by variable-type nodes to their function-type neighbors ($m_{V \rightarrow F}(v)$) and the ones that function-type nodes send to their variable-type neighbors ($m_{F \rightarrow V}(v)$). }%
+\es{Hay dos tipos de mensajes: los mensajes que envian los nodos variables a sus funciones vecinas ($m_{V \rightarrow F}(v)$); y los mensajes que env\'ian los nodos funciones a sus variables vecinas ($m_{F \rightarrow V}(v)$). }%
+%
+\en{The former partially performs the product rule. }%
+\es{El primero codifica una porci\'on de la regla del producto. }%
+%
+\begin{equation*}\label{eq:m_v_f} \tag{\text{\en{product step}\es{paso del producto}}}
+m_{V \rightarrow F}(v) = \prod_{H}^{\bm{H}} m_{H \rightarrow V}(v)
+\end{equation*}
+%
+\en{where $\bm{H} = n(V) \setminus \{F\}$ represents the set of neighbor nodes to $V$ except $F$. }%
+\es{donde $\bm{H} = n(V) \setminus \{F\}$ representa el conjunto de vecinos del nodo $V$ salvo $F$. }%
+%
+\en{In a brief, the messages sent by the variable-type node $V$ are simply the product of the messages that $V$ receives from the rest of their neighbors $H \in n(V)$ except $F$. }%
+\es{En pocas palabras, los mensajes que env\'ia una variables $V$ es simplemente la multiplicaci\'on de los mensajes que recibi\'o del resto de sus vecinos $H \in n(V)$ salvo $F$. }%
+%
+\en{The other messages sent by the function-type nodes encode a portion of the sum rule. }%
+\es{Los otros mensajes que envían los nodos funciones codifican una parte de la regla de la suma. }%
+%
+\begin{equation*}\label{eq:m_f_v}  \tag{\text{\en{sum step}\es{paso de la suma}}}
+m_{F \rightarrow V}(v) = \sum_{u_1}^{U_1} \dots \sum_{u_n}^{U_n} \Big( F(u_1, \dots, u_n, v) \prod_{U_i}^{\bm{U}} m_{U \rightarrow F}(u_i) \Big)
+\end{equation*}
+%
+\en{where $U_i \in \bm{U} = n(F)\setminus \{V\}$ is the set of all neighbors to $F$ except $V$ of size $n$, $u_i$ is a specific value of the variable $U_i$, $u_i \in U_i$, and $F(u_1, \dots, u_n, v)$ represents the function $F$, evaluated in all its arguments. }%
+\es{donde $U_i \in \bm{U} = n(F)\setminus \{V\}$ es el conjunto de todos los vecinos de $F$ salvo $V$ de tamaño $n$, $u_i$ es un valor específico de la variable $U_i$, $u_i \in U_i$, y $F(u_1, \dots, u_n, v)$ representa la función $F$ evaluada en todos sus argumentos. }%
+%
+\en{In short, the messages sent by the function-type node $F$ to a neighboring variable-type node $V$ is simply the sum (or integration) over $\bm{U}$ of the product of itself and all the messages that receives from the rest of its neighbors $\bm{U}$ except $V$. }%
+\es{En pocas palabras, los mensajes que envía una funci\'on $F$ a una variable vecina $V$ es simplemente la suma (o integraci\'on) sobre $\bm{U}$ del producto de sí mismo con todos los mensajes que recibe del resto de sus vecinos $\bm{U}$ salvo $V$. }%
+%
+\en{Finally, the marginal probability distribution of a variable $V$ is simply the product of the messages that $V$ receives from all its neighbors. }%
+\es{Finalmente, la distribuci\'on de probabilidad marginal de una variable $V$ es simplemente la multiplicaci\'on de los mensajes que $V$ recibe de todos sus vecinos. }%
+%
+\begin{equation*}\label{eq:marginal}  \tag{\text{\en{marginal probability}\es{probabilidad marginal}}}
+P(V=v) = \prod_{H \in n(V)} m_{H \rightarrow V}(v)
+\end{equation*}
+%
+\en{When we observe some variable $u$, we exclude it from the summations, which allows us to compute the marginal probability over two variables, $P(v,u)$. }%
+\es{Cuando observamos alguna variable $u$, la excluímos de las sumatorias, lo que nos permite computar la probabilidad marginal sobre dos variables, $P(v,u)$. }%
+%
+\en{This algorithm encodes the minimum number of steps required to calculate any marginal probability distribution. }%
+\es{Este algoritmo codifica la m\'inima cantidad de pasos que se requieren para calcular cualquier distribuci\'on de probabilidad marginal. }%
+
+\subsection{\en{Posteriors of strategies in the basic causal model}\es{Posterior de las estrategias en el modelo causal básico}}
+
+\en{As we will later use the sum-product algorithm to solve the extended causal model, we show its use in this basic causal model (figure~\ref{fig:model-lewontin-peters}) to gain some intuition. }%
+\es{Como más adelante utilizaremos el sum-product algorithm para resolver un modelo causal extendido, mostramos su uso en este modelo causal básico (figure~\ref{fig:model-lewontin-peters}) para adquirir un poco de intuición. }%
+%
+\en{Using this procedure we will obtain the marginal distribution of the strategies and a vector of observations $p(\Ee,\vec{\Aa}\,)$, and we will normalize it to obtain the posterior $p(\Ee|\vec{\Aa})$. }%
+\es{Mediante este procedimiento normalizaremos obtendremos la distribución marginal de las estrategias y un vector de observaciones $p(\Ee,\vec{\Aa}\,)$, y la nmormalizaremos para obtener el posterior de las estrategias dado el ambiente $p(\Ee|\vec{\Aa})$. }%
+%
+% \en{Since we want $P(\Ee|\Aa)$ we need the marginals $P(\Ee,\Aa)/P(\Aa)$. }%
+% \es{Como queremos calcular $P(\Ee|\Aa)$ necesitamos las marginales $P(\Ee,\Aa)/P(\Aa)$. }%
+% %
+% \en{Since one of the probability distributions is defined by a proportional term, its marginals will also be proportional. }%
+% \es{Notar que una de las distribuciones de probabilidad está definida de forma proporcional, sus marginales también serán proporcionales. }%
+% %
+\en{To compute $p(\Ee,\Aa)$, we will consider $\Aa=\Aa^*$ observable. }%
+\es{Para computar $p(\Ee,\Aa)$, consideraremos $\Aa=\Aa^*$ observable. }%
+%
+\en{Then, the message from the environment factor $P(\Aa)$ to the environment variable $\A$ is, }%
+\es{Luego, el mensaje del factor del ambiente $P(\Aa)$ a la variable ambiente $\A$ es, }%
+%
+\begin{equation}
+m_{P(\A) \rightarrow \A }(\Aa^*) = P(\Aa^*) = m_{\A \rightarrow p(\E|\A)}(\Aa^*)
+\end{equation}
+%
+\en{which is the same message that the variable $\A$ sends to the strategy factor $p(\E|\A)$. }%
+\es{que es el mismo mensaje que envía la variable $\A$ al factor de estrategias $p(\E|\A)$. }%
+%
+\en{Then, the message sent by the strategies factor $p(\E|\A)$ to the strategies variable $\E$ is, }%
+\es{Luego, el mensaje que envía el factor de estrategias $p(\E|\A)$ a la variable estrategias $\E$ es, }%
+%
+\begin{equation}
+m_{p(\E|\A) \rightarrow \E }(\Ee) \propto P(\Aa^*)f(\Ee,\Aa^*)
+\end{equation}
+%
+\en{Note that we do not integrate the values of the environment because $\Aa^*$ is observable and therefore constant. }%
+\es{Notar que no integramos los valores del ambiente porque $\Aa^*$ es observable y por lo tanto constante. }%
+%
+\en{Then, the marginal of the strategies and a vector of environmental states $\vec{\Aa}$ is, }%
+\es{Luego, la marginal de las estrategias y un vector de estados del ambiente $\vec{\Aa}$ es, }%
+%
+\begin{equation}
+p(\Ee,\vec{\Aa}) \propto \prod_{\Aa}^{\vec{\Aa}} P(\Aa)f(\Ee,\Aa)
+\end{equation}
+%
+% Integrando sobre las estrategia $\E$ obtenemos la marginal de las observaciones,
+% %
+% \begin{align}
+% P(\vec{\Aa}) & \propto \sum_{\Ee}^\E \prod_{\Aa}^{\vec{\Aa}} P(\Aa)f(\Ee,\Aa) \\
+% & = \Big(\prod_{\Aa}^{\vec{\Aa}} P(\Aa) \Big)  \Big( \sum_{\Ee} \prod_{\Aa}^{\vec{\Aa}}f(\Ee,\Aa) \Big) 
+% \end{align}
+% %
+\en{Normalizing it we obtain the posterior, }%
+\es{Normalizando obtenemos el posterior, }%
+%
+\begin{equation}\label{eq:replicator_dynamic_posterior}
+p(\Ee|\vec{\Aa}) = \frac{ \prod_{\Aa}^{\vec{\Aa}}f(\Ee,\Aa)}{\int_{\Ee} \prod_{\Aa}^{\vec{\Aa}}f(\Ee,\Aa)}
+\end{equation}
+%
+% \en{which again has the same structure as the replicator dynamic, this time with an integral instead of a sum because the set of strategies is infinite. }%
+% \es{que nuevamente tiene la misma estructura del replicator dynamic, esta vez con un integral en vez de una suma debido a que el espacio de estrategias es infinito. }%
+%
+%Es decir, el replicator dynamic surgió de considerar el modelo causal en el que el ambiente causa las estrategias y en el que el tamaño de las estrategias depende de la adaptabilidad de esa estrategia al ambiente.
+%
+\en{Then, the posterior belongs to the Beta distribution (note that the denominator of the equation \ref{eq:replicator_dynamic_posterior} is the Beta function or the Euler integral).}
+\es{Luego, el posterior pertenece a la distribución Beta (notar que el denominador de la ecuación \ref{eq:replicator_dynamic_posterior} es la función Beta o la integral de Euler). }%
+%
+\begin{equation}
+P(\Ee|\vec{\Aa}) = \text{Beta}(\texttt{sum}(\vec{\Aa}), \, \texttt{length}(\vec{\Aa}) - \texttt{sum}(\vec{\Aa})) =  \frac{\Ee^{\texttt{sum}(\vec{\Aa})} \cdot (1-\Ee)^{\texttt{length}(\vec{\Aa}) - \texttt{sum}(\vec{\Aa})}}{B(\texttt{sum}(\vec{\Aa}), \, \texttt{length}(\vec{\Aa}) - \texttt{sum}(\vec{\Aa}))} 
+%
+\end{equation}
+%
+\en{with $B(\cdot,\cdot)$ the Beta function. }%
+\es{con $B(\cdot,\cdot)$ la función Beta. }%
+%
+\en{The result of the posterior will indicate the evolutionary stability of the strategies. }%
+\es{El resultado del posterior nos indicará la estabilidad evolutiva de las estrategias. }%
+
+
+\subsection{\en{Posteriors of individuals in the extended causal model}\es{Posteriores de los individuos en el modelo causal extendido}}\label{sec:probabilistic_inference}
+
+\en{The probability of individuals, when the environmental states $\vec{\Aa}^{\,t}$ are observed, is }%
+\es{La probabilidad de los individuos cuando tenemos como observable todos los ambientes $\vec{\Aa}^{\,t}$ es, }%
+%
+\begin{equation}
+P(i^{T},\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1}) = m_{P(I^{T}|I^{T-1}) \rightarrow I^T}(i^T)
+\end{equation}
+%
+\en{This message is recursively defined. }%
+\es{Este mensaje está definido recursivamente. }%
+%
+\begin{equation}\label{eq:m_pii_i}
+\begin{split}
+m_{P(I^{t+1}|I^{t}) \rightarrow I^{t+1} }(i^{t+1}) & = \sum_{i^t} P(i^{t+1}|i^t) \, P(\vec{\Aa}^{\,t}) \, P(i^t|\vec{\Aa}^{\,t}) \,  m_{P(I^t|I^{t-1}) \rightarrow I^t }(i^t) 
+\end{split}
+\end{equation}
+%
+%
+%
+% En la introducción hemos derivado la tasa de crecimiento de esta marginal para los grupos enteramente desertoras y solo hemos presentado un resultado numérico para el grupo enteramente cooperador.
+% %
+% En la siguiente sección resolveremos analíticamente el posterior de la selección de grupos y multinivel y verificaremos la hipótesis de Ole Peters de la ventaja evolutiva de la cooperación.
+% %
+% Y la sección \ref{sec:especialization}, haremos uso de los resultado análitico para demostrar la ventaja evolutiva de la especilización, rechazando la hipótesis de Ole Peters de que la especialización es un mecanismo implausible para poblaciones chicas.
+% 
+% 
+% En esta subsección resolveremos la marginal que necesitamos para computar el posterior de la la selección de nivel 1, de nivel 2 y multinivel,
+% %
+% \begin{equation}
+% \begin{split}
+% P(I^{T+1}=k, \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T}) & = m_{P(I^{T+1}|I^{T}) \rightarrow I^{T+1} }(k)
+% \end{split}
+% \end{equation}
+% %
+% donde el mensaje está definido recursivamente en la ecuación~\ref{eq:m_pii_i}.
+%
+%
+\en{In all cases, the marginal is equal to the posterior times the probability of the observed environment, }%
+\es{En todos los casos, la marginal es igual al posterior por la probabilidad del ambiente observado, }%
+%
+\begin{equation}
+\begin{split}
+P(I^{T+1}=k, \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T}) & = P(k| \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T}) \prod_{t=1}^T P(\vec{\Aa}^{\,t})
+\end{split}
+\end{equation}
+%
+\en{where}\es{donde} (\en{all steps are described in the next section}
+\es{todos los pasos estan descritos en la siguiente sección})
+%
+\begin{equation}
+P(k| \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^T) = 
+\begin{cases}
+P(k)\prod_{t=1}^{T} P(k|\vec{\Aa}^{\,t}) &  r=0  \\
+P(k)\prod_{t=1}^{T} \sum_j^{\texttt{\en{partners}\es{socios}}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,t}) & r  = N  \\
+\Big(P(k)\prod_{t=1}^{T} P(k|\vec{\Aa}^{\,t}) \Big) + \Big(\sum_{t=1}^{T} P(c|\wedge_{q=1}^t\vec{\Aa}^{\,q})  \prod_{q=t+1}^T P(k|\vec{\Aa}^{\,q}) \Big) & 0 < r < N  
+\end{cases}
+\end{equation}
+%
+\en{where $r = \texttt{region}(k)$ is the region to which individual $k$ belongs, $\texttt{partners}(r)$ is the set of cooperating individuals in region $r$, and $c$ is a cooperative individual belonging to that specific region, $c \in \texttt{partners}(r)$. }%s
+\es{donde $r = \texttt{region}(k)$ es la región a la que pertenece el individuo $k$, $\texttt{\en{partners}\es{socios}}(r)$ es el conjunto de individuos cooperadores de la región $r$, y $c$ es un individuo cooperador de esa región, $c \in \texttt{\en{partners}\es{socios}}(r)$. }%
+
+%\en{Posteriors of the extended causal model}\es{Posteriores del modelo causal extendido}
+\subsection{\en{Marginal distributions of the extenden causal model step by step}\es{Distribuciones marginales del modelo causal extendido paso a paso}}
 
 \en{To compute the posteriors of the extended causal model it will be sufficient to compute the marginal probabilities, since both expressions are proportional. }%
 \es{Para calcular los posteriors del modelo causal extendido va a ser suficiente con calcular las probabilidades marginales, pues ambas expresiones son proporcionales. }%
 %
-\en{The marginal probabilities can be obtained by applying the sum-product algorithm in the model of figure~\ref{fig:multilevel_model}, taking as observed the variables that in the posterior appear in the conditional (see methodology section). }%
-\es{Las probabilidades marginales se pueden obtener aplicando el sum-product algorithm en el modelo de la figura~\ref{fig:multilevel_model} pero que tiene como observables las variables que en el posterior aparecen en el condicional (ver sección metodología). }%
+\en{The marginal probabilities can be obtained by applying the sum-product algorithm in the model of figure~\ref{fig:multilevel_model}, taking as observed the variables that in the posterior appear in the conditional (see section ``\nameref{sec:methodology}''). }%
+\es{Las probabilidades marginales se pueden obtener aplicando el sum-product algorithm en el modelo de la figura~\ref{fig:multilevel_model} pero que tiene como observables las variables que en el posterior aparecen en el condicional (ver sección ``\nameref{sec:methodology}''). }%
 %
 % Ya hemos visto en la sección metodología que la probabilidad marginal de una variable $v$ es el producto de los mensajes que recibe de los nodos vecinos del factor graph.
 % %
@@ -2519,30 +2082,190 @@ m_{P(I^{T+1}|I^{T}) \rightarrow I^{T+1} }(k) &= \sum_{i^T} P(k|i^T)  P(\vec{\Aa}
 \en{Therefore, the inductive hypothesis is true. }%
 \es{Luego, vale la hipótesis inductiva. }%
 
-\subsubsection{\en{Summary}\es{Resumen}}
+\subsection{\en{Isomorphism of the extended causal model}\es{Isomorfismo del modelo causal extendido}}\label{sec:peters_isomorphism}
 
-\en{In all cases, the marginal is equal to the posterior times the probability of the observed environment, }%
-\es{En todos los casos, la marginal es igual al posterior por la probabilidad del ambiente observado, }%
+\en{Our probabilistic causal model and the multiplicative process discussed in the introduction are equivalent. }%
+\es{Nuestro modelo causal probabilístico y el proceso multiplicativo analizado en la introducción son equivalentes. }%
+%
+\en{The posterior of individuals from the entirely defecting region is, }%
+\es{El posterior de los individuos de la región enteramente desertora es, }%
 %
 \begin{equation}
 \begin{split}
-P(I^{T+1}=k, \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T}) & = P(k| \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T}) \prod_{t=1}^T P(\vec{\Aa}^{\,t})
+P(i^{T+1} | \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T}) & \overset{r=0}{=}  P(i^{T+1})  \prod_{t=1}^{T} P(i^{T+1}|\vec{\Aa}^{\,t}) \\
+& \propto P(i^{T+1}) \prod_{t=1}^{T} \Ee_k^{\Aa_k} (1-\Ee_k)^{1-\Aa_k}   \propto P(i^{T+1}) \prod_{t=1}^{T} R f(\Ee_i,\Aa_{i}^{t})
 \end{split}
 \end{equation}
 %
-\en{where}\es{donde}
+\en{where $r = \texttt{region}(i^{T+1}) = 0$ denotes the region without cooperators, $f$ is the fitness function that we define in the equation \ref{eq:familia_de_aptitudes}. }%
+\es{donde $r = \texttt{region}(i^{T+1}) = 0$ indica la región sin cooperadores, $f$ es la familia de aptitudes que definimos en la ecuación \ref{eq:familia_de_aptitudes}. }%
+%
+\en{The first proportional is valid because of the normalization constant of the probability distribution $P(i^t|\vec{\Aa}^{\,t})$. }%
+\es{El primer proporcional vale por constante de normalización de la distribución de probabilidad $ P(i^t|\vec{\Aa}^{\,t})$. }%
+%
+\en{And the second proportional simply includes the factor $R$, so that the fitness function matches the one proposed by Lewontin-Cohen, when $R=2.2$, or the one proposed by Peters, when $R=2.1$. }%
+\es{Y el segundo proporcional simplemente incluye el factor $R$ para que la función de aptitudes coincida con la prouesta por Lewontin-Cohen, cuando $R=2.2$, o la propuesta por Peters, $R=2.1$. }%
+%
+\en{When the prior $P(i^{T+1})$ represents the initial resources $\omega(0)$, then the posterior of the individual defectors in entirely defecting groups is proportional to the growth of the individual resources studied in section ``\nameref{sec:introduction}''. }%
+\es{Si consideramos que el prior $P(i^{T+1})$ representa los recursos inciales $\omega(0)$, luego el posterior de los individuos desertores en grupos enteramenete desertoras es proporcional al crecimiento de los recursos individuales estudiada en la sección ``\nameref{sec:introduction}''. }%
+
+% Parrafo
+
+\en{The same is true for the posteriors of cooperating individuals. }%
+\es{Lo mismo ocurre con los posteriors de los individuos cooperadores. }%
+%
+\en{First, the message sent by the individual variables to the social factor is proportional to the second node of the cooperative protocol (figure~\ref{fig:protocolo}), in which the previous resources $\omega_i(t)$ are updated by the product of the fitness function. }%
+\es{Primero, el mensaje que envían las variables individuos al factor social es proprocional al segundo nodo de del protocolo cooperativo (figura~\ref{fig:protocolo}), en el que los recursos previos $\omega_i(t)$ mediante el producto de la función de fitness. }%
 %
 \begin{equation}
-P(k| \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^T) = 
-\begin{cases}
-P(k)\prod_{t=1}^{T} P(k|\vec{\Aa}^{\,t}) &  r=0  \\
-P(k)\prod_{t=1}^{T} \sum_j^{\texttt{\en{partners}\es{socios}}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,t}) & r  = N  \\
-\Big(P(k)\prod_{t=1}^{T} P(k|\vec{\Aa}^{\,t}) \Big) + \Big(\sum_{t=1}^{T} P(c|\wedge_{q=1}^t\vec{\Aa}^{\,q})  \prod_{q=t+1}^T P(k|\vec{\Aa}^{\,q}) \Big) & 0 < r < N  
-\end{cases}
+\begin{split}
+m_{I^t \rightarrow P(I^{t+1}|I^t)}(i^t) & = m_{P(I^t|\vec{\A}^{\,t}) \rightarrow I^t}(i^t) \, m_{P(I^t|I^{t-1}) \rightarrow I^t }(i^t) \\
+& = P(i^t| \vec{\Aa}^{\,t}) \, P(i^t, \vec{\Aa}^{\,t}, \dots, \vec{\Aa}^{\,t}) \\
+& \propto R\,f(\,\Ee_i,\Aa_{i}^{t}) \omega(t-1)
+\end{split}
 \end{equation}
 %
-\en{where $r = \texttt{region}(k)$ is the region to which individual $k$ belongs, $\texttt{partners}(r)$ is the set of cooperating individuals in region $r$, and $c$ is a cooperative individual belonging to that specific region, $c \in \texttt{partners}(r)$. }%s
-\es{donde $r = \texttt{region}(k)$ es la región a la que pertenece el individuo $k$, $\texttt{\en{partners}\es{socios}}(r)$ es el conjunto de individuos cooperadores de la región $r$, y $c$ es un individuo cooperador de esa región, $c \in \texttt{\en{partners}\es{socios}}(r)$. }%
+%donde la marginal $P(i^t, \vec{\Aa}^{\,t}, \dots, \vec{\Aa}^{\,t})$ es proporcional al posterior $P(i^t| \vec{\Aa}^{\,t}, \dots, \vec{\Aa}^{\,t})$.
+%
+\en{Again, the proportionality holds by construction of the probability distribution $P(i^t|\vec{\Aa}^{\,t})$. }%
+\es{Nuevamente, la prorporcionalidad vale por construcción de la distribución de probabilidad $P(i^t|\vec{\Aa}^{\,t})$. }%
+%
+\en{And the message that the social factor sends to the individual variable of the following time is proprotional to the individual resources after pooling and sharing, }%
+\es{Y el mensaje que envía el factor social a la variable individuo del siguiente tiempo es proprocional a los recursos individuales luego de la redistribución del fondo común, }%
+%
+\begin{equation}
+\begin{split}
+m_{P(I^{t+1}|I^{t}) \rightarrow I^{t+1} }(i^{t+1}) & = \sum_{i^t} P(i^{t+1}|i^t) \, P(\vec{\Aa}^{\,t}) \, P(i^t|\vec{\Aa}^{\,t}) \,  m_{P(I^t|I^{t-1}) \rightarrow I^t }(i^t) \\
+%& \propto \sum_{i^t} P(i^{t+1}|i^t) \, P(i^t|\vec{\Aa}^{\,t}) \,  \text{Prior}(i^t) \\
+= P(I^{t+1}, \vec{\Aa}^{\,1} , \dots, \vec{\Aa}^{\,T} ) & \propto \sum_{i^t} P(i^{t+1}|i^t) \, f_{\Ee_i}(\Aa_{i}^{t}) \omega_i(t)  = \omega_i(t+1)
+\end{split}
+\end{equation}
+%
+\en{where $P(i^{t+1}|i^t) = \frac{1}{N}$ when individuals belong to the same region $\texttt{region}(i^{t+1}) = \texttt{region}(i^{t})$. }%
+\es{donde $P(i^{t+1}|i^t) = \frac{1}{N}$ cuando los individuos pertenecen a la misma región $\texttt{region}(i^{t+1}) = \texttt{region}(i^{t})$. }%
+%
+\en{This message generalizes the last node of the cooperative protocol (figure~\ref{fig:protocolo}). }%
+\es{Este mensaje generaliza el último nodo del protocolo cooperativo (figura~\ref{fig:protocolo}). }%
+
+% Parrafo
+
+\en{In the introduction we have not analyzed the resource trajectory of defectors in cooperative groups, but in general, the posterior of individuals is no more than the proportion of resources they manage. }%
+\es{En la introducción no hemos analizado la trayectoria de los recursos de los desertores en grupos cooperativos, pero en general, el posterior de los individuos no es más que la proporción de recursos que maneja. }%
+
+\subsection{\en{Growth Rates}\es{Tasas de crecimiento}}\label{sec:growth_rates}
+
+%
+\en{The growth rate depends on the hyperparameters of the model, $\vec{\Ee}$, $p$ and $N$. }%
+\es{La tasa de crecimiento depende de los hyperparámtros del modelo, $\vec{\Ee}$, $p$ y $N$. }%
+%
+\en{Here we will only consider models in which all individuals have the same strategy $\Ee$. }%
+\es{Aquí vamos a considerar únicamente los modelos en el que todos los individuos tienen la misma estrategia $\Ee$. }%
+%
+\en{We will solve this problem by cases, depending on whether the behavior is cooperative, $g_C$, or defective, $g_D$, for different social contexts $g_{[\cdot]}^n(k|\cdot)$, where $n$ represents the number of cooperators with which the individual $k$ interacts (excluding $k$). }%
+\es{Resolveremos este problema por casos, según el comportamiento sea cooperativo, $g_C$, o desertivos, $g_D$, para diferente contextos sociales $g_{[\cdot]}^n(k|\cdot)$, donde $n$ representa la cantidad de cooperadores con lo que interactúa el individuo $k$ (excluyendo a $k$). }%
+% 
+\en{The growth rate of mutual defection is, }%
+\es{La tasa de crecimiento de la deserción mutua es, }%
+%
+\begin{equation}
+\begin{split}
+\lim_{T \rightarrow \infty} g_D^0(k|\Ee,p,N)^T &= \prod_{t=1}^T P(k|\vec{\Aa}^{\,T+1}) \propto \prod_{t=1}^T \Ee^{\Aa^t_k} (1-\Ee)^{1-\Aa^t_k} \\
+\lim_{T \rightarrow \infty} g_D^0(k|\Ee,p,N) &\propto \Big( \prod_{t=1}^T \Ee^{\Aa^t_k} (1-\Ee)^{1-\Aa^t_k} \Big) ^{1/T} = \Ee^{p} (1-\Ee) ^{1-p}
+\end{split}
+\end{equation}
+%
+\en{which is independent of the size $N$. }%
+\es{que es independiete del tamaño $N$. }%
+%
+\en{The proportional is valid because of the normalization constant of the probability distribution $P(i^t|\vec{\Aa}^{\,t})$. }%
+\es{El proporcional vale por constante de normalización de la distribución de probabilidad $ P(i^t|\vec{\Aa}^{\,t})$. }%
+%
+\en{The growth rate of a strategy $\Ee= 0.71 \approx 1.5/2.1$ in an environment with $p=0.5$ is $ 0.71^{1/2}\cdot0.29^{1/2} \approx 0.452$. }%
+\es{La tasa de crecimiento de un estrategia $\Ee= 0.71 \approx 1.5/2.1$ en una ambiente con $p=0.5$ es $ 0.71^{1/2}\cdot0.29^{1/2} \approx 0.452$. }%
+
+% Parrafo
+
+\en{The growth rate of the cooperators can also be computed using the geometic average, }
+\es{La tasa de crecimiento de los cooperadores también la podemos calcular utilizando la media geomética, }%
+%
+\begin{equation}
+\begin{split}
+\lim_{T \rightarrow \infty} g_C^n(k|\Ee,p,N)^T &= \prod_{t=1}^{T} \sum_j^{\texttt{\en{partners}\es{socios}}(k)} \frac{1}{N} P(j|\vec{\Aa}^{\,t}) \propto \prod_{t=1}^{T}  \sum_j^{\texttt{\en{partners}\es{socios}}(k)} \frac{1}{N} \Ee^{\Aa^t_j} (1-\Ee)^{1-\Aa^t_j} \\
+\lim_{T \rightarrow \infty} g_C^n(k|\Ee,p,N) & \propto \Big( \prod_{t=1}^{T}  \sum_j^{\texttt{\en{partners}\es{socios}}(k)} \frac{1}{N} \Ee^{\Aa^t_j} (1-\Ee)^{1-\Aa^t_j} \Big)^{1/T} = \prod_{x=0}^{n+1} \Big(\frac{x}{N} \Ee + \frac{n+1-x}{N}(1-\Ee)\Big)^{\mathcal{B}(x|n+1,p)}
+\end{split}
+\end{equation}
+%
+\en{where $x$ represents the number of successes within the cooperating group, and $\mathcal{B}(x|n+1,p)$ is the binomial probability of obtaining $x$ successes in a sample of size $n+1$. }%
+\es{donde $x$ representa la cantidad de éxitos dentro del grupo cooperador, y $\mathcal{B}(x|n+1,p)$ es la probabilidad binomial de obtener $x$ éxitos en una muestra de tamaño $n+1$. }%
+%
+% %
+% \begin{equation}
+% f_C(\Ee,\vec{\Aa}\,) =
+% \begin{cases}
+% (1-\Ee) & \text{ si } \texttt{sum}(\vec{\Aa}\,) = 0 \\
+% \frac{1}{3} \Ee + \frac{2}{3} (1-\Ee)  & \text{ si } \texttt{sum}(\vec{\Aa}\,) = 1 \\
+% \frac{2}{3} \Ee + \frac{1}{3} (1-\Ee)    & \text{ si } \texttt{sum}(\vec{\Aa}\,) = 2 \\
+% \Ee & \text{ si } \texttt{sum}(\vec{\Aa}\,) = 3
+% \end{cases}
+% \end{equation}
+% %
+% Y en general, 
+% \begin{equation}\label{eq:fitness_cooperador}
+% f_{C}(\Ee, \vec{\Aa}\,,N) = \frac{\texttt{sum}(\vec{\Aa}\,)}{N} \Ee + \frac{N-\texttt{sum}(\vec{\Aa}\,)}{N}(1-\Ee)
+% \end{equation}
+% %
+% \en{where $f_C(\Ee, \vec{\Aa}\,,N) \sim \text{Binomial}(\texttt{sum}(\vec{\Aa}\,)|N,p)$, with $p$ the probability of the environment. }%
+% \es{donde $f_C(\Ee, \vec{\Aa}\,,N) \sim \text{Binomial}(\texttt{sum}(\vec{\Aa}\,)|N,p)$, con $p$ la probabilidad del ambiente. }%
+% %
+% \en{Then, the growth rate of the mutual cooperation can be computed using the geometic average~\ref{eq:geometric_mean}, }
+% \es{Luego, la tasa de crecimiento de la mutua cooperación la podemos calcular utilizando la media geomética~\ref{eq:geometric_mean}, }%
+% %
+% \begin{equation}
+% g_{C}(\Ee,N) = \prod_{x=0}^N \Big(\frac{x}{N} \Ee + \frac{N-x}{N}(1-\Ee)\Big)^{\text{Binomial}(x|N,p)}
+% \end{equation}
+%
+\en{Then, the cooperative growth rate in a group of size 2 are $g_C^2(k|\Ee=0.71,p=0.5,N=2) \propto 0.71^{1/4}\cdot 0.5^{1/2} \cdot 0.29^{1/4} \approx 0.475$ and $g_C^1(k|\Ee=0.71,p=0.5,N=2) \propto (\frac{0.71}{2})^{1/4}\cdot (\frac{0.29}{2})^{1/2}  \approx 0.226$. }%
+\es{Luego, la tasa de crecimiento cooperativa en grupos de tamaño $2$ son $g_C^2(k|\Ee=0.71,p=0.5,N=2) \propto 0.71^{1/4}\cdot 0.5^{1/2} \cdot 0.29^{1/4} \approx 0.475$ y $g_C^1(k|\Ee=0.71,p=0.5,N=2) \propto (\frac{0.71}{2})^{1/4}\cdot (\frac{0.29}{2})^{1/2} \approx 0.226$. }%
+%
+\en{When the group is very large, $N\rightarrow \infty$, }%
+\es{Cuando el grupo es muy grande, $N\rightarrow \infty$, }%
+%
+\begin{equation}
+\lim_{N \rightarrow \infty} g_C^n(k|\Ee,p,N) \propto \Big( p \Ee + (1-p)(1-\Ee) \Big)  \frac{n+1}{N}
+\end{equation}
+%
+\en{the growth rate is just the arithmetic mean, weighed by the proportion of cooperators. }%
+\es{la tasa de crecimiento es la media aritmética pesada por la proporción de cooperadores. }%
+% %
+% \en{The cooperative growth rate of a strategy $\Ee=0.71$ in a group of infinite size in an environment with probability $p=0.5$ is $0.5\cdot 0.71 + 0.5 \cdot 0.29 = 0.5$. }%
+% \es{La tasa de crecimiento cooperativa de una estrategia $\Ee=0.71$ en un grupo de tamaño infinito en un ambiente con probabilidad $p=0.5$, es $0.5\cdot 0.71 + 0.5 \cdot 0.29 = 0.5$. }%
+
+% Parrafo
+
+\en{The growth rate of the defectos in goups with at least one cooperator is, }
+\es{La tasa de crecimiento de desertores en grupos con al menos un cooperador es, }%
+%
+\begin{equation}
+\begin{split}
+\lim_{T \rightarrow \infty} g_D^n(k|\Ee,p,N)^T &= \Big(\prod_{t=1}^{T} P(k|\vec{\Aa}^{\,t}) \Big) + \Big(\sum_{t=1}^{T} \prod_{q=1}^{t} \sum_j^{\texttt{\en{partners}\es{socios}}(k)} \frac{1}{N} P(j|\vec{\Aa}^{\,q})  \prod_{q=t+1}^T P(k|\vec{\Aa}^{\,q}) \Big) \\
+& \approx  g_D^0(k|\Ee,p,N)^T + \sum^{T}_{t=1}  g_C^{n-1}(k|\Ee,p,N)^t g_D^0(k|\Ee,p,N)^{T-t} \\
+& \propto (\Ee^{p} (1-\Ee) ^{1-p})^T + \sum^{T}_{t=1} \Big(\prod_{x=0}^n(\frac{x}{N} \Ee + \frac{n-x}{N}(1-\Ee))^{\mathcal{B}(x|n,p)}\Big)^t (\Ee^{p} (1-\Ee) ^{1-p})^{T-t}
+\end{split}
+\end{equation}
+%
+\en{the sum of individual growth plus a moving average of the growth of cooperators weighted by individual growth, which we approximate using the growth rates $g_D^0$ and $g_C^n$. }%
+\es{la suma del crecimiento individual más una media movil del crecimiento de los cooperadores pesado por crecimienti individual, que aproximamos usando las tasas de crecimiento $g_D^0$ y $g_C^n$. }%
+% %
+% \en{Because we did not find a simpler analytical solution, we performed the growth rate estimation as the difference between time steps, }%
+% \es{Debido a que no encontramos una solución analítica más simple, realizamos la estimación de la tasa de crecimiento como la diferencia entre pasos temporales, }%
+% %
+% \begin{equation}
+% g_{D}(\Ee,n,N) = 
+% \end{equation}
+%
+\en{This growth rate is not constant, but quickly stabilizes at the higher growth rate, $g_D^n(k|\Ee,p,N)$ $\approx$ $\texttt{max}(g_D^0(k|\Ee,p,N),$ $g_C^n(k|\Ee,p,N))$. }%
+\es{Esta tasa de crecimiento no es constante, pero se estabiliza rápidamente de pasos temporales en la tasa de crecimiento que sea mayor, $g_D^n(k|\Ee,p,N)$ $\approx$ $\texttt{max}(g_D^0(k|\Ee,p,N),$ $g_C^n(k|\Ee,p,N))$. }%
+
 
 
 
