@@ -1,4 +1,4 @@
-# transitions
+# The multiplicative nature of evolutionary and probabilistic selection processes as the general driver for the irreversibility emergence of cooperation and specialization.
 
 - [English version](https://github.com/glandfried/transitions/releases/download/doc/landfried-transitions.pdf)
 - [Versión en español](https://github.com/glandfried/transitions/releases/download/doc/landfried-transiciones.pdf)
