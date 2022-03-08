@@ -868,9 +868,9 @@ P(\texttt{coop}(i^T)|\vec{\Aa}^{\,1}, \dots, \vec{\Aa}^{\,T-1}) &= \sum_{j=1}^M 
 \begin{equation}
 P(k| \vec{\Aa}^{\,1}, \dots, \vec{\Aa}^T) = 
 \begin{cases}
-P(k)\prod_{t=1}^{T} P(k|\vec{\Aa}^{\,t}) &  r=0  \\
-P(k)\prod_{t=1}^{T} \sum_j^{\texttt{\en{partners}\es{socios}}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,t}) & r  = N  \\
-\Big(P(k)\prod_{t=1}^{T} P(k|\vec{\Aa}^{\,t}) \Big) + \Big(\sum_{t=1}^{T} P(c|\wedge_{q=1}^t\vec{\Aa}^{\,q})  \prod_{q=t+1}^T P(k|\vec{\Aa}^{\,q}) \Big) & 0 < r < N  
+%P(k)\prod_{t=1}^{T} P(k|\vec{\Aa}^{\,t}) &  r=0  \\
+P(k)\prod_{t=1}^{T} \sum_j^{\texttt{\en{partners}\es{socios}}(r)} \frac{1}{N} P(j|\vec{\Aa}^{\,t}) & \texttt{coop}(k)  \\ % r = N
+\Big(P(k)\prod_{t=1}^{T} P(k|\vec{\Aa}^{\,t}) \Big) + \Big(\sum_{t=1}^{T} P(c|\wedge_{q=1}^t\vec{\Aa}^{\,q})  \prod_{q=t+1}^T P(k|\vec{\Aa}^{\,q}) \Big) & \neg\texttt{coop}(k) % 0 < r < N  
 \end{cases}
 \end{equation}
 %
