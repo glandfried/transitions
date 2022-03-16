@@ -14,42 +14,27 @@
 
 \begin{document}
 
-Los primeros debates sobre la teoría de la probabilidad estaban basados en el problema de la asignación "justa" de una apuestra (Pascal, Fermat).
+\maketitle
+\tableofcontents
 
-Bayes habla de valor justo
+\newpage
 
+\section{Ejemplos}
 
-
-De Finetti propone un concepto, que llama ``coherencia'', que se puede definir usando el concepto de Estrategia Evolutivamente Estable (ESS en inglés).
-
-\begin{quotation} Finetti
-En adoptant la définition [inter]subjective, ces règleslogiques découlent avec rigueur et facilité d’une seule condition très naturelle: celle de cohérence, qui nous oblige à prendre garde en évaluant les probabilités de ne pas donner la possibilité à un adversaire qui parie contre nous de gagner sûrement, par une \cancel{judicieuse} combinaison de ses mises sur les divers événements, quelle que soit l’éventualité qui se réalise.
-Les théorèmes fondamentaux (probabilités totales, probabilités composées) ne sont que des corollaires immédiats de cette condition fondamentale.
-\end{quotation}
-
-La estrategia a adoptar bajo incertidumbre se define en términos evolutivos: es la estrategia de asignación de probabilidades que resiste la invasión de otras estrategias de asignación.
- 
-
-Mynard Smith sobre las aplicaciones de la teoría de juegos.
-\begin{quotation}
-    Game theory is more readily applied to biology than to the field of economic behaviour for which it was originally designed. (...).
-    In seeking the solution of a game, the concept of human rationality is replaced by that of evolutionary stability.
-    The advantage here is that there are good theoretical reasons to expect populations to evolve to stable states, whereas there are grounds for doubting whether human beings always behave rationally. \cite{maynardSmith1982-evolutionTheoryGames}
-    
-    A central assumption of classical game theory is that the players will behave rationally, and according to some criterion of self-interest.
-    Such an assumption would clearly be out of place in an evolutionary context.
-    Instead, the criterion of rationality is replaced by that of population dynamics and stability, and the criterion of self-interest by Darwinian fitness. (...).
-    They lead to a new type of 'solution' to a game, the 'evolutionarily stable strategy' or ESS.
-\end{quotation}
+Lecturas:
+\begin{enumerate}
+\item [Clasificar. Ismorfismo?]: Krakauer. (2020). The information theory of individuality~\cite{krakauer2020-informationTheoryOfIndividuality}
+\item [Clasificar. Ismorfismo?]: Perc. (2017) Statistical physics of human cooperation~\cite{perc2017-statisticalPhysicsCooperation}
+\item Ejemplo/? : https://es.m.wikipedia.org/wiki/Urmetazoo
+\item Ejemplo/social: Gurven (2004) To give and to give not: The behavioral ecology of human food transfers \cite{gurven2004-foodTransfers}.
+\item Ejemplo/social: Borgerhoff (2009) Intergenerational wealth transmission and the dynamics of inequality in small-scale societies \cite{borgerhoff2009-wealth}
+\item Isomorfismo: Czegel (2022) Bayes and Darwin: How replicator populations implement Bayesian computations \cite{czegel2022-bayesDarwin} 
+\end{enumerate}
 
 
-\\
+\subsection{Biocenosis}
 
-\begin{quotation} \cite{gillespie1974-variance}
-    The variance in the numbers of offspring of a genotype has two components, the within-generation component resulting from different individuals of the same genotype having different numbers of offspring, and a between-generation component due to the effects of a changing environment.
-    This latter component has been recently investigated (GILLESPIE 1973); the former will be explored in this paper.
-\end{quotation}
-
+\subsubsection{Spreading the risk}
 
 Parafraseando a Den Boer: the chance of survival of a population depends on a reciprocity system for spreading of the risk within populations and between populations of different species.
 En sus palabras
@@ -70,105 +55,88 @@ En sus palabras
 \end{quotation}
 
 Ya Den Boer plantea como hipótesis un trade-off del ``spreading of the risk'', respecto de la densidad poblacional.
-Seger se pregunta
-\begin{quotation} \cite{denBoer1968-spreadingRisk}:
-    Is there am evolutionary trade-off between \emph{expected} fitness and the \emph{variance} of fitness?
-    Here, we show why there is only under certain circumstances~\cite{seger1987-betHedging}.
 
-    Dampster~\cite{dempster1955-geometricMean} showed that for temporal fluctations on a scale of generations, the relevant measure of fitness is its geometric mean.
-    Dampster result is the starting-point for all subsequent models of genetic evolution in temporally varying environments.
 
-    The geometric mean is the natural measure of long-term fitness under temporal variation beacause, like population growth itself, it is inherently multiplicative rather than additive.
-    It is therefore very sensitive to occasional small values.
-    If there is any variation, the geometric mean will be less than the arithmetic mean.1
+\subsection{Social}
 
-    Although the genotype with the highest geometric-mean fitness is favoured (and certainly goes to fixation), the \emph{populations's} geometric-mean fitness is not necessarily maximized at equilibrium [same example as \cite{starrfelt2012-bet}].
-\end{quotation}
-Y muestra el mismo ejemplo que Kokko.
+\subsubsection{Trasferencia de comida en sociedades humanas}
 
-\\
+\subsection{Multicelular}
 
-Starrfelt y Kokko
-\begin{quotation} \cite{starrfelt2012-bet}
-    Our aim is to review the conceptual foundation of bet-hedging as a mechanism that influences short-and long-term evolutionary processes.
-    
-    Assume that the environment can be either wet or dry.
-    We consider four different genotypes: a drought-resistant genotype which forms the dry-year specialist ($A_{dry}$), a wet-year specialist ($A_{wet}$), a generalist ($A_{gen}$), also called a conservative bet-hedger), and finally a diversified genotype which gives rise to both wet year and dry year specialists ($A_div$, called a diversified bet-hedger).
-    
-    The highest geometric mean fitness will eventually prevail.
-    Even though genotype $A_{gen}$ has a lower arithmetic mean fitness, it will invade and replace both a population of $A_{dry}$ and a population of $A_{wet}$.
-    
-    The generalist $A_{gen}$ is often called a ‘conservative’ bet-hedger because its success is a result of giving up high success in any year and instead avoiding very poor success in any year.
-    In other words, it fulfils the definition of bet-hedging since a reduction in mean arithmetic fitness is accompanied by a reduction in the genotypic variance in fitness
-    
-    The last genotype ($A_{div}$) will invade and replace any population consisting of the other three genotypes. 
-    Depending on the circumstances, one or the other type will be highly productive, and there is never a year where the genotype does universally badly.
-    
-    -- 
-    
-    The two advantages of bet-hedging: 1) reduced individual fitness variance and 2) reduced fitness correlation between individuals.
-    
-    
-    The geometric mean of a series of n random variables (R 1,y ) can be written as
-    
-    \begin{equation}
-    Geometric mean = E[log(R)]
-    \end{equation}
-    
-    [Hacen una aproximación de la media geométrica en la que] It is now obvious that increasing the variance [(el producto de between-individual correlation ($\ro_i$) and the individual-level variance ($\sigma_i^2$)] in the absolute fitness values of a genotype will decrease the geometric mean.
-    
-    The geometric mean fitness of an allele can then be approximated by
-    
-    \begin{equation}
-    G_i \approx \mu_i - \fraq{\text{Var}(R_i)}{2\mu_i} = \mu_i - \fraq{\ro_i \sigma_i^2}{2\mu_i}
-    \end{equation}
-    
-    This is a recapitulation of the principle (Equation 10) that the success of a strategy depends on the mean arithmetic fitness, on the individual variance in reproductive success, and on the correlation between individuals.
-    
-    However, [this] Equation 17 itself is an approximation.
-    When the population sizes are finite (and particularly small), then it is not correct to state that the geometric mean predicts the fixation of an allele.
-    
-    To return to our initial example of eggs in flooding nests: in large, well-mixed populations it does not matter whether a mother lays her eggs in one or two nests.
-    Mathematically, the effect of variation in nest success becomes insignificant in this case because the number of individuals is very large.
-    
-    --
-    
-    Conservative versus diversified bet-hedging.
-    
-    In the case of the generalist strategy $A_{gen}$, the genotypic variance, $var(R_{gen})$, is reduced, as individuals always do reasonably well regardless of circumstances (small individual variance).
-    This is a clear case of of the ‘bird in the hand’ metaphor, which makes the term ‘conservative bet-hedging strategy’ appropriate.
-    
-    The $A_{div}$ allele achieves the reduction in the genotypic variance in a different way.
-    The majority of the reduction of genotypic variance of the A div allele is instead achieved by reducing the correlation (ρ div ) of reproductive success between individuals who share the same allele.
-    
+\subsubsection{Teoría colonial (Urmetazoo)}
+
+\subsection{Celular}
+
+\subsubsection{Recursos-Energía}
+
+\subsection{Cianobaectierias}
+
+\subsubsection{Gases de atmósfera}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Probabilidad}
+
+\subsection{Fundamentos}
+
+Los primeros debates sobre la teoría de la probabilidad estaban basados en el problema de la asignación "justa" de una apuestra (Pascal, Fermat).
+
+Bayes habla de valor justo
+
+De Finetti propone un concepto, que llama ``coherencia'', que se puede definir usando el concepto de Estrategia Evolutivamente Estable (ESS en inglés).
+
+\begin{quotation} Finetti
+En adoptant la définition [inter]subjective, ces règles logiques découlent avec rigueur et facilité d’une seule condition très naturelle: celle de cohérence, qui nous oblige à prendre garde en évaluant les probabilités de ne pas donner la possibilité à un adversaire qui parie contre nous de gagner sûrement, par une \cancel{judicieuse} combinaison de ses mises sur les divers événements, quelle que soit l’éventualité qui se réalise.
+Les théorèmes fondamentaux (probabilités totales, probabilités composées) ne sont que des corollaires immédiats de cette condition fondamentale.
 \end{quotation}
 
+La estrategia a adoptar bajo incertidumbre se define en términos evolutivos: es la estrategia de asignación de probabilidades que resiste la invasión de otras estrategias de asignación.
 
-\\
 
-Pigliucci 2001 \cite{pigliucci2001-plasticity} es un libro que trata exclusivamente sobre Phenotypic Plasticity
+\section{Evolución}
 
-\\
+\subsection{EES}
 
-Slatkin 1974 es un artículo muy corto, poco relevante. 
-\begin{quotation} \cite{slatkin1974-evolutionaryBets}:
-    Until the publication og Gillespie's article, selection resulting from differential variance in offspring number had been ignored.
-\end{quotation}
-
-\\
-
-Jorge Peña
+Mynard Smith sobre las aplicaciones de la teoría de juegos.
 \begin{quotation}
-    Change should be more precisely understood as Darwinian change, or differential replication.
-    Differential replication means that different types replicate at different rates, so that fitter or more successful individuals reproduce faster or are imitated more often than less fit or less successful individuals.
-
-    Public goods games (PGGs) are paradigmatic among such non-decomposable multiplayer games.
-    PGGs are models of situations where individuals face the dilemma of providing and/or maintaining a public good: a common resource that is both non-excludable (no individual can be excluded from its consumption) and non-rivalrous (one individual’s use of the public good does not diminish its availability to another individual).
-    Are typical examples of public goods whose abusive exploitation by non-contributing individuals may lead to the so-called tragedy of the commons, a situation in which nobody contributes and therefore no public good is produced or maintained.
-    By far, the most well known PGG is the N-person prisoner’s dilemma (NPD). \cite{pena2012-phd}
+    Game theory is more readily applied to biology than to the field of economic behaviour for which it was originally designed. (...).
+    In seeking the solution of a game, the concept of human rationality is replaced by that of evolutionary stability.
+    The advantage here is that there are good theoretical reasons to expect populations to evolve to stable states, whereas there are grounds for doubting whether human beings always behave rationally. \cite{maynardSmith1982-evolutionTheoryGames}
+    
+    A central assumption of classical game theory is that the players will behave rationally, and according to some criterion of self-interest.
+    Such an assumption would clearly be out of place in an evolutionary context.
+    Instead, the criterion of rationality is replaced by that of population dynamics and stability, and the criterion of self-interest by Darwinian fitness. (...).
+    They lead to a new type of 'solution' to a game, the 'evolutionarily stable strategy' or ESS.
 \end{quotation}
 
-\\
+\subsection{Replicator equation}
 
 Hofbauer and Sigmund 2003:
 \begin{quotation} \cite{hofbauer2003-evolutionaryGameDynamics}:
@@ -180,7 +148,6 @@ Hofbauer and Sigmund 2003:
     (...)
     The replicator equation, which was introduced in [Taylor: Evolutionarily stable strategies and game dynamics] and baptised in [Schuster, Sigmund: Replicator dynamics],
 \end{quotation}
-
 
 \\
 
@@ -264,52 +231,6 @@ Sigmund junto a Schuster, publican en 1983
     
 \end{quotation}
 
-\\
-
-
-\begin{quotation} \cite{harper2009-replicatorAsInference}:
-    Let $x_i$ be the proportion of the population of the $i$-th type and denote the population distribution $x = (x_1 , \dots , x_n)$.
-    The discrete replicator dynamic is:
-    
-    \begin{equation}
-    x_i\prime = \fraq{x_i f_i(x)}{\overline{f}(x)}
-    \end{equation}
-    
-    [With $\sum x_i = 1$, $f_i(x)$ the fitness of type $i$, $f=(f_i, \dots, f_n)$ the fitness landscape, $\overline{f}(x)=\sum x_i f_i(x)$ the average fitness, and $x_i\prime$ the frequency of type $i$ in the next generation.]
-    
-    A population of a particular distribution obtains information about the environment from the fitness landscape.
-
-    Bayesian inference is a special case, formally, of the discrete replicator dynamic, since the fitness landscape in each coordinate may depend on the entire population distribution rather than only on the proportion of the i-type.
-    
-    A continuous version of the replicator equation is widely used and as a differential equation has more tractable tools for analysis.
-    
-    \begin{equation}
-     \ovserset{.}{x_i} = \lim_{h \rightarrow 0} \fraq{x_i(t+h) - x_i{t}}{h} \approx x_i\prime - x_i = x_i \fraq{f_i(x)}{\overline{f}(x) - x_i} = x_i \fraq{f_i(x) - \overline{f}(x)}{\overline{f}(x)}
-    \end{equation}
-    
-    is equivalent to the following equation after a change in velocity because $\overline{f}(x)$ can be assumed to be strictly positive:
-    
-    \begin{equation}
-    \ovserset{.}{x_i} = x_i (f_i(x) - \overline{f}(x))
-    \end{equation}
-    
-    This description, in light of the relationship to inference, identifies the replicator dynamic as a continuous inference process.
-    
-    A distribution $\hat{x}$ on the simplex is called an evolutionarily stable state of the replicator dynamic if $\hat{x} \cdot f(x) > x \cdot f(x)$ (in some neighborhood of $\hat{x}$).
-    
-    The concept of exponential families gives formal solutions
-    to the continuous replicator dynamic.
-    Natural selection acts to fit the available niches in a fitness landscape, arriving at the maximal entropy distribution allowed by the constraints of the landscape. In the absence of variation within the fitness landscape, the replicator dynamic is stable.
-    
-    The connections between inference and evolutionary game theory are not just formal coincidence.
-    Information geometry explains the commonality.
-    In information geometry, the replicator equation is known as the \emph{natural gradient}.
-    The gradient flow of the Fisher information metric is the replicator equation.
-    The replicator equation can now be understood as modeling the informational dynamics of the population distribution, moving in the direction of maximal local increase of potential with respect to the Fisher information, and ultimately converging to a minimal potential information state if a stablizing state (ESS) exists in the interior of the state space.
-    
-\end{quotation}
-
-\\
 
 
 Nowak and Page:
@@ -348,42 +269,137 @@ Nowak and Page:
     
 \end{quotation}
 
+
+
+\subsection{Geometric mean en evolución}
+
+
+\begin{quotation} \cite{gillespie1974-variance}
+    The variance in the numbers of offspring of a genotype has two components, the within-generation component resulting from different individuals of the same genotype having different numbers of offspring, and a between-generation component due to the effects of a changing environment.
+    This latter component has been recently investigated (GILLESPIE 1973); the former will be explored in this paper.
+\end{quotation}
+
+
+Seger se pregunta
+\begin{quotation}
+    Is there am evolutionary trade-off between \emph{expected} fitness and the \emph{variance} of fitness?
+    Here, we show why there is only under certain circumstances~\cite{seger1987-betHedging}.
+
+    Dampster~\cite{dempster1955-geometricMean} showed that for temporal fluctations on a scale of generations, the relevant measure of fitness is its geometric mean.
+    Dampster result is the starting-point for all subsequent models of genetic evolution in temporally varying environments.
+
+    The geometric mean is the natural measure of long-term fitness under temporal variation beacause, like population growth itself, it is inherently multiplicative rather than additive.
+    It is therefore very sensitive to occasional small values.
+    If there is any variation, the geometric mean will be less than the arithmetic mean.1
+
+    Although the genotype with the highest geometric-mean fitness is favoured (and certainly goes to fixation), the \emph{populations's} geometric-mean fitness is not necessarily maximized at equilibrium [same example as \cite{starrfelt2012-bet}].
+\end{quotation}
+Y muestra el mismo ejemplo que Kokko.
+
 \\
 
-\begin{quotation} \cite{czegel2019-bayesianEvolution}
+Starrfelt y Kokko
+\begin{quotation} \cite{starrfelt2012-bet}
+    Our aim is to review the conceptual foundation of bet-hedging as a mechanism that influences short-and long-term evolutionary processes.
+    
+    Assume that the environment can be either wet or dry.
+    We consider four different genotypes: a drought-resistant genotype which forms the dry-year specialist ($A_{dry}$), a wet-year specialist ($A_{wet}$), a generalist ($A_{gen}$), also called a conservative bet-hedger), and finally a diversified genotype which gives rise to both wet year and dry year specialists ($A_div$, called a diversified bet-hedger).
+    
+    The highest geometric mean fitness will eventually prevail.
+    Even though genotype $A_{gen}$ has a lower arithmetic mean fitness, it will invade and replace both a population of $A_{dry}$ and a population of $A_{wet}$.
+    
+    The generalist $A_{gen}$ is often called a ‘conservative’ bet-hedger because its success is a result of giving up high success in any year and instead avoiding very poor success in any year.
+    In other words, it fulfils the definition of bet-hedging since a reduction in mean arithmetic fitness is accompanied by a reduction in the genotypic variance in fitness
+    
+    The last genotype ($A_{div}$) will invade and replace any population consisting of the other three genotypes. 
+    Depending on the circumstances, one or the other type will be highly productive, and there is never a year where the genotype does universally badly.
+    
+    -- 
+    
+    The two advantages of bet-hedging: 1) reduced individual fitness variance and 2) reduced fitness correlation between individuals.
+    
+    
+    The geometric mean of a series of n random variables (R 1,y ) can be written as
+    
+    \begin{equation}
+    Geometric mean = E[log(R)]
+    \end{equation}
+    
+    [Hacen una aproximación de la media geométrica en la que] It is now obvious that increasing the variance [(el producto de between-individual correlation ($\ro_i$) and the individual-level variance ($\sigma_i^2$)] in the absolute fitness values of a genotype will decrease the geometric mean.
+    
+    The geometric mean fitness of an allele can then be approximated by
+    
+    \begin{equation}
+    G_i \approx \mu_i - \fraq{\text{Var}(R_i)}{2\mu_i} = \mu_i - \fraq{\ro_i \sigma_i^2}{2\mu_i}
+    \end{equation}
+    
+    This is a recapitulation of the principle (Equation 10) that the success of a strategy depends on the mean arithmetic fitness, on the individual variance in reproductive success, and on the correlation between individuals.
+    
+    However, [this] Equation 17 itself is an approximation.
+    When the population sizes are finite (and particularly small), then it is not correct to state that the geometric mean predicts the fixation of an allele.
+    
+    To return to our initial example of eggs in flooding nests: in large, well-mixed populations it does not matter whether a mother lays her eggs in one or two nests.
+    Mathematically, the effect of variation in nest success becomes insignificant in this case because the number of individuals is very large.
+    
+    --
+    
+    Conservative versus diversified bet-hedging.
+    
+    In the case of the generalist strategy $A_{gen}$, the genotypic variance, $var(R_{gen})$, is reduced, as individuals always do reasonably well regardless of circumstances (small individual variance).
+    This is a clear case of of the ‘bird in the hand’ metaphor, which makes the term ‘conservative bet-hedging strategy’ appropriate.
+    
+    The $A_{div}$ allele achieves the reduction in the genotypic variance in a different way.
+    The majority of the reduction of genotypic variance of the A div allele is instead achieved by reducing the correlation (ρ div ) of reproductive success between individuals who share the same allele.
+    
+\end{quotation}
 
-    Here we show, building on former results connecting replicator dynamics and Bayesian update, that (i) evolution of a hierarchical population under multilevel selection is equivalent to Bayesian inference in hierarchical Bayesian models and (ii) evolutionary transitions in individuality, driven by synergistic fitness interactions, is equivalent to learning the structure of hierarchical models via Bayesian model comparison.
 
-    These correspondences support a learning theory-oriented narrative of evolutionary complexification: the complexity and depth of the hierarchical structure of individuality mirror the amount and complexity of data that have been integrated about the environment through the course of evolutionary history.
-    
-    A crucial preliminary condition is the alignment of interests: to undergo an evolutionary transition in individuality, organisms must exhibit cooperation, originating from genetic relatedness and/or synergistic fitness interactions
-    However, the story does not end here: something must also maintain the alignment of interests subsequent to the transition.
-    At any phase, the fate of the organism depends on selective forces at multiple levels that might be in conflict with each other.
-    Incorporating the effects of multilevel selection is, therefore, a crucial element of understanding evolutionary transitions in individuality
-    
-    When the replication of particles (i.e. lower-level replicators) is not fully synchronized with the replication of the collective they belong to, or, in other words, when selective forces at different levels conflict, multilevel selection theory provides an effective description of the system
-    
-    A key ingredient of models of multilevel selection is the partitioning of fitness of particles to within-collective and between-collective components, once the collectives are defined.
+\\
 
-    
+Pigliucci 2001 \cite{pigliucci2001-plasticity} es un libro que trata exclusivamente sobre Phenotypic Plasticity
+
+\\
+
+Slatkin 1974 es un artículo muy corto, poco relevante. 
+\begin{quotation} \cite{slatkin1974-evolutionaryBets}:
+    Until the publication og Gillespie's article, selection resulting from differential variance in offspring number had been ignored.
+\end{quotation}
+
+\begin{quotation} \cite{capillaLasheras2021-betHedging}
+    Explanations for the evolution of altruism via kin selection typically  focus on scenarios in which altruistic acts yield indirect fitness benefits to the actor by increasing the mean reproductive success of relatives (Hamilton).
+    However, recent [sic] theory has highlighted that kin selection can also favor altruistic acts if they decrease variance in the reproductive success of relatives in unpredictable environments, a scenario termed “altruistic bet-hedging” (\cite{kennedy2018-betHedging})
+\end{quotation}
+
+
+\\
+ 
+
+\begin{quotation} \cite{kennedy2018-betHedging}:
+    We derive Hamilton’s rule with explicit stochasticity, which predicts when organisms should pay a cost to influence the variance in the reproductive success of their relatives.
+    We follow the established method of capturing fitness effects as regression slopes.
 \end{quotation}
 
 \\
 
-\begin{quotation} \cite{peters-cooperation2019.03.04}
-    Our model assumes nothing more than that evolutionary processes are multiplicative and noisy.
-    In this context, the evolutionary advantage of cooperation arises from the nonlinear dependence of growth rates on temporal fluctuations.
-    By reducing the amplitude of fluctuations, pooling and sharing increase the time-average growth rate of the resources of cooperating entities.
-    This paints a picture of cooperation driven by self-interest, not altruism, with cooperators outgrowing similar non-cooperators.
-    
-    Nor do we consider the cheating problem or the walk-away option (Aktipis 2016).
-    Our cooperators are unable to break the cooperative pact.
-    
-    The insight that time averages may not be identical to expectation values was only reached in the development of statistical mechanics in the 19 th century.
-    The development of ergodic theory in the 20th and 21st centuries provided the concepts that reveal the physically relevant aspect of stochastic processes like (Eq. 1).
+
+\subsection{Prisoner Dilema}
+
+Jorge Peña
+\begin{quotation}
+    Change should be more precisely understood as Darwinian change, or differential replication.
+    Differential replication means that different types replicate at different rates, so that fitter or more successful individuals reproduce faster or are imitated more often than less fit or less successful individuals.
+
+    Public goods games (PGGs) are paradigmatic among such non-decomposable multiplayer games.
+    PGGs are models of situations where individuals face the dilemma of providing and/or maintaining a public good: a common resource that is both non-excludable (no individual can be excluded from its consumption) and non-rivalrous (one individual’s use of the public good does not diminish its availability to another individual).
+    Are typical examples of public goods whose abusive exploitation by non-contributing individuals may lead to the so-called tragedy of the commons, a situation in which nobody contributes and therefore no public good is produced or maintained.
+    By far, the most well known PGG is the N-person prisoner’s dilemma (NPD). \cite{pena2012-phd}
 \end{quotation}
 
 \\
+
+
+\subsection{Selección multinivel}
+
 
 Okasha 2005:
 \begin{quotation} \cite{okasha2005-multilevelTransitions}   
@@ -433,19 +449,92 @@ Okasha 2005:
 MLS1 y MLS2
 \end{quotation}
 
- \\
- 
-\begin{quotation} \cite{capillaLasheras2021-betHedging}
-    Explanations for the evolution of altruism via kin selection typically  focus on scenarios in which altruistic acts yield indirect fitness benefits to the actor by increasing the mean reproductive success of relatives (Hamilton).
-    However, recent [sic] theory has highlighted that kin selection can also favor altruistic acts if they decrease variance in the reproductive success of relatives in unpredictable environments, a scenario termed “altruistic bet-hedging” (\cite{kennedy2018-betHedging})
-\end{quotation}
 
-\begin{quotation} \cite{kennedy2018-betHedging}:
-    We derive Hamilton’s rule with explicit stochasticity, which predicts when organisms should pay a cost to influence the variance in the reproductive success of their relatives.
-    We follow the established method of capturing fitness effects as regression slopes.
+\section{Isomorfismo}
+
+
+
+\begin{quotation} \cite{harper2009-replicatorAsInference}:
+    Let $x_i$ be the proportion of the population of the $i$-th type and denote the population distribution $x = (x_1 , \dots , x_n)$.
+    The discrete replicator dynamic is:
+    
+    \begin{equation}
+    x_i\prime = \fraq{x_i f_i(x)}{\overline{f}(x)}
+    \end{equation}
+    
+    [With $\sum x_i = 1$, $f_i(x)$ the fitness of type $i$, $f=(f_i, \dots, f_n)$ the fitness landscape, $\overline{f}(x)=\sum x_i f_i(x)$ the average fitness, and $x_i\prime$ the frequency of type $i$ in the next generation.]
+    
+    A population of a particular distribution obtains information about the environment from the fitness landscape.
+
+    Bayesian inference is a special case, formally, of the discrete replicator dynamic, since the fitness landscape in each coordinate may depend on the entire population distribution rather than only on the proportion of the i-type.
+    
+    A continuous version of the replicator equation is widely used and as a differential equation has more tractable tools for analysis.
+    
+    \begin{equation}
+     \ovserset{.}{x_i} = \lim_{h \rightarrow 0} \fraq{x_i(t+h) - x_i{t}}{h} \approx x_i\prime - x_i = x_i \fraq{f_i(x)}{\overline{f}(x) - x_i} = x_i \fraq{f_i(x) - \overline{f}(x)}{\overline{f}(x)}
+    \end{equation}
+    
+    is equivalent to the following equation after a change in velocity because $\overline{f}(x)$ can be assumed to be strictly positive:
+    
+    \begin{equation}
+    \ovserset{.}{x_i} = x_i (f_i(x) - \overline{f}(x))
+    \end{equation}
+    
+    This description, in light of the relationship to inference, identifies the replicator dynamic as a continuous inference process.
+    
+    A distribution $\hat{x}$ on the simplex is called an evolutionarily stable state of the replicator dynamic if $\hat{x} \cdot f(x) > x \cdot f(x)$ (in some neighborhood of $\hat{x}$).
+    
+    The concept of exponential families gives formal solutions
+    to the continuous replicator dynamic.
+    Natural selection acts to fit the available niches in a fitness landscape, arriving at the maximal entropy distribution allowed by the constraints of the landscape. In the absence of variation within the fitness landscape, the replicator dynamic is stable.
+    
+    The connections between inference and evolutionary game theory are not just formal coincidence.
+    Information geometry explains the commonality.
+    In information geometry, the replicator equation is known as the \emph{natural gradient}.
+    The gradient flow of the Fisher information metric is the replicator equation.
+    The replicator equation can now be understood as modeling the informational dynamics of the population distribution, moving in the direction of maximal local increase of potential with respect to the Fisher information, and ultimately converging to a minimal potential information state if a stablizing state (ESS) exists in the interior of the state space.
+    
 \end{quotation}
 
 \\
+
+\begin{quotation} \cite{czegel2019-bayesianEvolution}
+
+    Here we show, building on former results connecting replicator dynamics and Bayesian update, that (i) evolution of a hierarchical population under multilevel selection is equivalent to Bayesian inference in hierarchical Bayesian models and (ii) evolutionary transitions in individuality, driven by synergistic fitness interactions, is equivalent to learning the structure of hierarchical models via Bayesian model comparison.
+
+    These correspondences support a learning theory-oriented narrative of evolutionary complexification: the complexity and depth of the hierarchical structure of individuality mirror the amount and complexity of data that have been integrated about the environment through the course of evolutionary history.
+    
+    A crucial preliminary condition is the alignment of interests: to undergo an evolutionary transition in individuality, organisms must exhibit cooperation, originating from genetic relatedness and/or synergistic fitness interactions
+    However, the story does not end here: something must also maintain the alignment of interests subsequent to the transition.
+    At any phase, the fate of the organism depends on selective forces at multiple levels that might be in conflict with each other.
+    Incorporating the effects of multilevel selection is, therefore, a crucial element of understanding evolutionary transitions in individuality
+    
+    When the replication of particles (i.e. lower-level replicators) is not fully synchronized with the replication of the collective they belong to, or, in other words, when selective forces at different levels conflict, multilevel selection theory provides an effective description of the system
+    
+    A key ingredient of models of multilevel selection is the partitioning of fitness of particles to within-collective and between-collective components, once the collectives are defined.
+
+    
+\end{quotation}
+
+
+
+\section{Ergodicidad}
+
+\subsection{Cooperación}
+
+\begin{quotation} \cite{peters-cooperation2019.03.04}
+    Our model assumes nothing more than that evolutionary processes are multiplicative and noisy.
+    In this context, the evolutionary advantage of cooperation arises from the nonlinear dependence of growth rates on temporal fluctuations.
+    By reducing the amplitude of fluctuations, pooling and sharing increase the time-average growth rate of the resources of cooperating entities.
+    This paints a picture of cooperation driven by self-interest, not altruism, with cooperators outgrowing similar non-cooperators.
+    
+    Nor do we consider the cheating problem or the walk-away option (Aktipis 2016).
+    Our cooperators are unable to break the cooperative pact.
+    
+    The insight that time averages may not be identical to expectation values was only reached in the development of statistical mechanics in the 19 th century.
+    The development of ergodic theory in the 20th and 21st centuries provided the concepts that reveal the physically relevant aspect of stochastic processes like (Eq. 1).
+\end{quotation}
+
 
 \begin{quotation}  \cite{yaari2010-cooperationEvolution}
 While in an additive context the emergence and survival of cooperation requires special conditions (especially some level of reward, punishment, reciprocity), we find that in the multiplicative random context the emergence of cooperation is much more natural and effective.
