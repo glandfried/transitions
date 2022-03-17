@@ -7,8 +7,9 @@ global REGION_SIZE = 2::Int64
 global TOTAL_REGIONS = 500::Int64
 global CYCLE_LENGHT = 200::Int64
 global STRATEGY = 0.71::Float64
-global STRATEGY_MUTATION = 0.0::Float64 # Probability of change the strategy (Uniform mutation)
-global BEHAVIOR_MUTATION = 0.0::Float64 # Probability of change the behavior 
+global STRATEGY_MUTATION = 0.05::Float64 # Probability of change the strategy (Uniform mutation)
+global STRATEGY_MUTATION_RATE = 0.1
+global BEHAVIOR_MUTATION = 0.05::Float64 # Probability of change the behavior 
 global BEHAVIOR_BIAS = 0.5::Float64 # Prior probability of behaviors
 global ENVIRONMENT = 0.71::Float64
 global K = 2.1::Float64 # Just a constant
@@ -28,7 +29,8 @@ function init_individuals(
     total_regions=TOTAL_REGIONS,
     strategy=STRATEGY,
     strategy_mutation=STRATEGY_MUTATION,
-    behavior_bias=BEHAVIOR_BIAS)
+    behavior_bias=BEHAVIOR_BIAS,
+    borders=false)
     #
     strategies = Vector{Vector{Float64}}()
     behaviors =  Vector{Vector{Int64}}()
@@ -40,6 +42,11 @@ function init_individuals(
             push!(behaviors[end], rand(Binomial(1,behavior_bias)))
             push!(resources[end], 1.0)
         end
+    end
+    if borders
+        #Because we analyse a finit population, the individual simulations never consider the whole Hypothesis Space. 
+        behaviors[1] .= 0.0 
+        behaviors[end] .= 1.0 
     end
     return strategies, behaviors, resources 
 end
@@ -74,6 +81,7 @@ function reproduction(resources, behaviors, strategies,
     region_size=REGION_SIZE,
     total_regions=TOTAL_REGIONS,
     strategy_mutation=STRATEGY_MUTATION,
+    strategy_mutation_rate=STRATEGY_MUTATION_RATE,
     behavior_mutation=BEHAVIOR_MUTATION,
     behavior_bias=BEHAVIOR_BIAS)
     #
@@ -86,10 +94,11 @@ function reproduction(resources, behaviors, strategies,
         for i in 1:region_size#i=1
             how = rand(fitness)
             behaviors[r][i] = rand(Uniform()) < behavior_mutation ? 1-old_behaviors[how] : old_behaviors[how]
-            strategies[r][i] = rand(Uniform())< strategy_mutation ? rand(Uniform()) : old_strategies[how]
+            strategies[r][i] = rand(Uniform())< strategy_mutation ? strategy_mutation_rate*rand(Uniform())+(1-strategy_mutation_rate)*old_strategies[how] : old_strategies[how]
         end
     end
 end
+
 
 function genetic_algorithm(;
     region_size=REGION_SIZE,
@@ -97,6 +106,7 @@ function genetic_algorithm(;
     cycle_length=CYCLE_LENGHT,
     strategy=STRATEGY,
     strategy_mutation=STRATEGY_MUTATION,
+    strategy_mutation_rate=STRATEGY_MUTATION_RATE,
     behavior_mutation=BEHAVIOR_MUTATION,
     behavior_bias=BEHAVIOR_BIAS,
     environment=ENVIRONMENT,
@@ -120,12 +130,13 @@ function genetic_algorithm(;
                      region_size,
                      total_regions,
                      strategy_mutation,
+                     strategy_mutation_rate,
                      behavior_mutation,
                      behavior_bias)
     end
     return behaviors, strategies
 end
 
-
-final_behaviors, final_strategies = genetic_algorithm(cycle_length=1000,region_size=10 )
+final_behaviors, final_strategies = genetic_algorithm(cycle_length=500,region_size=3 )
+final_strategies
 sum(sum(final_behaviors))
